@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "admin"
+    "name": "afp"
   },
   "apps": [
     {
@@ -21,16 +21,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [
-        "assets/plugins/jquery-1.10.2.js",
-        "assets/plugins/bootstrap/bootstrap.min.js",
-        "assets/plugins/metisMenu/jquery.metisMenu.js",
-        "assets/scripts/siminta.js",
-        "assets/plugins/morris/raphael-2.1.0.min.js",
-        "assets/plugins/morris/morris.js",
-        "assets/scripts/dashboard-demo.js",
-		"assets/scripts/custom.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

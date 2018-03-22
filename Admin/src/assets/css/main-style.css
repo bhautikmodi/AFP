@@ -60,9 +60,13 @@ color: #FFFFFF;
 .nav > li > a {
 padding: 20px 15px;
 }
-#side-menu {
-    background-color: #11425a;
+.nav > li > ul > li > a {
+padding-left: 45px;
 }
+.sidebar-collapse {
+    background-color: #11425a; height: 100%;
+}
+#side-menu{overflow-y: auto; height: 100%;}
 
  #side-menu a {
            color:#fff;
@@ -141,7 +145,8 @@ html.index_admin,.index_admin body{ height:100%;}
     margin:5px;
 }
 .navbar-default {
-border-color: #0085AD;
+	border-color: #0085AD;
+	position: fixed; height: 88%;
 }
 /*media queries*/
 
@@ -151,9 +156,7 @@ border-color: #0085AD;
         position: inherit;
         margin: 0 0 0 250px;
         padding: 0 30px;
-        min-height: 1000px;
-       
-       
+        /*min-height: 1000px;*/
     }
 
 }
@@ -186,6 +189,7 @@ border-color: #0085AD;
 	.navbar-right {
 		float: right;
 	}
+	.navbar-default {}
 }
 
 @media (min-width: 992px) {
@@ -197,16 +201,25 @@ border-color: #0085AD;
 	#page-wrapper{
 		min-height: 800px!important;
 		}
-	}
+	.navbar-default {
+		height: 100%;
+		}
+}
 	
 @media (min-width:1800px){ 
 	#page-wrapper{
 		min-height: 900px!important;
 		}
-	}
+	.navbar-default {
+		height: 100%;
+		}
+}
 	
 @media (min-width:2000px){ 
 	#page-wrapper{
 		min-height: 1000px!important;
 		}
-	}
+	.navbar-default {
+		height: 100%;
+		}
+}

@@ -18,7 +18,15 @@ import { CompetencyAreaListComponent } from './competency-area-list/competency-a
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { DomainService } from './services/domain.service';
+
 import { CompetencyAreaService } from './services/competency-area.service';
+
+import { CourcelevelComponent } from './courcelevel/courcelevel.component';
+import { CourcelevellistComponent } from './courcelevellist/courcelevellist.component';
+import { CourcelevelService } from './services/courcelevel.service';
+import { CourseComponent } from './course/course.component';
+import { CourselistComponent } from './courselist/courselist.component';
+import { CourseService } from './services/course.service';
 
 import { Globals } from './globals';
 
@@ -36,7 +44,11 @@ import { Globals } from './globals';
     DomainComponent,
     DomainListComponent,
     CompetencyAreaComponent,
-    CompetencyAreaListComponent
+    CompetencyAreaListComponent,
+	CourcelevelComponent,
+	CourcelevellistComponent,
+	CourseComponent,
+	CourselistComponent
   ],
   imports: [
     BrowserModule,
@@ -88,13 +100,45 @@ import { Globals } from './globals';
         component : CompetencyAreaListComponent,
         canActivate : [AuthGuard]
       },
+	   {
+        path : 'courselevel/add',
+        component : CourcelevelComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'courselevel/list',
+			component : CourcelevellistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'courselevel/edit/:id',
+			component : CourcelevelComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+        path : 'course/add',
+        component : CourseComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'course/list',
+			component : CourselistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'course/edit/:id',
+			component : CourseComponent,
+			canActivate : [AuthGuard]
+	  },
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

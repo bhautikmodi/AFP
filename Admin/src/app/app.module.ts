@@ -29,7 +29,9 @@ import { CourselistComponent } from './courselist/courselist.component';
 import { CourseService } from './services/course.service';
 
 import { Globals } from './globals';
-
+import { IndustryComponent } from './industry/industry.component';
+import { IndustrylistComponent } from './industrylist/industrylist.component';
+import { IndustryService } from './services/industry.service';
 
 
 
@@ -48,7 +50,9 @@ import { Globals } from './globals';
 	CourcelevelComponent,
 	CourcelevellistComponent,
 	CourseComponent,
-	CourselistComponent
+	CourselistComponent,
+	IndustryComponent,
+	IndustrylistComponent
   ],
   imports: [
     BrowserModule,
@@ -132,13 +136,29 @@ import { Globals } from './globals';
 			component : CourseComponent,
 			canActivate : [AuthGuard]
 	  },
+	   {
+        path : 'industry/add',
+        component : IndustryComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'industry/list',
+			component : IndustrylistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'industry/edit/:id',
+			component : IndustryComponent,
+			canActivate : [AuthGuard]
+	  },
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

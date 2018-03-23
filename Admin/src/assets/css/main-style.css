@@ -11,6 +11,7 @@ Author: http://binarytheme.com
     margin-top:10px;
     font-size:22px;
     background-color: #11425a;
+	border-bottom: 1px solid #0085AD;
 	/*background-color:rgb(83, 163, 163);*/
 }
 .user-section-inner {
@@ -111,10 +112,10 @@ padding-left: 45px;
 .navbar-top-links .btn-add{padding: 10px 15px; min-height:0!important; margin: 21px 0 0 0; border: none;}
 .navbar-brand {
     padding-left:20px;
-	padding: 0px 15px;
+	padding: 7px 15px;
 }
 .navbar-brand img {
-    height: 85px;
+    height: 72px;
 	/*height: 45px;*/
 }
 .top-label {

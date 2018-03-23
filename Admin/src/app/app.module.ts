@@ -10,19 +10,19 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DomainComponent } from './domain/domain.component';
+import { DomainListComponent } from './domain-list/domain-list.component';
+import { CompetencyAreaComponent } from './competency-area/competency-area.component';
+import { CompetencyAreaListComponent } from './competency-area-list/competency-area-list.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
-import { CourcelevelService } from './services/courcelevel.service';
-import { CourseService } from './services/course.service';
+import { DomainService } from './services/domain.service';
+import { CompetencyAreaService } from './services/competency-area.service';
 
 import { Globals } from './globals';
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { ConfigurationlistComponent } from './configurationlist/configurationlist.component';
-import { CourcelevelComponent } from './courcelevel/courcelevel.component';
-import { CourcelevellistComponent } from './courcelevellist/courcelevellist.component';
-import { CourseComponent } from './course/course.component';
-import { CourselistComponent } from './courselist/courselist.component';
+
+
 
 
 @NgModule({
@@ -33,12 +33,10 @@ import { CourselistComponent } from './courselist/courselist.component';
     FooterComponent,
     LeftMenuComponent,
     DashboardComponent,
-    ConfigurationComponent,
-    ConfigurationlistComponent,
-    CourcelevelComponent,
-    CourcelevellistComponent,
-	CourseComponent,
-    CourselistComponent
+    DomainComponent,
+    DomainListComponent,
+    CompetencyAreaComponent,
+    CompetencyAreaListComponent
   ],
   imports: [
     BrowserModule,
@@ -60,46 +58,43 @@ import { CourselistComponent } from './courselist/courselist.component';
         component : LoginComponent,
         canActivate : [AuthGuard]
       },
-	  {
-        path : 'courselevel/add',
-        component : CourcelevelComponent,
-		canActivate : [AuthGuard]
-       
+      {
+        path : 'domain/add',
+        component : DomainComponent,
+        canActivate : [AuthGuard]
       },
-	  {
-			path : 'courselevel/list',
-			component : CourcelevellistComponent,
-			canActivate : [AuthGuard]
-	  },
-	  {
-			path : 'courselevel/edit/:id',
-			component : CourcelevelComponent,
-			canActivate : [AuthGuard]
-	  },
-	  {
-        path : 'course/add',
-        component : CourseComponent,
-		canActivate : [AuthGuard]
-       
+      {
+        path : 'domain/edit/:id',
+        component : DomainComponent,
+        canActivate : [AuthGuard]
       },
-	  {
-			path : 'course/list',
-			component : CourselistComponent,
-			canActivate : [AuthGuard]
-	  },
-	  {
-			path : 'course/edit/:id',
-			component : CourseComponent,
-			canActivate : [AuthGuard]
-	  },
+      {
+        path : 'domain/list',
+        component : DomainListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'competency-area/add',
+        component : CompetencyAreaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'competency-area/edit/:id',
+        component : CompetencyAreaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'competency-area/list',
+        component : CompetencyAreaListComponent,
+        canActivate : [AuthGuard]
+      },
       {
         path : '**',
         redirectTo : 'dashboard'
       }
-	  
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,CourcelevelService,CourseService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

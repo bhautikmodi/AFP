@@ -2,3 +2,8 @@
 .red_border {
 	border-color : red;
 }
+
+#chartdiv {
+	width: 100%;
+	height: 500px;
+  }	

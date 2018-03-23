@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
 import { Globals } from '.././globals';
+
 @Injectable()
-export class CourcelevelService {
+export class DomainService {
 
+  constructor(private http: Http, private globals: Globals) { }
 
- constructor( private http: Http,private globals: Globals) { }
- 
- add(CourseLevelEntity)
- {debugger
+  add(domainEntity){
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'CourseLevel/add', CourseLevelEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Domain/add', domainEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -25,11 +23,9 @@ export class CourcelevelService {
 	return promise;
   }
   
-
-delete(ConfigurationId)
-  {
+  delete(DomainId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'CourseLevel/delete/' + ConfigurationId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Domain/delete/' + DomainId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -43,10 +39,9 @@ delete(ConfigurationId)
 	return promise;
   }
   
-  getAll()
-  {
+  getAll(){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'CourseLevel/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Domain/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -60,10 +55,9 @@ delete(ConfigurationId)
 	return promise;
   }
   
-  getById(ConfigurationId)
-  {debugger
+  getById(DomainId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'CourseLevel/getById/' + ConfigurationId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Domain/getById/' + DomainId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -76,5 +70,5 @@ delete(ConfigurationId)
 	});		
 	return promise;
   }  
- }
 
+}

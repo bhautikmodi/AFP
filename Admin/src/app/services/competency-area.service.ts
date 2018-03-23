@@ -1,93 +1,91 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+
 @Injectable()
-export class CourseService {
+export class CompetencyAreaService {
 
-  constructor( private http: Http,private globals: Globals) { }
+  constructor(private http: Http, private globals: Globals) { }
 
-add(CourseEntity)
- {debugger
+  add(areaEntity){
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Course/add', CourseEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Competency_Area/add', areaEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+		      reject(msg);
         }
       );
 	});		
 	return promise;
   }
-  
-
-delete(CourseId)
-  {
+    
+  delete(Competency_AreaId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Course/delete/' + CourseId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/delete/' + Competency_AreaId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+		      reject(msg);
         }
       );
 	});		
 	return promise;
   }
   
-  getAll()
-  {
+  getAll(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+		      reject(msg);
         }
       );
 	});		
 	return promise;
   }
   
-  getById(CourseId)
-  {debugger
+  getById(Competency_AreaId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getById/' + CourseId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getById/' + Competency_AreaId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+		      reject(msg);
         }
       );
 	});		
 	return promise;
   }  
-    getCourseLevelList(){
+
+   getDomainList(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getCourseLevelList', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getDomainList', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+		      reject(msg);
         }
       );
 	});		
 	return promise;
   }
- }
+  
+}
 

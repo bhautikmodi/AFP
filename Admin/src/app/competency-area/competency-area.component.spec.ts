@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourcelevellistComponent } from './courcelevellist.component';
+import { CompetencyAreaComponent } from './competency-area.component';
 
-describe('CourcelevellistComponent', () => {
-  let component: CourcelevellistComponent;
-  let fixture: ComponentFixture<CourcelevellistComponent>;
+describe('CompetencyAreaComponent', () => {
+  let component: CompetencyAreaComponent;
+  let fixture: ComponentFixture<CompetencyAreaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourcelevellistComponent ]
+      declarations: [ CompetencyAreaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourcelevellistComponent);
+    fixture = TestBed.createComponent(CompetencyAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

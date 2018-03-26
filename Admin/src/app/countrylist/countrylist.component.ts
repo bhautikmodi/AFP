@@ -2,35 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { IndustryService } from '../services/industry.service';
+import { CountryService } from '../services/country.service';
 import { Globals } from '.././globals';
-
 declare var $: any;
-
 @Component({
-  selector: 'app-industrylist',
-  providers: [ IndustryService ],
-  templateUrl: './industrylist.component.html',
-  styleUrls: ['./industrylist.component.css']
+  selector: 'app-countrylist',
+    providers: [ CountryService ],
+  templateUrl: './countrylist.component.html',
+  styleUrls: ['./countrylist.component.css']
 })
-export class IndustrylistComponent implements OnInit {
-	IndustryList;
+export class CountrylistComponent implements OnInit {
+    CountryList;
 	deleteEntity;
 	msgflag;
 	message;
- constructor( private http: Http,private globals: Globals, private router: Router, private IndustryService: IndustryService,private route:ActivatedRoute) { }
+ constructor( private http: Http,private globals: Globals, private router: Router, private CountryService: CountryService,private route:ActivatedRoute) { }
 
-  ngOnInit() { 
-	this.IndustryService.getAll()
+
+ngOnInit() { 
+	this.CountryService.getAll()
 	.then((data) => 
 	{ 
-		this.IndustryList = data;	
+		this.CountryList = data;	
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Industry per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industry",
-					"sInfoFiltered": "(filtered from _MAX_ total Industry)"
+          "sLengthMenu": "_MENU_ Country per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Country",
+					"sInfoFiltered": "(filtered from _MAX_ total Country)"
         }
       });
     },100); 
@@ -43,21 +42,21 @@ export class IndustrylistComponent implements OnInit {
 	this.msgflag = false;
   }
 
-	deleteIndustry(Industry)
+	deleteCountry(Country)
 	{ 
-		this.deleteEntity =  Industry;
+		this.deleteEntity =  Country;
 		$('#Delete_Modal').modal('show');					
 	}
 
-	deleteConfirm(Industry)
+	deleteConfirm(Country)
 	{ 
-		this.IndustryService.delete(Industry.CourseId)
+		this.CountryService.delete(Country.CountryId)
 		.then((data) => 
 		{
-			let index = this.IndustryList.indexOf(Industry);
+			let index = this.CountryList.indexOf(Country);
 			$('#Delete_Modal').modal('hide');
 			if (index != -1) {
-				this.IndustryList.splice(index, 1);
+				this.CountryList.splice(index, 1);
 				//this.router.navigate(['/domain/list']);
 				// setTimeout(function(){
 				// 	$('#dataTables-example').dataTable( {

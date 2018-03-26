@@ -32,7 +32,9 @@ import { Globals } from './globals';
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
-
+import { CountryComponent } from './country/country.component';
+import { CountrylistComponent } from './countrylist/countrylist.component';
+import { CountryService } from './services/country.service';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { IndustryService } from './services/industry.service';
 	CourseComponent,
 	CourselistComponent,
 	IndustryComponent,
-	IndustrylistComponent
+	IndustrylistComponent,
+	CountryComponent,
+	CountrylistComponent
   ],
   imports: [
     BrowserModule,
@@ -152,13 +156,29 @@ import { IndustryService } from './services/industry.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
+	  {
+        path : 'country/add',
+        component : CountryComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'country/list',
+			component : CountrylistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'country/edit/:id',
+			component : CountryComponent,
+			canActivate : [AuthGuard]
+	  },
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,6 +40,7 @@ class Course_model extends CI_Model
 		// $result = $this->db->get('tblmstcourse');
 		
 		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId');
+	
 		$this->db->join('tblmstconfiguration ps', 'pr.ConfigurationId = ps.ConfigurationId', 'left');
 		$result = $this->db->get('tblmstcourse pr');
 		
@@ -125,8 +126,9 @@ class Course_model extends CI_Model
 	}
 	public function getCourseLevelList() {
 	
-		$this->db->select('ConfigurationId,Value,Key');
+		$this->db->select('ConfigurationId,Value,Key,IsActive');
 		$this->db->where('key="CourseLevel"');
+		$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstconfiguration');
 		
 		$res = array();

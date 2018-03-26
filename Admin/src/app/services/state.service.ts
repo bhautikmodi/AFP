@@ -1,15 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+
 @Injectable()
-export class IndustryService {
+export class StateService {
 
-  constructor( private http: Http,private globals: Globals) { }
-
-  add(IndustryEntity)
- {debugger
+ constructor(private http: Http, private globals: Globals) {  }
+ 
+ add(stateEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Industry/add', IndustryEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'State/addState', stateEntity, this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
+ 
+ 
+ getAll(){ debugger
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'State/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -23,11 +40,10 @@ export class IndustryService {
 	return promise;
   }
   
-
-delete(IndustryId)
-  {
+  
+  deleteState(StateId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Industry/delete/' + IndustryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/delete/' + StateId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -41,27 +57,10 @@ delete(IndustryId)
 	return promise;
   }
   
-  getAll()
-  {
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Industry/getAllIndustry', this.globals.headerpath)
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res.json());
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }
   
-  getById(IndustryId)
-  {debugger
+  getById(stateId){debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Industry/getById/' + IndustryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/getById/' + stateId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -74,6 +73,6 @@ delete(IndustryId)
 	});		
 	return promise;
   }  
-    
- }
+  
 
+}

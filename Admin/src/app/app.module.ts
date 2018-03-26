@@ -33,6 +33,19 @@ import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
 
+import { UserComponent } from './user/user.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { UserService } from './services/user.service';
+import { StateService } from './services/state.service';
+import { CompanyService } from './services/company.service';
+import { StateComponent } from './state/state.component';
+import { StatelistComponent } from './statelist/statelist.component';
+import { CompanyComponent } from './company/company.component';
+import { CompanylistComponent } from './companylist/companylist.component';
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserrolelistComponent } from './userrolelist/userrolelist.component';
+
+import { UserroleService } from './services/userrole.service';
 
 
 @NgModule({
@@ -52,7 +65,15 @@ import { IndustryService } from './services/industry.service';
 	CourseComponent,
 	CourselistComponent,
 	IndustryComponent,
-	IndustrylistComponent
+	IndustrylistComponent,
+	 UserComponent,
+    UserlistComponent,
+    StateComponent,
+    StatelistComponent,
+    CompanyComponent,
+	CompanylistComponent,
+	UserroleComponent,
+	UserrolelistComponent
   ],
   imports: [
     BrowserModule,
@@ -152,13 +173,68 @@ import { IndustryService } from './services/industry.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
+	   {
+        path : 'userrole/add',
+        component : UserroleComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'userrole/list',
+        component : UserrolelistComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'userrole/edit/:id',
+        component : UserroleComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'user/edit/:id',
+        component : UserComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'users/list',
+        component : UserlistComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'state',
+        component : StateComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'state/list',
+        component : StatelistComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'state/edit/:id',
+        component : StateComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'company',
+        component : CompanyComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'company/list',
+        component : CompanylistComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'company/edit/:id',
+        component : CompanyComponent,
+		canActivate : [AuthGuard] 
+      },
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

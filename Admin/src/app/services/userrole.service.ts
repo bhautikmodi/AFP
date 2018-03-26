@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+
 @Injectable()
-export class IndustryService {
+export class UserroleService {
 
-  constructor( private http: Http,private globals: Globals) { }
-
-  add(IndustryEntity)
- {debugger
+  constructor(private http: Http, private globals: Globals) {  }
+  
+  add(userroleEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Industry/add', IndustryEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Userrole/addUserrole', userroleEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -23,11 +23,9 @@ export class IndustryService {
 	return promise;
   }
   
-
-delete(IndustryId)
-  {
-	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Industry/delete/' + IndustryId, this.globals.headerpath)
+  getAll(){ debugger
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'Userrole/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -41,10 +39,10 @@ delete(IndustryId)
 	return promise;
   }
   
-  getAll()
-  {
+  
+  deleteUserrole(roleId){  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Industry/getAllIndustry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Userrole/delete/' + roleId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -58,10 +56,9 @@ delete(IndustryId)
 	return promise;
   }
   
-  getById(IndustryId)
-  {debugger
+  getById(roleId){debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Industry/getById/' + IndustryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Userrole/getById/' + roleId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -74,6 +71,5 @@ delete(IndustryId)
 	});		
 	return promise;
   }  
-    
- }
 
+}

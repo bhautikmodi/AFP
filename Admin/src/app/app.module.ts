@@ -14,15 +14,20 @@ import { DomainComponent } from './domain/domain.component';
 import { DomainListComponent } from './domain-list/domain-list.component';
 import { CompetencyAreaComponent } from './competency-area/competency-area.component';
 import { CompetencyAreaListComponent } from './competency-area-list/competency-area-list.component';
+import { KsaComponent } from './ksa/ksa.component';
+import { KsaListComponent } from './ksa-list/ksa-list.component';
+import { RatingScaleComponent } from './rating-scale/rating-scale.component';
+import { RatingScaleListComponent } from './rating-scale-list/rating-scale-list.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { DomainService } from './services/domain.service';
 import { CompetencyAreaService } from './services/competency-area.service';
+import { KsaService } from './services/ksa.service';
+import { RatingScaleService } from './services/rating-scale.service';
 
 import { Globals } from './globals';
-
-
+import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
 
 
 @NgModule({
@@ -36,10 +41,15 @@ import { Globals } from './globals';
     DomainComponent,
     DomainListComponent,
     CompetencyAreaComponent,
-    CompetencyAreaListComponent
+    CompetencyAreaListComponent,
+    KsaComponent,
+    KsaListComponent,
+    RatingScaleComponent,
+    RatingScaleListComponent,
+    HtmlToPlaintextPipe
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
 	HttpModule,
 	FormsModule,
 	RouterModule.forRoot([		
@@ -89,12 +99,42 @@ import { Globals } from './globals';
         canActivate : [AuthGuard]
       },
       {
+        path : 'ksa/add',
+        component : KsaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'ksa/edit/:id',
+        component : KsaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'ksa/list',
+        component : KsaListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/add',
+        component : RatingScaleComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/edit/:id',
+        component : RatingScaleComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/list',
+        component : RatingScaleListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,KsaService,RatingScaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

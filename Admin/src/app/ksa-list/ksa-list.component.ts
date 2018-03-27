@@ -2,42 +2,41 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { CompetencyAreaService } from '../services/competency-area.service';
+import { KsaService } from '../services/ksa.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
-  selector: 'app-competency-area-list',
-	providers: [ CompetencyAreaService ],
-  templateUrl: './competency-area-list.component.html',
-  styleUrls: ['./competency-area-list.component.css']
+  selector: 'app-ksa-list',
+  providers: [ KsaService ],
+  templateUrl: './ksa-list.component.html',
+  styleUrls: ['./ksa-list.component.css']
 })
-export class CompetencyAreaListComponent implements OnInit {
+export class KsaListComponent implements OnInit {
 
-	areaList;
+	ksaList;
 	deleteEntity;
 	msgflag;
 	message;
-	type;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private CompetencyAreaService: CompetencyAreaService, private globals: Globals) 
+		 private KsaService: KsaService, private globals: Globals) 
   {
 	
   }
 
   ngOnInit() { 
-	this.CompetencyAreaService.getAll()
+	this.KsaService.getAll()
 	.then((data) => 
 	{ 
-		this.areaList = data;	
+		this.ksaList = data;	
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Competency Area per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
-					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
+          "sLengthMenu": "_MENU_ KSA per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ KSA",
+					"sInfoFiltered": "(filtered from _MAX_ total KSA)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 KSA"
         }
       });
     },100); 
@@ -50,21 +49,21 @@ export class CompetencyAreaListComponent implements OnInit {
 	this.msgflag = false;
   }
 	
-	deletearea(area)
+	deleteksa(ksa)
 	{ 
-		this.deleteEntity =  area;
+		this.deleteEntity =  ksa;
 		$('#Delete_Modal').modal('show');					
 	}
 
-	deleteConfirm(area)
+	deleteConfirm(ksa)
 	{ 
-		this.CompetencyAreaService.delete(area.CAreaId)
+		this.KsaService.delete(ksa.KSAId)
 		.then((data) => 
 		{
-			let index = this.areaList.indexOf(area);
+			let index = this.ksaList.indexOf(ksa);
 			$('#Delete_Modal').modal('hide');
 			if (index != -1) {
-				this.areaList.splice(index, 1);			
+				this.ksaList.splice(index, 1);			
 			}	
 			this.globals.message = 'Delete successfully';
 			this.globals.type = 'success';
@@ -82,5 +81,6 @@ export class CompetencyAreaListComponent implements OnInit {
 	}
 	
 }
+
 
 

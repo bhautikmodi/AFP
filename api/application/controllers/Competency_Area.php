@@ -28,7 +28,7 @@ class Competency_Area extends CI_Controller {
 		$post_area = json_decode(trim(file_get_contents('php://input')), true);		
 
 		if ($post_area) {
-			if($post_area['areaId'] > 0){
+			if($post_area['CAreaId'] > 0){
 				$result = $this->Competency_Area_model->edit_area($post_area);
 				if($result) {
 					echo json_encode($post_area);	
@@ -56,10 +56,17 @@ class Competency_Area extends CI_Controller {
 		
 		if(!empty($area_id)) {
 
-			$result = $this->Competency_Area_model->delete_area($area_id);			
+			$result = $this->Competency_Area_model->delete_area($area_id);
 			if($result) {
 				echo json_encode("Delete successfully");	
-			}	
+			} else {
+				return $this->output
+				->set_status_header(404)
+				->set_output(json_encode(array(
+						'text' => "You can't delete this record because of their dependency in another table.",
+						'type' => 'danger'
+				)));
+			}
 			
 		} 
 			

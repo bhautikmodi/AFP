@@ -12,5 +12,8 @@ export class Globals { debugger
   isLoading: boolean = false;
   currentLink: string = '';
   authData = localStorage.getItem('token') ? new JwtHelper().decodeToken(localStorage.getItem('token')):null;
+  msgflag = false;
+  message = '';
+  type = '';
   
 }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CompetencyAreaService } from '../services/competency-area.service';
 import { Globals } from '.././globals';
+declare var $: any;
+declare var nicEditors,nicEditor: any;
 
 @Component({
   selector: 'app-competency-area',
@@ -19,6 +21,7 @@ export class CompetencyAreaComponent implements OnInit
 	submitted;
 	btn_disable;
 	header;
+	des_valid;
 	
   constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private CompetencyAreaService: CompetencyAreaService, private globals: Globals)
     {
@@ -26,8 +29,11 @@ export class CompetencyAreaComponent implements OnInit
 	}
   ngOnInit() 
   {
+	this.des_valid = false;
+	new nicEditor({fullPanel: true, maxHeight: 200}).panelInstance('Description');
 	this.areaEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
+	this.globals.msgflag = false;
 	this.CompetencyAreaService.getDomainList()
 	.then((data) => 
 	{
@@ -43,6 +49,8 @@ export class CompetencyAreaComponent implements OnInit
 		.then((data) => 
 		{
 			this.areaEntity = data;
+			//this.areaEntity.Description = data['Description'];
+			nicEditors.findEditor('Description').setContent(this.areaEntity.Description);
 		}, 
 		(error) => 
 		{
@@ -52,14 +60,27 @@ export class CompetencyAreaComponent implements OnInit
 		this.header = 'Add';
     this.areaEntity = {};
     this.areaEntity.CAreaId = 0;
-    this.areaEntity.IsActive = '1';
+		this.areaEntity.IsActive = '1';
+		this.areaEntity.DomainId = '';	
 	}
-    
+	
+	// $(".nicEdit-main").chnage(function () {
+	// 	this.areaEntity.Description = nicEditors.findEditor('Description').getContent();
+    //     alert(this.areaEntity.Description);
+    // });
+
   } 
 
 	
 	addArea(areaForm)
-	{		
+	{	
+		this.areaEntity.Description = nicEditors.findEditor('Description').getContent();	
+		if(this.areaEntity.Description!=''){
+			this.des_valid = false;
+		} else {
+			this.des_valid = true;
+		}
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if(id){			
 			this.areaEntity.UpdatedBy = this.globals.authData.UserId;
@@ -70,15 +91,25 @@ export class CompetencyAreaComponent implements OnInit
 			this.submitted = true;
 		}
 		if(areaForm.valid){
+			//this.areaEntity.Description = nicEditors.findEditor('Description').getContent();
 			this.btn_disable = true;
 			this.CompetencyAreaService.add(this.areaEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.areaEntity = {};
 				areaForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}		
 				this.router.navigate(['/competency-area/list']);
 			}, 
 			(error) => 
@@ -94,9 +125,14 @@ export class CompetencyAreaComponent implements OnInit
 	{		
     this.areaEntity = {};	
 		this.areaEntity.CAreaId = 0;
-    this.areaEntity.IsActive = '1';	
+    this.areaEntity.IsActive = '1';		
+		this.areaEntity.DomainId = '';
 		this.submitted = false;
+		this.des_valid = false;
 		areaForm.form.markAsPristine();
+		nicEditors.findEditor('Description').setContent('');
 	}	
+
 	
+
 }

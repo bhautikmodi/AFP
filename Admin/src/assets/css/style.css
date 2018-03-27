@@ -95,7 +95,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 }
 
 .navbar-static-side ul li {
-    border-bottom:1px solid #0085AD !important;
+    /*border-bottom:1px solid #0085AD;*/
 }
 
 /* Navigation */
@@ -167,12 +167,23 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 .arrow {
     float: right;
 }
+.fa-angle-right {
+	float: right;
+}
 
 .fa.arrow:before {
     content: "\f104";
 }
 
 .active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+/*.fa.fa-angle-right:before {
+    content: "\f104";
+}*/
+
+.active > a > .fa.fa-angle-right:before {
     content: "\f107";
 }
 
@@ -616,6 +627,9 @@ table.dataTable thead .sorting:after {
 }
 .panel-default > .panel-heading {
 	color: #605b54;
+}
+.panel-heading {
+	padding: 11px 15px 13px 15px;
 }
 .rember {
 	color: #000;

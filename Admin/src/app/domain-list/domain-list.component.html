@@ -7,9 +7,9 @@
     </div>   
     <!-- end  page header --> 
   </div>
-  <div class="alert alert-success" role="alert" *ngIf="msgflag">
+  <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-    {{message}}
+    {{globals.message}}
  </div>
   <div class="row">
     <div class="col-lg-12"> 
@@ -34,13 +34,14 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let domain of domainList" >
-                      <td>{{domain.DomainId}}</td>
+                  <tr *ngFor="let domain of domainList; let i = index" >
+                      <!-- <td>{{domain.DomainId}}</td> -->
+                      <td>{{i+1}}</td> 
                       <td>{{domain.Name}}</td>                      
                       <td *ngIf="domain.IsActive=='1'">Yes</td>
                       <td *ngIf="domain.IsActive=='0'">No</td>
-                      <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/domain/edit/{{domain.DomainId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                        <button data-type="Record" (click)="deleteDomain(domain)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                      <td><button [disabled]="domain.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/domain/edit/{{domain.DomainId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                        <button [disabled]="domain.isdisabled>0" data-type="Record" (click)="deleteDomain(domain)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                     </tr>
               </tbody>
             </table>

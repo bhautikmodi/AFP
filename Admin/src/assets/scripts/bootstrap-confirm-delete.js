@@ -40,7 +40,7 @@
 
             if ( null === document.getElementById( 'bootstrap-confirm-delete-container' ) )
             {
-                $( 'body' ).append( '<div id="bootstrap-confirm-delete-container"><div id="bootstrap-confirm-dialog" class="modal fade"><div class="modal-dialog modal-sm"><div class="modal-content"><div class="modal-body"><p id="bootstrap-confirm-dialog-text"></p></div><div class="modal-footer"><a id="bootstrap-confirm-dialog-delete-btn" type="button" class="btn next_btn">Yes</a><button id="bootstrap-confirm-dialog-cancel-delete-btn" type="button" class="btn back_btn" data-dismiss="modal">Cancel</button></div></div></div></div></div>' );
+                $( 'body' ).append( '<div id="bootstrap-confirm-delete-container"><div id="bootstrap-confirm-dialog" class="modal fade" data-backdrop="static" data-keyboard="false"><div class="modal-dialog modal-sm"><div class="modal-content"><div class="modal-body"><p id="bootstrap-confirm-dialog-text"></p></div><div class="modal-footer"><a id="bootstrap-confirm-dialog-delete-btn" type="button" class="btn next_btn">Yes</a><button id="bootstrap-confirm-dialog-cancel-delete-btn" type="button" class="btn back_btn" data-dismiss="modal">Cancel</button></div></div></div></div></div>' );
             }
 
             $( '#bootstrap-confirm-dialog-heading' ).html( plugin.settings.heading );

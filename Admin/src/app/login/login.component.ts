@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
 			{ 
 				this.globals.isLoading = false;
 				if(error.text){
-					//alert(error.text);
 					this.invalid = true;
 				}				
 				this.btn_disable = false;

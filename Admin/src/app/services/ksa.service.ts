@@ -3,13 +3,13 @@ import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 
 @Injectable()
-export class CompetencyAreaService {
+export class KsaService {
 
   constructor(private http: Http, private globals: Globals) { }
 
-  add(areaEntity){ debugger
+  add(ksaEntity){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Competency_Area/add', areaEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'KSA/add', ksaEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -23,9 +23,9 @@ export class CompetencyAreaService {
 	return promise;
   }
     
-  delete(Competency_AreaId){
+  delete(KSAId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/delete/' + Competency_AreaId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/delete/' + KSAId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -39,9 +39,9 @@ export class CompetencyAreaService {
 	return promise;
   }
   
-  getAll(){
+  getAll(){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -55,9 +55,9 @@ export class CompetencyAreaService {
 	return promise;
   }
   
-  getById(Competency_AreaId){
+  getById(KSAId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getById/' + Competency_AreaId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getById/' + KSAId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -71,9 +71,9 @@ export class CompetencyAreaService {
 	return promise;
   }  
 
-   getDomainList(){
+  getCAreaList(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getDomainList', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getCAreaList', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -88,4 +88,5 @@ export class CompetencyAreaService {
   }
   
 }
+
 

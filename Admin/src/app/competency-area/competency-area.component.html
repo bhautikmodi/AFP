@@ -25,36 +25,42 @@
                             <form class="form-validate" #areaForm="ngForm" (ngSubmit)="addArea(areaForm)">
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Name</label>
-                                    <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="areaEntity.Name" name="Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
+                                    <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="areaEntity.Name" name="Name" pattern="[a-zA-Z/ ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
                                     <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter competency area name</span>
+                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter competency area</span>
+                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid name</span>
                                     </span>
                                 </div>
                                   
                                   <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Domain</label>
                                     <select class="form-control" #DomainId="ngModel" [(ngModel)]="areaEntity.DomainId" name="DomainId" [ngClass]="{red_border: (DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)}" required>
-                                        <option value="">Select</option>
-                                        <option value="strategy">Strategy</option>
-                                        <option value="gathering-and-analyzing-information">Gathering and Analyzing Information</option>
-                                        <option value="budgeting-and-financal-principles">Budgeting and Financal Principles</option>
-                                        <option value="forecasting-with-systems-and-tools">Forecasting with Systems and Tools</option>
-                                        <option value="communication-and-presentation-techniques">Communication and Presentation Techniques</option>
-                                        <option value="business-partnering">Business Partnering</option>
+                                        <option value="" ngSelected='areaEntity.DomainId==""'>Select</option>
+                                        <option *ngFor="let domain of domainList" value="{{domain.DomainId}}" ngSelected="areaEntity.DomainId==domain.DomainId">{{domain.Name}}</option>
                                     </select>
                                     <span style="color:red" *ngIf="(DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)"> 
                                         <span *ngIf="DomainId.errors.required || (DomainId.pristine && submitted)">Please select domain</span>
                                       </span>
                                   </div>
+
+                                  <div class="clearfix"></div>
+                                    <div class="form-group col-md-12">
+                                        <label><span class="required">*</span>Description</label>
+                                        <textarea class="form-control" style="width: 1007px;" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description" required></textarea>
+                                        <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+                                            <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
+                                        </span>
+                                       <span style="color:red" *ngIf="">Please enter description</span>
+                                    </div>
                     
                                 <div class="clearfix"></div>
-                                <div class="form-group col-md-6">
+                                <!-- <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Description</label>
                                     <textarea class="form-control" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required></textarea>
                                     <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
                                         <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
                                       </span>
-                                </div>
+                                </div> -->
             
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Key Concepts</label>
@@ -63,8 +69,7 @@
                                         <span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter key concepts</span>
                                       </span>
                                 </div>
-            
-                                <div class="clearfix"></div>
+                                           
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Active?</label>                                    
                                       <br>

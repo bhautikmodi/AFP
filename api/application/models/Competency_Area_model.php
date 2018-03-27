@@ -39,7 +39,7 @@ class Competency_Area_model extends CI_Model
 	
 	public function getlist_area() {
 	
-		$this->db->select('area.CAreaId,area.Name as AreaName,area.Description,area.KeyConcepts,area.IsActive,domain.DomainId,domain.Name as DomainName');
+		$this->db->select('area.CAreaId,area.Name as AreaName,area.Description,area.KeyConcepts,area.IsActive,domain.DomainId,domain.Name as DomainName,(SELECT COUNT(*) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
 		$this->db->join('tblmstdomain domain', 'area.DomainId = domain.DomainId', 'left');
 		$result = $this->db->get('tblmstcompetencyarea area');
 		
@@ -122,12 +122,34 @@ class Competency_Area_model extends CI_Model
 		} else {
 			return false;
 		}
+
+		// if($area_id) {			
+			
+		// 	$this->db->select('KSAId');
+		// 	$this->db->where('CAreaId',$area_id);
+		// 	$result = $this->db->get('tblmstksa');
+		// 	if($result->num_rows()==0){
+		// 		$this->db->where('CAreaId',$area_id);
+		// 		$res = $this->db->delete('tblmstcompetencyarea');
+				
+		// 		if($res) {
+		// 			return true;
+		// 		} else {
+		// 			return false;
+		// 		}
+		// 	} else {
+		// 		return false;
+		// 	}			
+		// } else {
+		// 	return false;
+		// }
 		
 	}
 	
 	public function getDomainList() {
 	
 		$this->db->select('DomainId,Name');
+		//$this->db->where('IsActive',1);
 		$result = $this->db->get('tblmstdomain');
 		
 		$res = array();

@@ -54,9 +54,13 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span> Company Name</label>
                                               <select class='select-option' required class="form-control" #CompanyId="ngModel" 
-											  [(ngModel)]="userEntity.CompanyId" name="CompanyId">
+											  [(ngModel)]="userEntity.CompanyId" name="CompanyId" [ngClass]="{red_border: (CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)}">
+											   
+											<option value="">Select</option>
 												<option class='option' *ngFor='let comp of companyList' [value]="comp.CompanyId">{{comp.Name}}</option> </select>
-												
+												 <span style="color:red;"  *ngIf="(CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)"> 
+												<span *ngIf="CompanyId.errors.required || (CompanyId.pristine && submitted)">Please select Company </span>
+											</span>
                                         </div>
 										
 										<div class="form-group col-md-6">
@@ -102,10 +106,12 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Country</label>
                                            <select class='select-option' (change)="getStateList()" required class="form-control" #CountryId="ngModel"
-										   [(ngModel)]="userEntity.CountryId" name="CountryId">
+										   [(ngModel)]="userEntity.CountryId" name="CountryId" [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}">
 										<option value="">Select</option>
-									<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="userEntity.CountryId==country.CountryId">{{country.CountryName}}</option>
-</select>
+									<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="userEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
+											 <span style="color:red;"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
+												<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select Country </span>
+											</span>
                                         </div>
 										
 										<div class="form-group col-md-6">
@@ -114,6 +120,9 @@
 									<option value="">Select</option>
 									<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="userEntity.StateId==state.StateId">{{state.StateName}}</option>
 								</select>
+								<span style="color:red;"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
+												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select Country </span>
+											</span>
                                         </div>
 										
 										<div class="form-group col-md-6">
@@ -158,9 +167,12 @@
 
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Role</label>
-                                           <select class='select-option' required class="form-control" #RoleId="ngModel" [(ngModel)]="userEntity.RoleId" name="RoleId">
-    <option class='option' *ngFor='let role of roleList' [value]="role.RoleId">{{role.RoleName}}</option>
-</select>
+                                           <select class='select-option' required class="form-control" #RoleId="ngModel" [(ngModel)]="userEntity.RoleId" name="RoleId" [ngClass]="{red_border: (RoleId.dirty && RoleId.invalid) || (RoleId.pristine && submitted)}">
+										   <option value="">Select</option>
+											<option class='option' *ngFor='let role of roleList' [value]="role.RoleId">{{role.RoleName}}</option></select>
+											<span style="color:red;"  *ngIf="(RoleId.dirty && RoleId.invalid) || (RoleId.pristine && submitted)"> 
+												<span *ngIf="RoleId.errors.required || (RoleId.pristine && submitted)">Please select User Role </span>
+											</span>
                                         </div>
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Active?</label>

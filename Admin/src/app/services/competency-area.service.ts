@@ -7,7 +7,7 @@ export class CompetencyAreaService {
 
   constructor(private http: Http, private globals: Globals) { }
 
-  add(areaEntity){
+  add(areaEntity){ debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Competency_Area/add', areaEntity, this.globals.headerpath)
       .toPromise()

@@ -14,12 +14,18 @@ import { DomainComponent } from './domain/domain.component';
 import { DomainListComponent } from './domain-list/domain-list.component';
 import { CompetencyAreaComponent } from './competency-area/competency-area.component';
 import { CompetencyAreaListComponent } from './competency-area-list/competency-area-list.component';
+import { KsaComponent } from './ksa/ksa.component';
+import { KsaListComponent } from './ksa-list/ksa-list.component';
+import { RatingScaleComponent } from './rating-scale/rating-scale.component';
+import { RatingScaleListComponent } from './rating-scale-list/rating-scale-list.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { DomainService } from './services/domain.service';
 
 import { CompetencyAreaService } from './services/competency-area.service';
+import { KsaService } from './services/ksa.service';
+import { RatingScaleService } from './services/rating-scale.service';
 
 import { CourcelevelComponent } from './courcelevel/courcelevel.component';
 import { CourcelevellistComponent } from './courcelevellist/courcelevellist.component';
@@ -29,11 +35,15 @@ import { CourselistComponent } from './courselist/courselist.component';
 import { CourseService } from './services/course.service';
 
 import { Globals } from './globals';
+import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 import { UserComponent } from './user/user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserService } from './services/user.service';
@@ -47,7 +57,10 @@ import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 
 import { UserroleService } from './services/userrole.service';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
@@ -66,6 +79,11 @@ import { CountryService } from './services/country.service';
     DomainListComponent,
     CompetencyAreaComponent,
     CompetencyAreaListComponent,
+    KsaComponent,
+    KsaListComponent,
+    RatingScaleComponent,
+    RatingScaleListComponent,
+    HtmlToPlaintextPipe,
 	CourcelevelComponent,
 	CourcelevellistComponent,
 	CourseComponent,
@@ -85,7 +103,7 @@ import { CountryService } from './services/country.service';
 
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
 	HttpModule,
 	FormsModule,
 	RouterModule.forRoot([		
@@ -182,7 +200,10 @@ import { CountryService } from './services/country.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 	   {
         path : 'userrole/add',
         component : UserroleComponent,
@@ -224,7 +245,7 @@ import { CountryService } from './services/country.service';
 		canActivate : [AuthGuard] 
       },
 	  {
-        path : 'company',
+        path : 'company/add',
         component : CompanyComponent,
 		canActivate : [AuthGuard] 
       },
@@ -256,17 +277,56 @@ import { CountryService } from './services/country.service';
 			canActivate : [AuthGuard]
 	  },
 
+<<<<<<< HEAD
+=======
+      {
+        path : 'ksa/add',
+        component : KsaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'ksa/edit/:id',
+        component : KsaComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'ksa/list',
+        component : KsaListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/add',
+        component : RatingScaleComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/edit/:id',
+        component : RatingScaleComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'rating-scale/list',
+        component : RatingScaleListComponent,
+        canActivate : [AuthGuard]
+      },
+>>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
+<<<<<<< HEAD
 
   providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService],
 
   
 
+=======
+ 
+  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+ 
+>>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
   bootstrap: [AppComponent]
 })
 export class AppModule { }

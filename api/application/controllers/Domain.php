@@ -60,7 +60,14 @@ class Domain extends CI_Controller {
 			$result = $this->Domain_model->delete_domain($domain_id);			
 			if($result) {
 				echo json_encode("Delete successfully");	
-			}	
+			} else {
+				return $this->output
+				->set_status_header(404)
+				->set_output(json_encode(array(
+						'text' => "You can't delete this record because of their dependency in another table.",
+						'type' => 'danger'
+				)));
+			}
 			
 		} 
 			

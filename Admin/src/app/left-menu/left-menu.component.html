@@ -22,6 +22,25 @@
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domain</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/competency-area/list')||(globals.currentLink == '/competency-area/add')||(globals.currentLink == '/competency-area/edit')}"> <a (click)="menuopen('/competency-area/list')" style="cursor:pointer;"><i class="fa fa-tasks fa-fw"></i> Competency Area</a> </li>
 		    <li [ngClass]="{'selected':(globals.currentLink == '/ksa/list')||(globals.currentLink == '/ksa/add')||(globals.currentLink == '/ksa/edit')}"> <a (click)="menuopen('/ksa/list')" style="cursor:pointer;"><i class="fa fa-question fa-fw"></i> KSA</a></li>
+        <li> <a href="tablecourse.html"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
+        <li id="inner_dropdown">
+            <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
+                <ul class="nav nav-second-level display_block">          
+           <li>
+                <a href="gener_setting.html"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+          </li>          
+           <li>
+                <a href="tableindustry.html"><i class="fa fa-industry fa-fw"></i> Industry</a>
+          </li>          
+           <li [ngClass]="{'selected':(globals.currentLink == '/rating-scale/list')||(globals.currentLink == '/rating-scale/add')||(globals.currentLink == '/rating-scale/edit')}">
+                <a (click)="menuopen('/rating-scale/list')" style="cursor:pointer;"><i class="fa fa-star fa-fw"></i> Rating Scale</a>
+          </li>        
+          <li>
+                <a href="tablecourlevel.html"><i class="fa fa-level-up fa-fw"></i> Course Level</a>
+          </li>          
+      </ul>
+                      <!-- second-level-items -->
+       </li>
         <li><a [routerLink]="['/course/list/']" routerLinkActive="active"><span class="fa fa-certificate fa-fw"></span> <span class="xn-text"> Course</span></a>  </li>
 		<li id="inner_dropdown">
               <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa arrow"></span></a>

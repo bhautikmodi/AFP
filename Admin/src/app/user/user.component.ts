@@ -118,12 +118,23 @@ export class UserComponent implements OnInit {
 			this.UserService.add(this.userEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				//this.aa=true;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.userEntity = {};
 				userForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}	
+				
+				
 				this.router.navigate(['users/list']);
 			}, 
 			(error) => 

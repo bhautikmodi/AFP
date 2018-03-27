@@ -81,11 +81,22 @@ export class StateComponent implements OnInit {
 			this.StateService.add(this.stateEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.stateEntity = {};
 				stateForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}				
+				
+				
 				this.router.navigate(['state/list']);
 			}, 
 			(error) => 

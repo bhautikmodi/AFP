@@ -41,9 +41,14 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Industry Name</label>
                                               <select class='select-option' required class="form-control" #IndustryId="ngModel" 
-											  [(ngModel)]="companyEntity.IndustryId" name="IndustryId">
+											  [(ngModel)]="companyEntity.IndustryId" name="IndustryId" [ngClass]="{red_border: (IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)}">
+										  <option value="">Select</option>
     <option class='option' *ngFor='let industry of IndustryList' [value]="industry.IndustryId">{{industry.IndustryName}}</option>
 </select>
+					 <span style="color:red;"  *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)"> 
+												<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">Please select Industry Name </span>
+											</span>
+											 
 												
                                         </div>
 										

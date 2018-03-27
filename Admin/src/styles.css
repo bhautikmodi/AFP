@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 .red_border {
-	border-color : red;
+	border-color : red!important;
 }
 
 #chartdiv {
 	width: 100%;
 	height: 500px;
   }	
+ .txtupper {text-transform: uppercase;}

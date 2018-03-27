@@ -36,9 +36,8 @@ class Domain_model extends CI_Model
 	
 	public function getlist_domain() {
 	
-		$this->db->select('*');
-		$result = $this->db->get('tblmstdomain');
-		
+		$this->db->select('dom.*,(SELECT COUNT(*) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
+		$result = $this->db->get('tblmstdomain as dom');		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
@@ -115,6 +114,28 @@ class Domain_model extends CI_Model
 		} else {
 			return false;
 		}
+
+		// if($domain_id) {
+
+		// 	$this->db->select('CAreaId');
+		// 	$this->db->where('DomainId',$domain_id);
+		// 	$result = $this->db->get('tblmstcompetencyarea');
+		// 	if($result->num_rows()==0){
+		// 		$this->db->where('DomainId',$domain_id);
+		// 		$res = $this->db->delete('tblmstdomain');
+				
+		// 		if($res) {
+		// 			return true;
+		// 		} else {
+		// 			return false;
+		// 		}
+		// 	} else {
+		// 		return false;
+		// 	}
+			
+		// } else {
+		// 	return false;
+		// }
 		
 	}
 	

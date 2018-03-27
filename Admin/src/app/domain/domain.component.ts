@@ -22,11 +22,12 @@ export class DomainComponent implements OnInit
   constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private domainService: DomainService, private globals: Globals)
     {
 		
-	}
+	 }
   ngOnInit() 
   {
 	this.domainEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
+	this.globals.msgflag = false;
 	if(id){
 		this.header = 'Edit';
 		this.domainService.getById(id)
@@ -64,11 +65,20 @@ export class DomainComponent implements OnInit
 			this.domainService.add(this.domainEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.domainEntity = {};
 				domainForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}				
 				this.router.navigate(['/domain/list']);
 			}, 
 			(error) => 

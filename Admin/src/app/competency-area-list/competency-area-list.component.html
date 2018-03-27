@@ -7,9 +7,9 @@
       </div>   
       <!-- end  page header --> 
     </div>
-    <div class="alert alert-success" role="alert" *ngIf="msgflag">
+    <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-      {{message}}
+      {{globals.message}}
    </div>
     <div class="row">
       <div class="col-lg-12"> 
@@ -37,16 +37,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let area of areaList" >
-                        <td>{{area.CAreaId}}</td>
+                    <tr *ngFor="let area of areaList; let i = index" >
+                        <!-- <td>{{area.CAreaId}}</td> -->
+                        <td>{{i+1}}</td> 
                         <td>{{area.AreaName}}</td>  
-                        <td>{{area.Description}}</td> 
+                        <td [innerHTML]="area.Description | htmlToPlaintext"></td> 
                         <td>{{area.KeyConcepts}}</td> 
                         <td>{{area.DomainName}}</td>                     
                         <td *ngIf="area.IsActive=='1'">Yes</td>
                         <td *ngIf="area.IsActive=='0'">No</td>
-                        <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/area/edit/{{area.CAreaId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                          <button data-type="Record" (click)="deletearea(area)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                        <td><button [disabled]="area.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/competency-area/edit/{{area.CAreaId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                          <button [disabled]="area.isdisabled>0" data-type="Record" (click)="deletearea(area)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                       </tr>
                 </tbody>
               </table>

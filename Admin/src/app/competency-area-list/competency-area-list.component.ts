@@ -8,7 +8,7 @@ declare var $: any;
 
 @Component({
   selector: 'app-competency-area-list',
-  providers: [ CompetencyAreaService ],
+	providers: [ CompetencyAreaService ],
   templateUrl: './competency-area-list.component.html',
   styleUrls: ['./competency-area-list.component.css']
 })
@@ -18,6 +18,7 @@ export class CompetencyAreaListComponent implements OnInit {
 	deleteEntity;
 	msgflag;
 	message;
+	type;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
 		 private CompetencyAreaService: CompetencyAreaService, private globals: Globals) 
@@ -33,9 +34,10 @@ export class CompetencyAreaListComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ areas per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ areas",
-					"sInfoFiltered": "(filtered from _MAX_ total areas)"
+          "sLengthMenu": "_MENU_ Competency Area per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
+					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
         }
       });
     },100); 
@@ -64,12 +66,18 @@ export class CompetencyAreaListComponent implements OnInit {
 			if (index != -1) {
 				this.areaList.splice(index, 1);			
 			}	
-			this.message = 'Delete successfully';
-			this.msgflag = true;
+			this.globals.message = 'Delete successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
 		}, 
 		(error) => 
 		{
-			alert('error');
+			$('#Delete_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
 		});		
 	}
 	

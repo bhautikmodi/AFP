@@ -17,6 +17,7 @@ export class StatelistComponent implements OnInit {
 	deleteEntity;
 	msgflag;
 	message;
+	type;
    constructor(private http: Http, private router: Router, private route: ActivatedRoute, private StateService: StateService, private globals: Globals) { }
 
  ngOnInit()
@@ -41,7 +42,7 @@ export class StatelistComponent implements OnInit {
 	{
 		alert('error');
 	});	
-	  this.msgflag = false;
+	  //this.msgflag = false;
   }
   
   deleteState(state)
@@ -71,13 +72,19 @@ export class StatelistComponent implements OnInit {
 				// },3000); 
 			}			
 			//alert(data);
-			this.message = 'Delete successfully';
-			this.msgflag = true;
+			this.globals.message = 'Delete successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
 		}, 
 		(error) => 
 		{
-			alert('error');
-		});		
+			$('#Delete_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
+		});			
 	}
 
 

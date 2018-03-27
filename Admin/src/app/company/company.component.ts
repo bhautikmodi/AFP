@@ -71,12 +71,22 @@ export class CompanyComponent implements OnInit {
 			this.CompanyService.add(this.companyEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				//this.aa=true;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.companyEntity = {};
 				companyForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}	
+				
 				this.router.navigate(['company/list']);
 			}, 
 			(error) => 

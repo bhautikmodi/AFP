@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+	CountryList;
 	roleList;
 	companyList;
 	stateList;
@@ -24,6 +25,18 @@ export class UserComponent implements OnInit {
   ngOnInit() 
   {
 	  debugger
+	  this.stateList = {};
+	  this.UserService.getAllCountry()
+	.then((data) => 
+	{ 
+		this.CountryList = data;	
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});	
+	  
 	  this.UserService.getAllRole()
 	//.map(res => res.json())
 	.then((data) => 
@@ -46,16 +59,15 @@ export class UserComponent implements OnInit {
 		alert('error');
 	});	
 	 
-	 this.UserService.getAllState()
-	//.map(res => res.json())
-	.then((data) => 
-	{
-		this.stateList = data;
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
+	 // this.UserService.getAllState()
+	// .then((data) => 
+	// {
+		// this.stateList = data;
+	// }, 
+	// (error) => 
+	// {
+		// alert('error');
+	// });	
 	 
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
@@ -63,8 +75,19 @@ export class UserComponent implements OnInit {
 		 this.header = 'Edit';
 		this.UserService.getById(id)
 			.then((data) => 
-			{
+			{ debugger
 				this.userEntity=data;
+				if(this.userEntity.CountryId > 0){ 
+				this.UserService.getStateList(this.userEntity.CountryId)
+				.then((data) => 
+				{
+					this.stateList = data;
+				}, 
+				(error) => 
+				{
+					alert('error');
+				});
+			} 
 				
 			}, 
 			(error) => 
@@ -77,12 +100,12 @@ export class UserComponent implements OnInit {
 	 else
 	 {
 			 this.userEntity = {};
-			  this.userEntity.IsActive = '1';
+			 this.userEntity.IsActive = '1';
 	 }
   } 
   
   addUser(userForm)
-  {		
+  {		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 		if(id){
 			this.submitted = false;
@@ -95,12 +118,23 @@ export class UserComponent implements OnInit {
 			this.UserService.add(this.userEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				//this.aa=true;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.userEntity = {};
 				userForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}	
+				
+				
 				this.router.navigate(['users/list']);
 			}, 
 			(error) => 
@@ -112,5 +146,23 @@ export class UserComponent implements OnInit {
 		
 	}
 	}
+	
+	
+	getStateList()
+	{ 
+		if(this.userEntity.CountryId > 0){
+			this.UserService.getStateList(this.userEntity.CountryId)
+			.then((data) => 
+			{
+				this.stateList = data;
+			}, 
+			(error) => 
+			{
+				alert('error');
+			});
+		} else {
+			this.stateList = [];
+		}
+	}	
 
 }

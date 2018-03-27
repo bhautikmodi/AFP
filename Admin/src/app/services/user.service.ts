@@ -7,7 +7,7 @@ export class UserService {
 
    constructor(private http: Http, private globals: Globals) { }
 
-   add(userEntity){ 
+   add(userEntity){ debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'User/addUser', userEntity, this.globals.headerpath)
       .toPromise()
@@ -127,5 +127,39 @@ export class UserService {
 	});		
 	return promise;
   }
+  
+  getAllCountry()
+  {debugger
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry', this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
+  
+  getStateList(CountryId){
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'User/getStateList/' + CountryId, this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }  
+  
   
 }

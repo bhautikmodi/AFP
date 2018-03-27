@@ -4,14 +4,19 @@ class Userrole_model extends CI_Model
 {
 	
 	public function add_userrole($post_userrole)
-	{
+	{	if($post_userrole['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_userrole)
 		{
 			 
 			$userrole_data=array(
 				"RoleId"=>$post_userrole['RoleId'],
 				"RoleName"=>$post_userrole['RoleName'],
-				"IsActive"=>$post_userrole['IsActive'],
+				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
 			);	
@@ -72,14 +77,19 @@ class Userrole_model extends CI_Model
 	
 	//Edit ProjectList
 	 public function edit_userrole($post_userrole) {
-	
+		if($post_userrole['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_userrole) 
 		{
 				$userrole_data = array(
 				//"ProjectStatusId"=>$post_userrole['ProjectStatusId'],
 				//"RoleId"=>$post_userrole['RoleId'],
 				"RoleName"=>$post_userrole['RoleName'],
-				"IsActive"=>$post_userrole['IsActive'],
+				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);

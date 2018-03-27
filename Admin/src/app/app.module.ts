@@ -76,7 +76,7 @@ import { CountryService } from './services/country.service';
     CompanyComponent,
 	CompanylistComponent,
 	UserroleComponent,
-	UserrolelistComponent
+	UserrolelistComponent,
 	CountryComponent,
 	CountrylistComponent
 
@@ -205,7 +205,7 @@ import { CountryService } from './services/country.service';
 		canActivate : [AuthGuard] 
       },
 	   {
-        path : 'state',
+        path : 'state/add',
         component : StateComponent,
 		canActivate : [AuthGuard] 
       },
@@ -220,7 +220,7 @@ import { CountryService } from './services/country.service';
 		canActivate : [AuthGuard] 
       },
 	  {
-        path : 'company',
+        path : 'company/add',
         component : CompanyComponent,
 		canActivate : [AuthGuard] 
       },

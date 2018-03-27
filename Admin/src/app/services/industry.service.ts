@@ -7,7 +7,7 @@ export class IndustryService {
   constructor( private http: Http,private globals: Globals) { }
 
   add(IndustryEntity)
- {debugger
+ {
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Industry/add', IndustryEntity, this.globals.headerpath)
       .toPromise()
@@ -42,9 +42,9 @@ delete(IndustryId)
   }
   
   getAll()
-  {
+  {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Industry/getAllIndustry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Industry/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success

@@ -20,7 +20,7 @@ export class IndustrylistComponent implements OnInit {
 	message;
  constructor( private http: Http,private globals: Globals, private router: Router, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
-  ngOnInit() { 
+  ngOnInit() { debugger
 	this.IndustryService.getAll()
 	.then((data) => 
 	{ 

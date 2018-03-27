@@ -100,7 +100,7 @@ export class UserComponent implements OnInit {
 	 else
 	 {
 			 this.userEntity = {};
-			 // this.userEntity.IsActive = '1';
+			 this.userEntity.IsActive = '1';
 	 }
   } 
   

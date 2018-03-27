@@ -4,14 +4,19 @@ class State_model extends CI_Model
 {
 	public function add_state($post_state)
 	{
+		if($post_state['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_state)
 		{
 			$state_data=array(
 				"CountryId"=>$post_state['CountryId'],
 				"StateName"=>$post_state['StateName'],
 				"StateAbbreviation"=>$post_state['StateAbbreviation'],
-				"IsActive"=>$post_state['IsActive'],
-				
+				"IsActive"=>$IsActive,
 				"CreatedBy" => 1,
 				"UpdatedBy" => 1,
 				
@@ -56,14 +61,19 @@ class State_model extends CI_Model
 	}
 	
 	 public function edit_state($post_state) {
-	
+		if($post_state['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_state) {
 			
 			$state_data = array(
 				"CountryId"=>$post_state['CountryId'],
 				"StateName"=>$post_state['StateName'],
 				"StateAbbreviation"=>$post_state['StateAbbreviation'],
-				"IsActive"=>$post_state['IsActive']
+				"IsActive"=>$IsActive
 				
 			);
 			

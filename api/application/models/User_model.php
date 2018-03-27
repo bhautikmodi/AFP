@@ -23,7 +23,12 @@ class User_model extends CI_Model
 	}
 	
 	public function add_user($post_user)
-	{
+	{	if($post_user['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_user)
 		{
 			 
@@ -41,7 +46,7 @@ class User_model extends CI_Model
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
 				"PhoneNumber"=>$post_user['PhoneNumber'],
-				"IsActive"=>$post_user['IsActive'],
+				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
 			);	
@@ -102,7 +107,12 @@ class User_model extends CI_Model
 	
 	//Edit ProjectList
 	 public function edit_user($post_user) {
-	
+		if($post_user['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_user) 
 		{
 				$user_data = array(
@@ -120,7 +130,7 @@ class User_model extends CI_Model
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
 				"PhoneNumber"=>$post_user['PhoneNumber'],
-				"IsActive"=>$post_user['IsActive'],
+				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);

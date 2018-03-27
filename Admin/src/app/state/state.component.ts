@@ -60,6 +60,7 @@ export class StateComponent implements OnInit {
 	 else
 	 {
 			 this.stateEntity = {};
+			 this.CountryEntity.IsActive = '1';
 	 }
 	  
 	  

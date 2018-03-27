@@ -4,16 +4,20 @@ class Company_model extends CI_Model
 {
 	
 	public function add_company($post_company)
-	{
+	{	if($post_company['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_company)
 		{
 			$company_data = array(
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
-				
 				'Website' => $post_company['Website'],
 				'PhoneNumber' => $post_company['PhoneNumber'],
-			
+				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 				
@@ -57,17 +61,20 @@ class Company_model extends CI_Model
 	
 	 public function edit_company($post_company)
 	 {
-	
+		if($post_company['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 		if($post_company) {
 			
 			$company_data = array(
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
-				
-				
 				'Website' => $post_company['Website'],
 				'PhoneNumber' => $post_company['PhoneNumber'],
-				
+				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			

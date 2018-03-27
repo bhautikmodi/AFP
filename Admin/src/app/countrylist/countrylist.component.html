@@ -36,8 +36,8 @@
                 </thead>
                 <tbody>
                 
-                 <tr class="odd gradeX" *ngFor="let Country of CountryList">
-										<td>{{Country.CountryId}}</td>
+                 <tr class="odd gradeX" *ngFor="let Country of CountryList;let i = index" >
+												<td>{{i+1}}</td>
 										<td>{{Country.CountryName}}</td>
 										<td class="txtupper">{{Country.CountryAbbreviation}}</td>
 										<td>{{Country.PhonePrefix}}</td>

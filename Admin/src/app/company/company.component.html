@@ -85,7 +85,23 @@
 									
 										
 																				
-									
+										<div class="form-group col-md-6">
+                                  <label><span class="required">*</span>Active?</label>
+														  
+									<br>
+									<div class="radio_box">
+									  <input type="radio"  name="IsActive" id="role1" value="1" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
+									  <label for="role1">Yes</label>
+									</div>
+									<div class="radio_box">
+									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
+									  <label for="role2">No </label>
+									</div><br>
+									<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+									  </span>
+
+                              </div>
 										
 										
 										

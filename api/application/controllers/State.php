@@ -1,0 +1,99 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: *');
+header('Content-Type: application/json');
+
+class State extends CI_Controller 
+{	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('State_model');
+	}
+	public function addState()
+	{
+		$post_state = json_decode(trim(file_get_contents('php://input')), true);
+		if ($post_state) 
+			{
+				if($post_state['StateId']>0)
+				{
+					$result = $this->State_model->edit_state($post_state);
+					if($result)
+					{
+						echo json_encode($post_state);	
+					}	
+				}
+				else
+				{
+					$result = $this->State_model->add_state($post_state);
+					if($result)
+					{
+						echo json_encode($post_state);	
+					}	
+				 }
+					
+			}
+	}
+	
+	public function getById($state_id=null)
+	{	
+		
+		if(!empty($state_id))
+		{
+			$data=[];
+			$data=$this->State_model->get_statedata($state_id);
+			echo json_encode($data);
+		}
+	}
+	
+	public function getAll()
+	{
+		$data="";
+		
+		$data=$this->State_model->getlist_state();
+		
+		echo json_encode($data);
+	}
+	
+	public function delete($state_id = NULL) 
+	{
+		
+		if(!empty($state_id)) {
+
+			$result = $this->State_model->delete_state($state_id);			
+			if($result) {
+				echo json_encode("Delete successfully");	
+			}	
+			
+		} 
+			
+	}
+	
+	public function addproject()
+	{
+		//$this->load->model('Country_model');
+		$post_project = json_decode(trim(file_get_contents('php://input')), true);
+		if ($post_project) 
+			{
+				// if($post_project['CountryId']>0)
+				// {
+					// $result = $this->Country_model->edit_country($post_project);
+					// if($result)
+					// {
+						// echo json_encode($post_project);	
+					// }	
+				// }
+				// else
+				// {
+					$result = $this->Country_model->add_project($post_project);
+					if($result)
+					{
+						echo json_encode($post_project);	
+					}	
+				// }
+					
+			}
+	}
+	
+}

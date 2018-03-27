@@ -22,12 +22,43 @@ import { RatingScaleListComponent } from './rating-scale-list/rating-scale-list.
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { DomainService } from './services/domain.service';
+
 import { CompetencyAreaService } from './services/competency-area.service';
 import { KsaService } from './services/ksa.service';
 import { RatingScaleService } from './services/rating-scale.service';
 
+import { CourcelevelComponent } from './courcelevel/courcelevel.component';
+import { CourcelevellistComponent } from './courcelevellist/courcelevellist.component';
+import { CourcelevelService } from './services/courcelevel.service';
+import { CourseComponent } from './course/course.component';
+import { CourselistComponent } from './courselist/courselist.component';
+import { CourseService } from './services/course.service';
+
 import { Globals } from './globals';
+<<<<<<< HEAD
 import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
+=======
+import { IndustryComponent } from './industry/industry.component';
+import { IndustrylistComponent } from './industrylist/industrylist.component';
+import { IndustryService } from './services/industry.service';
+import { UserComponent } from './user/user.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { UserService } from './services/user.service';
+import { StateService } from './services/state.service';
+import { CompanyService } from './services/company.service';
+import { StateComponent } from './state/state.component';
+import { StatelistComponent } from './statelist/statelist.component';
+import { CompanyComponent } from './company/company.component';
+import { CompanylistComponent } from './companylist/companylist.component';
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserrolelistComponent } from './userrolelist/userrolelist.component';
+
+import { UserroleService } from './services/userrole.service';
+import { CountryComponent } from './country/country.component';
+import { CountrylistComponent } from './countrylist/countrylist.component';
+import { CountryService } from './services/country.service';
+
+>>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
 
 
 @NgModule({
@@ -42,11 +73,31 @@ import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
     DomainListComponent,
     CompetencyAreaComponent,
     CompetencyAreaListComponent,
+<<<<<<< HEAD
     KsaComponent,
     KsaListComponent,
     RatingScaleComponent,
     RatingScaleListComponent,
     HtmlToPlaintextPipe
+=======
+	CourcelevelComponent,
+	CourcelevellistComponent,
+	CourseComponent,
+	CourselistComponent,
+	IndustryComponent,
+	IndustrylistComponent,
+	 UserComponent,
+    UserlistComponent,
+    StateComponent,
+    StatelistComponent,
+    CompanyComponent,
+	CompanylistComponent,
+	UserroleComponent,
+	UserrolelistComponent,
+	CountryComponent,
+	CountrylistComponent
+
+>>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
   ],
   imports: [
   BrowserModule,
@@ -98,6 +149,127 @@ import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
         component : CompetencyAreaListComponent,
         canActivate : [AuthGuard]
       },
+	   {
+        path : 'courselevel/add',
+        component : CourcelevelComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'courselevel/list',
+			component : CourcelevellistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'courselevel/edit/:id',
+			component : CourcelevelComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+        path : 'course/add',
+        component : CourseComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'course/list',
+			component : CourselistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'course/edit/:id',
+			component : CourseComponent,
+			canActivate : [AuthGuard]
+	  },
+	   {
+        path : 'industry/add',
+        component : IndustryComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'industry/list',
+			component : IndustrylistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'industry/edit/:id',
+			component : IndustryComponent,
+			canActivate : [AuthGuard]
+	  },
+	   {
+        path : 'userrole/add',
+        component : UserroleComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'userrole/list',
+        component : UserrolelistComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'userrole/edit/:id',
+        component : UserroleComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'user/edit/:id',
+        component : UserComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'users/list',
+        component : UserlistComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'state/add',
+        component : StateComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'state/list',
+        component : StatelistComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'state/edit/:id',
+        component : StateComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'company/add',
+        component : CompanyComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'company/list',
+        component : CompanylistComponent,
+		canActivate : [AuthGuard] 
+      },
+	   {
+        path : 'company/edit/:id',
+        component : CompanyComponent,
+		canActivate : [AuthGuard] 
+      },
+
+	  {
+        path : 'country/add',
+        component : CountryComponent,
+		canActivate : [AuthGuard]
+       
+      },
+	  {
+			path : 'country/list',
+			component : CountrylistComponent,
+			canActivate : [AuthGuard]
+	  },
+	  {
+			path : 'country/edit/:id',
+			component : CountryComponent,
+			canActivate : [AuthGuard]
+	  },
+
       {
         path : 'ksa/add',
         component : KsaComponent,
@@ -134,7 +306,14 @@ import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
       }
 	  ])
   ],
+<<<<<<< HEAD
   providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,KsaService,RatingScaleService],
+=======
+
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+  // providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService],
+
+>>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
   bootstrap: [AppComponent]
 })
 export class AppModule { }

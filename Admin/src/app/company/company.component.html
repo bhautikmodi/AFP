@@ -1,0 +1,226 @@
+         <!--  page-wrapper -->
+          <div id="page-wrapper">
+            <div class="row">
+                 <!-- page header -->
+                <div class="col-lg-12">
+                    <h1 class="page-header">Add Company</h1>
+                </div>
+                <!--end page header -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                         <div class="panel-heading">
+                             Company
+							 <div class="btn-group pull-right add-right">
+						  		<a href="users.html" class="btn btn-danger btn-add">
+						  		<i class="fa fa-chevron-left fa-fw"></i> Back
+						  		</a>
+							</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <!--<div class="col-lg-12">-->
+                                    <form class="form-validate" role="form" #companyForm="ngForm" (ngSubmit)="addCompany(companyForm)">
+										
+                                        <div class="form-group col-md-6">
+                                            <label><span class="required">*</span>Company Name</label>
+                                            <input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z.' ]{5,}"  [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
+											<span style="color:red;" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+											<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company Name </span>
+											</span>
+									   </div>
+																				
+										
+										<div class="form-group col-md-6">
+                                            <label><span class="required">*</span> Industry Id</label>
+                                              <select class='select-option' required class="form-control" #IndustryId="ngModel" 
+											  [(ngModel)]="companyEntity.IndustryId" name="IndustryId">
+    <option class='option' *ngFor='let industry of IndustryList' [value]="industry.IndustryId">{{industry.IndustryName}}</option>
+</select>
+												
+                                        </div>
+										
+										<div class="clearfix"></div>
+										
+										<div class="form-group col-md-6">
+                                            <label><span class="required">*</span> Website</label>
+                                            <input type="email" class="form-control" #Website="ngModel" name="Website" 
+											pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"	[(ngModel)]="companyEntity.Website" [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}"  required/>
+											<span style="color:red;"  *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
+												<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter Website </span>
+											</span>
+                                        </div>
+										
+										
+											<div class="form-group col-md-6">
+                                            <label><span class="required">*</span> Phone Number</label>
+                                            <input type="phonenum" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber"
+											pattern="[a-zA-Z0-9\-.()\s]+" maxlength="13"
+												[(ngModel)]="companyEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
+											<span style="color:red;"  *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
+												<span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter Phone Number</span>
+											</span>
+                                        </div>
+										
+										<div class="clearfix"></div>
+										
+									
+										
+																				
+									
+										
+										
+										
+										
+										
+									
+										
+										
+										
+										
+									
+										<div class="clearfix"></div>
+										<div class="form-btn">
+											<button type="submit" class="btn btn-primary sub-btn">Submit</button>
+											<button type="reset" class="btn btn-success res-btn">Reset</button>
+										</div>
+                                    </form>
+                                </div>
+                            </div>
+                        <!--</div>-->
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+            </div>
+        </div>
+        <!-- end page-wrapper -->
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!-- <!--  page-wrapper --> -->
+        <!-- <div id="page-wrapper"> -->
+
+            
+            <!-- <div class="row"> -->
+                 <!-- <!--  page header --> -->
+                <!-- <div class="col-lg-12"> -->
+                    <!-- <h1 class="page-header">Edit Company profile</h1> -->
+                <!-- </div> -->
+                 <!-- <!-- end  page header --> -->
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+                <!-- <div class="col-lg-12"> -->
+                    <!-- <!-- Advanced Tables --> -->
+                    <!-- <div class="panel panel-default"> -->
+                        <!-- <div class="panel-heading"> -->
+                             <!-- User -->
+                        <!-- </div> -->
+                        <!-- <div class="panel-body"> -->
+                            <!-- <div class="row"> -->
+                                <!-- <!--<div class="col-lg-12">--> -->
+                                    <!-- <form class="form-validate" method="get" role="form" action="users.html"> -->
+										
+                                        <!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>First Name</label> -->
+                                            <!-- <input type="text" class="form-control" value="Tim" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Last Name</label> -->
+                                            <!-- <input type="text" class="form-control" value="Ito" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Company Name</label> -->
+                                            <!-- <input type="text" class="form-control" value="OpenEyes Software Solutions" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Email Address</label> -->
+                                            <!-- <input type="email" class="form-control" value="tim.ito@theopeneyes.com" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Address 1</label> -->
+                                            <!-- <textarea class="form-control" rows="3" required>1640 King Street, Alexandria,</textarea> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Address 2</label> -->
+                                            <!-- <textarea class="form-control" rows="3" required>VA 22314, USA </textarea> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>City</label> -->
+                                            <!-- <input type="text" class="form-control" value="VA" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>State</label> -->
+                                            <!-- <input type="text" class="form-control" value="USA" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Zip Code</label> -->
+                                            <!-- <input type="text" class="form-control" value="22314" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Phone Number</label> -->
+                                            <!-- <input type="text" class="form-control" value="1234.5678.90123" required> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Role</label> -->
+                                            <!-- <select class="form-control" required> -->
+													<!-- <option value="">Select Role</option> -->
+													<!-- <option value="general-user">General User</option> -->
+													<!-- <option value="sales">Sales</option> -->
+													<!-- <option value="admin" selected>Admin</option> -->
+											<!-- </select> -->
+                                        <!-- </div> -->
+										
+										<!-- <div class="form-group col-md-6"> -->
+                                            <!-- <label><span class="required">*</span>Active?</label> -->
+                                            <!-- <br> -->
+											<!-- <div class="radio_box"> -->
+											  <!-- <input type="radio" name="status" id="role3" value="yes" checked="checked"> -->
+											  <!-- <label for="role3">Yes</label> -->
+											<!-- </div> -->
+											<!-- <div class="radio_box"> -->
+											  <!-- <input type="radio" name="status" id="role4" value="no"> -->
+											  <!-- <label for="role4">No </label> -->
+											<!-- </div> -->
+                                        <!-- </div> -->
+										
+										<!-- <!--<div class="clearfix"></div>--> -->
+										<!-- <div class="form-btn col-md-12"> -->
+											<!-- <button type="submit" class="btn sub-btn">Submit</button> -->
+											<!-- <button type="reset" class="btn res-btn">Reset</button> -->
+										<!-- </div> -->
+                                    <!-- </form> -->
+                                <!-- <!--</div>--> -->
+                            <!-- </div> -->
+                            
+                        <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- <!--End Advanced Tables --> -->
+                <!-- </div> -->
+            <!-- </div> -->
+            
+        <!-- </div> -->
+        <!-- <!-- end page-wrapper --> -->

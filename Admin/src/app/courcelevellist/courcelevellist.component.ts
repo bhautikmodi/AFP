@@ -17,6 +17,7 @@ CourselevelList;
 deleteEntity;
 	msgflag;
 	message;
+	type;
 constructor(private http: Http, private router: Router, private route: ActivatedRoute, private CourcelevelService: CourcelevelService, private globals: Globals) 
   {
 	
@@ -42,7 +43,7 @@ constructor(private http: Http, private router: Router, private route: Activated
 	{
 		alert('error');
 	});	
-	this.msgflag = false;
+	
   }
 	
 	deleteCourselevel(Courselevel)
@@ -72,12 +73,18 @@ constructor(private http: Http, private router: Router, private route: Activated
 				// },3000); 
 			}			
 			//alert(data);
-			this.message = 'Delete successfully';
-			this.msgflag = true;
+			this.globals.message = 'Delete successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
 		}, 
 		(error) => 
 		{
-			alert('error');
+			$('#Delete_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
 		});		
 	}
 }

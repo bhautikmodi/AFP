@@ -15,7 +15,7 @@ class Course_model extends CI_Model
 			$Course_data = array(
 				
 				'Name' => $post_Course['Name'],
-				'ConfigurationId' => $post_Course['ConfigurationId'],
+				'CourseLevelId' => $post_Course['CourseLevelId'],
 				'KeyConcepts' => $post_Course['KeyConcepts'],
 				'IsActive' => $IsActive
 			
@@ -39,9 +39,9 @@ class Course_model extends CI_Model
 		// $this->db->select('*');
 		// $result = $this->db->get('tblmstcourse');
 		
-		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId');
+		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId,pr.CourseLevelId');
 	
-		$this->db->join('tblmstconfiguration ps', 'pr.ConfigurationId = ps.ConfigurationId', 'left');
+		$this->db->join('tblmstconfiguration ps', 'pr.CourseLevelId = ps.ConfigurationId', 'left');
 		$result = $this->db->get('tblmstcourse pr');
 		
 		
@@ -86,7 +86,7 @@ class Course_model extends CI_Model
 					}
 			$Course_data = array(
 				'Name' => $post_Course['Name'],
-				'ConfigurationId' => $post_Course['ConfigurationId'],
+				'CourseLevelId' => $post_Course['CourseLevelId'],
 				'KeyConcepts' => $post_Course['KeyConcepts'],
 				'IsActive' => $IsActive
 			

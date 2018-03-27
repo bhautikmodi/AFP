@@ -17,10 +17,12 @@ export class CourcelevelComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
+	
   constructor( private http: Http,private globals: Globals, private router: Router, private CourcelevelService: CourcelevelService,private route:ActivatedRoute) { }
 
   ngOnInit() 
   {debugger
+  this.globals.msgflag=false;
 	  this.CourseLevelEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	if(id){
@@ -64,11 +66,20 @@ export class CourcelevelComponent implements OnInit {
 			this.CourcelevelService.add(this.CourseLevelEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.CourseLevelEntity = {};
 				CourseLevelForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}			
 				this.router.navigate(['/courselevel/list']);
 			}, 
 			(error) => 
@@ -79,13 +90,13 @@ export class CourcelevelComponent implements OnInit {
 			});
 		} 		
 	}
-	
+
 
 	clearForm(CourseLevelForm)
 	{
 		this.CourseLevelEntity = {};	
 		this.CourseLevelEntity.ConfigurationId = 0;
-    this.CourseLevelEntity.IsActive = '1';	
+		this.CourseLevelEntity.IsActive = '1';	
 		this.submitted = false;
 		CourseLevelForm.form.markAsPristine();
 	}	

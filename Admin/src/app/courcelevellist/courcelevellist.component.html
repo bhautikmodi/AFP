@@ -2,13 +2,13 @@
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">Course Level</h1>
+        <h1 class="page-header">{{header}} Course Level</h1>
       </div>
       <!-- end  page header --> 
     </div>
-	 <div class="alert alert-success" role="alert" *ngIf="msgflag">
+	 <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-    {{message}}
+    {{globals.message}}
  </div>
     <div class="row">
       <div class="col-lg-12"> 
@@ -31,28 +31,28 @@
                     <th>#</th>
 					<th style="width: 50%;">Course Level</th>
 					<th>Keyword</th>
-					<th>Description</th>
-					<th>Active?</th>
-                    <th>Actions</th>
+					<th style="width: 10%;">Description</th>
+					<th style="width: 10%;">Active?</th>
+                    <th style="width: 10%;">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
 				
 				
 				
-				<tr class="odd gradeX" *ngFor="let Courselevel of CourselevelList">
-										<td>{{Courselevel.ConfigurationId}}</td>
+				<tr class="odd gradeX" *ngFor="let Courselevel of CourselevelList; let i = index">
+										<td>{{i+1}}</td>
 										<td>{{Courselevel.Value}}</td>
-										<td>{{Courselevel.DisplayText}}</td>
+										<td class="txtupper">{{Courselevel.DisplayText}}</td>
 										<td>{{Courselevel.Description}}</td>
 										  <td *ngIf="Courselevel.IsActive=='1'">Yes</td>
 											<td *ngIf="Courselevel.IsActive=='0'">No</td>
 										<td>
-											<button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
+											<button type="button" class="btn btn-default btn-rounded btn-sm" [disabled]="Courselevel.isdisabled>0" data-tooltip="Edit" 
 											routerLink="/courselevel/edit/{{Courselevel.ConfigurationId}}">
 											<i class="fa fa-pencil" aria-hidden="true"></i></button>
 											<button type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
-											data-tooltip="Delete" 
+											data-tooltip="Delete"  [disabled]="Courselevel.isdisabled>0"
 											(click)="deleteCourselevel(Courselevel)">
 											<i class="fa fa-times" aria-hidden="true"></i></button>
 										</td>
@@ -83,7 +83,7 @@
     </div>
   </div>
   <!-- end page-wrapper --> 
-   <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
           <div class="modal-body">

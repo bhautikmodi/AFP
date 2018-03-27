@@ -20,7 +20,7 @@ export class CountryComponent implements OnInit {
  ngOnInit() 
   {debugger
   
-	
+	this.globals.msgflag=false;
 	  this.CountryEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	if(id){
@@ -60,11 +60,20 @@ export class CountryComponent implements OnInit {
 			this.CountryService.add(this.CountryEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.CountryEntity = {};
 				CountryForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}			
 				this.router.navigate(['/country/list']);
 			}, 
 			(error) => 

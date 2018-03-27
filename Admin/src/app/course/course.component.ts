@@ -20,6 +20,7 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() 
   {debugger
+  this.globals.msgflag=false;
     this.CourseService.getCourseLevelList()
 	.then((data) => 
 	{
@@ -73,11 +74,20 @@ export class CourseComponent implements OnInit {
 			this.CourseService.add(this.CourseEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.CourseEntity = {};
 				CourseForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}			
 				this.router.navigate(['/course/list']);
 			}, 
 			(error) => 

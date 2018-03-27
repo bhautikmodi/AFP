@@ -32,7 +32,7 @@ import { Globals } from './globals';
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
-<<<<<<< HEAD
+
 
 import { UserComponent } from './user/user.component';
 import { UserlistComponent } from './userlist/userlist.component';
@@ -47,11 +47,11 @@ import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 
 import { UserroleService } from './services/userrole.service';
-=======
+
 import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
->>>>>>> 77f2e65eeddb28b20a9bde6a595832c1b1f568e7
+
 
 
 @NgModule({
@@ -72,7 +72,6 @@ import { CountryService } from './services/country.service';
 	CourselistComponent,
 	IndustryComponent,
 	IndustrylistComponent,
-<<<<<<< HEAD
 	 UserComponent,
     UserlistComponent,
     StateComponent,
@@ -80,11 +79,10 @@ import { CountryService } from './services/country.service';
     CompanyComponent,
 	CompanylistComponent,
 	UserroleComponent,
-	UserrolelistComponent
-=======
+	UserrolelistComponent,
 	CountryComponent,
 	CountrylistComponent
->>>>>>> 77f2e65eeddb28b20a9bde6a595832c1b1f568e7
+
   ],
   imports: [
     BrowserModule,
@@ -184,7 +182,7 @@ import { CountryService } from './services/country.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
-<<<<<<< HEAD
+
 	   {
         path : 'userrole/add',
         component : UserroleComponent,
@@ -211,7 +209,7 @@ import { CountryService } from './services/country.service';
 		canActivate : [AuthGuard] 
       },
 	   {
-        path : 'state',
+        path : 'state/add',
         component : StateComponent,
 		canActivate : [AuthGuard] 
       },
@@ -240,7 +238,7 @@ import { CountryService } from './services/country.service';
         component : CompanyComponent,
 		canActivate : [AuthGuard] 
       },
-=======
+
 	  {
         path : 'country/add',
         component : CountryComponent,
@@ -257,18 +255,18 @@ import { CountryService } from './services/country.service';
 			component : CountryComponent,
 			canActivate : [AuthGuard]
 	  },
->>>>>>> 77f2e65eeddb28b20a9bde6a595832c1b1f568e7
+
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-<<<<<<< HEAD
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService],
-=======
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService],
->>>>>>> 77f2e65eeddb28b20a9bde6a595832c1b1f568e7
+
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService],
+
+  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

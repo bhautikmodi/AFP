@@ -96,4 +96,13 @@ class State extends CI_Controller
 			}
 	}
 	
+	
+	public function getAllCountry()
+	{
+		$data="";
+		
+		$data=$this->State_model->getlist_country();
+		echo json_encode($data);
+	}
+	
 }

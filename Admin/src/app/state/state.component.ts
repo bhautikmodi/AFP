@@ -16,6 +16,7 @@ import { Globals } from '../globals';
   styleUrls: ['./state.component.css']
 })
 export class StateComponent implements OnInit {
+	CountryList;
 	stateEntity;
 	header;
 	btn_disable;
@@ -25,11 +26,19 @@ export class StateComponent implements OnInit {
   ngOnInit() 
   {
 	  debugger
-	  this.stateEntity = {};
+	  //this.stateEntity = {};
 	  
-	 
-	
-	
+	 this.StateService.getAllCountry()
+	.then((data) => 
+	{ 
+		this.CountryList = data;	
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});		
+		
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {
@@ -77,7 +86,7 @@ export class StateComponent implements OnInit {
 				this.submitted = false;
 				this.stateEntity = {};
 				stateForm.form.markAsPristine();
-				//this.router.navigate(['state/list']);
+				this.router.navigate(['state/list']);
 			}, 
 			(error) => 
 			{

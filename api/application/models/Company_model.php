@@ -131,11 +131,6 @@ class Company_model extends CI_Model
 		$this->db->select('*');
 		$result = $this->db->get('tblmstindustry');
 		
-		// $this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId');
-		// $this->db->join('tblmstconfiguration ps', 'pr.ConfigurationId = ps.ConfigurationId', 'left');
-		// $result = $this->db->get('tblmstcourse pr');
-		
-		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

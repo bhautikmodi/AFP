@@ -3,6 +3,25 @@
 class User_model extends CI_Model
 {
 	
+	public function getStateList($country_id = NULL) {
+		
+		if($country_id) {
+			
+			$this->db->select('StateId,StateName');
+			$this->db->where('CountryId',$country_id);
+			$result = $this->db->get('tblmststate');
+			
+			$res = array();
+			if($result->result()) {
+				$res = $result->result();
+			}
+			return $res;
+			
+		} else {
+			return false;
+		}
+	}
+	
 	public function add_user($post_user)
 	{
 		if($post_user)
@@ -17,6 +36,7 @@ class User_model extends CI_Model
 				"Password"=>$post_user['Password'],
 				"Address1"=>$post_user['Address1'],
 				"Address2"=>$post_user['Address2'],
+				"CountryId"=>$post_user['CountryId'],
 				"StateId"=>$post_user['StateId'],
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
@@ -95,6 +115,7 @@ class User_model extends CI_Model
 				"Password"=>$post_user['Password'],
 				"Address1"=>$post_user['Address1'],
 				"Address2"=>$post_user['Address2'],
+				"CountryId"=>$post_user['CountryId'],
 				"StateId"=>$post_user['StateId'],
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
@@ -186,5 +207,18 @@ class User_model extends CI_Model
 		}
 		return $res;
 	}
+	
+	public function getlist_country() {
+	
+		$this->db->select('*');
+		$result = $this->db->get('tblmstcountry');
+		$res = array();
+		if($result->result()) {
+			$res = $result->result();
+		}
+		return $res;
+		
+	}
+	
 	
 }

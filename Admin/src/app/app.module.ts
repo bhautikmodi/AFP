@@ -35,9 +35,7 @@ import { CourselistComponent } from './courselist/courselist.component';
 import { CourseService } from './services/course.service';
 
 import { Globals } from './globals';
-<<<<<<< HEAD
 import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
-=======
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
@@ -58,7 +56,6 @@ import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
 
->>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
 
 
 @NgModule({
@@ -73,13 +70,11 @@ import { CountryService } from './services/country.service';
     DomainListComponent,
     CompetencyAreaComponent,
     CompetencyAreaListComponent,
-<<<<<<< HEAD
     KsaComponent,
     KsaListComponent,
     RatingScaleComponent,
     RatingScaleListComponent,
-    HtmlToPlaintextPipe
-=======
+    HtmlToPlaintextPipe,
 	CourcelevelComponent,
 	CourcelevellistComponent,
 	CourseComponent,
@@ -97,7 +92,6 @@ import { CountryService } from './services/country.service';
 	CountryComponent,
 	CountrylistComponent
 
->>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
   ],
   imports: [
   BrowserModule,
@@ -306,14 +300,9 @@ import { CountryService } from './services/country.service';
       }
 	  ])
   ],
-<<<<<<< HEAD
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,KsaService,RatingScaleService],
-=======
-
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
-  // providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService],
-
->>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
+ 
+  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

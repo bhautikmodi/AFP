@@ -22,7 +22,6 @@
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domain</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/competency-area/list')||(globals.currentLink == '/competency-area/add')||(globals.currentLink == '/competency-area/edit')}"> <a (click)="menuopen('/competency-area/list')" style="cursor:pointer;"><i class="fa fa-tasks fa-fw"></i> Competency Area</a> </li>
 		    <li [ngClass]="{'selected':(globals.currentLink == '/ksa/list')||(globals.currentLink == '/ksa/add')||(globals.currentLink == '/ksa/edit')}"> <a (click)="menuopen('/ksa/list')" style="cursor:pointer;"><i class="fa fa-question fa-fw"></i> KSA</a></li>
-<<<<<<< HEAD
         <li> <a href="tablecourse.html"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
         <li id="inner_dropdown">
             <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
@@ -42,7 +41,6 @@
       </ul>
                       <!-- second-level-items -->
        </li>
-=======
         <li><a [routerLink]="['/course/list/']" routerLinkActive="active"><span class="fa fa-certificate fa-fw"></span> <span class="xn-text"> Course</span></a>  </li>
 		<li id="inner_dropdown">
               <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa arrow"></span></a>
@@ -59,7 +57,6 @@
                    </ul>
                         <!-- second-level-items -->
          </li>
->>>>>>> c08a3cc215aa1dbb1283d0397f584a2dd5eb97c2
 		 <li> <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Reports</a> </li>
       </ul>
       <!-- end side-menu --> 

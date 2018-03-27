@@ -317,15 +317,6 @@ import { SettingsService } from './services/settings.service';
   
 
 
- 
-<<<<<<< HEAD
-  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
-    CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService],
-=======
- //providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
->>>>>>> a77ab1f3b119177cfffc47bc3092969265f8e4b2
- 
 
   bootstrap: [AppComponent]
 })

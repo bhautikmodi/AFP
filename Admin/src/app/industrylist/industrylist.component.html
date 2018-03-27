@@ -2,13 +2,13 @@
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">Course</h1>
+        <h1 class="page-header">Industry</h1>
       </div>
       <!-- end  page header --> 
     </div>
-	 <div class="alert alert-success" role="alert" *ngIf="msgflag">
+	<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-    {{message}}
+    {{globals.message}}
  </div>
     <div class="row">
       <div class="col-lg-12"> 
@@ -16,7 +16,7 @@
         <div class="panel panel-default">
           <div class="panel-heading"> !
             <div class="btn-group pull-right add-right">
-              <a routerLink="/Industry/add" class="btn btn-danger btn-add">
+              <a routerLink="/industry/add" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a Industry
               </a>
             </div>
@@ -34,8 +34,8 @@
                 </thead>
                 <tbody>
                 
-                 <tr class="odd gradeX" *ngFor="let Industry of IndustryList">
-										<td>{{Industry.IndustryId}}</td>
+                 <tr class="odd gradeX" *ngFor="let Industry of IndustryList;let i = index">
+										<td>{{i+1}}</td>
 										<td>{{Industry.IndustryName}}</td>
 										  <td *ngIf="Industry.IsActive=='1'">Yes</td>
 											<td *ngIf="Industry.IsActive=='0'">No</td>

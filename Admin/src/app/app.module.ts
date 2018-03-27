@@ -39,6 +39,7 @@ import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
+
 import { UserComponent } from './user/user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserService } from './services/user.service';
@@ -53,6 +54,7 @@ import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 import { SettingsComponent } from './settings/settings.component';
 
 import { UserroleService } from './services/userrole.service';
+
 import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
@@ -194,6 +196,7 @@ import { SettingsService } from './services/settings.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
+
 	   {
         path : 'userrole/add',
         component : UserroleComponent,
@@ -266,7 +269,6 @@ import { SettingsService } from './services/settings.service';
 			component : CountryComponent,
 			canActivate : [AuthGuard]
 	  },
-
       {
         path : 'ksa/add',
         component : KsaComponent,
@@ -308,11 +310,23 @@ import { SettingsService } from './services/settings.service';
       }
 	  ])
   ],
+
+
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService,KsaService,RatingScaleService],
+
+  
+
+
  
+<<<<<<< HEAD
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
     UserroleService,SettingsService],
+=======
+ //providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+>>>>>>> a77ab1f3b119177cfffc47bc3092969265f8e4b2
  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

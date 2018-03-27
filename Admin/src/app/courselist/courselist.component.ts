@@ -16,6 +16,7 @@ export class CourselistComponent implements OnInit {
 	deleteEntity;
 	msgflag;
 	message;
+	type;
  constructor( private http: Http,private globals: Globals, private router: Router, private CourseService: CourseService,private route:ActivatedRoute) { }
 ngOnInit() { 
 	this.CourseService.getAll()
@@ -37,7 +38,7 @@ ngOnInit() {
 	{
 		alert('error');
 	});	
-	this.msgflag = false;
+	//this.msgflag = false;
   }
 
 	deleteCourse(Course)
@@ -67,12 +68,18 @@ ngOnInit() {
 				// },3000); 
 			}			
 			//alert(data);
-			this.message = 'Delete successfully';
-			this.msgflag = true;
+			this.globals.message = 'Delete successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
 		}, 
 		(error) => 
 		{
-			alert('error');
+			$('#Delete_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
 		});		
 	}
 }

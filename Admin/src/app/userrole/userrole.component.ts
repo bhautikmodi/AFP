@@ -17,6 +17,7 @@ export class UserroleComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
+	
    constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private UserroleService:UserroleService ) { }
 
   
@@ -69,6 +70,17 @@ export class UserroleComponent implements OnInit {
 				this.submitted = false;
 				this.userroleEntity = {};
 				userroleForm.form.markAsPristine();
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}	
+				
+				
 				this.router.navigate(['userrole/list']);
 			}, 
 			(error) => 

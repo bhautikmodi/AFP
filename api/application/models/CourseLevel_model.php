@@ -34,10 +34,8 @@ class CourseLevel_model extends CI_Model
 	}
 	
 	public function getlist_CourseLevel() {
-	
-		$this->db->select('*');
-		$result = $this->db->get('tblmstconfiguration');
-		
+	$this->db->select('con.*,(SELECT COUNT(*) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
+		$result = $this->db->get('tblmstconfiguration as con');		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
@@ -45,6 +43,9 @@ class CourseLevel_model extends CI_Model
 		return $res;
 		
 	}
+	
+	
+	
 	
 	
 	public function get_CourseLeveldata($Configuration_id = NULL)

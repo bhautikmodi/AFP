@@ -16,6 +16,8 @@ import { Globals } from '../globals';
   styleUrls: ['./state.component.css']
 })
 export class StateComponent implements OnInit {
+	CountryList;
+	CountryEntity;
 	stateEntity;
 	header;
 	btn_disable;
@@ -25,11 +27,19 @@ export class StateComponent implements OnInit {
   ngOnInit() 
   {
 	  debugger
-	  this.stateEntity = {};
+	  //this.stateEntity = {};
 	  
-	 
-	
-	
+	 this.StateService.getAllCountry()
+	.then((data) => 
+	{ 
+		this.CountryList = data;	
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});		
+		
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {
@@ -51,6 +61,7 @@ export class StateComponent implements OnInit {
 	 else
 	 {
 			 this.stateEntity = {};
+			 this.CountryEntity.IsActive = '1';
 	 }
 	  
 	  
@@ -72,12 +83,23 @@ export class StateComponent implements OnInit {
 			this.StateService.add(this.stateEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.stateEntity = {};
 				stateForm.form.markAsPristine();
-				//this.router.navigate(['state/list']);
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}				
+				
+				
+				this.router.navigate(['state/list']);
 			}, 
 			(error) => 
 			{

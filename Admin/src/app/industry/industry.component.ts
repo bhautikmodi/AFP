@@ -21,7 +21,7 @@ export class IndustryComponent implements OnInit {
 
   ngOnInit() 
   {debugger
-  
+  this.globals.msgflag=false;
 	
 	  this.IndustryEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
@@ -65,11 +65,21 @@ export class IndustryComponent implements OnInit {
 			this.IndustryService.add(this.IndustryEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.IndustryEntity = {};
 				IndustryForm.form.markAsPristine();
+				
+				if(id){
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				} else {
+					this.globals.message = 'Add successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}			
 				this.router.navigate(['/industry/list']);
 			}, 
 			(error) => 

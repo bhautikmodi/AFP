@@ -6,9 +6,9 @@
       </div>
       <!-- end  page header --> 
     </div>
-	 <div class="alert alert-success" role="alert" *ngIf="msgflag">
+	<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-    {{message}}
+    {{globals.message}}
  </div>
     <div class="row">
       <div class="col-lg-12"> 
@@ -28,7 +28,7 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-					<th style="width: 6%;">Level</th>
+					<th style="width: 10%;">Level</th>
 					<th style="width: 35%;">Key Concepts</th>
                     <th style="width: 8%;">Active?</th>
                     <th style="width: 10%;">Actions</th>
@@ -36,8 +36,8 @@
                 </thead>
                 <tbody>
                 
-                 <tr class="odd gradeX" *ngFor="let Course of CourseList">
-										<td>{{Course.CourseId}}</td>
+                 <tr class="odd gradeX" *ngFor="let Course of CourseList;let i = index">
+										<td>{{i+1}}</td>
 										<td>{{Course.Name}}</td>
 										<td>{{Course.DisplayText}}</td>
 										<td>{{Course.KeyConcepts}}</td>

@@ -58,7 +58,7 @@ export class StateService {
   }
   
   
-  getById(stateId){debugger
+  getById(stateId){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'State/getById/' + stateId, this.globals.headerpath)
       .toPromise()
@@ -74,5 +74,22 @@ export class StateService {
 	return promise;
   }  
   
+  
+   getAllCountry()
+  {debugger
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'State/getAllCountry', this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
 
 }

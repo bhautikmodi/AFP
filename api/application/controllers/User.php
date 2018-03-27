@@ -12,6 +12,15 @@ class User extends CI_Controller
 		$this->load->model('User_model');
 	}
 	
+	public function getStateList($country_id = NULL) {
+		
+		if(!empty($country_id)) {
+			
+			$result = [];
+			$result = $this->User_model->getStateList($country_id);			
+			echo json_encode($result);				
+		}			
+	}
 	
 	public function addUser()
 	{
@@ -80,7 +89,7 @@ class User extends CI_Controller
 	//get userId edit
 	public function getById($user_id=null)
 	{	
-		//$this->load->model('Country_model');
+		
 		if(!empty($user_id))
 		{
 			$data=[];
@@ -94,10 +103,8 @@ class User extends CI_Controller
 	public function getAllCountry()
 	{
 		$data="";
-		$this->load->model('Country_model');
-		$data=$this->Country_model->getlist_country();
-		//print_r($data);
-		//.exit;
+		
+		$data=$this->User_model->getlist_country();
 		echo json_encode($data);
 	}
 	

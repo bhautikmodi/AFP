@@ -39,11 +39,7 @@ import { HtmlToPlaintextPipe } from './html-to-plaintext.pipe';
 import { IndustryComponent } from './industry/industry.component';
 import { IndustrylistComponent } from './industrylist/industrylist.component';
 import { IndustryService } from './services/industry.service';
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 import { UserComponent } from './user/user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserService } from './services/user.service';
@@ -57,10 +53,7 @@ import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 
 import { UserroleService } from './services/userrole.service';
-<<<<<<< HEAD
 
-=======
->>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
@@ -200,10 +193,7 @@ import { CountryService } from './services/country.service';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
-<<<<<<< HEAD
 
-=======
->>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
 	   {
         path : 'userrole/add',
         component : UserroleComponent,
@@ -277,8 +267,7 @@ import { CountryService } from './services/country.service';
 			canActivate : [AuthGuard]
 	  },
 
-<<<<<<< HEAD
-=======
+
       {
         path : 'ksa/add',
         component : KsaComponent,
@@ -309,24 +298,24 @@ import { CountryService } from './services/country.service';
         component : RatingScaleListComponent,
         canActivate : [AuthGuard]
       },
->>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
+
       {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
-<<<<<<< HEAD
+
 
   providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService],
 
   
 
-=======
+
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
  
->>>>>>> 74cf7bab270844605ff1589a48767b115da49a2d
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

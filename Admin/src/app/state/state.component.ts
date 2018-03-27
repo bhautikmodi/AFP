@@ -17,6 +17,7 @@ import { Globals } from '../globals';
 })
 export class StateComponent implements OnInit {
 	CountryList;
+	CountryEntity;
 	stateEntity;
 	header;
 	btn_disable;

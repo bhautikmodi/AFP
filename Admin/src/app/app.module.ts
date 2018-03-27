@@ -266,8 +266,6 @@ import { CountryService } from './services/country.service';
 			component : CountryComponent,
 			canActivate : [AuthGuard]
 	  },
-
-
       {
         path : 'ksa/add',
         component : KsaComponent,
@@ -298,7 +296,6 @@ import { CountryService } from './services/country.service';
         component : RatingScaleListComponent,
         canActivate : [AuthGuard]
       },
-
       {
         path : '**',
         redirectTo : 'dashboard'
@@ -307,13 +304,13 @@ import { CountryService } from './services/country.service';
   ],
 
 
-  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService,KsaService,RatingScaleService],
 
   
 
 
  
-  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+ //providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
  
 
   bootstrap: [AppComponent]

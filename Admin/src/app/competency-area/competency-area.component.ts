@@ -49,7 +49,6 @@ export class CompetencyAreaComponent implements OnInit
 		.then((data) => 
 		{
 			this.areaEntity = data;
-			//this.areaEntity.Description = data['Description'];
 			nicEditors.findEditor('Description').setContent(this.areaEntity.Description);
 		}, 
 		(error) => 
@@ -58,29 +57,34 @@ export class CompetencyAreaComponent implements OnInit
 		});	 
 	} else {
 		this.header = 'Add';
-    this.areaEntity = {};
-    this.areaEntity.CAreaId = 0;
+    	this.areaEntity = {};
+    	this.areaEntity.CAreaId = 0;
 		this.areaEntity.IsActive = '1';
-		this.areaEntity.DomainId = '';	
+		this.areaEntity.DomainId = '';
+		nicEditors.findEditor('Description').setContent('');	
 	}
 	
-	// $(".nicEdit-main").chnage(function () {
-	// 	this.areaEntity.Description = nicEditors.findEditor('Description').getContent();
-    //     alert(this.areaEntity.Description);
-    // });
-
+	// $(".nicEdit-main").keyup(function () { 
+	// 	let Description = nicEditors.findEditor('Description').getContent();
+	// 	//alert(Description);
+	// 	if(Description!=""){
+	// 		this.des_valid = false;
+	// 	} else {
+	// 		this.des_valid = true;
+	// 	}
+	// 	alert(this.des_valid);
+    // });	
   } 
 
 	
 	addArea(areaForm)
 	{	
 		this.areaEntity.Description = nicEditors.findEditor('Description').getContent();	
-		if(this.areaEntity.Description!=''){
+		if(this.areaEntity.Description!=""){
 			this.des_valid = false;
 		} else {
 			this.des_valid = true;
 		}
-		
 		let id = this.route.snapshot.paramMap.get('id');
 		if(id){			
 			this.areaEntity.UpdatedBy = this.globals.authData.UserId;
@@ -90,7 +94,7 @@ export class CompetencyAreaComponent implements OnInit
 			this.areaEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = true;
 		}
-		if(areaForm.valid){
+		if(areaForm.valid && this.des_valid==false){
 			//this.areaEntity.Description = nicEditors.findEditor('Description').getContent();
 			this.btn_disable = true;
 			this.CompetencyAreaService.add(this.areaEntity)
@@ -123,9 +127,9 @@ export class CompetencyAreaComponent implements OnInit
 	
 	clearForm(areaForm)
 	{		
-    this.areaEntity = {};	
+    	this.areaEntity = {};	
 		this.areaEntity.CAreaId = 0;
-    this.areaEntity.IsActive = '1';		
+    	this.areaEntity.IsActive = '1';		
 		this.areaEntity.DomainId = '';
 		this.submitted = false;
 		this.des_valid = false;

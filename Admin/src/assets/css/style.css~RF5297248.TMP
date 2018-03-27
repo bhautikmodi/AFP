@@ -69,8 +69,6 @@
 
 .account_menu li a img{ width:30px; background:#fff;}
 
-.account_menu li a i.fa-angle-double-down {margin-left: 5px;}
-
 .account_menu li a.dashboard-toggle{font-family: "Gotham-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
 
 ul.dropdown-menu{ background:#fff; padding:0px 0 0 0px; border-radius:0 0; position:absolute; left:auto; right:0; width:200px; z-index: 99!important; margin: 0; box-shadow: none; border:1px solid #d0d0d6;}
@@ -116,7 +114,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 
 .navbar-top-links li a {
     padding: 20px;
-    /*min-height: 50px;*/
+    min-height: 50px;
 }
 
 .navbar-top-links .dropdown-menu li {

@@ -50,11 +50,14 @@ import { CompanyComponent } from './company/company.component';
 import { CompanylistComponent } from './companylist/companylist.component';
 import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
+import { SettingsComponent } from './settings/settings.component';
 
 import { UserroleService } from './services/userrole.service';
 import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
+import { SettingsService } from './services/settings.service';
+
 
 
 
@@ -90,8 +93,8 @@ import { CountryService } from './services/country.service';
 	UserroleComponent,
 	UserrolelistComponent,
 	CountryComponent,
-	CountrylistComponent
-
+	CountrylistComponent,
+	SettingsComponent
   ],
   imports: [
   BrowserModule,
@@ -295,13 +298,20 @@ import { CountryService } from './services/country.service';
         canActivate : [AuthGuard]
       },
       {
+        path : 'settings',
+        component : SettingsComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
  
-  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
+  providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
+    CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
+    UserroleService,SettingsService],
  
   bootstrap: [AppComponent]
 })

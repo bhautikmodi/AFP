@@ -107,7 +107,7 @@ padding-left: 45px;
 /* tap nvbar Section */
 
 #navbar {
-    height: 85px; /*height:63px;*/ border: none; background: url("../img/afp-pattern.png") center 135% no-repeat #e8e4e4; background-size: 30%;
+    height: 85px; /*height:63px;*/ border: none; background: url("../img/afp-pattern.png") center 135% no-repeat #e8e4e4; background-size: 28%;
 }
 .navbar-top-links .btn-add{padding: 10px 15px; min-height:0!important; margin: 21px 0 0 0; border: none;}
 .navbar-brand {

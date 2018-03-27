@@ -18,45 +18,50 @@
           <!--end user image section--> 
         </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/')||(globals.currentLink == '/dashboard')}"> <a (click)="menuopen('/dashboard')" style="cursor:pointer;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
-		    <li> <a href="users.html"><i class="fa fa-users fa-fw"></i> Users</a> </li>
+        <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')||(globals.currentLink == '/company/add')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i> Company</a> </li>
+		    <li [ngClass]="{'selected':(globals.currentLink == '/users/list')||(globals.currentLink == '/user/edit')}"> <a (click)="menuopen('/users/list')" style="cursor:pointer;"><i class="fa fa-users fa-fw"></i> Users</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domain</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/competency-area/list')||(globals.currentLink == '/competency-area/add')||(globals.currentLink == '/competency-area/edit')}"> <a (click)="menuopen('/competency-area/list')" style="cursor:pointer;"><i class="fa fa-tasks fa-fw"></i> Competency Area</a> </li>
 		    <li [ngClass]="{'selected':(globals.currentLink == '/ksa/list')||(globals.currentLink == '/ksa/add')||(globals.currentLink == '/ksa/edit')}"> <a (click)="menuopen('/ksa/list')" style="cursor:pointer;"><i class="fa fa-question fa-fw"></i> KSA</a></li>
-        <li> <a href="tablecourse.html"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
+        <li [ngClass]="{'selected':(globals.currentLink == '/course/list')||(globals.currentLink == '/course/add')||(globals.currentLink == '/course/edit')}"> <a (click)="menuopen('/course/list')" style="cursor:pointer;"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
         <li id="inner_dropdown">
-            <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
-                <ul class="nav nav-second-level display_block">          
-           <li>
-                <a href="gener_setting.html"><i class="fa fa-cogs fa-fw"></i> Settings</a>
-          </li>          
-           <li>
-                <a href="tableindustry.html"><i class="fa fa-industry fa-fw"></i> Industry</a>
-          </li>          
-           <li [ngClass]="{'selected':(globals.currentLink == '/rating-scale/list')||(globals.currentLink == '/rating-scale/add')||(globals.currentLink == '/rating-scale/edit')}">
-                <a (click)="menuopen('/rating-scale/list')" style="cursor:pointer;"><i class="fa fa-star fa-fw"></i> Rating Scale</a>
-          </li>        
-          <li>
-                <a href="tablecourlevel.html"><i class="fa fa-level-up fa-fw"></i> Course Level</a>
-          </li>          
-      </ul>
-                      <!-- second-level-items -->
-       </li>
-        <li><a [routerLink]="['/course/list/']" routerLinkActive="active"><span class="fa fa-certificate fa-fw"></span> <span class="xn-text"> Course</span></a>  </li>
-		<li id="inner_dropdown">
-              <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa arrow"></span></a>
-                  <ul class="nav nav-second-level display_block">
-					  
-					   <li>
-                             <a href="tableratiscale.html"> Rating Scale</a>
-                       </li>
-                     
-                       <li>
-                            <a [routerLink]="['/courselevel/list/']" routerLinkActive="active"><span class="fa fa-level-up fa-fw"></span> <span class="xn-text"> Course Level</span></a> 
-                       </li>
-                        
-                   </ul>
-                        <!-- second-level-items -->
-         </li>
+          <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
+              <ul class="nav nav-second-level display_block">
+                <li [ngClass]="{'selected':(globals.currentLink == '/settings')}">
+                  <a (click)="menuopen('/settings')" style="cursor:pointer;"><i class="fa fa-cogs fa-fw"></i> Configuration</a>
+                 </li>
+        
+         <li>
+                         <a href="tableinvitelink.html"><i class="fa fa-link fa-fw"></i> User Invitation</a>
+                   </li>
+        
+         <li>
+                         <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email Notification</a>
+                   </li>
+        
+         <li>
+                         <a href="tablependassess.html"><i class="fa fa-calendar-times-o fa-fw"></i> Pending Assessment</a>
+                   </li>        
+                   
+                   <li [ngClass]="{'selected':(globals.currentLink == '/country/list')||(globals.currentLink == '/country/add')||(globals.currentLink == '/country/edit')}">
+                    <a (click)="menuopen('/country/list')" style="cursor:pointer;"><i class="fa fa-globe fa-fw"></i> Country</a>
+                   </li>
+                   <li [ngClass]="{'selected':(globals.currentLink == '/state/list')||(globals.currentLink == '/state/add')||(globals.currentLink == '/state/edit')}">
+                    <a (click)="menuopen('/state/list')" style="cursor:pointer;"><i class="fa fa-globe fa-fw"></i> State</a>
+                   </li>
+                   <li [ngClass]="{'selected':(globals.currentLink == '/industry/list')||(globals.currentLink == '/industry/add')||(globals.currentLink == '/industry/edit')}">
+                    <a (click)="menuopen('/industry/list')" style="cursor:pointer;"><i class="fa fa-industry fa-fw"></i> Industry</a>
+                   </li>
+                   <li [ngClass]="{'selected':(globals.currentLink == '/rating-scale/list')||(globals.currentLink == '/rating-scale/add')||(globals.currentLink == '/rating-scale/edit')}">
+                    <a (click)="menuopen('/rating-scale/list')" style="cursor:pointer;"><i class="fa fa-star fa-fw"></i> Rating Scale</a>
+                   </li>
+                   <li [ngClass]="{'selected':(globals.currentLink == '/courselevel/list')||(globals.currentLink == '/courselevel/add')||(globals.currentLink == '/courselevel/edit')}">
+                    <a (click)="menuopen('/courselevel/list')" style="cursor:pointer;"><i class="fa fa-level-up fa-fw"></i> Course Level</a>
+                   </li>
+               </ul>
+                    <!-- second-level-items -->
+     </li>
+           
 		 <li> <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Reports</a> </li>
       </ul>
       <!-- end side-menu --> 

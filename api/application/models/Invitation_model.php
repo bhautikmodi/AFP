@@ -4,7 +4,7 @@ class Invitation_model extends CI_Model
  {
 
 	public function add_Invitation($post_Invitation) {
-		$otp=mt_rand(100000, 999999);
+		
 		if($post_Invitation) {
 			if($post_Invitation['IsActive']==1){
 				$IsActive = true;
@@ -14,7 +14,7 @@ class Invitation_model extends CI_Model
 			$Invitation_data = array(
 			
 				'EmailAddress' => $post_Invitation['EmailAddress'],
-				'Code' => $otp
+				'Code' => $post_Invitation['Code']
 			
 			);
 			
@@ -43,7 +43,28 @@ class Invitation_model extends CI_Model
 		return $res;
 		
 	}
+	public function delete_Invitation($Invitation_Id) {
 	
+	if($Invitation_Id) {
+			$Invitation_data = array(
+				'Status' => 2,
+				'code' =>''
+			
+			);
+			
+			$this->db->where('UserInvitationId',$Invitation_Id);
+			$res = $this->db->update('tbluserinvitation',$Invitation_data);
+			
+			if($res) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
+		
+	}
 	
 	
 	

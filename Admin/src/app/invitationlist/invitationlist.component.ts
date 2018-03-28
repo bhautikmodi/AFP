@@ -14,6 +14,7 @@ declare var $: any;
 })
 export class InvitationlistComponent implements OnInit {
 	InvitationList;
+	deleteEntity;
 	msgflag;
 	message;
 
@@ -44,6 +45,50 @@ export class InvitationlistComponent implements OnInit {
     });	
     //this.msgflag = false;
     }
+	
+	deleteInvitation(Invitation)
+	{ 
+		this.deleteEntity =  Invitation;
+		$('#Delete_Modal').modal('show');					
+	}
+
+	deleteConfirm(Invitation)
+	{ 
+		this.InvitationService.delete(Invitation.UserInvitationId)
+		.then((data) => 
+		{
+			let index = this.InvitationList.indexOf(Invitation);
+			this.InvitationList[index].Status =2;
+			this.InvitationList[index].code = '';
+			$('#Delete_Modal').modal('hide');
+			// if (index != -1) {
+				// this.InvitationList.splice(index, 1);
+				//this.router.navigate(['/domain/list']);
+				// setTimeout(function(){
+				// 	$('#dataTables-example').dataTable( {
+				// 		"oLanguage": {
+				// 			"sLengthMenu": "_MENU_ Domains per Page",
+				// 			"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domains",
+				// 			"sInfoFiltered": "(filtered from _MAX_ total Domains)"
+				// 		}
+				// 	});
+				// },3000); 
+			// }			
+			//alert(data);
+			this.globals.message = 'Revoke successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
+		}, 
+		(error) => 
+		{
+			$('#Delete_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
+		});	
+	}
   
 
 }

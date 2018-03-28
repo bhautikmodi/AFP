@@ -34,6 +34,8 @@ class Invitation extends CI_Controller {
 					//echo json_encode($post_Invitation);	
 				}	
 			} else {
+				
+				$post_Invitation['Code']=mt_rand(100000, 999999);
 				$result = $this->Invitation_model->add_Invitation($post_Invitation);
 				if($result) {
 					//echo json_encode($post_Invitation);	
@@ -51,7 +53,7 @@ class Invitation extends CI_Controller {
 					$this->email->from('myopeneyes3937@gmail.com','Email Test');
 					$this->email->to($post_Invitation['EmailAddress']);		
 					$this->email->subject('Invitation mail');
-					$this->email->message('sending mail recive.....');
+					$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
 					if($this->email->send())
 					{
 						echo json_encode("success");
@@ -64,7 +66,18 @@ class Invitation extends CI_Controller {
 		}
 		
 	}
-	
+	public function delete($Invitation_Id = NULL) {
+		
+		if(!empty($Invitation_Id)) {
+
+			$result = $this->Invitation_model->delete_Invitation($Invitation_Id);			
+			if($result) {
+				echo json_encode("Revoke successfully");	
+			}	
+			
+		} 
+			
+	}
 
 	
 	

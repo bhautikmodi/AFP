@@ -53,7 +53,7 @@ export class IndustrylistComponent implements OnInit {
 
 	deleteConfirm(Industry)
 	{ 
-		this.IndustryService.delete(Industry.CourseId)
+		this.IndustryService.delete(Industry.IndustryId)
 		.then((data) => 
 		{
 			let index = this.IndustryList.indexOf(Industry);

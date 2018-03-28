@@ -40,10 +40,13 @@
                   <td>{{Invitation.EmailAddress}}</td>
                   <td>{{Invitation.CreatedOn}}</td>
                   <td *ngIf="Invitation.Status=='1'">Successfully</td>
-                  <td *ngIf="Invitation.Status=='0'">Panding</td>
+                  <td *ngIf="Invitation.Status=='0'">Pending</td>
+				  <td *ngIf="Invitation.Status=='2'">Revoke success</td>
                   <td>
-                    <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" >
+                    <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0" 
+					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>
+					
                   
                   </td>
                 </tr>
@@ -59,5 +62,17 @@
     </div>
   </div>
 </div>
-
+  <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+              <p>Are You Sure You Want To Revoke This Email?</p>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="next_btn" (click)="deleteConfirm(deleteEntity)" id="yes_btn">Yes</button>
+              <button type="button" class="back_btn" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>
 

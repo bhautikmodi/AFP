@@ -42,22 +42,22 @@ export class InvitationService {
    return promise;
    }
  
-//  delete(UserInvitationId)
-//    {
-//    let promise = new Promise((resolve, reject) => {		
-//      this.http.get(this.globals.baseAPIUrl + 'Invitation/delete/' + UserInvitationId, this.globals.headerpath)
-//        .toPromise()
-//        .then(
-//          res => { // Success
-//            resolve(res.json());
-//          },
-//          msg => { // Error
-//        reject(msg);
-//          }
-//        );
-//    });		
-//    return promise;
-//    }
+ delete(UserInvitationId)
+   {
+   let promise = new Promise((resolve, reject) => {		
+     this.http.get(this.globals.baseAPIUrl + 'Invitation/delete/' + UserInvitationId, this.globals.headerpath)
+       .toPromise()
+       .then(
+         res => { // Success
+           resolve(res.json());
+         },
+         msg => { // Error
+       reject(msg);
+         }
+       );
+   });		
+   return promise;
+   }
    
   
    

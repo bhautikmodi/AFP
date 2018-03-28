@@ -1,0 +1,56 @@
+<div id="page-wrapper">
+  <div class="row">
+       <!-- page header -->
+      <div class="col-lg-12">
+          <h1 class="page-header">{{header}}Email Address</h1>
+      </div>
+      <!--end page header -->
+  </div>
+  <div class="row">
+      <div class="col-lg-12">
+          <!-- Form Elements -->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  Email Address
+    <div class="btn-group pull-right add-right">
+        <a routerLink="/invitation/list" class="btn btn-danger btn-add">
+        <i class="fa fa-chevron-left fa-fw"></i> Back
+        </a>
+    </div>
+              </div>
+              <div class="panel-body">
+                  <div class="row">
+                      <!--<div class="col-lg-12">-->
+                        <form class="form-validate"  #InvitationForm="ngForm" (ngSubmit)="addInvitation(InvitationForm)">
+                              <div class="form-group col-md-6 col-md-offset-3">
+                                  <label><span class="required">*</span>Email Address</label>
+                                  <input type="Email" placeholder="Email" class="form-control" #EmailAddress="ngModel" email 
+                                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress" name="EmailAddress" [ngClass]="{red: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>
+                                  <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+                                              
+                                              <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">
+                                                Please enter Email Address
+                                              </span>
+                                              
+                                              <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
+                                                Please input a valid Email Address.
+                                              </span>
+                                          
+                                </span> 
+                                  
+                              </div>
+          
+          <div class="clearfix"></div>
+          <div class="form-btn">
+            <button type="submit" class="btn sub-btn">Submit</button>
+            <button type="button" *ngIf="InvitationEntity.UserInvitationId==0" (click)="clearForm(InvitationForm)" class="btn res-btn">Clear</button>
+          </div>
+                          </form>
+                      </div>
+                  </div>
+              <!--</div>-->
+          </div>
+           <!-- End Form Elements -->
+      </div>
+  </div>
+</div>

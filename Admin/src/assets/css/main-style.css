@@ -67,7 +67,6 @@ padding-left: 45px;
 .sidebar-collapse {
     background-color: #11425a; height: 100%;
 }
-#side-menu{overflow-y: auto; height: 100%;}
 
  #side-menu a {
            color:#fff;
@@ -84,21 +83,24 @@ padding-left: 45px;
          .green {
             background-color:rgb(144, 236, 192);
         }
+
+		.d-blue {
+            background-color: #002049;
+        }
          .d-green {
             background-color: #799628;
         }
         .yellow {
             background-color: #F89318;
         }
-		.d-blue {
-            background-color: #002049;
-        }
-		.purple {
-			background-color: #65277D;
-		}
 		.light-blue {
 			background-color: #1AAC98;
 		}
+		.purple {
+			background-color: #65277D;
+		}
+		.dash-panel {background-color: #e8e4e4;}
+		
 
   /* No border */
 .no-boder {
@@ -107,7 +109,7 @@ padding-left: 45px;
 /* tap nvbar Section */
 
 #navbar {
-    height: 85px; /*height:63px;*/ border: none; background: url("../img/afp-pattern.png") center 135% no-repeat #e8e4e4; background-size: 28%;
+    height: 93px; /*height:63px;*/ border: none; background: url("../img/afp-pattern.png") center 160% no-repeat #FAFAFA; background-size: 28%; padding: 0 15px;
 }
 .navbar-top-links .btn-add{padding: 10px 15px; min-height:0!important; margin: 21px 0 0 0; border: none;}
 .navbar-brand {
@@ -115,7 +117,7 @@ padding-left: 45px;
 	padding: 7px 15px;
 }
 .navbar-brand img {
-    height: 72px;
+    height: 80px;
 	/*height: 45px;*/
 }
 .top-label {
@@ -147,7 +149,6 @@ html.index_admin,.index_admin body{ height:100%;}
 }
 .navbar-default {
 	border-color: #0085AD;
-	position: fixed; height: 88%;
 }
 /*media queries*/
 
@@ -198,7 +199,7 @@ html.index_admin,.index_admin body{ height:100%;}
      ul li:hover ul.dropdown-menu {opacity:1; top:15px; visibility:visible; transition-property: color, background-color; -webkit-transform: translateY(24px);-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
 }
 
-@media (min-width:1500px){ 
+/*@media (min-width:1500px){ 
 	#page-wrapper{
 		min-height: 800px!important;
 		}
@@ -223,4 +224,4 @@ html.index_admin,.index_admin body{ height:100%;}
 	.navbar-default {
 		height: 100%;
 		}
-}
+}*/

@@ -59,7 +59,9 @@ import { CountryComponent } from './country/country.component';
 import { CountrylistComponent } from './countrylist/countrylist.component';
 import { CountryService } from './services/country.service';
 import { SettingsService } from './services/settings.service';
-
+import { InvitationComponent } from './invitation/invitation.component';
+import { InvitationlistComponent } from './invitationlist/invitationlist.component';
+import { InvitationService } from './services/invitation.service';
 
 
 
@@ -96,7 +98,9 @@ import { SettingsService } from './services/settings.service';
 	UserrolelistComponent,
 	CountryComponent,
 	CountrylistComponent,
-	SettingsComponent
+	SettingsComponent,
+	InvitationComponent,
+	InvitationlistComponent
   ],
   imports: [
   BrowserModule,
@@ -304,6 +308,21 @@ import { SettingsService } from './services/settings.service';
         component : SettingsComponent,
         canActivate : [AuthGuard]
       },
+	   {
+        path : 'invitation/add',
+        component : InvitationComponent,
+        canActivate : [AuthGuard]
+      },
+      // {
+      //   path : 'invitation/edit/:id',
+      //   component : InvitationComponent,
+      //   canActivate : [AuthGuard]
+      // },
+      {
+        path : 'invitation/list',
+        component : InvitationlistComponent,
+        canActivate : [AuthGuard]
+      },
       {
         path : '**',
         redirectTo : 'dashboard'
@@ -317,15 +336,13 @@ import { SettingsService } from './services/settings.service';
   
 
 
-<<<<<<< HEAD
-=======
+
+
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService],
- //providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,UserroleService],
- 
->>>>>>> 52e70f363ebf01dbe428e497ce57839f28b4c8e8
+    UserroleService,SettingsService,InvitationService],
+
 
   bootstrap: [AppComponent]
 })

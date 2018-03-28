@@ -2054,11 +2054,22 @@ class CI_Email {
 
 		$ssl = ($this->smtp_crypto === 'ssl') ? 'ssl://' : '';
 
-		$this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
-							$this->smtp_port,
-							$errno,
-							$errstr,
-							$this->smtp_timeout);
+		// $this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
+							// $this->smtp_port,
+							// $errno,
+							// $errstr,
+							// $this->smtp_timeout);
+							
+		//PHP 5.6 & 7.0 Only Configuration
+		$context = stream_context_create(['ssl' => [
+		  //'ciphers' => 'RC4-MD5',
+		  'verify_host' => FALSE,
+		  'verify_peer_name' => FALSE,
+		  'verify_peer' => FALSE
+		]]);
+
+		$this->_smtp_connect = stream_socket_client($ssl.$this->smtp_host.':'.$this->smtp_port, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
+		//END OF PHP 5.6 & 7.0 Only Configuration
 
 		if ( ! is_resource($this->_smtp_connect))
 		{

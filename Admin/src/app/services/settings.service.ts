@@ -7,9 +7,9 @@ export class SettingsService {
 
   constructor(private http: Http, private globals: Globals) { }
 
-  add(teamsizeEntity){
+  add(teamsizeEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Settings/add', teamsizeEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Settings/addTeamSize', teamsizeEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -22,10 +22,26 @@ export class SettingsService {
 	});		
 	return promise;
   }
+
+  update_config(configEntity){ debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.post(this.globals.baseAPIUrl + 'Settings/updateConfiguration', configEntity, this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
   
   delete(TeamSizeId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Settings/delete/' + TeamSizeId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Settings/deleteTeamSize/' + TeamSizeId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -39,9 +55,9 @@ export class SettingsService {
 	return promise;
   }
   
-  getAll(){ 
+  getAll(UserId){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Settings/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Settings/getAll/' + UserId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -54,6 +70,22 @@ export class SettingsService {
 	});		
 	return promise;
   }
+
+  getTeamSizeList(){ 
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Settings/getTeamSizeList', this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
   
   // getById(TeamSizeId){
 	// let promise = new Promise((resolve, reject) => {

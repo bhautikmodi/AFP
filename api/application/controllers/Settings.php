@@ -13,7 +13,25 @@ class Settings extends CI_Controller {
 		
 	}
 	
-	public function getAll() {
+	public function getAll($userid = NULL) {
+		
+		$data="";
+
+		if(!empty($userid)) {
+
+			$data['teamsize']=$this->Settings_model->getlist_teamsize();
+			$data['noofksa']=$this->Settings_model->get_noofksa($userid);
+			$data['invitation']=$this->Settings_model->get_invitation($userid);
+			$data['remainingdays']=$this->Settings_model->get_remainingdays($userid);
+			$data['emailfrom']=$this->Settings_model->get_emailfrom($userid);
+
+		}
+		
+		echo json_encode($data);
+				
+	}
+
+	public function getTeamSizeList() {
 		
 		$data="";
 		
@@ -21,15 +39,25 @@ class Settings extends CI_Controller {
 		
 		echo json_encode($data);
 				
+	}	
+
+	public function updateConfiguration() {
+		
+		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
+
+		$result = $this->Settings_model->update_config($config_data);
+		if($result) {
+			echo json_encode($config_data);	
+		}	
+		
 	}
-	
 	
 	public function addTeamSize() {
 		
 		$post_teamsize = json_decode(trim(file_get_contents('php://input')), true);		
 
 		if ($post_teamsize) {
-			if($post_teamsize['teamsizeId'] > 0){
+			if($post_teamsize['TeamSizeId'] > 0){
 				$result = $this->Settings_model->edit_teamsize($post_teamsize);
 				if($result) {
 					echo json_encode($post_teamsize);	
@@ -53,7 +81,7 @@ class Settings extends CI_Controller {
 	// 	}
 	// }	
 	
-	public function delete($teamsize_id = NULL) {
+	public function deleteTeamSize($teamsize_id = NULL) {
 		
 		if(!empty($teamsize_id)) {
 

@@ -7,6 +7,10 @@
       </div>
       <!-- end  page header --> 
     </div>
+    <div class="alert alert-success" role="alert" *ngIf="cmsgflag">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> </button>
+      {{cmessage}}
+   </div>
     <div class="row">
       <div class="col-lg-12"> 
         <!-- Advanced Tables -->
@@ -15,16 +19,18 @@
           <div class="panel-body">
             <div class="row"> 
               <!--<div class="col-lg-12">-->
-              <form class="form-validate" method="get" role="form" action="settings.html">
-                
+                <form class="form-validate" #ksaForm="ngForm" (ngSubmit)="addNoOfKSA(ksaForm)">
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>No of KSA</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" value="20" required>
+                    <input type="text" class="form-control" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: (noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)}" required/>  
+                    <span style="color:red" *ngIf="(noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)"> 
+                      <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter No Of KSA</span>
+                    </span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" [disabled]="btn_disable1" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
@@ -32,23 +38,26 @@
               <!-- no of ksa code end --> 
               
               <!-- invitation code start -->
-              <form class="form-validate" method="get" role="form" action="settings.html">
+              <form class="form-validate" #invitationForm="ngForm" (ngSubmit)="addinvitation(invitationForm)">
                 
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>Invitation Features</label>
                   <div class="col-md-6">
                     <div class="radio_box">
-                      <input type="radio" name="status" id="role1" value="yes">
+                      <input type="radio" name="invitation" id="role1" value="1" #invitation="ngModel" [(ngModel)]="configEntity.invitation" required>
                       <label for="role1">Yes</label>
                     </div>
                     <div class="radio_box">
-                      <input type="radio" name="status" id="role2" value="no">
-                      <label for="role2">No </label>
+                      <input type="radio" name="invitation" id="role2" value="0" #invitation="ngModel" [(ngModel)]="configEntity.invitation" required>
+                      <label for="role2">No </label>                      
                     </div>
+                    <span style="color:red" *ngIf="(invitation.dirty && invitation.invalid) || (invitation.pristine && submitted2)"> 
+                      <br><span *ngIf="invitation.errors.required || (invitation.pristine && submitted2)">Please select invitation Features</span>
+                    </span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" [disabled]="btn_disable2" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
@@ -57,22 +66,44 @@
               
               <!-- remaining day code start -->
               
-              <form class="form-validate" method="get" role="form" action="settings.html">
+              <form class="form-validate" #rdaysForm="ngForm" (ngSubmit)="addRDays(rdaysForm)">
                 
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>Remaining Days</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" value="7" required>
+                    <input type="text" class="form-control" #remainingdays="ngModel" [(ngModel)]="configEntity.remainingdays" name="remainingdays" [ngClass]="{red_border: (remainingdays.dirty && remainingdays.invalid) || (remainingdays.pristine && submitted3)}" required/>  
+                    <span style="color:red" *ngIf="(remainingdays.dirty && remainingdays.invalid) || (remainingdays.pristine && submitted3)"> 
+                      <span *ngIf="remainingdays.errors.required || (remainingdays.pristine && submitted3)">Please enter Remaining Days</span>
+                    </span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" [disabled]="btn_disable3" class="btn sub-btn btn-small">Submit</button>
+                    <!--<button class="btn res-btn">Edit</button>--> 
+                  </div>
+                </div>
+              </form>              
+              <!-- remaining day code start --> 
+
+              <!-- email from start -->
+              <form class="form-validate" #fromForm="ngForm" (ngSubmit)="addEmailFrom(fromForm)">
+                
+                <!-- No of ksa code start -->
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding"><span class="required">*</span>Email From</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
+                    <span style="color:red" *ngIf="(emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)"> 
+                      <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter Email From</span>
+                    </span>
+                  </div>
+                  <div class="form-btn col-md-2 no-padding">
+                    <button type="submit" [disabled]="btn_disable4" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
               </form>
-              
-              <!-- remaining day code start --> 
+              <!-- email from end --> 
               
             </div>
           </div>
@@ -89,7 +120,10 @@
                   		<div id="example1">	
 							<div class="r-group">
 								<div class="col-md-6">
-								  <input type="text" class="form-control" required  >
+                  <input type="text" class="form-control" #TeamSize="ngModel" [(ngModel)]="teamsizeEntity.TeamSize" name="TeamSize" [ngClass]="{red_border: (TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)}" required/>  
+                  <span style="color:red" *ngIf="(TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)"> 
+                    <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter team size</span>
+                  </span>
 								</div>								
 								<div class="clearfix"></div>
 							
@@ -101,14 +135,17 @@
                 <div class="clearfix"></div>
                 <div class="form-btn">
                   <button type="submit" class="btn sub-btn">Submit</button>
-                  <button type="button" (click)="clearForm(teamsizeForm)" class="btn res-btn">Cancle</button>
+                  <button type="button"  (click)="cancleForm(teamsizeForm)" class="btn res-btn">Cancle</button>
                   <!--<button class="btn res-btn">Edit</button>--> 
                 </div>
               </form>
             </div>
           </div>
         </div>
-		  
+        <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"> </button>
+          {{globals.message}}
+       </div>
 		<div class="panel panel-default">
           <div class="panel-heading"> Team Size
             <!--<div class="btn-group pull-right add-right">
@@ -133,43 +170,7 @@
                         <td>{{teamsize.TeamSize}}</td> 
                         <td><button class="btn btn-default btn-rounded btn-sm" (click)="editteamsize(teamsize)" title="Edit"> <span class="fa fa-pencil"></span> </button>
                           <button data-type="Record" (click)="deleteteamsize(teamsize)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                      </tr>
-                  <tr class="odd gradeX">
-                    <td>1</td>
-                    <td>1-10 Employee</td>
-                    
-                    <td><button class="btn btn-default btn-rounded btn-sm" onclick="window.location.href='#'" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                  </tr>
-                  <tr class="even gradeC">
-                    <td>2</td>
-                    <td>10-50 Employee</td>
-                    
-                    <td><button class="btn btn-default btn-rounded btn-sm" onclick="window.location.href='#'" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>3</td>
-                    <td>50-100 Employee</td>
-                    
-                    <td><button class="btn btn-default btn-rounded btn-sm" onclick="window.location.href='#'" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                  </tr>
-                  <tr class="even gradeA">
-                    <td>4</td>
-                    <td>100-150 Employee</td>
-                    
-                    <td><button class="btn btn-default btn-rounded btn-sm" onclick="window.location.href='#'" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                  </tr>
-                  <tr class="odd gradeA">
-                    <td>5</td>
-                    <td>150-200 Employee</td>
-                    
-                    <td><button class="btn btn-default btn-rounded btn-sm" onclick="window.location.href='#'" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
-                  </tr>
-                  
+                      </tr>                  
                 </tbody>
               </table>
             </div>

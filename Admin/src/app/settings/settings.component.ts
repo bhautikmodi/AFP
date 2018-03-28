@@ -17,9 +17,21 @@ export class SettingsComponent implements OnInit {
   teamsizeEntity;
 	submitted;
 	btn_disable;
+	submitted1;
+	btn_disable1;
+	submitted2;
+	btn_disable2;
+	submitted3;
+	btn_disable3;
+	submitted4;
+	btn_disable4;
   header;
   teamsizeList;
-  deleteEntity;
+	deleteEntity;
+	configEntity;
+	updateEntity;
+	cmsgflag;
+	cmessage;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private SettingsService: SettingsService, private globals: Globals)
     {
@@ -27,18 +39,26 @@ export class SettingsComponent implements OnInit {
 	 }
 
   ngOnInit() {
-   this.header = 'Add';
-   this.SettingsService.getAll()
+	 this.header = 'Add';
+	 this.teamsizeEntity = {};
+	 this.teamsizeEntity.TeamSizeId = 0;
+	 this.configEntity = {};
+	 this.cmsgflag = false;
+   this.SettingsService.getAll(this.globals.authData.UserId)
 	.then((data) => 
 	{ 
-		this.teamsizeList = data;	
+		this.teamsizeList = data['teamsize'];	
+		this.configEntity.noofksa = data['noofksa']['Value'];	
+		this.configEntity.invitation = data['invitation']['Value'];	
+		this.configEntity.remainingdays = data['remainingdays']['Value'];	
+		this.configEntity.emailfrom = data['emailfrom']['Value'];	
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ teamsize per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ teamsize",
-					"sInfoFiltered": "(filtered from _MAX_ total teamsize)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 teamsize"
+          "sLengthMenu": "_MENU_ Teamsize per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Teamsize",
+					"sInfoFiltered": "(filtered from _MAX_ total Teamsize)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Teamsize"
         }
       });
     },100); 
@@ -50,11 +70,22 @@ export class SettingsComponent implements OnInit {
 	});	
   }
 
+	getTeamSizeList(){	
+		this.SettingsService.getTeamSizeList()
+		.then((data) => 
+		{ 
+			this.teamsizeList = data;	
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});	
+	}
+
 
   addTeamSize(teamsizeForm)
-	{		
-		let id = this.route.snapshot.paramMap.get('id');
-		if(id){			
+	{	
+		if(this.teamsizeEntity.TeamSizeId>0){			
 			this.teamsizeEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
 		} else {			
@@ -67,21 +98,24 @@ export class SettingsComponent implements OnInit {
 			this.SettingsService.add(this.teamsizeEntity)
 			.then((data) => 
 			{
-				//alert('success');
+				//alert('success');			
 				this.btn_disable = false;
 				this.submitted = false;
-				this.teamsizeEntity = {};
-				teamsizeForm.form.markAsPristine();
-				if(id){
+				this.header = 'Add';
+				if(this.teamsizeEntity.TeamSizeId>0){
 					this.globals.message = 'Update successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
+					//this.teamsizeList.push(data);
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
-				}		
-				//this.router.navigate(['/rating-scale/list']);
+				}
+	 			this.teamsizeEntity = {};
+	 			this.teamsizeEntity.TeamSizeId = 0;
+				teamsizeForm.form.markAsPristine();				
+				this.getTeamSizeList();	
 			}, 
 			(error) => 
 			{
@@ -90,6 +124,20 @@ export class SettingsComponent implements OnInit {
 				this.submitted = false;
 			});
 		} 		
+	}
+
+	editteamsize(teamsize){
+		this.header = 'Edit';
+		this.submitted = false;
+		this.teamsizeEntity = teamsize;
+	}
+
+	cancleForm(teamsizeForm){
+	 this.header = 'Add';
+	 this.teamsizeEntity = {};
+	 this.teamsizeEntity.TeamSizeId = 0;
+	 this.submitted = false;
+	 teamsizeForm.form.markAsPristine();
 	}
 	
   deleteteamsize(teamsize)
@@ -122,6 +170,119 @@ export class SettingsComponent implements OnInit {
 				this.globals.msgflag = true;
 			}	
 		});		
+	}	 
+
+	addNoOfKSA(ksaForm)
+	{		
+		this.updateEntity = {};
+		this.updateEntity.Key = 'NoOfKSA';
+		this.updateEntity.Value = this.configEntity.noofksa;
+		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+		this.submitted1 = true;
+		if(ksaForm.valid){
+			this.btn_disable1 = true;
+			this.SettingsService.update_config(this.updateEntity)
+			.then((data) => 
+			{		
+				this.btn_disable1 = false;
+				this.submitted1 = false;
+	 			this.updateEntity = {};
+				 ksaForm.form.markAsPristine();				 
+				 this.cmsgflag = true;
+				 this.cmessage = 'No Of KSA update successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable1 = false;
+				this.submitted1 = false;
+			});
+		} 		
 	}
+
+	addinvitation(invitationForm)
+	{		
+		this.updateEntity = {};
+		this.updateEntity.Key = 'Invitation';
+		this.updateEntity.Value = this.configEntity.invitation;
+		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+		this.submitted2 = true;
+		if(invitationForm.valid){
+			this.btn_disable2 = true;
+			this.SettingsService.update_config(this.updateEntity)
+			.then((data) => 
+			{		
+				this.btn_disable2 = false;
+				this.submitted2 = false;
+	 			this.updateEntity = {};
+				 invitationForm.form.markAsPristine();
+				 this.cmsgflag = true;
+				 this.cmessage = 'Invitation Features update successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable2 = false;
+				this.submitted2 = false;
+			});
+		} 		
+	}
+
+	addRDays(rdaysForm)
+	{		
+		this.updateEntity = {};
+		this.updateEntity.Key = 'RemainingDays';
+		this.updateEntity.Value = this.configEntity.remainingdays;
+		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+		this.submitted3 = true;
+		if(rdaysForm.valid){
+			this.btn_disable3 = true;
+			this.SettingsService.update_config(this.updateEntity)
+			.then((data) => 
+			{		
+				this.btn_disable3 = false;
+				this.submitted3 = false;
+	 			this.updateEntity = {};
+				 rdaysForm.form.markAsPristine();
+				 this.cmsgflag = true;
+				 this.cmessage = 'Remaining Days update successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable3 = false;
+				this.submitted3 = false;
+			});
+		} 		
+	}
+
+	addEmailFrom(fromForm)
+	{		
+		this.updateEntity = {};
+		this.updateEntity.Key = 'EmailFrom';
+		this.updateEntity.Value = this.configEntity.emailfrom;
+		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+		this.submitted4 = true;
+		if(fromForm.valid){
+			this.btn_disable4 = true;
+			this.SettingsService.update_config(this.updateEntity)
+			.then((data) => 
+			{		
+				this.btn_disable4 = false;
+				this.submitted4 = false;
+	 			this.updateEntity = {};
+				 fromForm.form.markAsPristine();
+				 this.cmsgflag = true;
+				 this.cmessage = 'Email From update successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable4 = false;
+				this.submitted4 = false;
+			});
+		} 		
+	}
+
 
 }

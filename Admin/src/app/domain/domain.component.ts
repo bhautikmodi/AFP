@@ -94,7 +94,7 @@ export class DomainComponent implements OnInit
 	{
 		this.domainEntity = {};	
 		this.domainEntity.DomainId = 0;
-    this.domainEntity.IsActive = '1';	
+    	this.domainEntity.IsActive = '1';	
 		this.submitted = false;
 		domainForm.form.markAsPristine();
 	}	

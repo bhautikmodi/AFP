@@ -39,6 +39,146 @@ class Settings_model extends CI_Model
 		
 	}
 	
+	public function get_noofksa($userid = NULL){
+
+		if($userid) {
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','NoOfKSA');
+			$result = $this->db->get('tblmstconfiguration');			
+
+			if($result->num_rows()==0){
+				$data = array(
+					'Key' => 'NoOfKSA',
+					'Value' => '50',
+					'IsActive' => 1,
+					'CreatedBy' => $userid,
+					'UpdatedBy' => $userid,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);			
+				$res = $this->db->insert('tblmstconfiguration',$data);
+
+				$this->db->select('ConfigurationId,Key,Value');
+				$this->db->where('Key','NoOfKSA');
+				$result = $this->db->get('tblmstconfiguration');
+
+			} 
+			$res = array();
+			foreach($result->result() as $row) {
+				$res = $row;
+			}
+			return $res;
+
+		} else {
+			return false;
+		}
+	}
+
+	public function get_invitation($userid = NULL){
+		if($userid) {
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','Invitation');
+			$result = $this->db->get('tblmstconfiguration');			
+
+			if($result->num_rows()==0){
+				$data = array(
+					'Key' => 'Invitation',
+					'Value' => 1,
+					'IsActive' => 1,
+					'CreatedBy' => $userid,
+					'UpdatedBy' => $userid,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);			
+				$res = $this->db->insert('tblmstconfiguration',$data);
+
+				$this->db->select('ConfigurationId,Key,Value');
+				$this->db->where('Key','Invitation');
+				$result = $this->db->get('tblmstconfiguration');
+
+			} 
+			$res = array();
+			foreach($result->result() as $row) {
+				$res = $row;
+			}
+			return $res;
+
+		} else {
+			return false;
+		}
+	}
+
+	public function get_remainingdays($userid = NULL){
+		if($userid) {
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','RemainingDays');
+			$result = $this->db->get('tblmstconfiguration');			
+
+			if($result->num_rows()==0){
+				$data = array(
+					'Key' => 'RemainingDays',
+					'Value' => '7',
+					'IsActive' => 1,
+					'CreatedBy' => $userid,
+					'UpdatedBy' => $userid,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);			
+				$res = $this->db->insert('tblmstconfiguration',$data);
+
+				$this->db->select('ConfigurationId,Key,Value');
+				$this->db->where('Key','RemainingDays');
+				$result = $this->db->get('tblmstconfiguration');
+
+			} 
+			$res = array();
+			foreach($result->result() as $row) {
+				$res = $row;
+			}
+			return $res;
+
+		} else {
+			return false;
+		}
+		// $this->db->select('ConfigurationId,Key,Value');
+		// $this->db->where('Key','RemainingDays');
+		// $result = $this->db->get('tblmstconfiguration');		
+		// $res = array();
+		// foreach($result->result() as $row) {
+		// 	$res = $row;
+		// }
+		// return $res;
+	}
+
+	public function get_emailfrom($userid = NULL){
+		if($userid) {
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','EmailFrom');
+			$result = $this->db->get('tblmstconfiguration');			
+
+			if($result->num_rows()==0){
+				$data = array(
+					'Key' => 'EmailFrom',
+					'Value' => '',
+					'IsActive' => 1,
+					'CreatedBy' => $userid,
+					'UpdatedBy' => $userid,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);			
+				$res = $this->db->insert('tblmstconfiguration',$data);
+
+				$this->db->select('ConfigurationId,Key,Value');
+				$this->db->where('Key','EmailFrom');
+				$result = $this->db->get('tblmstconfiguration');
+
+			} 
+			$res = array();
+			foreach($result->result() as $row) {
+				$res = $row;
+			}
+			return $res;
+
+		} else {
+			return false;
+		}
+	}
 	
 	// public function get_teamsizedata($teamsize_id = NULL) {
 		
@@ -59,6 +199,30 @@ class Settings_model extends CI_Model
 	// 	}
 	// }
 	
+	public function update_config($config_data) {
+	
+		if($config_data) {
+
+			$data = array(
+				'Value' => $config_data['Value'],
+				'UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			
+			$this->db->where('Key',$config_data['Key']);
+			$res = $this->db->update('tblmstconfiguration',$data);
+			
+			if($res) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
+	
+	}
+
 	
 	public function edit_teamsize($post_teamsize) {
 	

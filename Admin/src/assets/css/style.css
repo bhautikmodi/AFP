@@ -211,6 +211,7 @@ textarea{height:100px!important; resize:none; overflow-x:hidden;}
 table th {
     background: #0085AD !important;
     color: #fff;
+	font-weight: 400;
 }
 table.dataTable thead .sorting::after {
     color: rgba(50, 50, 50, 0.9)!important;
@@ -533,7 +534,7 @@ table.dataTable thead .sorting:after {
 .btn.sub-btn:active {background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;}
 
 .res-btn {
-	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #67b7c7 53px; border-width: 0 53px 0 0; border-radius: 0px;
+	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
 
 .res-btn:hover, .res-btn:focus {
@@ -542,7 +543,7 @@ table.dataTable thead .sorting:after {
 
 .res-btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; }
 
-.btn.res-btn:active {background-image: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;}
+.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;}
 
 .panel-footer {
 	background-color: #e8e4e4;
@@ -705,7 +706,7 @@ select option{
 
 .navbar-static-side .sidebar-collapse::-webkit-scrollbar
 {
-	width: 10px;
+	width: 5px;
 	background-color: #F5F5F5;
 }
 
@@ -717,7 +718,66 @@ select option{
 											  transparent 25%,
 											  transparent 50%,
 											  rgba(255, 255, 255, .2) 50%,
-											  rgba(255, 255, 255, .2) 75%,
+											  rgba(2	55, 255, 255, .2) 75%,
 											  transparent 75%,
 											  transparent)*/
+}
+
+.extra-info {position: relative; top: 30px;}
+
+.btn-email button {display: block; margin: 10px;}
+
+.nicEdit-main {font-family: "Gotham-book"; color: #555;outline: 0;}
+
+.contact span{display:none;}
+
+.cke_resizer_ltr {display: none;}
+
+/*.h-card {
+	    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+	color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+	border: 1px solid transparent;
+}*/
+
+#tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+#tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

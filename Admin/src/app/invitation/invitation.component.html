@@ -6,6 +6,10 @@
       </div>
       <!--end page header -->
   </div>
+  <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+  {{globals.message}}
+</div>
   <div class="row">
       <div class="col-lg-12">
           <!-- Form Elements -->

@@ -80,6 +80,7 @@ export class DomainListComponent implements OnInit {
 			this.globals.message = 'Delete successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
+			
 		}, 
 		(error) => 
 		{

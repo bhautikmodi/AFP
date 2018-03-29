@@ -38,14 +38,17 @@
                <tr class="odd gradeX" *ngFor="let Invitation of InvitationList;let i = index">
                   <td>{{i+1}}</td>
                   <td>{{Invitation.EmailAddress}}</td>
-                  <td>{{Invitation.CreatedOn}}</td>
+                  <td>{{Invitation.CreatedOn | date : 'MM/dd/yyyy'}}</td>
                   <td *ngIf="Invitation.Status=='1'">Successfully</td>
                   <td *ngIf="Invitation.Status=='0'">Pending</td>
-				  <td *ngIf="Invitation.Status=='2'">Revoke success</td>
+				  <td *ngIf="Invitation.Status=='2'">Revoke Success</td>
                   <td>
                     <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0" 
 					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>
+					  <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status==0||Invitation.Status==1" 
+					(click)="ReInviteInvitation(Invitation)" >
+                    Re-Invite</button>
 					
                   
                   </td>
@@ -76,3 +79,16 @@
   </div>
 </div>
 
+  <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="ReInvite_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+              <p>Are You Sure You Want To Send This Email?</p>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="next_btn" (click)="ReInviteConfirm(ReInviteEntity)" id="yes_btn">Yes</button>
+              <button type="button" class="back_btn" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+</div>

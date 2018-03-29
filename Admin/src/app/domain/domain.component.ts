@@ -74,10 +74,13 @@ export class DomainComponent implements OnInit
 					this.globals.message = 'Update successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
+					//setTimeout(()=>{ this.globals.msgflag = false; },5000);
+					
 				} else {
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
+					//setTimeout(()=>{ this.globals.msgflag = false; },5000);
 				}				
 				this.router.navigate(['/domain/list']);
 			}, 

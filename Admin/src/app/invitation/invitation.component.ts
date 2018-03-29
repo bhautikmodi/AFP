@@ -66,7 +66,7 @@ export class InvitationComponent implements OnInit {
 			{debugger
 				if(data=='email duplicate')
 				{
-					this.globals.message = 'Email Duplicate';
+						this.globals.message = 'Email Duplicate';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 					//this.router.navigate(['/invitation/add']);

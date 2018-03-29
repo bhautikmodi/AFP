@@ -105,7 +105,7 @@ type;
 		.then((data) => 
 		{debugger
 			let index = this.InvitationList.indexOf(Invitation);
-	
+			
 			this.InvitationList[index].Status =0;
 			this.InvitationList[index].Code ='';
 			$('#ReInvite_Modal').modal('hide');

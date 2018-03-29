@@ -211,6 +211,7 @@ textarea{height:100px!important; resize:none; overflow-x:hidden;}
 table th {
     background: #0085AD !important;
     color: #fff;
+	font-weight: 400;
 }
 table.dataTable thead .sorting::after {
     color: rgba(50, 50, 50, 0.9)!important;
@@ -705,7 +706,7 @@ select option{
 
 .navbar-static-side .sidebar-collapse::-webkit-scrollbar
 {
-	width: 10px;
+	width: 5px;
 	background-color: #F5F5F5;
 }
 
@@ -717,7 +718,15 @@ select option{
 											  transparent 25%,
 											  transparent 50%,
 											  rgba(255, 255, 255, .2) 50%,
-											  rgba(255, 255, 255, .2) 75%,
+											  rgba(2	55, 255, 255, .2) 75%,
 											  transparent 75%,
 											  transparent)*/
 }
+
+.extra-info {position: relative; top: 30px;}
+
+.btn-email button {display: block; margin: 10px;}
+
+.nicEdit-main {font-family: "Gotham-book"; color: #555;outline: 0;}
+
+.contact span{display:none;}

@@ -16,6 +16,7 @@ export class InvitationComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
+	type;
   constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
 
@@ -62,22 +63,32 @@ export class InvitationComponent implements OnInit {
 			this.btn_disable = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
-			{
-				//alert('success');
-				this.btn_disable = false;
-				this.submitted = false;
-				this.InvitationEntity = {};
-				InvitationForm.form.markAsPristine();
-				if(id){
-					this.globals.message = 'Update successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				} else {
-					this.globals.message = 'Add successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				}			
-				this.router.navigate(['/invitation/list']);
+			{debugger
+				if(data=='email duplicate')
+				{
+					this.globals.message = 'Email Duplicate';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+					//this.router.navigate(['/invitation/add']);
+				}else
+				{
+						//alert('success');
+					this.btn_disable = false;
+					this.submitted = false;
+					this.InvitationEntity = {};
+					InvitationForm.form.markAsPristine();
+					if(id){
+						this.globals.message = 'Update successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+					} else {
+						this.globals.message = 'Email successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+					}			
+					this.router.navigate(['/invitation/list']);
+				}
+				
 			}, 
 			(error) => 
 			{

@@ -61,7 +61,10 @@ class Invitation extends CI_Controller {
 					{
 						echo json_encode("notsend");
 					}
-				}	
+				}	else{
+					
+					echo json_encode("email duplicate");
+				}
 			}							
 		}
 		
@@ -73,6 +76,42 @@ class Invitation extends CI_Controller {
 			$result = $this->Invitation_model->delete_Invitation($Invitation_Id);			
 			if($result) {
 				echo json_encode("Revoke successfully");	
+			}	
+			
+		} 
+			
+	}
+	public function ReInvite() {
+		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
+		if(!empty($post_Invitation)) {
+	
+			$post_Invitation['Code']=mt_rand(100000, 999999);
+			$result = $this->Invitation_model->ReInvite_Invitation($post_Invitation);			
+			if($result) {
+				$config['protocol']='smtp';
+					$config['smtp_host']='ssl://smtp.googlemail.com';
+					$config['smtp_port']='465';
+					$config['smtp_user']='myopeneyes3937@gmail.com';
+					$config['smtp_pass']='W3lc0m3@2018';
+					$config['charset']='utf-8';
+					$config['newline']="\r\n";
+					$config['mailtype'] = 'html';	
+										
+					$this->email->initialize($config);
+
+					$this->email->from('myopeneyes3937@gmail.com','Email Test');
+					$this->email->to($post_Invitation['EmailAddress']);		
+					$this->email->subject('Invitation mail');
+					$this->email->message('change mail recive.....'.$post_Invitation['Code']);
+					if($this->email->send())
+					{
+						
+						echo json_encode("success");
+					}else
+					{
+						echo json_encode("error");
+					}
+					
 			}	
 			
 		} 

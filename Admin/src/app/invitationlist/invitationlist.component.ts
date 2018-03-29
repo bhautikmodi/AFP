@@ -14,10 +14,11 @@ declare var $: any;
 })
 export class InvitationlistComponent implements OnInit {
 	InvitationList;
+	ReInviteEntity;
 	deleteEntity;
 	msgflag;
 	message;
-
+type;
   constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
@@ -58,8 +59,10 @@ export class InvitationlistComponent implements OnInit {
 		.then((data) => 
 		{
 			let index = this.InvitationList.indexOf(Invitation);
+			this.InvitationList[index].Code ='';
 			this.InvitationList[index].Status =2;
 			this.InvitationList[index].code = '';
+			//this.InvitationList[index].Status =0;
 			$('#Delete_Modal').modal('hide');
 			// if (index != -1) {
 				// this.InvitationList.splice(index, 1);
@@ -89,6 +92,50 @@ export class InvitationlistComponent implements OnInit {
 			}	
 		});	
 	}
-  
+	
+  ReInviteInvitation(Invitation)
+	{ 
+		this.ReInviteEntity =  Invitation;
+		$('#ReInvite_Modal').modal('show');					
+	}
+	
+	ReInviteConfirm(Invitation)
+	{ debugger
+		this.InvitationService.ReInvite(Invitation)
+		.then((data) => 
+		{debugger
+			let index = this.InvitationList.indexOf(Invitation);
+	
+			this.InvitationList[index].Status =0;
+			this.InvitationList[index].Code ='';
+			$('#ReInvite_Modal').modal('hide');
+			// if (index != -1) {
+				// this.InvitationList.splice(index, 1);
+				//this.router.navigate(['/domain/list']);
+				// setTimeout(function(){
+				// 	$('#dataTables-example').dataTable( {
+				// 		"oLanguage": {
+				// 			"sLengthMenu": "_MENU_ Domains per Page",
+				// 			"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domains",
+				// 			"sInfoFiltered": "(filtered from _MAX_ total Domains)"
+				// 		}
+				// 	});
+				// },3000); 
+			// }			
+			//alert(data);
+			this.globals.message = 'send successfully';
+			this.globals.type = 'success';
+			this.globals.msgflag = true;
+		}, 
+		(error) => 
+		{
+			$('#ReInvite_Modal').modal('hide');
+			if(error.text){
+				this.globals.message = "You can't send this Email.";
+				this.globals.type = 'danger';
+				this.globals.msgflag = true;
+			}	
+		});	
+	}
 
 }

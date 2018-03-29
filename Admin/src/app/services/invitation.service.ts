@@ -59,6 +59,22 @@ export class InvitationService {
    return promise;
    }
    
+    ReInvite(UserInvitationId)
+   {debugger
+   let promise = new Promise((resolve, reject) => {		
+     this.http.post(this.globals.baseAPIUrl + 'Invitation/ReInvite/' ,UserInvitationId, this.globals.headerpath)
+       .toPromise()
+       .then(
+         res => { // Success
+           resolve(res.json());
+         },
+         msg => { // Error
+       reject(msg);
+         }
+       );
+   });		
+   return promise;
+   }
   
    
   //  getById(UserInvitationId)

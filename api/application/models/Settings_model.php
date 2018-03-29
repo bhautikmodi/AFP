@@ -26,6 +26,39 @@ class Settings_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function addRemainigDays($post_rdays) {
+	
+		if($post_rdays) {			
+			//$this->db->where('TeamSizeId',$teamsize_id);
+			//$result = $this->db->delete('tblMSTReminderDays');
+			$result = $this->db->truncate('tblMSTReminderDays');
+			if($result){
+				foreach($post_rdays as $days) {
+
+					$rdays_data = array(
+						'Day' => $days['Day'],
+						'CreatedBy' => $days['CreatedBy'],
+						'UpdatedBy' => $days['UpdatedBy'],
+						'UpdatedOn' => date('y-m-d H:i:s'),
+					);
+					
+					$res = $this->db->insert('tblMSTReminderDays',$rdays_data);
+				}
+				if($res) {
+					return true;
+				} else {
+					return false;
+				}
+		
+			} else {
+				return false;
+			}				
+			
+		} else {
+			return false;
+		}
+	}
 	
 	public function getlist_teamsize() {
 	
@@ -106,45 +139,14 @@ class Settings_model extends CI_Model
 		}
 	}
 
-	public function get_remainingdays($userid = NULL){
-		if($userid) {
-			$this->db->select('ConfigurationId,Key,Value');
-			$this->db->where('Key','RemainingDays');
-			$result = $this->db->get('tblmstconfiguration');			
-
-			if($result->num_rows()==0){
-				$data = array(
-					'Key' => 'RemainingDays',
-					'Value' => '7',
-					'IsActive' => 1,
-					'CreatedBy' => $userid,
-					'UpdatedBy' => $userid,
-					'UpdatedOn' => date('y-m-d H:i:s'),
-				);			
-				$res = $this->db->insert('tblmstconfiguration',$data);
-
-				$this->db->select('ConfigurationId,Key,Value');
-				$this->db->where('Key','RemainingDays');
-				$result = $this->db->get('tblmstconfiguration');
-
-			} 
-			$res = array();
-			foreach($result->result() as $row) {
-				$res = $row;
-			}
-			return $res;
-
-		} else {
-			return false;
+	public function get_remainingdays(){
+		$this->db->select('Day,CreatedBy,UpdatedBy');
+		$result = $this->db->get('tblMSTReminderDays');		
+		$res = array();
+		if($result->result()) {
+			$res = $result->result();
 		}
-		// $this->db->select('ConfigurationId,Key,Value');
-		// $this->db->where('Key','RemainingDays');
-		// $result = $this->db->get('tblmstconfiguration');		
-		// $res = array();
-		// foreach($result->result() as $row) {
-		// 	$res = $row;
-		// }
-		// return $res;
+		return $res;
 	}
 
 	public function get_emailfrom($userid = NULL){

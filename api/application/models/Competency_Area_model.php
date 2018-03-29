@@ -148,7 +148,7 @@ class Competency_Area_model extends CI_Model
 	
 	public function getDomainList() {
 	
-		$this->db->select('DomainId,Name');
+		$this->db->select('DomainId,Name,IsActive');
 		//$this->db->where('IsActive',1);
 		$result = $this->db->get('tblmstdomain');
 		

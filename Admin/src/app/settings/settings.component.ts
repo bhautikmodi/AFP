@@ -25,13 +25,14 @@ export class SettingsComponent implements OnInit {
 	btn_disable3;
 	submitted4;
 	btn_disable4;
-  header;
-  teamsizeList;
+  	header;
+  	teamsizeList;
 	deleteEntity;
 	configEntity;
 	updateEntity;
 	cmsgflag;
 	cmessage;
+	reminderDaysList;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private SettingsService: SettingsService, private globals: Globals)
     {
@@ -39,6 +40,11 @@ export class SettingsComponent implements OnInit {
 	 }
 
   ngOnInit() {
+
+	var item = { 'Day': '', 'CreatedBy': this.globals.authData.UserId, 'UpdatedBy':this.globals.authData.UserId};
+    this.reminderDaysList = [];
+    this.reminderDaysList.push(item);
+	this.submitted3 = false;
 	 this.header = 'Add';
 	 this.teamsizeEntity = {};
 	 this.teamsizeEntity.TeamSizeId = 0;
@@ -50,7 +56,7 @@ export class SettingsComponent implements OnInit {
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
-		this.configEntity.remainingdays = data['remainingdays']['Value'];	
+		this.reminderDaysList = data['remainingdays'];	
 		this.configEntity.emailfrom = data['emailfrom']['Value'];	
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -68,6 +74,18 @@ export class SettingsComponent implements OnInit {
 	{
 		alert('error');
 	});	
+  }
+
+  AddNewRDays(index){ debugger
+	var item = { 'Day': '', 'CreatedBy': this.globals.authData.UserId, 'UpdatedBy':this.globals.authData.UserId};
+	if (this.reminderDaysList.length <= index + 1) {
+		this.reminderDaysList.splice(index + 1, 0, item);
+	}
+  }
+
+  DeleteRDays(item){ debugger
+	var index = this.reminderDaysList.indexOf(item);	
+	this.reminderDaysList.splice(index, 1);		
   }
 
 	getTeamSizeList(){	
@@ -189,7 +207,7 @@ export class SettingsComponent implements OnInit {
 	 			this.updateEntity = {};
 				 ksaForm.form.markAsPristine();				 
 				 this.cmsgflag = true;
-				 this.cmessage = 'No Of KSA update successfully';
+				 this.cmessage = 'No of KSA update successfully';
 			}, 
 			(error) => 
 			{
@@ -229,31 +247,49 @@ export class SettingsComponent implements OnInit {
 	}
 
 	addRDays(rdaysForm)
-	{		
-		this.updateEntity = {};
-		this.updateEntity.Key = 'RemainingDays';
-		this.updateEntity.Value = this.configEntity.remainingdays;
-		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+	{		debugger
 		this.submitted3 = true;
 		if(rdaysForm.valid){
 			this.btn_disable3 = true;
-			this.SettingsService.update_config(this.updateEntity)
-			.then((data) => 
-			{		
+			this.SettingsService.addRemainigDays(this.reminderDaysList)
+			.then((data) =>
+			{
 				this.btn_disable3 = false;
 				this.submitted3 = false;
-	 			this.updateEntity = {};
-				 rdaysForm.form.markAsPristine();
-				 this.cmsgflag = true;
-				 this.cmessage = 'Remaining Days update successfully';
-			}, 
-			(error) => 
+				this.cmsgflag = true;
+				this.cmessage = 'Remaining Days update successfully';
+			},
+			(error) =>
 			{
 				alert('error');
 				this.btn_disable3 = false;
 				this.submitted3 = false;
 			});
-		} 		
+		}
+		// this.updateEntity = {};
+		// this.updateEntity.Key = 'RemainingDays';
+		// this.updateEntity.Value = this.configEntity.remainingdays;
+		// this.updateEntity.UpdatedBy = this.globals.authData.UserId;
+		// this.submitted3 = true;
+		// if(rdaysForm.valid){
+		// 	this.btn_disable3 = true;
+		// 	this.SettingsService.update_config(this.updateEntity)
+		// 	.then((data) => 
+		// 	{		
+		// 		this.btn_disable3 = false;
+		// 		this.submitted3 = false;
+	 	// 		this.updateEntity = {};
+		// 		 rdaysForm.form.markAsPristine();
+		// 		 this.cmsgflag = true;
+		// 		 this.cmessage = 'Remaining Days update successfully';
+		// 	}, 
+		// 	(error) => 
+		// 	{
+		// 		alert('error');
+		// 		this.btn_disable3 = false;
+		// 		this.submitted3 = false;
+		// 	});
+		// } 		
 	}
 
 	addEmailFrom(fromForm)

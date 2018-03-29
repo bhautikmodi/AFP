@@ -36,7 +36,10 @@
                                     <label><span class="required">*</span>Domain</label>
                                     <select class="form-control" #DomainId="ngModel" [(ngModel)]="areaEntity.DomainId" name="DomainId" [ngClass]="{red_border: (DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)}" required>
                                         <option value="" ngSelected='areaEntity.DomainId==""'>Select</option>
-                                        <option *ngFor="let domain of domainList" value="{{domain.DomainId}}" ngSelected="areaEntity.DomainId==domain.DomainId">{{domain.Name}}</option>
+                                        <ng-container *ngFor="let domain of domainList">
+                                                <!-- <option *ngFor="let domain of domainList" value="{{domain.DomainId}}" ngSelected="areaEntity.DomainId==domain.DomainId">{{domain.Name}}</option> -->
+                                            <option *ngIf="(domain.IsActive==1 && areaEntity.CAreaId==0)||((domain.IsActive==1 || areaEntity.DomainId==domain.DomainId) && areaEntity.CAreaId>0)" value="{{domain.DomainId}}" ngSelected="areaEntity.DomainId==domain.DomainId">{{domain.Name}}</option>
+                                        </ng-container>                                        
                                     </select>
                                     <span style="color:red" *ngIf="(DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)"> 
                                         <span *ngIf="DomainId.errors.required || (DomainId.pristine && submitted)">Please select domain</span>
@@ -46,7 +49,9 @@
                                   <div class="clearfix"></div>
                                     <div class="form-group col-md-12">
                                         <label><span class="required">*</span>Description</label>
-                                        <textarea class="form-control" style="width: 1007px;" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description"></textarea>
+                                        <!-- <textarea class="form-control" style="width: 1007px;" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description"></textarea>
+                                        <br> -->
+                                        <textarea class="form-control" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description"	rows="10" cols="60" contenteditable="true"></textarea>
                                         <!-- <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
                                             <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
                                         </span> -->

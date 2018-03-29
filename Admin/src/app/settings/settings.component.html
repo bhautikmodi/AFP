@@ -36,6 +36,26 @@
                 </div>
               </form>
               <!-- no of ksa code end --> 
+
+              <!-- email from start -->
+              <form class="form-validate" #fromForm="ngForm" (ngSubmit)="addEmailFrom(fromForm)">
+                
+                  <!-- No of ksa code start -->
+                  <div class="form-group col-md-12">
+                    <label class="col-md-2 small-padding"><span class="required">*</span>Email From</label>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
+                      <span style="color:red" *ngIf="(emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)"> 
+                        <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter Email From</span>
+                      </span>
+                    </div>
+                    <div class="form-btn col-md-2 no-padding">
+                      <button type="submit" [disabled]="btn_disable4" class="btn sub-btn btn-small">Submit</button>
+                      <!--<button class="btn res-btn">Edit</button>--> 
+                    </div>
+                  </div>
+                </form>
+                <!-- email from end --> 
               
               <!-- invitation code start -->
               <form class="form-validate" #invitationForm="ngForm" (ngSubmit)="addinvitation(invitationForm)">
@@ -72,11 +92,26 @@
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>Remaining Days</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" #remainingdays="ngModel" [(ngModel)]="configEntity.remainingdays" name="remainingdays" [ngClass]="{red_border: (remainingdays.dirty && remainingdays.invalid) || (remainingdays.pristine && submitted3)}" required/>  
-                    <span style="color:red" *ngIf="(remainingdays.dirty && remainingdays.invalid) || (remainingdays.pristine && submitted3)"> 
-                      <span *ngIf="remainingdays.errors.required || (remainingdays.pristine && submitted3)">Please enter Remaining Days</span>
-                    </span>
+                      <span style="color:red" *ngIf="rdaysForm.invalid && submitted3">Please enter a valid Days</span>
+                    <div class="row r-group" *ngFor="let days of reminderDaysList; let i = index; let last = last;">
+                  <div class="col-md-8">
+                      <input type="text" class="form-control" pattern="[0-9]{1,3}" #Day="ngModel" [(ngModel)]="reminderDaysList[i].Day" name="Day{{i}}" required/>  
+                    <!-- <input type="text" class="form-control" #remainingdays="ngModel" [(ngModel)]="configEntity.remainingdays" name="remainingdays" [ngClass]="{red_border: (remainingdays.dirty && remainingdays.invalid) || (remainingdays.pristine && submitted3)}" required/> -->
+                    <!-- <span style="color:red" *ngIf="(Day.dirty && Day.invalid) || (Day.pristine && submitted3)"> 
+                        <span *ngIf="Day.errors && Day.errors.pattern">Please enter a valid Day</span>
+                      <span *ngIf="Day.errors.required || (Day.pristine && submitted3)">Please enter Remaining Days</span>
+                    </span>  -->
                   </div>
+                  <div class="col-md-4 pull-right">
+                      <button type="button" (click)="DeleteRDays(days)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm" title="Delete">
+                          <span class="fa fa-times"></span>
+                        </button>
+                    <button type="button" (click)="AddNewRDays(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm" title="Add">
+                      <span class="fa fa-plus"></span>
+                    </button>                    
+                  </div>
+                </div>
+                </div>
                   <div class="form-btn col-md-2 no-padding">
                     <button type="submit" [disabled]="btn_disable3" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
@@ -85,25 +120,7 @@
               </form>              
               <!-- remaining day code start --> 
 
-              <!-- email from start -->
-              <form class="form-validate" #fromForm="ngForm" (ngSubmit)="addEmailFrom(fromForm)">
-                
-                <!-- No of ksa code start -->
-                <div class="form-group col-md-12">
-                  <label class="col-md-2 small-padding"><span class="required">*</span>Email From</label>
-                  <div class="col-md-6">
-                    <input type="text" class="form-control" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
-                    <span style="color:red" *ngIf="(emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)"> 
-                      <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter Email From</span>
-                    </span>
-                  </div>
-                  <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" [disabled]="btn_disable4" class="btn sub-btn btn-small">Submit</button>
-                    <!--<button class="btn res-btn">Edit</button>--> 
-                  </div>
-                </div>
-              </form>
-              <!-- email from end --> 
+              
               
             </div>
           </div>

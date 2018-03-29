@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CompetencyAreaService } from '../services/competency-area.service';
 import { Globals } from '.././globals';
 declare var $: any;
+declare var CKEDITOR: any;
 declare var nicEditors,nicEditor: any;
 
 @Component({
@@ -30,7 +31,7 @@ export class CompetencyAreaComponent implements OnInit
   ngOnInit() 
   {
 	this.des_valid = false;
-	new nicEditor({fullPanel: true, maxHeight: 200}).panelInstance('Description');
+	CKEDITOR.replace( 'Description' );
 	this.areaEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	this.globals.msgflag = false;
@@ -47,9 +48,9 @@ export class CompetencyAreaComponent implements OnInit
 		this.header = 'Edit';
 		this.CompetencyAreaService.getById(id)
 		.then((data) => 
-		{
+		{ debugger
 			this.areaEntity = data;
-			nicEditors.findEditor('Description').setContent(this.areaEntity.Description);
+			CKEDITOR.instances.Description.setData(this.areaEntity.Description);	
 		}, 
 		(error) => 
 		{
@@ -60,26 +61,25 @@ export class CompetencyAreaComponent implements OnInit
     	this.areaEntity = {};
     	this.areaEntity.CAreaId = 0;
 		this.areaEntity.IsActive = '1';
-		this.areaEntity.DomainId = '';
-		nicEditors.findEditor('Description').setContent('');	
+		this.areaEntity.DomainId = '';	
 	}
 	
-	// $(".nicEdit-main").keyup(function () { 
-	// 	let Description = nicEditors.findEditor('Description').getContent();
-	// 	//alert(Description);
-	// 	if(Description!=""){
+	// CKEDITOR.instances.Description.on('change', function() { 		
+	// 	var desc = CKEDITOR.instances.Description.getData();
+	// 	alert(desc);
+	// 	if(desc!=""){
 	// 		this.des_valid = false;
 	// 	} else {
 	// 		this.des_valid = true;
 	// 	}
-	// 	alert(this.des_valid);
-    // });	
+	// });
+
   } 
 
 	
 	addArea(areaForm)
-	{	
-		this.areaEntity.Description = nicEditors.findEditor('Description').getContent();	
+	{	debugger
+		this.areaEntity.Description = CKEDITOR.instances.Description.getData();	
 		if(this.areaEntity.Description!=""){
 			this.des_valid = false;
 		} else {
@@ -95,7 +95,6 @@ export class CompetencyAreaComponent implements OnInit
 			this.submitted = true;
 		}
 		if(areaForm.valid && this.des_valid==false){
-			//this.areaEntity.Description = nicEditors.findEditor('Description').getContent();
 			this.btn_disable = true;
 			this.CompetencyAreaService.add(this.areaEntity)
 			.then((data) => 
@@ -133,8 +132,8 @@ export class CompetencyAreaComponent implements OnInit
 		this.areaEntity.DomainId = '';
 		this.submitted = false;
 		this.des_valid = false;
+		CKEDITOR.instances.Description.setData('');	
 		areaForm.form.markAsPristine();
-		nicEditors.findEditor('Description').setContent('');
 	}	
 
 	

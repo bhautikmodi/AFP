@@ -64,11 +64,10 @@
      <li id="inner_dropdown">
       <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email<span class="fa fa-angle-right"></span></a>
           <ul class="nav nav-second-level display_block">
-    
-     <li>
-                     <a href="placeholderscreen.html"><i class="fa fa-envelope-o fa-fw"></i> Placeholder Screen</a>
-               </li>
-    
+            <li [ngClass]="{'selected':(globals.currentLink == '/placeholder/list')||(globals.currentLink == '/placeholder/add')||(globals.currentLink == '/placeholder/edit')}">
+              <a (click)="menuopen('/placeholder/list')" style="cursor:pointer;"><i class="fa fa-envelope-o fa-fw"></i> Placeholder Screen</a>
+            </li>
+     
      <li>
                      <a href="emailtemplate.html"><i class="fa fa-envelope-o fa-fw"></i> Email Template</a>
                </li>

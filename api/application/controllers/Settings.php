@@ -22,7 +22,7 @@ class Settings extends CI_Controller {
 			$data['teamsize']=$this->Settings_model->getlist_teamsize();
 			$data['noofksa']=$this->Settings_model->get_noofksa($userid);
 			$data['invitation']=$this->Settings_model->get_invitation($userid);
-			$data['remainingdays']=$this->Settings_model->get_remainingdays($userid);
+			$data['remainingdays']=$this->Settings_model->get_remainingdays();
 			$data['emailfrom']=$this->Settings_model->get_emailfrom($userid);
 
 		}
@@ -69,6 +69,17 @@ class Settings extends CI_Controller {
 				}	
 			}							
 		}
+		
+	}
+
+	public function addRemainigDays() {
+		
+		$post_rdays = json_decode(trim(file_get_contents('php://input')), true);		
+
+		$result = $this->Settings_model->addRemainigDays($post_rdays);
+		if($result) {
+			echo json_encode($post_rdays);	
+		}	
 		
 	}
 	

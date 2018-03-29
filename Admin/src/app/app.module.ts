@@ -62,8 +62,9 @@ import { SettingsService } from './services/settings.service';
 import { InvitationComponent } from './invitation/invitation.component';
 import { InvitationlistComponent } from './invitationlist/invitationlist.component';
 import { InvitationService } from './services/invitation.service';
-
-
+import { PlaceholderComponent } from './placeholder/placeholder.component';
+import { PlaceholderListComponent } from './placeholder-list/placeholder-list.component';
+import { PlaceholderService } from './services/placeholder.service';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,9 @@ import { InvitationService } from './services/invitation.service';
 	CountrylistComponent,
 	SettingsComponent,
 	InvitationComponent,
-	InvitationlistComponent
+	InvitationlistComponent,
+	PlaceholderComponent,
+	PlaceholderListComponent
   ],
   imports: [
   BrowserModule,
@@ -324,6 +327,21 @@ import { InvitationService } from './services/invitation.service';
         canActivate : [AuthGuard]
       },
       {
+        path : 'placeholder/add',
+        component : PlaceholderComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'placeholder/edit/:id',
+        component : PlaceholderComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'placeholder/list',
+        component : PlaceholderListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
@@ -341,7 +359,7 @@ import { InvitationService } from './services/invitation.service';
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService],
+    UserroleService,SettingsService,InvitationService,PlaceholderService],
 
 
   bootstrap: [AppComponent]

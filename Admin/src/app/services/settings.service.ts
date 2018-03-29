@@ -23,7 +23,23 @@ export class SettingsService {
 	return promise;
   }
 
-  update_config(configEntity){ debugger
+  addRemainigDays(rdaysEntity){  
+    let promise = new Promise((resolve, reject) => {
+      this.http.post(this.globals.baseAPIUrl + 'Settings/addRemainigDays', rdaysEntity, this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
+
+  update_config(configEntity){ 
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Settings/updateConfiguration', configEntity, this.globals.headerpath)
         .toPromise()

@@ -93,7 +93,7 @@ class Remaining_model extends CI_Model
 	{
 		$this->db->select('user.UserId,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime');
 		$this->db->where('ca.StartTime=',$datetime1);
-		$this->db->where('ca.EndTime=','');
+		$this->db->where('ca.EndTime=','NULL');
 		$this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
 		$result = $this->db->get('tblcandidateassessment ca');
 		

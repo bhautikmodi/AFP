@@ -46,7 +46,7 @@ class Competency_Area extends CI_Controller {
 	public function getById($area_id = NULL) {
 		
 		if (!empty($area_id)) {
-			$data = [];		
+			$data = "";		
 			$data = $this->Competency_Area_model->get_areadata($area_id);
 			echo json_encode($data);			
 		}

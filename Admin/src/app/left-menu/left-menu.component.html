@@ -1,5 +1,5 @@
 <!-- navbar side -->
-  <nav class="navbar-default navbar-static-side" role="navigation"> 
+  <nav class="navbar-default navbar-static-side" > 
     <!-- sidebar-collapse -->
     <div class="sidebar-collapse"> 
       <!-- side-menu -->
@@ -31,8 +31,8 @@
                   <a (click)="menuopen('/settings')" style="cursor:pointer;"><i class="fa fa-cogs fa-fw"></i> Configuration</a>
                  </li>
         
-         <li>
-                         <a href="tableinvitelink.html"><i class="fa fa-link fa-fw"></i> User Invitation</a>
+                 <li [ngClass]="{'selected':(globals.currentLink == '/invitation/list')||(globals.currentLink == '/invitation/add')||(globals.currentLink == '/invitation/edit')}">
+                         <a (click)="menuopen('/invitation/list')" style="cursor:pointer;"><i class="fa fa-link fa-fw"></i> User Invitation</a>
                    </li>
         
          <li>

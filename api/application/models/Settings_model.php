@@ -31,8 +31,8 @@ class Settings_model extends CI_Model
 	
 		if($post_rdays) {			
 			//$this->db->where('TeamSizeId',$teamsize_id);
-			//$result = $this->db->delete('tblMSTReminderDays');
-			$result = $this->db->truncate('tblMSTReminderDays');
+			//$result = $this->db->delete('tblmstreminderdays');
+			$result = $this->db->truncate('tblmstreminderdays');
 			if($result){
 				foreach($post_rdays as $days) {
 
@@ -43,7 +43,7 @@ class Settings_model extends CI_Model
 						'UpdatedOn' => date('y-m-d H:i:s'),
 					);
 					
-					$res = $this->db->insert('tblMSTReminderDays',$rdays_data);
+					$res = $this->db->insert('tblmstreminderdays',$rdays_data);
 				}
 				if($res) {
 					return true;
@@ -141,7 +141,7 @@ class Settings_model extends CI_Model
 
 	public function get_remainingdays(){
 		$this->db->select('Day,CreatedBy,UpdatedBy');
-		$result = $this->db->get('tblMSTReminderDays');		
+		$result = $this->db->get('tblmstreminderdays');		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

@@ -47,7 +47,7 @@ class Domain extends CI_Controller {
 	public function getById($domain_id = NULL) {
 		
 		if (!empty($domain_id)) {
-			$data = [];		
+			$data = "";		
 			$data = $this->Domain_model->get_domaindata($domain_id);
 			echo json_encode($data);			
 		}

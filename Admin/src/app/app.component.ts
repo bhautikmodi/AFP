@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Globals } from './globals';
+import { ActivatedRoute } from '@angular/router';
+import { RemainingService } from './services/remaining.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,23 @@ import { Globals } from './globals';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private globals: Globals)
-    { }
+  remainingList;
+	constructor(private route: ActivatedRoute, private RemainingService: RemainingService,private globals: Globals) { }
     
-    ngOnInit() { 
-      
-    }
+    ngOnInit()
+  {
+	 debugger
+	this.RemainingService.getAll()
+	//.map(res => res.json())
+	.then((data) => 
+	{
+		this.remainingList = data;
+			
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});	
+    	
+  }
 }

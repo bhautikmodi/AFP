@@ -16,8 +16,9 @@ import { Globals } from '../globals';
   styleUrls: ['./state.component.css']
 })
 export class StateComponent implements OnInit {
-	CountryList;
 	CountryEntity;
+	CountryList;
+	
 	stateEntity;
 	header;
 	btn_disable;
@@ -61,7 +62,8 @@ export class StateComponent implements OnInit {
 	 else
 	 {
 			 this.stateEntity = {};
-			 this.CountryEntity.IsActive = '1';
+			 this.stateEntity.StateId = 0;
+			 this.stateEntity.IsActive = '1';
 	 }
 	  
 	  
@@ -110,5 +112,13 @@ export class StateComponent implements OnInit {
 		} 		
 	}
   
+  clearForm(stateForm)
+	{
+		this.stateEntity = {};	
+		this.stateEntity.StateId = 0;
+    this.stateEntity.IsActive = '1';	
+		this.submitted = false;
+		stateForm.form.markAsPristine();
+	}	
 	
 }

@@ -66,6 +66,10 @@ import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { PlaceholderListComponent } from './placeholder-list/placeholder-list.component';
 import { PlaceholderService } from './services/placeholder.service';
 
+import { RemainingComponent } from './remaining/remaining.component';
+import { RemainingService } from './services/remaining.service';
+import { RemaininglistComponent } from './remaininglist/remaininglist.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +107,9 @@ import { PlaceholderService } from './services/placeholder.service';
 	InvitationComponent,
 	InvitationlistComponent,
 	PlaceholderComponent,
-	PlaceholderListComponent
+	PlaceholderListComponent,
+	RemainingComponent,
+	RemaininglistComponent
   ],
   imports: [
   BrowserModule,
@@ -204,6 +210,16 @@ import { PlaceholderService } from './services/placeholder.service';
 			canActivate : [AuthGuard]
 	  },
 
+		{
+        path : 'remaining',
+        component : RemainingComponent,
+		canActivate : [AuthGuard] 
+      },
+	  {
+        path : 'remaining/list',
+        component : RemaininglistComponent,
+		canActivate : [AuthGuard] 
+      },
 	   {
         path : 'userrole/add',
         component : UserroleComponent,
@@ -349,8 +365,6 @@ import { PlaceholderService } from './services/placeholder.service';
   ],
 
 
-  // providers: [Globals,AuthService,AuthGuard,DomainService,CompetencyAreaService,CourcelevelService,CourseService,IndustryService,UserService,StateService,CompanyService,UserroleService,CountryService,KsaService,RatingScaleService],
-
   
 
 
@@ -359,7 +373,7 @@ import { PlaceholderService } from './services/placeholder.service';
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService],
+    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService],
 
 
   bootstrap: [AppComponent]

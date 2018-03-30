@@ -45,6 +45,7 @@ export class UserroleComponent implements OnInit {
 	 else
 	 {
 			 this.userroleEntity = {};
+			 this.userroleEntity.RoleId = 0;
 			  this.userroleEntity.IsActive = '1';
 	 }
   } 
@@ -90,9 +91,16 @@ export class UserroleComponent implements OnInit {
 				this.submitted = false;
 			});	
 		
-	}
+		}
 	}
 
-  
+  clearForm(userroleForm)
+	{
+		this.userroleEntity = {};	
+		this.userroleEntity.RoleId = 0;
+    this.userroleEntity.IsActive = '1';	
+		this.submitted = false;
+		userroleForm.form.markAsPristine();
+	}	
 
 }

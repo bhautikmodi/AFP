@@ -1,10 +1,9 @@
-
   <!--  page-wrapper -->
   <div id="page-wrapper">
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">State list</h1>
+        <h1 class="page-header">Users</h1>
       </div>
       <!-- end  page header --> 
     </div>
@@ -18,8 +17,8 @@
         <div class="panel panel-default">
           <div class="panel-heading"> ! 
 			<div class="btn-group pull-right add-right">
-              <a routerLink="/state/add" class="btn btn-danger btn-add">
-              <i class="fa fa-plus fa-fw"></i>Add a State
+              <a  class="btn btn-danger btn-add">
+              <i class="fa fa-plus fa-fw"></i>Add a Remaining
               </a>
             </div>
 		  </div>
@@ -29,25 +28,27 @@
                 <thead>
                   <tr>
                     <th style="width:4%;">#</th>
-                    <th style="width:20%;">StateName</th>
-					<th style="width:20%;">StateAbbreviation</th>
-					<th style="width:20%;">UpdatedOn</th>
-					<th style="width:20%;">IsActive</th>
-                    <th style="width:20%;">Actions</th>
+                    <th style="width:12%;">Key</th>
+                    <th style="width:4%;">Value</th>
+					<th style="width:13%;">DisplayText</th>
+					<th style="width:13%;">Description</th>
+                    <th style="width:5%;">Active?</th>
+                    <th style="width:9%;">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                 <tr *ngFor="let state of stateList;let i = index" >
+                 <tr *ngFor="let remaining of remainingList; let i = index" >
 												<td>{{i+1}}</td>
-												<td>{{state.StateName}}</td>
-												<td class="txtupper">{{state.StateAbbreviation}}</td>
-												<td>{{state.CreatedOn}}</td>
-												<td *ngIf="state.IsActive=='1'">Yes</td>
-											<td *ngIf="state.IsActive=='0'">No</td>
+												<td>{{remaining.Key}}</td>
+												<td>{{remaining.Value}}</td>
+												<td>{{remaining.DisplayText}}</td>
+												<td>{{remaining.Description}}</td>
+												 <td *ngIf="remaining.IsActive=='1'">Yes</td>
+											<td *ngIf="remaining.IsActive=='0'">No</td>
 												
 												
-                    <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/state/edit/{{state.StateId}}" title="Edit"><span class="fa fa-pencil"></span></button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteState(state)"><span class="fa fa-times"></span></button></td>
+                    <!-- <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/user/edit/{{user.UserId}}" title="Edit"><span class="fa fa-pencil"></span></button> -->
+                      <!-- <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteUser(user)"><span class="fa fa-times"></span></button></td> -->
                     
                   </tr>
                  
@@ -64,7 +65,7 @@
     </div>
   </div>
   <!-- end page-wrapper --> 
-   <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
           <div class="modal-body">

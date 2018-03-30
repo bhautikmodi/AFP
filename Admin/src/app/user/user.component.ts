@@ -72,7 +72,7 @@ export class UserComponent implements OnInit {
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {	
-		 this.header = 'Edit';
+		this.header = 'Edit';
 		this.UserService.getById(id)
 			.then((data) => 
 			{ debugger
@@ -100,7 +100,7 @@ export class UserComponent implements OnInit {
 	 else
 	 {
 			 this.userEntity = {};
-			 this.userEntity.IsActive = '1';
+			// this.userEntity.IsActive = '1';
 	 }
   } 
   

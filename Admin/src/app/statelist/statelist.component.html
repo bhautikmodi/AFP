@@ -41,7 +41,7 @@
 												<td>{{i+1}}</td>
 												<td>{{state.StateName}}</td>
 												<td class="txtupper">{{state.StateAbbreviation}}</td>
-												<td>{{state.CreatedOn}}</td>
+												<td>{{state.CreatedOn | date : 'MM/dd/yyyy'}}</td>
 												<td *ngIf="state.IsActive=='1'">Yes</td>
 											<td *ngIf="state.IsActive=='0'">No</td>
 												

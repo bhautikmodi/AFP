@@ -236,7 +236,7 @@ import { RemaininglistComponent } from './remaininglist/remaininglist.component'
 		canActivate : [AuthGuard] 
       },
 	  {
-        path : 'user/edit/:id',
+        path : 'users/edit/:id',
         component : UserComponent,
 		canActivate : [AuthGuard] 
       },

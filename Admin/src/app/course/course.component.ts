@@ -48,7 +48,7 @@ export class CourseComponent implements OnInit {
 			alert('error');
 		});	 
 	} else {
-		this.header = '';
+		this.header = 'Add';
     this.CourseEntity = {};
 	this.CourseEntity.CourseId = 0;
     this.CourseEntity.IsActive = '1';

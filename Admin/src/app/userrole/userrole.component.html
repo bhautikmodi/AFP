@@ -16,7 +16,7 @@
                         <div class="panel-heading">
                              Userrole
 							 <div class="btn-group pull-right add-right">
-						  		<a href="userrole/list" class="btn btn-danger btn-add">
+						  		<a routerLink="/userrole/list" class="btn btn-danger btn-add">
 						  		<i class="fa fa-chevron-left fa-fw"></i> Back
 						  		</a>
 							</div>
@@ -59,7 +59,7 @@
 										<div class="clearfix"></div>
 										<div class="form-btn col-md-12">
 											<button type="submit" class="btn sub-btn">Submit</button>
-											<button type="reset" class="btn res-btn">Reset</button>
+											<button type="button" *ngIf="userroleEntity.RoleId==0" (click)="clearForm(userroleForm)" class="btn res-btn">Reset</button>
 										</div>
                                     </form>
                                 <!--</div>-->

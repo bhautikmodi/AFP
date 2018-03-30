@@ -40,7 +40,7 @@ export class CourcelevelComponent implements OnInit {
 			alert('error');
 		});	 
 	} else {
-		this.header = '';
+		this.header = 'Add';
     this.CourseLevelEntity = {};
 	this.CourseLevelEntity.ConfigurationId = 0;
     this.CourseLevelEntity.IsActive = '1';

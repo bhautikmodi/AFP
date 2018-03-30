@@ -53,6 +53,7 @@ export class CompanyComponent implements OnInit {
 	 else
 	 {
 			 this.companyEntity = {};
+			 this.companyEntity.CompanyId = 0;
 			  this.companyEntity.IsActive = '1';
 	 }
   } 
@@ -66,7 +67,8 @@ export class CompanyComponent implements OnInit {
 			this.companyEntity.CompanyId = 0;
 			this.submitted = true;
 		}
-		if(companyForm.valid){
+		if(companyForm.valid)
+		{
 			this.btn_disable = true;
 			this.CompanyService.add(this.companyEntity)
 			.then((data) => 
@@ -96,7 +98,16 @@ export class CompanyComponent implements OnInit {
 				this.submitted = false;
 			});	
 		
-	}
+		}
 	}
 
+	clearForm(companyForm)
+	{
+		this.companyEntity = {};	
+		this.companyEntity.CompanyId = 0;
+    this.companyEntity.IsActive = '1';	
+		this.submitted = false;
+		companyForm.form.markAsPristine();
+	}	
+	
 }

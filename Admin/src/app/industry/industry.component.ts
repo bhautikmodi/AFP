@@ -39,7 +39,7 @@ export class IndustryComponent implements OnInit {
 			alert('error');
 		});	 
 	} else {
-		this.header = '';
+		this.header = 'Add';
     this.IndustryEntity = {};
 	this.IndustryEntity.IndustryId = 0;
     this.IndustryEntity.IsActive = '1';

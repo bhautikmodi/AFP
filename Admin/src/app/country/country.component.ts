@@ -37,7 +37,7 @@ export class CountryComponent implements OnInit {
 			alert('error');
 		});	 
 	} else {
-		this.header = '';
+		this.header = 'Add';
     this.CountryEntity = {};
 	this.CountryEntity.CountryId = 0;
     this.CountryEntity.IsActive = '1';

@@ -125,6 +125,7 @@ class KSA_model extends CI_Model
 	public function getCAreaList() {
 	
 		$this->db->select('CAreaId,Name');
+		$this->db->where('IsActive',1);
 		$result = $this->db->get('tblmstcompetencyarea');
 		
 		$res = array();

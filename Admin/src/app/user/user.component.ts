@@ -99,6 +99,7 @@ export class UserComponent implements OnInit {
 	 }
 	 else
 	 {
+		 this.header = 'Add';
 			 this.userEntity = {};
 			// this.userEntity.IsActive = '1';
 	 }

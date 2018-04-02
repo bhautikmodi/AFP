@@ -15,10 +15,11 @@
       <!-- Advanced Tables -->
       <div class="panel panel-default">
         <div class="panel-heading"> !
-          <div class="btn-group pull-right add-right">
-            <a routerLink="/invitation/add" class="btn btn-danger btn-add">
+          <div class="btn-group pull-right add-right"  >
+            <a routerLink="/invitation/add" class="btn btn-danger btn-add" [class.disabled]="Disinv.Value==0"  >
             <i class="fa fa-plus fa-fw"></i>Add a Invitation
             </a>
+			
           </div>
         </div>
         <div class="panel-body">
@@ -43,10 +44,10 @@
                   <td *ngIf="Invitation.Status=='0'">Pending</td>
 				  <td *ngIf="Invitation.Status=='2'">Revoke Success</td>
                   <td>
-                    <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 " 
+                    <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 ||Disinv.Value==0" 
 					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>
-					  <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status==0||Invitation.Status==1" 
+					  <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status==0||Invitation.Status==1 ||Disinv.Value==0" 
 					(click)="ReInviteInvitation(Invitation)" >
                     Re-Invite</button>
 					

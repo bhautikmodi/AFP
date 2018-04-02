@@ -164,10 +164,10 @@ class User_model extends CI_Model
 	  if($user_id)
 	  {
 		  
-		  $this->db->select('user.*,sta.*,');
+		  $this->db->select('user.*');
 		$this->db->where('user.UserId=',$user_id);
 		
-		$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
+		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
 		$result = $this->db->get('tbluser user');
 		
 		 // $this->db->select('*');

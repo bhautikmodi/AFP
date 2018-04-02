@@ -69,6 +69,8 @@ import { PlaceholderService } from './services/placeholder.service';
 import { RemainingComponent } from './remaining/remaining.component';
 import { RemainingService } from './services/remaining.service';
 import { RemaininglistComponent } from './remaininglist/remaininglist.component';
+import { CourselevelComponent } from './courselevel/courselevel.component';
+import { CourselevellistComponent } from './courselevellist/courselevellist.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { RemaininglistComponent } from './remaininglist/remaininglist.component'
 	PlaceholderComponent,
 	PlaceholderListComponent,
 	RemainingComponent,
-	RemaininglistComponent
+	RemaininglistComponent,
+	CourselevelComponent,
+	CourselevellistComponent
   ],
   imports: [
   BrowserModule,

@@ -17,8 +17,10 @@ class Invitation extends CI_Controller {
 		
 		$data="";
 		
-		$data=$this->Invitation_model->getlist_Invitation();
+		$data['Inv']=$this->Invitation_model->getlist_Invitation();
 		
+		$data['Disinv']=$this->Invitation_model->getlist_DesInvitation();
+	
 		echo json_encode($data);
 				
 	}

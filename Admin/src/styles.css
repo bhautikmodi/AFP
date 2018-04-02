@@ -16,3 +16,11 @@
 	margin: 20% auto;
 	width: 400px;
   }
+a.disabled {
+   
+   cursor: not-allowed;
+   border-color : transparent!important;
+}
+.btn.btn-danger.disabled {
+	pointer-events: auto;
+}

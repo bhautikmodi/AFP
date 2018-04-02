@@ -39,9 +39,6 @@ class Invitation_model extends CI_Model
 				return false;
 			}
 				}
-				
-				
-			
 	
 		} else {
 			return false;
@@ -58,6 +55,20 @@ class Invitation_model extends CI_Model
 			$res = $result->result();
 		}
 		return $res;
+		
+	}
+	public function getlist_DesInvitation() {
+
+		$this->db->select('*');	
+		$this->db->where('Key="Invitation"');
+		$result = $this->db->get('tblmstconfiguration');	
+		
+			$Desinvi_data = array();
+			foreach($result->result() as $row) {
+				$Desinvi_data = $row;
+			}
+			return $Desinvi_data;
+		
 		
 	}
 	public function delete_Invitation($Invitation_Id) {

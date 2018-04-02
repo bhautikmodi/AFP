@@ -17,10 +17,8 @@
 	width: 400px;
   }
 a.disabled {
-   
+   pointer-events: auto;
    cursor: not-allowed;
    border-color : transparent!important;
 }
-.btn.btn-danger.disabled {
-	pointer-events: auto;
-}
+

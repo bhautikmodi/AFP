@@ -27,9 +27,6 @@ import { CompetencyAreaService } from './services/competency-area.service';
 import { KsaService } from './services/ksa.service';
 import { RatingScaleService } from './services/rating-scale.service';
 
-import { CourcelevelComponent } from './courcelevel/courcelevel.component';
-import { CourcelevellistComponent } from './courcelevellist/courcelevellist.component';
-import { CourcelevelService } from './services/courcelevel.service';
 import { CourseComponent } from './course/course.component';
 import { CourselistComponent } from './courselist/courselist.component';
 import { CourseService } from './services/course.service';
@@ -71,6 +68,7 @@ import { RemainingService } from './services/remaining.service';
 import { RemaininglistComponent } from './remaininglist/remaininglist.component';
 import { CourselevelComponent } from './courselevel/courselevel.component';
 import { CourselevellistComponent } from './courselevellist/courselevellist.component';
+import { CourselevelService } from './services/courselevel.service';
 
 @NgModule({
   declarations: [
@@ -89,8 +87,6 @@ import { CourselevellistComponent } from './courselevellist/courselevellist.comp
     RatingScaleComponent,
     RatingScaleListComponent,
     HtmlToPlaintextPipe,
-	CourcelevelComponent,
-	CourcelevellistComponent,
 	CourseComponent,
 	CourselistComponent,
 	IndustryComponent,
@@ -167,18 +163,18 @@ import { CourselevellistComponent } from './courselevellist/courselevellist.comp
       },
 	   {
         path : 'courselevel/add',
-        component : CourcelevelComponent,
+        component : CourselevelComponent,
 		canActivate : [AuthGuard]
        
       },
 	  {
 			path : 'courselevel/list',
-			component : CourcelevellistComponent,
+			component : CourselevellistComponent,
 			canActivate : [AuthGuard]
 	  },
 	  {
 			path : 'courselevel/edit/:id',
-			component : CourcelevelComponent,
+			component : CourselevelComponent,
 			canActivate : [AuthGuard]
 	  },
 	  {
@@ -336,11 +332,6 @@ import { CourselevellistComponent } from './courselevellist/courselevellist.comp
         component : InvitationComponent,
         canActivate : [AuthGuard]
       },
-      // {
-      //   path : 'invitation/edit/:id',
-      //   component : InvitationComponent,
-      //   canActivate : [AuthGuard]
-      // },
       {
         path : 'invitation/list',
         component : InvitationlistComponent,
@@ -376,7 +367,7 @@ import { CourselevellistComponent } from './courselevellist/courselevellist.comp
 
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
-    CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
+    CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
     UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService],
 
 

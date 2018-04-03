@@ -517,7 +517,7 @@ table.dataTable thead .sorting:after {
 }
 
 .sub-btn {
-	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
+	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
 
 .sub-btn:hover, .sub-btn:focus {
@@ -534,7 +534,7 @@ table.dataTable thead .sorting:after {
 .btn.sub-btn:active {background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;}
 
 .res-btn {
-	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
+	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
 
 .res-btn:hover, .res-btn:focus {
@@ -543,7 +543,7 @@ table.dataTable thead .sorting:after {
 
 .res-btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; }
 
-.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;}
+.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5;}
 
 .panel-footer {
 	background-color: #e8e4e4;
@@ -665,6 +665,7 @@ table.dataTable thead .sorting:after {
 .rember:hover, .rember:active {
 	color: #0085AD;
 }
+
 .radio_box {display:inline-block; margin:5px 20px 0 0;}
 
 input[type="radio"] { visibility:hidden; position:absolute;}
@@ -675,13 +676,23 @@ input[type="radio"]:checked + label.radiobtn_label{background:url(../img/radio_c
 
 .radio_box input[type="radio"]:checked + label{background:url(../img/radio_checked.png) left center no-repeat; background-size:15px; color: #007699;}
 
-select {
-	-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; /*width: 100%!important;*/ font-family:"Gotham-book"; font-size:14px!important;
-}
+input[type="checkbox"] { visibility:hidden; position:absolute;}
 
-select option{ 
+.check_box {display:inline-block; margin:5px 0 0 0; /*margin:5px 20px 0 0;*/}
+
+.check_box label{ background:url(../img/checkbox.png) left center no-repeat; font-weight:normal; font-size: 15px; font-family: 'Gotham-Book'; background-size:15px; padding:8px 5px 8px 20px; text-align:center; display:inline-block; vertical-align:top; margin:0; cursor:pointer; color:#000;}
+
+.check_box input[type="checkbox"]:checked + label{background:url(../img/checkbox_checked.png) left center no-repeat; background-size:15px; color:#007699;}
+
+/*select {
+	-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; /*width: 100%!important;*/ /*font-family:"Gotham-book"; font-size:14px!important;
+}*/
+
+/*select option{ 
 	background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";
-}
+}*/
+
+.select2,.select2-results__options,.select2-search__field {color:#555!important; font-family: "Gotham-book"; font-size: 14px; font-weight: normal; line-height: 22px;}
 
 .small-padding {padding-top: 12px;}
 
@@ -781,3 +792,11 @@ select option{
     visibility: visible;
     opacity: 1;
 }
+
+/*.btn.btn-danger.disabled {
+	pointer-events: auto;
+}
+
+.btn.btn-default.disabled {
+	pointer-events: auto;
+}*/

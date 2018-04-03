@@ -135,7 +135,7 @@ class Invitation_model extends CI_Model
 				if ($query->num_rows() == 1) 
 				{
 					$Invitation_data = array(
-						'Status' =>2 ,
+						'Status' =>1,
 						'code' =>'',
 						'CreatedOn' => date('y-m-d H:i:s'),
 						'UpdatedOn' => date('y-m-d H:i:s')

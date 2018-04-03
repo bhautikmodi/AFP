@@ -16,7 +16,7 @@ import { InvitationService } from './services/invitation.service';
 import { FindcompanyComponent } from './findcompany/findcompany.component';
 import { FindcompanyService } from './services/findcompany.service';
 import { RegisterComponent } from './register/register.component';
-
+import { RegisterService } from './services/register.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +59,7 @@ import { RegisterComponent } from './register/register.component';
 		}
 	])
   ],
-  providers: [Globals,InvitationService,FindcompanyService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

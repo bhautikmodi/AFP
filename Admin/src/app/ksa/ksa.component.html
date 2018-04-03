@@ -64,7 +64,7 @@
                                             
                                 <div class="clearfix"></div>
                                 <div class="form-btn">
-                                  <button type="submit" [disabled]="btn_disable" class="btn sub-btn">Submit</button>
+                                  <button type="submit" [disabled]="btn_disable || ksaEntity.isdisabled" class="btn sub-btn">Submit</button>
                                   <button type="button" *ngIf="ksaEntity.KSAId==0" (click)="clearForm(ksaForm)" class="btn res-btn">Clear</button>
                                 </div>
 

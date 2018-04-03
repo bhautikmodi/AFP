@@ -46,7 +46,7 @@ class Placeholder extends CI_Controller {
 	public function getById($placeholder_id = NULL) {
 		
 		if (!empty($placeholder_id)) {
-			$data = [];		
+			$data = "";		
 			$data = $this->Placeholder_model->get_placeholderdata($placeholder_id);
 			echo json_encode($data);			
 		}
@@ -86,7 +86,7 @@ class Placeholder extends CI_Controller {
 		
 		if(!empty($table_id)) {
 			
-			$result = [];
+			$result = "";
 			$result = $this->Placeholder_model->getColumnList($table_id);			
 			echo json_encode($result);				
 		}			

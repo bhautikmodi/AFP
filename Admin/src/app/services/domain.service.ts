@@ -55,7 +55,7 @@ export class DomainService {
 	return promise;
   }
   
-  getById(DomainId){
+  getById(DomainId){ debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Domain/getById/' + DomainId, this.globals.headerpath)
       .toPromise()

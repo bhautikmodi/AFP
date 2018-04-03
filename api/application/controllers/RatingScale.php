@@ -47,7 +47,7 @@ class RatingScale extends CI_Controller {
 	public function getById($ratingscale_id = NULL) {
 		
 		if (!empty($ratingscale_id)) {
-			$data = [];		
+			$data = "";		
 			$data = $this->Rating_Scale_model->get_ratingscaledata($ratingscale_id);
 			echo json_encode($data);			
 		}

@@ -76,14 +76,14 @@ export class SettingsComponent implements OnInit {
 	});	
   }
 
-  AddNewRDays(index){ debugger
+  AddNewRDays(index){ 
 	var item = { 'Day': '', 'CreatedBy': this.globals.authData.UserId, 'UpdatedBy':this.globals.authData.UserId};
 	if (this.reminderDaysList.length <= index + 1) {
 		this.reminderDaysList.splice(index + 1, 0, item);
 	}
   }
 
-  DeleteRDays(item){ debugger
+  DeleteRDays(item){ 
 	var index = this.reminderDaysList.indexOf(item);	
 	this.reminderDaysList.splice(index, 1);		
   }
@@ -247,7 +247,7 @@ export class SettingsComponent implements OnInit {
 	}
 
 	addRDays(rdaysForm)
-	{		debugger
+	{		
 		this.submitted3 = true;
 		if(rdaysForm.valid){
 			this.btn_disable3 = true;

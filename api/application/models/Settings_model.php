@@ -29,9 +29,7 @@ class Settings_model extends CI_Model
 
 	public function addRemainigDays($post_rdays) {
 	
-		if($post_rdays) {			
-			//$this->db->where('TeamSizeId',$teamsize_id);
-			//$result = $this->db->delete('tblmstreminderdays');
+		if($post_rdays) {
 			$result = $this->db->truncate('tblmstreminderdays');
 			if($result){
 				foreach($post_rdays as $days) {
@@ -62,8 +60,8 @@ class Settings_model extends CI_Model
 	
 	public function getlist_teamsize() {
 	
-		$this->db->select('ts.*');
-		$result = $this->db->get('tblmstteamsize as ts');		
+		$this->db->select('TeamSizeId,TeamSize,IsActive');
+		$result = $this->db->get('tblmstteamsize');		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

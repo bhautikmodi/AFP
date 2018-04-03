@@ -43,8 +43,7 @@ class Email_Template extends CI_Controller {
 		
 	}
 	
-	public function getById($email_id = NULL) {
-		
+	public function getById($email_id = NULL) {		
 		if (!empty($email_id)) {
 			$data = "";		
 			$data = $this->Email_Template_model->get_emaildata($email_id);
@@ -71,15 +70,11 @@ class Email_Template extends CI_Controller {
 		} 			
 	}
 	
-	public function getDefaultList() {
-		
-		$data="";
-		
+	public function getDefaultList() {		
+		$data="";		
 		$data['role']=$this->Email_Template_model->getRoleList();
-		$data['placeholder']=$this->Email_Template_model->getPlaceholderList();
-		
-		echo json_encode($data);
-				
+		$data['placeholder']=$this->Email_Template_model->getPlaceholderList();		
+		echo json_encode($data);				
 	}
 
 }

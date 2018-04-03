@@ -48,8 +48,12 @@ export class CompetencyAreaComponent implements OnInit
 		this.CompetencyAreaService.getById(id)
 		.then((data) => 
 		{ 
-			this.areaEntity = data;
-			CKEDITOR.instances.Description.setData(this.areaEntity.Description);	
+			if(data!=""){
+				this.areaEntity = data;
+				CKEDITOR.instances.Description.setData(this.areaEntity.Description);
+			} else {
+				this.router.navigate(['/dashboard']);
+			}					
 		}, 
 		(error) => 
 		{

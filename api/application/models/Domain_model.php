@@ -36,7 +36,7 @@ class Domain_model extends CI_Model
 	
 	public function getlist_domain() {
 	
-		$this->db->select('dom.*,(SELECT COUNT(*) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
+		$this->db->select('dom.DomainId,dom.Name,dom.IsActive,(SELECT COUNT(mc.CAreaId) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
 		$result = $this->db->get('tblmstdomain as dom');		
 		$res = array();
 		if($result->result()) {
@@ -51,9 +51,9 @@ class Domain_model extends CI_Model
 		
 		if($domain_id) {
 			
-			$this->db->select('*');
-			$this->db->where('DomainId',$domain_id);
-			$result = $this->db->get('tblmstdomain');
+			$this->db->select('dom.DomainId,dom.Name,dom.IsActive,(SELECT COUNT(mc.CAreaId) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
+			$this->db->where('dom.DomainId',$domain_id);
+			$result = $this->db->get('tblmstdomain as dom');
 			
 			$domain_data = array();
 			foreach($result->result() as $row) {

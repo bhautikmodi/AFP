@@ -43,7 +43,11 @@ export class KsaComponent implements OnInit
 		this.KsaService.getById(id)
 		.then((data) => 
 		{
-			this.ksaEntity = data;
+			if(data!=""){
+				this.ksaEntity = data;
+			} else {
+				this.router.navigate(['/dashboard']);
+			}				
 		}, 
 		(error) => 
 		{

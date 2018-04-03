@@ -46,8 +46,12 @@ export class EmailtemplateComponent implements OnInit {
 		this.EmailtemplateService.getById(id)
 		.then((data) => 
 		{ 
-      this.emailEntity = data;
-      CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);		
+			if(data!=""){
+				this.emailEntity = data;
+      			CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);	
+			} else {
+				this.router.navigate(['/dashboard']);
+			}	      	
 		}, 
 		(error) => 
 		{

@@ -66,15 +66,12 @@ import { PlaceholderService } from './services/placeholder.service';
 import { RemainingComponent } from './remaining/remaining.component';
 import { RemainingService } from './services/remaining.service';
 import { RemaininglistComponent } from './remaininglist/remaininglist.component';
-<<<<<<< HEAD
 import { EmailtemplateComponent } from './emailtemplate/emailtemplate.component';
 import { EmailtemplateListComponent } from './emailtemplate-list/emailtemplate-list.component';
 import { EmailtemplateService } from './services/emailtemplate.service';
-=======
 import { CourselevelComponent } from './courselevel/courselevel.component';
 import { CourselevellistComponent } from './courselevellist/courselevellist.component';
 import { CourselevelService } from './services/courselevel.service';
->>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
 
 @NgModule({
   declarations: [
@@ -114,13 +111,10 @@ import { CourselevelService } from './services/courselevel.service';
 	PlaceholderListComponent,
 	RemainingComponent,
 	RemaininglistComponent,
-<<<<<<< HEAD
 	EmailtemplateComponent,
-	EmailtemplateListComponent
-=======
+	EmailtemplateListComponent,
 	CourselevelComponent,
 	CourselevellistComponent
->>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
   ],
   imports: [
   BrowserModule,
@@ -387,13 +381,9 @@ import { CourselevelService } from './services/courselevel.service';
 
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
-<<<<<<< HEAD
-    CourcelevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService],
-=======
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService],
->>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
+    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService],
+   
 
 
   bootstrap: [AppComponent]

@@ -37,7 +37,7 @@ class KSA_model extends CI_Model
 	
 	public function getlist_ksa() {
 	
-		$this->db->select('ksa.KSAId,ksa.Name as ksaName,ksa.IsActive,area.CAreaId,area.Name as CAreaName,(SELECT COUNT(*) FROM tblcandidateksa as ck WHERE ksa.KSAId=ck.KSAId) as isdisabled');
+		$this->db->select('ksa.KSAId,ksa.Name as ksaName,ksa.IsActive,area.CAreaId,area.Name as CAreaName,(SELECT COUNT(ck.CKSAId) FROM tblcandidateksa as ck WHERE ksa.KSAId=ck.KSAId) as isdisabled');
 		$this->db->join('tblmstcompetencyarea area', 'ksa.CAreaId = area.CAreaId', 'left');
 		$result = $this->db->get('tblmstksa ksa');
 		
@@ -54,9 +54,9 @@ class KSA_model extends CI_Model
 		
 		if($ksa_id) {
 			
-			$this->db->select('*');
+			$this->db->select('ksa.KSAId,ksa.Name,ksa.CAreaId,ksa.IsActive,(SELECT COUNT(ck.CKSAId) FROM tblcandidateksa as ck WHERE ksa.KSAId=ck.KSAId) as isdisabled');
 			$this->db->where('KSAId',$ksa_id);
-			$result = $this->db->get('tblmstksa');
+			$result = $this->db->get('tblmstksa ksa');
 			
 			$ksa_data = array();
 			foreach($result->result() as $row) {

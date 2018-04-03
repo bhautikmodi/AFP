@@ -39,7 +39,7 @@ class Competency_Area_model extends CI_Model
 	
 	public function getlist_area() {
 	
-		$this->db->select('area.CAreaId,area.Name as AreaName,area.Description,area.KeyConcepts,area.IsActive,domain.DomainId,domain.Name as DomainName,(SELECT COUNT(*) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
+		$this->db->select('area.CAreaId,area.Name as AreaName,area.Description,area.KeyConcepts,area.IsActive,domain.DomainId,domain.Name as DomainName,(SELECT COUNT(mk.KSAId) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
 		$this->db->join('tblmstdomain domain', 'area.DomainId = domain.DomainId', 'left');
 		$result = $this->db->get('tblmstcompetencyarea area');
 		
@@ -56,9 +56,9 @@ class Competency_Area_model extends CI_Model
 		
 		if($area_id) {
 			
-			$this->db->select('*');
+			$this->db->select('area.CAreaId,area.DomainId,area.Name,area.Description,area.KeyConcepts,area.IsActive,(SELECT COUNT(mk.KSAId) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
 			$this->db->where('CAreaId',$area_id);
-			$result = $this->db->get('tblmstcompetencyarea');
+			$result = $this->db->get('tblmstcompetencyarea area');
 			
 			$area_data = array();
 			foreach($result->result() as $row) {

@@ -92,8 +92,7 @@ class Email_Template_model extends CI_Model
 			$row->Bcc = str_replace("2","Sales",$row->Bcc);
 			$row->Bcc = str_replace("3","General User",$row->Bcc);
 		}
-		return $res;
-		
+		return $res;		
 	}
 	
 	

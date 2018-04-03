@@ -46,7 +46,7 @@ class KSA extends CI_Controller {
 	public function getById($ksa_id = NULL) {
 		
 		if (!empty($ksa_id)) {
-			$data = [];		
+			$data="";	
 			$data = $this->KSA_model->get_ksadata($ksa_id);
 			echo json_encode($data);			
 		}

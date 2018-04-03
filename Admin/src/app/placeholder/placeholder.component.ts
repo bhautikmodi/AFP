@@ -46,18 +46,22 @@ export class PlaceholderComponent implements OnInit
 		this.PlaceholderService.getById(id)
 		.then((data) => 
 		{ 
-      this.placeholderEntity = data;
-      if(this.placeholderEntity.TableId > 0){ 
-				this.PlaceholderService.getColumnList(this.placeholderEntity.TableId)
-				.then((data) => 
-				{
-					this.columnList = data;
-				}, 
-				(error) => 
-				{
-					alert('error');
-				});
-			} 
+			if(data!=""){
+				this.placeholderEntity = data;
+      			if(this.placeholderEntity.TableId > 0){ 
+					this.PlaceholderService.getColumnList(this.placeholderEntity.TableId)
+					.then((data) => 
+					{
+						this.columnList = data;
+					}, 
+					(error) => 
+					{
+						alert('error');
+					});
+				} 
+			} else {
+				this.router.navigate(['/dashboard']);
+			}	      
 		}, 
 		(error) => 
 		{
@@ -68,8 +72,8 @@ export class PlaceholderComponent implements OnInit
     	this.placeholderEntity = {};
     	this.placeholderEntity.PlaceholderId = 0;
 		this.placeholderEntity.IsActive = '1';
-    this.placeholderEntity.TableId = '';	
-    this.placeholderEntity.ColumnId = '';	
+    	this.placeholderEntity.TableId = '';	
+    	this.placeholderEntity.ColumnId = '';	
 	}
 	
   } 

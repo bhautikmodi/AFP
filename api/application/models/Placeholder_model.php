@@ -124,7 +124,7 @@ class Placeholder_model extends CI_Model
 	
 	public function getTableList() {
 	
-		$this->db->select('*');
+		$this->db->select('TableId,TableName,DisplayName,IsActive');
 		$this->db->where('IsActive',1);
 		$result = $this->db->get('tblmsttable');
 		

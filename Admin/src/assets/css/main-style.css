@@ -8,7 +8,7 @@ Author: http://binarytheme.com
 
 /* user image section */
 .user-section {
-    margin-top:10px;
+    /*margin-top:10px;*/
     font-size:22px;
     background-color: #11425a;
 	border-bottom: 1px solid #0085AD;
@@ -142,7 +142,7 @@ html.index_admin,.index_admin body{ height:100%;}
     background: url("../img/banner.jpg") center center no-repeat; 
 	background-size:cover; height:100%;
 }
-.white_bg{background:rgba(0,49,80,0.15); height:100%;}
+.white_bg{background:rgba(255,255,255,0.6); height:100%;}
 
 .margin-tips {
     margin:5px;

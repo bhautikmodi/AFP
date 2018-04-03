@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
 @Injectable()
-export class DomainService {
+export class EmailtemplateService {
 
-  constructor(private http: Http, private globals: Globals) { }
+constructor( private http: Http,private globals: Globals) { }
 
-  add(domainEntity){
+add(emailEntity)
+ { 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Domain/add', domainEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Email_Template/add', emailEntity, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -23,9 +23,11 @@ export class DomainService {
 	return promise;
   }
   
-  delete(DomainId){
+
+delete(Email_TemplateId)
+  {
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Domain/delete/' + DomainId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/delete/' + Email_TemplateId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -39,9 +41,10 @@ export class DomainService {
 	return promise;
   }
   
-  getAll(){ debugger
+  getAll()
+  {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Domain/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getAll', this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -55,9 +58,10 @@ export class DomainService {
 	return promise;
   }
   
-  getById(DomainId){ debugger
+  getById(Email_TemplateId)
+  { 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Domain/getById/' + DomainId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getById/' + Email_TemplateId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -69,6 +73,24 @@ export class DomainService {
       );
 	});		
 	return promise;
-  }  
+  } 
+  
+  getDefaultList(){
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Email_Template/getDefaultList', this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+            reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
+    
+ }
 
-}
+

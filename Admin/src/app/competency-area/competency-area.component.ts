@@ -6,7 +6,6 @@ import { CompetencyAreaService } from '../services/competency-area.service';
 import { Globals } from '.././globals';
 declare var $: any;
 declare var CKEDITOR: any;
-declare var nicEditors,nicEditor: any;
 
 @Component({
   selector: 'app-competency-area',
@@ -48,9 +47,13 @@ export class CompetencyAreaComponent implements OnInit
 		this.header = 'Edit';
 		this.CompetencyAreaService.getById(id)
 		.then((data) => 
-		{ debugger
-			this.areaEntity = data;
-			CKEDITOR.instances.Description.setData(this.areaEntity.Description);	
+		{ 
+			if(data!=""){
+				this.areaEntity = data;
+				CKEDITOR.instances.Description.setData(this.areaEntity.Description);
+			} else {
+				this.router.navigate(['/dashboard']);
+			}					
 		}, 
 		(error) => 
 		{

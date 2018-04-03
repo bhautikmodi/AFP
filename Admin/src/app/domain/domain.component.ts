@@ -32,8 +32,12 @@ export class DomainComponent implements OnInit
 		this.header = 'Edit';
 		this.domainService.getById(id)
 		.then((data) => 
-		{
-			this.domainEntity = data;
+		{ 
+			if(data!=""){
+				this.domainEntity = data;
+			} else {
+				this.router.navigate(['/dashboard']);
+			}			
 		}, 
 		(error) => 
 		{

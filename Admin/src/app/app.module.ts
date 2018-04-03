@@ -66,6 +66,9 @@ import { PlaceholderService } from './services/placeholder.service';
 import { RemainingComponent } from './remaining/remaining.component';
 import { RemainingService } from './services/remaining.service';
 import { RemaininglistComponent } from './remaininglist/remaininglist.component';
+import { EmailtemplateComponent } from './emailtemplate/emailtemplate.component';
+import { EmailtemplateListComponent } from './emailtemplate-list/emailtemplate-list.component';
+import { EmailtemplateService } from './services/emailtemplate.service';
 import { CourselevelComponent } from './courselevel/courselevel.component';
 import { CourselevellistComponent } from './courselevellist/courselevellist.component';
 import { CourselevelService } from './services/courselevel.service';
@@ -108,6 +111,8 @@ import { CourselevelService } from './services/courselevel.service';
 	PlaceholderListComponent,
 	RemainingComponent,
 	RemaininglistComponent,
+	EmailtemplateComponent,
+	EmailtemplateListComponent,
 	CourselevelComponent,
 	CourselevellistComponent
   ],
@@ -353,22 +358,32 @@ import { CourselevelService } from './services/courselevel.service';
         canActivate : [AuthGuard]
       },
       {
+        path : 'emailtemplate/add',
+        component : EmailtemplateComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'emailtemplate/edit/:id',
+        component : EmailtemplateComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'emailtemplate/list',
+        component : EmailtemplateListComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
 	  ])
   ],
 
-
-  
-
-
-
-
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService],
+    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService],
+   
 
 
   bootstrap: [AppComponent]

@@ -37,7 +37,7 @@ class Rating_Scale_model extends CI_Model
 	
 	public function getlist_ratingscale() {
 	
-		$this->db->select('*');
+		$this->db->select('RatingScaleId,Name,Description,IsActive');
 		$result = $this->db->get('tblmstratingscale');
 		
 		$res = array();
@@ -53,7 +53,7 @@ class Rating_Scale_model extends CI_Model
 		
 		if($ratingscale_id) {
 			
-			$this->db->select('*');
+			$this->db->select('RatingScaleId,,Name,Description,IsActive');
 			$this->db->where('RatingScaleId',$ratingscale_id);
 			$result = $this->db->get('tblmstratingscale');
 			

@@ -123,28 +123,38 @@ class Invitation_model extends CI_Model
 		
 	}
 	
-	public function Invitation_code($post_Invitation) {
-				$this->db->select('*');
-				$this->db->from('tblUserInvitation');
+	public function Invitation_code($post_Invitation) 
+	{
+				$this->db->select('UserInvitationId');				
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);
+				$this->db->from('tblUserInvitation');
 				$query = $this->db->get();
-				if ($query->num_rows() == 1) {
-					return false;
-				} else
+				
+				if ($query->num_rows() == 1) 
 				{
-							$Invitation_data = array(
+					$Invitation_data = array(
 						'Status' =>2 ,
 						'code' =>'',
 						'CreatedOn' => date('y-m-d H:i:s'),
 						'UpdatedOn' => date('y-m-d H:i:s')
-						
-					
 					);
 			
-					$this->db->where('UserInvitationId',$post_Invitation['UserInvitationId']);
+					$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
+					$this->db->where('Code',trim($post_Invitation['Code']));
 					$res = $this->db->update('tbluserinvitation',$Invitation_data);
+					if($res)
+					{
+					    return true;
+					}else
+					{
+						return false;
+					}
+				
+				} else
+				{
+					return false;
 				}
 				
 				

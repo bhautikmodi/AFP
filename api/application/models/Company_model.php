@@ -41,7 +41,7 @@ class Company_model extends CI_Model
 	{
 	  if($company_id)
 	  {
-		 $this->db->select('*');
+		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNumber,IsActive');
 		 $this->db->where('CompanyId',$company_id);
 		 $result=$this->db->get('tblcompany');
 		 $company_data= array();
@@ -98,8 +98,10 @@ class Company_model extends CI_Model
 	
 	function getlist_company()
 	{
-		$this->db->select('*');
-		$result=$this->db->get('tblcompany');
+		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNumber,cp.IsActive,in.IndustryName');
+		$this->db->join('tblmstindustry in', 'cp.IndustryId = in.IndustryId', 'left');
+		$result = $this->db->get('tblcompany cp');
+		
 		
 		$res=array();
 		if($result->result())

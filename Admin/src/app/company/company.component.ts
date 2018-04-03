@@ -52,6 +52,7 @@ export class CompanyComponent implements OnInit {
 	 }
 	 else
 	 {
+		 this.header = 'Add';
 			 this.companyEntity = {};
 			 this.companyEntity.CompanyId = 0;
 			  this.companyEntity.IsActive = '1';

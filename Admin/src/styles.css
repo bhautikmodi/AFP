@@ -16,3 +16,9 @@
 	margin: 20% auto;
 	width: 400px;
   }
+a.disabled {
+   pointer-events: auto;
+   cursor: not-allowed;
+   border-color : transparent!important;
+}
+

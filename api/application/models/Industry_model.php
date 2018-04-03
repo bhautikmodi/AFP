@@ -34,14 +34,8 @@ class Industry_model extends CI_Model
 	
 	public function getlist_Industry() {
 	
-		$this->db->select('*');
+		$this->db->select('IndustryId,IndustryName,IsActive');
 		$result = $this->db->get('tblmstindustry');
-		
-		// $this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId');
-		// $this->db->join('tblmstconfiguration ps', 'pr.ConfigurationId = ps.ConfigurationId', 'left');
-		// $result = $this->db->get('tblmstcourse pr');
-		
-		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
@@ -56,7 +50,7 @@ class Industry_model extends CI_Model
 		
 		if($Industry_Id) {
 			
-			$this->db->select('*');
+			$this->db->select('IndustryId,IndustryName,IsActive');
 			$this->db->where('IndustryId',$Industry_Id);
 			$result = $this->db->get('tblmstindustry');
 			

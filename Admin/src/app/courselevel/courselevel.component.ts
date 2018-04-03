@@ -1,24 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-import { CourcelevelService } from '../services/courcelevel.service';
+import { CourselevelService } from '../services/courselevel.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
-  selector: 'app-courcelevel',
-   providers: [ CourcelevelService ],
-  templateUrl: './courcelevel.component.html',
-  styleUrls: ['./courcelevel.component.css']
+  selector: 'app-courselevel',
+   providers: [ CourselevelService ],
+  templateUrl: './courselevel.component.html',
+  styleUrls: ['./courselevel.component.css']
 })
-export class CourcelevelComponent implements OnInit {
-
+export class CourselevelComponent implements OnInit {
 	CourseLevelEntity;
 	submitted;
 	btn_disable;
 	header;
-	
-  constructor( private http: Http,private globals: Globals, private router: Router, private CourcelevelService: CourcelevelService,private route:ActivatedRoute) { }
+ constructor( private http: Http,private globals: Globals, private router: Router, private CourselevelService: CourselevelService,private route:ActivatedRoute) { }
 
   ngOnInit() 
   {debugger
@@ -27,7 +24,7 @@ export class CourcelevelComponent implements OnInit {
 	let id = this.route.snapshot.paramMap.get('id');
 	if(id){
 		this.header = 'Edit';
-		this.CourcelevelService.getById(id)
+		this.CourselevelService.getById(id)
 		.then((data) => 
 		{
 			this.CourseLevelEntity = data;
@@ -63,7 +60,7 @@ export class CourcelevelComponent implements OnInit {
 		}
 		if(CourseLevelForm.valid){
 			this.btn_disable = true;
-			this.CourcelevelService.add(this.CourseLevelEntity)
+			this.CourselevelService.add(this.CourseLevelEntity)
 			.then((data) => 
 			{
 				//alert('success');

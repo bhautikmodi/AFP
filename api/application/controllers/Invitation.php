@@ -17,8 +17,10 @@ class Invitation extends CI_Controller {
 		
 		$data="";
 		
-		$data=$this->Invitation_model->getlist_Invitation();
+		$data['Inv']=$this->Invitation_model->getlist_Invitation();
 		
+		$data['Disinv']=$this->Invitation_model->getlist_DesInvitation();
+	
 		echo json_encode($data);
 				
 	}
@@ -116,6 +118,28 @@ class Invitation extends CI_Controller {
 			
 		} 
 			
+	}
+	
+	public function code()
+		{
+								
+		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);		
+		if ($post_Invitation)
+			{
+			
+				$result = $this->Invitation_model->Invitation_code($post_Invitation);
+				if($result)
+				{
+					echo json_encode("Code success");
+				}	
+				else
+				{
+					
+					echo json_encode("Code duplicate");
+				}
+										
+		}
+		
 	}
 
 	

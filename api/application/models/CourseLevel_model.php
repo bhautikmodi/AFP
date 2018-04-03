@@ -33,13 +33,7 @@ class CourseLevel_model extends CI_Model
 		}
 	}
 	
-	public function getlist_CourseLevel() {
-		
-		// $this->db->select('con.ConfigurationId,con.value,con.IsActive,area.CAreaId,area.Name as CAreaName,(SELECT COUNT(*) FROM tblcandidateksa as ck WHERE ksa.KSAId=ck.KSAId) as isdisabled');
-		// $this->db->join('tblmstcompetencyarea area', 'ksa.CAreaId = area.CAreaId', 'left');
-		// $result = $this->db->get('tblmstksa ksa');
-		
-		
+	public function getlist_CourseLevel() {	
 	$this->db->select('con.*,(SELECT COUNT(*) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
 			$this->db->where('key="CourseLevel"');
 		$result = $this->db->get('tblmstconfiguration as con');		
@@ -60,7 +54,8 @@ class CourseLevel_model extends CI_Model
 		
 		if($Configuration_id) {
 			
-			$this->db->select('*');
+	
+			$this->db->select('ConfigurationId,Value,DisplayText,Description,IsActive');
 			$this->db->where('ConfigurationId',$Configuration_id);
 			$result = $this->db->get('tblmstconfiguration');
 			

@@ -14,17 +14,29 @@ export class AppComponent {
     
     ngOnInit()
   {
+<<<<<<< HEAD
 	 
+=======
+	 debugger
+>>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
 	// this.RemainingService.getAll()
 	// //.map(res => res.json())
 	// .then((data) => 
 	// {
+<<<<<<< HEAD
 	// 	this.remainingList = data;
+=======
+		// this.remainingList = data;
+>>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
 			
 	// }, 
 	// (error) => 
 	// {
+<<<<<<< HEAD
 	// 	alert('error');
+=======
+		// alert('error');
+>>>>>>> 6a52eacf3c5a00190deb5e456450ad81a3abaf52
 	// });	
     	
   }

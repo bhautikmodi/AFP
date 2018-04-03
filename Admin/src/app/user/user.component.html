@@ -3,7 +3,7 @@
             <div class="row">
                  <!-- page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header">Add User</h1>
+                    <h1 class="page-header">{{header}} User</h1>
                 </div>
                 <!--end page header -->
             </div>
@@ -14,7 +14,7 @@
                          <div class="panel-heading">
                              User
 							 <div class="btn-group pull-right add-right">
-						  		<a href="users/list" class="btn btn-danger btn-add">
+						  		<a routerLink="/users/list" class="btn btn-danger btn-add">
 						  		<i class="fa fa-chevron-left fa-fw"></i> Back
 						  		</a>
 							</div>
@@ -211,7 +211,7 @@
 										<div class="clearfix"></div>
 										<div class="form-btn">
 											<button type="submit" class="btn btn-primary sub-btn">Submit</button>
-											<button type="reset" class="btn res-btn">Reset</button>
+											<!-- <button type="reset" class="btn res-btn">Clear</button> -->
 										</div>
                                     </form>
                                 </div>

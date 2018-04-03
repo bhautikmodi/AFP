@@ -1,0 +1,84 @@
+<div class="inner_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h1>Registration</h1>
+        <div class="clearfix"></div>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><span>Invitation</span></li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Header Section --> 
+
+<!-- Inner Section -->
+<div class="inner_content login_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
+        <h2 class="text-center">Invitation</h2>
+        <div class="clearfix"></div>
+		<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+  {{globals.message}}
+</div>
+       <!-- <div class="alert alert-danger" role="alert"> -->
+              <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> -->
+              <!-- This is a danger alert—check it out! </div> -->
+			  
+        <form class="form-validate"  #InvitationForm="ngForm" (ngSubmit)="addInvitation(InvitationForm)">
+          <div class="form-group">
+            <label><span>*</span>Email </label>
+             <input type="Email" placeholder="Email" class="form-control" #EmailAddress="ngModel" email 
+                                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress"
+								  name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"
+								  required/>
+                                  <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+                                              
+                                              <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">
+                                                Please enter Email Address
+                                              </span>
+                                              
+                                              <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
+                                                Please input a valid Email Address.
+                                              </span>
+                                          
+                                </span> 
+          </div>
+          <div class="form-group invitation_text">
+            <label><span>*</span>Invitation Code </label>
+            <div class="clearfix"></div>
+            <div class="minus_text">
+                <input type="text" #code1="ngModel" class="form-control" name="code1" maxlength="1" pattern="[0-9]" [(ngModel)]="InvitationEntity.code1"
+								[ngClass]="{red_border: (code1.dirty && code1.invalid) || (code1.pristine && submitted)}" required/>
+			    <input type="text" #code2="ngModel" class="form-control" name="code2" maxlength="1" pattern="[0-9]" [(ngModel)]="InvitationEntity.code2"
+								[ngClass]="{red_border: (code2.dirty && code2.invalid) || (code2.pristine && submitted)}" required/>
+			    <input type="text" #code3="ngModel" class="form-control" name="code3" maxlength="1" pattern="[0-9]" [(ngModel)]="InvitationEntity.code3"
+								[ngClass]="{red_border: (code3.dirty && code3.invalid) || (code3.pristine && submitted)}" required/>
+				<input type="text" #code4="ngModel"class="form-control margin_text" maxlength="1" name="code4" pattern="[0-9]" [(ngModel)]="InvitationEntity.code4"
+								[ngClass]="{red_border: (code4.dirty && code4.invalid) || (code4.pristine && submitted)}" required/>						 						 							 
+         
+          
+                <input type="text" #code5="ngModel" class="form-control" name="code5" maxlength="1" pattern="[0-9]" [(ngModel)]="InvitationEntity.code5"
+								[ngClass]="{red_border: (code5.dirty && code5.invalid) || (code5.pristine && submitted)}" required/>
+				<input type="text" #code6="ngModel" class="form-control" name="code6" maxlength="1" pattern="[0-9]" [(ngModel)]="InvitationEntity.code6"
+								[ngClass]="{red_border: (code6.dirty && code6.invalid) || (code6.pristine && submitted)}" required/>
+										 
+								
+            </div>
+          </div>
+		     <!-- <button type="submit" class="btn sub-btn">Next</button> -->
+       <button class="next_btn pull-right" type="submit">Next</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -3,7 +3,7 @@
             <div class="row">
                  <!-- page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header">Add Company</h1>
+                    <h1 class="page-header">{{header}} Company</h1>
                 </div>
                 <!--end page header -->
             </div>
@@ -117,7 +117,7 @@
 										<div class="clearfix"></div>
 										<div class="form-btn">
 											<button type="submit" class="btn sub-btn">Submit</button>
-											<button type="button" *ngIf="companyEntity.CompanyId==0" (click)="clearForm(companyForm)" class="btn res-btn">Reset</button>
+											<button type="button" *ngIf="companyEntity.CompanyId==0" (click)="clearForm(companyForm)" class="btn res-btn">Clear</button>
 										</div>
                                     </form>
                                 </div>

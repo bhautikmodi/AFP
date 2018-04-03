@@ -42,6 +42,7 @@ class User_model extends CI_Model
 				"Password"=>$post_user['Password'],
 				"Address1"=>$post_user['Address1'],
 				"Address2"=>$post_user['Address2'],
+				"CountryId"=>$post_user['CountryId'],
 				"StateId"=>$post_user['StateId'],
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
@@ -126,6 +127,7 @@ class User_model extends CI_Model
 				"Password"=>$post_user['Password'],
 				"Address1"=>$post_user['Address1'],
 				"Address2"=>$post_user['Address2'],
+				"CountryId"=>$post_user['CountryId'],
 				"StateId"=>$post_user['StateId'],
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
@@ -134,6 +136,9 @@ class User_model extends CI_Model
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
+			
+			
+			
 			
 			$this->db->where('UserId',$post_user['UserId']);
 			$res = $this->db->update('tbluser',$user_data);
@@ -158,16 +163,23 @@ class User_model extends CI_Model
 	{
 	  if($user_id)
 	  {
-		 $this->db->select('*');
-		 $this->db->where('UserId',$user_id);
-		 $result=$this->db->get('tbluser');
-		 $company_data= array();
+		  
+		  $this->db->select('user.*');
+		$this->db->where('user.UserId=',$user_id);
+		
+		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
+		$result = $this->db->get('tbluser user');
+		
+		 // $this->db->select('*');
+		 // $this->db->where('UserId',$user_id);
+		 // $result=$this->db->get('tbluser');
+		 $user_data= array();
 		 foreach($result->result() as $row)
 		 {
-			$company_data=$row;
+			$user_data=$row;
 			
 		 }
-		 return $company_data;
+		 return $user_data;
 		 
 	  }
 	  else

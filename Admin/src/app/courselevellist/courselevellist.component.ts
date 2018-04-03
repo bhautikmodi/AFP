@@ -2,29 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { CourcelevelService } from '../services/courcelevel.service';
+import { CourselevelService } from '../services/courselevel.service';
 import { Globals } from '.././globals';
 declare var $: any;
 @Component({
-  selector: 'app-courcelevellist',
-    providers: [ CourcelevelService ],
-  templateUrl: './courcelevellist.component.html',
-  styleUrls: ['./courcelevellist.component.css']
+  selector: 'app-courselevellist',
+      providers: [ CourselevelService ],
+  templateUrl: './courselevellist.component.html',
+  styleUrls: ['./courselevellist.component.css']
 })
-export class CourcelevellistComponent implements OnInit 
-{
-CourselevelList;
-deleteEntity;
+export class CourselevellistComponent implements OnInit {
+	CourselevelList;
+	deleteEntity;
 	msgflag;
 	message;
 	type;
-constructor(private http: Http, private router: Router, private route: ActivatedRoute, private CourcelevelService: CourcelevelService, private globals: Globals) 
+ constructor(private http: Http, private router: Router, private route: ActivatedRoute, private CourselevelService: CourselevelService, private globals: Globals) 
   {
 	
   }
 
  ngOnInit() { 
-	this.CourcelevelService.getAll()
+	this.CourselevelService.getAll()
 	.then((data) => 
 	{ 
 		this.CourselevelList = data;	
@@ -54,7 +53,7 @@ constructor(private http: Http, private router: Router, private route: Activated
 
 	deleteConfirm(Courselevel)
 	{ 
-		this.CourcelevelService.delete(Courselevel.ConfigurationId)
+		this.CourselevelService.delete(Courselevel.ConfigurationId)
 		.then((data) => 
 		{
 			let index = this.CourselevelList.indexOf(Courselevel);

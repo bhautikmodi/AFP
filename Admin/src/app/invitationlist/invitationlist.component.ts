@@ -19,6 +19,7 @@ export class InvitationlistComponent implements OnInit {
 	msgflag;
 	message;
 type;
+Disinv;
   constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
@@ -28,7 +29,9 @@ type;
     this.InvitationService.getAll()
     .then((data) => 
     { 
-      this.InvitationList = data;	
+     // this.InvitationList = data;	
+	  	this.InvitationList = data['Inv'];
+		this.Disinv = data['Disinv'];
       setTimeout(function(){
         $('#dataTables-example').dataTable( {
           "oLanguage": {

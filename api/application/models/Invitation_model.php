@@ -15,7 +15,7 @@ class Invitation_model extends CI_Model
 			
 			
 				$this->db->select('*');
-				$this->db->from('tblUserInvitation');
+				$this->db->from('tbluserinvitation');
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->limit(1);
 				$query = $this->db->get();
@@ -31,7 +31,7 @@ class Invitation_model extends CI_Model
 			
 			);
 		
-			$res = $this->db->insert('tblUserInvitation',$Invitation_data);
+			$res = $this->db->insert('tbluserinvitation',$Invitation_data);
 			
 			if($res) {
 				return true;
@@ -49,7 +49,7 @@ class Invitation_model extends CI_Model
 	//$this->db->select('con.*,(SELECT COUNT(*) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
 		//$result = $this->db->get('tblUserInvitation as con');	
 		$this->db->select('*');
-		$result = $this->db->get('tblUserInvitation');	
+		$result = $this->db->get('tbluserinvitation');	
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
@@ -129,7 +129,7 @@ class Invitation_model extends CI_Model
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);
-				$this->db->from('tblUserInvitation');
+				$this->db->from('tbluserinvitation');
 				$query = $this->db->get();
 				
 				if ($query->num_rows() == 1) 

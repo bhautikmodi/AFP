@@ -53,4 +53,11 @@ constructor( private http: Http,private globals: Globals, private router: Router
 	  
   }
   
+  addclass(i){
+	  
+	  $('.company_box').removeClass('active');
+	  $('#cbox'+i).addClass('active');
+		//e.currentTarget.addClass('active');
+  }
+
 }

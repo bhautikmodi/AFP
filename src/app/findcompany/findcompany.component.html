@@ -41,8 +41,8 @@
 <div class="grey_bg company_section">
   <div class="container">
     <div class="row">
-			  <div class="col-md-3 col-sm-3" *ngFor="let Company of CompanyList" >
-				<div class="company_box" >
+			  <div class="col-md-3 col-sm-3" *ngFor="let Company of CompanyList; let i = index" >
+				<div class="company_box" (click)="addclass(i)" id="cbox{{i}}">
 				  <div class="company_name">{{Company.Name}}</div>
 				  <p><strong>Industry : </strong>{{Company.IndustryName}}<br>
 					<strong>Phone Number : </strong>{{Company.PhoneNumber}}<br>

@@ -76,8 +76,9 @@
     
            </ul>
                 <!-- second-level-items -->
- </li>  
-		 <li> <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Reports</a> </li>
+ </li> 
+ <li [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
+ 
       </ul>
       <!-- end side-menu --> 
     </div>

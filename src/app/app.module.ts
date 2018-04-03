@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { InvitationService } from './services/invitation.service';
+import { FindcompanyComponent } from './findcompany/findcompany.component';
+import { FindcompanyService } from './services/findcompany.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { InvitationService } from './services/invitation.service';
     DashbordComponent,
     FooterComponent,
     ContactusComponent,
-    InvitationComponent
+    InvitationComponent,
+    FindcompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -38,15 +41,19 @@ import { InvitationService } from './services/invitation.service';
 		},
 		{
 			path : 'invitation',
-			component : InvitationComponent
+			component : InvitationComponent,
 		},		
+		{
+			path : 'findcompany',
+			component : FindcompanyComponent
+		},
 		{
 			path : '**',
 			redirectTo : 'DashbordComponent'
 		}
 	])
   ],
-  providers: [Globals,InvitationService],
+  providers: [Globals,InvitationService,FindcompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

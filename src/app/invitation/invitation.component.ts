@@ -28,6 +28,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 })
   this.globals.msgflag=false;
 	  this.InvitationEntity = {};
+	    this.InvitationEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	if(id){
 		//this.header = 'Edit';
@@ -55,24 +56,21 @@ constructor( private http: Http,private globals: Globals, private router: Router
   addInvitation(InvitationForm)
 	{		debugger
 		let id = this.route.snapshot.paramMap.get('id');
-		if(id){			
-			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = false;
-		} else {			
-			this.InvitationEntity.CreatedBy = this.globals.authData.UserId;
-			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = true;
-		}
+		
 		if(InvitationForm.valid){
+			this.InvitationEntity.Code=this.InvitationEntity.code1+this.InvitationEntity.code2+this.InvitationEntity.code3+this.InvitationEntity.code4
+			+this.InvitationEntity.code5+this.InvitationEntity.code6;
 			this.btn_disable = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{debugger
-				if(data=='email duplicate')
+				if(data=='Code duplicate')
 				{
-						this.globals.message = 'Email Duplicate';
+						this.globals.message = 'Code Duplicate';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
+						this.btn_disable = false;
+					this.submitted = false;
 					//this.router.navigate(['/invitation/add']);
 				}else
 				{
@@ -86,11 +84,11 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Email successfully';
+						this.globals.message = 'Code successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}			
-					this.router.navigate(['/invitation/list']);
+					this.router.navigate(['/findcompany']);
 				}
 				
 			}, 

@@ -1,0 +1,66 @@
+<div class="clearfix"></div>
+<div class="inner_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h1>Registration</h1>
+        <div class="clearfix"></div>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="find_company.html">Registration</a></li>
+            <li><span>Find Your Company</span></li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Header Section --> 
+
+<!-- Inner Section -->
+<div class="inner_content height_zero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-4 col-md-offset-2">
+        <div class="form-group">
+          <label><span>*</span>Find Your Company</label>
+          <input class="form-control autocomplete" type="text" id="company_name" name="company_name" />
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <div class="register_company_button"><a href="register_company_employee.html"><i class="fa fa-question-circle-o"></i>Could not found your Company?<br>
+          Register your Company here.</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="grey_bg company_section">
+  <div class="container">
+    <div class="row">
+			  <div class="col-md-3 col-sm-3" *ngFor="let Company of CompanyList" >
+				<div class="company_box" >
+				  <div class="company_name">{{Company.Name}}</div>
+				  <p><strong>Industry : </strong>{{Company.IndustryName}}<br>
+					<strong>Phone Number : </strong>{{Company.PhoneNumber}}<br>
+					<strong>Website : </strong>{{Company.Website}}</p>
+				</div>
+			  </div>
+      
+      <div class="clearfix"></div>
+      <div class="col-md-12">
+        <ul class="pagination">
+          <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
+          <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
+          <li class="paginate_button disabled" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
+          <li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
+        </ul>
+        <button class="next_btn pull-right" type="button" onclick="window.location = 'register_employee.html';">Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -28,7 +28,7 @@
 	  <form class="form-validate" role="form" #RegisterForm="ngForm" (ngSubmit)="addRegister(RegisterForm)">
         <div class="col-md-3 col-sm-4 left_content">
           <h2>Company Details</h2>
-          <table class="table table-bordered table-striped"  >
+          <table class="table table-bordered table-striped" *ngIf="companydata!=''" >
             <tr>
               <th>Company Name</th>
             </tr>
@@ -54,6 +54,7 @@
             <td>{{companydata.Website}}</td> 
             </tr>
           </table>
+		  <div *ngIf="companydata==''">
           <div class="form-group">
             <label><span>*</span>Company Name </label>
              <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="RegisterEntity.Name" name="Name" pattern="[a-zA-Z' ]{1,100}"
@@ -99,7 +100,7 @@
 						</span>
           </div>
 		  
-		  
+		  </div>
           <a routerLink="/findcompany" class="next_btn arrow_down">Not Your Company?<br>
           Let's go back to search</a> </div>
         <div class="col-md-9 col-sm-8 right_content">

@@ -13,77 +13,78 @@ declare var $: any;
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-RegisterEntity;
-CountryList;
-submitted;
-stateList;
+	RegisterEntity;
+	CountryList;
+	IndustryList;
+	stateList;
+	submitted;
 	btn_disable;
 	header;
 	type;
+	same;
+	companydata;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {
+  ngOnInit() {debugger
+	  
+	  
+	  this.btn_disable = false;
 	  this.RegisterEntity={};
+	   this.companydata={};
+	   
     //$('select').select2();
-	this.RegisterService.getAllCountry()
+
+// $('#employee_btn').click(function () {
+	// $("#submit_Modal").modal('show');
+// });
+ 
+ this.RegisterService.getIndustry()
+	//.map(res => res.json())
 	.then((data) => 
-	{ 
-		this.CountryList = data;
-		
-		
+	{
+		this.IndustryList = data;
 	}, 
 	(error) => 
 	{
 		alert('error');
 	});	
-	 // this.RegisterService.getAllState()
-	// .then((data) => 
-	// {
-		// this.stateList = data;
-	// }, 
-	// (error) => 
-	// {
-		// alert('error');
-	// });	
-	
-
-	
-	
-	
+	let token = localStorage.getItem('CompanyId');
+	this.RegisterService.getAllCountry(token)
+	.then((data) => 
+	{ 
+		this.CountryList = data['res'];
+		this.companydata = data['com'];	
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});
 	
 	
   }
   addRegister(RegisterForm)
 	{		
-		let id = this.route.snapshot.paramMap.get('id');
-		if(id){			
-			this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = false;
-		} else {			
-			this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
-			this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
+					
+			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
+			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = true;
-		}
+		
 		if(RegisterForm.valid){
 			this.btn_disable = true;
 			this.RegisterService.add(this.RegisterEntity)
 			.then((data) => 
 			{
-				//alert('success');
+				alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
 				RegisterForm.form.markAsPristine();
-				if(id){
-					this.globals.message = 'Update successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				} else {
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
-				}			
+							
 				this.router.navigate(['/register']);
 			}, 
 			(error) => 
@@ -95,7 +96,7 @@ stateList;
 		} 		
 	}
 	getStateList()
-	{ debugger
+	{ 
 		if(this.RegisterEntity.CountryId > 0){
 			this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 			.then((data) => 
@@ -109,6 +110,14 @@ stateList;
 		} else {
 			this.stateList = [];
 		}
+	}
+	checkpassword(){ 
+		if(this.RegisterEntity.cPassword != this.RegisterEntity.Password){
+			this.same = true;
+		} else {
+			this.same = false;
+		}
+		
 	}
 
 }

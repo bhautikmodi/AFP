@@ -12,12 +12,17 @@ class Register extends CI_Controller
 	
 	
 	
-		public function getAllCountry()
+		public function getAllCountry($CompanyId = NULL)
 	{
-		$data="";
-		
-		$data=$this->Register_model->getlist_country();
-		echo json_encode($data);
+		if(!empty($CompanyId)) 
+		{
+				$data="";
+				
+				$data['res']=$this->Register_model->getlist_country();
+				$data['com']=$this->Register_model->company_default($CompanyId);
+				
+				echo json_encode($data);
+		}
 	}
 	// List all state
 	public function getAllState()
@@ -38,27 +43,16 @@ class Register extends CI_Controller
 		}			
 	}
 	
-	// public function addUser()
-	// {
-		// $post_user = json_decode(trim(file_get_contents('php://input')), true);
-		// if ($post_user) 
-			// {
-				// if($post_user['UserId']>0)
-				// {
-					// $result = $this->User_model->edit_user($post_user);
-					// if($result)
-					// {
-						// echo json_encode($post_user);	
-					// }	
-				// }
-				// else
-				// {
-					
-					// $result = $this->User_model->add_user($post_user); 
+	public function addUser()
+	{
+		$post_user = json_decode(trim(file_get_contents('php://input')), true);
+		if ($post_user) 
+			{
+				$result = $this->Register_model->add_user($post_user); 
 			
-					// if($result)
-					// {
-						// echo json_encode($post_user); 
+					if($result)
+					{
+						echo json_encode($post_user); 
 						// $config['protocol']='smtp';
 						// $config['smtp_host']='ssl://smtp.googlemail.com';
 						// $config['smtp_port']='465';
@@ -80,11 +74,11 @@ class Register extends CI_Controller
 						
 						
 						// $this->email->send();
-					// }	
-				// }
+					}	
+				
 					
-			// }
-	// }
+			}
+	}
 
 
 	
@@ -97,16 +91,15 @@ class Register extends CI_Controller
 	
 	
 	
-	// // List all company
-	// public function getAllCompany()
-	// {
-		// $data="";	
-		// //$this->load->model('Company_model');
-		// $data=$this->User_model->getlist_company();
-		// //print_r($data);
-		// //.exit;
-		// echo json_encode($data);
-	// }
+	 // List all industry
+	public function getAllIndustry()
+	{
+		$data="";	
+	
+		$data=$this->Register_model->getlist_Industry();
+	
+		echo json_encode($data);
+	}
 	
 
 }

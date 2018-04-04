@@ -7,9 +7,9 @@ export class RegisterService {
  constructor( private http: Http,private globals: Globals) { }
  
  add(RegisterEntity)
-  {debugger
+  {
    let promise = new Promise((resolve, reject) => {
-     this.http.post(this.globals.baseAPIUrl + 'Register/add', RegisterEntity, this.globals.headerpath)
+     this.http.post(this.globals.baseAPIUrl + 'Register/adduser', RegisterEntity, this.globals.headerpath)
        .toPromise()
        .then(
          res => { // Success
@@ -24,10 +24,10 @@ export class RegisterService {
    }
    
    
-   getAllCountry()
-  {
+   getAllCountry(token)
+  {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Register/getAllCountry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Register/getAllCountry/' + token, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success
@@ -40,7 +40,7 @@ export class RegisterService {
 	});		
 	return promise;
   } 
-  getAllState(){debugger
+  getAllState(){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Register/getAllState',  this.globals.headerpath)
       .toPromise()
@@ -55,7 +55,7 @@ export class RegisterService {
 	});		
 	return promise;
   }
-   getStateList(CountryId){debugger
+   getStateList(CountryId){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Register/getStateList/' + CountryId, this.globals.headerpath)
       .toPromise()
@@ -70,4 +70,20 @@ export class RegisterService {
 	});		
 	return promise;
   } 
+     getIndustry(){
+	 
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'Register/getAllIndustry',  this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
 }

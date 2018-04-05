@@ -24,20 +24,16 @@ class Invitation_model extends CI_Model
 					return false;
 				} else {
 					$Invitation_data = array(
-			
-				'EmailAddress' => $post_Invitation['EmailAddress'],
-				'Code' => $post_Invitation['Code']
-				
-			
-			);
-		
-			$res = $this->db->insert('tbluserinvitation',$Invitation_data);
-			
-			if($res) {
-				return true;
-			} else {
-				return false;
-			}
+						'EmailAddress' => $post_Invitation['EmailAddress'],
+						'Code' => $post_Invitation['Code']
+					);
+					$res = $this->db->insert('tbluserinvitation',$Invitation_data);
+					
+					if($res) {
+						return true;
+					} else {
+						return false;
+					}
 				}
 	
 		} else {
@@ -46,9 +42,8 @@ class Invitation_model extends CI_Model
 	}
 	
 	public function getlist_Invitation() {
-	//$this->db->select('con.*,(SELECT COUNT(*) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
-		//$result = $this->db->get('tblUserInvitation as con');	
-		$this->db->select('*');
+
+		$this->db->select('UserInvitationId,EmailAddress,Status,Code,IsActive');
 		$result = $this->db->get('tbluserinvitation');	
 		$res = array();
 		if($result->result()) {
@@ -59,7 +54,7 @@ class Invitation_model extends CI_Model
 	}
 	public function getlist_DesInvitation() {
 
-		$this->db->select('*');	
+		$this->db->select('ConfigurationId,Value,IsActive');	
 		$this->db->where('Key="Invitation"');
 		$result = $this->db->get('tblmstconfiguration');	
 		

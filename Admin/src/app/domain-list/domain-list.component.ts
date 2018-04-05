@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DomainService } from '../services/domain.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
@@ -19,35 +20,49 @@ export class DomainListComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	permissionEntity;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private domainService: DomainService, private globals: Globals) 
+		 private domainService: DomainService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
   ngOnInit() { 
-		//this.globals.msgflag = false;
-	this.domainService.getAll()
+	this.permissionEntity = {};
+	this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
 	.then((data) => 
-	{ 
-		this.domainList = data;	
-		setTimeout(function(){
-      $('#dataTables-example').dataTable( {
-        "oLanguage": {
-          "sLengthMenu": "_MENU_ Domain per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domain",
-					"sInfoFiltered": "(filtered from _MAX_ total Domain)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
-        }
-      });
-    },100); 
-
-	}, 
+	{
+		this.permissionEntity = data;
+		if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+		this.domainService.getAll()
+		.then((data) => 
+		{ 
+			this.domainList = data;	
+			setTimeout(function(){
+			$('#dataTables-example').dataTable( {
+				"oLanguage": {
+				"sLengthMenu": "_MENU_ Domain per Page",
+							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domain",
+							"sInfoFiltered": "(filtered from _MAX_ total Domain)",
+							"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
+				}
+			});
+			},100); 	
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});
+		} else {
+			this.router.navigate(['/dashboard']);
+		}		
+	},
 	(error) => 
 	{
 		alert('error');
 	});		
+		
   }
 	
 	deleteDomain(domain)

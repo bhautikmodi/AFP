@@ -19,7 +19,7 @@
           <div class="panel-body">
             <div class="row"> 
               <!--<div class="col-lg-12">-->
-                <form class="form-validate" #ksaForm="ngForm" (ngSubmit)="addNoOfKSA(ksaForm)">
+                <form class="form-validate" #ksaForm="ngForm" (ngSubmit)="addNoOfKSA(ksaForm)" *ngIf="globals.authData.RoleId==4">
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>No of KSA</label>
@@ -86,7 +86,7 @@
               
               <!-- remaining day code start -->
               
-              <form class="form-validate" #rdaysForm="ngForm" (ngSubmit)="addRDays(rdaysForm)">
+              <form class="form-validate" #rdaysForm="ngForm" (ngSubmit)="addRDays(rdaysForm)" *ngIf="globals.authData.RoleId==4">
                 
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">
@@ -152,7 +152,7 @@
                 <div class="clearfix"></div>
                 <div class="form-btn">
                   <button type="submit" class="btn sub-btn">Submit</button>
-                  <button type="button"  (click)="cancleForm(teamsizeForm)" class="btn res-btn">Cancle</button>
+                  <button type="button"  (click)="cancleForm(teamsizeForm)" class="btn res-btn">Cancel</button>
                   <!--<button class="btn res-btn">Edit</button>--> 
                 </div>
               </form>

@@ -63,6 +63,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 		if(InvitationForm.valid){
 			this.InvitationEntity.Code=this.InvitationEntity.code1+this.InvitationEntity.code2+this.InvitationEntity.code3+this.InvitationEntity.code4
 			+this.InvitationEntity.code5+this.InvitationEntity.code6;
+		
 			this.btn_disable = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
@@ -80,12 +81,18 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;
+						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
 					this.InvitationEntity = {};
 					InvitationForm.form.markAsPristine();
 						this.globals.message = 'Code successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
-								
+						
+					
+					
+						//alert(id);
+				
+				
 					this.router.navigate(['/findcompany']);
 				}
 				

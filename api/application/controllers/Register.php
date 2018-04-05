@@ -43,12 +43,15 @@ class Register extends CI_Controller
 		}			
 	}
 	
-	public function addUser()
+	public function addRegister()
 	{
-		$post_user = json_decode(trim(file_get_contents('php://input')), true);
-		if ($post_user) 
+		$data = json_decode(trim(file_get_contents('php://input')), true);
+		
+		if ($data) 
 			{
-				$result = $this->Register_model->add_user($post_user); 
+				$post_user = $data['reg'];
+				$com_reg = $data['com'];
+				$result = $this->Register_model->add_Register($post_user,$com_reg); 
 			
 					if($result)
 					{

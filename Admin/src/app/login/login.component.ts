@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Globals } from '../globals';
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 	  this.loginEntity = {};
 	  this.invalid = false;
+	  $("html").addClass("index_admin");
   }
 
   login(loginForm)

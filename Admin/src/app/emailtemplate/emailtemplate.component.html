@@ -15,7 +15,7 @@
           Email Template
           <div class="btn-group pull-right add-right">
             <a routerLink="/emailtemplate/list" class="btn btn-danger btn-add">
-              <i class="fa fa-chevron-left fa-fw"></i> Back
+              <i class="fa fa-reply fa-fw"></i> Back
             </a>
           </div>
         </div>
@@ -67,13 +67,16 @@
                 <div class="form-group col-md-5">
                   <label>
                     <span class="required">*</span>To</label>
-                    <select class="form-control" size="3" #To="ngModel" [(ngModel)]="emailEntity.To" name="To" multiple>
-                      <!-- <option value="" ngSelected='emailEntity.To==""'>Select</option> -->
-                      <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.To==role.RoleId">{{role.RoleName}}</option>                                      
+                    <select  class="form-control" #To="ngModel" [(ngModel)]="emailEntity.To" name="To" [ngClass]="{red_border: (To.dirty && To.invalid) || (To.pristine && submitted)}" required>
+                      <option value="" ngSelected='emailEntity.To==""'>Select</option>
+                      <ng-container *ngFor="let role of roleList">
+                          <option *ngIf="(emailEntity.Cc!=role.RoleId)&&(emailEntity.Bcc!=role.RoleId)" value="{{role.RoleId}}" ngSelected="emailEntity.To==role.RoleId">{{role.RoleName}}</option>
+                      </ng-container>
+                      <!-- <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.To==role.RoleId">{{role.RoleName}}</option>                                       -->
                   </select>
-                  <!-- <span style="color:red" *ngIf="true"> 
-                    <span *ngIf="true">Please select/enter to field </span>
-                  </span> -->
+                  <span style="color:red" *ngIf="(To.dirty && To.invalid) || (To.pristine && submitted)"> 
+                      <span *ngIf="To.errors.required || (To.pristine && submitted)">Please select To</span>
+                    </span>
                 </div>
 
                 <div class="form-group extra-info col-md-1">
@@ -89,9 +92,12 @@
                 <div class="clearfix"></div>
                 <div class="form-group col-md-5">
                   <label>CC</label>
-                  <select class="form-control" size="3" #Cc="ngModel" [(ngModel)]="emailEntity.Cc" name="Cc" multiple>
-                    <!-- <option value="" ngSelected='emailEntity.Cc==""'>Select</option> -->
-                    <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.Cc==role.RoleId">{{role.RoleName}}</option>                                      
+                  <select class="form-control" #Cc="ngModel" [(ngModel)]="emailEntity.Cc" name="Cc">
+                    <option value="" ngSelected='emailEntity.Cc==""'>Select</option>
+                    <ng-container *ngFor="let role of roleList">
+                      <option *ngIf="(emailEntity.To!=role.RoleId)&&(emailEntity.Bcc!=role.RoleId)" value="{{role.RoleId}}" ngSelected="emailEntity.Cc==role.RoleId">{{role.RoleName}}</option>
+                    </ng-container>     
+                    <!-- <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.Cc==role.RoleId">{{role.RoleName}}</option>                                       -->
                 </select>
                 </div>
 
@@ -107,9 +113,12 @@
                 <div class="clearfix"></div>
                 <div class="form-group col-md-5">
                   <label>BCC</label>
-                  <select class="form-control" size="3" #Bcc="ngModel" [(ngModel)]="emailEntity.Bcc" name="Bcc" multiple>
-                    <!-- <option value="" ngSelected='emailEntity.Bcc==""'>Select</option> -->
-                    <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.Bcc==role.RoleId">{{role.RoleName}}</option>                                      
+                  <select class="form-control" #Bcc="ngModel" [(ngModel)]="emailEntity.Bcc" name="Bcc">
+                    <option value="" ngSelected='emailEntity.Bcc==""'>Select</option>
+                    <ng-container *ngFor="let role of roleList">
+                        <option *ngIf="(emailEntity.To!=role.RoleId)&&(emailEntity.Cc!=role.RoleId)" value="{{role.RoleId}}" ngSelected="emailEntity.Bcc==role.RoleId">{{role.RoleName}}</option>
+                    </ng-container>
+                    <!-- <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.Bcc==role.RoleId">{{role.RoleName}}</option>                                       -->
                 </select>
                 </div>
 
@@ -159,7 +168,7 @@
                   <div class="contacts">
                     <div id="contactList">
                       <div *ngFor="let ph of placeholderList" class="contact h-card" data-contact="0" draggable="true" tabindex="0">
-                        {{ph.PlaceholderName}}
+                          {{ph.PlaceholderName}}
                       </div>                      
                     </div>
                   </div>
@@ -177,3 +186,17 @@
   </div>
 </div>
 <!-- end page-wrapper -->
+
+<div class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" id="Sure_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+              <p>Are You Sure this template is active and another is deactive?</p>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="next_btn" (click)="addConfirm(abcform)" id="yes_btn">Yes</button>
+              <button type="button" class="back_btn" data-dismiss="modal">No</button>
+          </div>
+      </div>
+  </div>
+  </div>

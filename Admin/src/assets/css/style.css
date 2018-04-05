@@ -102,6 +102,8 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
     /*border-bottom:1px solid #0085AD;*/
 }
 
+a {text-decoration:none; color:#191919;}
+
 /* Navigation */
 
 /* ------------------------------- */
@@ -516,6 +518,12 @@ table.dataTable thead .sorting:after {
 	color: #fff;
 }
 
+.red_btn{ font-family: "Gotham-Book"; font-size:15px; line-height:16px; padding: 10px 15px 11px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 45px; border-width: 0 45px 0 0;}
+
+.red_btn:hover,.red_btn:focus {background-position: right bottom; color: #ffffff; text-decoration: none; }
+
+.red_btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -37px; top: 6px; width: 25px; height: 24px; background-size:100%;}
+
 .sub-btn {
 	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
@@ -622,7 +630,7 @@ table.dataTable thead .sorting:after {
 	background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;
 }
 .back_btn {
-    font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #67b7c7 53px; border-width: 0 53px 0 0; border-radius: 0px;
+    font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
 .back_btn:hover, .back_btn:focus {
     background-position: right bottom; color: #ffffff;
@@ -631,7 +639,7 @@ table.dataTable thead .sorting:after {
 	content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; 
 }
 .btn.back_btn:active {
-	background-image: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;
+	background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;
 }
 #Delete_Modal .modal-dialog {
     margin: 20% auto;
@@ -652,6 +660,7 @@ table.dataTable thead .sorting:after {
 
 .panel-title {
 	color: #605b54;
+	text-transform: uppercase;
 }
 .panel-default > .panel-heading {
 	color: #605b54;
@@ -693,6 +702,10 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 }*/
 
 .select2,.select2-results__options,.select2-search__field {color:#555!important; font-family: "Gotham-book"; font-size: 14px; font-weight: normal; line-height: 22px;}
+
+.forgot_paswd { line-height: 30px; color: #000; font-size: 13px; font-family:"Gotham-medium"; font-weight: normal;}
+
+.forgot_paswd:hover {text-decoration: none;}
 
 .small-padding {padding-top: 12px;}
 
@@ -798,5 +811,5 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 }
 
 .btn.btn-default.disabled {
-	pointer-events: auto;
+	pointer-events: none;
 }*/

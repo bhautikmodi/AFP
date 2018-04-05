@@ -24,8 +24,7 @@
       "scripts": [
 		"assets/js/jquery-1.11.3.min.js",
 		"assets/js/bootstrap.min.js",	
-		"assets/js/jquery.bxslider.js",
-		"assets/js/select2.min.js"
+		"assets/js/jquery.bxslider.js"
 		
 		
 		

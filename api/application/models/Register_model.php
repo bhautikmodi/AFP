@@ -68,30 +68,84 @@ class Register_model extends CI_Model
 		}
 		
 	}
-	public function add_user($post_user)
+	public function add_Register($post_user,$com_reg)
 	{	
 		if($post_user)
 		{
-			 
-			$user_data=array(
-				"RoleId"=>3,
-				"CompanyId"=>2,
-				"FirstName"=>$post_user['FirstName'],
-				"LastName"=>$post_user['LastName'],
-				"Title"=>$post_user['Title'],
-				"EmailAddress"=>'tmehta@openeyes.com',
-				"Password"=>$post_user['Password'],
-				"Address1"=>$post_user['Address1'],
-				"Address2"=>$post_user['Address2'],
-				"CountryId"=>$post_user['CountryId'],
-				"StateId"=>$post_user['StateId'],
-				"City"=>$post_user['City'],
-				"ZipCode"=>$post_user['ZipCode'],
+            if($com_reg['CompanyId']=='')
+			{
+				$company_data=array(
+			
+				"Name"=>$post_user['Name'],
+				"IndustryId"=>$post_user['IndustryId'],
+				"Website"=>$post_user['Website'],
 				"PhoneNumber"=>$post_user['PhoneNumber'],
 				"CreatedBy" =>1,
-				"UpdatedBy" =>1,
-			);	
+				"UpdatedBy" =>1
+				);	
+				$res=$this->db->insert('tblcompany',$company_data);
 				
+				$this->db->select('CompanyId');
+				$this->db->order_by('CompanyId','desc');
+				$this->db->limit(1);
+				$result=$this->db->get('tblcompany');
+				
+						$company_data = array();
+					foreach($result->result() as $row) 
+					{
+						$company_data = $row;
+					}
+				
+				
+				
+				$user_data=array(
+					"RoleId"=>3,
+					"CompanyId"=>$company_data->CompanyId,
+					"FirstName"=>$post_user['FirstName'],
+					"LastName"=>$post_user['LastName'],
+					"Title"=>$post_user['Title'],
+					"EmailAddress"=>$post_user['EmailAddress'],
+					"Password"=>$post_user['Password'],
+					"Address1"=>$post_user['Address1'],
+					"Address2"=>$post_user['Address2'],
+					"CountryId"=>$post_user['CountryId'],
+					"StateId"=>$post_user['StateId'],
+					"City"=>$post_user['City'],
+					"ZipCode"=>$post_user['ZipCode'],
+					"PhoneNumber"=>$post_user['PhoneNumber'],
+					"CreatedBy" =>1,
+					"UpdatedBy" =>1,
+				);	
+				
+				$res=$this->db->insert('tbluser',$user_data);	
+				if($res)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}else
+			{
+					$user_data=array(
+						"RoleId"=>3,
+						"CompanyId"=>$com_reg['CompanyId'],
+						"FirstName"=>$post_user['FirstName'],
+						"LastName"=>$post_user['LastName'],
+						"Title"=>$post_user['Title'],
+						"EmailAddress"=>$post_user['EmailAddress'],
+						"Password"=>$post_user['Password'],
+						"Address1"=>$post_user['Address1'],
+						"Address2"=>$post_user['Address2'],
+						"CountryId"=>$post_user['CountryId'],
+						"StateId"=>$post_user['StateId'],
+						"City"=>$post_user['City'],
+						"ZipCode"=>$post_user['ZipCode'],
+						"PhoneNumber"=>$post_user['PhoneNumber'],
+						"CreatedBy" =>1,
+						"UpdatedBy" =>1,
+					);	
 				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
 				{
@@ -101,6 +155,7 @@ class Register_model extends CI_Model
 				{
 					return false;
 				}
+			}
 		}
 		else
 		{

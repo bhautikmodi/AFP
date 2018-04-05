@@ -25,7 +25,7 @@ Disinv;
  
 
   ngOnInit() { debugger
-   
+   this.Disinv = '';
     this.InvitationService.getAll()
     .then((data) => 
     { 

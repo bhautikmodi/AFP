@@ -42,6 +42,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			//.map(res => res.json())
 			.then((data) => 
 			{
+				
 				this.CompanyList = data;
 			}, 
 			(error) => 
@@ -52,5 +53,24 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			
 	  
   }
+  clickid()
+  {
+	var id = $('.company_box.active input').val();
+	//alert(id);
+  localStorage.setItem('CompanyId',id);
+  this.router.navigate(['/register']);  
   
+  }
+  addclass(i){
+	  
+	  $('.company_box').removeClass('active');
+	  $('#cbox'+i).addClass('active');
+		//e.currentTarget.addClass('active');
+  }
+  removeidreg()
+  {
+	 localStorage.removeItem('CompanyId');
+	 this.router.navigate(['/register']);  
+  }
+
 }

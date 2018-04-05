@@ -15,7 +15,8 @@ import { InvitationComponent } from './invitation/invitation.component';
 import { InvitationService } from './services/invitation.service';
 import { FindcompanyComponent } from './findcompany/findcompany.component';
 import { FindcompanyService } from './services/findcompany.service';
-
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './services/register.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { FindcompanyService } from './services/findcompany.service';
     FooterComponent,
     ContactusComponent,
     InvitationComponent,
-    FindcompanyComponent
+    FindcompanyComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,11 @@ import { FindcompanyService } from './services/findcompany.service';
 		},		
 		{
 			path : 'findcompany',
-			component : FindcompanyComponent
+			component : FindcompanyComponent,
+		},
+		{
+			path : 'register',
+			component : RegisterComponent
 		},
 		{
 			path : '**',
@@ -53,7 +59,7 @@ import { FindcompanyService } from './services/findcompany.service';
 		}
 	])
   ],
-  providers: [Globals,InvitationService,FindcompanyService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

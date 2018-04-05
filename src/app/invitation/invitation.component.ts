@@ -19,9 +19,10 @@ constructor( private http: Http,private globals: Globals, private router: Router
 	btn_disable;
 	header;
 	type;
+	
 
   ngOnInit() 
-  {debugger
+  {
   $('.invitation_text .form-control').keyup(function(e){
 	if($(this).val().length==$(this).attr('maxlength'))
 	$(this).next('.form-control').focus()
@@ -55,7 +56,9 @@ constructor( private http: Http,private globals: Globals, private router: Router
   
   addInvitation(InvitationForm)
 	{		debugger
-		let id = this.route.snapshot.paramMap.get('id');
+	
+		
+			this.submitted = true;
 		
 		if(InvitationForm.valid){
 			this.InvitationEntity.Code=this.InvitationEntity.code1+this.InvitationEntity.code2+this.InvitationEntity.code3+this.InvitationEntity.code4
@@ -79,15 +82,10 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					this.submitted = false;
 					this.InvitationEntity = {};
 					InvitationForm.form.markAsPristine();
-					if(id){
-						this.globals.message = 'Update successfully';
-						this.globals.type = 'success';
-						this.globals.msgflag = true;
-					} else {
 						this.globals.message = 'Code successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
-					}			
+								
 					this.router.navigate(['/findcompany']);
 				}
 				

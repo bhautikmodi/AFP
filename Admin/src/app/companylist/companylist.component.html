@@ -29,10 +29,10 @@
                   <tr>
                     <th style="width:4%;">#</th>
                     <th style="width:12%;">Name</th>
-                    <th style="width:9%;">IndustryId</th>
+                    <th style="width:9%;">Industry</th>
 					<th style="width:10%;">Phone Number</th>
 					<th style="width:9%;">Webiste</th>
-					<th style="width:7%;">IsActive</th>
+					<th style="width:7%;">Active?</th>
                     <th style="width:9%;">Actions</th>
                   </tr>
                 </thead>
@@ -40,7 +40,7 @@
                  <tr *ngFor="let company of companyList; let i = index" >
 												<td>{{i+1}}</td>
 												<td>{{company.Name}}</td>
-												<td>{{company.IndustryId}}</td>
+												<td>{{company.IndustryName}}</td>
 												<td>{{company.PhoneNumber}}</td>
 												<td>{{company.Website}}</td>
 												<td *ngIf="company.IsActive=='1'">Yes</td>

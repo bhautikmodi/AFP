@@ -42,7 +42,7 @@ class State_model extends CI_Model
 	{
 	  if($state_id)
 	  {
-		 $this->db->select('*');
+		 $this->db->select('StateId,StateName,StateAbbreviation,CountryId,IsActive');
 		 $this->db->where('StateId',$state_id);
 		 $result=$this->db->get('tblmststate');
 		 $company_data= array();
@@ -97,8 +97,11 @@ class State_model extends CI_Model
 	
 	function getlist_state()
 	{
-		$this->db->select('*');
-		$result=$this->db->get('tblmststate');
+		$this->db->select('st.StateId,st.StateName,st.StateAbbreviation,st.IsActive,con.CountryName');
+			$this->db->join('tblmstcountry con', 'con.CountryId = st.CountryId', 'left');
+		 // $this->db->select('st.StateId,st.StateName,st.StateAbbreviation,st.IsActive,con.CountryName');
+		 // $this->db->join('tblmstcountry con','st.StateId = st.StateId', 'left');
+		$result=$this->db->get('tblmststate st');
 		
 		$res=array();
 		if($result->result())
@@ -132,7 +135,7 @@ class State_model extends CI_Model
 	
 	public function getlist_country() {
 	
-		$this->db->select('*');
+		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {

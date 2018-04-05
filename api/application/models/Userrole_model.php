@@ -40,7 +40,7 @@ class Userrole_model extends CI_Model
 	//list project status
 	public function getlist_userrole()
 	{
-		$this->db->select('*');
+		$this->db->select('RoleId,RoleName,IsActive');
 		$result=$this->db->get('tblmstuserrole');
 		
 		$res=array();
@@ -117,7 +117,7 @@ class Userrole_model extends CI_Model
 	{
 	  if($role_id)
 	  {
-		 $this->db->select('*');
+		 $this->db->select('RoleId,RoleName,IsActive');
 		 $this->db->where('RoleId',$role_id);
 		 $result=$this->db->get('tblmstuserrole');
 		 $company_data= array();

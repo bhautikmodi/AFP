@@ -42,7 +42,7 @@
 										
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>State Name</label>
-                                            <input type="text" class="form-control" #StateName="ngModel" [(ngModel)]="stateEntity.StateName" class="form-control" name="StateName" pattern="[a-zA-Z]{0,}" required>
+                                            <input type="text" class="form-control" #StateName="ngModel" [(ngModel)]="stateEntity.StateName" class="form-control" name="StateName" pattern="[a-zA-Z ]{0,}" required>
 											<span style="color:red;" *ngIf="(StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)"> 
 											<span *ngIf="StateName.errors.required || (StateName.pristine && submitted)">Please enter State</span>
 											<span style="color:red;" *ngIf="StateName.errors && StateName.errors.pattern">

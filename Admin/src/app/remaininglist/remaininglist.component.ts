@@ -19,18 +19,18 @@ export class RemaininglistComponent implements OnInit {
 
   ngOnInit()
   {
-	 // debugger
-	// this.RemainingService.getAll()
-	// //.map(res => res.json())
-	// .then((data) => 
-	// {
-		// this.remainingList = data;
+	 debugger
+	this.RemainingService.getAll()
+	//.map(res => res.json())
+	.then((data) => 
+	{
+		this.remainingList = data;
 			
-	// }, 
-	// (error) => 
-	// {
-		// alert('error');
-	// });	
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});	
     	
   }
 

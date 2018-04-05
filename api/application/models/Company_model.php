@@ -137,7 +137,7 @@ class Company_model extends CI_Model
 	//list Industry
 	public function getlist_Industry() {
 	
-		$this->db->select('*');
+		$this->db->select('IndustryId,IndustryName');
 		$result = $this->db->get('tblmstindustry');
 		
 		$res = array();

@@ -71,8 +71,15 @@ class User_model extends CI_Model
 	//list project status
 	public function getlist_user()
 	{
-		$this->db->select('*');
-		$result=$this->db->get('tbluser');
+		//$this->db->select('*');
+		//$result=$this->db->get('tbluser');
+		
+		
+		$this->db->select('us.UserId,us.RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
+		us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName');
+		$this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
+		$this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');
+		$result = $this->db->get('tbluser us');
 		
 		$res=array();
 		if($result->result())
@@ -164,7 +171,8 @@ class User_model extends CI_Model
 	  if($user_id)
 	  {
 		  
-		  $this->db->select('user.*');
+		  $this->db->select('UserId,RoleId,CompanyId,FirstName,LastName,Title,EmailAddress,Password,Address1,
+		Address2,CountryId,StateId,City,ZipCode,PhoneNumber,IsActive');
 		$this->db->where('user.UserId=',$user_id);
 		
 		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
@@ -192,7 +200,7 @@ class User_model extends CI_Model
 	//List state
 	function getlist_state()
 	{
-		$this->db->select('*');
+		$this->db->select('StateId,StateName,StateAbbreviation,CountryId,IsActive');
 		$result=$this->db->get('tblmststate');
 		
 		$res=array();
@@ -205,7 +213,7 @@ class User_model extends CI_Model
 	
 	function getlist_company()
 	{
-		$this->db->select('*');
+		$this->db->select('CompanyId,Name');
 		$result=$this->db->get('tblcompany');
 		
 		$res=array();
@@ -219,7 +227,7 @@ class User_model extends CI_Model
 	//list user role
 	public function getlist_userrole()
 	{
-		$this->db->select('*');
+		$this->db->select('RoleId,RoleName');
 		$result=$this->db->get('tblmstuserrole');
 		
 		$res=array();
@@ -232,7 +240,7 @@ class User_model extends CI_Model
 	
 	public function getlist_country() {
 	
-		$this->db->select('*');
+		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {

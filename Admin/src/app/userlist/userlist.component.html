@@ -16,11 +16,11 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
           <div class="panel-heading"> ! 
-			<div class="btn-group pull-right add-right">
+			<!--<div class="btn-group pull-right add-right">
               <a  class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a User
               </a>
-            </div>
+            </div>-->
 		  </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -29,7 +29,7 @@
                   <tr>
                     <th style="width:4%;">#</th>
                     <th style="width:12%;">First Name</th>
-                    <th style="width:13%;">Company Name</th>
+                    <th style="width:13%;">CompanyName</th>
 					<th style="width:18%;">Email Address</th>
 					<th style="width:10%;">City</th>
 					<th style="width:10%;">Phone Number</th>
@@ -43,13 +43,15 @@
                  <tr *ngFor="let user of userList">
 												<td>{{user.UserId}}</td>
 												<td>{{user.FirstName}}</td>
-												<td>{{user.CompanyId}}</td>
+												<td>{{user.Name}}</td>
 												<td>{{user.EmailAddress}}</td>
 												<td>{{user.City}}</td>
 												<td>{{user.PhoneNumber}}</td>
 												<td>{{user.ZipCode}}</td>
-												<td>{{user.RoleId}}</td>												
-												<td>{{user.IsActive}}</td>
+												<td>{{user.RoleName}}</td>												
+												<td *ngIf="user.IsActive=='1'">Yes</td>
+											<td *ngIf="user.IsActive=='0'">No</td>
+												
 												
 												
                     <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" title="Edit"><span class="fa fa-pencil"></span></button>

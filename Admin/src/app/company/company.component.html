@@ -55,7 +55,7 @@
 										<div class="clearfix"></div>
 										
 										<div class="form-group col-md-6">
-                                            <label><span class="required">*</span> Website</label>
+                                            <label><span class="required">*</span>Website</label>
                                             <input type="email" class="form-control" #Website="ngModel" name="Website" 
 												[(ngModel)]="companyEntity.Website" pattern="[a-zA-Z./:]{0,}"  [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>
 											<span style="color:red;"  *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
@@ -69,7 +69,7 @@
 										
 										
 											<div class="form-group col-md-6">
-                                            <label><span class="required">*</span> Phone Number</label>
+                                            <label><span class="required">*</span>Phone Number</label>
                                             <input type="phonenum" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber"
 											pattern="[0-9\-.()\s]+" maxlength="13"
 												[(ngModel)]="companyEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>

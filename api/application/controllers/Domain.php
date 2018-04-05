@@ -16,9 +16,7 @@ class Domain extends CI_Controller {
 	public function getAll() {
 		
 		$data="";
-		
-		$data=$this->Domain_model->getlist_domain();
-		
+		$data=$this->Domain_model->getlist_domain();		
 		echo json_encode($data);
 				
 	}

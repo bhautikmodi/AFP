@@ -34,11 +34,6 @@
                  <li [ngClass]="{'selected':(globals.currentLink == '/invitation/list')||(globals.currentLink == '/invitation/add')||(globals.currentLink == '/invitation/edit')}">
                          <a (click)="menuopen('/invitation/list')" style="cursor:pointer;"><i class="fa fa-link fa-fw"></i> User Invitation</a>
                    </li>
-        
-         <li>
-                         <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email Notification</a>
-                   </li>
-        
          <li>
                          <a href="tablependassess.html"><i class="fa fa-calendar-times-o fa-fw"></i> Pending Assessment</a>
                    </li>        
@@ -67,17 +62,14 @@
             <li [ngClass]="{'selected':(globals.currentLink == '/placeholder/list')||(globals.currentLink == '/placeholder/add')||(globals.currentLink == '/placeholder/edit')}">
               <a (click)="menuopen('/placeholder/list')" style="cursor:pointer;"><i class="fa fa-window-maximize fa-fw"></i> Placeholder Screen</a>
             </li>
-            <li [ngClass]="{'selected':(globals.currentLink == '/emailtemplate/add')}">
-              <a (click)="menuopen('/emailtemplate/add')" style="cursor:pointer;"><i class="fa fa-envelope-square fa-fw"></i> Email Template</a>
-            </li>
-            <li [ngClass]="{'selected':(globals.currentLink == '/emailtemplate/list')||(globals.currentLink == '/emailtemplate/edit')}">
-              <a (click)="menuopen('/emailtemplate/list')" style="cursor:pointer;"><i class="fa fa-list fa-fw"></i> Email Template List</a>
+            <li [ngClass]="{'selected':(globals.currentLink == '/emailtemplate/list')||(globals.currentLink == '/emailtemplate/add')||(globals.currentLink == '/emailtemplate/edit')}">
+              <a (click)="menuopen('/emailtemplate/list')" style="cursor:pointer;"><i class="fa fa-list fa-fw"></i> Email Template</a>
             </li>
     
            </ul>
                 <!-- second-level-items -->
  </li> 
- <li [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
+ <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
  
       </ul>
       <!-- end side-menu --> 

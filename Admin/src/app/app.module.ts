@@ -72,6 +72,9 @@ import { EmailtemplateService } from './services/emailtemplate.service';
 import { CourselevelComponent } from './courselevel/courselevel.component';
 import { CourselevellistComponent } from './courselevellist/courselevellist.component';
 import { CourselevelService } from './services/courselevel.service';
+import { RolepermissionComponent } from './rolepermission/rolepermission.component';
+import { RolepermissionService } from './services/rolepermission.service';
+import { CommonService } from './services/common.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +117,8 @@ import { CourselevelService } from './services/courselevel.service';
 	EmailtemplateComponent,
 	EmailtemplateListComponent,
 	CourselevelComponent,
-	CourselevellistComponent
+	CourselevellistComponent,
+	RolepermissionComponent
   ],
   imports: [
   BrowserModule,
@@ -373,6 +377,11 @@ import { CourselevelService } from './services/courselevel.service';
         canActivate : [AuthGuard]
       },
       {
+        path : 'rolepermission',
+        component : RolepermissionComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
@@ -382,7 +391,7 @@ import { CourselevelService } from './services/courselevel.service';
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService],
+    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,RolepermissionService,CommonService],
    
 
 

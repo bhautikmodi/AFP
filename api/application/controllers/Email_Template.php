@@ -31,12 +31,12 @@ class Email_Template extends CI_Controller {
 			if($post_email['EmailId'] > 0){
 				$result = $this->Email_Template_model->edit_email($post_email);
 				if($result) {
-					echo json_encode($post_email);	
+					echo json_encode($result);
 				}	
 			} else {
 				$result = $this->Email_Template_model->add_email($post_email);
 				if($result) {
-					echo json_encode($post_email);	
+					echo json_encode($result);				
 				}	
 			}							
 		}

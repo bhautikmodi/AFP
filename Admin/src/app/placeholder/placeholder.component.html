@@ -49,7 +49,7 @@
           <div class="clearfix"></div>
           <div class="form-group col-md-6">
                 <label><span class="required">*</span>Placeholder Name</label>
-                <input type="text" class="form-control" #PlaceholderName="ngModel" [(ngModel)]="placeholderEntity.PlaceholderName" name="PlaceholderName" pattern="[a-zA-Z0-9{}\-_]{1,100}" [ngClass]="{red_border: (PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)}" required/>  
+                <input type="text" class="form-control" #PlaceholderName="ngModel" [(ngModel)]="placeholderEntity.PlaceholderName" name="PlaceholderName" pattern="[a-zA-Z0-9\-'_ ]{1,100}" [ngClass]="{red_border: (PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)}" required/>  
                 <span style="color:red" *ngIf="(PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)"> 
                 <span *ngIf="PlaceholderName.errors.required || (PlaceholderName.pristine && submitted)">Please enter placeholder</span>
                 <span *ngIf="PlaceholderName.errors && PlaceholderName.errors.pattern">Please enter a valid placeholder</span>

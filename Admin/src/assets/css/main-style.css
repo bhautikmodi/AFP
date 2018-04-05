@@ -138,11 +138,12 @@ padding-left: 45px;
     font-size:18px;
 }
 html.index_admin,.index_admin body{ height:100%;}
-.body-Login-back {
+.index_admin body {
     background: url("../img/banner.jpg") center center no-repeat; 
 	background-size:cover; height:100%;
 }
-.white_bg{background:rgba(255,255,255,0.6); height:100%;}
+.index_admin app-root > div,.index_admin app-login div.body-Login-back{height:100%;}
+.index_admin .white_bg{background:rgba(255,255,255,0.6); height:100%;}
 
 .margin-tips {
     margin:5px;
@@ -150,6 +151,44 @@ html.index_admin,.index_admin body{ height:100%;}
 .navbar-default {
 	border-color: #0085AD;
 }
+
+/* Custom Width */
+
+.width_5 {
+	width: 5%;
+}
+.width_6 {
+	width: 6%;
+}
+.width_8 {
+	width: 8%;
+}
+.width_10 {
+	width: 10%;
+}
+.width_20 {
+	width: 20%;
+}
+.width_30 {
+	width: 30%;
+}
+.width_35 {
+	width: 35%;
+}
+.width_40 {
+	width: 40%;
+}
+.width_45 {
+	width: 45%;
+}
+.width_50 {
+	width: 50%;
+}
+.width_60 {
+	width: 60%;
+}
+
+
 /*media queries*/
 
 @media(min-width:768px) 

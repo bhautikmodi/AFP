@@ -3,11 +3,12 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DomainService } from '../services/domain.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 
 @Component({
   selector: 'app-domain',
-  providers: [ DomainService ],
+  providers: [ DomainService,CommonService ],
   templateUrl: './domain.component.html',
   styleUrls: ['./domain.component.css']
 })
@@ -19,36 +20,49 @@ export class DomainComponent implements OnInit
 	btn_disable;
 	header;
 	
-  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private domainService: DomainService, private globals: Globals)
+  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, 
+	private domainService: DomainService, private CommonService:CommonService, private globals: Globals)
     {
 		
-	 }
+	}
   ngOnInit() 
   {
-	this.domainEntity = {};
-	let id = this.route.snapshot.paramMap.get('id');
-	this.globals.msgflag = false;
-	if(id){
-		this.header = 'Edit';
-		this.domainService.getById(id)
-		.then((data) => 
-		{ 
-			if(data!=""){
-				this.domainEntity = data;
+	this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
+	.then((data) => 
+	{
+		if(data['AddEdit']==1){
+			this.domainEntity = {};
+			let id = this.route.snapshot.paramMap.get('id');
+			this.globals.msgflag = false;
+			if(id){
+				this.header = 'Edit';
+				this.domainService.getById(id)
+				.then((data) => 
+				{ 
+					if(data!=""){
+						this.domainEntity = data;
+					} else {
+						this.router.navigate(['/dashboard']);
+					}			
+				}, 
+				(error) => 
+				{
+					alert('error');
+				});	 
 			} else {
-				this.router.navigate(['/dashboard']);
-			}			
-		}, 
-		(error) => 
-		{
-			alert('error');
-		});	 
-	} else {
-		this.header = 'Add';
-		this.domainEntity = {};
-		this.domainEntity.DomainId = 0;
-    this.domainEntity.IsActive = '1';
-	}
+				this.header = 'Add';
+				this.domainEntity = {};
+				this.domainEntity.DomainId = 0;
+				this.domainEntity.IsActive = '1';
+			}
+		} else {
+			this.router.navigate(['/dashboard']);
+		}
+	},
+	(error) => 
+	{
+		alert('error');
+	});	
     
   } 
 

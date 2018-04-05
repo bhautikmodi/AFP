@@ -39,7 +39,7 @@ export class DomainService {
 	return promise;
   }
   
-  getAll(){ debugger
+  getAll(){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Domain/getAll', this.globals.headerpath)
       .toPromise()
@@ -55,7 +55,7 @@ export class DomainService {
 	return promise;
   }
   
-  getById(DomainId){ debugger
+  getById(DomainId){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Domain/getById/' + DomainId, this.globals.headerpath)
       .toPromise()

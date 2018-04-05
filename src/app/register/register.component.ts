@@ -33,12 +33,12 @@ export class RegisterComponent implements OnInit {
 	  this.RegisterEntity={};
 	   this.companydata={};
 	   
-    //$('select').select2();
+    // $('select').select2();
 
-// $('#employee_btn').click(function () {
-	// $("#submit_Modal").modal('show');
-// });
- 
+$('#employee_btn').click(function () {
+	$("#submit_Modal").modal('show');
+});
+ 	this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
  this.RegisterService.getIndustry()
 	//.map(res => res.json())
 	.then((data) => 
@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
 	});
 	
 	
+
   }
   addRegister(RegisterForm)
 	{		
@@ -71,12 +72,16 @@ export class RegisterComponent implements OnInit {
 			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = true;
 		
+			
+		
 		if(RegisterForm.valid){
 			this.btn_disable = true;
-			this.RegisterService.add(this.RegisterEntity)
+			var data = {'com': this.companydata,'reg':this.RegisterEntity};
+			this.RegisterService.add(data)
+			
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
@@ -85,7 +90,7 @@ export class RegisterComponent implements OnInit {
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 							
-				this.router.navigate(['/register']);
+				this.router.navigate(['/welcome_register']);
 			}, 
 			(error) => 
 			{
@@ -96,7 +101,7 @@ export class RegisterComponent implements OnInit {
 		} 		
 	}
 	getStateList()
-	{ 
+	{ debugger
 		if(this.RegisterEntity.CountryId > 0){
 			this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 			.then((data) => 
@@ -119,5 +124,6 @@ export class RegisterComponent implements OnInit {
 		}
 		
 	}
+	
 
 }

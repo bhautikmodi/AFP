@@ -34,7 +34,7 @@ class CourseLevel_model extends CI_Model
 	}
 	
 	public function getlist_CourseLevel() {	
-	$this->db->select('con.*,(SELECT COUNT(*) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
+	$this->db->select('con.ConfigurationId,con.Key,con.Value,con.DisplayText,con.Description,con.IsActive,(SELECT COUNT(CourseId) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
 			$this->db->where('key="CourseLevel"');
 		$result = $this->db->get('tblmstconfiguration as con');		
 		$res = array();

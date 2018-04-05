@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <h1>Registration</h1>
+        <h1>Registration</h1> 
         <div class="clearfix"></div>
         <div class="breadcrumb">
           <ul>
@@ -57,12 +57,19 @@
 		  <div *ngIf="companydata==''">
           <div class="form-group">
             <label><span>*</span>Company Name </label>
-             <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="RegisterEntity.Name" name="Name" pattern="[a-zA-Z' ]{1,100}"
-				[ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
-						  <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-							<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company Name</span>
-							<span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid Company Name</span>
-						</span>
+					<input type="text" class="form-control" #Name="ngModel" name="Name"
+						pattern="[a-zA-Z' ]{1,100}" 
+							[(ngModel)]="RegisterEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
+						<span style="color:red;"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+							<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Name</span>
+							<span style="color:red;" *ngIf="Name.errors && Name.errors.pattern">
+							Please enter a valid Name.
+					  </span>
+						</span>	
+						
+						
+						
+						
           </div>
           <div class="form-group">
             <label><span>*</span>Industry </label>
@@ -146,7 +153,7 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label><span>*</span>Email Address </label>
-                <input type="text" class="form-control" disabled value="tmehta@openeyes.com" />
+                <input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
               </div>
             </div>
             <div class="clearfix"></div>
@@ -239,7 +246,7 @@
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
                 <label><span>*</span>Country </label>
-               <select    class="form-control"  (change)="getStateList()"  #CountryId="ngModel"
+               <select    class="form-control select2"  (change)="getStateList()"  #CountryId="ngModel"
 					   [(ngModel)]="RegisterEntity.CountryId" name="CountryId" [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}" required>
 					<option value="">Select Country</option>
 				<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="RegisterEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
@@ -251,7 +258,7 @@
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
                 <label><span>*</span>State </label>
-                 <select class="form-control"  #StateId="ngModel" [(ngModel)]="RegisterEntity.StateId" name="StateId"
+                 <select class="form-control select2"  #StateId="ngModel" [(ngModel)]="RegisterEntity.StateId" name="StateId"
 				 [ngClass]="{red_border: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
 						<option value="">Select State</option>
 						<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="RegisterEntity.StateId==state.StateId">{{state.StateName}}</option>
@@ -265,7 +272,7 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label><span>*</span>City </label>
-                            <input type="text" class="form-control" #City="ngModel" [(ngModel)]="RegisterEntity.City" name="City" pattern="[a-zA-Z ]{1,100}"
+                            <input type="text" class="form-control " #City="ngModel" [(ngModel)]="RegisterEntity.City" name="City" pattern="[a-zA-Z ]{1,100}"
 							[ngClass]="{red_border: (City.dirty && City.invalid) || (City.pristine && submitted)}" required/>  
 						  <span style="color:red" *ngIf="(City.dirty && City.invalid) || (City.pristine && submitted)"> 
 							<span *ngIf="City.errors.required || (City.pristine && submitted)">Please enter City</span>
@@ -287,7 +294,7 @@
             </div>
             <div class="clearfix"></div>
           </div>
-		  <button class="next_btn pull-right" [disabled]="btn_disable"   type="submit">Next</button>
+		  <button class="next_btn pull-right" [disabled]="btn_disable" id="employee_btn"  type="submit">Next</button>
           
           <!-- <button type="submit" class="next_btn pull-right"  >Submit</button> -->
 		  
@@ -298,16 +305,16 @@
   </div>
 </div>
 <div class="clearfix"></div>
-<!-- <div class="modal fade bs-example-modal-sm" id="submit_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false"> -->
-  <!-- <div class="modal-dialog modal-sm" role="document"> -->
-    <!-- <div class="modal-content"> -->
-      <!-- <div class="modal-body"> -->
-        <!-- <p class="text-center no_padding">Are you sure you want to submit your Registration?</p> -->
-      <!-- </div> -->
-      <!-- <div class="modal-footer text-center"> -->
-        <!-- <button type="button" class="next_btn" id="yes_btn"  onclick="window.location.href = 'welcome_register.html'; return false;">Yes</button> -->
-        <!-- <button type="button" class="red_btn" data-dismiss="modal">No</button> -->
-      <!-- </div> -->
-    <!-- </div> -->
-  <!-- </div> -->
-<!-- </div> -->
+<div class="modal fade bs-example-modal-sm" id="submit_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="text-center no_padding">Are you sure you want to submit your Registration?</p>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="next_btn" id="yes_btn"  onclick="window.location.href = 'welcome_register.html'; return false;">Yes</button>
+        <button type="button" class="red_btn" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,49 +7,58 @@ class Email_Template_model extends CI_Model
 	
 		if($post_email) {
 			
+			if($post_email['check']==0){
+				if($post_email['IsActive']==1){
+
+					$this->db->select('EmailId');
+					$this->db->where('Token',$post_email['Token']);
+					$this->db->where('To',$post_email['To']);
+					$this->db->where('IsActive',true);
+					$query = $this->db->get('tblemailtemplate');
+					
+					if($query->num_rows() > 0){
+						return 'sure';		
+					} 
+				}	
+			}	
+			
+			if($post_email['IsActive']==1){
+				$email_updatedata = array(
+					'IsActive' => false,
+				);
+				$this->db->where('Token',$post_email['Token']);
+				$this->db->where('To',$post_email['To']);
+				$this->db->where('IsActive',true);
+				$update_res = $this->db->update('tblemailtemplate',$email_updatedata);
+			}
+
 			if($post_email['IsActive']==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
-			if(!empty($post_email['To'])){
-				$To = implode(",",$post_email['To']);
-			} else {
-				$To = '';
-			}
-			if(!empty($post_email['Cc'])){
-				$Cc = implode(",",$post_email['Cc']);
-			} else {
-				$Cc = '';
-			}
-			if(!empty($post_email['Bcc'])){
-				$Bcc = implode(",",$post_email['Bcc']);
-			} else {
-				$Bcc = '';
-			}
 			if(isset($post_email['ToEmail']) && !empty($post_email['ToEmail'])){
-				$ToEmail = implode(",",$post_email['ToEmail']);
+				$ToEmail = $post_email['ToEmail'];
 			} else {
 				$ToEmail = '';
 			}	
 			if(isset($post_email['CcEmail']) && !empty($post_email['CcEmail'])){
-				$CcEmail = implode(",",$post_email['CcEmail']);
+				$CcEmail = $post_email['CcEmail'];
 			} else {
 				$CcEmail = '';
 			}	
 			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
-				$BccEmail = implode(",",$post_email['BccEmail']);
+				$BccEmail = $post_email['BccEmail'];
 			} else {
 				$BccEmail = '';
-			}			
-
+			}		
 			$email_data = array(
 				'Token' => $post_email['Token'],
 				'Subject' => $post_email['Subject'],
 				'EmailBody' => $post_email['EmailBody'],
-				'To' => $To,
-				'Cc' => $Cc,
-				'Bcc' => $Bcc,
+				'To' => $post_email['To'],
+				'Cc' => $post_email['Cc'],
+				'Bcc' => $post_email['Bcc'],
 				'ToEmail' => $ToEmail,
 				'CcEmail' => $CcEmail,
 				'BccEmail' => $BccEmail,
@@ -58,7 +67,7 @@ class Email_Template_model extends CI_Model
 				'UpdatedBy' => $post_email['UpdatedBy'],
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
-			
+
 			$res = $this->db->insert('tblemailtemplate',$email_data);
 			
 			if($res) {
@@ -66,31 +75,24 @@ class Email_Template_model extends CI_Model
 			} else {
 				return false;
 			}
-	
+		
 		} else {
 			return false;
 		}
+		
 	}
 	
 	public function getlist_email() {
 	
-		$this->db->select('EmailId,Token,Subject,EmailBody,To,Cc,Bcc,ToEmail,CcEmail,BccEmail,IsActive');
-		$result = $this->db->get('tblemailtemplate');
+		$this->db->select('et.EmailId,et.Token,et.Subject,et.EmailBody,et.To,et.Cc,et.Bcc,et.IsActive,role1.RoleName as roleTo,role2.RoleName as roleCc,role3.RoleName as roleBcc');
+		$this->db->join('tblmstuserrole role1', 'role1.RoleId = et.To', 'left');
+		$this->db->join('tblmstuserrole role2', 'role2.RoleId = et.Cc', 'left');
+		$this->db->join('tblmstuserrole role3', 'role3.RoleId = et.Bcc', 'left');
+		$result = $this->db->get('tblemailtemplate as et');
 		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
-		}
-		foreach($res as $row) {
-			$row->To = str_replace("1","Admin",$row->To);
-			$row->To = str_replace("2","Sales",$row->To);
-			$row->To = str_replace("3","General User",$row->To);
-			$row->Cc = str_replace("1","Admin",$row->Cc);
-			$row->Cc = str_replace("2","Sales",$row->Cc);
-			$row->Cc = str_replace("3","General User",$row->Cc);
-			$row->Bcc = str_replace("1","Admin",$row->Bcc);
-			$row->Bcc = str_replace("2","Sales",$row->Bcc);
-			$row->Bcc = str_replace("3","General User",$row->Bcc);
 		}
 		return $res;		
 	}
@@ -105,10 +107,7 @@ class Email_Template_model extends CI_Model
 			$result = $this->db->get('tblemailtemplate');
 			
 			$email_data = array();
-			foreach($result->result() as $row) {				
-				$row->To = explode(",",$row->To);
-				$row->Cc = explode(",",$row->Cc);
-				$row->Bcc = explode(",",$row->Bcc);
+			foreach($result->result() as $row){
 				$email_data = $row;
 			}
 			return $email_data;
@@ -123,49 +122,58 @@ class Email_Template_model extends CI_Model
 	
 		if($post_email) {
 			
+			if($post_email['check']==0){
+				if($post_email['IsActive']==1){
+
+					$this->db->select('EmailId');
+					$this->db->where('Token',$post_email['Token']);
+					$this->db->where('To',$post_email['To']);
+					$this->db->where('IsActive',true);
+					$query = $this->db->get('tblemailtemplate');
+					
+					if($query->num_rows() > 0){
+						return 'sure';		
+					} 
+				}	
+			}	
+			
+			if($post_email['IsActive']==1){
+				$email_updatedata = array(
+					'IsActive' => false,
+				);
+				$this->db->where('Token',$post_email['Token']);
+				$this->db->where('To',$post_email['To']);
+				$this->db->where('IsActive',true);
+				$update_res = $this->db->update('tblemailtemplate',$email_updatedata);
+			}
+						
 			if($post_email['IsActive']==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
-			if(!empty($post_email['To'])){
-				$To = implode(",",$post_email['To']);
-			} else {
-				$To = '';
-			}
-			if(!empty($post_email['Cc'])){
-				$Cc = implode(",",$post_email['Cc']);
-			} else {
-				$Cc = '';
-			}
-			if(!empty($post_email['Bcc'])){
-				$Bcc = implode(",",$post_email['Bcc']);
-			} else {
-				$Bcc = '';
-			}	
 			if(isset($post_email['ToEmail']) && !empty($post_email['ToEmail'])){
-				$ToEmail = implode(",",$post_email['ToEmail']);
+				$ToEmail = $post_email['ToEmail'];
 			} else {
 				$ToEmail = '';
 			}	
 			if(isset($post_email['CcEmail']) && !empty($post_email['CcEmail'])){
-				$CcEmail = implode(",",$post_email['CcEmail']);
+				$CcEmail = $post_email['CcEmail'];
 			} else {
 				$CcEmail = '';
 			}	
 			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
-				$BccEmail = implode(",",$post_email['BccEmail']);
+				$BccEmail = $post_email['BccEmail'];
 			} else {
 				$BccEmail = '';
-			}	
-
+			}		
 			$email_data = array(
 				'Token' => $post_email['Token'],
 				'Subject' => $post_email['Subject'],
 				'EmailBody' => $post_email['EmailBody'],
-				'To' => $To,
-				'Cc' => $Cc,
-				'Bcc' => $Bcc,
+				'To' => $post_email['To'],
+				'Cc' => $post_email['Cc'],
+				'Bcc' => $post_email['Bcc'],
 				'ToEmail' => $ToEmail,
 				'CcEmail' => $CcEmail,
 				'BccEmail' => $BccEmail,
@@ -173,7 +181,7 @@ class Email_Template_model extends CI_Model
 				'UpdatedBy' => $post_email['UpdatedBy'],
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
-			
+
 			$this->db->where('EmailId',$post_email['EmailId']);
 			$res = $this->db->update('tblemailtemplate',$email_data);
 			
@@ -182,10 +190,10 @@ class Email_Template_model extends CI_Model
 			} else {
 				return false;
 			}
+		
 		} else {
 			return false;
-		}	
-	
+		}
 	}
 	
 	

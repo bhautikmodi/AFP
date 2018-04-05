@@ -1,92 +1,71 @@
 <?php
 
-class Domain_model extends CI_Model
+class RolePermission_model extends CI_Model
  {
 
-	public function add_domain($post_domain) {
-	
-		if($post_domain) {
-			
-			if($post_domain['IsActive']==1){
-				$IsActive = true;
-			} else {
-				$IsActive = false;
-			}
-
-			$domain_data = array(
-				'Name' => $post_domain['Name'],
-				'IsActive' => $IsActive,
-				'CreatedBy' => $post_domain['CreatedBy'],
-				'UpdatedBy' => $post_domain['UpdatedBy'],
-				'UpdatedOn' => date('y-m-d H:i:s'),
-			);
-			
-			$res = $this->db->insert('tblmstdomain',$domain_data);
-			
-			if($res) {
-				return true;
-			} else {
-				return false;
-			}
-	
-		} else {
-			return false;
-		}
-	}
-	
-	public function getlist_domain() {
-	
-		$this->db->select('dom.DomainId,dom.Name,dom.IsActive,(SELECT COUNT(mc.CAreaId) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
-		$result = $this->db->get('tblmstdomain as dom');		
-		$res = array();
-		if($result->result()) {
-			$res = $result->result();
+	public function getuserrolelist()
+	{
+		$this->db->select('RoleId,RoleName');
+		$this->db->where('RoleName!=','IT');
+		$result=$this->db->get('tblmstuserrole');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
 		}
 		return $res;
-		
 	}
-	
-	
-	public function get_domaindata($domain_id = NULL) {
-		
-		if($domain_id) {
-			
-			$this->db->select('dom.DomainId,dom.Name,dom.IsActive,(SELECT COUNT(mc.CAreaId) FROM tblmstcompetencyarea as mc WHERE mc.DomainId=dom.DomainId) as isdisabled');
-			$this->db->where('dom.DomainId',$domain_id);
-			$result = $this->db->get('tblmstdomain as dom');
-			
-			$domain_data = array();
-			foreach($result->result() as $row) {
-				$domain_data = $row;
+
+	public function getpermissionlist($role_id = NULL)
+	{
+		if($role_id){
+			$query = "SELECT s.ScreenId,s.Name,s.IsActive,r.PermissionId,(CASE WHEN r.AddEdit = 1 THEN 'true' ELSE NULL END) AS AddEdit,(CASE WHEN r.Delete = 1 THEN 'true' ELSE NULL END) AS dlt,(CASE WHEN r.View = 1 THEN 'true' ELSE NULL END) AS View FROM tblmstscreen as s LEFT JOIN tblrolespermission as r ON s.ScreenId = r.ScreenId WHERE s.IsActive = 1 AND r.RoleId = ".$role_id;
+			$result = $this->db->query($query);
+			$res=array();
+			if($result->result())
+			{
+				$res=$result->result();
 			}
-			return $domain_data;
-			
+			return $res;
 		} else {
 			return false;
 		}
+		
 	}
-	
-	
-	public function edit_domain($post_domain) {
-	
-		if($post_domain) {
 
-			if($post_domain['IsActive']==1){
-				$IsActive = true;
-			} else {
-				$IsActive = false;
-			}
+	public function update_permission($post_permission) {
+	
+		if($post_permission) {
 
-			$domain_data = array(
-				'Name' => $post_domain['Name'],
-				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_domain['UpdatedBy'],
-				'UpdatedOn' => date('y-m-d H:i:s'),
-			);
-			
-			$this->db->where('DomainId',$post_domain['DomainId']);
-			$res = $this->db->update('tblmstdomain',$domain_data);
-			
+			foreach($post_permission as $post){
+
+				if($post['View']==true){
+					$View = 1;
+				} else {
+					$View = 0;
+				}
+				if($post['AddEdit']==true){
+					$AddEdit = 1;
+				} else {
+					$AddEdit = 0;
+				}
+				if($post['dlt']==true){
+					$dlt = 1;
+				} else {
+					$dlt = 0;
+				}
+
+				$permission_data = array(
+					'View' => $View,
+					'AddEdit' => $AddEdit,
+					'Delete' => $dlt,
+					'UpdatedBy' => 1,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);				
+				$this->db->where('PermissionId',$post['PermissionId']);
+				$res = $this->db->update('tblrolespermission',$permission_data);
+			}			
 			if($res) {
 				return true;
 			} else {
@@ -97,46 +76,8 @@ class Domain_model extends CI_Model
 		}	
 	
 	}
-	
-	
-	public function delete_domain($domain_id) {
-	
-		if($domain_id) {
-			
-			$this->db->where('DomainId',$domain_id);
-			$res = $this->db->delete('tblmstdomain');
-			
-			if($res) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
 
-		// if($domain_id) {
-
-		// 	$this->db->select('CAreaId');
-		// 	$this->db->where('DomainId',$domain_id);
-		// 	$result = $this->db->get('tblmstcompetencyarea');
-		// 	if($result->num_rows()==0){
-		// 		$this->db->where('DomainId',$domain_id);
-		// 		$res = $this->db->delete('tblmstdomain');
-				
-		// 		if($res) {
-		// 			return true;
-		// 		} else {
-		// 			return false;
-		// 		}
-		// 	} else {
-		// 		return false;
-		// 	}
-			
-		// } else {
-		// 	return false;
-		// }
-		
-	}
-	
+	// INSERT INTO tblrolespermission (ScreenId,RoleId,CreatedBy,UpdatedBy,UpdatedOn) 
+	// SELECT s.ScreenId, 3, 1, 1, '2018-04-04 12:46:13'
+	// FROM tblmstscreen as s 
 }

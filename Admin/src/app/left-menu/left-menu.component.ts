@@ -11,7 +11,8 @@ export class LeftMenuComponent implements OnInit {
 
   constructor(private globals: Globals, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() {  
+       
   }
 
   menuopen(path){ 

@@ -9,12 +9,12 @@ export class AuthService {
 
   constructor(private http: Http, private globals: Globals) { }
   
-  login(loginEntity){ 
+  login(loginEntity){  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Login/check_login', loginEntity, this.globals.headerpath)
       .toPromise()
-      .then(
-        res => { // Success
+      .then( 
+        res => { // Success 
 			let result = res.json();
 			if(result && result.token){
 				localStorage.setItem('token',result.token);				

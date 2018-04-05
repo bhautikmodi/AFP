@@ -84,7 +84,6 @@ class KSA_model extends CI_Model
 				'Name' => $post_ksa['Name'],
 				'CAreaId' => $post_ksa['CAreaId'],
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_ksa['CreatedBy'],
 				'UpdatedBy' => $post_ksa['UpdatedBy'],
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);

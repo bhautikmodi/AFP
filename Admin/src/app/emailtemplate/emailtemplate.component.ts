@@ -21,6 +21,7 @@ export class EmailtemplateComponent implements OnInit {
   des_valid;
   roleList;
   placeholderList;
+  abcform;
 
   constructor( private http: Http,private globals: Globals, private router: Router, private EmailtemplateService: EmailtemplateService,private route:ActivatedRoute) { }
 
@@ -48,6 +49,12 @@ export class EmailtemplateComponent implements OnInit {
 		{ 
 			if(data!=""){
 				this.emailEntity = data;
+				if(this.emailEntity.Cc==0){
+					this.emailEntity.Cc="";
+				}
+				if(this.emailEntity.Bcc==0){
+					this.emailEntity.Bcc="";
+				}
       			CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);	
 			} else {
 				this.router.navigate(['/dashboard']);
@@ -73,7 +80,7 @@ export class EmailtemplateComponent implements OnInit {
 				var target = evt.data.getTarget().getAscendant( 'div', true );
 				CKEDITOR.plugins.clipboard.initDragDataTransfer( evt );
 				var dataTransfer = evt.data.dataTransfer;
-				dataTransfer.setData( 'text/html', target.getText() );				
+				dataTransfer.setData( 'text/html','{'+target.getText()+'}' );				
 			} );
 		} );
 
@@ -97,14 +104,20 @@ export class EmailtemplateComponent implements OnInit {
 		}
 		if(EmailForm.valid && this.des_valid==false){
 			this.btn_disable = true;
+			this.emailEntity.check = 0;
 			this.EmailtemplateService.add(this.emailEntity)
 			.then((data) => 
 			{
-				//alert('success');
-				this.btn_disable = false;
-				this.submitted = false;
-				this.emailEntity = {};
-				EmailForm.form.markAsPristine();
+				if(data=='sure'){
+					this.btn_disable = false;
+					this.submitted = false;
+					this.abcform = EmailForm;
+					$('#Sure_Modal').modal('show');
+				} else {
+					this.btn_disable = false;
+					this.submitted = false;
+					this.emailEntity = {};
+					EmailForm.form.markAsPristine();
 				if(id){
 					this.globals.message = 'Update successfully';
 					this.globals.type = 'success';
@@ -115,6 +128,7 @@ export class EmailtemplateComponent implements OnInit {
 					this.globals.msgflag = true;
 				}			
 				this.router.navigate(['/emailtemplate/list']);
+			}
 			}, 
 			(error) => 
 			{
@@ -138,6 +152,37 @@ export class EmailtemplateComponent implements OnInit {
     this.emailEntity.Bcc = '';
 		CKEDITOR.instances.EmailBody.setData('');	
 		EmailForm.form.markAsPristine();
+	}
+
+	addConfirm(abcform){ debugger
+		this.emailEntity.check = 1;	
+		let id = this.route.snapshot.paramMap.get('id');	
+		this.EmailtemplateService.add(this.emailEntity)
+		.then((data) => 
+		{
+			$('#Sure_Modal').modal('hide');				
+			this.btn_disable = false;
+			this.submitted = false;
+			this.emailEntity = {};
+			abcform.form.markAsPristine();
+			if(id){
+				this.globals.message = 'Update successfully';
+				this.globals.type = 'success';
+				this.globals.msgflag = true;
+			} else {
+				this.globals.message = 'Add successfully';
+				this.globals.type = 'success';
+				this.globals.msgflag = true;
+			}			
+			this.router.navigate(['/emailtemplate/list']);
+		
+		}, 
+		(error) => 
+		{
+			alert('error');
+			this.btn_disable = false;
+			this.submitted = false;
+		});
 	}
 
 }

@@ -26,7 +26,7 @@ export class UserService {
   
   //list all users
   getAllUser(){
-	  
+	  debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList',  this.globals.headerpath)
       .toPromise()

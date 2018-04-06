@@ -107,22 +107,17 @@ footer.index_footer .border_footer{padding:15px; color:#007699;}
 
 /* ------- Inner Pages Contener Area Strat ------- */
 .inner_breadcrumb{text-align:center; background:#0085AD; padding:10px 0; position:relative;}
-.breadcrumb { display: block; padding: 0 0;  background: transparent; -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; margin-bottom: 0;}
-.breadcrumb li { display: inline; list-style-type: none; margin: 0; padding: 0; font-size: 12px; color: #fff; font-family:'Gotham-book'; line-height:12px; }
-.breadcrumb li a{color: #fff;}
-.breadcrumb li a:after { color: #fff; content: "\000BB"; display: inline-block; margin-left: 10px; margin-right: 5px;}
-.breadcrumb li:last-child a:after{display:none;}
-
-.back_btn{ position:absolute; right:15px; top:12px; background:#fff; padding:12px 10px 10px 10px; line-height:14px; font-size:14px; color:#0085AD;}
+.inner_breadcrumb h1{margin-bottom:0}
+.back_btn{ position:absolute; right:15px; top:-3px; background:#fff; padding:12px 10px 10px 10px; line-height:14px; font-size:14px; color:#0085AD;}
 .back_btn i{margin-right:5px;}
 
 .inner_content{ padding:30px 0; position:relative; min-height:450px; background:#fff;}
 .height_zero{min-height:0!important;}
 
-.invitation_text input{ width:56px; display:inline-block; margin:0 4px; text-align:center;}
-.invitation_text .minus_text{position:relative;}
-.invitation_text .minus_text:before{width:50px; content:"\f068"; display:block; font-family:FontAwesome; text-align:center; font-size:20px; height: 34px; position:absolute; left:190px; top:4px;}
-.invitation_text .margin_text{margin-left:30px;}
+.invitation_text input{ width:14%; display:inline-block; margin:0 4px; text-align:center;}
+
+select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"Gotham-book"; font-size:14px!important;}
+select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";}
 
 .form-group label{line-height:15px; color: #2d5c8a; font-size: 14px; font-family:"Gotham-medium"; font-weight:normal;}
 .form-group label span{color:red;}
@@ -139,9 +134,13 @@ footer.index_footer .border_footer{padding:15px; color:#007699;}
 .red_btn:hover,.red_btn:focus {background-position: right bottom; color: #ffffff; }
 .red_btn:after {content: ""; background:url(../images/right-white.png) left top no-repeat; position: absolute; right: -37px; top: 7px; width: 25px; height: 24px; background-size:100%;}
 
-.login_padding{padding:80px 0;}
+.login_padding{padding:100px 0;}
+.dashboard_section{padding:100px 0;}
 .forgot_padding{padding:120px 0;}
-.change_padding{padding:60px 0;}
+.change_padding{padding:100px 0;}
+.findcompany_padding{padding:150px 0; transition:all 0.8s ease 0s;}
+.findcompany_padding.height_zero{padding:30px 0!important; transition:all 0.8s ease 0s;}
+.display_company{display:none;}
 
 #submit_Modal .modal-dialog{margin:18% auto; width: 430px;}
 #submit_Modal .modal-footer{text-align:center!important; margin:0;}
@@ -180,7 +179,7 @@ table tr td{color:#000; font-family: "Gotham-Book"; font-size:14px; line-height:
 table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-height:14px; vertical-align:middle!important;}
 
 .thank_you_banner h1{margin-bottom:0; color:#fff; display:inline-block;}
-.thank_you_banner i.fa-thumbs-up{border-radius:100%; height:60px; width:60px; background:#fff; margin-right:10px; text-align:center; font-size:30px; padding:14px 0; color:#A50034;}
+.thank_you_banner i.fa-thumbs-up{margin-right:10px; font-size:30px; color:#fff;}
 
 .contact_pageblock{min-height:0px; text-align:center; display:block; margin-bottom:30px;}
 .contact_pageblock .col-md-3{float:none; display:inline-block; vertical-align:top;}
@@ -188,13 +187,13 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .contact_pageblock .contact_address a,.contact_pageblock .contact_address p{color: #2e2d31; font-size: 16px; font-family: 'Gotham-Book';}
 .map_contact{padding: 5px; border-radius: 5px; margin: 20px 0; border: 1px solid #000;}
 
-.welcome_content{ background:url("../images/banner.jpg") center center no-repeat; background-attachment:fixed; background-size:cover; position:relative; min-height:550px;}
-.welcome_text{ font: bold 25px/45px 'Gotham-Medium';  margin:0px 0 15px 0; text-transform:uppercase; color:#A50034; background:rgba(255,255,255,0.6); position:absolute; left:0; top:0; width:100%; height:100%; padding:150px 0; text-align:center;}
+.welcome_content{ background:url("../images/banner.jpg") center center no-repeat; background-attachment:fixed; background-size:cover; position:relative; min-height:650px;}
+.welcome_text{ font: bold 25px/45px 'Gotham-Medium';  margin:0px 0 15px 0; text-transform:uppercase; color:#A50034; background:rgba(255,255,255,0.6); position:absolute; left:0; top:0; width:100%; height:100%; padding:180px 0; text-align:center;}
 .welcome_text a{text-transform:capitalize;}
 .welcome_text span{ color:#002B49; font: bold 50px/60px 'Gotham-Bold'; padding:0 10px; position:relative; display:inline-block;}
 
 .chart_block { width: 100%; height: 450px;}
-.pie_chart{width:300px; height:300px;}
+.pie_chart{width:100%; height:300px;}
 
 .rating_list{ text-align:left; margin-top:130px; display:block; line-height:27px; float:right; font-family: "Gotham-Book"; font-size:12px; color:#2e2d31;}
 .margin_btn{ margin-top:30px;}
@@ -204,18 +203,19 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .dashboard_section h3{margin-bottom:45px;}
 .dashboard_box{position:relative; width:100%; background:#f4f4f4; border:1px solid #ccc; box-shadow:1px 1px 5px #ccc; margin-bottom:30px; border-radius:5px;}
 .dashboard_section .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
-.dashboard_box .assess_name{color:#fff; font-family: "Gotham-Medium"; font-size:18px; line-height:16px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; height:38px; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54;}
+.dashboard_box .assess_name{color:#fff; font-family: "Gotham-Book"; font-size:18px; line-height:16px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; height:38px; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54;}
 .dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff;} 
-.dashboard_box .dashboard_item .date_title{float:left; line-height:14px; font-size:14px; font-family:"Gotham-Medium"; color: #605b54; padding:10px 0 0 0;} 
-.dashboard_box .dashboard_item a{float:right; color:#fff; line-height:15px; font-size:14px; font-family:"Gotham-Medium"; border:0; padding:8px; background:linear-gradient(to right, #0085AD 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom;} 
+.dashboard_box .dashboard_item .date_title{float:left; line-height:14px; font-size:14px; font-family:"Gotham-Book"; color: #605b54; padding:10px 0 0 0;} 
+.dashboard_box .dashboard_item a{float:right; color:#fff; line-height:15px; font-size:14px; font-family:"Gotham-Book"; border:0; padding:8px; background:linear-gradient(to right, #0085AD 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom;} 
 .dashboard_box .dashboard_item a:hover{background-position: right bottom; color: #fff; }
 .dashboard_box .dashboard_chart_block{ width: 100%; height: 200px;}
 .startassessment_box{position:relative; width:100%; background:url("../images/afp-pattern.png") 83% -20% no-repeat #002B49; background-size:80%; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:155px 10px 0 10px; box-shadow:1px 1px 5px #000; }
 
 .general_user_section table tr th,.general_user_section tr td{ font-size:13px;}
 .general_user_section table{margin-bottom:0;}
-.general_user_section .width_80{width:80%;}
-.general_user_section .width_20{width:20%;}
+.width_80{width:80%;}
+.width_20{width:20%;}
+.width_30{width:30%;}
 .general_user_section .generaluser_chart_block{ width: 100%; height: 532px;}
 
 .dashboard_btn{ position:absolute; right:-105px; top:0;}
@@ -237,8 +237,14 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .user_box:hover .user_name,.user_box:focus .user_name,.user_box.active .user_name{ color:#fff;}
 
 .grey_box{padding:15px; background:#f4f4f4; border:1px solid #888; margin-bottom:15px;}
-.course_block{padding:30px; background:#f4f4f4; margin:30px 0 0 0;}
+.course_block{padding:0; margin:30px 0 0 0; position:relative;}
+.sales_section .generaluser_chart_block{ width: 100%; height: 330px;}
+.sales_section .grey_box{margin-bottom:30px;}
 
+.slider{display:block; position:relative; padding:0 30px;}
+.owl-carousel .owl-item .owl-item{width:100%; text-align:center; display:block;}
+.owl-carousel .owl-nav div.owl-prev{ background:url(../images/prev.png) center center no-repeat rgba(0,43,73,0.5); width:32px; height:32px; display:inline-block; position:absolute; left:-25px; top:40%; background-size:17px; border-radius:100%;} 
+.owl-carousel .owl-nav div.owl-next{ background:url(../images/next.png) center center no-repeat rgba(0,43,73,0.5); width:32px; height:32px; display:inline-block;  position:absolute; right:-25px; top:40%; background-size:17px; border-radius:100%;}
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Pages Contener Area End ------- */
@@ -247,9 +253,20 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 }
 @media (min-width:1600px){
 	.inner_content{ min-height:550px; padding:50px 0;}
-	.login_padding{padding:150px 0!important;}
-	.forgot_padding{padding:180px 0!important;}
-	.change_padding{padding:130px 0!important;}
+	.login_padding{padding:180px 0!important;}
+	.forgot_padding{padding:210px 0!important;}
+	.change_padding{padding:160px 0!important;}
+	.dashboard_section{padding:180px 0!important;}
+	.findcompany_padding{padding:250px 0!important;}
+}
+@media (max-width:1500px){
+	.invitation_text input{margin: 0 2px; width: 50px;}
+	.invitation_text .minus_text::before{ left: 169px;}	
+	.register_company_button a{font-size: 11px;}
+}
+@media (max-width:1340px){
+	.invitation_text input{margin: 0 2px; width: 45px;}
+	.invitation_text .minus_text::before{ left: 148px;}	
 }
 @media (min-width: 992px) and (max-width:1200px) {
 }

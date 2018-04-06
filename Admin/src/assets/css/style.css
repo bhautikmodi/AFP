@@ -476,6 +476,10 @@ table.dataTable thead .sorting:after {
 	border-radius: 0px;
 }
 
+.btn.btn-add.print {
+	margin: 0 0 0 10px;
+}
+
 .btn-add:hover, .btn-add:active, .btn-add:focus {
 	/*background: #C92721 !important;
 	transition: all 0.3s ease-in 0s;*/
@@ -683,7 +687,11 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"Gotham-book"; font-size:14px!important;}
 
-select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";}
+select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";} 
+
+div.dataTables_length select {
+	width: auto !important;
+}
 
 .forgot_paswd { line-height: 30px; color: #000; font-size: 13px; font-family:"Gotham-medium"; font-weight: normal;}
 

@@ -18,7 +18,8 @@ import { FindcompanyService } from './services/findcompany.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.component';
-
+import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
+import { AssessmentDetailsService } from './services/assessment-details.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.comp
     InvitationComponent,
     FindcompanyComponent,
     RegisterComponent,
-    WelcomeregisterComponent
+    WelcomeregisterComponent,
+    AssessmentDetailsComponent
 
   ],
   imports: [
@@ -59,7 +61,10 @@ import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.comp
 		},
 		{
 			path : 'welcome_register',
-			component : WelcomeregisterComponent
+			component : WelcomeregisterComponent,
+		},{
+			path : 'assessment_details',
+			component : AssessmentDetailsComponent
 		},
 		{
 			path : '**',
@@ -67,7 +72,7 @@ import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.comp
 		}
 	])
   ],
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AssessmentDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

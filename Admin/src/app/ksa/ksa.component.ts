@@ -4,116 +4,119 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { KsaService } from '../services/ksa.service';
 import { Globals } from '.././globals';
+import { CommonService } from '../services/common.service';
 
 @Component({
-  selector: 'app-ksa',
-  providers: [ KsaService ],
-  templateUrl: './ksa.component.html',
-  styleUrls: ['./ksa.component.css']
+	selector: 'app-ksa',
+	providers: [KsaService, CommonService],
+	templateUrl: './ksa.component.html',
+	styleUrls: ['./ksa.component.css']
 })
 
-export class KsaComponent implements OnInit 
-{	
+export class KsaComponent implements OnInit {
 	ksaEntity;
 	areaList;
 	submitted;
 	btn_disable;
 	header;
-	
-  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private KsaService: KsaService, private globals: Globals)
-    {
-		
-	}
-  ngOnInit() 
-  {
-	this.ksaEntity = {};
-	let id = this.route.snapshot.paramMap.get('id');
-	this.globals.msgflag = false;
-	this.KsaService.getCAreaList()
-	.then((data) => 
-	{
-		this.areaList = data;
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	 
-	if(id){
-		this.header = 'Edit';
-		this.KsaService.getById(id)
-		.then((data) => 
-		{
-			if(data!=""){
-				this.ksaEntity = data;
-			} else {
-				this.router.navigate(['/dashboard']);
-			}				
-		}, 
-		(error) => 
-		{
-			alert('error');
-		});	 
-	} else {
-		this.header = 'Add';
-    this.ksaEntity = {};
-    this.ksaEntity.KSAId = 0;
-		this.ksaEntity.IsActive = '1';
-		this.ksaEntity.CAreaId = '';
-	}
-    
-  } 
 
-	
-	addKSA(ksaForm)
-	{		
+	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private KsaService: KsaService,
+		private globals: Globals, private CommonService: CommonService) {
+
+	}
+	ngOnInit() {
+		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'KSA' })
+			.then((data) => {
+				if (data['AddEdit'] == 1) {
+					this.ksaEntity = {};
+					let id = this.route.snapshot.paramMap.get('id');
+					this.globals.msgflag = false;
+					this.KsaService.getCAreaList()
+						.then((data) => {
+							this.areaList = data;
+						},
+						(error) => {
+							alert('error');
+						});
+					if (id) {
+						this.header = 'Edit';
+						this.KsaService.getById(id)
+							.then((data) => {
+								if (data != "") {
+									this.ksaEntity = data;
+								} else {
+									this.router.navigate(['/dashboard']);
+								}
+							},
+							(error) => {
+								alert('error');
+							});
+					} else {
+						this.header = 'Add';
+						this.ksaEntity = {};
+						this.ksaEntity.KSAId = 0;
+						this.ksaEntity.IsActive = '1';
+						this.ksaEntity.CAreaId = '';
+					}
+				} else {
+					this.router.navigate(['/dashboard']);
+				}
+			},
+			(error) => {
+				alert('error');
+			});
+
+
+
+	}
+
+
+	addKSA(ksaForm) {
 		let id = this.route.snapshot.paramMap.get('id');
-		if(id){			
+		if (id) {
 			this.ksaEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
-		} else {			
+		} else {
 			this.ksaEntity.CreatedBy = this.globals.authData.UserId;
 			this.ksaEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = true;
 		}
-		if(ksaForm.valid){
+		if (ksaForm.valid) {
 			this.btn_disable = true;
 			this.KsaService.add(this.ksaEntity)
-			.then((data) => 
-			{
-				//alert('success');
-				this.btn_disable = false;
-				this.submitted = false;
-				this.ksaEntity = {};
-				ksaForm.form.markAsPristine();
-				if(id){
-					this.globals.message = 'Update successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				} else {
-					this.globals.message = 'Add successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				}		
-				this.router.navigate(['/ksa/list']);
-			}, 
-			(error) => 
-			{
-				alert('error');
-				this.btn_disable = false;
-				this.submitted = false;
-			});
-		} 		
+				.then((data) => {
+					//alert('success');
+					this.btn_disable = false;
+					this.submitted = false;
+					this.ksaEntity = {};
+					ksaForm.form.markAsPristine();
+					if (id) {
+						this.globals.message = 'Update successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+					} else {
+						this.globals.message = 'Add successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+					}
+					this.router.navigate(['/ksa/list']);
+				},
+				(error) => {
+					alert('error');
+					this.btn_disable = false;
+					this.submitted = false;
+				});
+		}
 	}
-	
-	clearForm(ksaForm)
-	{		
-    this.ksaEntity = {};	
-    this.ksaEntity.KSAId = 0;
+
+	clearForm(ksaForm) {
+		this.ksaEntity = {};
+		this.ksaEntity.KSAId = 0;
 		this.ksaEntity.IsActive = '1';
 		this.ksaEntity.CAreaId = '';
 		this.submitted = false;
 		ksaForm.form.markAsPristine();
-	}	
-	
+	}
+
 }
 

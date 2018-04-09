@@ -3,13 +3,14 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { EmailtemplateService } from '../services/emailtemplate.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 import { forEach } from '@angular/router/src/utils/collection';
 declare var $: any;
 
 @Component({
   selector: 'app-emailtemplate-list',
-  providers: [ EmailtemplateService ],
+  providers: [ EmailtemplateService,CommonService ],
   templateUrl: './emailtemplate-list.component.html',
   styleUrls: ['./emailtemplate-list.component.css']
 })
@@ -19,36 +20,63 @@ export class EmailtemplateListComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	permissionEntity;
 
- constructor( private http: Http,private globals: Globals, private router: Router, private EmailtemplateService: EmailtemplateService,private route:ActivatedRoute) { }
+ constructor( private http: Http,private globals: Globals, private router: Router, 
+	private EmailtemplateService: EmailtemplateService,private CommonService: CommonService, private route:ActivatedRoute) { }
 
 
 ngOnInit() {  
-	this.EmailtemplateService.getAll()
-	.then((data) => 
-	{ debugger
-		//alert(data);		
-		// for(var i=1; i<=data.length; i++){
-		// 	data[i].To=data[i].To.toString().replace("1","Admin");	
-		// }		
-		this.EmailList = data;
-		setTimeout(function(){
-      $('#dataTables-example').dataTable( {
-        "oLanguage": {
-          "sLengthMenu": "_MENU_ Email per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Email",
-					"sInfoFiltered": "(filtered from _MAX_ total Email)"
-        }
-      });
-    },100); 
-
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
-	//this.msgflag = false;
-  }
+	this.permissionEntity = {}; 
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Email Template'})
+		.then((data) => 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}		
+	}
+	
+	default(){
+		this.EmailtemplateService.getAll()
+		.then((data) => 
+		{ debugger
+			//alert(data);		
+			// for(var i=1; i<=data.length; i++){
+			// 	data[i].To=data[i].To.toString().replace("1","Admin");	
+			// }		
+			this.EmailList = data;
+			setTimeout(function(){
+				$('#dataTables-example').dataTable( {
+					"oLanguage": {
+						"sLengthMenu": "_MENU_ Email per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Email",
+						"sInfoFiltered": "(filtered from _MAX_ total Email)"
+					}
+				});
+			},100); 
+	
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});	
+		//this.msgflag = false;
+		}
 
 	deleteEmail(Email)
 	{ 

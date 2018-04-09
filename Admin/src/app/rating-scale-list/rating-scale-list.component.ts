@@ -3,12 +3,13 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { RatingScaleService } from '../services/rating-scale.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
   selector: 'app-rating-scale-list',
-  providers: [ RatingScaleService ],
+  providers: [ RatingScaleService,CommonService ],
   templateUrl: './rating-scale-list.component.html',
   styleUrls: ['./rating-scale-list.component.css']
 })
@@ -19,15 +20,41 @@ export class RatingScaleListComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	permissionEntity;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private RatingScaleService: RatingScaleService, private globals: Globals) 
+		 private RatingScaleService: RatingScaleService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
   ngOnInit() { 
-	this.RatingScaleService.getAll()
+		this.permissionEntity = {}; 
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Rating Scale'})
+		.then((data) => 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}		
+	}
+	
+	default(){
+		this.RatingScaleService.getAll()
 	.then((data) => 
 	{ 
 		this.ratingList = data;	
@@ -48,7 +75,7 @@ export class RatingScaleListComponent implements OnInit {
 		alert('error');
 	});	
 	this.msgflag = false;
-  }
+	}
 	
 	deleteRatingScale(ratingscale)
 	{ 

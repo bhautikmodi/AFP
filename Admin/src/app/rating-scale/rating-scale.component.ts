@@ -24,36 +24,45 @@ export class RatingScaleComponent implements OnInit {
 
 	}
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Rating Scale' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.ratingscaleEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					this.globals.msgflag = false;
-					if (id) {
-						this.header = 'Edit';
-						this.RatingScaleService.getById(id)
-							.then((data) => {
-								this.ratingscaleEntity = data;
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.ratingscaleEntity = {};
-						this.ratingscaleEntity.RatingScaleId = 0;
-						this.ratingscaleEntity.IsActive = '1';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Rating Scale'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
+			});	
+		}
 	}
 
+	default(){
+		this.ratingscaleEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		this.globals.msgflag = false;
+		if (id) {
+			this.header = 'Edit';
+			this.RatingScaleService.getById(id)
+				.then((data) => {
+					this.ratingscaleEntity = data;
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.ratingscaleEntity = {};
+			this.ratingscaleEntity.RatingScaleId = 0;
+			this.ratingscaleEntity.IsActive = '1';
+		}
+	}
 
 	addRatingScale(ratingscaleForm) {
 		let id = this.route.snapshot.paramMap.get('id');

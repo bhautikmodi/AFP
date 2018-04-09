@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http } from '@angular//http';
+import { HttpClient  } from '@angular/common/http';
 import { Globals } from '.././globals';
 
 @Injectable()
 export class DomainService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: Http,private httpc: HttpClient, private globals: Globals) { }
 
   add(domainEntity){
 	let promise = new Promise((resolve, reject) => {
@@ -39,19 +40,19 @@ export class DomainService {
 	return promise;
   }
   
-  getAll(){ 
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Domain/getAll', this.globals.headerpath)
+  getAll(){ debugger    
+	let promise = new Promise((resolve, reject) => {    
+    this.httpc.get(this.globals.baseAPIUrl + 'Domain/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
         }
       );
-	});		
+  });	
 	return promise;
   }
   

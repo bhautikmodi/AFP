@@ -28,71 +28,80 @@ export class EmailtemplateComponent implements OnInit {
 		private CommonService: CommonService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Email Template' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.globals.msgflag = false;
-					this.des_valid = false;
-					this.emailEntity = {};
-					CKEDITOR.replace('EmailBody');
-					let id = this.route.snapshot.paramMap.get('id');
-					this.EmailtemplateService.getDefaultList()
-						.then((data) => {
-							this.roleList = data['role'];
-							this.placeholderList = data['placeholder'];
-						},
-						(error) => {
-							alert('error');
-						});
-					if (id) {
-						this.header = 'Edit';
-						this.EmailtemplateService.getById(id)
-							.then((data) => {
-								if (data != "") {
-									this.emailEntity = data;
-									if (this.emailEntity.Cc == 0) {
-										this.emailEntity.Cc = "";
-									}
-									if (this.emailEntity.Bcc == 0) {
-										this.emailEntity.Bcc = "";
-									}
-									CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);
-								} else {
-									this.router.navigate(['/dashboard']);
-								}
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.emailEntity = {};
-						this.emailEntity.EmailId = 0;
-						this.emailEntity.Token = '';
-						this.emailEntity.To = '';
-						this.emailEntity.Cc = '';
-						this.emailEntity.Bcc = '';
-						this.emailEntity.IsActive = '1';
-					}
-
-					CKEDITOR.on('instanceReady', function () {
-						CKEDITOR.document.getById('contactList').on('dragstart', function (evt) {
-							var target = evt.data.getTarget().getAscendant('div', true);
-							CKEDITOR.plugins.clipboard.initDragDataTransfer(evt);
-							var dataTransfer = evt.data.dataTransfer;
-							dataTransfer.setData('text/html', '{' + target.getText() + '}');
-						});
-					});
-
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Email Template'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}
+	}
+
+	default(){
+		this.globals.msgflag = false;
+		this.des_valid = false;
+		this.emailEntity = {};
+		CKEDITOR.replace('EmailBody');
+		let id = this.route.snapshot.paramMap.get('id');
+		this.EmailtemplateService.getDefaultList()
+			.then((data) => {
+				this.roleList = data['role'];
+				this.placeholderList = data['placeholder'];
+			},
 			(error) => {
 				alert('error');
 			});
+		if (id) {
+			this.header = 'Edit';
+			this.EmailtemplateService.getById(id)
+				.then((data) => {
+					if (data != "") {
+						this.emailEntity = data;
+						if (this.emailEntity.Cc == 0) {
+							this.emailEntity.Cc = "";
+						}
+						if (this.emailEntity.Bcc == 0) {
+							this.emailEntity.Bcc = "";
+						}
+						CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);
+					} else {
+						this.router.navigate(['/dashboard']);
+					}
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.emailEntity = {};
+			this.emailEntity.EmailId = 0;
+			this.emailEntity.Token = '';
+			this.emailEntity.To = '';
+			this.emailEntity.Cc = '';
+			this.emailEntity.Bcc = '';
+			this.emailEntity.IsActive = '1';
+		}
 
+		CKEDITOR.on('instanceReady', function () {
+			CKEDITOR.document.getById('contactList').on('dragstart', function (evt) {
+				var target = evt.data.getTarget().getAscendant('div', true);
+				CKEDITOR.plugins.clipboard.initDragDataTransfer(evt);
+				var dataTransfer = evt.data.dataTransfer;
+				dataTransfer.setData('text/html', '{' + target.getText() + '}');
+			});
+		});
 	}
+
 	addEmailTemplate(EmailForm) {
 		this.emailEntity.EmailBody = CKEDITOR.instances.EmailBody.getData();
 		if (this.emailEntity.EmailBody != "") {

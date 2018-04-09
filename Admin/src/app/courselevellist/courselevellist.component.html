@@ -15,7 +15,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
           <div class="panel-heading"> !
-            <div class="btn-group pull-right add-right">
+            <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
               <a routerLink="/courselevel/add" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add Course Level
 			  <!-- <button type="button" routerLink="/Courselevel/add" class="btn btn-info btn-rounded pull-right" data-tooltip="Add Client"> -->
@@ -33,7 +33,7 @@
 					<th>Keyword</th>
 					<th style="width: 10%;">Description</th>
 					<th style="width: 10%;">Active?</th>
-                    <th style="width: 10%;">Actions</th>
+          <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,11 +47,11 @@
 										<td>{{Courselevel.Description}}</td>
 										  <td *ngIf="Courselevel.IsActive=='1'">Yes</td>
 											<td *ngIf="Courselevel.IsActive=='0'">No</td>
-										<td>
-											<button type="button" class="btn btn-default btn-rounded btn-sm" [disabled]="Courselevel.isdisabled>0" data-tooltip="Edit" 
+                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" [disabled]="Courselevel.isdisabled>0" data-tooltip="Edit" 
 											routerLink="/courselevel/edit/{{Courselevel.ConfigurationId}}">
 											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+											<button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
 											data-tooltip="Delete"  [disabled]="Courselevel.isdisabled>0"
 											(click)="deleteCourselevel(Courselevel)">
 											<i class="fa fa-times" aria-hidden="true"></i></button>

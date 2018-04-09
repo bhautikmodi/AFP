@@ -28,51 +28,60 @@ export class CompetencyAreaComponent implements OnInit {
 
 	}
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Competency Area' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.des_valid = false;
-					CKEDITOR.replace('Description');
-					this.areaEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					this.globals.msgflag = false;
-					this.CompetencyAreaService.getDomainList()
-						.then((data) => {
-							this.domainList = data;
-						},
-						(error) => {
-							alert('error');
-						});
-					if (id) {
-						this.header = 'Edit';
-						this.CompetencyAreaService.getById(id)
-							.then((data) => {
-								if (data != "") {
-									this.areaEntity = data;
-									CKEDITOR.instances.Description.setData(this.areaEntity.Description);
-								} else {
-									this.router.navigate(['/dashboard']);
-								}
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.areaEntity = {};
-						this.areaEntity.CAreaId = 0;
-						this.areaEntity.IsActive = '1';
-						this.areaEntity.DomainId = '';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Competency Area'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}
+	}
+
+	default(){
+		this.des_valid = false;
+		CKEDITOR.replace('Description');
+		this.areaEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		this.globals.msgflag = false;
+		this.CompetencyAreaService.getDomainList()
+			.then((data) => {
+				this.domainList = data;
+			},
 			(error) => {
 				alert('error');
 			});
+		if (id) {
+			this.header = 'Edit';
+			this.CompetencyAreaService.getById(id)
+				.then((data) => {
+					if (data != "") {
+						this.areaEntity = data;
+						CKEDITOR.instances.Description.setData(this.areaEntity.Description);
+					} else {
+						this.router.navigate(['/dashboard']);
+					}
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.areaEntity = {};
+			this.areaEntity.CAreaId = 0;
+			this.areaEntity.IsActive = '1';
+			this.areaEntity.DomainId = '';
+		}
 	}
-
 
 	addArea(areaForm) {
 		debugger

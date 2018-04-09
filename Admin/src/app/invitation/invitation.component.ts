@@ -23,43 +23,48 @@ export class InvitationComponent implements OnInit {
 
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'User Invitation' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.globals.msgflag = false;
-					this.InvitationEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-						//this.header = 'Edit';
-						// this.InvitationService.getById(id)
-						// .then((data) => 
-						// {
-						// 	this.InvitationEntity = data;
-
-						// }, 
-						// (error) => 
-						// {
-						// 	alert('error');
-						// });	 
-					} else {
-						this.header = '';
-						this.InvitationEntity = {};
-						this.InvitationEntity.UserInvitationId = 0;
-						this.InvitationEntity.IsActive = '1';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'User Invitation'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
-
-
-
+			});	
+		}
 	}
 
+	default(){
+		this.globals.msgflag = false;
+		this.InvitationEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+			//this.header = 'Edit';
+			// this.InvitationService.getById(id)
+			// .then((data) => 
+			// {
+			// 	this.InvitationEntity = data;
 
+			// }, 
+			// (error) => 
+			// {
+			// 	alert('error');
+			// });	 
+		} else {
+			this.header = '';
+			this.InvitationEntity = {};
+			this.InvitationEntity.UserInvitationId = 0;
+			this.InvitationEntity.IsActive = '1';
+		}
+	}
 
 	addInvitation(InvitationForm) {
 		debugger

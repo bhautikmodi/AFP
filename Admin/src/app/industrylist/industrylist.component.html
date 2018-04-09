@@ -15,7 +15,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
           <div class="panel-heading"> !
-            <div class="btn-group pull-right add-right">
+            <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
               <a routerLink="/industry/add" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a Industry
               </a>
@@ -29,7 +29,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th style="width: 8%;">Active?</th>
-                    <th style="width: 10%;">Actions</th>
+                    <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,11 +39,11 @@
 										<td>{{Industry.IndustryName}}</td>
 										  <td *ngIf="Industry.IsActive=='1'">Yes</td>
 											<td *ngIf="Industry.IsActive=='0'">No</td>
-										<td>
-											<button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
+                    <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
 											routerLink="/industry/edit/{{Industry.IndustryId}}">
 											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+											<button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
 											data-tooltip="Delete" 
 											(click)="deleteIndustry(Industry)">
 											<i class="fa fa-times" aria-hidden="true"></i></button>

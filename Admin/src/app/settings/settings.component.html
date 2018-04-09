@@ -30,7 +30,7 @@
                     </span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" [disabled]="btn_disable1" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable1" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
@@ -50,7 +50,7 @@
                       </span>
                     </div>
                     <div class="form-btn col-md-2 no-padding">
-                      <button type="submit" [disabled]="btn_disable4" class="btn sub-btn btn-small">Submit</button>
+                      <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable4" class="btn sub-btn btn-small">Submit</button>
                       <!--<button class="btn res-btn">Edit</button>--> 
                     </div>
                   </div>
@@ -77,7 +77,7 @@
                     </span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" [disabled]="btn_disable2" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable2" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
@@ -113,7 +113,7 @@
                 </div>
                 </div>
                   <div class="form-btn col-md-2 no-padding">
-                    <button type="submit" [disabled]="btn_disable3" class="btn sub-btn btn-small">Submit</button>
+                    <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable3" class="btn sub-btn btn-small">Submit</button>
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
@@ -125,7 +125,7 @@
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" *ngIf="permissionEntity.AddEdit==1">
           <div class="panel-heading"> ! </div>
           <div class="panel-body">
             <div class="row"> 
@@ -178,15 +178,16 @@
                   <tr>
                     <th>#</th>
 					          <th style="width: 80%;">Team Size</th>
-                    <th>Actions</th>
+                    <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let teamsize of teamsizeList; let i = index" >
                         <td>{{i+1}}</td> 
                         <td>{{teamsize.TeamSize}}</td> 
-                        <td><button class="btn btn-default btn-rounded btn-sm" (click)="editteamsize(teamsize)" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                          <button data-type="Record" (click)="deleteteamsize(teamsize)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                        <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                          <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" (click)="editteamsize(teamsize)" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                          <button *ngIf="permissionEntity.Delete==1" data-type="Record" (click)="deleteteamsize(teamsize)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                       </tr>                  
                 </tbody>
               </table>

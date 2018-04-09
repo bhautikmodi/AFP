@@ -21,42 +21,48 @@ export class CourselevelComponent implements OnInit {
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Course Level' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.globals.msgflag = false;
-					this.CourseLevelEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-						this.header = 'Edit';
-						this.CourselevelService.getById(id)
-							.then((data) => {
-								this.CourseLevelEntity = data;
-								this.CourseLevelEntity.CourseLevel = data['Value'];
-								this.CourseLevelEntity.Keyword = data['DisplayText'];
-
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.CourseLevelEntity = {};
-						this.CourseLevelEntity.ConfigurationId = 0;
-						this.CourseLevelEntity.IsActive = '1';
-					}
-
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Course Level'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
-
+			});	
+		}
 	}
 
+	default(){
+		this.globals.msgflag = false;
+		this.CourseLevelEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+			this.header = 'Edit';
+			this.CourselevelService.getById(id)
+				.then((data) => {
+					this.CourseLevelEntity = data;
+					this.CourseLevelEntity.CourseLevel = data['Value'];
+					this.CourseLevelEntity.Keyword = data['DisplayText'];
 
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.CourseLevelEntity = {};
+			this.CourseLevelEntity.ConfigurationId = 0;
+			this.CourseLevelEntity.IsActive = '1';
+		}
+	}
 
 	addCourseLevel(CourseLevelForm) {
 		let id = this.route.snapshot.paramMap.get('id');

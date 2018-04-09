@@ -16,7 +16,7 @@
       <!-- Advanced Tables -->
       <div class="panel panel-default">
         <div class="panel-heading"> !
-          <div class="btn-group pull-right add-right">
+          <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
             <a routerLink="/placeholder/add" class="btn btn-danger btn-add">
             <i class="fa fa-plus fa-fw"></i> Add a Placeholder
             </a>
@@ -32,7 +32,7 @@
                   <th>Field Name</th>
                   <th>Placeholder Name</th>
                   <th>Active?</th>
-                  <th>Actions</th>
+                  <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,8 +44,9 @@
                       <td>{{holder.PlaceholderName}}</td>                      
                       <td *ngIf="holder.IsActive=='1'">Yes</td>
                       <td *ngIf="holder.IsActive=='0'">No</td>
-                      <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/placeholder/edit/{{holder.PlaceholderId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                        <button (click)="deleteplaceholder(holder)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                        <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/placeholder/edit/{{holder.PlaceholderId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                        <button *ngIf="permissionEntity.Delete==1" (click)="deleteplaceholder(holder)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                     </tr>                
               </tbody>
             </table>

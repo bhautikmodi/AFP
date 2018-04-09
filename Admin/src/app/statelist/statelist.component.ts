@@ -3,12 +3,13 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../services/state.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
   selector: 'app-statelist',
-  providers: [ StateService ],
+  providers: [ StateService,CommonService ],
   templateUrl: './statelist.component.html',
   styleUrls: ['./statelist.component.css']
 })
@@ -18,12 +19,38 @@ export class StatelistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private StateService: StateService, private globals: Globals) { }
+	permissionEntity;
+	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
+		private StateService: StateService, private CommonService: CommonService, private globals: Globals) { }
 
  ngOnInit()
   {
-	 
-	this.StateService.getAll()
+		this.permissionEntity = {}; 
+		if(this.globals.authData.RoleId==4){
+			this.permissionEntity.View=1;
+			this.permissionEntity.AddEdit=1;
+			this.permissionEntity.Delete=1;
+			this.default();
+		} else {		
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'State'})
+			.then((data) => 
+			{
+				this.permissionEntity = data;
+				if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+					this.default();
+				} else {
+					this.router.navigate(['/dashboard']);
+				}		
+			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}		
+	}
+	
+	default(){
+		this.StateService.getAll()
 	//.map(res => res.json())
 	.then((data) => 
 	{
@@ -43,7 +70,7 @@ export class StatelistComponent implements OnInit {
 		alert('error');
 	});	
 	  //this.msgflag = false;
-  }
+		}
   
   deleteState(state)
 	{ 

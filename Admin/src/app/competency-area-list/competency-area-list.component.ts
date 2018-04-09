@@ -3,12 +3,13 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CompetencyAreaService } from '../services/competency-area.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
   selector: 'app-competency-area-list',
-	providers: [ CompetencyAreaService ],
+	providers: [ CompetencyAreaService,CommonService ],
   templateUrl: './competency-area-list.component.html',
   styleUrls: ['./competency-area-list.component.css']
 })
@@ -19,15 +20,41 @@ export class CompetencyAreaListComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	permissionEntity;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private CompetencyAreaService: CompetencyAreaService, private globals: Globals) 
+		 private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
-  ngOnInit() { 
-	this.CompetencyAreaService.getAll()
+	ngOnInit() { 
+		this.permissionEntity = {}; 
+		if(this.globals.authData.RoleId==4){
+			this.permissionEntity.View=1;
+			this.permissionEntity.AddEdit=1;
+			this.permissionEntity.Delete=1;
+			this.default();
+		} else {		
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Competency Area'})
+			.then((data) => 
+			{
+				this.permissionEntity = data;
+				if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+					this.default();
+				} else {
+					this.router.navigate(['/dashboard']);
+				}		
+			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}			
+		}
+	
+	default(){
+		this.CompetencyAreaService.getAll()
 	.then((data) => 
 	{ 
 		this.areaList = data;	
@@ -48,7 +75,7 @@ export class CompetencyAreaListComponent implements OnInit {
 		alert('error');
 	});	
 	this.msgflag = false;
-  }
+	}
 	
 	deletearea(area)
 	{ 

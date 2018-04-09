@@ -7,7 +7,7 @@ export class Globals { debugger
   constructor() { }
 
   baseAPIUrl: string = 'http://localhost/AFP/api/';  
-  headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'";
+  headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;
   isLoading: boolean = false;
   currentLink: string = '';

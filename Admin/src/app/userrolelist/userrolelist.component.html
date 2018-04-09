@@ -3,7 +3,7 @@
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">Userrole list</h1>
+        <h1 class="page-header">Userrole</h1>
       </div>
       <!-- end  page header --> 
     </div>
@@ -29,9 +29,9 @@
                   <tr>
                     <th style="width:4%;">#</th>
                     <th style="width:20%;">RoleName</th>
-					<th style="width:20%;">UpdatedOn</th>
-					<th style="width:20%;">IsActive</th>
-                    <th style="width:20%;">Actions</th>
+					<!--<th style="width:20%;">UpdatedOn</th>-->
+					<th style="width:7%;">IsActive</th>
+                    <th style="width:7%;">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,7 @@
 												
 												
 												
-												<td>{{userrole.CreatedOn}}</td>
+												<!--<td>{{userrole.CreatedOn}}</td>-->
 												<td *ngIf="userrole.IsActive=='1'">Yes</td>
 											<td *ngIf="userrole.IsActive=='0'">No</td>
 												

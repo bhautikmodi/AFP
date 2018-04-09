@@ -24,16 +24,20 @@ export class RegisterComponent implements OnInit {
 	same;
 	companydata;
 	RegisterFormfinal;
+	CompanyEntity;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
   ngOnInit() {debugger
 	  
 	  
-	  this.btn_disable = false;
-	  this.RegisterEntity={};
-	   this.companydata={};
-	   
+			this.btn_disable = false;
+			this.RegisterEntity={};
+			this.CompanyEntity={};
+			this.companydata={};
+			this.CompanyEntity.IndustryId ='';
+			this.RegisterEntity.CountryId ='';
+			this.RegisterEntity.StateId ='';
     // $('select').select2();
 
 // $('#employee_btn').click(function () {
@@ -107,9 +111,17 @@ export class RegisterComponent implements OnInit {
 		} 		
 	}
 	
-	finalsubmit(RegisterForm){
+	finalsubmit(RegisterForm){debugger
 		this.btn_disable = true;
-		var data = {'com': this.companydata,'reg':this.RegisterEntity};
+		if(this.companydata!=''){
+			var com=this.companydata;
+		}
+		else
+		{
+			this.CompanyEntity.CompanyId=0;
+			var com=this.CompanyEntity;
+		}
+		var data = {'com': com,'reg':this.RegisterEntity};
 			this.RegisterService.add(data)
 			
 			.then((data) => 
@@ -122,7 +134,7 @@ export class RegisterComponent implements OnInit {
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
-							
+							$("#submit_Modal").modal('hide');
 				this.router.navigate(['/welcome_register']);
 			}, 
 			(error) => 

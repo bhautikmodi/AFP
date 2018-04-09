@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 
-
+import { AuthService } from './services/auth.service'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
@@ -18,6 +18,15 @@ import { FindcompanyService } from './services/findcompany.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.component';
+
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ForgotpasswordService } from './services/forgotpassword.service';
+import { LoginComponent } from './login/login.component';
+import { ResetpassComponent } from './resetpass/resetpass.component';
+import { ResetpassService } from './services/resetpass.service';
+import { ChangepassComponent } from './changepass/changepass.component';
+import { ChangepassService } from './services/changepass.service';
+
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
 import { AssessmentDetailsService } from './services/assessment-details.service';
 @NgModule({
@@ -31,7 +40,13 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
     FindcompanyComponent,
     RegisterComponent,
     WelcomeregisterComponent,
+
+	ForgotpasswordComponent,
+    LoginComponent,
+    ResetpassComponent,
+    ChangepassComponent,
     AssessmentDetailsComponent
+
 
   ],
   imports: [
@@ -42,6 +57,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : '',
 			component : DashbordComponent,
+			
 		},
 		{
 			path : 'contactus',
@@ -62,17 +78,40 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : 'welcome_register',
 			component : WelcomeregisterComponent,
-		},{
+
+		},
+		{
+			path : 'changepass',
+			component : ChangepassComponent,
+		},
+		{
+			//path : 'resetpass',
+			path : 'resetpass/:id',
+			component : ResetpassComponent,
+		},
+		
+		{
+			path : 'fgpass',
+			component : ForgotpasswordComponent,
+		},
+{
 			path : 'assessment_details',
-			component : AssessmentDetailsComponent
+			component : AssessmentDetailsComponent,
+
 		},
 		{
 			path : '**',
-			redirectTo : 'DashbordComponent'
+			redirectTo : 'DashbordComponent',
+		},
+		{
+			path : 'login',
+			component : LoginComponent
 		}
 	])
   ],
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AssessmentDetailsService],
+
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

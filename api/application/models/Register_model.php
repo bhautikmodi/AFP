@@ -72,17 +72,48 @@ class Register_model extends CI_Model
 	{	
 		if($post_user)
 		{
-            if($com_reg['CompanyId']=='')
+            if($com_reg['CompanyId']>0)
+			{	
+					$user_data=array(
+						"RoleId"=>3,
+						"CompanyId"=>$com_reg['CompanyId'],
+						"FirstName"=>$post_user['FirstName'],
+						"LastName"=>$post_user['LastName'],
+						"Title"=>$post_user['Title'],
+						"EmailAddress"=>$post_user['EmailAddress'],
+						"Password"=>$post_user['Password'],
+						"Address1"=>$post_user['Address1'],
+						"Address2"=>$post_user['Address2'],
+						"CountryId"=>$post_user['CountryId'],
+						"StateId"=>$post_user['StateId'],
+						"City"=>$post_user['City'],
+						"ZipCode"=>$post_user['ZipCode'],
+						"PhoneNumber"=>$post_user['PhoneNumber'],
+						"CreatedBy" =>1,
+						"UpdatedBy" =>1,
+					);	
+				$res=$this->db->insert('tbluser',$user_data);
+				if($res)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				
+			}else
 			{
 				$company_data=array(
 			
-				"Name"=>$post_user['Name'],
-				"IndustryId"=>$post_user['IndustryId'],
-				"Website"=>$post_user['Website'],
-				"PhoneNumber"=>$post_user['PhoneNumber'],
-				"CreatedBy" =>1,
-				"UpdatedBy" =>1
+					"Name"=>$com_reg['Name'],
+					"IndustryId"=>$com_reg['IndustryId'],
+					"Website"=>$com_reg['Website'],
+					"PhoneNumber"=>$com_reg['PhoneNumber1'],
+					"CreatedBy" =>1,
+					"UpdatedBy" =>1
 				);	
+				
 				$res=$this->db->insert('tblcompany',$company_data);
 				
 				$this->db->select('CompanyId');
@@ -90,7 +121,7 @@ class Register_model extends CI_Model
 				$this->db->limit(1);
 				$result=$this->db->get('tblcompany');
 				
-						$company_data = array();
+					$company_data = array();
 					foreach($result->result() as $row) 
 					{
 						$company_data = $row;
@@ -118,35 +149,6 @@ class Register_model extends CI_Model
 				);	
 				
 				$res=$this->db->insert('tbluser',$user_data);	
-				if($res)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}else
-			{
-					$user_data=array(
-						"RoleId"=>3,
-						"CompanyId"=>$com_reg['CompanyId'],
-						"FirstName"=>$post_user['FirstName'],
-						"LastName"=>$post_user['LastName'],
-						"Title"=>$post_user['Title'],
-						"EmailAddress"=>$post_user['EmailAddress'],
-						"Password"=>$post_user['Password'],
-						"Address1"=>$post_user['Address1'],
-						"Address2"=>$post_user['Address2'],
-						"CountryId"=>$post_user['CountryId'],
-						"StateId"=>$post_user['StateId'],
-						"City"=>$post_user['City'],
-						"ZipCode"=>$post_user['ZipCode'],
-						"PhoneNumber"=>$post_user['PhoneNumber'],
-						"CreatedBy" =>1,
-						"UpdatedBy" =>1,
-					);	
-				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
 				{
 					return true;

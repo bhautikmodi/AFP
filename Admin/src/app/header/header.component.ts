@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Globals } from '../globals';
 
@@ -10,7 +10,7 @@ import { Globals } from '../globals';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router,private globals: Globals) { }
+  constructor(private router: Router,private globals: Globals, private authService: AuthService) { }
 
   ngOnInit() {
   }

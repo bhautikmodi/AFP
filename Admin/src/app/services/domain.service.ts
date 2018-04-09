@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular//http';
-import { HttpClient  } from '@angular/common/http';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Globals } from '.././globals';
 
 @Injectable()
@@ -42,7 +42,9 @@ export class DomainService {
   
   getAll(){ debugger    
 	let promise = new Promise((resolve, reject) => {    
-    this.httpc.get(this.globals.baseAPIUrl + 'Domain/getAll')
+    this.httpc.get(this.globals.baseAPIUrl + 'Domain/getAll', {
+      headers: new HttpHeaders().set('token', '994847565472878394039283578235')
+    })
       .toPromise()
       .then(
         res => { // Success

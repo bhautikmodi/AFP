@@ -18,6 +18,7 @@ import { FindcompanyService } from './services/findcompany.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.component';
+<<<<<<< HEAD
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ForgotpasswordService } from './services/forgotpassword.service';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +27,10 @@ import { ResetpassService } from './services/resetpass.service';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
+=======
+import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
+import { AssessmentDetailsService } from './services/assessment-details.service';
+>>>>>>> 4e9ba499354ae11b7785004380e5e05da2c69a68
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +42,14 @@ import { ChangepassService } from './services/changepass.service';
     FindcompanyComponent,
     RegisterComponent,
     WelcomeregisterComponent,
+<<<<<<< HEAD
 	ForgotpasswordComponent,
     LoginComponent,
     ResetpassComponent,
     ChangepassComponent
+=======
+    AssessmentDetailsComponent
+>>>>>>> 4e9ba499354ae11b7785004380e5e05da2c69a68
 
   ],
   imports: [
@@ -72,6 +81,7 @@ import { ChangepassService } from './services/changepass.service';
 		{
 			path : 'welcome_register',
 			component : WelcomeregisterComponent,
+<<<<<<< HEAD
 		},
 		{
 			path : 'changepass',
@@ -86,6 +96,11 @@ import { ChangepassService } from './services/changepass.service';
 		{
 			path : 'fgpass',
 			component : ForgotpasswordComponent,
+=======
+		},{
+			path : 'assessment_details',
+			component : AssessmentDetailsComponent
+>>>>>>> 4e9ba499354ae11b7785004380e5e05da2c69a68
 		},
 		{
 			path : '**',
@@ -97,7 +112,11 @@ import { ChangepassService } from './services/changepass.service';
 		}
 	])
   ],
+<<<<<<< HEAD
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService],
+=======
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AssessmentDetailsService],
+>>>>>>> 4e9ba499354ae11b7785004380e5e05da2c69a68
   bootstrap: [AppComponent]
 })
 export class AppModule { }

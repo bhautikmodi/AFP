@@ -23,6 +23,8 @@ export class RegisterComponent implements OnInit {
 	type;
 	same;
 	companydata;
+	RegisterFormfinal;
+	CompanyEntity;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
@@ -31,13 +33,14 @@ export class RegisterComponent implements OnInit {
 	  
 	  this.btn_disable = false;
 	  this.RegisterEntity={};
+	  	  this.CompanyEntity={};
 	   this.companydata={};
 	   
     // $('select').select2();
 
-$('#employee_btn').click(function () {
-	$("#submit_Modal").modal('show');
-});
+// $('#employee_btn').click(function () {
+	// $("#submit_Modal").modal('show');
+// });
  	this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
  this.RegisterService.getIndustry()
 	//.map(res => res.json())
@@ -75,8 +78,48 @@ $('#employee_btn').click(function () {
 			
 		
 		if(RegisterForm.valid){
-			this.btn_disable = true;
-			var data = {'com': this.companydata,'reg':this.RegisterEntity};
+			
+			this.RegisterFormfinal = RegisterForm;
+			$("#submit_Modal").modal('show');
+			
+			
+			// this.btn_disable = true;
+			// var data = {'com': this.companydata,'reg':this.RegisterEntity};
+			// this.RegisterService.add(data)
+			
+			// .then((data) => 
+			// {
+				// //alert('success');
+				// this.btn_disable = false;
+				// this.submitted = false;
+				// this.RegisterEntity = {};
+				// RegisterForm.form.markAsPristine();
+					// this.globals.message = 'Add successfully';
+					// this.globals.type = 'success';
+					// this.globals.msgflag = true;
+							
+				// this.router.navigate(['/welcome_register']);
+			// }, 
+			// (error) => 
+			// {
+				// alert('error');
+				// this.btn_disable = false;
+				// this.submitted = false;
+			// });
+		} 		
+	}
+	
+	finalsubmit(RegisterForm){debugger
+		this.btn_disable = true;
+		if(this.companydata!=''){
+			var com=this.companydata;
+		}
+		else
+		{
+			this.CompanyEntity.CompanyId=0;
+			var com=this.CompanyEntity;
+		}
+		var data = {'com': com,'reg':this.RegisterEntity};
 			this.RegisterService.add(data)
 			
 			.then((data) => 
@@ -89,7 +132,7 @@ $('#employee_btn').click(function () {
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
-							
+							$("#submit_Modal").modal('hide');
 				this.router.navigate(['/welcome_register']);
 			}, 
 			(error) => 
@@ -98,8 +141,9 @@ $('#employee_btn').click(function () {
 				this.btn_disable = false;
 				this.submitted = false;
 			});
-		} 		
+		
 	}
+	
 	getStateList()
 	{ debugger
 		if(this.RegisterEntity.CountryId > 0){

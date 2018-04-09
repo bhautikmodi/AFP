@@ -36,7 +36,7 @@ Author: http://binarytheme.com
     display: block;
     color: #fff !important;
 	display: inline-block;
-	padding: 30px 0 25px 45px;
+	padding: 30px 0 30px 30px;
 	margin-bottom: 0px
 }
 .user-text-online {
@@ -142,6 +142,7 @@ html.index_admin,.index_admin body{ height:100%;}
     background: url("../img/banner.jpg") center center no-repeat; 
 	background-size:cover; height:100%;
 }
+.index_admin > div{height:100%;}
 .index_admin app-root > div,.index_admin app-login div.body-Login-back{height:100%;}
 .index_admin .white_bg{background:rgba(255,255,255,0.6); height:100%;}
 
@@ -232,6 +233,10 @@ html.index_admin,.index_admin body{ height:100%;}
 	}
 	.navbar-default {}
 	.account_menu {margin-top: -5px;}
+	
+	.navbar-static-side {
+		position: inherit;
+	}
 }
 
 @media (min-width: 992px) {

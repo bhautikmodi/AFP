@@ -27,45 +27,52 @@ export class DomainComponent implements OnInit
 	}
   ngOnInit() 
   {
-	this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
-	.then((data) => 
-	{
-		if(data['AddEdit']==1){
-			this.domainEntity = {};
-			let id = this.route.snapshot.paramMap.get('id');
-			this.globals.msgflag = false;
-			if(id){
-				this.header = 'Edit';
-				this.domainService.getById(id)
-				.then((data) => 
-				{ 
-					if(data!=""){
-						this.domainEntity = data;
-					} else {
-						this.router.navigate(['/dashboard']);
-					}			
-				}, 
-				(error) => 
-				{
-					alert('error');
-				});	 
+	if(this.globals.authData.RoleId==4){		
+		this.default();
+	} else {
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
+		.then((data) => 
+		{
+			if(data['AddEdit']==1){
+				this.default();
 			} else {
-				this.header = 'Add';
-				this.domainEntity = {};
-				this.domainEntity.DomainId = 0;
-				this.domainEntity.IsActive = '1';
+				this.router.navigate(['/dashboard']);
 			}
-		} else {
-			this.router.navigate(['/dashboard']);
-		}
-	},
-	(error) => 
-	{
-		alert('error');
-	});	
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}
     
   } 
 
+  default(){
+	this.domainEntity = {};
+	let id = this.route.snapshot.paramMap.get('id');
+	this.globals.msgflag = false;
+	if(id){
+		this.header = 'Edit';
+		this.domainService.getById(id)
+		.then((data) => 
+		{ 
+			if(data!=""){
+				this.domainEntity = data;
+			} else {
+				this.router.navigate(['/dashboard']);
+			}			
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});	 
+	} else {
+		this.header = 'Add';
+		this.domainEntity = {};
+		this.domainEntity.DomainId = 0;
+		this.domainEntity.IsActive = '1';
+	}
+  }
 	
 	addDomain(domainForm)
 	{		

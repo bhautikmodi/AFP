@@ -87,7 +87,7 @@ class Invitation extends CI_Controller {
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($post_Invitation)) {
 	
-			$post_Invitation['Code']=mt_rand(100000, 999999);
+			$post_Invitation['Code']=mt_rand(100000,999999);
 			$result = $this->Invitation_model->ReInvite_Invitation($post_Invitation);			
 			if($result) {
 				$config['protocol']='smtp';

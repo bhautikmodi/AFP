@@ -65,29 +65,23 @@ class Remaining_model extends CI_Model
 	}
 	
 	//list project status
-	public function getlist_remaining()
-	{
+	// public function getlist_remaining()
+	// {
 		 
-		
-		
-		
+	
+		// // $this->db->select('user.UserId,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime');
+		// // $this->db->where('ca.StartTime >=',$date1);
+		// // $this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
+		// // $result = $this->db->get('tblcandidateassessment ca');
 		
 	
-		// $this->db->select('user.UserId,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime');
-		// $this->db->where('ca.StartTime >=',$date1);
-		// $this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
-		// $result = $this->db->get('tblcandidateassessment ca');
-		
-		
-		
-		
-		$res=array();
-		if($result->result())
-		{
-			$res=$result->result();
-		}
-		return $res;
-	}
+		// $res=array();
+		// if($result->result())
+		// {
+			// $res=$result->result();
+		// }
+		// return $res;
+	// }
 		
 	function getlist_value($datetime1)
 	{
@@ -96,10 +90,6 @@ class Remaining_model extends CI_Model
 		//$this->db->where('ca.EndTime=','NULL');
 		$this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
 		$result = $this->db->get('tblcandidateassessment ca');
-		
-		
-		
-		
 		$res=array();
 		if($result->result())
 		{

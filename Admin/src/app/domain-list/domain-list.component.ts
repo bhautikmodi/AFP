@@ -29,40 +29,51 @@ export class DomainListComponent implements OnInit {
   }
 
   ngOnInit() { 
-	this.permissionEntity = {};
-	this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
-	.then((data) => 
-	{
-		this.permissionEntity = data;
-		if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
-		this.domainService.getAll()
+	this.permissionEntity = {}; debugger
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Domain'})
 		.then((data) => 
-		{ 
-			this.domainList = data;	
-			setTimeout(function(){
-			$('#dataTables-example').dataTable( {
-				"oLanguage": {
-				"sLengthMenu": "_MENU_ Domain per Page",
-							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domain",
-							"sInfoFiltered": "(filtered from _MAX_ total Domain)",
-							"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
-				}
-			});
-			},100); 	
-		}, 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
 		(error) => 
 		{
 			alert('error');
+		});	
+	}		
+		
+  }
+
+  default(){
+	this.domainService.getAll()
+	.then((data) => 
+	{ 
+		this.domainList = data;	
+		setTimeout(function(){
+		$('#dataTables-example').dataTable( {
+			"oLanguage": {
+			"sLengthMenu": "_MENU_ Domain per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domain",
+						"sInfoFiltered": "(filtered from _MAX_ total Domain)",
+						"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
+			}
 		});
-		} else {
-			this.router.navigate(['/dashboard']);
-		}		
-	},
+		},100); 	
+	}, 
 	(error) => 
 	{
 		alert('error');
-	});		
-		
+	});
   }
 	
 	deleteDomain(domain)

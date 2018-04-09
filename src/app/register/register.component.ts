@@ -31,11 +31,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {debugger
 	  
 	  
-	  this.btn_disable = false;
-	  this.RegisterEntity={};
-	  	  this.CompanyEntity={};
-	   this.companydata={};
-	   
+			this.btn_disable = false;
+			this.RegisterEntity={};
+			this.CompanyEntity={};
+			this.companydata={};
+			this.CompanyEntity.IndustryId ='';
+			this.RegisterEntity.CountryId ='';
+			this.RegisterEntity.StateId ='';
     // $('select').select2();
 
 // $('#employee_btn').click(function () {

@@ -54,9 +54,9 @@
 						pattern="[a-zA-Z' ]{1,100}" 
 							[(ngModel)]="CompanyEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
 						<span style="color:red;"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-							<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Name</span>
+							<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company Name</span>
 							<span style="color:red;" *ngIf="Name.errors && Name.errors.pattern">
-							Please enter a valid Name.
+							Please enter a valid Company Name.
 					  </span>
 						</span>	
 						
@@ -68,14 +68,13 @@
             <label><span>*</span>Industry </label>
            <select class="form-control" #IndustryId="ngModel" [(ngModel)]="CompanyEntity.IndustryId"
 								name="IndustryId" [ngClass]="{red_border: (IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)}" required>  
-									<option value="" >Select</option>
+									<option value="" ngSelected='CompanyEntity.IndustryId==""' >Select Industry </option>
 									<option *ngFor="let Industry of IndustryList" value="{{Industry.IndustryId}}" 
 									ngSelected="CompanyEntity.IndustryId==Industry.IndustryId">{{Industry.IndustryName}}</option>
 								</select>
 									<span style="color:red" *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)">  
 										<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">
-											Please select Cource Level
-										</span> 
+											Please select Industry										</span> 
 									</span> 
           </div>
           <div class="form-group">

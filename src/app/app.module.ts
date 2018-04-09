@@ -74,6 +74,12 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : 'register',
 			component : RegisterComponent,
+			
+		},
+		{
+        path : 'register/edit/:id',
+        component : RegisterComponent,
+        
 		},
 		{
 			path : 'welcome_register',

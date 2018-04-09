@@ -55,7 +55,7 @@ class Register extends CI_Controller
 			
 					if($result)
 					{
-						echo json_encode($post_user); 
+						echo json_encode('success'); 
 						// $config['protocol']='smtp';
 						// $config['smtp_host']='ssl://smtp.googlemail.com';
 						// $config['smtp_port']='465';
@@ -77,7 +77,10 @@ class Register extends CI_Controller
 						
 						
 						// $this->email->send();
-					}	
+					}else
+					{
+						echo json_encode('error ');
+					}
 				
 					
 			}

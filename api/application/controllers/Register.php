@@ -85,7 +85,16 @@ class Register extends CI_Controller
 					
 			}
 	}
-
+public function getById($user_id=null)
+	{	
+		
+		if(!empty($user_id))
+		{
+			$data=[];
+			$data=$this->Register_model->get_userdata($user_id);
+			echo json_encode($data);
+		}
+	}
 
 	
 	

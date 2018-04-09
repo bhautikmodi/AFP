@@ -21,38 +21,47 @@ export class CountryComponent implements OnInit {
 		private CountryService: CountryService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Country' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.globals.msgflag = false;
-					this.CountryEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-						this.header = 'Edit';
-						this.CountryService.getById(id)
-							.then((data) => {
-								this.CountryEntity = data;
-
-
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.CountryEntity = {};
-						this.CountryEntity.CountryId = 0;
-						this.CountryEntity.IsActive = '1';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Country'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
+			});	
+		}
 	}
 
+	default(){
+		this.globals.msgflag = false;
+		this.CountryEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+			this.header = 'Edit';
+			this.CountryService.getById(id)
+				.then((data) => {
+					this.CountryEntity = data;
+
+
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.CountryEntity = {};
+			this.CountryEntity.CountryId = 0;
+			this.CountryEntity.IsActive = '1';
+		}
+	}
 
 	addCountry(CountryForm) {
 		let id = this.route.snapshot.paramMap.get('id');

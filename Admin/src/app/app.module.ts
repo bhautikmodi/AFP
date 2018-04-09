@@ -76,6 +76,10 @@ import { RolepermissionComponent } from './rolepermission/rolepermission.compone
 import { RolepermissionService } from './services/rolepermission.service';
 import { CommonService } from './services/common.service';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+import { HttpClientModule   } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +127,8 @@ import { CommonService } from './services/common.service';
   imports: [
   BrowserModule,
 	HttpModule,
-	FormsModule,
+  FormsModule,
+  HttpClientModule,
 	RouterModule.forRoot([		
       {
         path : '',
@@ -391,7 +396,13 @@ import { CommonService } from './services/common.service';
  
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
-    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,RolepermissionService,CommonService],
+    UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,
+    RolepermissionService,CommonService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
    
 
 

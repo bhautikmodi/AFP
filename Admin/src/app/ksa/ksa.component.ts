@@ -25,51 +25,57 @@ export class KsaComponent implements OnInit {
 
 	}
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'KSA' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.ksaEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					this.globals.msgflag = false;
-					this.KsaService.getCAreaList()
-						.then((data) => {
-							this.areaList = data;
-						},
-						(error) => {
-							alert('error');
-						});
-					if (id) {
-						this.header = 'Edit';
-						this.KsaService.getById(id)
-							.then((data) => {
-								if (data != "") {
-									this.ksaEntity = data;
-								} else {
-									this.router.navigate(['/dashboard']);
-								}
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.ksaEntity = {};
-						this.ksaEntity.KSAId = 0;
-						this.ksaEntity.IsActive = '1';
-						this.ksaEntity.CAreaId = '';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'KSA'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}
+	}
+
+	default(){
+		this.ksaEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		this.globals.msgflag = false;
+		this.KsaService.getCAreaList()
+			.then((data) => {
+				this.areaList = data;
+			},
 			(error) => {
 				alert('error');
 			});
-
-
-
+		if (id) {
+			this.header = 'Edit';
+			this.KsaService.getById(id)
+				.then((data) => {
+					if (data != "") {
+						this.ksaEntity = data;
+					} else {
+						this.router.navigate(['/dashboard']);
+					}
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.ksaEntity = {};
+			this.ksaEntity.KSAId = 0;
+			this.ksaEntity.IsActive = '1';
+			this.ksaEntity.CAreaId = '';
+		}	
 	}
-
 
 	addKSA(ksaForm) {
 		let id = this.route.snapshot.paramMap.get('id');

@@ -3,13 +3,14 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { IndustryService } from '../services/industry.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 
 declare var $: any;
 
 @Component({
   selector: 'app-industrylist',
-  providers: [ IndustryService ],
+  providers: [ IndustryService,CommonService ],
   templateUrl: './industrylist.component.html',
   styleUrls: ['./industrylist.component.css']
 })
@@ -19,31 +20,56 @@ export class IndustrylistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
- constructor( private http: Http,private globals: Globals, private router: Router, private IndustryService: IndustryService,private route:ActivatedRoute) { }
+	permissionEntity;
+ constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
-  ngOnInit() { debugger
-  
-	this.IndustryService.getAll()
-	.then((data) => 
-	{ 
-		this.IndustryList = data;	
-		setTimeout(function(){
-      $('#dataTables-example').dataTable( {
-        "oLanguage": {
-          "sLengthMenu": "_MENU_ Industry per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industry",
-					"sInfoFiltered": "(filtered from _MAX_ total Industry)"
-        }
-      });
-    },100); 
-
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
-	//this.msgflag = false;
-  }
+  ngOnInit() { 
+		this.permissionEntity = {}; 
+		if(this.globals.authData.RoleId==4){
+			this.permissionEntity.View=1;
+			this.permissionEntity.AddEdit=1;
+			this.permissionEntity.Delete=1;
+			this.default();
+		} else {		
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Industry'})
+			.then((data) => 
+			{
+				this.permissionEntity = data;
+				if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+					this.default();
+				} else {
+					this.router.navigate(['/dashboard']);
+				}		
+			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}		
+	}
+	
+	default(){
+		this.IndustryService.getAll()
+		.then((data) => 
+		{ 
+			this.IndustryList = data;	
+			setTimeout(function(){
+				$('#dataTables-example').dataTable( {
+					"oLanguage": {
+						"sLengthMenu": "_MENU_ Industry per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industry",
+						"sInfoFiltered": "(filtered from _MAX_ total Industry)"
+					}
+				});
+			},100); 
+	
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});	
+		//this.msgflag = false;
+		}
 
 	deleteIndustry(Industry)
 	{ 

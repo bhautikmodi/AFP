@@ -43,6 +43,10 @@ export class AuthService {
 	  }
 	  let isExpired = jwtHelper.isTokenExpired(token) ? true : false;	 
 	  return !isExpired;
+	}
+	
+	public getToken(): string {
+    return localStorage.getItem('token');
   }
   
 }

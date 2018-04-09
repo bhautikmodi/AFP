@@ -16,7 +16,15 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
           <div class="panel-heading"> ! 
+<<<<<<< HEAD
 			
+=======
+			<div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
+              <a routerLink="/company/add" class="btn btn-danger btn-add">
+              <i class="fa fa-plus fa-fw"></i>Add a Company
+              </a>
+            </div>
+>>>>>>> 5eda123918d5ef9230f42eb0ac351139ac8fd44c
 		  </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -29,7 +37,7 @@
 					<th style="width:10%;">Phone Number</th>
 					<th style="width:9%;">Webiste</th>
 					<th style="width:7%;">Active?</th>
-                    <th style="width:9%;">Actions</th>
+          <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,9 +53,10 @@
 												
 												
 												
-                    <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/company/edit/{{company.CompanyId}}" 
+                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                      <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/company/edit/{{company.CompanyId}}" 
 					title="Edit"><span class="fa fa-pencil"></span></button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteCompany(company)"><span class="fa fa-times"></span></button></td>
+                      <button *ngIf="permissionEntity.Delete==1" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteCompany(company)"><span class="fa fa-times"></span></button></td>
                     
                   </tr>
                  

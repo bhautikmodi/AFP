@@ -37,7 +37,9 @@ loginEntity;
 				this.invalid = false;
 				this.loginEntity = {};
 				loginForm.form.markAsPristine();
-				window.location.href = '/';				
+			this.router.navigate(['/welcome_register']);	
+
+		
 			}, 
 			(error) => 
 			{ 

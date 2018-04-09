@@ -16,7 +16,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
           <div class="panel-heading"> !
-            <div class="btn-group pull-right add-right">
+            <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
               <a routerLink="/ksa/add" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a KSA
               </a>
@@ -31,7 +31,7 @@
                       <th>Name</th>
                       <th class="width_30">Competency Area</th>
                       <th class="width_8">Active?</th>
-                      <th class="width_10">Actions</th>
+                      <th class="width_10" *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,8 +42,9 @@
                         <td>{{ksa.CAreaName}}</td>                     
                         <td *ngIf="ksa.IsActive=='1'">Yes</td>
                         <td *ngIf="ksa.IsActive=='0'">No</td>
-                        <td><button [disabled]="ksa.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/ksa/edit/{{ksa.KSAId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                          <button [disabled]="ksa.isdisabled>0" data-type="Record" (click)="deleteksa(ksa)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                        <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                          <button *ngIf="permissionEntity.AddEdit==1" [disabled]="ksa.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/ksa/edit/{{ksa.KSAId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                          <button *ngIf="permissionEntity.Delete==1" [disabled]="ksa.isdisabled>0" data-type="Record" (click)="deleteksa(ksa)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                       </tr>
                 </tbody>
               </table>

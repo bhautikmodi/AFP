@@ -3,11 +3,12 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CourselevelService } from '../services/courselevel.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 @Component({
   selector: 'app-courselevellist',
-      providers: [ CourselevelService ],
+  providers: [ CourselevelService,CommonService ],
   templateUrl: './courselevellist.component.html',
   styleUrls: ['./courselevellist.component.css']
 })
@@ -17,12 +18,38 @@ export class CourselevellistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
- constructor(private http: Http, private router: Router, private route: ActivatedRoute, private CourselevelService: CourselevelService, private globals: Globals) 
+	permissionEntity;
+ constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
+	private CourselevelService: CourselevelService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
- ngOnInit() { 
+  ngOnInit() { 
+	this.permissionEntity = {}; 
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Course Level'})
+		.then((data) => 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}			
+  }
+  default(){
 	this.CourselevelService.getAll()
 	.then((data) => 
 	{ 
@@ -41,8 +68,7 @@ export class CourselevellistComponent implements OnInit {
 	(error) => 
 	{
 		alert('error');
-	});	
-	
+	});		
   }
 	
 	deleteCourselevel(Courselevel)

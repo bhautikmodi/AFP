@@ -23,45 +23,55 @@ export class CompanyComponent implements OnInit {
 		private CompanyService: CompanyService, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Company' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.CompanyService.getAllIndustry()
-						//.map(res => res.json())
-						.then((data) => {
-							this.IndustryList = data;
-						},
-						(error) => {
-							alert('error');
-						});
-
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-						this.header = 'Edit';
-						this.CompanyService.getById(id)
-							.then((data) => {
-								this.companyEntity = data;
-
-							},
-							(error) => {
-								alert('error');
-								this.btn_disable = false;
-								this.submitted = false;
-							});
-					}
-					else {
-						this.header = 'Add';
-						this.companyEntity = {};
-						this.companyEntity.CompanyId = 0;
-						this.companyEntity.IsActive = '1';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Company'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}
+	}
+
+	default(){
+		this.CompanyService.getAllIndustry()
+		//.map(res => res.json())
+		.then((data) => {
+			this.IndustryList = data;
+		},
+		(error) => {
+			alert('error');
+		});
+
+	let id = this.route.snapshot.paramMap.get('id');
+	if (id) {
+		this.header = 'Edit';
+		this.CompanyService.getById(id)
+			.then((data) => {
+				this.companyEntity = data;
+
+			},
 			(error) => {
 				alert('error');
+				this.btn_disable = false;
+				this.submitted = false;
 			});
+	}
+	else {
+		this.header = 'Add';
+		this.companyEntity = {};
+		this.companyEntity.CompanyId = 0;
+		this.companyEntity.IsActive = '1';
+	}
 	}
 
 	addCompany(companyForm) {

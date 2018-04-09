@@ -9,7 +9,7 @@ declare var $: any;
 
 @Component({
   selector: 'app-domain-list',
-  providers: [ DomainService ],
+  providers: [ DomainService,CommonService ],
   templateUrl: './domain-list.component.html',
   styleUrls: ['./domain-list.component.css']
 })
@@ -29,7 +29,7 @@ export class DomainListComponent implements OnInit {
   }
 
   ngOnInit() { 
-	this.permissionEntity = {}; debugger
+	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
 		this.permissionEntity.AddEdit=1;
@@ -50,8 +50,7 @@ export class DomainListComponent implements OnInit {
 		{
 			alert('error');
 		});	
-	}		
-		
+	}			
   }
 
   default(){
@@ -74,6 +73,7 @@ export class DomainListComponent implements OnInit {
 	{
 		alert('error');
 	});
+	this.msgflag = false;
   }
 	
 	deleteDomain(domain)

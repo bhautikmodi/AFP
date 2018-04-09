@@ -31,11 +31,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {debugger
 	  
 	  
-	  this.btn_disable = false;
-	  this.RegisterEntity={};
-	  	  this.CompanyEntity={};
-	   this.companydata={};
-	   
+			this.btn_disable = false;
+			this.RegisterEntity={};
+			this.CompanyEntity={};
+			this.companydata={};
+			this.CompanyEntity.IndustryId ='';
+			this.RegisterEntity.CountryId ='';
+			this.RegisterEntity.StateId ='';
     // $('select').select2();
 
 // $('#employee_btn').click(function () {
@@ -64,7 +66,36 @@ export class RegisterComponent implements OnInit {
 	{
 		alert('error');
 	});
-	
+
+	let id = this.route.snapshot.paramMap.get('id');
+					if (id) {
+						this.header = 'Edit';
+						this.RegisterService.getById(id)
+							.then((data) => {
+								debugger
+								this.RegisterEntity = data;
+								// if (this.RegisterEntity.CountryId > 0) {
+									// this.RegisterService.getStateList(this.RegisterEntity.CountryId)
+										// .then((data) => {
+											// this.stateList = data;
+										// },
+										// (error) => {
+											// alert('error');
+										// });
+								// }
+
+							},
+							(error) => {
+								alert('error');
+								this.btn_disable = false;
+								this.submitted = false;
+							});
+					}
+					else {
+						this.header = '';
+						this.userEntity = {};
+						// this.userEntity.IsActive = '1';
+					}
 	
 
   }
@@ -82,34 +113,11 @@ export class RegisterComponent implements OnInit {
 			this.RegisterFormfinal = RegisterForm;
 			$("#submit_Modal").modal('show');
 			
-			
-			// this.btn_disable = true;
-			// var data = {'com': this.companydata,'reg':this.RegisterEntity};
-			// this.RegisterService.add(data)
-			
-			// .then((data) => 
-			// {
-				// //alert('success');
-				// this.btn_disable = false;
-				// this.submitted = false;
-				// this.RegisterEntity = {};
-				// RegisterForm.form.markAsPristine();
-					// this.globals.message = 'Add successfully';
-					// this.globals.type = 'success';
-					// this.globals.msgflag = true;
-							
-				// this.router.navigate(['/welcome_register']);
-			// }, 
-			// (error) => 
-			// {
-				// alert('error');
-				// this.btn_disable = false;
-				// this.submitted = false;
-			// });
-		} 		
+			} 		
 	}
 	
-	finalsubmit(RegisterForm){debugger
+	finalsubmit(RegisterForm){
+		debugger
 		this.btn_disable = true;
 		if(this.companydata!=''){
 			var com=this.companydata;
@@ -129,9 +137,17 @@ export class RegisterComponent implements OnInit {
 				this.submitted = false;
 				this.RegisterEntity = {};
 				RegisterForm.form.markAsPristine();
-					this.globals.message = 'Add successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
+					if (id) {
+						this.globals.message = 'Update successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+					} else {
+						this.globals.message = 'Add successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+ 
+					}
+
 							$("#submit_Modal").modal('hide');
 				this.router.navigate(['/welcome_register']);
 			}, 

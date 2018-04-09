@@ -27,60 +27,68 @@ export class PlaceholderComponent implements OnInit {
 
 	}
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Placeholder Screen' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.placeholderEntity = {};
-					this.columnList = [];
-					let id = this.route.snapshot.paramMap.get('id');
-					this.globals.msgflag = false;
-					this.PlaceholderService.getTableList()
-						.then((data) => {
-							this.tableList = data;
-						},
-						(error) => {
-							alert('error');
-						});
-					if (id) {
-						this.header = 'Edit';
-						this.PlaceholderService.getById(id)
-							.then((data) => {
-								if (data != "") {
-									this.placeholderEntity = data;
-									if (this.placeholderEntity.TableId > 0) {
-										this.PlaceholderService.getColumnList(this.placeholderEntity.TableId)
-											.then((data) => {
-												this.columnList = data;
-											},
-											(error) => {
-												alert('error');
-											});
-									}
-								} else {
-									this.router.navigate(['/dashboard']);
-								}
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.placeholderEntity = {};
-						this.placeholderEntity.PlaceholderId = 0;
-						this.placeholderEntity.IsActive = '1';
-						this.placeholderEntity.TableId = '';
-						this.placeholderEntity.ColumnId = '';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Placeholder Screen'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}
+	}
+
+	default(){
+		this.placeholderEntity = {};
+		this.columnList = [];
+		let id = this.route.snapshot.paramMap.get('id');
+		this.globals.msgflag = false;
+		this.PlaceholderService.getTableList()
+			.then((data) => {
+				this.tableList = data;
+			},
 			(error) => {
 				alert('error');
 			});
-
+		if (id) {
+			this.header = 'Edit';
+			this.PlaceholderService.getById(id)
+				.then((data) => {
+					if (data != "") {
+						this.placeholderEntity = data;
+						if (this.placeholderEntity.TableId > 0) {
+							this.PlaceholderService.getColumnList(this.placeholderEntity.TableId)
+								.then((data) => {
+									this.columnList = data;
+								},
+								(error) => {
+									alert('error');
+								});
+						}
+					} else {
+						this.router.navigate(['/dashboard']);
+					}
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.placeholderEntity = {};
+			this.placeholderEntity.PlaceholderId = 0;
+			this.placeholderEntity.IsActive = '1';
+			this.placeholderEntity.TableId = '';
+			this.placeholderEntity.ColumnId = '';
+		}
 	}
-
 
 	addPlaceholder(placeholderForm) {
 		debugger

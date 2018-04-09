@@ -28,51 +28,56 @@ export class StateComponent implements OnInit {
 		private StateService: StateService, private globals: Globals, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'State' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.StateService.getAllCountry()
-						.then((data) => {
-							this.CountryList = data;
-
-						},
-						(error) => {
-							alert('error');
-						});
-
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-
-
-						// this.header = 'Edit';
-						this.StateService.getById(id)
-							.then((data) => {
-								this.stateEntity = data;
-							},
-							(error) => {
-								alert('error');
-								//this.btn_disable = false;
-								//this.submitted = false;
-							});
-					}
-					else {
-						this.stateEntity = {};
-						this.stateEntity.StateId = 0;
-						this.stateEntity.IsActive = '1';
-					}
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'State'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
-
-
-
-
+			});	
+		}
 	}
 
+	default(){
+		this.StateService.getAllCountry()
+		.then((data) => {
+			this.CountryList = data;
+
+		},
+		(error) => {
+			alert('error');
+		});
+
+	let id = this.route.snapshot.paramMap.get('id');
+	if (id) {
+
+
+		// this.header = 'Edit';
+		this.StateService.getById(id)
+			.then((data) => {
+				this.stateEntity = data;
+			},
+			(error) => {
+				alert('error');
+				//this.btn_disable = false;
+				//this.submitted = false;
+			});
+	}
+	else {
+		this.stateEntity = {};
+		this.stateEntity.StateId = 0;
+		this.stateEntity.IsActive = '1';
+	}
+	}
 
 	addState(stateForm) {
 		debugger

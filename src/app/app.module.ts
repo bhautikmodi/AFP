@@ -28,6 +28,11 @@ import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
 
+
+import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
+import { AssessmentDetailsService } from './services/assessment-details.service';
+
+
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
 import { AssessmentDetailsService } from './services/assessment-details.service';
 
@@ -46,7 +51,10 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	ForgotpasswordComponent,
     LoginComponent,
     ResetpassComponent,
-    ChangepassComponent
+
+    ChangepassComponent,
+
+    ChangepassComponent,
 
     AssessmentDetailsComponent
 
@@ -77,6 +85,12 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : 'register',
 			component : RegisterComponent,
+			
+		},
+		{
+        path : 'register/edit/:id',
+        component : RegisterComponent,
+        
 		},
 		{
 			path : 'welcome_register',
@@ -96,6 +110,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : 'forgotpassword',
 			component : ForgotpasswordComponent,
+
 			//canActivate : [AuthGuard]
 
 		},{
@@ -103,20 +118,28 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 			component : AssessmentDetailsComponent
 
 		},
+{
+			path : 'assessment_details',
+			component : AssessmentDetailsComponent,
+
+
+		},
 		{
 			path : '**',
-			redirectTo : 'DashbordComponent'
+			redirectTo : 'DashbordComponent',
 		},
 		{
 			path : 'login',
-			component : LoginComponent,
+			component : LoginComponent
 		}
 	])
   ],
 
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
 
+
  
+
 
   bootstrap: [AppComponent]
 })

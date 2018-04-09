@@ -3,12 +3,13 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { InvitationService } from '../services/invitation.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
   selector: 'app-invitationlist',
-  providers: [ InvitationService ],
+  providers: [ InvitationService,CommonService ],
   templateUrl: './invitationlist.component.html',
   styleUrls: ['./invitationlist.component.css']
 })
@@ -20,35 +21,61 @@ export class InvitationlistComponent implements OnInit {
 	message;
 type;
 Disinv;
-  constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+permissionEntity;
+  constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
 
-  ngOnInit() { debugger
-   this.Disinv = '';
-    this.InvitationService.getAll()
-    .then((data) => 
-    { 
-     // this.InvitationList = data;	
-	  	this.InvitationList = data['Inv'];
-		this.Disinv = data['Disinv'];
-      setTimeout(function(){
-        $('#dataTables-example').dataTable( {
-          "oLanguage": {
-            "sLengthMenu": "_MENU_ Invitation per Page",
-            "sInfo": "Showing _START_ to _END_ of _TOTAL_ Invitation",
-            "sInfoFiltered": "(filtered from _MAX_ total Invitation)"
-          }
-        });
-      },100); 
-  
-    }, 
-    (error) => 
-    {
-      alert('error');
-    });	
-    //this.msgflag = false;
-    }
+  ngOnInit() { 
+	this.permissionEntity = {}; 
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'User Invitation'})
+		.then((data) => 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}		
+	}
+	
+	default(){
+		this.Disinv = '';
+		this.InvitationService.getAll()
+		.then((data) => 
+		{ 
+		 // this.InvitationList = data;	
+			  this.InvitationList = data['Inv'];
+			this.Disinv = data['Disinv'];
+		  setTimeout(function(){
+			$('#dataTables-example').dataTable( {
+			  "oLanguage": {
+				"sLengthMenu": "_MENU_ Invitation per Page",
+				"sInfo": "Showing _START_ to _END_ of _TOTAL_ Invitation",
+				"sInfoFiltered": "(filtered from _MAX_ total Invitation)"
+			  }
+			});
+		  },100); 
+	  
+		}, 
+		(error) => 
+		{
+		  alert('error');
+		});	
+		//this.msgflag = false;
+	  }
 	
 	deleteInvitation(Invitation)
 	{ 

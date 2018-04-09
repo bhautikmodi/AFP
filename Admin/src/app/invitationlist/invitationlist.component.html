@@ -15,7 +15,7 @@
       <!-- Advanced Tables -->
       <div class="panel panel-default">
         <div class="panel-heading"> !
-          <div class="btn-group pull-right add-right"  >
+          <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
             <a routerLink="/invitation/add" class="btn btn-danger btn-add" [class.disabled]="Disinv.Value==0"  >
             <i class="fa fa-plus fa-fw"></i>Add a Invitation
             </a>
@@ -31,7 +31,7 @@
                   <th>Email</th>
                   <th>Date Of Invitation</th>
                   <th>Status</th>
-                  <th>Actions</th>
+                  <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,11 +43,11 @@
                   <td *ngIf="Invitation.Status=='1'">Successfully</td>
                   <td *ngIf="Invitation.Status=='0'">Pending</td>
 				  <td *ngIf="Invitation.Status=='2'">Revoke Success</td>
-                  <td>
-                    <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 ||Disinv.Value==0" 
+          <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                    <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 ||Disinv.Value==0" 
 					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>
-					  <button type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status==0||Invitation.Status==1 ||Disinv.Value==0" 
+					  <button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status==0||Invitation.Status==1 ||Disinv.Value==0" 
 					(click)="ReInviteInvitation(Invitation)" >
                     Re-Invite</button>
 					

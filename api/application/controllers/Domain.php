@@ -17,7 +17,7 @@ class Domain extends CI_Controller {
 		
 		$data="";
 		$data=$this->Domain_model->getlist_domain();		
-		echo json_encode($data);
+		echo json_encode($_SERVER[]);
 				
 	}
 	

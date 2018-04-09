@@ -3,11 +3,12 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../services/country.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
 @Component({
   selector: 'app-countrylist',
-    providers: [ CountryService ],
+    providers: [ CountryService,CommonService ],
   templateUrl: './countrylist.component.html',
   styleUrls: ['./countrylist.component.css']
 })
@@ -17,11 +18,38 @@ export class CountrylistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
- constructor( private http: Http,private globals: Globals, private router: Router, private CountryService: CountryService,private route:ActivatedRoute) { }
+	permissionEntity;
+ constructor( private http: Http,private globals: Globals, private router: Router, 
+	private CountryService: CountryService,private CommonService: CommonService, private route:ActivatedRoute) { }
 
 
-ngOnInit() { 
-	this.CountryService.getAll()
+  ngOnInit() { 
+		this.permissionEntity = {}; 
+		if(this.globals.authData.RoleId==4){
+			this.permissionEntity.View=1;
+			this.permissionEntity.AddEdit=1;
+			this.permissionEntity.Delete=1;
+			this.default();
+		} else {		
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Country'})
+			.then((data) => 
+			{
+				this.permissionEntity = data;
+				if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+					this.default();
+				} else {
+					this.router.navigate(['/dashboard']);
+				}		
+			},
+			(error) => 
+			{
+				alert('error');
+			});	
+		}			
+		}
+	
+	default(){
+		this.CountryService.getAll()
 	.then((data) => 
 	{ 
 		this.CountryList = data;	
@@ -40,8 +68,8 @@ ngOnInit() {
 	{
 		alert('error');
 	});	
-	//this.msgflag = false;
-  }
+	this.msgflag = false;
+	}
 
 	deleteCountry(Country)
 	{ 

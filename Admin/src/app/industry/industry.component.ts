@@ -22,42 +22,48 @@ export class IndustryComponent implements OnInit {
 
 
 	ngOnInit() {
-		this.CommonService.get_permissiondata({ 'RoleId': this.globals.authData.RoleId, 'screen': 'Industry' })
-			.then((data) => {
-				if (data['AddEdit'] == 1) {
-					this.globals.msgflag = false;
-
-					this.IndustryEntity = {};
-					let id = this.route.snapshot.paramMap.get('id');
-					if (id) {
-						this.header = 'Edit';
-						this.IndustryService.getById(id)
-							.then((data) => {
-								this.IndustryEntity = data;
-
-
-							},
-							(error) => {
-								alert('error');
-							});
-					} else {
-						this.header = 'Add';
-						this.IndustryEntity = {};
-						this.IndustryEntity.IndustryId = 0;
-						this.IndustryEntity.IsActive = '1';
-					}
-
+		if(this.globals.authData.RoleId==4){		
+			this.default();
+		} else {
+			this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Industry'})
+			.then((data) => 
+			{
+				if(data['AddEdit']==1){
+					this.default();
 				} else {
 					this.router.navigate(['/dashboard']);
 				}
 			},
-			(error) => {
+			(error) => 
+			{
 				alert('error');
-			});
-
+			});	
+		}
 	}
 
+	default(){
+		this.globals.msgflag = false;
 
+		this.IndustryEntity = {};
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+			this.header = 'Edit';
+			this.IndustryService.getById(id)
+				.then((data) => {
+					this.IndustryEntity = data;
+
+
+				},
+				(error) => {
+					alert('error');
+				});
+		} else {
+			this.header = 'Add';
+			this.IndustryEntity = {};
+			this.IndustryEntity.IndustryId = 0;
+			this.IndustryEntity.IsActive = '1';
+		}
+	}
 
 	addIndustry(IndustryForm) {
 		let id = this.route.snapshot.paramMap.get('id');

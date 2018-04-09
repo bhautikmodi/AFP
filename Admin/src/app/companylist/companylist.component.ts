@@ -5,15 +5,15 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-
 import { CompanyService } from '../services/company.service';
+import { CommonService } from '../services/common.service';
 import { Globals } from '../globals';
 declare var $: any;
 
 
 @Component({
   selector: 'app-companylist',
-  providers: [ CompanyService ],
+  providers: [ CompanyService,CommonService ],
   templateUrl: './companylist.component.html',
   styleUrls: ['./companylist.component.css']
 })
@@ -24,10 +24,37 @@ export class CompanylistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private CompanyService: CompanyService,private globals: Globals) { }
+	permissionEntity;
+	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
+		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
 
-  ngOnInit() { 
-	this.CompanyService.getAllCompany	()
+		ngOnInit() { 
+			this.permissionEntity = {}; 
+			if(this.globals.authData.RoleId==4){
+				this.permissionEntity.View=1;
+				this.permissionEntity.AddEdit=1;
+				this.permissionEntity.Delete=1;
+				this.default();
+			} else {		
+				this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'Company'})
+				.then((data) => 
+				{
+					this.permissionEntity = data;
+					if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+						this.default();
+					} else {
+						this.router.navigate(['/dashboard']);
+					}		
+				},
+				(error) => 
+				{
+					alert('error');
+				});	
+			}			
+			}
+	
+	default(){
+		this.CompanyService.getAllCompany	()
 	.then((data) => 
 	{ 
 		this.companyList = data;	
@@ -47,7 +74,7 @@ export class CompanylistComponent implements OnInit {
 		alert('error');
 	});	
 	this.msgflag = false;
-  }
+	}
 
 	deleteCompany(company)
 	{ 

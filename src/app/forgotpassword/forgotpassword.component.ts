@@ -14,6 +14,7 @@ import { ForgotpasswordService } from '../services/forgotpassword.service';
 export class ForgotpasswordComponent implements OnInit {
 	fgpassEntity;
 	submitted;
+	type;
 	btn_disable;
  constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
@@ -36,21 +37,21 @@ export class ForgotpasswordComponent implements OnInit {
 			{debugger
 				if(data=='Code duplicate')
 				{
-						//this.globals.message = 'Code Duplicate';
-						//this.globals.type = 'danger';
-						//this.globals.msgflag = true;
+						this.globals.message = 'Invalid Userid';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
 						this.btn_disable = false;
 					this.submitted = false;
-					this.router.navigate(['/fgpass/']);
+					//this.router.navigate(['/fgpass/']);
 				}else
 				{
-						alert('success');
+						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;
 						  localStorage.setItem('EmailAddress',this.fgpassEntity.EmailAddress);
 					this.fgpassEntity = {};
 					fgpassForm.form.markAsPristine();
-						//this.globals.message = 'Code successfully';
+						//this.globals.message = 'Check user Email-Id';
 						//this.globals.type = 'success';
 						//this.globals.msgflag = true;
 						
@@ -59,7 +60,7 @@ export class ForgotpasswordComponent implements OnInit {
 						//alert(id);
 				
 				
-					this.router.navigate(['/findcompany']);
+					this.router.navigate(['/login']);
 				}
 				
 			}, 

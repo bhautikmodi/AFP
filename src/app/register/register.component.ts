@@ -35,9 +35,9 @@ export class RegisterComponent implements OnInit {
 	   
     // $('select').select2();
 
-$('#employee_btn').click(function () {
-	$("#submit_Modal").modal('show');
-});
+// $('#employee_btn').click(function () {
+	// $("#submit_Modal").modal('show');
+// });
  	this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
  this.RegisterService.getIndustry()
 	//.map(res => res.json())
@@ -75,6 +75,9 @@ $('#employee_btn').click(function () {
 			
 		
 		if(RegisterForm.valid){
+			$("#submit_Modal").modal('show');
+			
+			
 			this.btn_disable = true;
 			var data = {'com': this.companydata,'reg':this.RegisterEntity};
 			this.RegisterService.add(data)

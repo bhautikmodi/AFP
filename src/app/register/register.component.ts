@@ -86,7 +86,6 @@ export class RegisterComponent implements OnInit {
 							.then((data) => {
 								debugger
 								this.RegisterEntity = data;
-								this.companydata = data;
 								if (this.RegisterEntity.CountryId > 0) {
 									this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 										.then((data) => {

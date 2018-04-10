@@ -147,10 +147,23 @@
 						</span>
               </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+			<div class="col-md-6 col-sm-12"  *ngIf="Disinv.Value ==1">
+			  <div class="form-group">
+				<label><span>*</span>Email Address </label>
+				<input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
+			  </div>
+			</div>
+			<div class="col-md-6 col-sm-12" *ngIf="Disinv.Value ==0"  >
               <div class="form-group">
                 <label><span>*</span>Email Address </label>
-                <input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
+                <input type="text" [disabled]="RegisterEntity.UserId=='0'"  name="EmailAddress" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"   #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress"
+						 [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"  required/>
+						<span style="color:red;"  *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
+							<span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter Email Address</span>
+							<span style="color:red;" *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
+							Please enter a valid Email Address.
+					  </span>
+						</span> 
               </div>
             </div>
             <div class="clearfix"></div>
@@ -245,7 +258,7 @@
                 <label><span>*</span>Country </label>
                <select    class="form-control select2"  (change)="getStateList()"  #CountryId="ngModel"
 					   [(ngModel)]="RegisterEntity.CountryId" name="CountryId" [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}" required>
-					<option value="">Select Country</option>
+					<option value="" ngSelected='RegisterEntity.CountryId==""'>Select Country</option>
 				<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="RegisterEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
 						 <span style="color:red;"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
 							<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select Country </span>
@@ -257,7 +270,7 @@
                 <label><span>*</span>State </label>
                  <select class="form-control select2"  #StateId="ngModel" [(ngModel)]="RegisterEntity.StateId" name="StateId"
 				 [ngClass]="{red_border: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
-						<option value="">Select State</option>
+						<option value="" ngSelected='RegisterEntity.StateId==""'>Select State</option>
 						<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="RegisterEntity.StateId==state.StateId">{{state.StateName}}</option>
 				</select>
 				 <span style="color:red;"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 

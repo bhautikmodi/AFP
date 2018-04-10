@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { DashbordService } from '../services/dashbord.service';
-import { Globals } from '.././globals';
-declare var $: any;
 
 @Component({
   selector: 'app-dashbord',
@@ -11,11 +8,12 @@ declare var $: any;
   styleUrls: ['./dashbord.component.css']
 })
 export class DashbordComponent implements OnInit {
-Disinv;
-  constructor( private http: Http,private globals: Globals,  private DashbordService: DashbordService) { }
+
+  constructor(  private DashbordService: DashbordService) { }
 
  
 
+<<<<<<< HEAD
   ngOnInit() {debugger
 	  
 	  $('.bxslider').bxSlider({
@@ -36,6 +34,9 @@ Disinv;
 		alert('error');
 	});	
   
+=======
+   ngOnInit() {
+>>>>>>> 31098b3c7e398a96be60c1b14e18ba768fff4fc9
   }
 
 }

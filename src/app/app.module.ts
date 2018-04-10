@@ -33,8 +33,6 @@ import { AssessmentDetailsComponent } from './assessment-details/assessment-deta
 import { AssessmentDetailsService } from './services/assessment-details.service';
 
 
-import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
-import { AssessmentDetailsService } from './services/assessment-details.service';
 
 @NgModule({
   declarations: [
@@ -118,12 +116,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 			component : AssessmentDetailsComponent
 
 		},
-{
-			path : 'assessment_details',
-			component : AssessmentDetailsComponent,
 
-
-		},
 		{
 			path : '**',
 			redirectTo : 'DashbordComponent',

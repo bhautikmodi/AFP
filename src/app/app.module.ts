@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 
+
+import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -93,33 +95,35 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		{
 			path : 'welcome_register',
 			component : WelcomeregisterComponent,
-
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'changepass',
 			component : ChangepassComponent,
+			canActivate : [AuthGuard]
 		},
 		{
 			//path : 'resetpass',
 			path : 'resetpass/:id',
 			component : ResetpassComponent,
+			//canActivate : [AuthGuard]
 		},
 		
 		{
 			path : 'forgotpassword',
 			component : ForgotpasswordComponent,
-
 			//canActivate : [AuthGuard]
-
-		},{
+		},
+		{
 			path : 'assessment_details',
-			component : AssessmentDetailsComponent
-
+			component : AssessmentDetailsComponent,
+			canActivate : [AuthGuard]
 		},
 
 		{
 			path : '**',
 			redirectTo : 'DashbordComponent',
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'login',
@@ -128,7 +132,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	])
   ],
 
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
 
 
  

@@ -9,6 +9,8 @@
      Welcome to<br>the professional community dedicated to your success</div>
     <div class="clearfix"></div>
     <a  routerLink="/contactus" class="next_btn">Contact Us</a>
-	<a routerLink="/invitation" class="next_btn" [class.disabled]="Disinv.Value ==0">Register Now</a> </div>
+	<a routerLink="/invitation" class="btn next_btn btn-add" *ngIf="Disinv.Value ==0" >Register Now</a> 
+	<a routerLink="/findcompany" class="btn next_btn btn-add" *ngIf="Disinv.Value ==1">Register Now</a>
+	</div>
 </div>
 

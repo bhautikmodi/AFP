@@ -7,7 +7,7 @@ import { JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class AuthService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: Http,private globals: Globals) { }
   
   login(loginEntity){  
 	let promise = new Promise((resolve, reject) => {

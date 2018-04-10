@@ -76,6 +76,7 @@ export class StateComponent implements OnInit {
 		this.stateEntity = {};
 		this.stateEntity.StateId = 0;
 		this.stateEntity.IsActive = '1';
+		this.stateEntity.CountryId='';
 	}
 	}
 

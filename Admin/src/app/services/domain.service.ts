@@ -5,9 +5,14 @@ import { Globals } from '.././globals';
 
 @Injectable()
 export class DomainService {
-
-  constructor(private http: Http,private httpc: HttpClient, private globals: Globals) { }
-
+  h1;
+  constructor(private http: Http,private httpc: HttpClient, private globals: Globals) { 
+    this.h1 = new HttpHeaders().set('token', '994847565472878394039283578235');
+    this.h1
+    "{'Content-Type': 'application/json','Accept': 'application/json'}";
+  }
+  
+  
   add(domainEntity){
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Domain/add', domainEntity, this.globals.headerpath)
@@ -41,10 +46,8 @@ export class DomainService {
   }
   
   getAll(){ debugger    
-	let promise = new Promise((resolve, reject) => {    
-    this.httpc.get(this.globals.baseAPIUrl + 'Domain/getAll', {
-      headers: new HttpHeaders().set('token', '994847565472878394039283578235')
-    })
+	let promise = new Promise((resolve, reject) => {     
+    this.http.get(this.globals.baseAPIUrl + 'Domain/getAll', this.h1)
       .toPromise()
       .then(
         res => { // Success

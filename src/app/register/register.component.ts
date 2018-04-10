@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
 	companydata;
 	RegisterFormfinal;
 	CompanyEntity;
+	Disinv;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 

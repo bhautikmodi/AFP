@@ -132,14 +132,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	])
   ],
 
-<<<<<<< HEAD
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
-=======
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService],
->>>>>>> 2d23dda653ff9fdd1d770801e899d34d6aa805d1
-
-
- 
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService],
 
 
   bootstrap: [AppComponent]

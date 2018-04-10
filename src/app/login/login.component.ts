@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 loginEntity;
 	submitted;
 	btn_disable;
-	//btn_disable;
+	type;
 	invalid;
 
  
@@ -32,11 +32,21 @@ loginEntity;
 			this.AuthService.login(this.loginEntity)
 			.then((data) => 
 			{
+				if(data='Code duplicate')
+				{
+					//alert('success');
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}else
+					{
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.invalid = false;
 				this.loginEntity = {};
 				loginForm.form.markAsPristine();
+					}
 			this.router.navigate(['/welcome_register']);	
 
 		

@@ -7,9 +7,9 @@ class Forgotpass_model extends CI_Model
 	{
 		if($post_pass)
 		{
-				$this->db->select('*');				
+				$this->db->select('EmailAddress');				
 				$this->db->where('EmailAddress',trim($post_pass['EmailAddress']));
-				$this->db->where('Status',0);
+				//$this->db->where('Status',0);
 				
 				$this->db->limit(1);
 				$this->db->from('tbluser');
@@ -18,7 +18,7 @@ class Forgotpass_model extends CI_Model
 				if ($query->num_rows() == 1) 
 				{
 					$pass_data = array(
-						'Status' =>0,
+						//'Status' =>0,
 						'VCode' =>$post_pass['VCode'],
 						
 						'CreatedOn' => date('y-m-d H:i:s'),

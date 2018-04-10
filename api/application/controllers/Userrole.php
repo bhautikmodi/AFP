@@ -68,20 +68,6 @@ class Userrole extends CI_Controller
 		}
 	}
 	
-	
-	
-	// public function getAllCountry()
-	// {
-		// $data="";
-		// $this->load->model('Country_model');
-		// $data=$this->Country_model->getlist_country();
-		// //print_r($data);
-		// //.exit;
-		// echo json_encode($data);
-	// }
-	
-	
-	
 
 	public function getAll()
 	{
@@ -92,24 +78,5 @@ class Userrole extends CI_Controller
 		echo json_encode($data);
 	}
 	
-	// // List all state
-	// public function getAllState()
-	// {
-		// $data="";
-		// $this->load->model('State_model');
-		// $data=$this->State_model->getlist_state();
-		
-		// echo json_encode($data);
-	// }
 	
-	// // List all company
-	// public function getAllCompany()
-	// {
-		// $data="";
-		// $this->load->model('Company_model');
-		// $data=$this->Company_model->getlist_company();
-		// //print_r($data);
-		// //.exit;
-		// echo json_encode($data);
-	// }
 }

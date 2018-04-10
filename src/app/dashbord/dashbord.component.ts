@@ -25,7 +25,7 @@ Disinv;
 		 controls : false
 	});
 	this.Disinv = '';
-  this.DashbordService.getAll()
+  //this.DashbordService.getAll()
 	//.map(res => res.json())
 	.then((data) => 
 	{

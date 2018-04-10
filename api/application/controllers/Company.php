@@ -54,16 +54,15 @@ class Company extends CI_Controller
 	public function getAll()
 	{
 		$data="";
-		//$this->load->model('Company_model');
+		
 		$data=$this->Company_model->getlist_company();
-		//print_r($data);
-		//.exit;
+		
 		echo json_encode($data);
 	}
 	
 	public function delete($company_id = NULL) 
 	{
-		//$this->load->model('Company_model');
+		
 		if(!empty($company_id)) {
 
 			$result = $this->Company_model->delete_company($company_id);			
@@ -79,7 +78,7 @@ class Company extends CI_Controller
 	public function getAllIndustry() {
 		
 		$data="";
-		//$this->load->model('Industry_model');
+		
 		$data=$this->Company_model->getlist_Industry();
 		
 		echo json_encode($data);

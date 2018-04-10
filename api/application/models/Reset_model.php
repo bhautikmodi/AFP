@@ -40,7 +40,7 @@ class Reset_model extends CI_Model
 		if($post_passlink)
 		{
 			
-				$this->db->select('*');				
+				$this->db->select('UserId,VCode');				
 				$this->db->where('UserId',$post_pass['UserId']);
 				$this->db->where('VCode',$post_pass['VCode']);
 				
@@ -58,6 +58,7 @@ class Reset_model extends CI_Model
 						//'CreatedOn' => date('y-m-d H:i:s'),
 						'UpdatedOn' => date('y-m-d H:i:s')
 						);
+				
 				
 			
 					$this->db->where('UserId',$post_pass['UserId']);
@@ -90,7 +91,36 @@ class Reset_model extends CI_Model
 	}
 	
 	
-	
+	public function reset_passlink2($post_passlink) 
+	{
+		if($post_passlink)
+		{
+			
+				$this->db->select('UserId,VCode');				
+				$this->db->where('UserId',$post_passlink['UserId']);
+				$this->db->where('VCode',$post_passlink['VCode']);
+				
+				$this->db->limit(1);
+				$this->db->from('tbluser');
+			    $query= $this->db->get();
+			
+				
+				if ($query->num_rows() == 1) 
+				{
+					return true;
+				} 
+				else
+				{
+					return false;
+				}
+				
+				
+		} 
+		else
+		{
+				return false;
+		}	
+	}
 	
 	
 	

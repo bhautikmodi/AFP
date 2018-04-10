@@ -136,31 +136,6 @@ class Userrole_model extends CI_Model
 	}
 	
 	
-	// //List state
-	// function getlist_state()
-	// {
-		// $this->db->select('*');
-		// $result=$this->db->get('tblmststate');
-		
-		// $res=array();
-		// if($result->result())
-		// {
-			// $res=$result->result();
-		// }
-		// return $res;
-	// }
 	
-	// function getlist_company()
-	// {
-		// $this->db->select('*');
-		// $result=$this->db->get('tblcompany');
-		
-		// $res=array();
-		// if($result->result())
-		// {
-			// $res=$result->result();
-		// }
-		// return $res;
-	// }
 	
 }

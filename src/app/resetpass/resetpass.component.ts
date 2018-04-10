@@ -28,12 +28,14 @@ export class ResetpassComponent implements OnInit {
 	id=new JwtHelper().decodeToken(id);
 	this.ResetpassService.getResetlink(id)
 	.then((data) => 
-	{
-				
-		alert('success');
+	{ debugger
+		if(data=='fail'){
+			this.router.navigate(['/login']);
+		} 	
+		//alert('success');
 		
 		
-		this.router.navigate(['/login/']);
+		
 	}, 
 	(error) => 
 			{

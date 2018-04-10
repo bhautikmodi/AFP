@@ -56,6 +56,27 @@ class Resetpass extends CI_Controller
 				}
 										
 		}
+		}
+		
+		public function resetpasslink2()
+		{				
+		$post_passlink = json_decode(trim(file_get_contents('php://input')), true);		
+		if ($post_passlink)
+			{
+				//echo json_encode('Success');	
+				$result = $this->Reset_model->reset_passlink2($post_passlink);
+				
+				if($result)
+				{
+						echo json_encode('Success');
+				}	
+				else
+				{
+					
+					echo json_encode('fail');
+				}
+										
+		}
 		
 	}
 

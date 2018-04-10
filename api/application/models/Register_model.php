@@ -186,9 +186,11 @@ class Register_model extends CI_Model
 		  $this->db->select('UserId,RoleId,CompanyId,FirstName,LastName,Title,EmailAddress,Password,Address1,
 		Address2,CountryId,StateId,City,ZipCode,PhoneNumber,IsActive');
 		$this->db->where('user.UserId=',$user_id);
-		
-		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
 		$result = $this->db->get('tbluser user');
+		
+	
+		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
+		
 		
 		 // $this->db->select('*');
 		 // $this->db->where('UserId',$user_id);

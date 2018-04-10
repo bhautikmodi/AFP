@@ -67,7 +67,17 @@ export class RegisterComponent implements OnInit {
 	{
 		alert('error');
 	});
-
+    this.Disinv = '';
+	this.RegisterService.getAll()
+	//.map(res => res.json())
+	.then((data) => 
+	{
+			this.Disinv = data['Disinv'];
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});	
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
@@ -75,15 +85,16 @@ export class RegisterComponent implements OnInit {
 							.then((data) => {
 								debugger
 								this.RegisterEntity = data;
-								// if (this.RegisterEntity.CountryId > 0) {
-									// this.RegisterService.getStateList(this.RegisterEntity.CountryId)
-										// .then((data) => {
-											// this.stateList = data;
-										// },
-										// (error) => {
-											// alert('error');
-										// });
-								// }
+								this.companydata = data;
+								if (this.RegisterEntity.CountryId > 0) {
+									this.RegisterService.getStateList(this.RegisterEntity.CountryId)
+										.then((data) => {
+											this.stateList = data;
+										},
+										(error) => {
+											alert('error');
+										});
+								}
 
 							},
 							(error) => {
@@ -95,7 +106,8 @@ export class RegisterComponent implements OnInit {
 					else {
 						this.header = '';
 						this.RegisterEntity = {};
-						
+						this.RegisterEntity.CountryId='';
+						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 					}
 	

@@ -30,9 +30,10 @@ import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 import { DashbordService } from './services/dashbord.service';
 
-
+import { HomeService } from './services/home.service';
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
 import { AssessmentDetailsService } from './services/assessment-details.service';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -56,7 +57,9 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 
     ChangepassComponent,
 
-    AssessmentDetailsComponent
+    AssessmentDetailsComponent,
+
+    HomeComponent
 
 
   ],
@@ -67,7 +70,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	RouterModule.forRoot([		
 		{
 			path : '',
-			component : DashbordComponent,
+			component : HomeComponent,
 			
 		},
 		{
@@ -122,7 +125,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 
 		{
 			path : '**',
-			redirectTo : 'DashbordComponent',
+			redirectTo : 'HomeComponent',
 			canActivate : [AuthGuard]
 		},
 		{
@@ -132,7 +135,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	])
   ],
 
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
 
 
   bootstrap: [AppComponent]

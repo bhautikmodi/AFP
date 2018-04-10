@@ -71,15 +71,11 @@ class User_model extends CI_Model
 	//list project status
 	public function getlist_user()
 	{
-		$this->db->select('*');
-		$result=$this->db->get('tbluser');
-		
-		
-		// $this->db->select('us.UserId,us.RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
-		// us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName');
-		// $this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
-		// $this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');
-		// $result = $this->db->get('tbluser us');
+		$this->db->select('us.UserId,us.RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
+		us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName');
+		$this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
+		$this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');
+		$result = $this->db->get('tbluser us');
 		
 		$res=array();
 		if($result->result())

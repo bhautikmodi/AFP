@@ -30,7 +30,7 @@
                                             <label><span class="required">*</span>Country</label>
                                            <select class='select-option' required class="form-control" #CountryId="ngModel"
 										   [(ngModel)]="stateEntity.CountryId" name="CountryId" [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}">
-										    <option value="">Select</option>
+										    <option value="" ngSelected='stateEntity.CountryId==""'>Select</option>
 										<option class='option' *ngFor='let country of CountryList' 
 										[value]="country.CountryId">{{country.CountryName}}</option></select>
 										<span style="color:red;"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 

@@ -70,6 +70,7 @@ export class CourseComponent implements OnInit {
 			this.CourseEntity = {};
 			this.CourseEntity.CourseId = 0;
 			this.CourseEntity.IsActive = '1';
+			this.CourseEntity.CourseLevelId = '';
 		}
 
 	}

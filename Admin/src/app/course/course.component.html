@@ -41,7 +41,7 @@
                                             <label><span class="required">*</span>Level</label>
 								<select class="form-control" #CourseLevelId="ngModel" [(ngModel)]="CourseEntity.CourseLevelId"
 								name="CourseLevelId" [ngClass]="{red_border: (CourseLevelId.dirty && CourseLevelId.invalid) || (CourseLevelId.pristine && submitted)}" required>  
-									<option value="" >Select</option>
+									<option value="" ngSelected='CourseEntity.CourseLevelId==""'>Select</option>
 									<option *ngFor="let CourseLevel of CourseLevelList" value="{{CourseLevel.ConfigurationId}}" 
 									ngSelected="CourseEntity.CourseLevelId==CourseLevel.ConfigurationId">{{CourseLevel.Value}}</option>
 								</select>

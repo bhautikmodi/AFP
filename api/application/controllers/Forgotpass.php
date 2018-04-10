@@ -14,20 +14,23 @@ class Forgotpass extends CI_Controller
 	
 	public function userpass()
 		{
-								
+				//$data = {};
+						 		
 		$post_pass = json_decode(trim(file_get_contents('php://input')), true);		
 		if ($post_pass)
 			{
-					//http://localhost:4300/resetpass
+					http://localhost:4300/resetpass
 
 				$post_pass['VCode']=mt_rand(100000, 999999);
 				
 				$result = $this->Forgotpass_model->forgot_pass($post_pass);
 				if($result)
 				{
-						 $post_pass['UserId']=$result['UserId'];
-						 $data = {'UserId': $post_pass['UserId'], 'VCode': $post_pass['VCode']};
-						echo json_encode($post_pass); 
+						 $post_pass['UserId']=$result->UserId;
+						//$data = {};
+						 $data['UserId']=$post_pass['UserId'];
+						 $data['VCode']=$post_pass['VCode'];
+						//echo json_encode($post_pass); 
 						
 						$config['protocol']='smtp';
 						$config['smtp_host']='ssl://smtp.googlemail.com';
@@ -50,6 +53,7 @@ class Forgotpass extends CI_Controller
 						
 						
 						$this->email->send();
+						echo json_encode($data);
 				}	
 				else
 				{

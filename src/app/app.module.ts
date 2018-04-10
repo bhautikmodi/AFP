@@ -27,8 +27,15 @@ import { ResetpassService } from './services/resetpass.service';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
+
+
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
 import { AssessmentDetailsService } from './services/assessment-details.service';
+
+
+import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
+import { AssessmentDetailsService } from './services/assessment-details.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,11 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	ForgotpasswordComponent,
     LoginComponent,
     ResetpassComponent,
+
     ChangepassComponent,
+
+    ChangepassComponent,
+
     AssessmentDetailsComponent
 
 
@@ -97,12 +108,20 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 		},
 		
 		{
-			path : 'fgpass',
+			path : 'forgotpassword',
 			component : ForgotpasswordComponent,
+
+			//canActivate : [AuthGuard]
+
+		},{
+			path : 'assessment_details',
+			component : AssessmentDetailsComponent
+
 		},
 {
 			path : 'assessment_details',
 			component : AssessmentDetailsComponent,
+
 
 		},
 		{
@@ -117,6 +136,10 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
   ],
 
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
+
+
+ 
+
 
   bootstrap: [AppComponent]
 })

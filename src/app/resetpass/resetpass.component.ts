@@ -14,7 +14,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class ResetpassComponent implements OnInit {
 	resetEntity;
-submitted;
+	submitted;
 	btn_disable;
 	header;
 	same;
@@ -22,6 +22,9 @@ submitted;
 
 
   ngOnInit() {this.resetEntity={};
+  
+	
+  
   }
   
   
@@ -31,7 +34,9 @@ submitted;
 		let id = this.route.snapshot.paramMap.get('id');
 		
 	var id1=new JwtHelper().decodeToken(id);
-	this.resetEntity.UserId = id1;
+	
+	
+	this.resetEntity.UserId = id1.UserId;
 		if(id1){
 			this.submitted = false;
 		} else {
@@ -44,13 +49,24 @@ submitted;
 			this.ResetpassService.add(this.resetEntity)
 			.then((data) => 
 			{
-				//alert('success');
+				if(data='Code duplicate')
+				{
+					alert('success');
+					this.globals.message = 'Update successfully';
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
+				}else
+					{
+						
+					
+				alert('error');
 				//this.aa=true;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.resetEntity = {};
 				resetForm.form.markAsPristine();
 				// if(id){
+					// alert('success');
 					// this.globals.message = 'Update successfully';
 					// this.globals.type = 'success';
 					// this.globals.msgflag = true;
@@ -59,8 +75,8 @@ submitted;
 					// this.globals.type = 'success';
 					// this.globals.msgflag = true;
 				// }	
-				
-				this.router.navigate(['/']);
+				}
+				this.router.navigate(['/login/']);
 			}, 
 			(error) => 
 			{

@@ -17,7 +17,10 @@
   <div class="container ">
     <div class="row">
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
-        <div class="clearfix"></div>
+        <div class="clearfix"></div><div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+  {{globals.message}}
+</div>
         <form #resetForm="ngForm" (ngSubmit)="addPassword(resetForm)">
           <div class="form-group">
                 <label><span>*</span>Password </label>

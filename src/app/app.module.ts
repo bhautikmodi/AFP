@@ -28,7 +28,7 @@ import { ResetpassComponent } from './resetpass/resetpass.component';
 import { ResetpassService } from './services/resetpass.service';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
-
+import { DashbordService } from './services/dashbord.service';
 
 
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
@@ -132,7 +132,11 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 	])
   ],
 
+<<<<<<< HEAD
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService],
+=======
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService],
+>>>>>>> 2d23dda653ff9fdd1d770801e899d34d6aa805d1
 
 
  

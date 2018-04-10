@@ -37,7 +37,7 @@ addAsmtDetails(AsmtDetailsForm)
 	{	debugger	
 					
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
-			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
+			this.AsmtDetailsEntity.UserId = this.globals.authData.UserId;
 			this.submitted = true;
 		
 			

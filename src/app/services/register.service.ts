@@ -100,8 +100,8 @@ getById(userId){
       );
 	});		
 	return promise;
-  } 
-getAll()
+  }  
+  getAll()
    {debugger
    let promise = new Promise((resolve, reject) => {
      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll', this.globals.headerpath)
@@ -116,5 +116,5 @@ getAll()
        );
    });		
    return promise;
-   }  
+   } 
 }

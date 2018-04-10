@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 // $('#employee_btn').click(function () {
 	// $("#submit_Modal").modal('show');
 // });
- 	this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+ 	
  this.RegisterService.getIndustry()
 	//.map(res => res.json())
 	.then((data) => 
@@ -85,7 +85,12 @@ export class RegisterComponent implements OnInit {
 						this.RegisterService.getById(id)
 							.then((data) => {
 								debugger
+									let token = localStorage.removeItem('CompanyId');
 								this.RegisterEntity = data;
+								this.companydata.Name=this.RegisterEntity.Name;
+								this.companydata.IndustryName=this.RegisterEntity.IndustryName;
+								this.companydata.PhoneNumber=this.RegisterEntity.PhoneNumber;
+								this.companydata.Website=this.RegisterEntity.Website;
 								if (this.RegisterEntity.CountryId > 0) {
 									this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 										.then((data) => {
@@ -109,6 +114,7 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.CountryId='';
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
+						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
 					}
 	
 

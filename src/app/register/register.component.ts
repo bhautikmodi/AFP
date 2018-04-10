@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 			this.CompanyEntity.IndustryId ='';
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
-		    this.RegisterEntity.UserId =0;
+		 
     // $('select').select2();
 
 // $('#employee_btn').click(function () {
@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
 						this.header = '';
 						this.RegisterEntity = {};
 						
-						
+						this.RegisterEntity.UserId =0;
 					}
 	
 

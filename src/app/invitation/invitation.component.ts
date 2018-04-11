@@ -68,7 +68,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{debugger
-				if(data=='Code duplicate')
+				if(data=='Code duplicate' )
 				{
 						this.globals.message = 'Code Duplicate';
 						this.globals.type = 'danger';
@@ -77,7 +77,14 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					this.submitted = false;
 					//this.router.navigate(['/invitation/add']);
 				}else
-				{
+				{    if(data=='Your access has been revoked')
+					{this.globals.message = 'Your access has been revoked';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+					this.submitted = false;
+						
+					}else{
 						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;
@@ -93,7 +100,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						//alert(id);
 				
 				
-					this.router.navigate(['/findcompany']);
+					this.router.navigate(['/findcompany']);}
 				}
 				
 			}, 

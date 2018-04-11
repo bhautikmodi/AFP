@@ -1294,12 +1294,12 @@ g}})(jQuery);
 
 
 <!--Bx Slider -->
- // $(document).ready(function(){
-    // $('.bxslider').bxSlider({
-		 // mode: 'fade',
-		 // captions: true,
-  		 // auto:true,
-		 // controls : false
-	// });
- // });
+ $(document).ready(function(){
+    $('.bxslider').bxSlider({
+		 mode: 'fade',
+		 captions: true,
+  		 auto:true,
+		 controls : false
+	});
+ });
 <!--End Bx Slider -->

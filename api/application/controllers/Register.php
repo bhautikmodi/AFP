@@ -46,12 +46,21 @@ class Register extends CI_Controller
 	public function addRegister()
 	{
 		$data = json_decode(trim(file_get_contents('php://input')), true);
-		
+		$post_user = $data['reg'];
+					$com_reg = $data['com'];
 		if ($data) 
-			{
-				$post_user = $data['reg'];
-				$com_reg = $data['com'];
-				$result = $this->Register_model->add_Register($post_user,$com_reg); 
+			{			
+			if($post_user['UserId']>0)
+				{
+					$result = $this->Register_model->edit_user($post_user,$com_reg);
+					if($result)
+					{
+						echo json_encode($data);	
+					}	
+				}else
+				{
+					
+					$result = $this->Register_model->add_Register($post_user,$com_reg); 
 			
 					if($result)
 					{
@@ -81,7 +90,7 @@ class Register extends CI_Controller
 					{
 						echo json_encode('error ');
 					}
-				
+				}
 					
 			}
 	}

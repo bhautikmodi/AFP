@@ -161,25 +161,13 @@ class Invitation extends CI_Controller {
 				$result = $this->Invitation_model->Invitation_code($post_Invitation);
 				if($result)
 				{
-					return $result;
+					echo json_encode("Code success");
+				}	
+				else
+				{
+					
+					echo json_encode("Code duplicate");
 				}
-				// if($result=='revoked')
-				// {
-					// echo json_encode("revoked");
-				// }	
-				// else if($result=='Code duplicate')
-				// {
-					
-						// echo json_encode("Code duplicate");
-				// }else if($result=='false')
-				// {
-					
-						// echo json_encode("Code duplicate");
-				// }else if($result=='true')
-				// {
-					
-						// echo json_encode("Code success");
-				// }
 										
 		}
 		

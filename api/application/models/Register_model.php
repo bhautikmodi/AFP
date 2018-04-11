@@ -5,7 +5,7 @@ class Register_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('*');
-		//$this->db->where('IsActive="1"');
+		$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {

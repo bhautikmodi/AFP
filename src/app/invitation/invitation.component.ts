@@ -68,25 +68,16 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{debugger
-				if(data=='Your access has been revoked' )
+				if(data=='Code duplicate')
 				{
-					 
-						this.globals.message = 'Your access has been revoked';
+						this.globals.message = 'Code Duplicate';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
 					this.submitted = false;
 					//this.router.navigate(['/invitation/add']);
-				}else if(data=='Code duplicate')
-					{
-						this.globals.message = 'Code duplicate';
-						this.globals.type = 'danger';
-						this.globals.msgflag = true;
-						this.btn_disable = false;
-						this.submitted = false;
-						
-					}else
-					{   
+				}else
+				{
 						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;

@@ -41,14 +41,14 @@ export class ForgotpasswordComponent implements OnInit {
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
-					this.submitted = false;
+						this.submitted = false;
 					//this.router.navigate(['/fgpass/']);
 				}else
 				{
 						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;
-						  localStorage.setItem('EmailAddress',this.fgpassEntity.EmailAddress);
+					localStorage.setItem('EmailAddress',this.fgpassEntity.EmailAddress);
 					this.fgpassEntity = {};
 					fgpassForm.form.markAsPristine();
 						//this.globals.message = 'Check user Email-Id';
@@ -60,9 +60,9 @@ export class ForgotpasswordComponent implements OnInit {
 						//alert(id);
 				
 				
-					this.router.navigate(['/login']);
+					
 				}
-				
+				this.router.navigate(['/login']);
 			}, 
 			(error) => 
 			{

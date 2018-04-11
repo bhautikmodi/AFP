@@ -9,7 +9,7 @@ export class ResetpassService {
    constructor( private http: Http,private globals: Globals) { }
    
    
-  add(UserId){debugger
+  add(UserId){
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Resetpass/resetuserpass', UserId, this.globals.headerpath)
       .toPromise()

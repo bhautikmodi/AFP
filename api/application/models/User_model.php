@@ -9,6 +9,7 @@ class User_model extends CI_Model
 			
 			$this->db->select('StateId,StateName');
 			$this->db->where('CountryId',$country_id);
+			$this->db->where('IsActive=',1);
 			$result = $this->db->get('tblmststate');
 			
 			$res = array();
@@ -197,6 +198,7 @@ class User_model extends CI_Model
 	function getlist_state()
 	{
 		$this->db->select('StateId,StateName,StateAbbreviation,CountryId,IsActive');
+		$this->db->where('IsActive=',1);
 		$result=$this->db->get('tblmststate');
 		
 		$res=array();
@@ -210,6 +212,7 @@ class User_model extends CI_Model
 	function getlist_company()
 	{
 		$this->db->select('CompanyId,Name');
+		$this->db->where('IsActive=',1);
 		$result=$this->db->get('tblcompany');
 		
 		$res=array();
@@ -237,6 +240,7 @@ class User_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
+		$this->db->where('IsActive=',1);
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {

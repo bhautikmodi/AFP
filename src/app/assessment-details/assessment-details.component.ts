@@ -56,7 +56,7 @@ addAsmtDetails(AsmtDetailsForm)
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 							
-				this.router.navigate(['/welcome_register']);
+				this.router.navigate(['/assessment']);
 			}, 
 			(error) => 
 			{

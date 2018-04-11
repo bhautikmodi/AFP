@@ -48,10 +48,10 @@
                 <div class="form-group col-md-12">
                   <label>
                     <span class="required">*</span>Subject</label>
-                    <input type="text" class="form-control" #Subject="ngModel" [(ngModel)]="emailEntity.Subject" name="Subject" pattern="[a-zA-Z/ ]{1,500}" [ngClass]="{red_border: (Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)}" required/>  
+                    <input type="text" class="form-control" #Subject="ngModel" [(ngModel)]="emailEntity.Subject" name="Subject" pattern="[a-zA-Z0-9/\-_@!#$() ]{1,500}" [ngClass]="{red_border: (Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)}" required/>  
                     <span style="color:red" *ngIf="(Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)"> 
-                      <span *ngIf="Subject.errors.required || (Subject.pristine && submitted)">Please enter competency area</span>
-                      <span *ngIf="Subject.errors && Subject.errors.pattern">Please enter a valid Subject</span>
+                      <span *ngIf="Subject.errors.required || (Subject.pristine && submitted)">Please enter subject</span>
+                      <span *ngIf="Subject.errors && Subject.errors.pattern">Please enter a valid subject</span>
                     </span> 
                 </div>
 

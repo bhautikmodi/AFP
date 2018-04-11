@@ -12,6 +12,37 @@ class Invitation extends CI_Controller {
 		$this->load->model('Invitation_model');
 		
 	}
+
+	public function check(){
+
+		$this->db->select('*');
+		$this->db->from('tbluserinvitation');
+		$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
+		$this->db->limit(1);
+		$query = $this->db->get();
+
+		$config['protocol']='smtp';
+		$config['smtp_host']='ssl://smtp.googlemail.com';
+		$config['smtp_port']='465';
+		$config['smtp_user']='myopeneyes3937@gmail.com';
+		$config['smtp_pass']='W3lc0m3@2018';
+		$config['charset']='utf-8';
+		$config['newline']="\r\n";
+		$config['mailtype'] = 'html';							
+		$this->email->initialize($config);
+
+		$this->email->from('myopeneyes3937@gmail.com');
+		$this->email->to('vidhi.bathani@theopeneyes.in');		
+		$this->email->subject('Invitation mail');
+		$this->email->message('sending mail recive.....');
+		if($this->email->send())
+		{
+			echo 'success';
+		}else
+		{
+			echo 'fail';
+		}
+	}
 	
 	public function getAll() {
 		

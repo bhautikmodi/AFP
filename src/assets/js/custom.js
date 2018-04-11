@@ -8,24 +8,34 @@ $('.invitation_text .form-control').keyup(function(e){
 <!-- FIND COMPANY -->
 $('.autocomplete').keyup(function() {
     var query = $.trim($('.autocomplete').val()).toLowerCase();
+	var i = 0;
     $('div.company_name').each(function(){
          var $this = $(this);
-         if($this.text().toLowerCase().indexOf(query) === -1)
+         if($this.text().toLowerCase().indexOf(query) === -1){
+		 	
              $this.closest('.company_section .col-md-3').fadeOut();
-        else $this.closest('.company_section .col-md-3').fadeIn();
+		 } else{
+			 i++;
+			$this.closest('.company_section .col-md-3').fadeIn();
+		 }
     });
+	 if(i>0){
+	   $('.company_section .no_result').fadeOut();
+	   
+	} else{
+		$('.company_section .no_result').fadeIn();
+	}
 });
 $('.company_box').click(function(e){
 	$('.company_box').removeClass('active');
     $(this).addClass('active');
 });
-<!-- END FIND COMPANY -->
 
-<!-- SELECT SEARCH -->
-$(document).ready(function() {
-    $('select').select2();
+$( "#company_name" ).keyup(function() {
+	$(".inner_content").addClass("height_zero");
+	$(".company_section").removeClass("display_company");
 });
-<!-- END SELECT SEARCH -->
+<!-- END FIND COMPANY -->
 
 <!-- REGISTER EMPLOYEE -->
 $('#employee_btn').click(function () {
@@ -38,3 +48,17 @@ $('#company_btn').click(function () {
 	$("#submit_Modal").modal('show');
 });
 <!-- END REGISTER COMPANY -->
+
+<!-- SALES DASHBOARD -->
+$('.user_box').click(function(e){
+	$('.user_box').removeClass('active');
+    $(this).addClass('active');
+});
+<!-- END SALES DASHBOARD -->
+
+<!-- PROGRESS BAR ASSESSMENT -->
+progress = document.getElementById("progress");
+$(progress).css("width", "30%");
+<!-- END PROGRESS BAR ASSESSMENT -->
+
+

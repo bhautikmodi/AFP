@@ -31,6 +31,8 @@ import { ChangepassService } from './services/changepass.service';
 
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
 import { AssessmentDetailsService } from './services/assessment-details.service';
+import { AssessmentComponent } from './assessment/assessment.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
 
 
 
@@ -54,7 +56,11 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 
     ChangepassComponent,
 
-    AssessmentDetailsComponent
+    AssessmentDetailsComponent,
+
+    AssessmentComponent,
+
+    ThankyouComponent
 
 
   ],
@@ -111,12 +117,22 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 
 			//canActivate : [AuthGuard]
 
-		},{
+		},
+		{
 			path : 'assessment_details',
 			component : AssessmentDetailsComponent
 
 		},
+		{
+			path : 'assessment',
+			component : AssessmentComponent
 
+		},
+		{
+			path : 'thankyou',
+			component : ThankyouComponent
+
+		},
 		{
 			path : '**',
 			redirectTo : 'DashbordComponent',

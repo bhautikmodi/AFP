@@ -101,7 +101,7 @@ class State_model extends CI_Model
 			$this->db->join('tblmstcountry con', 'con.CountryId = st.CountryId', 'left');
 		 // $this->db->select('st.StateId,st.StateName,st.StateAbbreviation,st.IsActive,con.CountryName');
 		 // $this->db->join('tblmstcountry con','st.StateId = st.StateId', 'left');
-		 $this->db->where('st.IsActive=',1);
+		
 		$result=$this->db->get('tblmststate st');
 		
 		$res=array();

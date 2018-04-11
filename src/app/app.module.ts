@@ -73,6 +73,11 @@ import { HomeComponent } from './home/home.component';
 			component : HomeComponent,
 			
 		},
+		
+		{
+			path : 'dashbord',
+			component : DashbordComponent,
+		},
 		{
 			path : 'contactus',
 			component : ContactusComponent,
@@ -111,7 +116,6 @@ import { HomeComponent } from './home/home.component';
 			component : ResetpassComponent,
 			//canActivate : [AuthGuard]
 		},
-		
 		{
 			path : 'forgotpassword',
 			component : ForgotpasswordComponent,
@@ -122,7 +126,6 @@ import { HomeComponent } from './home/home.component';
 			component : AssessmentDetailsComponent,
 			canActivate : [AuthGuard]
 		},
-
 		{
 			path : '**',
 			redirectTo : 'HomeComponent',
@@ -136,19 +139,9 @@ import { HomeComponent } from './home/home.component';
 	])
   ],
 
-<<<<<<< HEAD
-
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService],
-
-  
 
 
-
- 
-=======
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
->>>>>>> 31098b3c7e398a96be60c1b14e18ba768fff4fc9
-
 
   bootstrap: [AppComponent]
 })

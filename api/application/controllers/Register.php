@@ -106,15 +106,6 @@ public function getById($user_id=null)
 	}
 
 	
-	
-
-	
-	
-	
-	
-	
-	
-	
 	 // List all industry
 	public function getAllIndustry()
 	{

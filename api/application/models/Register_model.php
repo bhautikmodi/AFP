@@ -5,7 +5,7 @@ class Register_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('*');
-		$this->db->where('IsActive="1"');
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {
@@ -57,7 +57,7 @@ class Register_model extends CI_Model
 		$this->db->select('pr.CompanyId,pr.Name,pr.IndustryId,pr.Website,pr.PhoneNumber,ps.IndustryId,ps.IndustryName');
 		$this->db->join('tblmstindustry ps', 'pr.IndustryId = ps.IndustryId', 'left');
 		$this->db->where('CompanyId',$CompanyId);
-		$this->db->where('IsActive="1"');
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany pr');
 			$company_data = array();
 			foreach($result->result() as $row) {
@@ -230,7 +230,7 @@ class Register_model extends CI_Model
 		if($post_user) 
 		{
 				$user_data = array(
-
+				//"ProjectStatusId"=>$post_user['ProjectStatusId'],
 				//"RoleId"=>$data['RoleId'],
 				//"CompanyId"=>$data['CompanyId'],
 				"FirstName"=>$post_user['FirstName'],

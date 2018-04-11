@@ -230,7 +230,7 @@ class Register_model extends CI_Model
 		if($post_user) 
 		{
 				$user_data = array(
-				//"ProjectStatusId"=>$post_user['ProjectStatusId'],
+
 				//"RoleId"=>$data['RoleId'],
 				//"CompanyId"=>$data['CompanyId'],
 				"FirstName"=>$post_user['FirstName'],

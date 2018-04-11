@@ -126,7 +126,21 @@ class Invitation_model extends CI_Model
 				$this->db->limit(1);
 				$this->db->from('tbluserinvitation');
 				$query = $this->db->get();
+			
 				
+				//$Invi_data = array();
+				if($query->num_rows()>1)
+				{
+					if($query['Status'] == 2)
+					{
+						return 'revoked';
+						
+					}elseif($query['Status']==1)
+					{
+						return 'Code duplicate';
+						
+					}else
+					{
 				if ($query->num_rows() == 1) 
 				{
 					$Invitation_data = array(
@@ -141,16 +155,27 @@ class Invitation_model extends CI_Model
 					$res = $this->db->update('tbluserinvitation',$Invitation_data);
 					if($res)
 					{
-					    return true;
+					    return 'true';
 					}else
 					{
-						return false;
+						return 'false';
 					}
 				
 				} else
 				{
+					return 'false';
+				}
+				
+			}
+					
+				}else{
 					return false;
 				}
+			
+	
+			
+			
+				
 				
 				
 	

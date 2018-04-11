@@ -5,7 +5,7 @@ class Register_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('*');
-		$this->db->where('IsActive="1"');
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {
@@ -96,7 +96,17 @@ class Register_model extends CI_Model
 					);	
 				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
-				{
+				 {
+					//$this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
+					// $this->db->order_by('UserId','desc');
+					// $this->db->limit(1);
+					// $query=$this->db->get('tbluser');
+					// if ($query->num_rows() == 1) {
+						// return $query->result();
+						// } 
+					// else {
+							// return false;
+					// }
 					return true;
 				}
 				else
@@ -160,6 +170,7 @@ class Register_model extends CI_Model
 					return false;
 				}
 			}
+			
 		}
 		else
 		{

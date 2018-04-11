@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+use \Firebase\JWT\JWT;
 
 class Register extends CI_Controller 
 {	
@@ -64,6 +64,17 @@ class Register extends CI_Controller
 			
 					if($result)
 					{
+						//	$token = array(
+							// "UserId" => $result[0]->UserId,
+							// "RoleId" => $result[0]->RoleId,
+							// "EmailAddress" => $result[0]->EmailAddress,
+							// "FirstName" => $result[0]->FirstName,
+							// "LastName" => $result[0]->LastName
+							// );
+
+							// $jwt = JWT::encode($token, "MyGeneratedKey","HS256");
+							// $output['token'] = $jwt;
+							// echo json_encode($output);
 						echo json_encode('success'); 
 						// $config['protocol']='smtp';
 						// $config['smtp_host']='ssl://smtp.googlemail.com';

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <h1>{{header}}Registration</h1> 
+        <h1>{{header}} Registration</h1> 
         <div class="clearfix"></div>
    
       </div>
@@ -21,7 +21,7 @@
 	  <form class="form-validate" role="form" #RegisterForm="ngForm" (ngSubmit)="addRegister(RegisterForm)">
         <div class="col-md-3 col-sm-4 left_content">
           <h2>Company Details</h2>
-          <table class="table table-bordered table-striped" *ngIf="companydata!='' || RegisterEntity.UserId>0" >
+          <table class="table table-bordered table-striped" *ngIf="(companydata!='' && RegisterEntity.UserId==0) || RegisterEntity.UserId>0" >
             <tr>
               <th>Company Name</th>
             </tr>
@@ -149,15 +149,16 @@
             </div>
 			<div class="col-md-6 col-sm-12"  *ngIf="Disinv.Value ==1">
 			  <div class="form-group">
-				<label><span>*</span>Email Address </label>
+				<label><span>*</span>Email Address 1</label>
 				<input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
 			  </div>
 			</div>
 			<div class="col-md-6 col-sm-12" *ngIf="Disinv.Value ==0"  >
               <div class="form-group">
-                <label><span>*</span>Email Address </label>
-                <input type="text" [disabled]="RegisterEntity.UserId=='0'"  name="EmailAddress" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"   #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress"
-						 [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"  required/>
+                <label><span>*</span>Email Address2 </label>
+                <input type="text" [disabled]="RegisterEntity.UserId>0"  name="EmailAddress" class="form-control" 
+				pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"   #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress"
+						 [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"  />
 						<span style="color:red;"  *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
 							<span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter Email Address</span>
 							<span style="color:red;" *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">

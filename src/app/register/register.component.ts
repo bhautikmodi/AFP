@@ -124,9 +124,15 @@ export class RegisterComponent implements OnInit {
 					
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
 			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = true;
-		
+			let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
 			
+			this.submitted = false;
+		} else {
+			
+			this.submitted = true;
+		}
+		
 		
 		if(RegisterForm.valid){
 			
@@ -138,6 +144,14 @@ export class RegisterComponent implements OnInit {
 	
 	finalsubmit(RegisterForm){
 		debugger
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+
+			this.submitted = false;
+		} else {
+			
+			this.submitted = true;
+		}
 		this.btn_disable = true;
 		if(this.companydata!=''){
 			var com=this.companydata;
@@ -153,18 +167,19 @@ export class RegisterComponent implements OnInit {
 			.then((data) => 
 			{
 				//alert('success');
+
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
 				RegisterForm.form.markAsPristine();
 					// if (id) {
-						// this.globals.message = 'Update successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+					// 	this.globals.message = 'Update successfully';
+					// 	this.globals.type = 'success';
+					// 	this.globals.msgflag = true;
 					// } else {
-						// this.globals.message = 'Add successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+					// 	this.globals.message = 'Add successfully';
+					// 	this.globals.type = 'success';
+					// 	this.globals.msgflag = true;
  
 					// }
 

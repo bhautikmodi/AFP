@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
 	companydata;
 	RegisterFormfinal;
 	CompanyEntity;
+	Disinv;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
@@ -38,12 +39,13 @@ export class RegisterComponent implements OnInit {
 			this.CompanyEntity.IndustryId ='';
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
+		 
     // $('select').select2();
 
 // $('#employee_btn').click(function () {
 	// $("#submit_Modal").modal('show');
 // });
- 	this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+ 	
  this.RegisterService.getIndustry()
 	//.map(res => res.json())
 	.then((data) => 
@@ -66,23 +68,38 @@ export class RegisterComponent implements OnInit {
 	{
 		alert('error');
 	});
-
+    this.Disinv = '';
+	this.RegisterService.getAll()
+	//.map(res => res.json())
+	.then((data) => 
+	{
+			this.Disinv = data['Disinv'];
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});	
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
 						this.RegisterService.getById(id)
 							.then((data) => {
 								debugger
+									let token = localStorage.removeItem('CompanyId');
 								this.RegisterEntity = data;
-								// if (this.RegisterEntity.CountryId > 0) {
-									// this.RegisterService.getStateList(this.RegisterEntity.CountryId)
-										// .then((data) => {
-											// this.stateList = data;
-										// },
-										// (error) => {
-											// alert('error');
-										// });
-								// }
+								this.companydata.Name=this.RegisterEntity.Name;
+								this.companydata.IndustryName=this.RegisterEntity.IndustryName;
+								this.companydata.PhoneNumber=this.RegisterEntity.PhoneNumber;
+								this.companydata.Website=this.RegisterEntity.Website;
+								if (this.RegisterEntity.CountryId > 0) {
+									this.RegisterService.getStateList(this.RegisterEntity.CountryId)
+										.then((data) => {
+											this.stateList = data;
+										},
+										(error) => {
+											alert('error');
+										});
+								}
 
 							},
 							(error) => {
@@ -94,7 +111,10 @@ export class RegisterComponent implements OnInit {
 					else {
 						this.header = '';
 						this.RegisterEntity = {};
-						
+						this.RegisterEntity.CountryId='';
+						this.RegisterEntity.StateId='';
+						this.RegisterEntity.UserId =0;
+						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
 					}
 	
 

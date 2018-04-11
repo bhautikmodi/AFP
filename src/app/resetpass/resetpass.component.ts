@@ -21,17 +21,36 @@ export class ResetpassComponent implements OnInit {
    constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ResetpassService:ResetpassService) { }
 
 
-  ngOnInit() {this.resetEntity={};
-  
-	
-  
+  ngOnInit() {
+	   debugger
+	  this.resetEntity={};
+	let id = this.route.snapshot.paramMap.get('id');
+	id=new JwtHelper().decodeToken(id);
+	this.ResetpassService.getResetlink(id)
+	.then((data) => 
+	{ debugger
+		if(data=='fail'){
+			this.router.navigate(['/login']);
+		} 	
+		//alert('success');
+		
+		
+		
+	}, 
+	(error) => 
+			{
+				alert('error');
+				this.btn_disable = false;
+				this.submitted = false;
+			});	
+		
   }
   
   
 
   addPassword(resetForm)
   {		debugger
-		let id = this.route.snapshot.paramMap.get('id');
+	let id = this.route.snapshot.paramMap.get('id');
 		
 	var id1=new JwtHelper().decodeToken(id);
 	

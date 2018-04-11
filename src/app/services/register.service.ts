@@ -101,4 +101,20 @@ getById(userId){
 	});		
 	return promise;
   }  
+  getAll()
+   {debugger
+   let promise = new Promise((resolve, reject) => {
+     this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll', this.globals.headerpath)
+       .toPromise()
+       .then(
+         res => { // Success
+           resolve(res.json());
+         },
+         msg => { // Error
+       reject(msg);
+         }
+       );
+   });		
+   return promise;
+   } 
 }

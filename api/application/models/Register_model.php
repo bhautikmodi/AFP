@@ -183,13 +183,22 @@ class Register_model extends CI_Model
 	  if($user_id)
 	  {
 		  
-		  $this->db->select('UserId,RoleId,CompanyId,FirstName,LastName,Title,EmailAddress,Password,Address1,
-		Address2,CountryId,StateId,City,ZipCode,PhoneNumber,IsActive');
-		$this->db->where('user.UserId=',$user_id);
+		  $this->db->select('us.UserId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Address1,
+			us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,
+			tc.CompanyId,tc.Name,tc.Website,tc.PhoneNumber,
+			in.IndustryId,in.IndustryName');
+			
+			$this->db->join('tblcompany tc', 'us.CompanyId = tc.CompanyId', 'left');
+			$this->db->join('tblmstindustry in','tc.IndustryId = in.IndustryId', 'left');
+			$this->db->where('UserId=',$user_id);
+			$result = $this->db->get('tbluser us');
 		
-		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');
-		$result = $this->db->get('tbluser user');
-		
+			// $this->db->select('pr.CompanyId,pr.Name,pr.IndustryId,pr.Website,pr.PhoneNumber,ps.IndustryId,ps.IndustryName');
+		// $this->db->join('tblmstindustry ps', 'pr.IndustryId = ps.IndustryId', 'left');
+		// $this->db->where('CompanyId',$CompanyId);
+		// $result = $this->db->get('tblcompany pr');
+	
+
 		 // $this->db->select('*');
 		 // $this->db->where('UserId',$user_id);
 		 // $result=$this->db->get('tbluser');

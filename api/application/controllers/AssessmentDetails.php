@@ -23,9 +23,9 @@ class AssessmentDetails extends CI_Controller {
 		if ($post_AssessmentDetails) {
 		
 				$result = $this->AssessmentDetails_model->add_AssessmentDetails($post_AssessmentDetails);
-				if($result) {echo json_encode($post_AssessmentDetails); 
-				
-						}							
+				if($result) {
+					echo json_encode($result); 				
+				}							
 		}
 		
 	}

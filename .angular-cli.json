@@ -25,10 +25,11 @@
 		"assets/js/jquery-1.11.3.min.js",
 		"assets/js/bootstrap.min.js",	
     "assets/js/jquery.bxslider.js",
-    "assets/js/jquery.flexslider.js",
-    "assets/js/custom.js",
+    "assets/js/jquery.flexslider.js",    
     "assets/js/amcharts.js",
-    "assets/js/serial.js"
+    "assets/js/serial.js",
+    "assets/js/perfect-scrollbar.js",
+    "assets/js/custom.js"
 		
 		
 		

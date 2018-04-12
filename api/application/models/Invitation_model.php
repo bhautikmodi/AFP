@@ -14,7 +14,7 @@ class Invitation_model extends CI_Model
 			
 			
 			
-				$this->db->select('*');
+				$this->db->select('EmailAddress');
 				$this->db->from('tbluserinvitation');
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->limit(1);
@@ -25,7 +25,8 @@ class Invitation_model extends CI_Model
 				} else {
 					$Invitation_data = array(
 						'EmailAddress' => $post_Invitation['EmailAddress'],
-						'Code' => $post_Invitation['Code']
+						'Code' => $post_Invitation['Code'],
+						'UpdatedOn' => date('y-m-d H:i:s')
 					);
 					$res = $this->db->insert('tbluserinvitation',$Invitation_data);
 					
@@ -43,7 +44,7 @@ class Invitation_model extends CI_Model
 	
 	public function getlist_Invitation() {
 
-		$this->db->select('UserInvitationId,EmailAddress,Status,Code,IsActive');
+		$this->db->select('UserInvitationId,EmailAddress,Status,Code,IsActive,UpdatedOn');
 		$result = $this->db->get('tbluserinvitation');	
 		$res = array();
 		if($result->result()) {
@@ -72,7 +73,8 @@ class Invitation_model extends CI_Model
 		
 			$Invitation_data = array(
 				'Status' => 2,
-				'code' =>''
+				'code' =>'',
+				'UpdatedOn' => date('y-m-d H:i:s')
 			
 			);
 			
@@ -96,7 +98,6 @@ class Invitation_model extends CI_Model
 			$Invitation_data = array(
 				'Status' => 0,
 				'code' =>$post_Invitation['Code'],
-				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
 				
 			
@@ -122,7 +123,7 @@ class Invitation_model extends CI_Model
 	{      
 		
 		$datetime1=date('Y-m-d',strtotime('-'.'30'.'days'));
-		$this->db->select('UserInvitationId');	
+		$this->db->select('UserInvitationId,EmailAddress,UpdatedOn');	
 		$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 		$this->db->where('UpdatedOn >',$datetime1);
 		$this->db->limit(1);
@@ -130,7 +131,7 @@ class Invitation_model extends CI_Model
 		if ($result->num_rows() == 1) 
 		{
 	
-				$this->db->select('UserInvitationId,Status');				
+				$this->db->select('UserInvitationId,Status,Code,EmailAddress');				
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);
@@ -143,7 +144,7 @@ class Invitation_model extends CI_Model
 				
 				} else
 				{
-					$this->db->select('UserInvitationId,Status');				
+					$this->db->select('UserInvitationId,EmailAddress,Status');				
 					$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 					$this->db->where('Status',2);
 					$this->db->from('tbluserinvitation');
@@ -162,7 +163,7 @@ class Invitation_model extends CI_Model
 				}
 		}else
 		{
-				$this->db->select('UserInvitationId');	
+				$this->db->select('UserInvitationId,EmailAddress');	
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$result = $this->db->get('tbluserinvitation');	
 				if($result->num_rows() == 1)

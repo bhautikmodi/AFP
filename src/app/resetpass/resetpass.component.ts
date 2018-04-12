@@ -71,7 +71,7 @@ export class ResetpassComponent implements OnInit {
 			{
 				if(data='Code duplicate')
 				{
-					alert('success');
+					//alert('success');
 					this.globals.message = 'Update successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;

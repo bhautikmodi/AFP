@@ -508,34 +508,41 @@ table.dataTable thead .sorting:after {
 
 .red_btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -37px; top: 6px; width: 25px; height: 24px; background-size:100%;}
 
-.sub-btn {
+/*.sub-btn {
 	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
+}*/
+.sub-btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
+
+.sub-btn span{ position:relative; z-index:999; color:#fff!important;}
+
+.sub-btn:hover:after, .sub-btn:focus:after {
+	width:100%; transition:all 0.8s ease 0s;
 }
 
-.sub-btn:hover, .sub-btn:focus {
-	background-position: right bottom; color: #ffffff;
-}
-
-.sub-btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; }
+.sub-btn:after {content: ""; background:url(../img/right-white.png) center right no-repeat #007699; position: absolute; right: 0px; top: 0px; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; }
 
 .sub-btn a {
 	color: #fff;
 	text-decoration: none;
 }
 
-.btn.sub-btn:active {background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;}
+/*.btn.sub-btn:active {background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;}*/
 
-.res-btn {
+/*.res-btn {
 	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
+}*/
+
+.res-btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #279989; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px; }
+
+.res-btn span{ position:relative; z-index:999; color:#fff!important;}
+
+.res-btn:hover:after, .res-btn:focus:after {
+	width:100%; transition:all 0.8s ease 0s;
 }
 
-.res-btn:hover, .res-btn:focus {
-	background-position: right bottom; color: #ffffff;
-}
+.res-btn:after {content: ""; background:url(../img/right-white.png) center right no-repeat #198b7b; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; }
 
-.res-btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; }
-
-.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5;}
+/*.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5;}*/
 
 .panel-footer {
 	background-color: #e8e4e4;
@@ -574,7 +581,15 @@ table.dataTable thead .sorting:after {
 }
 
 .top-head {
-	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #605b54;
+}
+
+.top1-head {
+	margin-top: 20px;
+	margin-bottom: 0;
+	color: #605b54;
 }
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
@@ -601,18 +616,22 @@ table.dataTable thead .sorting:after {
 	text-align: center;
 	margin-top: 0px;
 }
-.next_btn {
-    font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
+.next_btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
+
+.next_btn span{ position:relative; z-index:999; color:#fff!important;}
+
+.next_btn:hover:after, .next_btn:focus:after {
+    width:100%; transition:all 0.8s ease 0s;
 }
-.next_btn:hover, .next_btn:focus {
-    background-position: right bottom; color: #ffffff;
-}
+
 .next_btn:after {
-	content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; 
+	content: ""; background:url(../img/right-white.png) center right no-repeat #007699; position: absolute; right: 0px; top: 0px; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; 
 }
-.btn.next_btn:active {
+
+/*.btn.next_btn:active {
 	background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;
-}
+}*/
+
 .back_btn {
     font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }
@@ -701,9 +720,9 @@ div.dataTables_length select {
 
 .no-padding {padding: 0;}
 
-.btn-small {padding: 7px 7px;}
+/*.btn-small {padding: 7px 7px;}
 
-.btn-small:after {top: 4px;}
+.btn-small:after {top: 4px;}*/
 .r-group{clear:both; display: block; margin: 5px 0; width: 100%; position: relative;}
 
 /*

@@ -28,7 +28,7 @@ import { ResetpassComponent } from './resetpass/resetpass.component';
 import { ResetpassService } from './services/resetpass.service';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
-import { DashbordService } from './services/dashbord.service';
+//import { DashbordService } from './services/dashbord.service';
 
 import { HomeService } from './services/home.service';
 import { AssessmentDetailsComponent } from './assessment-details/assessment-details.component';
@@ -130,21 +130,8 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : 'assessment_details',
 			component : AssessmentDetailsComponent,
-			canActivate : [AuthGuard]
+			//canActivate : [AuthGuard]
 		},
-<<<<<<< HEAD
-=======
-		{
-			path : 'assessment',
-			component : AssessmentComponent
-
-		},
-		{
-			path : 'thankyou',
-			component : ThankyouComponent
-
-		},
->>>>>>> e8c897d957770425bcfb1849ed65fbd78507f8c7
 		{
 			path : '**',
 			redirectTo : 'HomeComponent',
@@ -159,14 +146,7 @@ import { HomeComponent } from './home/home.component';
   ],
 
 
-<<<<<<< HEAD
-
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
-=======
- 
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
-
->>>>>>> e8c897d957770425bcfb1849ed65fbd78507f8c7
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
 
   bootstrap: [AppComponent]
 })

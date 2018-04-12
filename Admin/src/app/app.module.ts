@@ -228,7 +228,7 @@ import { CommonService } from './services/common.service';
 	  {
         path : 'remaining/list',
         component : RemaininglistComponent,
-		canActivate : [AuthGuard] 
+		  canActivate : [AuthGuard] 
       },
 	   {
         path : 'userrole/add',

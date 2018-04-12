@@ -83,12 +83,30 @@ class Remaining_model extends CI_Model
 		// return $res;
 	// }
 		
+	// function getlist_value($datetime1)
+	// {
+	// 	$this->db->select('user.UserId,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime');
+	// 	$this->db->where('ca.StartTime',$datetime1);
+	// 	//$this->db->where('ca.EndTime=','NULL');
+	// 	$this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
+	// 	$result = $this->db->get('tblcandidateassessment ca');
+	// 	$res=array();
+	// 	if($result->result())
+	// 	{
+	// 		$res=$result->result();
+	// 	}
+	// 	return $res;
+	// }
+
+
+
+
 	function getlist_value($datetime1)
 	{
-		$this->db->select('user.UserId,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime');
-		$this->db->where('ca.StartTime=',$datetime1);
+		$this->db->select('user.*,ca.*');
+		$this->db->where('ca.StartTime',$datetime1);
 		//$this->db->where('ca.EndTime=','NULL');
-		$this->db->join('tbluser user', 'ca.UserId = user.UserId', 'left');
+		$this->db->join('tbluser user','ca.UserId = user.UserId', 'left');
 		$result = $this->db->get('tblcandidateassessment ca');
 		$res=array();
 		if($result->result())
@@ -97,6 +115,8 @@ class Remaining_model extends CI_Model
 		}
 		return $res;
 	}
+
+
 	
 	//Delete UserList
 	public function delete_remaining($confi_id) 

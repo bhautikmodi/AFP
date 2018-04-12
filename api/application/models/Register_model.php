@@ -18,6 +18,7 @@ class Register_model extends CI_Model
 	function getlist_state()
 	{
 		$this->db->select('*');
+		
 		$result=$this->db->get('tblmststate');
 		
 		$res=array();
@@ -32,6 +33,7 @@ class Register_model extends CI_Model
 		if($country_id) {
 			
 			$this->db->select('StateId,StateName');
+			$this->db->where('IsActive="1"');
 			$this->db->where('CountryId',$country_id);
 			$result = $this->db->get('tblmststate');
 				

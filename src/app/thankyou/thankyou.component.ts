@@ -28,6 +28,11 @@ export class ThankyouComponent implements OnInit {
       } else {
         this.assessmentData = data['assessment'];
         this.domainData = data['domain'];
+        var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
+        for(let obj of this.domainData){
+          let j = this.domainData.indexOf(obj);
+          this.domainData[j].color = colorarray[j];
+        }
         var chart = AmCharts.makeChart("thankyou_result_bar", {
           "type": "serial",
           "startDuration": 0,

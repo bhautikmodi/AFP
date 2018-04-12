@@ -41,7 +41,7 @@ class AssessmentDetails_model extends CI_Model
 	public function getTeamSizeList() {
 	
 		$this->db->select('TeamSizeId,TeamSize,IsActive');
-		$this->db->where('IsActive=1');
+		$this->db->where('IsActive',1);
 		$result = $this->db->get('tblmstteamsize');
 		
 		$res = array();

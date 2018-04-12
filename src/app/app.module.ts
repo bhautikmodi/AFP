@@ -132,8 +132,6 @@ import { HomeComponent } from './home/home.component';
 			component : AssessmentDetailsComponent,
 			canActivate : [AuthGuard]
 		},
-<<<<<<< HEAD
-=======
 		{
 			path : 'assessment',
 			component : AssessmentComponent
@@ -144,7 +142,6 @@ import { HomeComponent } from './home/home.component';
 			component : ThankyouComponent
 
 		},
->>>>>>> e8c897d957770425bcfb1849ed65fbd78507f8c7
 		{
 			path : '**',
 			redirectTo : 'HomeComponent',
@@ -159,14 +156,10 @@ import { HomeComponent } from './home/home.component';
   ],
 
 
-<<<<<<< HEAD
 
   providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
-=======
  
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
-
->>>>>>> e8c897d957770425bcfb1849ed65fbd78507f8c7
+  
 
   bootstrap: [AppComponent]
 })

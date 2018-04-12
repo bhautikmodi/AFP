@@ -15,7 +15,7 @@ export class RegisterService {
          res => { // Success
            resolve(res.json());
          },
-         msg => { // Error
+           msg => { // Error
        reject(msg);
          }
        );

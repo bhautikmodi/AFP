@@ -5,6 +5,7 @@ class Register_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('*');
+		$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {
@@ -17,6 +18,7 @@ class Register_model extends CI_Model
 	function getlist_state()
 	{
 		$this->db->select('*');
+		
 		$result=$this->db->get('tblmststate');
 		
 		$res=array();
@@ -31,6 +33,7 @@ class Register_model extends CI_Model
 		if($country_id) {
 			
 			$this->db->select('StateId,StateName');
+			$this->db->where('IsActive="1"');
 			$this->db->where('CountryId',$country_id);
 			$result = $this->db->get('tblmststate');
 				
@@ -56,6 +59,7 @@ class Register_model extends CI_Model
 		$this->db->select('pr.CompanyId,pr.Name,pr.IndustryId,pr.Website,pr.PhoneNumber,ps.IndustryId,ps.IndustryName');
 		$this->db->join('tblmstindustry ps', 'pr.IndustryId = ps.IndustryId', 'left');
 		$this->db->where('CompanyId',$CompanyId);
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany pr');
 			$company_data = array();
 			foreach($result->result() as $row) {
@@ -71,7 +75,17 @@ class Register_model extends CI_Model
 	public function add_Register($post_user,$com_reg)
 	{	
 		if($post_user)
-		{
+		{	
+					$Invitation_data = array(
+					'Status' =>1,
+					'code' =>'',
+					'CreatedOn' => date('y-m-d H:i:s'),
+					'UpdatedOn' => date('y-m-d H:i:s')
+				);
+
+				$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
+				$res = $this->db->update('tbluserinvitation',$Invitation_data);
+				
             if($com_reg['CompanyId']>0)
 			{	
 					$user_data=array(
@@ -81,7 +95,7 @@ class Register_model extends CI_Model
 						"LastName"=>$post_user['LastName'],
 						"Title"=>$post_user['Title'],
 						"EmailAddress"=>$post_user['EmailAddress'],
-						"Password"=>$post_user['Password'],
+						"Password"=>md5($post_user['Password']),
 						"Address1"=>$post_user['Address1'],
 						"Address2"=>$post_user['Address2'],
 						"CountryId"=>$post_user['CountryId'],
@@ -94,7 +108,17 @@ class Register_model extends CI_Model
 					);	
 				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
-				{
+				 {
+					//$this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
+					// $this->db->order_by('UserId','desc');
+					// $this->db->limit(1);
+					// $query=$this->db->get('tbluser');
+					// if ($query->num_rows() == 1) {
+						// return $query->result();
+						// } 
+					// else {
+							// return false;
+					// }
 					return true;
 				}
 				else
@@ -136,7 +160,7 @@ class Register_model extends CI_Model
 					"LastName"=>$post_user['LastName'],
 					"Title"=>$post_user['Title'],
 					"EmailAddress"=>$post_user['EmailAddress'],
-					"Password"=>$post_user['Password'],
+					"Password"=>md5($post_user['Password']),
 					"Address1"=>$post_user['Address1'],
 					"Address2"=>$post_user['Address2'],
 					"CountryId"=>$post_user['CountryId'],
@@ -158,6 +182,7 @@ class Register_model extends CI_Model
 					return false;
 				}
 			}
+			
 		}
 		else
 		{
@@ -169,6 +194,7 @@ class Register_model extends CI_Model
 	function getlist_Industry()
 	{
 		$this->db->select('*');
+		$this->db->where('IsActive="1"');
 		$result=$this->db->get('tblmstindustry');
 		
 		$res=array();
@@ -178,7 +204,9 @@ class Register_model extends CI_Model
 		}
 		return $res;
 	}
-		public function get_userdata($user_id=Null)
+		
+		
+	public function get_userdata($user_id=Null)
 	{
 	  if($user_id)
 	  {
@@ -216,7 +244,56 @@ class Register_model extends CI_Model
 		  return false;
 	  }
 	}
-
+ public function edit_user($post_user) {
+		if($post_user['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
+		if($post_user) 
+		{
+				$user_data = array(
+				//"ProjectStatusId"=>$post_user['ProjectStatusId'],
+				//"RoleId"=>$data['RoleId'],
+				//"CompanyId"=>$data['CompanyId'],
+				"FirstName"=>$post_user['FirstName'],
+				"LastName"=>$post_user['LastName'],
+				"Title"=>$post_user['Title'],
+				"EmailAddress"=>$post_user['EmailAddress'],
+				//"Password"=>$post_user['Password'],
+				"Address1"=>$post_user['Address1'],
+				"Address2"=>$post_user['Address2'],
+				"CountryId"=>$post_user['CountryId'],
+				"StateId"=>$post_user['StateId'],
+				"City"=>$post_user['City'],
+				"ZipCode"=>$post_user['ZipCode'],
+				"PhoneNumber"=>$post_user['PhoneNumber'],
+				"IsActive"=>$IsActive,
+				'CreatedOn' => date('y-m-d H:i:s'),
+				'UpdatedOn' => date('y-m-d H:i:s')
+			);
+			
+			
+			
+			
+			$this->db->where('UserId',$post_user['UserId']);
+			$res = $this->db->update('tbluser',$user_data);
+			
+			if($res) 
+			{
+				return true;
+			} else
+				{
+				 return false;
+			    }
+		}
+		else 
+		{
+			return false;
+		}	
+	
+	}
 	
 	
 	

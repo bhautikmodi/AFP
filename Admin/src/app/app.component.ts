@@ -19,11 +19,11 @@ export class AppComponent {
 	// //.map(res => res.json())
 	// .then((data) => 
 	// {
-		// this.remainingList = data;			
+	// 	this.remainingList = data;			
 	// }, 
 	// (error) => 
 	// {
-		// alert('error');
+	// 	alert('error');
 	// });	
     	
   }

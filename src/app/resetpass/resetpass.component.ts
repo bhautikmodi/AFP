@@ -27,6 +27,7 @@ export class ResetpassComponent implements OnInit {
 	let id = this.route.snapshot.paramMap.get('id');
 	id=new JwtHelper().decodeToken(id);
 	this.ResetpassService.getResetlink(id)
+	this.ResetpassService.getResetlink2(id)
 	.then((data) => 
 	{ debugger
 		if(data=='fail'){
@@ -49,7 +50,7 @@ export class ResetpassComponent implements OnInit {
   
 
   addPassword(resetForm)
-  {		debugger
+  {	
 	let id = this.route.snapshot.paramMap.get('id');
 		
 	var id1=new JwtHelper().decodeToken(id);
@@ -70,7 +71,7 @@ export class ResetpassComponent implements OnInit {
 			{
 				if(data='Code duplicate')
 				{
-					alert('success');
+					//alert('success');
 					this.globals.message = 'Update successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;

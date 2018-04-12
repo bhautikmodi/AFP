@@ -32,37 +32,40 @@ export class ForgotpasswordComponent implements OnInit {
 			 this.fgpassEntity.EmailAddress;
 		
 			this.btn_disable = true;
+			this.globals.isLoading = true;
 			this.ForgotpasswordService.add(this.fgpassEntity)
 			.then((data) => 
 			{debugger
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'Invalid Userid';
+						this.globals.message = 'Invalid user Email-Id';
 						this.globals.type = 'danger';
+						this.globals.isLoading = false;
 						this.globals.msgflag = true;
 						this.btn_disable = false;
-					this.submitted = false;
+						this.submitted = false;
 					//this.router.navigate(['/fgpass/']);
 				}else
 				{
 						//alert('success');
 					this.btn_disable = false;
 					this.submitted = false;
-						  localStorage.setItem('EmailAddress',this.fgpassEntity.EmailAddress);
+					localStorage.setItem('EmailAddress',this.fgpassEntity.EmailAddress);
 					this.fgpassEntity = {};
 					fgpassForm.form.markAsPristine();
-						//this.globals.message = 'Check user Email-Id';
-						//this.globals.type = 'success';
-						//this.globals.msgflag = true;
+					this.globals.isLoading = false;
+						this.globals.message = 'Check user your Email-Id';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
 						
 					
 					
 						//alert(id);
 				
 				
-					this.router.navigate(['/login']);
+					
 				}
-				
+				this.router.navigate(['/forgotpassword']);
 			}, 
 			(error) => 
 			{

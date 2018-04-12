@@ -79,16 +79,18 @@ export class InvitationComponent implements OnInit {
 		}
 		if (InvitationForm.valid) {
 			this.btn_disable = true;
+			this.globals.isLoading = true;
 			this.InvitationService.add(this.InvitationEntity)
-				.then((data) => {
+				.then((data) => {this.globals.isLoading = false;
 					debugger
 					if (data == 'email duplicate') {
-						this.globals.message = 'Email Duplicate';
+						this.globals.message = 'Invalid Email Address';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						//this.router.navigate(['/invitation/add']);
 					} else {
 						//alert('success');
+						
 						this.btn_disable = false;
 						this.submitted = false;
 						this.InvitationEntity = {};
@@ -98,7 +100,7 @@ export class InvitationComponent implements OnInit {
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						} else {
-							this.globals.message = 'Email successfully';
+							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { Router } from '@angular/router';
+//import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../services/register.service';
 declare var $: any;
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
 			this.CompanyEntity.IndustryId ='';
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
+			
 		 
     // $('select').select2();
 
@@ -74,11 +76,14 @@ export class RegisterComponent implements OnInit {
 	.then((data) => 
 	{
 			this.Disinv = data['Disinv'];
+			
+			
 	}, 
 	(error) => 
 	{
 		alert('error');
 	});	
+	
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
@@ -115,6 +120,14 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						// if(this.Disinv.Value ==1)
+						 // {debugger
+								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						 // }else 
+						 // {
+							// let token = localStorage.removeItem('EmailAddress');
+						 // }
+						 
 					}
 	
 
@@ -124,9 +137,15 @@ export class RegisterComponent implements OnInit {
 					
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
 			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = true;
-		
+			let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
 			
+			this.submitted = false;
+		} else {
+			
+			this.submitted = true;
+		}
+		
 		
 		if(RegisterForm.valid){
 			
@@ -137,7 +156,15 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	finalsubmit(RegisterForm){
-		debugger
+		
+		let id = this.route.snapshot.paramMap.get('id');
+		if (id) {
+
+			this.submitted = false;
+		} else {
+			
+			this.submitted = true;
+		}
 		this.btn_disable = true;
 		if(this.companydata!=''){
 			var com=this.companydata;
@@ -153,18 +180,19 @@ export class RegisterComponent implements OnInit {
 			.then((data) => 
 			{
 				//alert('success');
+
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
 				RegisterForm.form.markAsPristine();
 					// if (id) {
-						// this.globals.message = 'Update successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+					// 	this.globals.message = 'Update successfully';
+					// 	this.globals.type = 'success';
+					// 	this.globals.msgflag = true;
 					// } else {
-						// this.globals.message = 'Add successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+					// 	this.globals.message = 'Add successfully';
+					// 	this.globals.type = 'success';
+					// 	this.globals.msgflag = true;
  
 					// }
 
@@ -180,8 +208,10 @@ export class RegisterComponent implements OnInit {
 		
 	}
 	
-	getStateList()
-	{ debugger
+	getStateList(RegisterForm)
+	{ 
+		RegisterForm.form.controls.StateId.markAsDirty();
+		this.RegisterEntity.StateId='';
 		if(this.RegisterEntity.CountryId > 0){
 			this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 			.then((data) => 

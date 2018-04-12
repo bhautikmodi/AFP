@@ -15,7 +15,7 @@ export class RegisterService {
          res => { // Success
            resolve(res.json());
          },
-         msg => { // Error
+           msg => { // Error
        reject(msg);
          }
        );
@@ -25,7 +25,7 @@ export class RegisterService {
    
    
    getAllCountry(token)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Register/getAllCountry/' + token, this.globals.headerpath)
       .toPromise()
@@ -102,7 +102,7 @@ getById(userId){
 	return promise;
   }  
   getAll()
-   {debugger
+   {
    let promise = new Promise((resolve, reject) => {
      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll', this.globals.headerpath)
        .toPromise()

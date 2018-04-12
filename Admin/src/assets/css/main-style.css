@@ -161,11 +161,17 @@ html.index_admin,.index_admin body{ height:100%;}
 .width_6 {
 	width: 6%;
 }
+.width_7 {
+	width: 7%;
+}
 .width_8 {
 	width: 8%;
 }
 .width_10 {
 	width: 10%;
+}
+.width_15 {
+	width: 15%;
 }
 .width_20 {
 	width: 20%;

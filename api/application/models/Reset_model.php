@@ -40,9 +40,10 @@ class Reset_model extends CI_Model
 		if($post_passlink)
 		{
 			
-				$this->db->select('UserId,VCode');				
-				$this->db->where('UserId',$post_pass['UserId']);
-				$this->db->where('VCode',$post_pass['VCode']);
+				$this->db->select('*');				
+				$this->db->where('UserId',$post_passlink['UserId']);
+				$this->db->where('EmailAddress',$post_passlink['EmailAddress']);
+				$this->db->where('VCode',$post_passlink['VCode']);
 				
 				$this->db->limit(1);
 				$this->db->from('tbluser');
@@ -67,7 +68,8 @@ class Reset_model extends CI_Model
 					if($res)
 					{
 					    $pass = array();
-						foreach($query->result() as $row) {
+						foreach($query->result() as $row) 
+						{
 							$pass = $row;
 						}
 						return $pass;
@@ -96,8 +98,9 @@ class Reset_model extends CI_Model
 		if($post_passlink)
 		{
 			
-				$this->db->select('UserId,VCode');				
+				$this->db->select('*');				
 				$this->db->where('UserId',$post_passlink['UserId']);
+				//$this->db->where('EmailAddress',$post_pass['EmailAddress']);
 				$this->db->where('VCode',$post_passlink['VCode']);
 				
 				$this->db->limit(1);

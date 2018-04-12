@@ -42,22 +42,27 @@ export class ChangepassComponent implements OnInit {
 			.then((data) => 
 			{
 				if(data=='Code duplicate')
-				{			this.globals.message = 'Wrong paasword';
-							 this.globals.type = 'danger';
-							 this.globals.msgflag = true;
-							 this.btn_disable = false;
-							this.submitted = false;
-				}else
+				{
+						this.globals.message = 'User entered wrong password';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+						this.submitted = false;
+					this.router.navigate(['/changepass/']);
+				}
+				else
 					{
-						alert('success');
+						//alert('success');
 						//this.aa=true;
 						this.btn_disable = false;
 						this.submitted = false;
 						this.newpassEntity = {};
 						newpassForm.form.markAsPristine();
+						this.globals.message = 'Your password has been changed';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
 						
-						
-						this.router.navigate(['/']);
+						this.router.navigate(['/changepass']);
 					}
 			}, 
 			(error) => 

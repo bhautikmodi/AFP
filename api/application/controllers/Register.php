@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+use \Firebase\JWT\JWT;
 
 class Register extends CI_Controller 
 {	
@@ -46,15 +46,35 @@ class Register extends CI_Controller
 	public function addRegister()
 	{
 		$data = json_decode(trim(file_get_contents('php://input')), true);
-		
+		$post_user = $data['reg'];
+					$com_reg = $data['com'];
 		if ($data) 
-			{
-				$post_user = $data['reg'];
-				$com_reg = $data['com'];
-				$result = $this->Register_model->add_Register($post_user,$com_reg); 
+			{			
+			if($post_user['UserId']>0)
+				{
+					$result = $this->Register_model->edit_user($post_user,$com_reg);
+					if($result)
+					{
+						echo json_encode($data);	
+					}	
+				}else
+				{
+					
+					$result = $this->Register_model->add_Register($post_user,$com_reg); 
 			
 					if($result)
 					{
+						//	$token = array(
+							// "UserId" => $result[0]->UserId,
+							// "RoleId" => $result[0]->RoleId,
+							// "EmailAddress" => $result[0]->EmailAddress,
+							// "FirstName" => $result[0]->FirstName,
+							// "LastName" => $result[0]->LastName
+							// );
+
+							// $jwt = JWT::encode($token, "MyGeneratedKey","HS256");
+							// $output['token'] = $jwt;
+							// echo json_encode($output);
 						echo json_encode('success'); 
 						// $config['protocol']='smtp';
 						// $config['smtp_host']='ssl://smtp.googlemail.com';
@@ -81,7 +101,7 @@ class Register extends CI_Controller
 					{
 						echo json_encode('error ');
 					}
-				
+				}
 					
 			}
 	}
@@ -96,15 +116,6 @@ public function getById($user_id=null)
 		}
 	}
 
-	
-	
-
-	
-	
-	
-	
-	
-	
 	
 	 // List all industry
 	public function getAllIndustry()

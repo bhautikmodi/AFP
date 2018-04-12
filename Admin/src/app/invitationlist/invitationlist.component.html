@@ -39,7 +39,7 @@
                <tr class="odd gradeX" *ngFor="let Invitation of InvitationList;let i = index">
                   <td>{{i+1}}</td>
                   <td>{{Invitation.EmailAddress}}</td>
-                  <td>{{Invitation.CreatedOn | date : 'MM/dd/yyyy'}}</td>
+                  <td>{{Invitation.UpdatedOn | date : 'MM/dd/yyyy'}}</td>
                   <td *ngIf="Invitation.Status=='1'">Successfully</td>
                   <td *ngIf="Invitation.Status=='0'">Pending</td>
 				  <td *ngIf="Invitation.Status=='2'">Revoke Success</td>

@@ -47,8 +47,8 @@ loginEntity;
 				this.loginEntity = {};
 				loginForm.form.markAsPristine();
 					}
-			this.router.navigate(['/welcome_register']);	
-
+			//this.router.navigate(['/welcome_register']);	
+			window.location.href = '/dashbord';
 		
 			}, 
 			(error) => 

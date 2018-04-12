@@ -130,7 +130,6 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : 'assessment_details',
 			component : AssessmentDetailsComponent,
-<<<<<<< HEAD
 			canActivate : [AuthGuard]
 		},
 		{
@@ -142,9 +141,7 @@ import { HomeComponent } from './home/home.component';
 			path : 'thankyou',
 			component : ThankyouComponent
 
-=======
 			//canActivate : [AuthGuard]
->>>>>>> 2eb5ab9374749f0f8141cfbff70b4b1f4b48f580
 		},
 		{
 			path : '**',
@@ -160,15 +157,10 @@ import { HomeComponent } from './home/home.component';
   ],
 
 
-<<<<<<< HEAD
 
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,DashbordService,HomeService],
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
  
   
-=======
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
->>>>>>> 2eb5ab9374749f0f8141cfbff70b4b1f4b48f580
-
-  bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

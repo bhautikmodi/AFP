@@ -18,11 +18,8 @@ export class DashbordComponent implements OnInit {
   constructor() { }
 
 
-<<<<<<< HEAD
   
-   ngOnInit() {
-=======
-
+   
   
    ngOnInit() {
 	   
@@ -216,7 +213,6 @@ export class DashbordComponent implements OnInit {
 
 	   
 
->>>>>>> 2eb5ab9374749f0f8141cfbff70b4b1f4b48f580
   }
-
 }
+

@@ -68,17 +68,9 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{debugger
-				if(data=='Code duplicate')
+				if(data=='Code success')
 				{
-						this.globals.message = 'Code Duplicate';
-						this.globals.type = 'danger';
-						this.globals.msgflag = true;
-						this.btn_disable = false;
-					this.submitted = false;
-					//this.router.navigate(['/invitation/add']);
-				}else
-				{
-						//alert('success');
+
 					this.btn_disable = false;
 					this.submitted = false;
 						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
@@ -88,12 +80,35 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						
+						this.router.navigate(['/findcompany']);
 					
+				}else if(data=='days')
+				{
+					this.globals.message = 'Your invitation code has expired.';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+					this.submitted = false;
+
+				}else if(data=='revoked')
+				{
+					this.globals.message = 'Your access has been revoked.';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+					this.submitted = false;
+
+				}
+				else if(data=='code')
+				{
+					this.globals.message = 'Code Duplicate';
+					this.globals.type = 'danger';
+					this.globals.msgflag = true;
+					this.btn_disable = false;
+				this.submitted = false;
+				//this.router.navigate(['/invitation/add']);
+				
 					
-						//alert(id);
-				
-				
-					this.router.navigate(['/findcompany']);
 				}
 				
 			}, 

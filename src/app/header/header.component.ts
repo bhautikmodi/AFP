@@ -12,12 +12,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
 
-  ngOnInit() {debugger
+  ngOnInit() {
   }
-logout(){ debugger	 
-    this.authService.logout();
-    this.globals.isLoading = true;
-  window.location.href = '/login';
-  }
+// logout(){ debugger	 
+    // this.authService.logout();
+    // this.globals.isLoading = true;
+  // window.location.href = '/login';
+  // }
 
 }

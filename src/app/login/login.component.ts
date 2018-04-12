@@ -53,12 +53,19 @@ loginEntity;
 			}, 
 			(error) => 
 			{ 
-				this.globals.isLoading = false;
-				if(error.text){
-					this.invalid = true;
-				}				
-				this.btn_disable = false;
-				this.submitted = false;
+				this.globals.message = 'Invalid user Email-Id';
+						this.globals.type = 'danger';
+						this.globals.isLoading = false;
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+						this.submitted = false;
+
+				//this.globals.isLoading = false;
+				// if(error.text){
+				// 	this.invalid = true;
+				// }				
+				//this.btn_disable = false;
+				//this.submitted = false;
 			});
 		} 		
 	}

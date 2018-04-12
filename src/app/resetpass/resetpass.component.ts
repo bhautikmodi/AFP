@@ -31,6 +31,10 @@ export class ResetpassComponent implements OnInit {
 	.then((data) => 
 	{ debugger
 		if(data=='fail'){
+
+			this.globals.message = 'You are already used this link.';
+			this.globals.type = 'danger';
+			this.globals.msgflag = true;
 			this.router.navigate(['/login']);
 		} 	
 		//alert('success');

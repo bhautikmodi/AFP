@@ -19,7 +19,7 @@ class Forgotpass extends CI_Controller
 		$post_pass = json_decode(trim(file_get_contents('php://input')), true);		
 		if ($post_pass)
 			{
-					http://localhost:4300/resetpass
+				//	http://localhost:4300/resetpass
 
 				$post_pass['VCode']=mt_rand(100000, 999999);
 				
@@ -43,12 +43,13 @@ class Forgotpass extends CI_Controller
 											
 						$this->email->initialize($config);
 
-						$this->email->from('myopeneyes3937@gmail.com','Email Test');
+						$this->email->from('myopeneyes3937@gmail.com','Change password AFP account');
 						$this->email->to($post_pass['EmailAddress']);
 						
 						
-						$this->email->subject('Forgot Pass');
-						$this->email->message('http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256"));
+						$this->email->subject('Change your password Pass');
+						$this->email->message('We have received a password change request for your Association for Financial Professionals - AFP account '.$post_pass['EmailAddress'].'
+						<br><br>http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'<br><br>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once. ');
 						
 						
 						

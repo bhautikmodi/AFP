@@ -19,7 +19,7 @@ export class DashbordComponent implements OnInit {
 
 
   
-   
+  
   
    ngOnInit() {
 	   
@@ -214,5 +214,5 @@ export class DashbordComponent implements OnInit {
 	   
 
   }
-}
 
+}

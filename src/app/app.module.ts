@@ -158,9 +158,11 @@ import { HomeComponent } from './home/home.component';
 
 
 
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
+
  
   
- 
+  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
+
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

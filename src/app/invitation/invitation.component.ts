@@ -99,6 +99,15 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					this.submitted = false;
 
 				}
+				else if(data=='email')
+				{
+					this.globals.message = 'Please enter valid  email address.';
+						this.globals.type = 'danger';
+						this.globals.msgflag = true;
+						this.btn_disable = false;
+					this.submitted = false;
+
+				}
 				else if(data=='code')
 				{
 					this.globals.message = 'Code Duplicate';

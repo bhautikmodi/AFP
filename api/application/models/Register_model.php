@@ -73,7 +73,17 @@ class Register_model extends CI_Model
 	public function add_Register($post_user,$com_reg)
 	{	
 		if($post_user)
-		{
+		{	
+					$Invitation_data = array(
+					'Status' =>1,
+					'code' =>'',
+					'CreatedOn' => date('y-m-d H:i:s'),
+					'UpdatedOn' => date('y-m-d H:i:s')
+				);
+
+				$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
+				$res = $this->db->update('tbluserinvitation',$Invitation_data);
+				
             if($com_reg['CompanyId']>0)
 			{	
 					$user_data=array(

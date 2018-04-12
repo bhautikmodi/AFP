@@ -169,6 +169,9 @@ class Invitation extends CI_Controller {
 				}elseif($result=='revoked')
 				{
 					echo json_encode("revoked");
+				}elseif($result=='email')
+				{
+					echo json_encode("email");
 				}
 				elseif($result=='code')
 				{

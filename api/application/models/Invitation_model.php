@@ -139,23 +139,7 @@ class Invitation_model extends CI_Model
 			
 				if ($query->num_rows() == 1) 
 				{
-					$Invitation_data = array(
-						'Status' =>1,
-						'code' =>'',
-						'CreatedOn' => date('y-m-d H:i:s'),
-						'UpdatedOn' => date('y-m-d H:i:s')
-					);
-			
-					$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
-					$this->db->where('Code',trim($post_Invitation['Code']));
-					$res = $this->db->update('tbluserinvitation',$Invitation_data);
-					if($res)
-					{
-					    return 'true';
-					}else
-					{
-						return false;
-					}
+					return 'true';
 				
 				} else
 				{
@@ -178,7 +162,20 @@ class Invitation_model extends CI_Model
 				}
 		}else
 		{
-			return 'days';
+				$this->db->select('UserInvitationId');	
+				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
+				$result = $this->db->get('tbluserinvitation');	
+				if($result->num_rows() == 1)
+							{
+								return 'days';
+								
+							}else
+							{
+								
+								return 'email';
+								
+							}
+			
 		}
 		
 		

@@ -84,11 +84,6 @@ import { HomeComponent } from './home/home.component';
 			component : DashbordComponent,
 		},
 		{
-			path : 'dashboard',
-			component : HomeComponent,
-			
-		},
-		{
 			path : 'contactus',
 			component : ContactusComponent,
 		},
@@ -143,16 +138,9 @@ import { HomeComponent } from './home/home.component';
 			canActivate : [AuthGuard]
 		},
 		{
-<<<<<<< HEAD
 			path : 'thankyou/:id',
 			component : ThankyouComponent,
 			canActivate : [AuthGuard]
-=======
-			path : 'thankyou',
-			component : ThankyouComponent
-
-			//canActivate : [AuthGuard]
->>>>>>> 7ca6a15eb8c933f8590d9bcbb3da3711dd68b7b9
 		},
 		{
 			path : '**',

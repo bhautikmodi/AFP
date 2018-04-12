@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { Router } from '@angular/router';
+//import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../services/register.service';
 declare var $: any;
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
 			this.CompanyEntity.IndustryId ='';
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
+			
 		 
     // $('select').select2();
 
@@ -74,11 +76,14 @@ export class RegisterComponent implements OnInit {
 	.then((data) => 
 	{
 			this.Disinv = data['Disinv'];
+			
+			
 	}, 
 	(error) => 
 	{
 		alert('error');
 	});	
+	
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
@@ -115,6 +120,14 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						if(this.Disinv.Value ==1)
+						 {debugger
+								this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						 }else 
+						 {
+							let token = localStorage.removeItem('EmailAddress');
+						 }
+						 
 					}
 	
 
@@ -143,7 +156,7 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	finalsubmit(RegisterForm){
-		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 
@@ -196,7 +209,7 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	getStateList()
-	{ debugger
+	{ 
 		if(this.RegisterEntity.CountryId > 0){
 			this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 			.then((data) => 

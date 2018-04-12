@@ -120,7 +120,7 @@ class Invitation_model extends CI_Model
 	
 	public function Invitation_code($post_Invitation) 
 	{
-				$this->db->select('UserInvitationId,Status');				
+				$this->db->select('UserInvitationId');				
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);

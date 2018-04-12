@@ -100,7 +100,7 @@ class Company_model extends CI_Model
 	{
 		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNumber,cp.IsActive,in.IndustryName');
 		$this->db->join('tblmstindustry in', 'cp.IndustryId = in.IndustryId', 'left');
-		
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany cp');
 		
 		
@@ -139,6 +139,7 @@ class Company_model extends CI_Model
 	public function getlist_Industry() {
 	
 		$this->db->select('IndustryId,IndustryName');
+		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblmstindustry');
 		
 		$res = array();

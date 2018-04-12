@@ -101,7 +101,7 @@ class State_model extends CI_Model
 			$this->db->join('tblmstcountry con', 'con.CountryId = st.CountryId', 'left');
 		 // $this->db->select('st.StateId,st.StateName,st.StateAbbreviation,st.IsActive,con.CountryName');
 		 // $this->db->join('tblmstcountry con','st.StateId = st.StateId', 'left');
-		
+		// $this->db->where('IsActive="1"');
 		$result=$this->db->get('tblmststate st');
 		
 		$res=array();
@@ -137,8 +137,13 @@ class State_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
+<<<<<<< HEAD
 		$this->db->where('IsActive=1');
+=======
+		//$this->db->where('IsActive="1"');
+>>>>>>> c24821f2b72d48d327a339558cdfe696b4960b66
 		$result = $this->db->get('tblmstcountry');
+		
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

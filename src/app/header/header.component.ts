@@ -14,10 +14,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-// logout(){ debugger	 
-    // this.authService.logout();
-    // this.globals.isLoading = true;
-  // window.location.href = '/login';
-  // }
+logout(){ debugger	 
+    this.authService.logout();
+    this.globals.isLoading = true;
+  window.location.href = '/login';
+  }
 
 }

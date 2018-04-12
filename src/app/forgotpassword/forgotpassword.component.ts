@@ -40,6 +40,7 @@ export class ForgotpasswordComponent implements OnInit {
 				{
 						this.globals.message = 'Invalid user Email-Id';
 						this.globals.type = 'danger';
+						this.globals.isLoading = false;
 						this.globals.msgflag = true;
 						this.btn_disable = false;
 						this.submitted = false;

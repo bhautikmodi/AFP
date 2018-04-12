@@ -7,7 +7,8 @@ export class RemainingService {
 
    constructor(private http: Http, private globals: Globals) { }
    
-   getAll(){
+   getAll()
+   {
 	  debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Remaining/getDays',  this.globals.headerpath)

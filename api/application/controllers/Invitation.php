@@ -165,8 +165,13 @@ class Invitation extends CI_Controller {
 				}	
 				else
 				{
-					
-					echo json_encode("Code duplicate");
+					if($post_Invitation['Status']==2)
+					{
+						echo json_encode("Your access has been revoked");
+					}else
+					{
+						echo json_encode("Code duplicate");
+					}
 				}
 										
 		}

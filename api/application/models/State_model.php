@@ -137,7 +137,11 @@ class State_model extends CI_Model
 	public function getlist_country() {
 	
 		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
+<<<<<<< HEAD
+		$this->db->where('IsActive=1');
+=======
 		//$this->db->where('IsActive="1"');
+>>>>>>> c24821f2b72d48d327a339558cdfe696b4960b66
 		$result = $this->db->get('tblmstcountry');
 		
 		$res = array();

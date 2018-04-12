@@ -65,6 +65,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			+this.InvitationEntity.code5+this.InvitationEntity.code6;
 		
 			this.btn_disable = true;
+			// this.globals.isLoading = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{debugger

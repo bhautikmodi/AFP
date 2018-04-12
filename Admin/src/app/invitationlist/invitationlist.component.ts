@@ -131,9 +131,11 @@ permissionEntity;
 	
 	ReInviteConfirm(Invitation)
 	{ debugger
+	this.globals.isLoading = true;
 		this.InvitationService.ReInvite(Invitation)
 		.then((data) => 
 		{debugger
+			this.globals.isLoading = false;
 			let index = this.InvitationList.indexOf(Invitation);
 			
 			this.InvitationList[index].Status =0;

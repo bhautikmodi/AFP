@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AssessmentDetailsService } from '../services/assessment-details.service';
 @Component({
   selector: 'app-assessment-details',
-     providers: [ AssessmentDetailsService ],
+	providers: [ AssessmentDetailsService ],
   templateUrl: './assessment-details.component.html',
   styleUrls: ['./assessment-details.component.css']
 })
@@ -56,7 +56,7 @@ addAsmtDetails(AsmtDetailsForm)
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 							
-				this.router.navigate(['/assessment']);
+				this.router.navigate(['/assessment/'+data]);
 			}, 
 			(error) => 
 			{

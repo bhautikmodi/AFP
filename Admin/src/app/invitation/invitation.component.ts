@@ -84,7 +84,7 @@ export class InvitationComponent implements OnInit {
 				.then((data) => {this.globals.isLoading = false;
 					debugger
 					if (data == 'email duplicate') {
-						this.globals.message = 'Email Duplicate';
+						this.globals.message = 'Invalid Email Address';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						//this.router.navigate(['/invitation/add']);
@@ -100,7 +100,7 @@ export class InvitationComponent implements OnInit {
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						} else {
-							this.globals.message = 'Email successfully';
+							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						}

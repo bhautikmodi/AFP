@@ -120,13 +120,13 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
-						if(this.Disinv.Value ==1)
-						 {debugger
-								this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
-						 }else 
-						 {
-							let token = localStorage.removeItem('EmailAddress');
-						 }
+						// if(this.Disinv.Value ==1)
+						 // {debugger
+								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						 // }else 
+						 // {
+							// let token = localStorage.removeItem('EmailAddress');
+						 // }
 						 
 					}
 	
@@ -208,8 +208,10 @@ export class RegisterComponent implements OnInit {
 		
 	}
 	
-	getStateList()
+	getStateList(RegisterForm)
 	{ 
+		RegisterForm.form.controls.StateId.markAsDirty();
+		this.RegisterEntity.StateId='';
 		if(this.RegisterEntity.CountryId > 0){
 			this.RegisterService.getStateList(this.RegisterEntity.CountryId)
 			.then((data) => 

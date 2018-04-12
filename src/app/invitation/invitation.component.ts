@@ -65,10 +65,11 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			+this.InvitationEntity.code5+this.InvitationEntity.code6;
 		
 			this.btn_disable = true;
-			// this.globals.isLoading = true;
+			 this.globals.isLoading = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
-			{debugger
+			{debugger 
+				this.globals.isLoading = false;
 				if(data=='Code success')
 				{
 
@@ -102,7 +103,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 				}
 				else if(data=='email')
 				{
-					this.globals.message = 'Please enter valid  email address.';
+					this.globals.message = 'Please enter valid email address.';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
@@ -111,7 +112,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 				}
 				else if(data=='code')
 				{
-					this.globals.message = 'Code Duplicate';
+					this.globals.message = 'Please enter valid invitation code.';
 					this.globals.type = 'danger';
 					this.globals.msgflag = true;
 					this.btn_disable = false;

@@ -5,38 +5,6 @@ $('.invitation_text .form-control').keyup(function(e){
 })
 <!-- END INVITATION CODE -->
 
-<!-- FIND COMPANY -->
-$('.autocomplete').keyup(function() {
-    var query = $.trim($('.autocomplete').val()).toLowerCase();
-	var i = 0;
-    $('div.company_name').each(function(){
-         var $this = $(this);
-         if($this.text().toLowerCase().indexOf(query) === -1){
-		 	
-             $this.closest('.company_section .col-md-3').fadeOut();
-		 } else{
-			 i++;
-			$this.closest('.company_section .col-md-3').fadeIn();
-		 }
-    });
-	 if(i>0){
-	   $('.company_section .no_result').fadeOut();
-	   
-	} else{
-		$('.company_section .no_result').fadeIn();
-	}
-});
-$('.company_box').click(function(e){
-	$('.company_box').removeClass('active');
-    $(this).addClass('active');
-});
-
-$( "#company_name" ).keyup(function() {
-	$(".inner_content").addClass("height_zero");
-	$(".company_section").removeClass("display_company");
-});
-<!-- END FIND COMPANY -->
-
 <!-- REGISTER EMPLOYEE -->
 $('#employee_btn').click(function () {
 	$("#submit_Modal").modal('show');
@@ -61,4 +29,24 @@ progress = document.getElementById("progress");
 $(progress).css("width", "30%");
 <!-- END PROGRESS BAR ASSESSMENT -->
 
+<!-- ASSESSMENT -->
+$('input[type="radio"]').change(function(){
+	var i;
+	for (i = 0; i < 51; i++) { 
+		if($("input:radio[name='ksa" + i + "_radio']").is(":checked")) {
+		  $('#ksa' + i + '_dots').removeClass('fa-circle-o');
+		  $('#ksa' + i + '_dots').addClass('fa-dot-circle-o');
+	  }
+	}
+});
+<!-- END ASSESSMENT -->
 
+<!-- TOOLTIP -->
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+<!-- END TOOLTIP -->
+
+<!-- SCROLLBAR -->
+ new PerfectScrollbar('.preview_ksa');
+<!-- END SCROLLBAR -->

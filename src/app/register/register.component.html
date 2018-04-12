@@ -257,8 +257,9 @@
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
                 <label><span>*</span>Country </label>
-               <select    class="form-control select2"  (change)="getStateList()"  #CountryId="ngModel"
-					   [(ngModel)]="RegisterEntity.CountryId" name="CountryId" [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}" required>
+               <select    class="form-control select2"  (change)="getStateList(RegisterForm)"  #CountryId="ngModel"
+             [(ngModel)]="RegisterEntity.CountryId" name="CountryId"
+              [ngClass]="{red_border: (CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)}" required>
 					<option value="" ngSelected='RegisterEntity.CountryId==""'>Select Country</option>
 				<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="RegisterEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
 						 <span style="color:red;"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 

@@ -133,20 +133,18 @@ import { HomeComponent } from './home/home.component';
 			canActivate : [AuthGuard]
 		},
 		{
-			path : 'assessment',
-			component : AssessmentComponent
-
+			path : 'assessment/:id',
+			component : AssessmentComponent,
+			canActivate : [AuthGuard]
 		},
 		{
-			path : 'thankyou',
-			component : ThankyouComponent
-
-			//canActivate : [AuthGuard]
+			path : 'thankyou/:id',
+			component : ThankyouComponent,
+			canActivate : [AuthGuard]
 		},
 		{
 			path : '**',
-			redirectTo : 'HomeComponent',
-			canActivate : [AuthGuard]
+			redirectTo : 'dashboard'
 		},
 		{
 			path : 'login',

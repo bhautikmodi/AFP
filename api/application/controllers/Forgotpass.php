@@ -48,30 +48,30 @@ class Forgotpass extends CI_Controller
 						
 						
 						$this->email->subject('Change your password Pass');
-						$this->email->message('<br>Hello '.$result->FirstName. '<br><br>We have received a password change request for your Association for Financial Professionals - AFP account '.$post_pass['EmailAddress'].'
-						<br><br>Link : http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'<br><br>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.<br>
-						Regards,<br>
-						AFP TEAM');
+						// $this->email->message('<br>Hello '.$result->FirstName. '<br><br>We have received a password change request for your Association for Financial Professionals - AFP account '.$post_pass['EmailAddress'].'
+						// <br><br>Link : http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'<br><br>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.<br>
+						// Regards,<br>
+						// AFP TEAM');
 						
-					// 	$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
-					// 	<tr>
-					// 		<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
-					// 	</tr>
-					// 	<tr>
-					// 		<td style="padding:10px;">
-					// 			<p style="color:#007699;"><strong>Hello '.$result->FirstName. '</strong></p>
-					// 			<p>Welcome to <strong>Association for Financial Professionals</strong>.</p>
+						$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
+						</tr>
+						<tr>
+							<td style="padding:10px;">
+								<p style="color:#007699;"><strong>Hello '.$result->FirstName. '</strong></p>
+								<p>Welcome to <strong>Association for Financial Professionals</strong>.</p>
 								
-					// 			<p>We have received a password change request for your Association for Financial Professionals - AFP account.</p>
-					// 			<p>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.</p>
-					// 			<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>
-					// 			<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
-					// 		</td>
-					// 	</tr>
-					// 	<tr>
-					// 		<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
-					// 	</tr>
-					// </table>');
+								
+								<p>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.</p>
+								<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>
+								<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
+						</tr>
+					</table>');
 						
 						$this->email->send();
 						echo json_encode($data);

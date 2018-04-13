@@ -24,9 +24,9 @@
             	<input type="text" class="form-control" #AssessmentName="ngModel" name="AssessmentName"
 						pattern="[a-zA-Z' ]{1,100}" 
 							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}"  required/>
-						<span style="color:red;"  *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
+						<span class="error_span"  *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
 							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter AssessmentName</span>
-							<span style="color:red;" *ngIf="AssessmentName.errors && AssessmentName.errors.pattern">
+							<span class="error_span" *ngIf="AssessmentName.errors && AssessmentName.errors.pattern">
 							Please enter a valid AssessmentName.
 					  </span>
 						</span>	
@@ -36,9 +36,9 @@
             <textarea class="form-control" #Description="ngModel" name="Description"
 						pattern="[a-zA-Z' ]{1,100}" 
 							[(ngModel)]="AsmtDetailsEntity.Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}"  required></textarea>
-							<span style="color:red;"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+							<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
 							<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description</span>
-							<span style="color:red;" *ngIf="Description.errors && Description.errors.pattern">
+							<span class="error_span" *ngIf="Description.errors && Description.errors.pattern">
 							Please enter a valid Description.
 					  </span>
 						</span>	
@@ -51,7 +51,7 @@
 									<option *ngFor="let Team of TeamSizeList" value="{{Team.TeamSizeId}}" 
 									ngSelected="AsmtDetailsEntity.TeamSizeId==Team.TeamSizeId">{{Team.TeamSize}}</option>
 								</select>
-									<span style="color:red" *ngIf="(TeamSizeId.dirty && TeamSizeId.invalid) || (TeamSizeId.pristine && submitted)">  
+									<span class="error_span" *ngIf="(TeamSizeId.dirty && TeamSizeId.invalid) || (TeamSizeId.pristine && submitted)">  
 										<span *ngIf="TeamSizeId.errors.required || (TeamSizeId.pristine && submitted)">
 											Please select Team Size
 										</span> 

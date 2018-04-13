@@ -33,7 +33,7 @@
 										    <option value="" ngSelected='stateEntity.CountryId==""'>Select</option>
 										<option class='option' *ngFor='let country of CountryList' 
 										[value]="country.CountryId">{{country.CountryName}}</option></select>
-										<span style="color:red;"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
+										<span class="error_span"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
 												<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select Country </span>
 											</span>
                                         </div>
@@ -43,9 +43,9 @@
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>State Name</label>
                                             <input type="text" class="form-control" #StateName="ngModel" [(ngModel)]="stateEntity.StateName" class="form-control" name="StateName" pattern="[a-zA-Z ]{0,}" required>
-											<span style="color:red;" *ngIf="(StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)"> 
+											<span class="error_span" *ngIf="(StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)"> 
 											<span *ngIf="StateName.errors.required || (StateName.pristine && submitted)">Please enter State</span>
-											<span style="color:red;" *ngIf="StateName.errors && StateName.errors.pattern">
+											<span class="error_span" *ngIf="StateName.errors && StateName.errors.pattern">
 												Please input a valid State Name.
 										  </span>
 											</span>
@@ -63,10 +63,10 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>State Abbreviation</label>
                                             <input type="text" class="form-control "style="text-transform: uppercase;" #StateAbbreviation="ngModel" [(ngModel)]="stateEntity.StateAbbreviation" class="form-control" name="StateAbbreviation" pattern="[a-zA-Z]{0,}" required>
-											<span style="color:red;" *ngIf="(StateAbbreviation.dirty && StateAbbreviation.invalid) || (StateAbbreviation.pristine && submitted)"> 
+											<span class="error_span" *ngIf="(StateAbbreviation.dirty && StateAbbreviation.invalid) || (StateAbbreviation.pristine && submitted)"> 
 											<span *ngIf="StateAbbreviation.errors.required || (StateAbbreviation.pristine && submitted)">Please enter State Abbreviation</span>
 											</span>
-											<span style="color:red;" *ngIf="StateAbbreviation.errors && StateAbbreviation.errors.pattern">
+											<span class="error_span" *ngIf="StateAbbreviation.errors && StateAbbreviation.errors.pattern">
 												Please input a valid State Abbreviation.
 										  </span>
                                         </div>
@@ -84,7 +84,7 @@
 											  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="stateEntity.IsActive" required/>
 											  <label for="role2">No </label>
 											</div><br>
-											<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+											<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 												<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
 											  </span>
 

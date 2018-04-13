@@ -34,7 +34,7 @@
                                   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress"
 								  name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"
 								  required/>
-                                  <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+                                  <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">
                                                 Please enter Email Address

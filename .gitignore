@@ -41,3 +41,4 @@ testem.log
 .DS_Store
 Thumbs.db
 api/application/config/database.php
+api/application/config/database.php

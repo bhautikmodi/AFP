@@ -29,9 +29,9 @@
                                         <div class="form-group col-md-6 col-md-offset-3">
                                             <label><span class="required">*</span>Role Name</label>
                                             <input type="text" class="form-control" #RoleName="ngModel" [(ngModel)]="userroleEntity.RoleName" class="form-control" name="RoleName" pattern="[a-zA-Z]{0,}" required>
-											<span style="color:red;" *ngIf="(RoleName.dirty && RoleName.invalid) || (RoleName.pristine && submitted)"> 
+											<span class="error_span" *ngIf="(RoleName.dirty && RoleName.invalid) || (RoleName.pristine && submitted)"> 
 											<span *ngIf="RoleName.errors.required || (RoleName.pristine && submitted)">Please enter Role Name</span>
-											<span style="color:red;" *ngIf="RoleName.errors && RoleName.errors.pattern">
+											<span class="error_span" *ngIf="RoleName.errors && RoleName.errors.pattern">
 												Please enter a valid Role Name.
 										  </span>
 											</span>
@@ -50,7 +50,7 @@
 									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="userroleEntity.IsActive" required/>
 									  <label for="role2">No </label>
 									</div><br>
-									<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
 									  </span>
 

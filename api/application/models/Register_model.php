@@ -72,7 +72,7 @@ class Register_model extends CI_Model
 		}
 		
 	}
-	public function add_Register($post_user,$com_reg)
+	public function add_Register($post_user)
 	{	
 		if($post_user)
 		{	
@@ -90,7 +90,7 @@ class Register_model extends CI_Model
 
 				$user_data=array(
 						"RoleId"=>3,
-						//"CompanyId"=>$com_reg['CompanyId'],
+						"CompanyId"=>$post_user['CompanyId'],
 						"FirstName"=>$post_user['FirstName'],
 						"LastName"=>$post_user['LastName'],
 						"Title"=>$post_user['Title'],

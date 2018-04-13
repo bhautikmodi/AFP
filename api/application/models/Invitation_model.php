@@ -170,7 +170,7 @@ class Invitation_model extends CI_Model
 		if ($result->num_rows() == 1) 
 		{
 	
-				$this->db->select('UserInvitationId,Status,Code,EmailAddress');				
+				$this->db->select('UserInvitationId,Status,Code,EmailAddress,CompanyId');				
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);
@@ -179,7 +179,7 @@ class Invitation_model extends CI_Model
 			
 				if ($query->num_rows() == 1) 
 				{
-					return 'true';
+					return $query->result();
 				
 				} else
 				{

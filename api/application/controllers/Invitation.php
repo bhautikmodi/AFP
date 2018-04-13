@@ -166,11 +166,8 @@ class Invitation extends CI_Controller {
 			{
 			
 				$result = $this->Invitation_model->Invitation_code($post_Invitation);
-				if($result=='true')
-				{
-					echo json_encode("Code success");
-				}	
-				elseif($result=='days')
+				
+				if($result=='days')
 				{
 					echo json_encode("days");
 				}elseif($result=='revoked')
@@ -183,6 +180,9 @@ class Invitation extends CI_Controller {
 				elseif($result=='code')
 				{
 					echo json_encode("code");
+				}
+				else{
+					echo json_encode($result);
 				}
 										
 		}

@@ -77,6 +77,7 @@ export class RegisterComponent implements OnInit {
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
+
 						this.RegisterService.getById(id)
 							.then((data) => {
 								debugger
@@ -156,10 +157,9 @@ export class RegisterComponent implements OnInit {
 			this.submitted = true;
 		}
 		this.btn_disable = true;
-		
-		var com=this.CompanyEntity;
-		var data = {'com': com,'reg':this.RegisterEntity};
-			this.RegisterService.add(data)
+			let token = localStorage.getItem('CompanyId');
+			this.RegisterEntity.CompanyId=token;
+			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
 			{

@@ -40,7 +40,16 @@ export class InvitationComponent implements OnInit {
 			{
 				alert('error');
 			});	
-			
+			this.InvitationService.getIndustry()
+			//.map(res => res.json())
+			.then((data) => 
+			{
+				this.IndustryList = data;
+			}, 
+			(error) => 
+			{
+				alert('error');
+			});	
 		}
 	}
 
@@ -66,16 +75,6 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity.UserInvitationId = 0;
 			this.InvitationEntity.IsActive = '1';
 			this.InvitationEntity.IndustryId ='';
-			this.InvitationService.getIndustry()
-			//.map(res => res.json())
-			.then((data) => 
-			{
-				this.IndustryList = data;
-			}, 
-			(error) => 
-			{
-				alert('error');
-			});	
 		}
 	}
 

@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
 	  
 			this.btn_disable = false;
 			this.RegisterEntity={};
-			this.CompanyEntity={};
 			this.companydata={};
 			
 			this.RegisterEntity.CountryId ='';
@@ -157,14 +156,8 @@ export class RegisterComponent implements OnInit {
 			this.submitted = true;
 		}
 		this.btn_disable = true;
-		if(this.companydata!=''){
-			var com=this.companydata;
-		}
-		else
-		{
-			this.CompanyEntity.CompanyId=0;
-			var com=this.CompanyEntity;
-		}
+		
+		var com=this.CompanyEntity;
 		var data = {'com': com,'reg':this.RegisterEntity};
 			this.RegisterService.add(data)
 			

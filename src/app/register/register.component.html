@@ -21,7 +21,7 @@
 	  <form class="form-validate" role="form" #RegisterForm="ngForm" (ngSubmit)="addRegister(RegisterForm)">
         <div class="col-md-3 col-sm-4 left_content">
           <h2>Company Details</h2>
-          <table class="table table-bordered table-striped" *ngIf="(companydata!='' && RegisterEntity.UserId==0) || RegisterEntity.UserId>0" >
+          <table class="table table-bordered table-striped" *ngIf="companydata!=''" >
             <tr>
               <th>Company Name</th>
             </tr>
@@ -47,65 +47,7 @@
             <td>{{companydata.Website}}</td> 
             </tr>
           </table>
-		  <div *ngIf="RegisterEntity.UserId=='0'">
-		  <div *ngIf="companydata==''">
-		  
-          <div class="form-group">
-            <label><span>*</span>Company Name </label>
-					<input type="text" class="form-control" #Name="ngModel" name="Name"
-						pattern="[a-zA-Z' ]{1,100}" 
-							[(ngModel)]="CompanyEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
-						<span class="error_span"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-							<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company Name</span>
-							<span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
-							Please enter a valid Company Name.
-					  </span>
-						</span>	
-						
-						
-						
-						
-          </div>
-          <div class="form-group">
-            <label><span>*</span>Industry </label>
-           <select class="form-control" #IndustryId="ngModel" [(ngModel)]="CompanyEntity.IndustryId"
-								name="IndustryId" [ngClass]="{red_border: (IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)}" required>  
-									<option value="" ngSelected='CompanyEntity.IndustryId==""' >Select Industry </option>
-									<option *ngFor="let Industry of IndustryList" value="{{Industry.IndustryId}}" 
-									ngSelected="CompanyEntity.IndustryId==Industry.IndustryId">{{Industry.IndustryName}}</option>
-								</select>
-									<span class="error_span" *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)">  
-										<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">
-											Please select Industry										</span> 
-									</span> 
-          </div>
-          <div class="form-group">
-            <label><span>*</span>Phone Number</label>
-            <input type="phonenum" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1"
-						pattern="[0-9\-.()+\s]+" maxlength="13"
-							[(ngModel)]="CompanyEntity.PhoneNumber1" [ngClass]="{red_border: (PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)}"  required/>
-						<span class="error_span"  *ngIf="(PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)"> 
-							<span *ngIf="PhoneNumber1.errors.required || (PhoneNumber1.pristine && submitted)">Please enter Phone Number</span>
-							<span class="error_span" *ngIf="PhoneNumber1.errors && PhoneNumber1.errors.pattern">
-							Please enter a valid Phone Number.
-					  </span>
-						</span>
-          </div>
-          <div class="form-group">
-            <label><span>*</span>Website</label>
-            <input type="text" class="form-control" #Website="ngModel" maxlength="250" [(ngModel)]="CompanyEntity.Website" name="Website" 
-				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
-						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
-							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter Website</span>
-							<span *ngIf="Website.errors && Website.errors.pattern">Please enter a valid Website</span>
-						</span>
-          </div>
-		  
-		  </div>
-		
-			<a routerLink="/findcompany" class="next_btn arrow_down">Not Your Company?<br>
-			Let's go back to search</a>
-              </div>
+		 
 			</div>
         <div class="col-md-9 col-sm-8 right_content">
           <h2>PLEASE COMPLETE PERSONAL PROFILE</h2>

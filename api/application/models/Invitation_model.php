@@ -48,9 +48,20 @@ class Invitation_model extends CI_Model
 					);	
 					
 					$query=$this->db->insert('tblcompany',$company_data);
-		
+
+					$this->db->select('CompanyId');
+					$this->db->order_by('CompanyId','desc');
+					$this->db->limit(1);
+					$result=$this->db->get('tblcompany');
+					
+						$company_data = array();
+						foreach($result->result() as $row) 
+						{
+							$company_data = $row;
+						}
 				
 					$Invitation_data = array(
+							'CompanyId' =>$company_data->CompanyId,
 						'EmailAddress' => $post_Invitation['EmailAddress'],
 						'Code' => $post_Invitation['Code'],
 						'UpdatedOn' => date('y-m-d H:i:s')
@@ -71,8 +82,9 @@ class Invitation_model extends CI_Model
 	
 	public function getlist_Invitation() {
 
-		$this->db->select('UserInvitationId,EmailAddress,Status,Code,IsActive,UpdatedOn');
-		$result = $this->db->get('tbluserinvitation');	
+		$this->db->select('ui.UserInvitationId,ui.EmailAddress,ui.Status,ui.CompanyId,ui.Code,ui.IsActive,ui.UpdatedOn,tc.CompanyId,tc.Name');
+		$this->db->join('tblcompany tc', 'ui.CompanyId = tc.CompanyId', 'left');
+		$result = $this->db->get('tbluserinvitation ui');	
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

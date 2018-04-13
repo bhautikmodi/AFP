@@ -29,6 +29,7 @@
                 <tr>
                   <th>#</th>
                   <th>Email</th>
+                  <th>Company Name</th>
                   <th>Date Of Invitation</th>
                   <th>Status</th>
                   <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
@@ -39,6 +40,7 @@
                <tr class="odd gradeX" *ngFor="let Invitation of InvitationList;let i = index">
                   <td>{{i+1}}</td>
                   <td>{{Invitation.EmailAddress}}</td>
+                  <td>{{Invitation.Name}}</td>
                   <td>{{Invitation.UpdatedOn | date : 'MM/dd/yyyy'}}</td>
                   <td *ngIf="Invitation.Status=='1'">Successfully</td>
                   <td *ngIf="Invitation.Status=='0'">Pending</td>

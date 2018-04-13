@@ -2,7 +2,21 @@
 
 class Invitation_model extends CI_Model
  {
-
+	
+	public	function getlist_Industry()
+	{
+		$this->db->select('*');
+		$this->db->where('IsActive="1"');
+		$result=$this->db->get('tblmstindustry');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
+	
 	public function add_Invitation($post_Invitation) {
 		
 		if($post_Invitation) {
@@ -23,6 +37,19 @@ class Invitation_model extends CI_Model
 				if ($query->num_rows() == 1) {
 					return false;
 				} else {
+					$company_data=array(
+			
+						"Name"=>$post_Invitation['Name'],
+						"IndustryId"=>$post_Invitation['IndustryId'],
+						"Website"=>$post_Invitation['Website'],
+						"PhoneNumber"=>$post_Invitation['PhoneNumber1'],
+						"CreatedBy" =>1,
+						"UpdatedBy" =>1
+					);	
+					
+					$query=$this->db->insert('tblcompany',$company_data);
+		
+				
 					$Invitation_data = array(
 						'EmailAddress' => $post_Invitation['EmailAddress'],
 						'Code' => $post_Invitation['Code'],

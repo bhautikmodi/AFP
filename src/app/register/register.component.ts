@@ -16,7 +16,7 @@ declare var $: any;
 export class RegisterComponent implements OnInit {
 	RegisterEntity;
 	CountryList;
-	IndustryList;
+	
 	stateList;
 	submitted;
 	btn_disable;
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity={};
 			this.CompanyEntity={};
 			this.companydata={};
-			this.CompanyEntity.IndustryId ='';
+			
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
@@ -48,16 +48,7 @@ export class RegisterComponent implements OnInit {
 	// $("#submit_Modal").modal('show');
 // });
  	
- this.RegisterService.getIndustry()
-	//.map(res => res.json())
-	.then((data) => 
-	{
-		this.IndustryList = data;
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
+ 
 	let token = localStorage.getItem('CompanyId');
 	this.RegisterService.getAllCountry(token)
 	.then((data) => 

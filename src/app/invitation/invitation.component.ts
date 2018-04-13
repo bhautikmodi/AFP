@@ -82,7 +82,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						
-						this.router.navigate(['/findcompany']);
+						this.router.navigate(['/register']);
 					
 				}else if(data=='days')
 				{
@@ -117,7 +117,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					this.globals.msgflag = true;
 					this.btn_disable = false;
 				this.submitted = false;
-				//this.router.navigate(['/invitation/add']);
+				//this.router.navigate(['/register']);
 				
 					
 				}

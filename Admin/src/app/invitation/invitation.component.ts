@@ -15,6 +15,7 @@ import { CommonService } from '../services/common.service';
 export class InvitationComponent implements OnInit {
 	InvitationEntity;
 	submitted;
+	IndustryList;
 	btn_disable;
 	header;
 	type;
@@ -22,7 +23,7 @@ export class InvitationComponent implements OnInit {
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 
-	ngOnInit() {
+	ngOnInit() {debugger
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -39,6 +40,7 @@ export class InvitationComponent implements OnInit {
 			{
 				alert('error');
 			});	
+			
 		}
 	}
 
@@ -63,6 +65,17 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity = {};
 			this.InvitationEntity.UserInvitationId = 0;
 			this.InvitationEntity.IsActive = '1';
+			this.InvitationEntity.IndustryId ='';
+			this.InvitationService.getIndustry()
+			//.map(res => res.json())
+			.then((data) => 
+			{
+				this.IndustryList = data;
+			}, 
+			(error) => 
+			{
+				alert('error');
+			});	
 		}
 	}
 

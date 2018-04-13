@@ -56,7 +56,14 @@ class Invitation extends CI_Controller {
 				
 	}
 	
+	public function getAllIndustry()
+	{
+		$data="";	
 	
+		$data=$this->Invitation_model->getlist_Industry();
+	
+		echo json_encode($data);
+	}
 	public function add() {
 								
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);		

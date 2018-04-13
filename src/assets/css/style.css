@@ -53,8 +53,8 @@ h5{color:#A50034; display:block; font:normal 16px/18px 'Gotham-Bold'; margin:0 0
 /* ------- Top Area Strat ------- */
 /*--------------header and navigation--------------------*/
 .container{ width:100%; max-width:100%; padding:0 30px;}
-header{ position: relative; z-index: 999; width: 100%; padding: 0; background:url("../images/afp-pattern.png") center 165% no-repeat #FAFAFA; background-size:28%;}
-header .logo{padding:7px 0; width:95%;}
+header{ position: relative; z-index: 999; width: 100%; padding: 0; background:url("../images/afp-pattern.png") center -5px no-repeat #FAFAFA; background-size:425px;}
+header .logo{padding:7px 0; width:207px;}
 nav{ display:inline-block;}
 .account_menu{ margin-top:30px; display:block;}
 .account_menu li{position:relative; display:inline-block; margin-left:10px;}
@@ -112,7 +112,7 @@ footer .address_footer{ margin:0 0 20px 0; display:block;}
 .inner_content{ padding:30px 0; position:relative; min-height:450px; background:#fff;}
 .height_zero{min-height:0!important;}
 
-.invitation_text input{ width:14%; display:inline-block; margin:0 4px; text-align:center;}
+.invitation_text input{ width:14%; display:inline-block; margin:0 3px; text-align:center;}
 
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"Gotham-book"; font-size:14px!important;}
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";}
@@ -142,7 +142,7 @@ select option{ background:#f4f4f4!important; padding:7px!important; color:#555!i
 .findcompany_padding.height_zero{padding:30px 0!important; transition:all 0.8s ease 0s;}
 .display_company{display:none;}
 
-#submit_Modal .modal-dialog{margin:18% auto; width: 430px;}
+#submit_Modal .modal-dialog{margin:20% auto; width: 430px;}
 #submit_Modal .modal-footer{text-align:center!important; margin:0;}
 #submit_Modal .modal-footer button{ display:inline-block; float:none; margin:0 5px; width:100px;}
 
@@ -192,7 +192,7 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .dashboard_box .dashboard_item a:after{ background: #007699; width:0;}
 .dashboard_box .dashboard_item a:hover:after{ width:100%; color: #fff; }
 .dashboard_box .dashboard_chart_block{ width: 100%; height: 200px;}
-.startassessment_box{position:relative; width:100%; background:url("../images/afp-pattern.png") 83% -20% no-repeat #002B49; background-size:80%; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:140px 10px 0 10px; box-shadow:1px 1px 5px #000; }
+.startassessment_box{position:relative; width:100%; background:url("../images/afp-pattern.png") top center no-repeat #002B49; background-size:80%; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:140px 10px 0 10px; box-shadow:1px 1px 5px #000; }
 
 .general_user_section table tr th,.general_user_section tr td{ font-size:13px;}
 .general_user_section table{margin-bottom:0;}
@@ -272,7 +272,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 
 .help_intro{position:absolute; right:0; top:0;}
 .help_intro span.question{font-size:40px; right:30px; top:0; cursor:pointer; color:#0085AD; position:relative;}
-.help_intro .display_div{ position:fixed; width:300px; height:100%; right:-300px; top:0; z-index:999; background:#fff; padding:20px; border-left:1px solid #ccc; transition:all 0.5s ease 0s; box-shadow:1px 1px 10px rgba(0,0,0,.31); visibility:hidden;}
+.help_intro .display_div{ position:fixed; width:300px; height:auto; right:-300px; top:auto; z-index:999; background:#fff; padding:20px; border-left:1px solid #ccc; transition:all 0.5s ease 0s; box-shadow:1px 1px 10px rgba(0,0,0,.31); visibility:hidden;}
 .help_intro:hover .display_div{ right:0; transition:all 0.5s ease 0s; visibility:visible;}
 
 .intro_block{display:block; padding:0 0 0 5px; text-align:left;} 
@@ -283,6 +283,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .preview_ksa table td{ font-size:13px;}
 
 .grey_bg{padding:30px 0; background:#f4f4f4; }
+.error_span{color:red; font-size:11px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;}
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Pages Contener Area End ------- */
@@ -299,17 +300,45 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.findcompany_padding{padding:250px 0!important;}
 }
 @media (max-width:1500px){
-	.invitation_text input{margin: 0 2px; width: 50px;}
-	.invitation_text .minus_text::before{ left: 169px;}	
 	.register_company_button a{font-size: 11px;}
 }
 @media (max-width:1340px){
-	.invitation_text input{margin: 0 2px; width: 45px;}
-	.invitation_text .minus_text::before{ left: 148px;}	
+	.invitation_text input{width: 13%;}
+	.dashboard_section .col-md-3{width:33%;}
 }
 @media (min-width: 992px) and (max-width:1200px) {
 }
 @media (min-width: 992px) {
      ul li ul.dropdown-menu {display:block; opacity:0; visibility:hidden;-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
      ul li:hover ul.dropdown-menu {opacity:1; top:15px; visibility:visible; transition-property: color, background-color; -webkit-transform: translateY(24px);-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
+}
+@media (max-width:991px){
+	.home_banner .banner_text{padding:5% 0 0 0;}
+	footer .address_footer{line-height:28px;}
+	header{background-size:300px;}
+	footer .address_footer span{display:block;}
+	.dashboard_section .col-md-3{width:45%;}
+}
+@media (max-width:767px){
+	.home_banner .banner_text .title_banner{font-size:15px; line-height:25px;}
+	.home_banner .banner_text .title_banner span{font-size:30px; line-height:40px;}
+	footer{line-height:18px;}
+	.container{ padding:0 15px;}
+	header{background:#fafafa;}
+	.form_bg{ margin: 0 15px; clear: both; display: block;}
+	.invitation_text input{padding:0; margin: 0 1px;}
+	.login_padding,.dashboard_section,.forgot_padding,.change_padding{padding:30px 0; min-height:0;}
+	.dashboard_section .col-md-3{width:80%;}
+}
+@media (max-width:500px){
+	.home_banner .banner_text {position:relative; top:0; left:0; padding:30px 0;}	
+	.home_banner .banner_text .title_banner{font-size:15px; line-height:30px;}
+	.home_banner .banner_text .title_banner span{font-size:35px; line-height:45px;}
+	#submit_Modal .modal-dialog{ width: 90%;}
+}
+@media (max-width:400px){
+	header .col-xs-9, header .col-xs-3{width:100%; text-align:center;}
+	header .logo{margin:0 auto;}
+	.account_menu{margin:10px 0;}
+	.dashboard_section .col-md-3{width:100%;}
 }

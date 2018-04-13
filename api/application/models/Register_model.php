@@ -86,6 +86,8 @@ class Register_model extends CI_Model
 				$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
 				$res = $this->db->update('tbluserinvitation',$Invitation_data);
 				
+
+
 				$user_data=array(
 						"RoleId"=>3,
 						//"CompanyId"=>$com_reg['CompanyId'],

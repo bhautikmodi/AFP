@@ -32,7 +32,7 @@
           <div class="form-group">
                                     <label><span>*</span>Email</label>
                                     <input type="email" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #EmailAddress="ngModel" [(ngModel)]="loginEntity.EmailAddress" name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>  
-                                    <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
                                         <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter email</span>
                                         <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
                                             Please enter a valid email
@@ -42,7 +42,7 @@
 								<div class="form-group">
                                     <label><span>*</span>Password</label>
                                     <input type="password" class="form-control" pattern="[a-zA-Z0-9.-_@$*&!#]{8,}" #Password="ngModel" [(ngModel)]="loginEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>  
-                                    <span style="color:red" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)"> 
                                         <span *ngIf="Password.errors.required || (Password.pristine && submitted)">Please enter password</span>
                                         <span *ngIf="Password.errors && Password.errors.pattern">
                                             Minimum lenght is 8 character

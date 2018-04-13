@@ -27,9 +27,9 @@
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Company Name</label>
                                             <input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z ]{1,}"  [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
-											<span style="color:red;" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+											<span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
 											<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company Name </span>
-											 <span style="color:red;" *ngIf="Name.errors && Name.errors.pattern">
+											 <span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
 												Please input a valid Company Name.
 										  </span>
 											</span>
@@ -45,7 +45,7 @@
 										  <option value="">Select</option>
     <option class='option' *ngFor='let industry of IndustryList' [value]="industry.IndustryId">{{industry.IndustryName}}</option>
 </select>
-					 <span style="color:red;"  *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)"> 
+					 <span class="error_span"  *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)"> 
 												<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">Please select Industry Name </span>
 											</span>
 											 
@@ -58,9 +58,9 @@
                                             <label><span class="required">*</span>Website</label>
                                             <input type="email" class="form-control" #Website="ngModel" name="Website" 
 												[(ngModel)]="companyEntity.Website" pattern="[a-zA-Z0-9./:-]{0,}"  [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>
-											<span style="color:red;"  *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
+											<span class="error_span"  *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
 												<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter Website </span>
-												 <span style="color:red;" *ngIf="Website.errors && Website.errors.pattern">
+												 <span class="error_span" *ngIf="Website.errors && Website.errors.pattern">
 												Please enter a valid Website.
 										  </span>
 											</span>
@@ -73,10 +73,10 @@
                                             <input type="phonenum" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber"
 											pattern="[0-9\-.()\s]+" maxlength="13"
 												[(ngModel)]="companyEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
-											<span style="color:red;"  *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
+											<span class="error_span"  *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
 												<span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter Phone Number</span>
 											</span>
-											<span style="color:red;" *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">
+											<span class="error_span" *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">
 												Please input a valid Phone Number.
 										  </span>
                                         </div>
@@ -98,7 +98,7 @@
 									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
 									  <label for="role2">No </label>
 									</div><br>
-									<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
 									  </span>
 

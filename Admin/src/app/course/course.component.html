@@ -26,7 +26,7 @@
                                             <label><span class="required">*</span>Name</label>
                                             <input type="text"  #Name="ngModel" [(ngModel)]="CourseEntity.Name" class="form-control"
 											name="Name" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/?/)/./ ]{0,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
-											<span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)">
+											<span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)">
 								  <span *ngIf="Name.errors && Name.errors.required">
 												Please enter Course Name
 											</span>
@@ -45,7 +45,7 @@
 									<option *ngFor="let CourseLevel of CourseLevelList" value="{{CourseLevel.ConfigurationId}}" 
 									ngSelected="CourseEntity.CourseLevelId==CourseLevel.ConfigurationId">{{CourseLevel.Value}}</option>
 								</select>
-									<span style="color:red" *ngIf="(CourseLevelId.dirty && CourseLevelId.invalid) || (CourseLevelId.pristine && submitted)">  
+									<span class="error_span" *ngIf="(CourseLevelId.dirty && CourseLevelId.invalid) || (CourseLevelId.pristine && submitted)">  
 										<span *ngIf="CourseLevelId.errors.required || (CourseLevelId.pristine && submitted)">
 											Please select Cource Level
 										</span> 
@@ -58,7 +58,7 @@
                                             <label><span class="required">*</span>Key Concepts</label>
                                             <textarea  #KeyConcepts="ngModel" [(ngModel)]="CourseEntity.KeyConcepts" class="form-control"
 											name="KeyConcepts" [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
-													<span style="color:red;"  *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
+													<span class="error_span"  *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
 												<span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter Key Concepts </span>
 											</span>
                                         </div>
@@ -74,7 +74,7 @@
 									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseEntity.IsActive" required/>
 									  <label for="role2">No </label>
 									</div><br>
-									<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
 									  </span>
                                         </div>

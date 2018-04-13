@@ -30,7 +30,7 @@
                 <option value="" ngSelected='placeholderEntity.TableId==""'>Select</option>
                 <option *ngFor="let table of tableList" value="{{table.TableId}}" ngSelected="placeholderEntity.TableId==table.TableId">{{table.DisplayName}}</option>
             </select>
-            <span style="color:red" *ngIf="(TableId.dirty && TableId.invalid) || (TableId.pristine && submitted)"> 
+            <span class="error_span" *ngIf="(TableId.dirty && TableId.invalid) || (TableId.pristine && submitted)"> 
                 <span *ngIf="TableId.errors.required || (TableId.pristine && submitted)">Please select table</span>
                 </span>
         </div>
@@ -41,7 +41,7 @@
                     <option value="" ngSelected='placeholderEntity.ColumnId==""'>Select</option>
                     <option *ngFor="let column of columnList" value="{{column.ColumnId}}" ngSelected="placeholderEntity.ColumnId==column.ColumnId">{{column.DisplayName}}</option>
                 </select>
-                <span style="color:red" *ngIf="(ColumnId.dirty && ColumnId.invalid) || (ColumnId.pristine && submitted)"> 
+                <span class="error_span" *ngIf="(ColumnId.dirty && ColumnId.invalid) || (ColumnId.pristine && submitted)"> 
                     <span *ngIf="ColumnId.errors.required || (ColumnId.pristine && submitted)">Please select field</span>
                     </span>
             </div>
@@ -50,7 +50,7 @@
           <div class="form-group col-md-6">
                 <label><span class="required">*</span>Placeholder Name</label>
                 <input type="text" class="form-control" #PlaceholderName="ngModel" [(ngModel)]="placeholderEntity.PlaceholderName" name="PlaceholderName" pattern="[a-zA-Z0-9\-'_ ]{1,100}" [ngClass]="{red_border: (PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)}" required/>  
-                <span style="color:red" *ngIf="(PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)"> 
+                <span class="error_span" *ngIf="(PlaceholderName.dirty && PlaceholderName.invalid) || (PlaceholderName.pristine && submitted)"> 
                 <span *ngIf="PlaceholderName.errors.required || (PlaceholderName.pristine && submitted)">Please enter placeholder</span>
                 <span *ngIf="PlaceholderName.errors && PlaceholderName.errors.pattern">Please enter a valid placeholder</span>
             </span>
@@ -68,7 +68,7 @@
                 <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="placeholderEntity.IsActive" required/>
                 <label for="role2">No </label>
               </div><br>
-              <span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+              <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                   <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
                 </span>
   

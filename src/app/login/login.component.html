@@ -1,10 +1,22 @@
+<div class="clearfix"></div>
+<div class="inner_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h1>Sign In</h1>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
 
 <!-- Inner Section -->
 <div class="inner_content login_padding">
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
-        <h2 class="text-center">Sign In</h2>
+      
         <div class="clearfix"></div>
 
         <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag || invalid">
@@ -38,8 +50,9 @@
                                     </span>
                                 </div>  
           <a routerLink="/forgotpassword" class="forgot_paswd">Forgot Password? </a>
-          <button class="next_btn pull-right" type="submit">Sign In</button>
+          <button class="next_btn pull-right" type="submit"><span>Sign In</span></button>
         </form>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

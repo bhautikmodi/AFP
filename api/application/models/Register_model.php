@@ -107,15 +107,15 @@ class Register_model extends CI_Model
 				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
 				 {
-					//$this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
+					// $this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
 					// $this->db->order_by('UserId','desc');
 					// $this->db->limit(1);
 					// $query=$this->db->get('tbluser');
 					// if ($query->num_rows() == 1) {
-						// return $query->result();
-						// } 
+					// 	return $query->result();
+					// 	} 
 					// else {
-							// return false;
+					// 		return false;
 					// }
 					return true;
 				}

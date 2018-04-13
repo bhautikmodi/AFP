@@ -36,6 +36,7 @@ export class ForgotpasswordComponent implements OnInit {
 			this.ForgotpasswordService.add(this.fgpassEntity)
 			.then((data) => 
 			{debugger
+				
 				if(data=='Code duplicate')
 				{
 						this.globals.message = 'Invalid user Email-Id';
@@ -55,8 +56,8 @@ export class ForgotpasswordComponent implements OnInit {
 					fgpassForm.form.markAsPristine();
 					this.globals.isLoading = false;
 					this.globals.message = 'Password reset link has been sent to your Email Id. Please check your Email.';
-						this.globals.type = 'success';
-						this.globals.msgflag = true;
+					this.globals.type = 'success';
+					this.globals.msgflag = true;
 						
 					
 					

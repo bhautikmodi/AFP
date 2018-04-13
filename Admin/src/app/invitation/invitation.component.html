@@ -89,9 +89,14 @@
                             <div class="form-group col-md-6">
                                   <label><span class="required">*</span>Email Address</label>
                                   <input type="Email" placeholder="Email" class="form-control" #EmailAddress="ngModel" email 
+<<<<<<< HEAD
                                   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
                                   [(ngModel)]="InvitationEntity.EmailAddress" name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>
                                   <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+=======
+                                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress" name="EmailAddress" [ngClass]="{red: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>
+                                  <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+>>>>>>> 6068e67f1743cdd68f778c31a198a0061fe44440
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">
                                                 Please enter Email Address

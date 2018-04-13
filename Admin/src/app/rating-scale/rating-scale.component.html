@@ -26,7 +26,7 @@
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Rating Scale</label>
                                     <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ratingscaleEntity.Name" name="Name" pattern="[a-zA-Z ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
-                                    <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                       <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter rating sacle</span>
                                       <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid rating sacle</span>
                                   </span>
@@ -35,7 +35,7 @@
                                   <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Description</label>
                                     <input type="text" class="form-control" #Description="ngModel" [(ngModel)]="ratingscaleEntity.Description" name="Description" pattern="[a-zA-Z,'./ ]{1,500}" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required>                              
-                                    <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
                                       <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
                                       <span *ngIf="Description.errors && Description.errors.pattern">Please enter a valid description</span>
                                     </span>
@@ -54,7 +54,7 @@
                                 <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ratingscaleEntity.IsActive" required/>
                                 <label for="role2">No </label>
                               </div><br>
-                              <span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+                              <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                                   <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
                                 </span>
   

@@ -26,7 +26,7 @@
                               <div class="form-group col-md-6">
                                   <label><span class="required">*</span>Domain</label>
                                   <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="domainEntity.Name" name="Name" pattern="[a-zA-Z ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
-                                  <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+                                  <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                     <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter domain name</span>
                                     <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid domain</span>
                                 </span>
@@ -44,7 +44,7 @@
               <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="domainEntity.IsActive" required/>
               <label for="role2">No </label>
             </div><br>
-            <span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+            <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                 <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
               </span>
 

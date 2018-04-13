@@ -27,7 +27,7 @@
                  <input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}" 
 				 #Password="ngModel" 
 				 [(ngModel)]="resetEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
-                   <span style="color:red" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
+                   <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
 									<span *ngIf="Password.errors && Password.errors.required">
 												Please enter Password
 											</span>
@@ -43,7 +43,7 @@
 					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}" 
 					#cPassword="ngModel"
 					[(ngModel)]="resetEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
-                   <span style="color:red" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
+                   <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
 									Please enter password
 								</span>

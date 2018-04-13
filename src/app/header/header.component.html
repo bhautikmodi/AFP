@@ -7,7 +7,20 @@
       </div>
       <!-- End Logo --> 
   
+     <!-- <div class="col-md-10 col-sm-9 col-xs-9 text-right" *ngIf="globals.authData==undefined && globals.check_login">
+        <ul class="account_menu">
+          <li><a routerLink="/register"> <i class="fa fa-sign-in" aria-hidden="true"></i> Register</a></li>   
+        </ul>
+      </div>
+
+    
+      <div class="col-md-10 col-sm-9 col-xs-9 text-right" *ngIf="globals.authData==undefined && !globals.check_login">
+        <ul class="account_menu">
+          <li><a routerLink="/login"> <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>   
+        </ul>
+      </div> -->
       
+
     
       <div class="col-md-10 col-sm-9 col-xs-9 text-right" *ngIf="globals.authData==undefined">
         <ul class="account_menu">

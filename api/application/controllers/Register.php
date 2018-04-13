@@ -61,7 +61,7 @@ class Register extends CI_Controller
 				{
 					
 					$result = $this->Register_model->add_Register($post_user); 
-			
+					print_r($result);exit;
 					if($result)
 					{
 						//	$token = array(

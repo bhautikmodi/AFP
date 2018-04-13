@@ -108,7 +108,7 @@
               </div>
 			</div>
         <div class="col-md-9 col-sm-8 right_content">
-          <h2>Personal Details</h2>
+          <h2>PLEASE COMPLETE PERSONAL PROFILE</h2>
 		  
              
 			 
@@ -306,12 +306,13 @@
             </div>
             <div class="clearfix"></div>
           </div>
-		  <button class="next_btn pull-right" [disabled]="btn_disable" id="employee_btn"  type="submit">Submit</button>
+		  <button class="next_btn pull-right" [disabled]="btn_disable" id="employee_btn"  type="submit"><span>Submit</span></button>
           
           <!-- <button type="submit" class="next_btn pull-right"  >Submit</button> -->
 		  
         </div>
-		</form>
+    </form>
+    <div class="clearfix"></div>
       </div>
     </div>
   </div>
@@ -324,8 +325,8 @@
         <p class="text-center no_padding">Are you sure you want to submit your Registration?</p>
       </div>
       <div class="modal-footer text-center">
-        <button type="button" class="next_btn" id="yes_btn" (click)="finalsubmit(RegisterFormfinal)">Yes</button>
-        <button type="button" class="red_btn" data-dismiss="modal">No</button>
+        <button type="button" class="next_btn" id="yes_btn" (click)="finalsubmit(RegisterFormfinal)"><span>Yes</span></button>
+        <button type="button" class="red_btn" data-dismiss="modal"><span>No</span></button>
       </div>
     </div>
   </div>

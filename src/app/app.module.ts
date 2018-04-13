@@ -112,7 +112,7 @@ import { HomeComponent } from './home/home.component';
 			//path : 'resetpass',
 			path : 'resetpass/:id',
 			component : ResetpassComponent,
-			//canActivate : [AuthGuard]
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'forgotpassword',

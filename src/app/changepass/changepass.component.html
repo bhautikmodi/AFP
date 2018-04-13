@@ -19,7 +19,7 @@
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
         <div class="clearfix"></div>
 		<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> </button>
   {{globals.message}}
 </div>
                <form #newpassForm="ngForm" (ngSubmit)="addNewPassword(newpassForm)">
@@ -74,8 +74,9 @@
 							  </span>
 					</span>
               </div>
-          <button class="next_btn pull-right" type="submit">Submit</button>
-        </form>
+          <button class="next_btn pull-right" type="submit"><span>Submit</span></button>
+				</form>
+				<div class="clearfix"></div>
       </div>
     </div>
   </div>

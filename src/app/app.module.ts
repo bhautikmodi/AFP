@@ -77,10 +77,9 @@ import { HomeComponent } from './home/home.component';
 			path : '',
 			component : HomeComponent,
 			
-		},
-		
+		},		
 		{
-			path : 'dashbord',
+			path : 'dashboard',
 			component : DashbordComponent,
 		},
 		{

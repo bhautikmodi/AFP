@@ -58,7 +58,7 @@
                 <!-- email from end --> 
               
               <!-- invitation code start -->
-              <form class="form-validate" #invitationForm="ngForm" (ngSubmit)="addinvitation(invitationForm)">
+              <form class="form-validate" #invitationForm="ngForm" (ngSubmit)="addinvitation(invitationForm)" *ngIf="globals.authData.RoleId==4">
                 
                 <!-- No of ksa code start -->
                 <div class="form-group col-md-12">

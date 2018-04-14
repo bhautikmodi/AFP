@@ -25,7 +25,7 @@ export class AssessmentService {
   }
 
   saveKsa(ksaEntity)
-  {
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.post(this.globals.baseAPIUrl + 'Assessment/saveKsa',ksaEntity, this.globals.headerpath)
       .toPromise()

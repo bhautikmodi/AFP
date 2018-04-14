@@ -16,8 +16,8 @@ class Invitation extends CI_Controller {
 	public function check(){
 
 		$this->db->select('*');
-		$this->db->from('tbluserinvitation');
-		$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
+		$this->db->from('tblemailtemplate');
+		$this->db->where('Token','Registration');
 		$this->db->limit(1);
 		$query = $this->db->get();
 
@@ -34,7 +34,9 @@ class Invitation extends CI_Controller {
 		$this->email->from('myopeneyes3937@gmail.com');
 		$this->email->to('vidhi.bathani@theopeneyes.in');		
 		$this->email->subject('Invitation mail');
-		$this->email->message('sending mail recive.....');
+		$this->email->cc('vidhi.shekhat@gmail.com,nirav.patel@theopeneyes.in');
+		$this->email->bcc('vidhi.bathani@theopeneyes.in,mitesh.patel@theopeneyes.in');
+		$this->email->message('hi vidhi, sending mail recive.....');
 		if($this->email->send())
 		{
 			echo 'success';

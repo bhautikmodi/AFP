@@ -26,7 +26,7 @@
                                             <label><span class="required">*</span>Course Level</label>
 											<input type="text"  pattern="[a-zA-Z.'/,-/& ]{0,}"  #CourseLevel="ngModel" [(ngModel)]="CourseLevelEntity.CourseLevel" class="form-control"
 											name="CourseLevel" [ngClass]="{red_border: (CourseLevel.dirty && CourseLevel.invalid) || (CourseLevel.pristine && submitted)}" required/>
-											<span style="color:red" *ngIf="(CourseLevel.dirty && CourseLevel.invalid) || (CourseLevel.pristine && submitted)">
+											<span class="error_span" *ngIf="(CourseLevel.dirty && CourseLevel.invalid) || (CourseLevel.pristine && submitted)">
 								  <span *ngIf="CourseLevel.errors && CourseLevel.errors.required">
 												Please enter Course Level.
 											</span>
@@ -42,7 +42,7 @@
                                          
 											<input type="text"  #Keyword="ngModel" pattern="[a-zA-Z]{0,}"   [(ngModel)]="CourseLevelEntity.Keyword" class="form-control txtupper"
 											name="Keyword" [ngClass]="{red_border: (Keyword.dirty && Keyword.invalid) || (Keyword.pristine && submitted)}" required/>
-													<span style="color:red" *ngIf="(Keyword.dirty && Keyword.invalid) || (Keyword.pristine && submitted)">
+													<span class="error_span" *ngIf="(Keyword.dirty && Keyword.invalid) || (Keyword.pristine && submitted)">
 								  <span *ngIf="Keyword.errors && Keyword.errors.required">
 												Please enter Keyword.
 											</span>
@@ -57,7 +57,7 @@
                                             <label><span class="required">*</span>Description</label>
                                             <textarea  #Description="ngModel" [(ngModel)]="CourseLevelEntity.Description" class="form-control"
 											name="Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required></textarea>
-													<span style="color:red;"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+													<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
 												<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description </span>
 											</span>
                                         </div>
@@ -73,7 +73,7 @@
 									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
 									  <label for="role2">No </label>
 									</div><br>
-									<span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
 									  </span>
 

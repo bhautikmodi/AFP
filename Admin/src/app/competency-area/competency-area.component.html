@@ -26,7 +26,7 @@
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Name</label>
                                     <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="areaEntity.Name" name="Name" pattern="[a-zA-Z/ ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
-                                    <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                       <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter competency area</span>
                                       <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid name</span>
                                     </span>
@@ -41,7 +41,7 @@
                                             <option *ngIf="(domain.IsActive==1 && areaEntity.CAreaId==0)||((domain.IsActive==1 || areaEntity.DomainId==domain.DomainId) && areaEntity.CAreaId>0)" value="{{domain.DomainId}}" ngSelected="areaEntity.DomainId==domain.DomainId">{{domain.Name}}</option>
                                         </ng-container>                                        
                                     </select>
-                                    <span style="color:red" *ngIf="(DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)"> 
                                         <span *ngIf="DomainId.errors.required || (DomainId.pristine && submitted)">Please select domain</span>
                                       </span>
                                   </div>
@@ -52,17 +52,17 @@
                                         <!-- <textarea class="form-control" style="width: 1007px;" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description"></textarea>
                                         <br> -->
                                         <textarea class="form-control" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" id="Description"	rows="10" cols="60" contenteditable="true"></textarea>
-                                        <!-- <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+                                        <!-- <span class="error_span" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
                                             <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
                                         </span> -->
-                                      <span style="color:red" *ngIf="des_valid">Please enter description</span>
+                                      <span class="error_span" *ngIf="des_valid">Please enter description</span>
                                     </div>
                     
                                 <div class="clearfix"></div>
                                 <!-- <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Description</label>
                                     <textarea class="form-control" #Description="ngModel" [(ngModel)]="areaEntity.Description" name="Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required></textarea>
-                                    <span style="color:red" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
                                         <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
                                       </span>
                                 </div> -->
@@ -70,7 +70,7 @@
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Key Concepts</label>
                                     <textarea class="form-control" #KeyConcepts="ngModel" [(ngModel)]="areaEntity.KeyConcepts" name="KeyConcepts" [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
-                                    <span style="color:red" *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
                                         <span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter key concepts</span>
                                       </span>
                                 </div>
@@ -86,7 +86,7 @@
                                         <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="areaEntity.IsActive" required/>
                                         <label for="role2">No </label>
                                       </div><br>
-                                      <!-- <span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+                                      <!-- <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                                           <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
                                         </span>                           -->
                                 </div>

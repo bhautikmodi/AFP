@@ -27,7 +27,7 @@
                                     <label><span class="required">*</span>Name</label>
                                     <textarea type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" pattern="[a-zA-Z0-9/',;.&()?\-’ ]{1,500}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required></textarea>
                                     <!-- <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>   -->
-                                    <span style="color:red" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                       <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter ksa</span>
                                       <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid ksa</span>
                                     </span>
@@ -39,7 +39,7 @@
                                         <option value="" ngSelected='ksaEntity.CAreaId==""'>Select</option>
                                         <option *ngFor="let area of areaList" value="{{area.CAreaId}}" ngSelected="ksaEntity.CAreaId==area.CAreaId">{{area.Name}}</option>
                                     </select>
-                                    <span style="color:red" *ngIf="(CAreaId.dirty && CAreaId.invalid) || (CAreaId.pristine && submitted)"> 
+                                    <span class="error_span" *ngIf="(CAreaId.dirty && CAreaId.invalid) || (CAreaId.pristine && submitted)"> 
                                         <span *ngIf="CAreaId.errors.required || (CAreaId.pristine && submitted)">Please select competency area</span>
                                       </span>
                                   </div>
@@ -57,7 +57,7 @@
                                         <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ksaEntity.IsActive" required/>
                                         <label for="role2">No </label>
                                       </div><br>
-                                      <span style="color:red" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+                                      <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                                           <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
                                         </span>                          
                                 </div>

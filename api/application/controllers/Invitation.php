@@ -58,7 +58,14 @@ class Invitation extends CI_Controller {
 				
 	}
 	
+	public function getAllIndustry()
+	{
+		$data="";	
 	
+		$data=$this->Invitation_model->getlist_Industry();
+	
+		echo json_encode($data);
+	}
 	public function add() {
 								
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);		
@@ -161,11 +168,8 @@ class Invitation extends CI_Controller {
 			{
 			
 				$result = $this->Invitation_model->Invitation_code($post_Invitation);
-				if($result=='true')
-				{
-					echo json_encode("Code success");
-				}	
-				elseif($result=='days')
+				
+				if($result=='days')
 				{
 					echo json_encode("days");
 				}elseif($result=='revoked')
@@ -178,6 +182,9 @@ class Invitation extends CI_Controller {
 				elseif($result=='code')
 				{
 					echo json_encode("code");
+				}
+				else{
+					echo json_encode($result);
 				}
 										
 		}

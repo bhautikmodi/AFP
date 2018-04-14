@@ -30,11 +30,11 @@
         <form class="form-validate"  #InvitationForm="ngForm" (ngSubmit)="addInvitation(InvitationForm)">
           <div class="form-group">
             <label><span>*</span>Email </label>
-             <input type="Email" placeholder="Email" class="form-control" #EmailAddress="ngModel" email 
+             <input type="Email" class="form-control" #EmailAddress="ngModel" email 
                                   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress"
 								  name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"
 								  required/>
-                                  <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+                                  <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">
                                                 Please enter Email Address
@@ -67,8 +67,9 @@
             </div>
           </div>
 		     <!-- <button type="submit" class="btn sub-btn">Next</button> -->
-       <button class="next_btn pull-right" type="submit">Next</button>
+       <button class="next_btn pull-right" type="submit"><span>Next</span></button>
         </form>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

@@ -72,7 +72,7 @@ class Register_model extends CI_Model
 		}
 		
 	}
-	public function add_Register($post_user,$com_reg)
+	public function add_Register($post_user)
 	{	
 		if($post_user)
 		{	
@@ -86,11 +86,11 @@ class Register_model extends CI_Model
 				$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
 				$res = $this->db->update('tbluserinvitation',$Invitation_data);
 				
-            if($com_reg['CompanyId']>0)
-			{	
-					$user_data=array(
+
+
+				$user_data=array(
 						"RoleId"=>3,
-						"CompanyId"=>$com_reg['CompanyId'],
+						"CompanyId"=>$post_user['CompanyId'],
 						"FirstName"=>$post_user['FirstName'],
 						"LastName"=>$post_user['LastName'],
 						"Title"=>$post_user['Title'],
@@ -109,79 +109,24 @@ class Register_model extends CI_Model
 				$res=$this->db->insert('tbluser',$user_data);
 				if($res)
 				 {
-					//$this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
-					// $this->db->order_by('UserId','desc');
-					// $this->db->limit(1);
-					// $query=$this->db->get('tbluser');
-					// if ($query->num_rows() == 1) {
-						// return $query->result();
-						// } 
-					// else {
-							// return false;
-					// }
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-				
-			}else
-			{
-				$company_data=array(
-			
-					"Name"=>$com_reg['Name'],
-					"IndustryId"=>$com_reg['IndustryId'],
-					"Website"=>$com_reg['Website'],
-					"PhoneNumber"=>$com_reg['PhoneNumber1'],
-					"CreatedBy" =>1,
-					"UpdatedBy" =>1
-				);	
-				
-				$res=$this->db->insert('tblcompany',$company_data);
-				
-				$this->db->select('CompanyId');
-				$this->db->order_by('CompanyId','desc');
-				$this->db->limit(1);
-				$result=$this->db->get('tblcompany');
-				
-					$company_data = array();
-					foreach($result->result() as $row) 
-					{
-						$company_data = $row;
+					$this->db->select('UserId,FirstName,LastName,RoleId,EmailAddress');
+					$this->db->order_by('UserId','desc');
+					$this->db->limit(1);
+					$query=$this->db->get('tbluser');
+					if ($query->num_rows() == 1) {
+						return $query->result();
+						} 
+					else {
+							return false;
 					}
-				
-				
-				
-				$user_data=array(
-					"RoleId"=>3,
-					"CompanyId"=>$company_data->CompanyId,
-					"FirstName"=>$post_user['FirstName'],
-					"LastName"=>$post_user['LastName'],
-					"Title"=>$post_user['Title'],
-					"EmailAddress"=>$post_user['EmailAddress'],
-					"Password"=>md5($post_user['Password']),
-					"Address1"=>$post_user['Address1'],
-					"Address2"=>$post_user['Address2'],
-					"CountryId"=>$post_user['CountryId'],
-					"StateId"=>$post_user['StateId'],
-					"City"=>$post_user['City'],
-					"ZipCode"=>$post_user['ZipCode'],
-					"PhoneNumber"=>$post_user['PhoneNumber'],
-					"CreatedBy" =>1,
-					"UpdatedBy" =>1,
-				);	
-				
-				$res=$this->db->insert('tbluser',$user_data);	
-				if($res)
-				{
 					return true;
 				}
 				else
 				{
 					return false;
 				}
-			}
+				
+			
 			
 		}
 		else
@@ -191,19 +136,7 @@ class Register_model extends CI_Model
 	}
 	
 	
-	function getlist_Industry()
-	{
-		$this->db->select('*');
-		$this->db->where('IsActive="1"');
-		$result=$this->db->get('tblmstindustry');
-		
-		$res=array();
-		if($result->result())
-		{
-			$res=$result->result();
-		}
-		return $res;
-	}
+	
 		
 		
 	public function get_userdata($user_id=Null)

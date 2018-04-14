@@ -15,8 +15,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { InvitationService } from './services/invitation.service';
-import { FindcompanyComponent } from './findcompany/findcompany.component';
-import { FindcompanyService } from './services/findcompany.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { WelcomeregisterComponent } from './welcomeregister/welcomeregister.component';
@@ -47,7 +45,6 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     ContactusComponent,
     InvitationComponent,
-    FindcompanyComponent,
     RegisterComponent,
     WelcomeregisterComponent,
 
@@ -91,10 +88,6 @@ import { HomeComponent } from './home/home.component';
 			component : InvitationComponent,
 		},		
 		{
-			path : 'findcompany',
-			component : FindcompanyComponent,
-		},
-		{
 			path : 'register',
 			component : RegisterComponent,
 			
@@ -118,7 +111,7 @@ import { HomeComponent } from './home/home.component';
 			//path : 'resetpass',
 			path : 'resetpass/:id',
 			component : ResetpassComponent,
-			//canActivate : [AuthGuard]
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'forgotpassword',
@@ -158,7 +151,7 @@ import { HomeComponent } from './home/home.component';
 
  
   
-  providers: [Globals,InvitationService,FindcompanyService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
+  providers: [Globals,InvitationService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
 
   bootstrap: [AppComponent]
 })

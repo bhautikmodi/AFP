@@ -15,5 +15,6 @@ export class Globals { debugger
   msgflag = false;
   message = '';
   type = '';
+  check_login = false;
   
 }

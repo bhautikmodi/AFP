@@ -35,7 +35,7 @@ loginEntity;
 				if(data='Code duplicate')
 				{
 					//alert('success');
-					this.globals.message = 'Update successfully';
+					this.globals.message = 'User login successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}else

@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
         <div class="clearfix"></div><div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"> </button>
   {{globals.message}}
 </div>
         <form #resetForm="ngForm" (ngSubmit)="addPassword(resetForm)">
@@ -27,7 +27,7 @@
                  <input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}" 
 				 #Password="ngModel" 
 				 [(ngModel)]="resetEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
-                   <span style="color:red" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
+                   <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
 									<span *ngIf="Password.errors && Password.errors.required">
 												Please enter Password
 											</span>
@@ -43,7 +43,7 @@
 					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}" 
 					#cPassword="ngModel"
 					[(ngModel)]="resetEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
-                   <span style="color:red" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
+                   <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
 									Please enter password
 								</span>
@@ -56,8 +56,9 @@
 							  </span>
 					</span>
               </div>
-          <button class="next_btn pull-right" type="submit">Submit</button>
+          <button class="next_btn pull-right" type="submit"><span>Submit</span></button>
         </form>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

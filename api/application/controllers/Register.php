@@ -45,23 +45,23 @@ class Register extends CI_Controller
 	
 	public function addRegister()
 	{
-		$data = json_decode(trim(file_get_contents('php://input')), true);
-		$post_user = $data['reg'];
-					$com_reg = $data['com'];
-		if ($data) 
+		$post_user = json_decode(trim(file_get_contents('php://input')), true);
+
+					
+		if ($post_user) 
 			{			
 			if($post_user['UserId']>0)
 				{
-					$result = $this->Register_model->edit_user($post_user,$com_reg);
+					$result = $this->Register_model->edit_user($post_user);
 					if($result)
 					{
-						echo json_encode($data);	
+						echo json_encode($post_user);	
 					}	
 				}else
 				{
 					
-					$result = $this->Register_model->add_Register($post_user,$com_reg); 
-			
+					$result = $this->Register_model->add_Register($post_user); 
+					//print_r($result);exit;
 					if($result)
 					{
 						//	$token = array(
@@ -117,15 +117,8 @@ public function getById($user_id=null)
 	}
 
 	
-	 // List all industry
-	public function getAllIndustry()
-	{
-		$data="";	
+
 	
-		$data=$this->Register_model->getlist_Industry();
-	
-		echo json_encode($data);
-	}
 	
 
 }

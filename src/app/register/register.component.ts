@@ -16,7 +16,7 @@ declare var $: any;
 export class RegisterComponent implements OnInit {
 	RegisterEntity;
 	CountryList;
-	IndustryList;
+	
 	stateList;
 	submitted;
 	btn_disable;
@@ -35,9 +35,8 @@ export class RegisterComponent implements OnInit {
 	  
 			this.btn_disable = false;
 			this.RegisterEntity={};
-			this.CompanyEntity={};
 			this.companydata={};
-			this.CompanyEntity.IndustryId ='';
+			
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
@@ -48,16 +47,7 @@ export class RegisterComponent implements OnInit {
 	// $("#submit_Modal").modal('show');
 // });
  	
- this.RegisterService.getIndustry()
-	//.map(res => res.json())
-	.then((data) => 
-	{
-		this.IndustryList = data;
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
+ 
 	let token = localStorage.getItem('CompanyId');
 	this.RegisterService.getAllCountry(token)
 	.then((data) => 
@@ -87,6 +77,7 @@ export class RegisterComponent implements OnInit {
 	let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
+
 						this.RegisterService.getById(id)
 							.then((data) => {
 								debugger
@@ -166,16 +157,9 @@ export class RegisterComponent implements OnInit {
 			this.submitted = true;
 		}
 		this.btn_disable = true;
-		if(this.companydata!=''){
-			var com=this.companydata;
-		}
-		else
-		{
-			this.CompanyEntity.CompanyId=0;
-			var com=this.CompanyEntity;
-		}
-		var data = {'com': com,'reg':this.RegisterEntity};
-			this.RegisterService.add(data)
+			let token = localStorage.getItem('CompanyId');
+			this.RegisterEntity.CompanyId=token;
+			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
 			{

@@ -2,7 +2,21 @@
 
 class Invitation_model extends CI_Model
  {
-
+	
+	public	function getlist_Industry()
+	{
+		$this->db->select('*');
+		$this->db->where('IsActive="1"');
+		$result=$this->db->get('tblmstindustry');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
+	
 	public function add_Invitation($post_Invitation) {
 		
 		if($post_Invitation) {
@@ -23,7 +37,31 @@ class Invitation_model extends CI_Model
 				if ($query->num_rows() == 1) {
 					return false;
 				} else {
+					$company_data=array(
+			
+						"Name"=>$post_Invitation['Name'],
+						"IndustryId"=>$post_Invitation['IndustryId'],
+						"Website"=>$post_Invitation['Website'],
+						"PhoneNumber"=>$post_Invitation['PhoneNumber1'],
+						"CreatedBy" =>1,
+						"UpdatedBy" =>1
+					);	
+					
+					$query=$this->db->insert('tblcompany',$company_data);
+
+					$this->db->select('CompanyId');
+					$this->db->order_by('CompanyId','desc');
+					$this->db->limit(1);
+					$result=$this->db->get('tblcompany');
+					
+						$company_data = array();
+						foreach($result->result() as $row) 
+						{
+							$company_data = $row;
+						}
+				
 					$Invitation_data = array(
+							'CompanyId' =>$company_data->CompanyId,
 						'EmailAddress' => $post_Invitation['EmailAddress'],
 						'Code' => $post_Invitation['Code'],
 						'UpdatedOn' => date('y-m-d H:i:s')
@@ -44,8 +82,9 @@ class Invitation_model extends CI_Model
 	
 	public function getlist_Invitation() {
 
-		$this->db->select('UserInvitationId,EmailAddress,Status,Code,IsActive,UpdatedOn');
-		$result = $this->db->get('tbluserinvitation');	
+		$this->db->select('ui.UserInvitationId,ui.EmailAddress,ui.Status,ui.CompanyId,ui.Code,ui.IsActive,ui.UpdatedOn,tc.CompanyId,tc.Name');
+		$this->db->join('tblcompany tc', 'ui.CompanyId = tc.CompanyId', 'left');
+		$result = $this->db->get('tbluserinvitation ui');	
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();
@@ -131,7 +170,7 @@ class Invitation_model extends CI_Model
 		if ($result->num_rows() == 1) 
 		{
 	
-				$this->db->select('UserInvitationId,Status,Code,EmailAddress');				
+				$this->db->select('UserInvitationId,Status,Code,EmailAddress,CompanyId');				
 				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
 				$this->db->where('Code',trim($post_Invitation['Code']));
 				$this->db->limit(1);
@@ -140,7 +179,7 @@ class Invitation_model extends CI_Model
 			
 				if ($query->num_rows() == 1) 
 				{
-					return 'true';
+					return $query->result();
 				
 				} else
 				{

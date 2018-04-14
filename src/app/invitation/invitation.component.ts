@@ -70,21 +70,10 @@ constructor( private http: Http,private globals: Globals, private router: Router
 			.then((data) => 
 			{debugger 
 				this.globals.isLoading = false;
-				if(data=='Code success')
-				{
-
-					this.btn_disable = false;
-					this.submitted = false;
-						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
-					this.InvitationEntity = {};
-					InvitationForm.form.markAsPristine();
-						this.globals.message = 'Code successfully';
-						this.globals.type = 'success';
-						this.globals.msgflag = true;
-						
-						this.router.navigate(['/findcompany']);
+			
 					
-				}else if(data=='days')
+					
+		        if(data=='days')
 				{
 					this.globals.message = 'Your invitation code has expired.';
 						this.globals.type = 'danger';
@@ -117,9 +106,23 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					this.globals.msgflag = true;
 					this.btn_disable = false;
 				this.submitted = false;
-				//this.router.navigate(['/invitation/add']);
+				//this.router.navigate(['/register']);
 				
 					
+				}else
+				{debugger
+					var CompanyId=data[0]['CompanyId'];
+					 localStorage.setItem('CompanyId',CompanyId);
+					this.btn_disable = false;
+					this.submitted = false;
+						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
+					this.InvitationEntity = {};
+					InvitationForm.form.markAsPristine();
+						this.globals.message = 'Code successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+						
+						this.router.navigate(['/register']);
 				}
 				
 			}, 

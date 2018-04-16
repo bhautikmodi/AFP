@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 			this.btn_disable = false;
 			this.RegisterEntity={};
 			this.companydata={};
-			
+		
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
@@ -46,9 +46,13 @@ export class RegisterComponent implements OnInit {
 // $('#employee_btn').click(function () {
 	// $("#submit_Modal").modal('show');
 // });
- 	
+ 	debugger
  
 	let token = localStorage.getItem('CompanyId');
+	if(token==null)
+	{
+		this.router.navigate(['/invitation']);					
+	}
 	this.RegisterService.getAllCountry(token)
 	.then((data) => 
 	{ 
@@ -111,6 +115,7 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						
 						// if(this.Disinv.Value ==1)
 						 // {debugger
 								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
@@ -168,6 +173,8 @@ export class RegisterComponent implements OnInit {
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
+				localStorage.removeItem('CompanyId');
+				localStorage.removeItem('EmailAddress');
 				RegisterForm.form.markAsPristine();
 					if (id) {
 						this.globals.message = 'Update successfully';

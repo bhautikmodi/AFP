@@ -135,14 +135,15 @@ import { HomeComponent } from './home/home.component';
 			canActivate : [AuthGuard]
 		},
 		{
-			path : '**',
-			redirectTo : 'dashboard'
-		},
-		{
 			path : 'login',
 			component : LoginComponent,
 			canActivate : [AuthGuard]
+		},
+		{
+			path : '**',
+			redirectTo : 'dashboard'
 		}
+		
 	])
   ],
 

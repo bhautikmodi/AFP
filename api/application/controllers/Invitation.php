@@ -15,35 +15,52 @@ class Invitation extends CI_Controller {
 
 	public function check(){
 
-		$this->db->select('*');
-		$this->db->from('tblemailtemplate');
-		$this->db->where('Token','Registration');
-		$this->db->limit(1);
-		$query = $this->db->get();
 
-		$config['protocol']='smtp';
-		$config['smtp_host']='ssl://smtp.googlemail.com';
-		$config['smtp_port']='465';
-		$config['smtp_user']='myopeneyes3937@gmail.com';
-		$config['smtp_pass']='W3lc0m3@2018';
-		$config['charset']='utf-8';
-		$config['newline']="\r\n";
-		$config['mailtype'] = 'html';							
-		$this->email->initialize($config);
+		$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.ToEmail,et.CcEmail,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = 'Registration' && et.IsActive = 1");
 
-		$this->email->from('myopeneyes3937@gmail.com');
-		$this->email->to('vidhi.bathani@theopeneyes.in');		
-		$this->email->subject('Invitation mail');
-		$this->email->cc('vidhi.shekhat@gmail.com,nirav.patel@theopeneyes.in');
-		$this->email->bcc('vidhi.bathani@theopeneyes.in,mitesh.patel@theopeneyes.in');
-		$this->email->message('hi vidhi, sending mail recive.....');
-		if($this->email->send())
-		{
-			echo 'success';
-		}else
-		{
-			echo 'fail';
+		foreach($query->result() as $row){
+			 $userId_ar = explode(',', $row->totalTo);
+			 foreach($userId_ar as $userId){
+				$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId');
+				foreach($query1->result() as $row1){
+					$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn WHERE tn.UserId = '.$userId);
+					$result2 = $query2->result();
+					//echo "{ ".$row1->PlaceholderName." }";
+					$row->EmailBody = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$row->EmailBody);
+					//echo $result2[0]->ColumnName;
+					//echo "<pre>"; print_r($result2[0]->$row1->ColumnName);					
+				}
+				echo $row->EmailBody;
+			 }
 		}
+		die;
+
+		
+		 
+
+		// $config['protocol']='smtp';
+		// $config['smtp_host']='ssl://smtp.googlemail.com';
+		// $config['smtp_port']='465';
+		// $config['smtp_user']='myopeneyes3937@gmail.com';
+		// $config['smtp_pass']='W3lc0m3@2018';
+		// $config['charset']='utf-8';
+		// $config['newline']="\r\n";
+		// $config['mailtype'] = 'html';							
+		// $this->email->initialize($config);
+
+		// $this->email->from('myopeneyes3937@gmail.com');
+		// $this->email->to('vidhi.bathani@theopeneyes.in');		
+		// $this->email->subject('Invitation mail');
+		// $this->email->cc('vidhi.shekhat@gmail.com,nirav.patel@theopeneyes.in');
+		// $this->email->bcc('vidhi.bathani@theopeneyes.in,mitesh.patel@theopeneyes.in');
+		// $this->email->message('hi vidhi, sending mail recive.....');
+		// if($this->email->send())
+		// {
+		// 	echo 'success';
+		// }else
+		// {
+		// 	echo 'fail';
+		// }
 	}
 	
 	public function getAll() {

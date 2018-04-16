@@ -139,7 +139,10 @@ import { HomeComponent } from './home/home.component';
 			component : ThankyouComponent,
 			canActivate : [AuthGuard]
 		},
+<<<<<<< HEAD
+=======
 		
+>>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
 		{
 			path : 'login',
 			component : LoginComponent,
@@ -148,8 +151,12 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : '**',
 			redirectTo : 'dashboard'
+<<<<<<< HEAD
+=======
 			
+>>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
 		}
+		
 	])
   ],
 

@@ -169,19 +169,21 @@ export class RegisterComponent implements OnInit {
 				this.submitted = false;
 				this.RegisterEntity = {};
 				RegisterForm.form.markAsPristine();
-					// if (id) {
-					// 	this.globals.message = 'Update successfully';
-					// 	this.globals.type = 'success';
-					// 	this.globals.msgflag = true;
-					// } else {
-					// 	this.globals.message = 'Add successfully';
-					// 	this.globals.type = 'success';
-					// 	this.globals.msgflag = true;
+					if (id) {
+						this.globals.message = 'Update successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+						this.router.navigate(['/dashboard']);
+					} else {
+						this.globals.message = 'Add successfully';
+						this.globals.type = 'success';
+						this.globals.msgflag = true;
+						this.router.navigate(['/welcome_register']);
  
-					// }
+					}
 
 							$("#submit_Modal").modal('hide');
-				this.router.navigate(['/welcome_register']);
+				
 			}, 
 			(error) => 
 			{

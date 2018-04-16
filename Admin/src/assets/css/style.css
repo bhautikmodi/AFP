@@ -67,7 +67,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 
  .wrapper {
     width: 100%;
-    margin-top: 93px !important;
+    margin-top: 105px !important;
 	/*margin-top: 55px!important;*/
     background-color: #11425a; 
 }
@@ -82,7 +82,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
     /*border-bottom:1px solid #0085AD;*/
 }
 
-a {text-decoration:none; color:#191919;}
+a {text-decoration:none; color:#191919; cursor: pointer;}
 
 /* Navigation */
 
@@ -633,17 +633,20 @@ table.dataTable thead .sorting:after {
 }*/
 
 .back_btn {
-    font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
+    font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #279989; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px;
 }
-.back_btn:hover, .back_btn:focus {
-    background-position: right bottom; color: #ffffff;
+
+.back_btn span{ position:relative; z-index:999; color:#fff!important;}
+
+.back_btn:hover:after, .back_btn:focus:after {
+    width:100%; transition:all 0.8s ease 0s;
 }
 .back_btn:after {
-	content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -41px; top: 8px; width: 28px; height: 24px; background-size:100%; 
+	content: ""; background:url(../img/right-white.png) center right no-repeat #198b7b; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; 
 }
-.btn.back_btn:active {
+/*.btn.back_btn:active {
 	background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;
-}
+}*/
 #Delete_Modal .modal-dialog {
     margin: 20% auto;
     width: 400px;

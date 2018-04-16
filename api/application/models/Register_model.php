@@ -119,7 +119,7 @@ class Register_model extends CI_Model
 					else {
 							return false;
 					}
-					return true;
+					//return true;
 				}
 				else
 				{

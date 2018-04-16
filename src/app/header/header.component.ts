@@ -19,5 +19,12 @@ logout(){ debugger
     this.globals.isLoading = true;
   window.location.href = '/login';
   }
-
+register()
+{
+  window.location.href = '/invitation';
+}
+log()
+{
+  window.location.href = '/login';
+}
 }

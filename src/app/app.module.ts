@@ -71,13 +71,15 @@ import { HomeComponent } from './home/home.component';
 	FormsModule,
 	RouterModule.forRoot([		
 		{
-			path : '',
+			path : 'home',
 			component : HomeComponent,
+			canActivate : [AuthGuard]
 			
 		},		
 		{
 			path : 'dashboard',
 			component : DashbordComponent,
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'contactus',
@@ -86,15 +88,18 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : 'invitation',
 			component : InvitationComponent,
+			canActivate : [AuthGuard]
 		},		
 		{
 			path : 'register',
 			component : RegisterComponent,
+			canActivate : [AuthGuard]
 			
 		},
 		{
         path : 'register/edit/:id',
-        component : RegisterComponent,
+		component : RegisterComponent,
+		canActivate : [AuthGuard]
         
 		},
 		{
@@ -134,6 +139,10 @@ import { HomeComponent } from './home/home.component';
 			component : ThankyouComponent,
 			canActivate : [AuthGuard]
 		},
+<<<<<<< HEAD
+=======
+		
+>>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
 		{
 			path : 'login',
 			component : LoginComponent,
@@ -142,6 +151,10 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : '**',
 			redirectTo : 'dashboard'
+<<<<<<< HEAD
+=======
+			
+>>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
 		}
 		
 	])

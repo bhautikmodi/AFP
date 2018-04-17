@@ -168,12 +168,13 @@ export class RegisterComponent implements OnInit {
 		this.btn_disable = true;
 			let token = localStorage.getItem('CompanyId');
 			this.RegisterEntity.CompanyId=token;
+			this.globals.isLoading = true;
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
 			{
 				//alert('success');
-
+				this.globals.isLoading = false;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
@@ -198,7 +199,8 @@ export class RegisterComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
 				this.btn_disable = false;
 				this.submitted = false;
 			});

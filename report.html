@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv=X-UA-Compatible>
+<meta content="width=device-width,initial-scale=1" name=viewport>
+<title>Association for Financial Professionals - AFP</title>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<!-- Header Section -->
+<header>
+  <div class="container ">
+    <div class="row"> 
+      <!-- Logo --> <div class="col-md-2 col-sm-3 col-xs-3">
+        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="Association for Financial Professionals - AFP" title="Association for Financial Professionals - AFP" class="img-responsive" /></a> </div>
+      </div>
+      <!-- End Logo --> 
+      
+      <!-- Right Navigation --> <div class="col-md-10 col-sm-9 col-xs-9 text-right">
+        <ul class="account_menu">
+          <li><a href="#" class="dropdown-toggle dashboard-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i> Himashi <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="edit_profile.html">Edit Profile</a></li>
+              <li><a href="change_password.html">Change Password</a></li>
+              <li><a href="index.html">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- End Right Navigation -->
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+<div class="clearfix"></div>
+<div class="inner_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h1>Assessments by Himashi</h1>
+        <div class="clearfix"></div>
+        <a href="user_assessment_list.html" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Header Section --> 
+
+<!-- Inner Section -->
+<div class="inner_content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="grey_box margin_btn">
+          <h2 class="text-center">Total Numbers of KSA covered by each Rating Scale</h2>
+          <div class="clearfix"></div>
+          <div id="linediv" class="report_chart"></div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Inner Section --> 
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h3 class="text-center">Advancing the Finance Profession Worldwide</h3>
+        <ul class="social_footer">
+          <li><a class="linkedin" href="https://www.linkedin.com/company/association-for-financial-professionals?trk=biz-companies-cym"><i class="fa fa-linkedin"></i></a></li>
+          <li><a class="twitter" href="http://twitter.com/afponline"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="facebook" href="https://www.facebook.com/pages/Association-for-Financial-Professionals/458370290991379?fref=ts"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="youtube" href="http://www.youtube.com/afponline"><i class="fa fa-youtube"></i></a></li>
+          <li><a class="instagram" href="https://www.instagram.com/afp_online/"><i class="fa fa-instagram"></i></a></li>
+          <li><a class="email" href="mailto:customerservice@afponline.org"><i class="fa fa-envelope"></i></a></li>
+          <li><a class="snapchat" href="https://www.afponline.org/snapchat"><i class="fa fa-snapchat-ghost"></i></a></li>
+        </ul>
+        <div class="address_footer"><span>Association for Financial Professionals</span><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;4520 East-West Highway, Suite 800</span><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Bethesda, MD 20814, USA&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="tel:+1.301.907.2862">+1 301.907.2862</a></div>
+        <div class="border_footer">Copyright &copy; 2018  Association for Financial Professionals - All rights reserved. </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer --> 
+
+<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/amcharts.js"></script> 
+<script src="js/serial.js"></script> 
+<script>
+var chart = AmCharts.makeChart("linediv", {
+    "type": "serial",
+    "theme": "none",
+     "dataProvider": [{
+    "domain": "Strategy",
+    "ratingscale": 4,
+    "color": "#001F49"
+  }, {
+    "domain": "Gathering and Analyzing Information",
+    "ratingscale": 2,
+    "color": "#799628"
+  }, {
+    "domain": "Budgeting and Financal Principles",
+    "ratingscale": 4,
+    "color": "#F79317"
+  }, {
+    "domain": "Forecasting with Systems and Tools",
+    "ratingscale": 1,
+    "color": "#1BAC98"
+  }, {
+    "domain": "Communication and Presentation Techniques",
+    "ratingscale": 3,
+    "color": "#65287E"
+  }, {
+    "domain": "Business Partnering",
+    "ratingscale": 2,
+    "color": "#B8044A"
+  }],
+    "valueAxes": [{
+        "integersOnly": true,
+        "minimum": 0,
+		"maximum": 6,
+		"precision" : 2,
+        "axisAlpha": 1,
+        "dashLength": 5,
+        "gridCount": 10,
+        "position": "left",
+        "title": "Rating Scale", "titleFontSize" : 16
+    }],
+    "startDuration": 0,
+    "graphs": [{
+        "balloonText": "Corporate Benchmark : [[value]]<br>Gap : [[cbmgap]]",
+        "bullet": "round",
+        "title": "Corporate Benchmark",
+        "valueField": "cbm",
+		"fillAlphas": 0,
+		"precision" : 2,
+		"lineColor": "#FE6304","lineThickness": 2,"lineAlpha": 1,
+    }],
+    "chartCursor": {
+        "cursorAlpha": 0,
+        "zoomable": false,
+		"valueZoomable": false,
+		"valueLineBalloonEnabled": false,
+		"valueLineEnabled": false,
+    },
+    "categoryField": "domain",
+   "categoryAxis": {
+		"gridPosition": "start",
+		"position": "left",
+		"title": "Domains", "titleFontSize" : 16,
+		"dashLength": 5,
+	},
+	"legend": {
+    "maxColumns": 4,
+    "position": "bottom",
+    "useGraphSettings": true,
+    "markerSize": 15,
+    "divId": "legenddiv",
+  },
+});
+</script> 
+</body>
+</html>

@@ -16,35 +16,30 @@
 <div class="inner_content height_zero">
   <div class="container">
     <div class="row">
-        <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
+    <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
       <div class="col-md-3 col-sm-3">
         <div class="form-group">
           <label><span>*</span>Company</label>
-          <select class="form-control" #CompanyId="ngModel" [(ngModel)]="SalesDashboardEntity.CompanyId"
-								name="CompanyId" [ngClass]="{red_border: (CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)}" required>  
-									<option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
-									<option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
-									ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
-								</select>
-									<span style="color:red" *ngIf="(CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)">  
-										<span *ngIf="CompanyId.errors.required || (CompanyId.pristine && submitted)">
-											Please select Company</span> 
-									</span> 
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="form-group">
-          <label><span>*</span>User Name</label>
-          <select class="form-control" #UserId="ngModel" [(ngModel)]="SalesDashboardEntity.UserId"
-								name="UserId" [ngClass]="{red_border: (UserId.dirty && UserId.invalid) || (UserId.pristine && submitted)}" required>  
-									<option value="" ngSelected='SalesDashboardEntity.UserId==""' >Select User Name </option>
-									<option *ngFor="let User of UserList" value="{{User.UserId}}" 
-									ngSelected="SalesDashboardEntity.UserId==User.UserId">{{User.Name}}</option>
-								</select>
-									<span style="color:red" *ngIf="(UserId.dirty && UserId.invalid) || (UserId.pristine && submitted)">  
-										<span *ngIf="UserId.errors.required || (UserId.pristine && submitted)">
-											Please select User Name</span> 
-									</span> 
+          <select class="form-control" #CompanyId="ngModel" (change)="getUserList(SalesDashboardForm)"
+          [(ngModel)]="SalesDashboardEntity.CompanyId"
+               name="CompanyId"  >  
+                 <option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
+                 <option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
+                 ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
+               </select>
+             </div>
+           </div>
+     
+     <div class="col-md-3 col-sm-3">
+       <div class="form-group">
+         <label><span>*</span>User Name</label>
+         <select class="form-control" #UserId="ngModel" [(ngModel)]="SalesDashboardEntity.UserId"
+               name="UserId" >  
+                 <option value="" ngSelected='SalesDashboardEntity.UserId==""' >Select User Name </option>
+                 <option *ngFor="let User of UserList" value="{{User.UserId}}" 
+                 ngSelected="SalesDashboardEntity.UserId==User.UserId">{{User.Name}}</option>
+               </select>
+								
         </div>
       </div>
       
@@ -61,26 +56,18 @@
   <div class="container">
     <div class="row">
     <h2 class="text-center">List of Users</h2>
-      <div class="col-md-3 col-sm-3">
-        <div class="user_box">
-          <div class="user_name">Himashi Soriano</div>
-          <p><strong>Email : </strong>hksoriano@afponline.org<br>
-            <strong>Phone Number : </strong>+1 202.349.5858<br>
-            <strong>Company Name : </strong>OpenEyes Technologies<br>
+      <div class="col-md-3 col-sm-3" *ngFor="let UserL of Usersearch;let i = index">
+        <div class="user_box"(click)="addclass(i)" id="cbox{{i}}">
+				  <input type="hidden" name="id" value="{{UserL.UserId}}"/>
+          <div class="user_name">{{UserL.FirstName}}</div>
+          <p><strong>Email : </strong>{{UserL.EmailAddress}}<br>
+            <strong>Phone Number : </strong>{{UserL.PhoneNumber}}<br>
+            <strong>Company Name : </strong>{{UserL.Name}}<br>
             <strong>Last Assessment : </strong>02-03-2018<br>
             <strong>Total Assessment : </strong>6</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="user_box">
-          <div class="user_name">Himashi Soriano</div>
-          <p><strong>Email : </strong>hksoriano@afponline.org<br>
-            <strong>Phone Number : </strong>+1 202.349.5858<br>
-            <strong>Company Name : </strong>OpenEyes Technologies<br>
-            <strong>Last Assessment : </strong>02-03-2018<br>
-            <strong>Total Assessment : </strong>6</p>
-        </div>
-      </div>
+     
    
     
       
@@ -93,7 +80,7 @@
           <li class="paginate_button disabled" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
           <li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
         </ul>
-        <button class="next_btn pull-right" type="button" onclick="window.location = 'user_assessment_list.html';"><span>Next</span></button>
+        <button class="next_btn pull-right" type="button" (click)="clickid()"><span>Next</span></button>
       </div>
     </div>
   </div>

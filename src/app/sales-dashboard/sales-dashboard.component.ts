@@ -30,7 +30,7 @@ export class SalesDashboardComponent implements OnInit {
 		this.Usersearch=[];
 		this.UserList=[];
 		this.CompanyList=[];
-		
+
     $('.user_box').click(function(){
 					
 			$('.user_box').removeClass('active');
@@ -98,8 +98,7 @@ export class SalesDashboardComponent implements OnInit {
   {
 	var id = $('.user_box.active input').val();
 	//alert(id);
-  localStorage.setItem('UserId',id);
-  this.router.navigate(['/']);  
+ this.router.navigate(['/user-assessment-list/'+id]);  
   
   }
   addclass(i){

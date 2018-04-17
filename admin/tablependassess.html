@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFP Admin</title>
+<!-- Core CSS - Include with every page -->
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+<link href="assets/css/style.css" rel="stylesheet" />
+<link href="assets/css/main-style.css" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/bootstrap-confirm-delete.css">
+<link type="text/css" rel="stylesheet" href="assets/css/perfect-scrollbar.css" />
+	
+<!-- Page-Level CSS -->
+<link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+<!--  wrapper -->
+<div class="wrapper"> 
+  <!-- navbar top -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar"> 
+    <!-- navbar-header -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="dashboard.html"> <img src="assets/img/logo.png" alt="" /> </a> </div>
+    <!-- end navbar-header --> 
+    <!-- navbar-top-links -->
+    <ul class="nav navbar-top-links navbar-right account_menu">
+      <!-- main dropdown -->
+      
+        <li><a href="#" class="dropdown-toggle dashboard-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i> Donna <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="index.html">Sign Out</a></li>
+            </ul>
+        </li>
+      <!--<li><a href="../index.html" class="btn btn-danger btn-add">Dashboard</a></li>-->
+      <!-- end main dropdown -->
+    </ul>
+    <!-- end navbar-top-links --> 
+    
+  </nav>
+  <!-- end navbar top --> 
+  
+  <!-- navbar side -->
+  <nav class="navbar-default navbar-static-side" role="navigation"> 
+    <!-- sidebar-collapse -->
+    <div class="sidebar-collapse"> 
+      <!-- side-menu -->
+      <ul class="nav" id="side-menu">
+        <li> 
+          <!-- user image section-->
+          <div class="user-section">
+            
+            <div class="user-info">
+              <div>Donna Berzellini</div>
+              <div class="user-text-online"> </div>
+            </div>
+          </div>
+          <!--end user image section--> 
+        </li>
+        <li> <a href="dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
+		<li> <a href="users.html"><i class="fa fa-users fa-fw"></i> Users</a> </li>
+        <li> <a href="tabledomain.html"><i class="fa fa-sitemap fa-fw"></i> Domain</a> </li>
+        <li> <a href="tablecomarea.html"><i class="fa fa-tasks fa-fw"></i> Competency Area</a> </li>
+		<li> <a href="tableksa.html"><i class="fa fa-question fa-fw"></i> KSA</a> </li>
+        <li> <a href="tablecourse.html"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
+		
+		<li class="active">
+              <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
+                  <ul class="nav nav-second-level">
+					  
+					   <li>
+                             <a href="settings.html"><i class="fa fa-cogs fa-fw"></i> Configuration</a>
+                       </li>
+					  
+					   <li>
+                             <a href="tableinvitelink.html"><i class="fa fa-link fa-fw"></i> User Invitation</a>
+                       </li>
+					  
+					   <li class="selected">
+                             <a href="tablependassess.html"><i class="fa fa-calendar-times-o fa-fw"></i> Pending Assessment</a>
+                       </li>
+					  
+					   <li>
+							 <a href="tableindustry.html"><i class="fa fa-industry fa-fw"></i> Industry</a>
+				       </li>
+					  
+					   <li>
+                             <a href="tableratiscale.html"><i class="fa fa-star fa-fw"></i> Rating Scale</a>
+                       </li>
+                     
+                       <li>
+                             <a href="tablecourlevel.html"><i class="fa fa-level-up fa-fw"></i> Course Level</a>
+                       </li>
+                        
+                   </ul>
+                        <!-- second-level-items -->
+         </li>
+		 <li id="inner_dropdown">
+              <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email<span class="fa fa-angle-right"></span></a>
+                  <ul class="nav nav-second-level display_block">
+					  
+					   <li>
+                             <a href="placeholderscreen.html"><i class="fa fa-window-maximize fa-fw"></i> Placeholder Screen</a>
+                       </li>
+					  
+					   <li>
+                             <a href="emailtemplatelist.html"><i class="fa fa-list fa-fw"></i> Email Template List</a>
+                       </li>
+                        
+                   </ul>
+                        <!-- second-level-items -->
+         </li>
+		 <li> <a href="rolepermission.html"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
+		 <li> <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Reports</a> </li>
+      </ul>
+      <!-- end side-menu --> 
+    </div>
+    <!-- end sidebar-collapse --> 
+  </nav>
+  <!-- end navbar side --> 
+  <!--  page-wrapper -->
+  <div id="page-wrapper">
+    <div class="row"> 
+      <!--  page header -->
+      <div class="col-lg-12">
+        <h1 class="page-header">Incomplete Assessment Report</h1>
+      </div>
+      <!-- end  page header --> 
+    </div>
+    <div class="row">
+      <div class="col-lg-12"> 
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+          <div class="panel-heading"> !
+            <!--<div class="btn-group pull-right add-right">
+              <a href="adddomain.html" class="btn btn-danger btn-add">
+              <i class="fa fa-plus fa-fw"></i>Add a Domain
+              </a>
+            </div>-->
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                  <tr>
+                    <th>#</th>
+					<th>Assessment Name</th>
+					<th>Email</th>
+					<th>Name</th>
+					<th>Start Date</th>
+					<th>Attended/Out of Total KSA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="odd gradeX">
+                    <td>1</td>
+                    <td>Strategy Assessment</td>
+                    <td>tim.ito@theopeneyes.com</td>
+					<td>Tim Ito</td>
+					<td>03/26/2018</td>
+                    <td>20/50</td>
+					
+                  </tr>
+                  <tr class="even gradeC">
+                    <td>2</td>
+                    <td>Gathering and Analyzing Information Assessment</td>
+					<td>sue.kai@theopeneyes.com</td>
+                    <td>Sue Kaiden</td>
+					<td>03/24/2018</td>
+					<td>25/50</td>
+                    
+                  </tr>
+                  <tr class="odd gradeA">
+                    <td>3</td>
+                    <td>Budgeting and Financal Principles Assessment</td>
+					<td>ama.mil@theopeneyes.com</td>
+                    <td>Amanda Miller</td>
+					<td>03/22/2018</td>
+					<td>35/50</td>
+                    
+                  </tr>
+                  <tr class="even gradeA">
+                    <td>4</td>
+                    <td>Forecasting with Systems and Tools Assessment</td>
+					<td>jas.pfa@theopeneyes.com</td>
+                    <td>Jason Pfaff</td>
+					<td>03/20/2018</td>
+					<td>20/50</td>
+                    
+                  </tr>
+                  <tr class="odd gradeA">
+                    <td>5</td>
+                    <td>Communication and Presentation Techniques Assessment</td>
+                    <td>rox.tor@theopeneyes.com</td>
+					<td>Roxy Torres</td>
+					<td>03/19/2018</td>
+					<td>10/50</td>
+                    
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--End Advanced Tables --> 
+      </div>
+    </div>
+  </div>
+  <!-- end page-wrapper --> 
+  
+</div>
+<!-- end wrapper -->
+
+<!-- Model -->
+<div class="modal fade bs-example-modal-sm" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              	<p>Are You Sure You Want To Remove This Row?</p>
+              </div>
+              <div class="modal-footer text-center">
+              	<button type="button" class="next_btn" id="yes_btn">Yes</button>
+                <button type="button" class="back_btn" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Core Scripts - Include with every page --> 
+<script src="assets/plugins/jquery-1.10.2.js"></script> 
+<script src="assets/plugins/bootstrap/bootstrap.min.js"></script> 
+<script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script> 
+<script src="assets/plugins/pace/pace.js"></script> 
+<script src="assets/scripts/siminta.js"></script>
+<script src="assets/scripts/bootstrap-confirm-delete.js"></script>
+<script src="assets/scripts/test.js"></script>
+<script src="assets/scripts/perfect-scrollbar.js"></script>
+<script src="assets/scripts/custom.js"></script>
+<!-- Page-Level Plugin Scripts--> 
+<!--<script src="assets/plugins/dataTables/jquery.dataTables.js"></script>-->
+<script src="assets/plugins/dataTables/jquery.dataTables-incomassessment.js"></script>
+<script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+		
+		function deleteRow(btn) {
+            if (confirm("Are you sure you want to remove this row?"))
+                $(btn).closest("tr").remove();
+        }
+		
+		$('#Delete_btn').click(function () {
+			$("#Delete_Modal").modal('show');
+		});
+		
+		$('#yes_btn').click(function () {
+			window.location.href = "tabledomain.html";
+		});
+	
+    </script>
+</body>
+</html>

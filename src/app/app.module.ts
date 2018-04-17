@@ -73,11 +73,11 @@ import { SalesDashboardService } from './services/sales-dashboard.service';
 	FormsModule,
 	RouterModule.forRoot([		
 		{
-			path : 'home',
+			path : '',
 			component : HomeComponent,
 			canActivate : [AuthGuard]
 			
-		},		
+		},	
 		{
 			path : 'dashboard',
 			component : DashbordComponent,

@@ -15,8 +15,8 @@ export class AuthGuard implements CanActivate {
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];
 			} else {
 				this.globals.currentLink = '/'+state.url.split('/')[1];
-			}
-		  if(state.url=='/login'||state.url=='/register'||state.url=='/invitation'||state.url=='/home'){
+			} debugger
+		  if(state.url=='/login'||(state.url.split('/')[1]=='register' && state.url.split('/')[0]=='')||state.url=='/invitation'||state.url=='/home'){
 			  this.globals.IsLoggedIn = false;
 			  this.router.navigate(['/dashboard']);
 			  return false;
@@ -25,7 +25,9 @@ export class AuthGuard implements CanActivate {
 			  return true;
 		  }		  
 	  } else {
-		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||state.url=='/register'||state.url=='/invitation'||state.url=='/home'){
+			console.log(state.url.split('/')[1]);
+			console.log(state.url.split('/')[0]);
+		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[0]=='')||state.url=='/invitation'||state.url=='/home'){
 			  if(state.url=='/login'){
 				this.globals.check_login = true;
 			  }			   

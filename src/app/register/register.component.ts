@@ -47,7 +47,11 @@ export class RegisterComponent implements OnInit {
 	// $("#submit_Modal").modal('show');
 // });
  	debugger
- 
+	 let id = this.route.snapshot.paramMap.get('id');
+	 if(id)
+	 {
+		 
+	 }else{
 	let token = localStorage.getItem('CompanyId');
 	if(token==null)
 	{
@@ -63,7 +67,7 @@ export class RegisterComponent implements OnInit {
 	(error) => 
 	{
 		alert('error');
-	});
+	});}
     this.Disinv = '';
 	this.RegisterService.getAll()
 	//.map(res => res.json())
@@ -78,7 +82,7 @@ export class RegisterComponent implements OnInit {
 		alert('error');
 	});	
 	
-	let id = this.route.snapshot.paramMap.get('id');
+	// let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
 

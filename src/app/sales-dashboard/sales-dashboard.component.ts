@@ -49,7 +49,7 @@ export class SalesDashboardComponent implements OnInit {
 		if (id) {
 			this.submitted = false;
 		} else {
-			this.SalesDashboardEntity.CompanyId = 0;
+		//	this.SalesDashboardEntity.CompanyId = 0;
 			this.submitted = true;
 		}
 		
@@ -57,7 +57,6 @@ export class SalesDashboardComponent implements OnInit {
   clearForm(SalesDashboardForm) 
   {
 		this.SalesDashboardEntity = {};
-	  this.SalesDashboardEntity.CompanyId = 0;
 		this.SalesDashboardEntity.IsActive = '1';
 		this.submitted = false;
 		SalesDashboardForm.form.markAsPristine();

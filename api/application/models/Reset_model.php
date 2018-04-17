@@ -40,7 +40,7 @@ class Reset_model extends CI_Model
 		if($post_passlink)
 		{
 			
-				$this->db->select('*');				
+				$this->db->select('UserId,EmailAddress,VCode');				
 				$this->db->where('UserId',$post_passlink['UserId']);
 				$this->db->where('EmailAddress',$post_passlink['EmailAddress']);
 				$this->db->where('VCode',$post_passlink['VCode']);
@@ -98,7 +98,7 @@ class Reset_model extends CI_Model
 		if($post_passlink)
 		{
 			
-				$this->db->select('*');				
+				$this->db->select('UserId,VCode');				
 				$this->db->where('UserId',$post_passlink['UserId']);
 				//$this->db->where('EmailAddress',$post_pass['EmailAddress']);
 				$this->db->where('VCode',$post_passlink['VCode']);

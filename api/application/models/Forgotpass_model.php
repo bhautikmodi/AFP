@@ -7,7 +7,7 @@ class Forgotpass_model extends CI_Model
 	{
 		if($post_pass)
 		{
-				$this->db->select('*');				
+				$this->db->select('UserId,EmailAddress,VCode');				
 				$this->db->where('EmailAddress',trim($post_pass['EmailAddress']));
 				//$this->db->where('Status',0);
 				

@@ -54,7 +54,8 @@ class Remaining_model extends CI_Model
 	public function getlist_days()
 	{
 		//$date1=date('Y-m-d H:i:s');
-		$this->db->select('*');
+		$this->db->select('RDaysId,Day,IsActive');
+		//$this->db->select('*');
 		$result=$this->db->get('tblmstreminderdays');
 		$res=array();
 		if($result->result())
@@ -103,7 +104,8 @@ class Remaining_model extends CI_Model
 
 	function getlist_value($datetime1)
 	{
-		$this->db->select('user.*,ca.*');
+		//$this->db->select('user.*,ca.*');
+		$this->db->select('user.UserId,user.FirstName,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime,ca.EndTime,ca.submitedDate');
 		$this->db->where('ca.StartTime',$datetime1);
 		//$this->db->where('ca.EndTime=','NULL');
 		$this->db->join('tbluser user','ca.UserId = user.UserId', 'left');
@@ -194,7 +196,8 @@ class Remaining_model extends CI_Model
 	{
 	  if($confi_id)
 	  {
-		 $this->db->select('*');
+		 $this->db->select('ConfigurationId,Key,Value');
+		 //$this->db->select('*');
 		 $this->db->where('ConfigurationId',$confi_id);
 		 $result=$this->db->get('tblmstconfiguration');
 		 $company_data= array();

@@ -1,44 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DashboardService } from '../services/dashboard.service';
+import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
 
 @Component({
-  selector: 'app-dashbord',
+  selector: 'app-user-assessment-details',
   providers: [ DashboardService ],
-  templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.css']
+  templateUrl: './user-assessment-details.component.html',
+  styleUrls: ['./user-assessment-details.component.css']
 })
-export class DashbordComponent implements OnInit {
-
-  assessmentList;
+export class UserAssessmentDetailsComponent implements OnInit {
+  assessmentData;
+  domainData;
+  rscaleData;
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
-  
-   ngOnInit() {  
-     
-    this.DashboardService.getAllAssement(this.globals.authData.UserId)
+
+  ngOnInit() {
+    this.assessmentData = {};
+    let id = this.route.snapshot.paramMap.get('id');    
+    this.DashboardService.getUserAssessDetail(id)
 		.then((data) => 
-		{
-      this.assessmentList = data;
-      var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-      console.log(this.assessmentList);
-      setTimeout(()=>{ 
-        var j = 0; 
+		{ 
+      if(data=='fail'){
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.assessmentData = data['assessment'];
+        this.domainData = data['domain'];
+        this.rscaleData = data['rscale'];
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-        for(let obj of this.assessmentList){          
-        for(let domain of obj.domainlist){
-          let k = obj.domainlist.indexOf(domain);
-          this.assessmentList[j].domainlist[k].color = colorarray[k];
+        for(let obj of this.domainData){
+          let j = this.domainData.indexOf(obj);
+          this.domainData[j].color = colorarray[j];
         }
-        var chart = AmCharts.makeChart("dashboard_result_bar"+ j, {
+        var chart = AmCharts.makeChart("gneraluser_result", {
           "type": "serial",
           "startDuration": 0,
-          "dataProvider": obj.domainlist,
+          "dataProvider": this.domainData,
           "valueAxes": [{
             "position": "left",
+            "title": "Rating Scale",
           "axisAlpha": 1, 
+          "titleFontSize" : 16,
           "integersOnly": true,
             "minimum": 0,
           "maximum": 5,
@@ -48,10 +52,11 @@ export class DashbordComponent implements OnInit {
           "categoryField": "domain",
           "categoryAxis": {
             "gridPosition": "start",
+          "title": "Domains",
           "axisAlpha": 1, 
-          "titleFontSize" : 1,
+          "titleFontSize" : 16,
           "dashLength": 5,
-          "labelsEnabled": false
+            "autoWrap": true
           },
           "graphs": [{
             "balloonText": "<b>[[category]]: [[value]]</b>",
@@ -60,7 +65,7 @@ export class DashbordComponent implements OnInit {
             "lineAlpha": 0.2,
             "type": "column",
             "valueField": "ratingscale",
-          "fixedColumnWidth": 20,
+          "fixedColumnWidth": 40,
           "labelText" : "[[value]]"
           }],
           "chartCursor": {
@@ -69,16 +74,12 @@ export class DashbordComponent implements OnInit {
             "zoomable": false
           }
         });
-        j++;
       }
-    },100);
     }, 
 		(error) => 
 		{
 			alert('error');
-		});	
-    
-    
+		});	 
     
   }
 

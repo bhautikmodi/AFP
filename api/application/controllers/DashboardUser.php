@@ -1,0 +1,34 @@
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class DashboardUser extends CI_Controller {
+
+
+	public function __construct() {
+	
+		parent::__construct();
+		
+		$this->load->model('DashboardUser_model');
+		
+	}
+
+	public function getAllAssement($UserId = NULL) {
+		
+		if (!empty($UserId)) {
+			$data="";
+			$data=$this->DashboardUser_model->getAllAssement($UserId);		
+			echo json_encode($data);			
+		}				
+	}
+
+	public function getUserAssessDetail($CAssessmentId = NULL) {
+		
+		if (!empty($CAssessmentId)) {
+			$data="";
+			$data=$this->DashboardUser_model->getUserAssessDetail($CAssessmentId);		
+			echo json_encode($data);			
+		}				
+	}
+	
+}

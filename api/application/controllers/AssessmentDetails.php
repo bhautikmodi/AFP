@@ -13,8 +13,14 @@ class AssessmentDetails extends CI_Controller {
 		
 	}
 	
-	
-	
+	public function CheckAssessment($UserId = NULL) {
+		
+		if (!empty($UserId)) {
+			$data="";
+			$data=$this->AssessmentDetails_model->CheckAssessment($UserId);		
+			echo json_encode($data);			
+		}				
+	}	
 	
 	public function add() {
 		

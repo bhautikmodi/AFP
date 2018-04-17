@@ -34,6 +34,7 @@ import { AssessmentDetailsService } from './services/assessment-details.service'
 import { AssessmentComponent } from './assessment/assessment.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { HomeComponent } from './home/home.component';
+import { UserAssessmentDetailsComponent } from './user-assessment-details/user-assessment-details.component';
 
 
 
@@ -61,7 +62,8 @@ import { HomeComponent } from './home/home.component';
     AssessmentComponent,
 
     ThankyouComponent,
-    HomeComponent
+    HomeComponent,
+    UserAssessmentDetailsComponent
 
 
   ],
@@ -139,10 +141,11 @@ import { HomeComponent } from './home/home.component';
 			component : ThankyouComponent,
 			canActivate : [AuthGuard]
 		},
-<<<<<<< HEAD
-=======
-		
->>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
+		{
+			path : 'user-assessment-details/:id',
+			component : UserAssessmentDetailsComponent,
+			canActivate : [AuthGuard]
+		},
 		{
 			path : 'login',
 			component : LoginComponent,
@@ -151,19 +154,11 @@ import { HomeComponent } from './home/home.component';
 		{
 			path : '**',
 			redirectTo : 'dashboard'
-<<<<<<< HEAD
-=======
 			
->>>>>>> f2bc17b62b7be757b60dde06e1c608c7f43c5459
 		}
 		
 	])
-  ],
-
-
-
-
- 
+  ], 
   
   providers: [Globals,InvitationService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
 

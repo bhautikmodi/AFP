@@ -75,6 +75,8 @@ import { CourselevelService } from './services/courselevel.service';
 import { RolepermissionComponent } from './rolepermission/rolepermission.component';
 import { RolepermissionService } from './services/rolepermission.service';
 import { CommonService } from './services/common.service';
+import { PendingAssessmentComponent } from './pending-assessment/pending-assessment.component';
+import { PendingAssessmentService } from './services/pending-assessment.service';
 
 
 @NgModule({
@@ -119,7 +121,8 @@ import { CommonService } from './services/common.service';
 	EmailtemplateListComponent,
 	CourselevelComponent,
 	CourselevellistComponent,
-	RolepermissionComponent
+	RolepermissionComponent,
+	PendingAssessmentComponent
   ],
   imports: [
   BrowserModule,
@@ -383,6 +386,11 @@ import { CommonService } from './services/common.service';
         canActivate : [AuthGuard]
       },
       {
+        path : 'pending-assessment',
+        component : PendingAssessmentComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
@@ -393,7 +401,7 @@ import { CommonService } from './services/common.service';
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
     UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,
-    RolepermissionService,CommonService],
+    RolepermissionService,CommonService,PendingAssessmentService],
    
 
 

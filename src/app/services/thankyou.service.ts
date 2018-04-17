@@ -8,7 +8,7 @@ export class ThankyouService {
   constructor( private http: Http,private globals: Globals) { }
 
   getResult(CAssessmentId) 
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'Assessment/getResult/'+CAssessmentId, this.globals.headerpath)
       .toPromise()
@@ -22,6 +22,6 @@ export class ThankyouService {
       );
 	});		
   return promise;
-  }
+  }  
 
 }

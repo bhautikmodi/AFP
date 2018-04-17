@@ -38,10 +38,9 @@
                  <li [ngClass]="{'selected':(globals.currentLink == '/invitation/list')||(globals.currentLink == '/invitation/add')||(globals.currentLink == '/invitation/edit')}">
                          <a (click)="menuopen('/invitation/list')" style="cursor:pointer;"><i class="fa fa-link fa-fw"></i> Invitation Feature</a>
                    </li>
-         <li>
-                         <a href="tablependassess.html"><i class="fa fa-calendar-times-o fa-fw"></i> Pending Assessment</a>
-                   </li>        
-                   
+                   <li [ngClass]="{'selected':globals.currentLink == '/pending-assessment'}">
+                      <a (click)="menuopen('/pending-assessment')" style="cursor:pointer;"><i class="fa fa-calendar-times-o fa-fw"></i> Pending Assessment</a>
+                  </li>
                    <li [ngClass]="{'selected':(globals.currentLink == '/country/list')||(globals.currentLink == '/country/add')||(globals.currentLink == '/country/edit')}">
                     <a (click)="menuopen('/country/list')" style="cursor:pointer;"><i class="fa fa-globe fa-fw"></i> Country</a>
                    </li>

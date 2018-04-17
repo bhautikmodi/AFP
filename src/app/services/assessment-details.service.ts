@@ -21,10 +21,26 @@ export class AssessmentDetailsService {
    });		
    return promise;
    }
-  getTeamSize(){
-	 
+
+  getTeamSize(){	 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'AssessmentDetails/getAllTeamSize',  this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
+
+  CheckAssessment(UserId){
+  let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'AssessmentDetails/CheckAssessment/'+UserId,  this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success

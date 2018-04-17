@@ -34,7 +34,7 @@ body{margin:0px; padding: 0; background:#fff; font-family: 'Gotham-Medium'; over
 p{margin:0px; padding:0px 0 0 0; line-height:24px; color: #2e2d31; font-size: 14px; font-family: 'Gotham-Book';}
 p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
-.no_padding{padding:0px;}
+.no_padding{padding:0px!important;}
 .clear {clear:both;}
 a {text-decoration:none; color:#191919;}
 a:hover, a.selected {text-decoration:none; color:#0085AD;}
@@ -174,7 +174,9 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .welcome_text span.small_text{ color:#002B49; font: bold 50px/60px 'Gotham-Bold'; padding:0 10px; position:relative; display:inline-block;}
 
 .chart_block { width: 100%; height: 450px;}
-.pie_chart{width:100%; height:300px;}
+.pie_chart{width:100%; height:450px; position:relative; overflow:hidden; display:block;}
+.pie_chart .amcharts-main-div{position:absolute; top:-60px;}
+.pie_body{height:330px; overflow:hidden; padding:0!important;}
 
 .rating_list{ text-align:center; margin:0; display:block; line-height:27px; float:none; font-family: "Gotham-Book"; font-size:12px; color:#2e2d31;}
 .rating_list li{display:inline-block; margin:0 10px;}
@@ -195,7 +197,7 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .startassessment_box{position:relative; width:100%; background:url("../images/afp-pattern.png") top center no-repeat #002B49; background-size:80%; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:140px 10px 0 10px; box-shadow:1px 1px 5px #000; }
 
 .general_user_section table tr th,.general_user_section tr td{ font-size:13px;}
-.general_user_section table{margin-bottom:0;}
+.general_user_section table{margin-bottom:0; background:#fff;}
 .width_80{width:80%;}
 .width_20{width:20%;}
 .width_30{width:30%;}
@@ -246,7 +248,7 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 #progress {background:#799528; height:10px; width:0%; transition:all 0.5s ease 0s; }
 
 .ksa_list_block .ksa_numbers{ box-shadow:1px 1px 2px rgba(0, 0, 0, 0.6); background:#fff; padding:10px; width:100px; height:40px; text-align:center; display:block; margin:15px auto 10px; border-radius:10px; cursor:pointer; background:#f4f4f4;}
-.ksa_list_block .flex-active-slide .ksa_numbers{ background:#B8044A; color:#fff;}
+.ksa_list_block .flex-active-slide .ksa_numbers{ background:#21AA97; color:#fff;}
 .ksa_list_block .ksa_completes{text-align:center; display:block;}
 .ksa_list_block .ksa_completes i{margin:0 2px; opacity:0.4; font-size:13px;}
 .ksa_list_block .ksa_completes i.fa-dot-circle-o{ opacity:1; color: #799628;}
@@ -255,7 +257,7 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .assessment_bg .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
 .assessment_bg .ksa_box{ display:block; position:relative; background:#fff; box-shadow:1px 1px 5px #ccc; border:1px solid #ccc; border-radius:10px; margin-bottom:30px; text-align:left;}
 .assessment_bg .ksa_box .ksa_text{ height:110px; font-size:15px; color:#605b54; font-family: "Gotham-Book"; line-height:20px; padding:15px 15px 15px 40px; border-bottom:1px solid #d2d2d2;} 
-.assessment_bg .ksa_box .ksa_text span{ border-radius:10px 0 0 0; text-align:center; color:#fff; font-family: "Gotham-Bold"; width:30px; height:30px; display:block; padding:5px; background:#0085AD; position:absolute; left:0; top:0;}
+.assessment_bg .ksa_box .ksa_text span{ text-align:center; color:#d8d8de; font-family: "Gotham-Book"; width:30px; height:30px; display:block; padding:5px; font-size: 20px; position:absolute; left:0; top:0;}
 
 input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box{display:block; position:relative;}
@@ -264,7 +266,8 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box_ksa:nth-child(1) label{ border-radius:0 0 0 10px;}
 .radio_box_ksa:nth-child(4) label{ border:0!important; border-radius:0 0 10px 0;}
 .radio_box_ksa input[type="radio"]:checked + label{ background:#B8044A; box-shadow:none; color:#fff;}
-.assessment_bg .flex-direction-nav{display:none;}
+#slider .flex-direction-nav .flex-next{ right:-4px; top:37%!important;}
+#slider .flex-direction-nav .flex-prev{ left:-10px; top:37%!important;}
 
 .rating_ul{ position:absolute; top:-40px; width:140px; left:-15px; border:1px solid #888; border-left:0; padding:7px;}
 .rating_ul p,.rating_ul li,.rating_ul li span{font-size:11px!important; line-height:15px;}
@@ -279,8 +282,15 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .intro_block li{ display:block; position:relative; font-size:13px; color:#605b54; font-family: "Gotham-Book"; line-height:13px; margin:7px 0;}
 .intro_block li span{color:#0085AD; font-family: "Gotham-Bold"; margin-right:0px; font-size:16px;}
 #PreviewModal .modal-footer p{ display:inline-block; margin-right:10px;}
-.preview_ksa{ display:block; position:relative; height:500px; overflow-y:auto; width:100%;}
+.preview_ksa thead{ display: table; width: 100%;}
+.preview_ksa tbody { display:block; position:relative; height:480px; overflow-y:auto; table-layout: fixed;}
 .preview_ksa table td{ font-size:13px;}
+.course_rec thead{ display: table; width: 100%;}
+.course_rec tbody { display:block; position:relative; height:480px; overflow-y:auto; table-layout: fixed;}
+.course_rec table td{ font-size:13px;}
+
+.domain_name{color:#B70C4B;}
+.report_chart{width:100%; height:500px;}
 
 .grey_bg{padding:30px 0; background:#f4f4f4; }
 .error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;}

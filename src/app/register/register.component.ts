@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 			this.btn_disable = false;
 			this.RegisterEntity={};
 			this.companydata={};
-			
+		
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
@@ -46,9 +46,17 @@ export class RegisterComponent implements OnInit {
 // $('#employee_btn').click(function () {
 	// $("#submit_Modal").modal('show');
 // });
- 	
- 
+ 	debugger
+	 let id = this.route.snapshot.paramMap.get('id');
+	 if(id)
+	 {
+		 
+	 }else{
 	let token = localStorage.getItem('CompanyId');
+	if(token==null)
+	{
+		this.router.navigate(['/invitation']);					
+	}
 	this.RegisterService.getAllCountry(token)
 	.then((data) => 
 	{ 
@@ -59,7 +67,7 @@ export class RegisterComponent implements OnInit {
 	(error) => 
 	{
 		alert('error');
-	});
+	});}
     this.Disinv = '';
 	this.RegisterService.getAll()
 	//.map(res => res.json())
@@ -74,7 +82,7 @@ export class RegisterComponent implements OnInit {
 		alert('error');
 	});	
 	
-	let id = this.route.snapshot.paramMap.get('id');
+	// let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
 						this.header = 'Edit';
 
@@ -111,6 +119,7 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
+						
 						// if(this.Disinv.Value ==1)
 						 // {debugger
 								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
@@ -159,15 +168,18 @@ export class RegisterComponent implements OnInit {
 		this.btn_disable = true;
 			let token = localStorage.getItem('CompanyId');
 			this.RegisterEntity.CompanyId=token;
+			this.globals.isLoading = true;
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
 			{
 				//alert('success');
-
+				this.globals.isLoading = false;
 				this.btn_disable = false;
 				this.submitted = false;
 				this.RegisterEntity = {};
+				localStorage.removeItem('CompanyId');
+				localStorage.removeItem('EmailAddress');
 				RegisterForm.form.markAsPristine();
 					if (id) {
 						this.globals.message = 'Update successfully';
@@ -187,7 +199,8 @@ export class RegisterComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
 				this.btn_disable = false;
 				this.submitted = false;
 			});

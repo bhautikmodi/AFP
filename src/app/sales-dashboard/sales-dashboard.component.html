@@ -1,0 +1,102 @@
+<div class="clearfix"></div>
+<div class="inner_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h1>Dashboard</h1>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Header Section --> 
+
+<!-- Inner Section -->
+<div class="inner_content height_zero">
+  <div class="container">
+    <div class="row">
+        <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
+      <div class="col-md-3 col-sm-3">
+        <div class="form-group">
+          <label><span>*</span>Company</label>
+          <select class="form-control" #CompanyId="ngModel" [(ngModel)]="SalesDashboardEntity.CompanyId"
+								name="CompanyId" [ngClass]="{red_border: (CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)}" required>  
+									<option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
+									<option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
+									ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
+								</select>
+									<span style="color:red" *ngIf="(CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)">  
+										<span *ngIf="CompanyId.errors.required || (CompanyId.pristine && submitted)">
+											Please select Company</span> 
+									</span> 
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="form-group">
+          <label><span>*</span>User Name</label>
+          <select class="form-control" #UserId="ngModel" [(ngModel)]="SalesDashboardEntity.UserId"
+								name="UserId" [ngClass]="{red_border: (UserId.dirty && UserId.invalid) || (UserId.pristine && submitted)}" required>  
+									<option value="" ngSelected='SalesDashboardEntity.UserId==""' >Select User Name </option>
+									<option *ngFor="let User of UserList" value="{{User.UserId}}" 
+									ngSelected="SalesDashboardEntity.UserId==User.UserId">{{User.Name}}</option>
+								</select>
+									<span style="color:red" *ngIf="(UserId.dirty && UserId.invalid) || (UserId.pristine && submitted)">  
+										<span *ngIf="UserId.errors.required || (UserId.pristine && submitted)">
+											Please select User Name</span> 
+									</span> 
+        </div>
+      </div>
+      
+      <div class="col-md-3 col-sm-3">
+        <button class="next_btn margin_btn_15" type="submit"><span>Filter</span></button>
+        <button (click)="clearForm" class="red_btn margin_btn_15"><span>Clear</span></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="user_section">
+  <div class="container">
+    <div class="row">
+    <h2 class="text-center">List of Users</h2>
+      <div class="col-md-3 col-sm-3">
+        <div class="user_box">
+          <div class="user_name">Himashi Soriano</div>
+          <p><strong>Email : </strong>hksoriano@afponline.org<br>
+            <strong>Phone Number : </strong>+1 202.349.5858<br>
+            <strong>Company Name : </strong>OpenEyes Technologies<br>
+            <strong>Last Assessment : </strong>02-03-2018<br>
+            <strong>Total Assessment : </strong>6</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="user_box">
+          <div class="user_name">Himashi Soriano</div>
+          <p><strong>Email : </strong>hksoriano@afponline.org<br>
+            <strong>Phone Number : </strong>+1 202.349.5858<br>
+            <strong>Company Name : </strong>OpenEyes Technologies<br>
+            <strong>Last Assessment : </strong>02-03-2018<br>
+            <strong>Total Assessment : </strong>6</p>
+        </div>
+      </div>
+   
+    
+      
+    
+      <div class="clearfix"></div>
+      <div class="col-md-12">
+        <ul class="pagination">
+          <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
+          <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
+          <li class="paginate_button disabled" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
+          <li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
+        </ul>
+        <button class="next_btn pull-right" type="button" onclick="window.location = 'user_assessment_list.html';"><span>Next</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

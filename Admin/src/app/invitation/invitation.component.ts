@@ -117,6 +117,7 @@ export class InvitationComponent implements OnInit {
 							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
+							this.globals.isLoading = false;
 						}
 						this.router.navigate(['/invitation/list']);
 					}
@@ -126,6 +127,7 @@ export class InvitationComponent implements OnInit {
 					alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
 				});
 		}
 	}

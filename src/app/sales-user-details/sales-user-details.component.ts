@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SalesUserService } from '../services/sales-user.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
 
 @Component({
   selector: 'app-sales-user-details',
-
+  providers: [ SalesUserService ],
   templateUrl: './sales-user-details.component.html',
   styleUrls: ['./sales-user-details.component.css']
 })
 export class SalesUserDetailsComponent implements OnInit {
-  assessmentList;
-  constructor( private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  assessmentData;
+  domainData;
+  constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
 
@@ -164,71 +166,72 @@ var chart = AmCharts.makeChart( "ca_chart", {
     "enabled": false
   }
 });
-var chart = AmCharts.makeChart("gneraluser_result", {
-  "type": "serial",
-  "startDuration": 0,
-  "dataProvider": [{
-    "domain": "Strategy",
-    "ratingscale": 4,
-    "color": "#002B49"
-  }, {
-    "domain": "Gathering and Analyzing Information",
-    "ratingscale": 2,
-    "color": "#8F993E"
-  }, {
-    "domain": "Budgeting and Financal Principles",
-    "ratingscale": 4,
-    "color": "#FB8F2E"
-  }, {
-    "domain": "Forecasting with Systems and Tools",
-    "ratingscale": 1,
-    "color": "#279989"
-  }, {
-    "domain": "Communication and Presentation Techniques",
-    "ratingscale": 3,
-    "color": "#B9044A"
-  }, {
-    "domain": "Business Partnering",
-    "ratingscale": 2,
-    "color": "#642F6C"
-  }],
-  "valueAxes": [{
-    "position": "left",
-    "title": "Rating Scale",
-	"axisAlpha": 1, 
-	"titleFontSize" : 16,
-	"integersOnly": true,
-    "minimum": 0,
-	"maximum": 5,
-	"precision" : 0,
-    "dashLength": 5
-  }],
-  "categoryField": "domain",
-  "categoryAxis": {
-    "gridPosition": "start",
-	"title": "Domain",
-	"axisAlpha": 1, 
-	"titleFontSize" : 16,
-	"dashLength": 5,
-    "autoWrap": true
-  },
-  "graphs": [{
-    "balloonText": "<b>[[category]]: [[value]]</b>",
-    "fillColorsField": "color",
-    "fillAlphas": 1,
-    "lineAlpha": 0.2,
-    "type": "column",
-    "valueField": "ratingscale",
-	"fixedColumnWidth": 40,
-	"labelText" : "[[value]]"
-  }],
-  "chartCursor": {
-    "categoryBalloonEnabled": false,
-    "cursorAlpha": 0,
-    "zoomable": false
+this.assessmentData = {};
+let id = this.route.snapshot.paramMap.get('id');    
+this.SalesUserService.getUserAssessDetail(id)
+.then((data) => 
+{ 
+  if(data=='fail'){
+    this.router.navigate(['/dashboard']);
+  } else {
+    //this.assessmentData = data['assessment'];
+    this.domainData = data['domain'];
+    // this.rscaleData = data['rscale'];
+    var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
+    for(let obj of this.domainData){
+      let j = this.domainData.indexOf(obj);
+      this.domainData[j].color = colorarray[j];
+    }
+    var chart = AmCharts.makeChart("gneraluser_result", {
+      "type": "serial",
+      "startDuration": 0,
+      "dataProvider": this.domainData,
+      "valueAxes": [{
+        "position": "left",
+        "title": "Rating Scale",
+      "axisAlpha": 1, 
+      "titleFontSize" : 16,
+      "integersOnly": true,
+        "minimum": 0,
+      "maximum": 5,
+      "precision" : 0,
+        "dashLength": 5
+      }],
+      "categoryField": "domain",
+      "categoryAxis": {
+        "gridPosition": "start",
+      "title": "Domains",
+      "axisAlpha": 1, 
+      "titleFontSize" : 16,
+      "dashLength": 5,
+        "autoWrap": true
+      },
+      "graphs": [{
+        "balloonText": "<b>[[category]]: [[value]]</b>",
+        "fillColorsField": "color",
+        "fillAlphas": 1,
+        "lineAlpha": 0.2,
+        "type": "column",
+        "valueField": "ratingscale",
+      "fixedColumnWidth": 40,
+      "labelText" : "[[value]]"
+      }],
+      "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+      }
+    });
   }
-});
+}, 
+(error) => 
+{
+  alert('error');
+});	 
+
+}
+
   
-  }
+
 
 }

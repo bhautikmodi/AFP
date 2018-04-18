@@ -20,7 +20,7 @@ export class UserAssessmentListComponent implements OnInit {
     this.SalesDashboardService.getAllAssement(id)
 		.then((data) => 
 		{
-      this.assessmentList = data;
+      this.assessmentList = data['complete'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
       console.log(this.assessmentList);
       setTimeout(()=>{ 

@@ -39,6 +39,7 @@ import { UserAssessmentDetailsComponent } from './user-assessment-details/user-a
 import { SalesDashboardComponent } from './sales-dashboard/sales-dashboard.component';
 import { SalesDashboardService } from './services/sales-dashboard.service';
 import { UserAssessmentListComponent } from './user-assessment-list/user-assessment-list.component';
+import { SalesUserDetailsComponent } from './sales-user-details/sales-user-details.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { UserAssessmentListComponent } from './user-assessment-list/user-assessm
     HomeComponent,
     UserAssessmentDetailsComponent,
     SalesDashboardComponent,
-    UserAssessmentListComponent
+    UserAssessmentListComponent,
+    SalesUserDetailsComponent
 
 
   ],
@@ -155,9 +157,15 @@ import { UserAssessmentListComponent } from './user-assessment-list/user-assessm
 			path : 'sales-admin-dashboard',
 			component : SalesDashboardComponent,
 			canActivate : [AuthGuard]
-		},{
+		},
+		{
 			path : 'user-assessment-list/:id',
 			component :UserAssessmentListComponent,
+			canActivate : [AuthGuard]
+		},
+		{
+			path : 'sales-user-details/:id',
+			component :SalesUserDetailsComponent,
 			canActivate : [AuthGuard]
 		},
 		{

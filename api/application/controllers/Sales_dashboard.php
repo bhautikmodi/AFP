@@ -43,21 +43,44 @@ class Sales_dashboard extends CI_Controller
 		
 		$data="";
 		
-		$data=$this->Sales_dashboard_model->getlist_User();
-		
+		$data['user']=$this->Sales_dashboard_model->getlist_User();
+		$data['com']=$this->Sales_dashboard_model->getlist_company();
 		echo json_encode($data);
 				
 	}
 	
+	public function getUserList($CompanyId = NULL) {
+		
+		if(!empty($CompanyId)) {
+			
+			$result = [];
+			$result = $this->Sales_dashboard_model->getUserList($CompanyId);			
+			echo json_encode($result);				
+		}			
+	}
 	//list all industry
-	public function getAllCompany() {
+
+	public function getUser()
+	{
+		$data = json_decode(trim(file_get_contents('php://input')), true);
+		$post_user = $data['user'];
+	    $com_reg = $data['com'];
+		if ($data) 
+			{			
 		
-		$data="";
-		
-		$data=$this->Sales_dashboard_model->getlist_company();
-		
-		echo json_encode($data);
+					$result = $this->Sales_dashboard_model->getUser($post_user,$com_reg); 
+			
+					if($result)
+					{
+						echo json_encode($result); 
+			
+					}else
+					{
+						echo json_encode('error');
+					}
 				
+					
+			}
 	}
 	
 }

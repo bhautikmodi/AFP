@@ -28,8 +28,11 @@
     "assets/js/jquery.flexslider.js",    
     "assets/js/amcharts.js",
     "assets/js/serial.js",
+	
     "assets/js/perfect-scrollbar.js",
-    "assets/js/custom.js"
+	
+    "assets/js/custom.js",
+	"assets/js/pie.js"
 		
 		
 		  

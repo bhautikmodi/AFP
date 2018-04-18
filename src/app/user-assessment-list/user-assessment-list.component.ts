@@ -1,30 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DashboardService } from '../services/dashboard.service';
+import { SalesDashboardService } from '../services/sales-dashboard.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
-
 @Component({
-  selector: 'app-dashbord',
-  providers: [ DashboardService ],
-  templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.css']
+  selector: 'app-user-assessment-list',
+  providers: [ SalesDashboardService ],
+  templateUrl: './user-assessment-list.component.html',
+  styleUrls: ['./user-assessment-list.component.css']
 })
-export class DashbordComponent implements OnInit {
-
+export class UserAssessmentListComponent implements OnInit {
   assessmentList;
-  passessmentList;
-  constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
-  
-   ngOnInit() {  
-     
-    this.DashboardService.getAllAssement(this.globals.authData.UserId)
+  constructor(private SalesDashboardService: SalesDashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+
+
+  ngOnInit() {  
+    let id = this.route.snapshot.paramMap.get('id');    
+    this.SalesDashboardService.getAllAssement(id)
 		.then((data) => 
 		{
       this.assessmentList = data['complete'];
-      this.passessmentList = data['pending'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
+      console.log(this.assessmentList);
       setTimeout(()=>{ 
         var j = 0; 
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

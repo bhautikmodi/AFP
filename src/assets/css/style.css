@@ -188,9 +188,10 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .dashboard_box{position:relative; width:100%; background:#f4f4f4; border:1px solid #ccc; box-shadow:1px 1px 5px #ccc; margin-bottom:30px; border-radius:5px;}
 .dashboard_section .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
 .dashboard_box .assess_name{color:#fff; font-family: "Gotham-Book"; font-size:18px; line-height:16px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; height:38px; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54;}
-.dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff;} 
-.dashboard_box .dashboard_item .date_title{float:left; line-height:14px; font-size:14px; font-family:"Gotham-Book"; color: #605b54; padding:10px 0 0 0;} 
-.dashboard_box .dashboard_item a{float:right; color:#fff; line-height:15px; font-size:14px; font-family:"Gotham-Book"; border:0; padding:8px;} 
+.dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff; height:52px;} 
+.dashboard_box .margin_con{margin-top:95px;}
+.dashboard_box .dashboard_item .date_title{float:left; line-height:14px; font-size:13px; font-family:"Gotham-Book"; color: #605b54; padding:10px 0 0 0;} 
+.dashboard_box .dashboard_item a{float:right; color:#fff; line-height:15px; font-size:13px; font-family:"Gotham-Book"; border:0; padding:7px;} 
 .dashboard_box .dashboard_item a:after{ background: #007699; width:0;}
 .dashboard_box .dashboard_item a:hover:after{ width:100%; color: #fff; }
 .dashboard_box .dashboard_chart_block{ width: 100%; height: 200px;}
@@ -284,6 +285,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 #PreviewModal .modal-footer p{ display:inline-block; margin-right:10px;}
 .preview_ksa thead{ display: table; width: 100%;}
 .preview_ksa tbody { display:block; position:relative; height:480px; overflow-y:auto; table-layout: fixed;}
+.preview_ksa table tr{display:table-row;}
 .preview_ksa table td{ font-size:13px;}
 .course_rec thead{ display: table; width: 100%;}
 .course_rec tbody { display:block; position:relative; height:480px; overflow-y:auto; table-layout: fixed;}

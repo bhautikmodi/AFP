@@ -22,28 +22,16 @@ header;
   ngOnInit() 
   {
 	  this.AsmtDetailsEntity={};
-	this.AssessmentDetailsService.CheckAssessment(this.globals.authData.UserId)
-	.then((data) => 
-	{
-		if(data=='yes'){
-			this.AssessmentDetailsService.getTeamSize()
-			.then((data) => 
-			{
-				this.TeamSizeList = data;
-			}, 
-			(error) => 
-			{
-				alert('error');
-			});				
-		} else {
-			this.router.navigate(['/assessment/'+data['CAssessmentId']]);
-		}		
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
-	
+	  this.AsmtDetailsEntity.TeamSizeId = '';
+	  this.AssessmentDetailsService.getTeamSize()
+	  .then((data) => 
+	  {
+		  this.TeamSizeList = data;
+	  }, 
+	  (error) => 
+	  {
+		  alert('error');
+	  });		
   }
 addAsmtDetails(AsmtDetailsForm)
 	{	debugger	

@@ -6,8 +6,7 @@ import { Globals } from '.././globals';
 export class DomainService {
   constructor(private http: Http, private globals: Globals) { 
   }
-  
-  
+
   add(domainEntity){
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Domain/add', domainEntity, this.globals.headerpath)
@@ -39,6 +38,7 @@ export class DomainService {
 	});		
 	return promise;
   }
+
   
   getAll(){     
 	let promise = new Promise((resolve, reject) => {     

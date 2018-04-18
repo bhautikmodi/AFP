@@ -3,26 +3,26 @@
 class AssessmentDetails_model extends CI_Model
  {
 
-	public function CheckAssessment($UserId = NULL) {
+	// public function CheckAssessment($UserId = NULL) {
 		
-		if($UserId) {
+	// 	if($UserId) {
 
-			$this->db->select('CAssessmentId');
-			$this->db->where('UserId',$UserId);
-			$this->db->where('EndTime',NULL);
-			$query = $this->db->get('tblcandidateassessment');
-			$data = array();	
-			if($query->num_rows()==1){
-				foreach($query->result() as $row) {
-					$data = $row;
-				}
-				return $data;
-			} else {
-				return 'yes';
-			}			
-		}	
+	// 		$this->db->select('CAssessmentId');
+	// 		$this->db->where('UserId',$UserId);
+	// 		$this->db->where('EndTime',NULL);
+	// 		$query = $this->db->get('tblcandidateassessment');
+	// 		$data = array();	
+	// 		if($query->num_rows()==1){
+	// 			foreach($query->result() as $row) {
+	// 				$data = $row;
+	// 			}
+	// 			return $data;
+	// 		} else {
+	// 			return 'yes';
+	// 		}			
+	// 	}	
 			
-	}
+	// }
 
 	public function add_AssessmentDetails($post_AssessmentDetails) {
 			

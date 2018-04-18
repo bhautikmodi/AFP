@@ -55,7 +55,7 @@ export class AssessmentComponent implements OnInit {
             sync: "#carousel"
           });
           $('[data-toggle="tooltip"]').tooltip();
-          new PerfectScrollbar('.preview_ksa');
+          new PerfectScrollbar('.preview_ksa tbody');
 
           for(let obj of this.ksaList){
             let j = this.ksaList.indexOf(obj);

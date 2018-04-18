@@ -69,12 +69,13 @@
 <div class="assessment_bg">
   <div class="container">
     <div class="row">
+      <h2 class="text-center">rate your team for</h2>
       <form class="form-validate" #assessmentForm="ngForm" (ngSubmit)="finalSubmit()">
       <div id="slider" class="flexslider">      
         <ul class="slides">          
           <li *ngFor="let ksa1 of ksaList; let j = index;">
               <div class="col-md-3 col-sm-4" *ngFor="let ksa of ksa1.row; let i = index">
-                  <div class="ksa_box" data-toggle="tooltip" data-placement="bottom" title="Choose your Rating Scale">
+                  <div class="ksa_box" data-toggle="tooltip" data-placement="bottom" title="Choose your Rating">
                     <div class="ksa_text"><span>{{(8*j)+i+1}}</span> {{ksa.Name}} </div>
                     <div class="radio_box">
                       <div class="radio_box_ksa">
@@ -101,7 +102,7 @@
         </ul>      
       </div>
       <div class="text-center">
-          <button type="submit" [disabled]="submit_true" class="next_btn">Submit</button>
+          <button type="submit" [disabled]="submit_true" class="next_btn"><span>Submit</span></button>
         <!-- <button class="next_btn" type="submit" onclick="window.location.href = 'thankyou.html'; return false;">Submit</button> -->
       </div>
     </form>
@@ -119,24 +120,28 @@
       </div>
       <div class="modal-body">
         <div class="preview_ksa">
-          <table class="table table-bordered table-striped table-hover">
+          <table class="table table-bordered table-hover">
+            <thead>
             <tr>
               <th class="text-center width_5">Sr. No.</th>
-              <th class="width_70">KSAs</th>
-              <th class="text-left width_30">Rating Scale</th>
+              <th class="width_60">KSA</th>
+              <th class="text-left width_30">Selected Rating</th>
             </tr>
+          </thead>
+          <tbody>
             <ng-container *ngFor="let ksa1 of ksaList; let j = index;">
             <tr *ngFor="let ksa of ksa1.row; let i = index">
-              <td class="text-center">{{(8*j)+i+1}}</td>
-              <td>{{ksa.Name}}</td>
-              <td>{{ksa.RatingScaleId}} - 
+              <td class="text-center width_5">{{(8*j)+i+1}}</td>
+              <td class="width_60">{{ksa.Name}}</td>
+              <td class="width_30">{{ksa.RatingScaleId}} - 
                 <span *ngIf="ksa.RatingScaleId==1">General Awareness</span>
                 <span *ngIf="ksa.RatingScaleId==2">Developing</span>
                 <span *ngIf="ksa.RatingScaleId==3">Intermediate</span>
                 <span *ngIf="ksa.RatingScaleId==4">Advanced</span>
               </td>
             </tr>
-          </ng-container>            
+          </ng-container> 
+        </tbody>           
           </table>
         </div>
       </div>

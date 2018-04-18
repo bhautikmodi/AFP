@@ -8,7 +8,7 @@ export class SalesUserService {
   getUserAssessDetail(CAssessmentId) 
   { debugger
 	let promise = new Promise((resolve, reject) => { 
-    this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getUserAssessDetail/'+CAssessmentId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Salesuser/getUserAssessDetail/'+CAssessmentId, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success

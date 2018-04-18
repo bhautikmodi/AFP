@@ -25,9 +25,9 @@
 						pattern="[a-zA-Z' ]{1,100}" 
 							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}"  required/>
 						<span class="error_span"  *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
-							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter AssessmentName</span>
+							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter Assessment Name</span>
 							<span class="error_span" *ngIf="AssessmentName.errors && AssessmentName.errors.pattern">
-							Please enter a valid AssessmentName.
+							Please enter a valid Assessment Name.
 					  </span>
 						</span>	
           </div>
@@ -58,7 +58,7 @@
 									</span> 
           </div>
        
-		    <button class="next_btn pull-right" [disabled]="btn_disable"   type="submit">Submit</button>
+		    <button class="next_btn pull-right" [disabled]="btn_disable"   type="submit"><span>Submit</span></button>
 
         </form>
       </div>

@@ -61,7 +61,7 @@
                 <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="RegisterEntity.FirstName" name="FirstName" pattern="[a-zA-Z' ]{1,100}"
 				[ngClass]="{red_border: (FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)"> 
-							<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter First Name</span>
+							<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter your first name</span>
 							<span *ngIf="FirstName.errors && FirstName.errors.pattern">Please enter a valid First Name</span>
 						</span>
               </div>
@@ -72,7 +72,7 @@
                <input type="text" class="form-control" #LastName="ngModel" [(ngModel)]="RegisterEntity.LastName" name="LastName" pattern="[a-zA-Z' ]{1,100}"
 				[ngClass]="{red_border: (LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)"> 
-							<span *ngIf="LastName.errors.required || (LastName.pristine && submitted)">Please enter Last Name</span>
+							<span *ngIf="LastName.errors.required || (LastName.pristine && submitted)">Please enter your last name</span>
 							<span *ngIf="LastName.errors && LastName.errors.pattern">Please enter a valid Last Name</span>
 						</span>
               </div>
@@ -84,7 +84,7 @@
                  <input type="text" class="form-control" #Title="ngModel" [(ngModel)]="RegisterEntity.Title" name="Title" pattern="[a-zA-Z ]{1,100}"
 				[ngClass]="{red_border: (Title.dirty && Title.invalid) || (Title.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(Title.dirty && Title.invalid) || (Title.pristine && submitted)"> 
-							<span *ngIf="Title.errors.required || (Title.pristine && submitted)">Please enter Title</span>
+							<span *ngIf="Title.errors.required || (Title.pristine && submitted)">Please enter your title</span>
 							<span *ngIf="Title.errors && Title.errors.pattern">Please enter a valid Title</span>
 						</span>
               </div>
@@ -92,7 +92,11 @@
 			<div class="col-md-6 col-sm-12"  *ngIf="Disinv.Value ==1">
 			  <div class="form-group">
 				<label><span>*</span>Email Address 1</label>
-				<input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
+        <input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
+        <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
+          <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter your emailaddress</span>
+          <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">Please enter a valid emailaddress</span>
+        </span>
 			  </div>
 			</div>
 		
@@ -106,7 +110,7 @@
 						<span class="error_span"  *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
 							<span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter Phone Number</span>
 							<span class="error_span" *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">
-							Please enter a valid Phone Number.
+							Please enter valid Phone Number.
 					  </span>
 						</span>
               </div>
@@ -125,11 +129,11 @@
 				 [(ngModel)]="RegisterEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
 									<span *ngIf="Password.errors && Password.errors.required">
-												Please enter Password
+                    Please enter your password
 											</span>
 										  
 										  <span *ngIf="Password.errors && Password.errors.pattern">
-												Please input a valid Password.
+												Password must be 8 characters or more
 										  </span>
 								</span>
               </div>
@@ -141,14 +145,14 @@
 					[(ngModel)]="RegisterEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
-									Please enter password
+              Please enter your password
 								</span>
 							  
 							  <span *ngIf="cPassword.errors && cPassword.errors.pattern && !same">
-									Please input a valid password.
+									Password must be 8 characters or more
 							  </span>
 							  <span *ngIf="same && !(cPassword.errors && cPassword.errors.pattern && cPassword.errors.required)">
-									please enter same password.
+									Password doesn't not match
 							  </span>
 					</span>
               </div>
@@ -162,7 +166,7 @@
 				 [ngClass]="{red_border: (Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)">
 									<span *ngIf="Address1.errors && Address1.errors.required">
-												Please enter Address
+                    Please enter your address
 											</span>
 										
 								</span>
@@ -176,7 +180,7 @@
 				 [ngClass]="{red_border: (Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)">
 									<span *ngIf="Address2.errors && Address2.errors.required">
-												Please enter Address
+                    Please enter your address
 											</span>
 										
 								</span>
@@ -247,7 +251,7 @@
   </div>
 </div>
 <div class="clearfix"></div>
-<div class="modal fade bs-example-modal-sm" id="submit_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal fade bs-example-modal-sm" id="submit_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body">

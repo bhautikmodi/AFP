@@ -29,6 +29,24 @@ class DashboardUser_model extends CI_Model
             return $data;	
 		}				
     }
+
+    public function getPendingAssement($UserId = NULL) {
+		
+		if($UserId) {
+
+			$this->db->select('cass.CAssessmentId,cass.AssessmentName,cass.StartTime');
+			$this->db->where('UserId',$UserId);
+            $this->db->where('EndTime',NULL);
+            $this->db->order_by('CAssessmentId','desc');
+			$query = $this->db->get('tblcandidateassessment as cass');	
+            $data = array();
+            if($query->result())
+            {
+                $data=$query->result();				   
+            }
+            return $data;	
+		}				
+    }
     
     public function getUserAssessDetail($CAssessmentId = NULL) {
 		

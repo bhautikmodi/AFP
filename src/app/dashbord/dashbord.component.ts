@@ -14,6 +14,7 @@ declare var AmCharts: any;
 export class DashbordComponent implements OnInit {
 
   assessmentList;
+  passessmentList;
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
   
    ngOnInit() {  
@@ -21,9 +22,9 @@ export class DashbordComponent implements OnInit {
     this.DashboardService.getAllAssement(this.globals.authData.UserId)
 		.then((data) => 
 		{
-      this.assessmentList = data;
+      this.assessmentList = data['complete'];
+      this.passessmentList = data['pending'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-      console.log(this.assessmentList);
       setTimeout(()=>{ 
         var j = 0; 
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

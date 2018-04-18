@@ -47,7 +47,7 @@
             <label><span>*</span>Team Size</label>
 							<select class="form-control" #TeamSizeId="ngModel" [(ngModel)]="AsmtDetailsEntity.TeamSizeId"
 								name="TeamSizeId" [ngClass]="{red_border: (TeamSizeId.dirty && TeamSizeId.invalid) || (TeamSizeId.pristine && submitted)}" required>  
-								
+                  <option value="">Select</option>>
 									<option *ngFor="let Team of TeamSizeList" value="{{Team.TeamSizeId}}" 
 									ngSelected="AsmtDetailsEntity.TeamSizeId==Team.TeamSizeId">{{Team.TeamSize}}</option>
 								</select>

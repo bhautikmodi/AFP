@@ -5,21 +5,21 @@ import { Globals } from '.././globals';
 export class SalesDashboardService {
 
   constructor(private http: Http, private globals: Globals) { }
-  // add(SalesDashboardEntity){ 
-  //   let promise = new Promise((resolve, reject) => {
-  //     this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/addCompany/', SalesDashboardEntity, this.globals.headerpath)
-  //       .toPromise()
-  //       .then(
-  //         res => { // Success
-  //           resolve(res.json());
-  //         },
-  //         msg => { // Error
-  //       reject(msg);
-  //         }
-  //       );
-  //   });		
-  //   return promise;
-  //   }
+  add(data){ debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data, this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
   getAllUser()
   {
 	let promise = new Promise((resolve, reject) => {
@@ -36,22 +36,36 @@ export class SalesDashboardService {
 	});		
 	return promise;
   }  
+  getUserList(CompanyId){
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getUserList/' + CompanyId, this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    } 
   
-  
-  getAllCompany()
-  {
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getAllCompany', this.globals.headerpath)
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res.json());
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }  
+  // getAllCompany()
+  // {debugger
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getAllCompany', this.globals.headerpath)
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res.json());
+  //       },
+  //       msg => { // Error
+	// 	  reject(msg);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }  
 }

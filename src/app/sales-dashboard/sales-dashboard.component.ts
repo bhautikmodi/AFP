@@ -4,7 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { SalesDashboardService } from '../services/sales-dashboard.service';
-
+declare var $: any;
 @Component({
   selector: 'app-sales-dashboard',
   providers: [SalesDashboardService],
@@ -14,6 +14,7 @@ import { SalesDashboardService } from '../services/sales-dashboard.service';
 export class SalesDashboardComponent implements OnInit {
 	CompanyList;
 	UserList;
+	Usersearch;
 	SalesDashboardEntity;
 	submitted;
 	btn_disable;
@@ -26,18 +27,22 @@ export class SalesDashboardComponent implements OnInit {
     this.SalesDashboardEntity={};
 		this.SalesDashboardEntity.CompanyId='';
 		this.SalesDashboardEntity.UserId='';
-    this.SalesDashboardService.getAllCompany()
-		//.map(res => res.json())
-		.then((data) => {
-			this.CompanyList = data;
-		},
-		(error) => {
-			alert('error');
+		this.Usersearch=[];
+		this.UserList=[];
+		this.CompanyList=[];
+
+    $('.user_box').click(function(){
+					
+			$('.user_box').removeClass('active');
+			$(this).addClass('active');
 		});
+		
+		
 		this.SalesDashboardService.getAllUser()
 		//.map(res => res.json())
 		.then((data) => {
-			this.UserList = data;
+			this.UserList = data['user'];
+			this.CompanyList = data['com'];
 		},
 		(error) => {
 			alert('error');
@@ -45,21 +50,62 @@ export class SalesDashboardComponent implements OnInit {
   }
   addSalesDashboard(SalesDashboardForm) {
 		debugger
-		let id = this.route.snapshot.paramMap.get('id');
-		if (id) {
-			this.submitted = false;
-		} else {
-		//	this.SalesDashboardEntity.CompanyId = 0;
-			this.submitted = true;
+		if (SalesDashboardForm.valid) {
+			this.btn_disable = true;
+		  this.SalesDashboardEntity.CompanyId;
+			this.SalesDashboardEntity.UserId;
+			var data = {'com': this.SalesDashboardEntity.CompanyId,'user':this.SalesDashboardEntity.UserId};
+			this.SalesDashboardService.add(data)
+				.then((data) => {
+					//alert('success');
+					if(data=='error')
+					{
+						this.Usersearch=[];
+					}else{		this.Usersearch = data;
+					}
+			
+					this.btn_disable = false;
+					this.submitted = false;
+				
+				},
+				(error) => {
+					alert('error');
+					this.btn_disable = false;
+					this.submitted = false;
+				});
 		}
 		
 	}
-  clearForm(SalesDashboardForm) 
-  {
-		this.SalesDashboardEntity = {};
-		this.SalesDashboardEntity.IsActive = '1';
-		this.submitted = false;
-		SalesDashboardForm.form.markAsPristine();
+	getUserList(SalesDashboardForm)
+	{ debugger
+		SalesDashboardForm.form.controls.UserId.markAsDirty();
+		this.SalesDashboardEntity.UserId='';
+		if(this.SalesDashboardEntity.CompanyId > 0){
+			this.SalesDashboardService.getUserList(this.SalesDashboardEntity.CompanyId)
+			.then((data) => 
+			{
+				this.UserList = data;
+			}, 
+			(error) => 
+			{
+				alert('error');
+			});
+		} else {
+			this.UserList = [];
+		}
 	}
+	clickid()
+  {
+	var id = $('.user_box.active input').val();
+	//alert(id);
+ this.router.navigate(['/user-assessment-list/'+id]);  
+  
+  }
+  addclass(i){
+	  
+	  $('.user_box').removeClass('active');
+	  $('#cbox'+i).addClass('active');
+		//e.currentTarget.addClass('active');
+  }
 
 }

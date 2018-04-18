@@ -38,25 +38,19 @@ class Invitation extends CI_Controller {
 					$result2 = $query2->result();
 					$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 				} 
-				echo "<pre>"; print_r($rowTo[0]->EmailAddress);
-				// echo $body; echo "<br/>";
-				// echo $row->CcEmail; echo "<br/>";
-				// echo $row->BccEmail; echo "<br/>";
-				// echo $row->Subject; echo "<br/>";
-				// echo $row->Subject; echo "<br/>";
-				// $this->email->from('myopeneyes3937@gmail.com');
-				// $this->email->to($row->);		
-				// $this->email->subject();
-				// $this->email->cc();
-				// $this->email->bcc();
-				// $this->email->message($body);
-				// if($this->email->send())
-				// {
-				// 	echo 'success';
-				// }else
-				// {
-				// 	echo 'fail';
-				// }
+				$this->email->from('myopeneyes3937@gmail.com', 'AFP Admin');
+				$this->email->to($rowTo[0]->EmailAddress);		
+				$this->email->subject($row->Subject);
+				$this->email->cc($row->CcEmail.','.$row->totalcc);
+				$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+				$this->email->message($body);
+				if($this->email->send())
+				{
+					echo 'success';
+				}else
+				{
+					echo 'fail';
+				}
 			 } 
 		}
 		die;		

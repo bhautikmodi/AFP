@@ -68,17 +68,7 @@ export class RegisterComponent implements OnInit {
 	{
 		alert('error');
 	});}
-	this.RegisterService.getAllCountry()
-	.then((data) => 
-	{ 
-		this.CountryList = data;
 
-		
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});
     this.Disinv = '';
 	this.RegisterService.getAll()
 	//.map(res => res.json())
@@ -91,7 +81,17 @@ export class RegisterComponent implements OnInit {
 	(error) => 
 	{
 		alert('error');
-	});	
+	});		this.RegisterService.getAllCountry()
+	.then((data) => 
+	{ 
+		this.CountryList = data;
+
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});
 	
 	// let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
@@ -144,7 +144,7 @@ export class RegisterComponent implements OnInit {
 
   }
   addRegister(RegisterForm)
-	{		
+	{		debugger
 					
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
 			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;

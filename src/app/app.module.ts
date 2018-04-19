@@ -36,13 +36,10 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { HomeComponent } from './home/home.component';
 import { UserAssessmentDetailsComponent } from './user-assessment-details/user-assessment-details.component';
 
-<<<<<<< HEAD
-=======
 import { SalesDashboardComponent } from './sales-dashboard/sales-dashboard.component';
 import { SalesDashboardService } from './services/sales-dashboard.service';
 import { UserAssessmentListComponent } from './user-assessment-list/user-assessment-list.component';
 import { SalesUserDetailsComponent } from './sales-user-details/sales-user-details.component';
->>>>>>> ab7fd9ecabe01f93e45be2cee5a9ed8ce4b9d01f
 
 
 @NgModule({
@@ -70,15 +67,12 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 
     ThankyouComponent,
     HomeComponent,
-<<<<<<< HEAD
-    UserAssessmentDetailsComponent
-=======
+    UserAssessmentDetailsComponent,
     UserAssessmentDetailsComponent,
     UserAssessmentDetailsComponent,
     SalesDashboardComponent,
     UserAssessmentListComponent,
     SalesUserDetailsComponent
->>>>>>> ab7fd9ecabe01f93e45be2cee5a9ed8ce4b9d01f
 
 
   ],
@@ -159,8 +153,6 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 		{
 			path : 'user-assessment-details/:id',
 			component : UserAssessmentDetailsComponent,
-<<<<<<< HEAD
-=======
 			canActivate : [AuthGuard]
 		},
 		{
@@ -176,7 +168,6 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 		{
 			path : 'sales-user-details/:id',
 			component :SalesUserDetailsComponent,
->>>>>>> ab7fd9ecabe01f93e45be2cee5a9ed8ce4b9d01f
 			canActivate : [AuthGuard]
 		},
 		{

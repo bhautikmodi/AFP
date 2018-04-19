@@ -26,7 +26,8 @@ export class DashboardComponent implements OnInit {
 		this.Dashboard.domain = data['domain'];
 		this.Dashboard.Carea = data['Carea'];
 		this.Dashboard.Tksa = data['Tksa'];
-			this.Dashboard.Course = data['Course'];
+		this.Dashboard.Course = data['Course'];
+		this.Dashboard.Company = data['Company'];
 	}, 
 	(error) => 
 	{

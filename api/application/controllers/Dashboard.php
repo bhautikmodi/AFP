@@ -27,11 +27,13 @@ class Dashboard extends CI_Controller {
 	   $data['Carea']=$result2;
 	   
 	    $result3=$this->Dashboard_model->getlist_Tksa();
-	   $data['Tksa']=$result3;
-	   
+	   $data['Tksa']=$result3;	   
 	  
 	    $result4=$this->Dashboard_model->getlist_Course();
 	   $data['Course']=$result4;
+
+	   $result5=$this->Dashboard_model->getlist_Company();
+	   $data['Company']=$result5;
 	   
 		echo json_encode($data);
 				

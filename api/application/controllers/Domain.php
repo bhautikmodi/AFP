@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Domain extends CI_Controller {
+class Domain extends MY_Controller {
 
 
     public function __construct() {

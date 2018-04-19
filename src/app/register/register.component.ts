@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
 								this.RegisterEntity = data;
 								this.companydata.Name=this.RegisterEntity.Name;
 								this.companydata.IndustryName=this.RegisterEntity.IndustryName;
-								this.companydata.PhoneNumber=this.RegisterEntity.PhoneNumber;
+								this.companydata.PhoneNumber=this.RegisterEntity.PhoneNumber1;
 								this.companydata.Website=this.RegisterEntity.Website;
 								if (this.RegisterEntity.CountryId > 0) {
 									this.RegisterService.getStateList(this.RegisterEntity.CountryId)

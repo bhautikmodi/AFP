@@ -77,6 +77,9 @@ import { RolepermissionService } from './services/rolepermission.service';
 import { CommonService } from './services/common.service';
 import { PendingAssessmentComponent } from './pending-assessment/pending-assessment.component';
 import { PendingAssessmentService } from './services/pending-assessment.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorClassService } from './http-interceptor-class.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -128,6 +131,7 @@ import { PendingAssessmentService } from './services/pending-assessment.service'
   BrowserModule,
 	HttpModule,
   FormsModule,
+  HttpClientModule,
 	RouterModule.forRoot([		
       {
         path : '',
@@ -401,7 +405,13 @@ import { PendingAssessmentService } from './services/pending-assessment.service'
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
     UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,
-    RolepermissionService,CommonService,PendingAssessmentService],
+    RolepermissionService,CommonService,PendingAssessmentService,
+    {
+    provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorClassService,
+      multi: true
+    }
+  ],
    
 
 

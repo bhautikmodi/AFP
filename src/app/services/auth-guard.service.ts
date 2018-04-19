@@ -9,15 +9,14 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
-  canActivate(route,state:RouterStateSnapshot) { debugger
+  canActivate(route,state:RouterStateSnapshot) { 
 	  if(this.authService.isLoggedIn()==true){
-			console.log(state.url.split('/')[1]);
-		console.log(state.url.split('/')[2]);
+	
 			if(state.url.split('/')[2] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];
 			} else {
 				this.globals.currentLink = '/'+state.url.split('/')[1];
-			} debugger
+			} 
 		  if(state.url=='/login'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'){
 			  this.globals.IsLoggedIn = false;
 			  this.router.navigate(['/dashboard']);

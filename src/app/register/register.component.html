@@ -89,14 +89,14 @@
 						</span>
               </div>
             </div>
-			<div class="col-md-6 col-sm-12"  *ngIf="Disinv.Value ==1">
+			<div class="col-md-6 col-sm-12"  >
 			  <div class="form-group">
 				<label><span>*</span>Email Address 1</label>
-        <input type="text" name="EmailAddress" class="form-control" disabled  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
-        <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
+        <input type="text" name="EmailAddress" class="form-control" disabled="true"  #EmailAddress="ngModel" [(ngModel)]="RegisterEntity.EmailAddress" />
+        <!-- <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
           <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter your emailaddress</span>
           <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">Please enter a valid emailaddress</span>
-        </span>
+        </span> -->
 			  </div>
 			</div>
 		

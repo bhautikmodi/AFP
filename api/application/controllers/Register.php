@@ -13,14 +13,24 @@ class Register extends CI_Controller
 	
 	
 	
-		public function getAllCountry($CompanyId = NULL)
+		public function getAllCountry()
+	{
+		
+				$data="";
+				
+				$data=$this->Register_model->getlist_country();
+
+				
+				echo json_encode($data);
+		
+	}
+	public function getCompany($CompanyId = NULL)
 	{
 		if(!empty($CompanyId)) 
 		{
 				$data="";
 				
-				$data['res']=$this->Register_model->getlist_country();
-				$data['com']=$this->Register_model->company_default($CompanyId);
+				$data=$this->Register_model->company_default($CompanyId);
 				
 				echo json_encode($data);
 		}

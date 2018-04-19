@@ -18,10 +18,12 @@ export class CourseComponent implements OnInit {
 	btn_disable;
 	CourseLevelList;
 	header;
+	domainList;
 	constructor(private http: Http, private globals: Globals, private router: Router,
 		private CourseService: CourseService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -50,6 +52,13 @@ export class CourseComponent implements OnInit {
 			(error) => {
 				alert('error');
 			});
+			this.CourseService.getDomainList()
+			.then((data) => {
+				this.domainList = data;
+			},
+			(error) => {
+				alert('error');
+			});
 
 
 		this.CourseEntity = {};
@@ -71,6 +80,8 @@ export class CourseComponent implements OnInit {
 			this.CourseEntity.CourseId = 0;
 			this.CourseEntity.IsActive = '1';
 			this.CourseEntity.CourseLevelId = '';
+			this.CourseEntity.DomainId = '';
+			
 		}
 
 	}
@@ -117,6 +128,8 @@ export class CourseComponent implements OnInit {
 		this.CourseEntity = {};
 		this.CourseEntity.CourseId = 0;
 		this.CourseEntity.IsActive = '1';
+		this.CourseEntity.CourseLevelId = '';
+		this.CourseEntity.DomainId = '';
 		this.submitted = false;
 		CourseForm.form.markAsPristine();
 	}

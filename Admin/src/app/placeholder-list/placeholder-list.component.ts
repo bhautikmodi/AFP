@@ -29,6 +29,11 @@ export class PlaceholderListComponent implements OnInit {
   }
 
   ngOnInit() { 
+
+	if(this.globals.authData.RoleId!=4){
+		this.router.navigate(['/dashboard']);
+	  }
+
 		this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;

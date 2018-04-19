@@ -31,11 +31,11 @@
 				 [(ngModel)]="newpassEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
 									<span *ngIf="Password.errors && Password.errors.required">
-												Please enter Password
+										Please enter your current password
 											</span>
 										  
 										  <span *ngIf="Password.errors && Password.errors.pattern">
-												Please input a valid Password.
+												Password not match
 										  </span>
 								</span>
               </div>		
@@ -47,11 +47,11 @@
 				 [(ngModel)]="newpassEntity.nPassword" name="nPassword" [ngClass]="{red_border: (nPassword.dirty && nPassword.invalid) || (nPassword.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(nPassword.dirty && nPassword.invalid) || (nPassword.pristine && submitted)">
 									<span *ngIf="nPassword.errors && nPassword.errors.required">
-												Please enter Password
+										Please enter your password
 											</span>
 										  
 										  <span *ngIf="nPassword.errors && nPassword.errors.pattern">
-												Please input a valid nPassword.
+												Password must be 8 characters or more
 										  </span>
 								</span>
               </div>
@@ -63,7 +63,7 @@
 					[(ngModel)]="newpassEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
-									Please enter password
+									Please enter your password
 								</span>
 							  
 							  <span *ngIf="cPassword.errors && cPassword.errors.pattern && !same">

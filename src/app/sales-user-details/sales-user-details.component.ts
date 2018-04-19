@@ -21,6 +21,9 @@ export class SalesUserDetailsComponent implements OnInit {
 
 
   ngOnInit() {  debugger
+<<<<<<< HEAD
+    var chart = AmCharts.makeChart("dashboard_result_bar", {
+=======
    
 
 
@@ -65,6 +68,7 @@ this.SalesUserService.getUserAssessDetail(id)
             this.areaksa[j].color = colorarray[j];
           }
     var chart = AmCharts.makeChart("gneraluser_result", {
+>>>>>>> 1c17cba509783f0f7f1b2f5aca08b6138d44b305
       "type": "serial",
       "startDuration": 0,
       "dataProvider": this.domainData,

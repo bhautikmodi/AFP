@@ -51,10 +51,27 @@ export class RegisterService {
 //    }
    
    
-   getAllCountry(token)
+   getAllCountry()
   {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Register/getAllCountry/' + token, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Register/getAllCountry' , this.globals.headerpath)
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res.json());
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  } 
+   
+  getCompany(token)
+  {
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'Register/getCompany/' + token, this.globals.headerpath)
       .toPromise()
       .then(
         res => { // Success

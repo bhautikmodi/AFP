@@ -57,17 +57,28 @@ export class RegisterComponent implements OnInit {
 	{
 		this.router.navigate(['/invitation']);					
 	}
-	this.RegisterService.getAllCountry(token)
+	this.RegisterService.getCompany(token)
 	.then((data) => 
 	{ 
-		this.CountryList = data['res'];
-		this.companydata = data['com'];	
+		
+		this.companydata = data;	
 		
 	}, 
 	(error) => 
 	{
 		alert('error');
 	});}
+	this.RegisterService.getAllCountry()
+	.then((data) => 
+	{ 
+		this.CountryList = data;
+
+		
+	}, 
+	(error) => 
+	{
+		alert('error');
+	});
     this.Disinv = '';
 	this.RegisterService.getAll()
 	//.map(res => res.json())

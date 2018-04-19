@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Domain extends CI_Controller {
+class Domain extends MY_Controller {
 
 
     public function __construct() {
@@ -17,7 +17,7 @@ class Domain extends CI_Controller {
 		
 		$data="";
 		$data=$this->Domain_model->getlist_domain();		
-		echo json_encode($this->input->get_request_header('Authorization'));
+		echo json_encode($data);
 				
 	}
 	

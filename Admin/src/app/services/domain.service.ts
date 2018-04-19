@@ -14,7 +14,7 @@ export class DomainService {
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -30,7 +30,7 @@ export class DomainService {
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -63,7 +63,7 @@ export class DomainService {
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

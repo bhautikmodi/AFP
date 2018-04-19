@@ -24,10 +24,10 @@ export class DashbordComponent implements OnInit {
 		{
       this.assessmentList = data['complete'];
       this.passessmentList = data['pending'];
-      var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
       setTimeout(()=>{ 
         var j = 0; 
-        var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
+        //var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
+        var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.assessmentList){          
         for(let domain of obj.domainlist){
           let k = obj.domainlist.indexOf(domain);

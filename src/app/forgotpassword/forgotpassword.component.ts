@@ -70,7 +70,8 @@ export class ForgotpasswordComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				this.globals.isLoading = false;
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
 			});

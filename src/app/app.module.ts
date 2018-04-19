@@ -36,13 +36,6 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { HomeComponent } from './home/home.component';
 import { UserAssessmentDetailsComponent } from './user-assessment-details/user-assessment-details.component';
 
-<<<<<<< HEAD
-=======
-import { SalesDashboardComponent } from './sales-dashboard/sales-dashboard.component';
-import { SalesDashboardService } from './services/sales-dashboard.service';
-import { UserAssessmentListComponent } from './user-assessment-list/user-assessment-list.component';
-import { SalesUserDetailsComponent } from './sales-user-details/sales-user-details.component';
->>>>>>> 923bc06402e5313f2426b767ddb0bdc61d65bd15
 
 
 @NgModule({
@@ -70,14 +63,7 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 
     ThankyouComponent,
     HomeComponent,
-<<<<<<< HEAD
     UserAssessmentDetailsComponent
-=======
-    UserAssessmentDetailsComponent,
-    SalesDashboardComponent,
-    UserAssessmentListComponent,
-    SalesUserDetailsComponent
->>>>>>> 923bc06402e5313f2426b767ddb0bdc61d65bd15
 
 
   ],
@@ -158,24 +144,6 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 		{
 			path : 'user-assessment-details/:id',
 			component : UserAssessmentDetailsComponent,
-<<<<<<< HEAD
-=======
-			canActivate : [AuthGuard]
-		},
-		{
-			path : 'sales-admin-dashboard',
-			component : SalesDashboardComponent,
-			canActivate : [AuthGuard]
-		},
-		{
-			path : 'user-assessment-list/:id',
-			component :UserAssessmentListComponent,
-			canActivate : [AuthGuard]
-		},
-		{
-			path : 'sales-user-details/:id',
-			component :SalesUserDetailsComponent,
->>>>>>> 923bc06402e5313f2426b767ddb0bdc61d65bd15
 			canActivate : [AuthGuard]
 		},
 		{

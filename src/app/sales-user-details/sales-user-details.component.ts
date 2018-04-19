@@ -16,7 +16,7 @@ export class SalesUserDetailsComponent implements OnInit {
 
 
   ngOnInit() {  debugger
-    var chart = AmCharts.makeChart("dashboard_result_bar" {
+    var chart = AmCharts.makeChart("dashboard_result_bar", {
       "type": "serial",
       "startDuration": 0,
       "dataProvider": [{

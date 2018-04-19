@@ -196,7 +196,7 @@
 					<option value="" ngSelected='RegisterEntity.CountryId==""'>Select Country</option>
 				<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="RegisterEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
 						 <span class="error_span"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
-							<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select Country </span>
+							<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select your Country </span>
 						</span>
               </div>
             </div>
@@ -209,7 +209,7 @@
 						<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="RegisterEntity.StateId==state.StateId">{{state.StateName}}</option>
 				</select>
 				 <span class="error_span"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
-							<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select State</span>
+							<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select your State</span>
 						</span>
               </div>
             </div>
@@ -220,7 +220,7 @@
                             <input type="text" class="form-control " #City="ngModel" [(ngModel)]="RegisterEntity.City" name="City" pattern="[a-zA-Z ]{1,100}"
 							[ngClass]="{red_border: (City.dirty && City.invalid) || (City.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(City.dirty && City.invalid) || (City.pristine && submitted)"> 
-							<span *ngIf="City.errors.required || (City.pristine && submitted)">Please enter City</span>
+							<span *ngIf="City.errors.required || (City.pristine && submitted)">Please enter your City</span>
 							<span *ngIf="City.errors && City.errors.pattern">Please enter a valid City</span>
 						</span>
               </div>
@@ -232,7 +232,7 @@
 							 pattern="[0-9]{1,5}"
 							[ngClass]="{red_border: (ZipCode.dirty && ZipCode.invalid) || (ZipCode.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(ZipCode.dirty && ZipCode.invalid) || (ZipCode.pristine && submitted)"> 
-							<span *ngIf="ZipCode.errors.required || (ZipCode.pristine && submitted)">Please enter ZipCode</span>
+							<span *ngIf="ZipCode.errors.required || (ZipCode.pristine && submitted)">Please enter your ZipCode</span>
 							<span *ngIf="ZipCode.errors && ZipCode.errors.pattern">Please enter a valid ZipCode</span>
 						</span>
               </div>

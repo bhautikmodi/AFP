@@ -103,7 +103,7 @@ class Register extends CI_Controller
 					$this->email->to($post_user['EmailAddress']);
 					
 					
-					$this->email->subject('Sending mail');
+					$this->email->subject('Welcome to Association for Financial Professionals. Registration Successful.');
 					//$this->email->message('sending mail recive.....');
 					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 					<tr>
@@ -117,7 +117,7 @@ class Register extends CI_Controller
 							<p>Welcome to <strong>Association for Financial Professionals</strong>.</p>
 							<br>
 							<p>Thank you for registrartion.</p>
-							<p>You are registration successful.</p>	
+							<p>Your registration is successful.</p>	
 						</td>
 					</tr>
 					<tr>

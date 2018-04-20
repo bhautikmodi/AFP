@@ -104,7 +104,7 @@ class Invitation extends CI_Controller {
 
 					$this->email->from('myopeneyes3937@gmail.com','Email Test');
 					$this->email->to($post_Invitation['EmailAddress']);		
-					$this->email->subject('AFP registration confirmation code '.$post_Invitation['Code'].);
+					$this->email->subject('AFP registration confirmation code '.$post_Invitation['Code']);
 					//$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
 					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 					<tr>

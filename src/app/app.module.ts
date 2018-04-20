@@ -69,6 +69,7 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
     HomeComponent,
     UserAssessmentDetailsComponent,
     UserAssessmentDetailsComponent,
+    UserAssessmentDetailsComponent,
     SalesDashboardComponent,
     UserAssessmentListComponent,
     SalesUserDetailsComponent

@@ -115,7 +115,7 @@ export class RegisterService {
 	return promise;
   } 
     
-getById(userId){
+getById(userId){debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Register/getById/' + userId, this.globals.headerpath)
       .toPromise()

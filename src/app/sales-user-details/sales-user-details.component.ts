@@ -106,28 +106,28 @@ this.SalesUserService.getUserAssessDetail(id)
     });
 
 
-    var chart = AmCharts.makeChart( "domain_chart", {
-      "type": "pie",
-     "startDuration": 0,
-      "dataProvider": this.domainDatapre,
-      "valueField": "value",
-      "titleField": "domain",
-      "labelRadius": -20,
-      "labelText": "[[percents]]%",
-      "labelTickColor": "#FFFFFF",
-      "color" : "#fff",
-      "labelColorField": "#FFFFFF",
-      // "balloonText": "",
-      "colorField": "color",
-      "percentPrecision" : 0,
-      "balloon":{
-         "fixedPosition":true
-      },
-     "balloonText": "[[domain]]<br><b>([[percents]]%)</b>",
-      "export": {
-        "enabled": false
-      }
-    });
+    // var chart = AmCharts.makeChart( "domain_chart", {
+    //   "type": "pie",
+    //  "startDuration": 0,
+    //   "dataProvider": this.domainDatapre,
+    //   "valueField": "value",
+    //   "titleField": "domain",
+    //   "labelRadius": -20,
+    //   "labelText": "[[percents]]%",
+    //   "labelTickColor": "#FFFFFF",
+    //   "color" : "#fff",
+    //   "labelColorField": "#FFFFFF",
+    //   // "balloonText": "",
+    //   "colorField": "color",
+    //   "percentPrecision" : 0,
+    //   "balloon":{
+    //      "fixedPosition":true
+    //   },
+    //  "balloonText": "[[domain]]<br><b>([[percents]]%)</b>",
+    //   "export": {
+    //     "enabled": false
+    //   }
+    // });
     var chart = AmCharts.makeChart( "scale_chart", {
       "type": "pie",
      "startDuration": 0,

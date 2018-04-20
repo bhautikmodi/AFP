@@ -25,7 +25,7 @@ class Invitation extends CI_Controller {
 		$config['mailtype'] = 'html';							
 		$this->email->initialize($config);
 
-		$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.ToEmail,et.CcEmail,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = 'Registration' && et.IsActive = 1");
+		$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = 'Registration' && et.IsActive = 1");
 		foreach($query->result() as $row){ 			
 			 $userId_ar = explode(',', $row->totalTo);			 
 			 foreach($userId_ar as $userId){
@@ -41,7 +41,7 @@ class Invitation extends CI_Controller {
 				$this->email->from('myopeneyes3937@gmail.com', 'AFP Admin');
 				$this->email->to($rowTo[0]->EmailAddress);		
 				$this->email->subject($row->Subject);
-				$this->email->cc($row->CcEmail.','.$row->totalcc);
+				$this->email->cc($row->totalcc);
 				$this->email->bcc($row->BccEmail.','.$row->totalbcc);
 				$this->email->message($body);
 				if($this->email->send())
@@ -52,6 +52,49 @@ class Invitation extends CI_Controller {
 					echo 'fail';
 				}
 			 } 
+		}
+		die;		
+	}
+
+	public function check1(){
+
+		$userId = 22;
+		$EmailToken = 'Registration';
+
+		$config['protocol']='smtp';
+		$config['smtp_host']='ssl://smtp.googlemail.com';
+		$config['smtp_port']='465';
+		$config['smtp_user']='myopeneyes3937@gmail.com';
+		$config['smtp_pass']='W3lc0m3@2018';
+		$config['charset']='utf-8';
+		$config['newline']="\r\n";
+		$config['mailtype'] = 'html';							
+		$this->email->initialize($config);
+
+		$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
+		foreach($query->result() as $row){ 			
+			$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
+			$rowTo = $queryTo->result();
+			$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
+			$body = $row->EmailBody;
+			foreach($query1->result() as $row1){			
+				$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn LEFT JOIN tblmstuserrole AS role ON tn.RoleId = role.RoleId LEFT JOIN tblmstcountry AS con ON tn.CountryId = con.CountryId LEFT JOIN tblmststate AS st ON tn.StateId = st.StateId LEFT JOIN tblcompany AS com ON tn.CompanyId = com.CompanyId LEFT JOIN tblmstindustry AS ind ON com.IndustryId = ind.IndustryId WHERE tn.UserId = '.$userId);
+				$result2 = $query2->result();
+				$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
+			} 
+			$this->email->from('myopeneyes3937@gmail.com', 'AFP Admin');
+			$this->email->to($rowTo[0]->EmailAddress);		
+			$this->email->subject($row->Subject);
+			$this->email->cc($row->totalcc);
+			$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+			$this->email->message($body);
+			if($this->email->send())
+			{
+				echo 'success';
+			}else
+			{
+				echo 'fail';
+			}
 		}
 		die;		
 	}
@@ -104,31 +147,29 @@ class Invitation extends CI_Controller {
 
 					$this->email->from('myopeneyes3937@gmail.com','Email Test');
 					$this->email->to($post_Invitation['EmailAddress']);		
-					$this->email->subject('Invitation mail');
+					$this->email->subject('AFP registration confirmation code '.$post_Invitation['Code']);
 					//$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
 					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 					<tr>
 						<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
 					</tr>
-					
 					<tr>
 						<td style="padding:10px;">
-							<p style="color:#007699;"><strong>Hi,</strong></p>
-							
-							<p>Welcome to <strong>Association for Financial Professionals</strong>.</p>
-							<br>
-							<p>This is a user verification code.This code is use for the registration.So,please keep it the new user registration</p>
-							
-							
-							
+							<p style="color:#007699;"><strong>Confirm your email address</strong></p>
+							<p>Thank you for signing up with us. We’re happy you’re here!.<br>
+							  Enter the following code in the window where you began creating your new AFP Profile </p>
+							<p>The invitation code below will remain active for 30 days.</p>
 						</td>
 					</tr>
 					<tr>
 						<td style="padding:10px;">
+						<p>Invitation code '.$post_Invitation['Code'].'</p>
+							<p>url from where user can register http://localhost:4200/invitation</p>
+							<p>This email contains private information for your AFP account — please don’t forward it. Questions about anything? </p>
+							<p>Email us at info@afponline.com or<br>
+							 sales@afponline.com</p>
+							<br>
 							
-							
-							
-							<p>Invitation code '.$post_Invitation['Code'].'</p>
 							<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
 						</td>
 					</tr>

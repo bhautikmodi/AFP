@@ -24,7 +24,7 @@ export class ForgotpasswordComponent implements OnInit {
   
   addFgpass(fgpassForm)
 	{		
-	
+	debugger
 		
 			this.submitted = true;
 		

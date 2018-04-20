@@ -28,6 +28,7 @@ export class CompetencyAreaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

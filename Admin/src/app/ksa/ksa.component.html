@@ -29,7 +29,7 @@
                                     <!-- <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>   -->
                                     <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                       <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter ksa</span>
-                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid ksa</span>
+                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid ksa</span>
                                     </span>
                                 </div>
                                   

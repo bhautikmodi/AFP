@@ -93,7 +93,7 @@ export class CompetencyAreaListComponent implements OnInit {
 			if (index != -1) {
 				this.areaList.splice(index, 1);			
 			}	
-			this.globals.message = 'Delete successfully';
+			this.globals.message = 'Data Deleted Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

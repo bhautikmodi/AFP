@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SettingsService } from '../services/settings.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+import { debuglog } from 'util';
 declare var $: any;
 
 @Component({
@@ -33,6 +34,8 @@ export class SettingsComponent implements OnInit {
 	updateEntity;
 	cmsgflag;
 	cmessage;
+	cmsgflag1;
+	cmessage1;
 	reminderDaysList;
 	permissionEntity;
 
@@ -78,13 +81,15 @@ export class SettingsComponent implements OnInit {
 	 this.configEntity = {};
 	 this.cmsgflag = false;
    this.SettingsService.getAll(this.globals.authData.UserId)
-	.then((data) => 
+	.then((data) =>  
 	{ 
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
-		this.reminderDaysList = data['remainingdays'];	
-		this.configEntity.emailfrom = data['emailfrom']['Value'];	
+		this.reminderDaysList = data['remainingdays'];
+		this.configEntity.emailpassword = data['emailpassword']['Value'];		
+		this.configEntity.emailfrom = data['emailfrom']['Value'];
+		
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
@@ -148,12 +153,12 @@ export class SettingsComponent implements OnInit {
 				this.submitted = false;
 				this.header = 'Add';
 				if(this.teamsizeEntity.TeamSizeId>0){
-					this.globals.message = 'Update successfully';
+					this.globals.message = 'Data Updated Successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
 					//this.teamsizeList.push(data);
-					this.globals.message = 'Add successfully';
+					this.globals.message = 'Data Added Successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}
@@ -202,7 +207,7 @@ export class SettingsComponent implements OnInit {
 				this.teamsizeList.splice(index, 1);				
 			}			
 			//alert(data);
-			this.globals.message = 'Delete successfully';
+			this.globals.message = 'Data Deleted Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -223,7 +228,7 @@ export class SettingsComponent implements OnInit {
 		this.updateEntity.Key = 'NoOfKSA';
 		this.updateEntity.Value = this.configEntity.noofksa;
 		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
-		this.submitted1 = true;
+		//this.submitted1 = true;
 		if(ksaForm.valid){
 			this.btn_disable1 = true;
 			this.SettingsService.update_config(this.updateEntity)
@@ -234,7 +239,7 @@ export class SettingsComponent implements OnInit {
 	 			this.updateEntity = {};
 				 ksaForm.form.markAsPristine();				 
 				 this.cmsgflag = true;
-				 this.cmessage = 'No of KSA update successfully';
+				 this.cmessage = 'No of KSA Updated Successfully';
 			}, 
 			(error) => 
 			{
@@ -251,7 +256,7 @@ export class SettingsComponent implements OnInit {
 		this.updateEntity.Key = 'Invitation';
 		this.updateEntity.Value = this.configEntity.invitation;
 		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
-		this.submitted2 = true;
+		//this.submitted2 = true;
 		if(invitationForm.valid){
 			this.btn_disable2 = true;
 			this.SettingsService.update_config(this.updateEntity)
@@ -262,7 +267,7 @@ export class SettingsComponent implements OnInit {
 	 			this.updateEntity = {};
 				 invitationForm.form.markAsPristine();
 				 this.cmsgflag = true;
-				 this.cmessage = 'Invitation Features update successfully';
+				 this.cmessage = 'Invitation Features Updated Successfully';
 			}, 
 			(error) => 
 			{
@@ -284,7 +289,7 @@ export class SettingsComponent implements OnInit {
 				this.btn_disable3 = false;
 				this.submitted3 = false;
 				this.cmsgflag = true;
-				this.cmessage = 'Remaining Days update successfully';
+				this.cmessage = 'Remaining Days Updated Successfully';
 			},
 			(error) =>
 			{
@@ -320,23 +325,19 @@ export class SettingsComponent implements OnInit {
 	}
 
 	addEmailFrom(fromForm)
-	{		
-		this.updateEntity = {};
-		this.updateEntity.Key = 'EmailFrom';
-		this.updateEntity.Value = this.configEntity.emailfrom;
-		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
-		this.submitted4 = true;
+	{	
+		//this.submitted4 = true;
 		if(fromForm.valid){
 			this.btn_disable4 = true;
-			this.SettingsService.update_config(this.updateEntity)
+			this.SettingsService.update_email({'EmailFrom':this.configEntity.emailfrom,'EmailPassword':this.configEntity.emailpassword,'UpdatedBy':this.globals.authData.UserId})
 			.then((data) => 
 			{		
 				this.btn_disable4 = false;
 				this.submitted4 = false;
 	 			this.updateEntity = {};
 				 fromForm.form.markAsPristine();
-				 this.cmsgflag = true;
-				 this.cmessage = 'Email From update successfully';
+				 this.cmsgflag1 = true;
+				 this.cmessage1 = 'SMTP Details Updated Successfully';
 			}, 
 			(error) => 
 			{

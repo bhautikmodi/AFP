@@ -24,6 +24,7 @@ class Settings extends CI_Controller {
 			$data['invitation']=$this->Settings_model->get_invitation($userid);
 			$data['remainingdays']=$this->Settings_model->get_remainingdays();
 			$data['emailfrom']=$this->Settings_model->get_emailfrom($userid);
+			$data['emailpassword']=$this->Settings_model->get_emailpassowrd($userid);
 
 		}
 		
@@ -46,6 +47,17 @@ class Settings extends CI_Controller {
 		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
 
 		$result = $this->Settings_model->update_config($config_data);
+		if($result) {
+			echo json_encode($config_data);	
+		}	
+		
+	}
+
+	public function updateEmail() {
+		
+		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
+
+		$result = $this->Settings_model->updateEmail($config_data);
 		if($result) {
 			echo json_encode($config_data);	
 		}	

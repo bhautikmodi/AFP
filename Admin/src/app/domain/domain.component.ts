@@ -96,13 +96,13 @@ export class DomainComponent implements OnInit
 				this.domainEntity = {};
 				domainForm.form.markAsPristine();
 				if(id){
-					this.globals.message = 'Update successfully';
+					this.globals.message = 'Data Updated Successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 					//setTimeout(()=>{ this.globals.msgflag = false; },5000);
 					
 				} else {
-					this.globals.message = 'Add successfully';
+					this.globals.message = 'Data Added Successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 					//setTimeout(()=>{ this.globals.msgflag = false; },5000);

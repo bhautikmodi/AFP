@@ -27,8 +27,8 @@
                                   <label><span class="required">*</span>Domain</label>
                                   <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="domainEntity.Name" name="Name" pattern="[a-zA-Z ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
                                   <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-                                    <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter domain name</span>
-                                    <span *ngIf="Name.errors && Name.errors.pattern">Please enter a valid domain</span>
+                                    <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter domain</span>
+                                    <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid domain</span>
                                 </span>
                                 </div>
           

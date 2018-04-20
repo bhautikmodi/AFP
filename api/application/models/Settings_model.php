@@ -179,6 +179,39 @@ class Settings_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function get_emailpassowrd($userid = NULL){
+		if($userid) {
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','EmailPassword');
+			$result = $this->db->get('tblmstconfiguration');			
+
+			if($result->num_rows()==0){
+				$data = array(
+					'Key' => 'EmailPassword',
+					'Value' => '',
+					'IsActive' => 1,
+					'CreatedBy' => $userid,
+					'UpdatedBy' => $userid,
+					'UpdatedOn' => date('y-m-d H:i:s'),
+				);			
+				$res = $this->db->insert('tblmstconfiguration',$data);
+
+				$this->db->select('ConfigurationId,Key,Value');
+				$this->db->where('Key','EmailPassword');
+				$result = $this->db->get('tblmstconfiguration');
+
+			} 
+			$res = array();
+			foreach($result->result() as $row) {
+				$res = $row;
+			}
+			return $res;
+
+		} else {
+			return false;
+		}
+	}
 	
 	// public function get_teamsizedata($teamsize_id = NULL) {
 		
@@ -214,6 +247,42 @@ class Settings_model extends CI_Model
 			
 			if($res) {
 				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
+	
+	}
+
+	public function updateEmail($config_data) {
+	
+		if($config_data) {
+
+			$data = array(
+				'Value' => $config_data['EmailFrom'],
+				'UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			$data1 = array(
+				'Value' => $config_data['EmailPassword'],
+				'UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			
+			$this->db->where('Key','EmailFrom');
+			$res = $this->db->update('tblmstconfiguration',$data);
+			
+			if($res) {
+				$this->db->where('Key','EmailPassword');
+				$res1 = $this->db->update('tblmstconfiguration',$data1);
+				
+				if($res1) {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}

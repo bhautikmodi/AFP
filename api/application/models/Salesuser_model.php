@@ -152,4 +152,35 @@ class Salesuser_model extends CI_Model
 		}				
 	}
 
+
+    public function RecommendedCourse($CAssessmentId = NULL) {
+		
+		if($CAssessmentId) {
+            $this->db->select('CAssessmentId');
+			$this->db->where('CAssessmentId',$CAssessmentId);
+			$this->db->where('EndTime!=',NULL);
+			$query = $this->db->get('tblcandidateassessment');	
+			if($query->num_rows()==1){
+	
+                $this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA,mc.Name');
+                $this->db->where('dksa.CAssessmentId',$CAssessmentId);
+                
+                $this->db->join('tblmstcourse mc', 'mc.DomainId = d.DomainId', 'left');
+                $this->db->join('tblmstdomain d', 'd.DomainId = dksa.DomainId', 'left');
+                $query = $this->db->get('tbldomainwiseksa dksa');
+                $domain_data = array();
+                if($query->result())
+                {
+                    $domain_data=$query->result();				   
+                }
+               
+                //$data = '';
+                //$data['domain'] = $domain_data;
+            
+                return $domain_data;
+            } else {
+                return 'fail';
+            }	
+		}				
+    }
  }

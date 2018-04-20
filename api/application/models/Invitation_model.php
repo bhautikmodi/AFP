@@ -42,7 +42,7 @@ class Invitation_model extends CI_Model
 						"Name"=>$post_Invitation['Name'],
 						"IndustryId"=>$post_Invitation['IndustryId'],
 						"Website"=>$post_Invitation['Website'],
-						"PhoneNumber"=>$post_Invitation['PhoneNumber1'],
+						"PhoneNo"=>$post_Invitation['PhoneNumber1'],
 						"CreatedBy" =>1,
 						"UpdatedBy" =>1
 					);	

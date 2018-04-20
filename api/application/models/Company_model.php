@@ -13,6 +13,12 @@ class Company_model extends CI_Model
 		if($post_company)
 		{
 			$company_data = array(
+<<<<<<< HEAD
+				'Name' => trim($post_company['Name']),
+				'IndustryId' => trim($post_company['IndustryId']),
+				'Website' => trim($post_company['Website']),
+				'PhoneNumber' => trim($post_company['PhoneNumber']),
+=======
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
@@ -41,8 +47,13 @@ class Company_model extends CI_Model
 	{
 	  if($company_id)
 	  {
+<<<<<<< HEAD
+		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNumber,IsActive');
+		 $this->db->where('CompanyId',trim($company_id));
+=======
 		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNo,IsActive');
 		 $this->db->where('CompanyId',$company_id);
+>>>>>>> b56fcb21b5b17be493cc1ccd6efa346d98c48681
 		 $result=$this->db->get('tblcompany');
 		 $company_data= array();
 		 foreach($result->result() as $row)
@@ -70,6 +81,12 @@ class Company_model extends CI_Model
 		if($post_company) {
 			
 			$company_data = array(
+<<<<<<< HEAD
+				'Name' => trim($post_company['Name']),
+				'IndustryId' => trim($post_company['IndustryId']),
+				'Website' =>trim($post_company['Website']),
+				'PhoneNumber' => trim($post_company['PhoneNumber']),
+=======
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
@@ -78,7 +95,7 @@ class Company_model extends CI_Model
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			
-			$this->db->where('CompanyId',$post_company['CompanyId']);
+			$this->db->where('CompanyId',trim($post_company['CompanyId']));
 			$res = $this->db->update('tblcompany',$company_data);
 			
 			if($res) 

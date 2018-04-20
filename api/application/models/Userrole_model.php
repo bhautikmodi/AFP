@@ -14,8 +14,8 @@ class Userrole_model extends CI_Model
 		{
 			 
 			$userrole_data=array(
-				"RoleId"=>$post_userrole['RoleId'],
-				"RoleName"=>$post_userrole['RoleName'],
+				"RoleId"=>trim($post_userrole['RoleId']),
+				"RoleName"=>trim($post_userrole['RoleName']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
@@ -94,7 +94,7 @@ class Userrole_model extends CI_Model
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			
-			$this->db->where('RoleId',$post_userrole['RoleId']);
+			$this->db->where('RoleId',trim($post_userrole['RoleId']));
 			$res = $this->db->update('tblmstuserrole',$userrole_data);
 			
 			if($res) 

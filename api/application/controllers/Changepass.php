@@ -41,7 +41,7 @@ class Changepass extends CI_Controller
 						$this->email->to($EmailAddress);
 						
 						
-						$this->email->subject('AFP password change request');
+						$this->email->subject('AFP password changed');
 						//$this->email->message('<br>Hello<br>');
 						
 						$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">

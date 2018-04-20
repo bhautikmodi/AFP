@@ -37,16 +37,6 @@ class Email_Template_model extends CI_Model
 			} else {
 				$IsActive = false;
 			}
-			if(isset($post_email['ToEmail']) && !empty($post_email['ToEmail'])){
-				$ToEmail = $post_email['ToEmail'];
-			} else {
-				$ToEmail = '';
-			}	
-			if(isset($post_email['CcEmail']) && !empty($post_email['CcEmail'])){
-				$CcEmail = $post_email['CcEmail'];
-			} else {
-				$CcEmail = '';
-			}	
 			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
 				$BccEmail = $post_email['BccEmail'];
 			} else {
@@ -59,8 +49,6 @@ class Email_Template_model extends CI_Model
 				'To' => $post_email['To'],
 				'Cc' => $post_email['Cc'],
 				'Bcc' => $post_email['Bcc'],
-				'ToEmail' => $ToEmail,
-				'CcEmail' => $CcEmail,
 				'BccEmail' => $BccEmail,
 				'IsActive' => $IsActive,
 				'CreatedBy' => $post_email['CreatedBy'],
@@ -102,7 +90,7 @@ class Email_Template_model extends CI_Model
 		
 		if($email_id) {
 			
-			$this->db->select('EmailId,Token,Subject,EmailBody,To,Cc,Bcc,ToEmail,CcEmail,BccEmail,IsActive');
+			$this->db->select('EmailId,Token,Subject,EmailBody,To,Cc,Bcc,BccEmail,IsActive');
 			$this->db->where('EmailId',$email_id);
 			$result = $this->db->get('tblemailtemplate');
 			
@@ -152,16 +140,6 @@ class Email_Template_model extends CI_Model
 			} else {
 				$IsActive = false;
 			}
-			if(isset($post_email['ToEmail']) && !empty($post_email['ToEmail'])){
-				$ToEmail = $post_email['ToEmail'];
-			} else {
-				$ToEmail = '';
-			}	
-			if(isset($post_email['CcEmail']) && !empty($post_email['CcEmail'])){
-				$CcEmail = $post_email['CcEmail'];
-			} else {
-				$CcEmail = '';
-			}	
 			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
 				$BccEmail = $post_email['BccEmail'];
 			} else {
@@ -174,8 +152,6 @@ class Email_Template_model extends CI_Model
 				'To' => $post_email['To'],
 				'Cc' => $post_email['Cc'],
 				'Bcc' => $post_email['Bcc'],
-				'ToEmail' => $ToEmail,
-				'CcEmail' => $CcEmail,
 				'BccEmail' => $BccEmail,
 				'IsActive' => $IsActive,
 				'UpdatedBy' => $post_email['UpdatedBy'],

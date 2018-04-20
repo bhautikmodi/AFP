@@ -36,9 +36,30 @@
 										  </span>
 								</span>
                                         </div>
+										<div class="form-group col-md-6">
+                                    <label><span class="required">*</span>Domain</label>
+									<select class="form-control" #DomainId="ngModel" [(ngModel)]="CourseEntity.DomainId"
+								name="DomainId" [ngClass]="{red_border: (DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)}" required>  
+									<option value="" ngSelected='CourseEntity.DomainId==""'>Select</option>
+									<option *ngFor="let domain of domainList" value="{{domain.DomainId}}" 
+									ngSelected="CourseEntity.DomainId==domain.DomainId">{{domain.Name}}</option>
+								</select>
+                                    <span class="error_span" *ngIf="(DomainId.dirty && DomainId.invalid) || (DomainId.pristine && submitted)"> 
+                                        <span *ngIf="DomainId.errors.required || (DomainId.pristine && submitted)">Please select domain</span>
+                                      </span>
+                                  </div>
+										<div class="clearfix"></div>
+										<div class="form-group col-md-6">
+                                            <label><span class="required">*</span>Key Concepts</label>
+                                            <textarea  #KeyConcepts="ngModel" [(ngModel)]="CourseEntity.KeyConcepts" class="form-control"
+											name="KeyConcepts" [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
+													<span class="error_span"  *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
+												<span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter Key Concepts </span>
+											</span>
+                                        </div>
 										
 										<div class="form-group col-md-6">
-                                            <label><span class="required">*</span>Level</label>
+                                            <label><span class="required">*</span>Course Level</label>
 								<select class="form-control" #CourseLevelId="ngModel" [(ngModel)]="CourseEntity.CourseLevelId"
 								name="CourseLevelId" [ngClass]="{red_border: (CourseLevelId.dirty && CourseLevelId.invalid) || (CourseLevelId.pristine && submitted)}" required>  
 									<option value="" ngSelected='CourseEntity.CourseLevelId==""'>Select</option>
@@ -53,16 +74,7 @@
                                            
                                         </div>
 										
-										<div class="clearfix"></div>
-										<div class="form-group col-md-6">
-                                            <label><span class="required">*</span>Key Concepts</label>
-                                            <textarea  #KeyConcepts="ngModel" [(ngModel)]="CourseEntity.KeyConcepts" class="form-control"
-											name="KeyConcepts" [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
-													<span class="error_span"  *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
-												<span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter Key Concepts </span>
-											</span>
-                                        </div>
-										
+											<div class="clearfix"></div>
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Active?</label>
                                             <br>

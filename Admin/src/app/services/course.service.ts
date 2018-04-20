@@ -89,5 +89,20 @@ delete(CourseId)
 	});		
 	return promise;
   }
+  getDomainList(){
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getDomainList', this.globals.headerpath)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res.json());
+          },
+          msg => { // Error
+            reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
  }
 

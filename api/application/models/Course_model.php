@@ -15,6 +15,7 @@ class Course_model extends CI_Model
 			$Course_data = array(
 				
 				'Name' => $post_Course['Name'],
+				'DomainId' => $post_Course['DomainId'],
 				'CourseLevelId' => $post_Course['CourseLevelId'],
 				'KeyConcepts' => $post_Course['KeyConcepts'],
 				'IsActive' => $IsActive
@@ -35,8 +36,8 @@ class Course_model extends CI_Model
 	}
 	
 	public function getlist_Course() {
-		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId,pr.CourseLevelId');
-	
+		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId,pr.CourseLevelId,md.Name as DomainName');
+		$this->db->join('tblmstdomain md', 'pr.DomainId = md.DomainId', 'left');
 		$this->db->join('tblmstconfiguration ps', 'pr.CourseLevelId = ps.ConfigurationId', 'left');
 		$result = $this->db->get('tblmstcourse pr');
 		
@@ -55,7 +56,7 @@ class Course_model extends CI_Model
 		
 		if($Course_Id) {
 			
-			$this->db->select('CourseId,Name,CourseLevelId,KeyConcepts,IsActive');
+			$this->db->select('CourseId,Name,CourseLevelId,KeyConcepts,IsActive,DomainId');
 			$this->db->where('CourseId',$Course_Id);
 			$result = $this->db->get('tblmstcourse');
 			
@@ -82,6 +83,7 @@ class Course_model extends CI_Model
 					}
 			$Course_data = array(
 				'Name' => $post_Course['Name'],
+				'DomainId' => $post_Course['DomainId'],
 				'CourseLevelId' => $post_Course['CourseLevelId'],
 				'KeyConcepts' => $post_Course['KeyConcepts'],
 				'IsActive' => $IsActive

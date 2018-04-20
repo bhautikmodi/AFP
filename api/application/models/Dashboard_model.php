@@ -34,6 +34,13 @@ class Dashboard_model extends CI_Model
 		return 	$result4->num_rows();
 	}
 
+	public function getlist_Company() {
+	
+		$this->db->select('CompanyId');
+		$result5 = $this->db->get('tblcompany');
+		return 	$result5->num_rows();
+	}
+
 	public function getPendingAssessment() {
 	
 		$this->db->select('ass.AssessmentName,ass.StartTime,u.EmailAddress, CONCAT(u.FirstName," ",u.LastName) as UserName, (select count(CKSAId) from tblcandidateksa where CAssessmentId = ass.CAssessmentId) as totalksa,(select count(CKSAId) from tblcandidateksa where CAssessmentId = ass.CAssessmentId && RatingScaleId > 0) as attendksa');

@@ -18,16 +18,17 @@
           <!--end user image section--> 
         </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/')||(globals.currentLink == '/dashboard')}"> <a (click)="menuopen('/dashboard')" style="cursor:pointer;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
-        <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i> Company</a> </li>
+        
 		
 
 		<li [ngClass]="{'selected':(globals.currentLink == '/users/list')||(globals.currentLink == '/users/edit')}"> 
-			<a (click)="menuopen('/users/list')" style="cursor:pointer;"><i class="fa fa-users fa-fw"></i> Users</a> </li>
-			
+      <a (click)="menuopen('/users/list')" style="cursor:pointer;"><i class="fa fa-users fa-fw"></i> Users</a> </li>
+      <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i> Company</a> </li>
+      <li [ngClass]="{'selected':(globals.currentLink == '/course/list')||(globals.currentLink == '/course/add')||(globals.currentLink == '/course/edit')}"> <a (click)="menuopen('/course/list')" style="cursor:pointer;"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domain</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/competency-area/list')||(globals.currentLink == '/competency-area/add')||(globals.currentLink == '/competency-area/edit')}"> <a (click)="menuopen('/competency-area/list')" style="cursor:pointer;"><i class="fa fa-tasks fa-fw"></i> Competency Area</a> </li>
 		    <li [ngClass]="{'selected':(globals.currentLink == '/ksa/list')||(globals.currentLink == '/ksa/add')||(globals.currentLink == '/ksa/edit')}"> <a (click)="menuopen('/ksa/list')" style="cursor:pointer;"><i class="fa fa-question fa-fw"></i> KSA</a></li>
-        <li [ngClass]="{'selected':(globals.currentLink == '/course/list')||(globals.currentLink == '/course/add')||(globals.currentLink == '/course/edit')}"> <a (click)="menuopen('/course/list')" style="cursor:pointer;"><i class="fa fa-certificate fa-fw"></i> Course</a> </li>
+        
         <li id="inner_dropdown">
           <a href="#"><i class="fa fa-wrench fa-fw"></i> General Settings<span class="fa fa-angle-right"></span></a>
               <ul class="nav nav-second-level display_block">
@@ -62,7 +63,7 @@
      <li id="inner_dropdown">
       <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email<span class="fa fa-angle-right"></span></a>
           <ul class="nav nav-second-level display_block">
-            <li [ngClass]="{'selected':(globals.currentLink == '/placeholder/list')||(globals.currentLink == '/placeholder/add')||(globals.currentLink == '/placeholder/edit')}">
+            <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/placeholder/list')||(globals.currentLink == '/placeholder/add')||(globals.currentLink == '/placeholder/edit')}">
               <a (click)="menuopen('/placeholder/list')" style="cursor:pointer;"><i class="fa fa-window-maximize fa-fw"></i> Placeholder Screen</a>
             </li>
             <li [ngClass]="{'selected':(globals.currentLink == '/emailtemplate/list')||(globals.currentLink == '/emailtemplate/add')||(globals.currentLink == '/emailtemplate/edit')}">

@@ -107,7 +107,7 @@ class Register extends CI_Controller
 					//$this->email->message('sending mail recive.....');
 					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 					<tr>
-						<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
+					<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><a href="http://localhost:4200/dashboard"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></a></td>
 					</tr>
 					
 					<tr>

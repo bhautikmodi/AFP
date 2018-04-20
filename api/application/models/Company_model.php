@@ -16,7 +16,11 @@ class Company_model extends CI_Model
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
+<<<<<<< HEAD
 				'PhoneNo' => $post_company['PhoneNo'],
+=======
+				'PhoneNo' => $post_company['PhoneNumber'],
+>>>>>>> b56fcb21b5b17be493cc1ccd6efa346d98c48681
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
@@ -73,7 +77,11 @@ class Company_model extends CI_Model
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
+<<<<<<< HEAD
 				'PhoneNo' => $post_company['PhoneNo'],
+=======
+				'PhoneNo' => $post_company['PhoneNumber'],
+>>>>>>> b56fcb21b5b17be493cc1ccd6efa346d98c48681
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);

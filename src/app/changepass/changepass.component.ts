@@ -38,6 +38,7 @@ export class ChangepassComponent implements OnInit {
 		
 			this.newpassEntity.UserId=this.globals.authData.UserId;
 			this.btn_disable = true;
+			this.globals.isLoading = true;
 			this.ChangepassService.add(this.newpassEntity)
 			.then((data) => 
 			{
@@ -46,6 +47,7 @@ export class ChangepassComponent implements OnInit {
 						this.globals.message = 'User entered wrong password';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
+						this.globals.isLoading = false;
 						this.btn_disable = false;
 						this.submitted = false;
 					this.router.navigate(['/changepass/']);
@@ -58,7 +60,8 @@ export class ChangepassComponent implements OnInit {
 						this.submitted = false;
 						this.newpassEntity = {};
 						newpassForm.form.markAsPristine();
-						this.globals.message = 'Your password has been changed';
+						this.globals.isLoading = false;
+						this.globals.message = 'Your password has been changed.Please check your AFP email-id!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						
@@ -67,7 +70,8 @@ export class ChangepassComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				this.globals.isLoading = false;
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
 			});	

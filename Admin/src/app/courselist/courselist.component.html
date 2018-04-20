@@ -28,6 +28,7 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
+					<th class="width_6">Domain</th>
 					<th class="width_6">Level</th>
 					<th class="width_35">Key Concepts</th>
                     <th class="width_8">Active?</th>
@@ -39,6 +40,7 @@
                  <tr class="odd gradeX" *ngFor="let Course of CourseList;let i = index">
 										<td>{{i+1}}</td>
 										<td>{{Course.Name}}</td>
+										<td>{{Course.DomainName}}</td>
 										<td>{{Course.DisplayText}}</td>
 										<td>{{Course.KeyConcepts}}</td>
 										  <td *ngIf="Course.IsActive=='1'">Yes</td>

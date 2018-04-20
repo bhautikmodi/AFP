@@ -9,13 +9,13 @@ class Reset_model extends CI_Model
 		{
 			
 			$pass_data = array(
-				'Password' =>md5($post_pass['Password']),
+				'Password' =>md5(trim($post_pass['Password'])),
 				'VCode' =>'',
 				'UpdatedOn' => date('y-m-d H:i:s')
 				
 			);
 			
-			$this->db->where('UserId',$post_pass['UserId']);
+			$this->db->where('UserId',trim($post_pass['UserId']));
 			//$this->db->where('Status',0);
 			$res = $this->db->update('tbluser',$pass_data);
 			
@@ -41,9 +41,9 @@ class Reset_model extends CI_Model
 		{
 			
 				$this->db->select('UserId,EmailAddress,VCode');				
-				$this->db->where('UserId',$post_passlink['UserId']);
-				$this->db->where('EmailAddress',$post_passlink['EmailAddress']);
-				$this->db->where('VCode',$post_passlink['VCode']);
+				$this->db->where('UserId',trim($post_passlink['UserId']));
+				$this->db->where('EmailAddress',trim($post_passlink['EmailAddress']));
+				$this->db->where('VCode',trim($post_passlink['VCode']));
 				
 				$this->db->limit(1);
 				$this->db->from('tbluser');
@@ -62,8 +62,8 @@ class Reset_model extends CI_Model
 				
 				
 			
-					$this->db->where('UserId',$post_pass['UserId']);
-					$this->db->where('VCode',$post_pass['VCode']);
+					$this->db->where('UserId',trim($post_pass['UserId']));
+					$this->db->where('VCode',trim($post_pass['VCode']));
 					$res = $this->db->update('tbluser',$pass_data);
 					if($res)
 					{
@@ -99,9 +99,9 @@ class Reset_model extends CI_Model
 		{
 			
 				$this->db->select('UserId,VCode');				
-				$this->db->where('UserId',$post_passlink['UserId']);
+				$this->db->where('UserId',trim($post_passlink['UserId']));
 				//$this->db->where('EmailAddress',$post_pass['EmailAddress']);
-				$this->db->where('VCode',$post_passlink['VCode']);
+				$this->db->where('VCode',trim($post_passlink['VCode']));
 				
 				$this->db->limit(1);
 				$this->db->from('tbluser');

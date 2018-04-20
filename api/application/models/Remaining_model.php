@@ -15,19 +15,19 @@ class Remaining_model extends CI_Model
 		{
 			 
 			$remaining_data=array(
-				"RoleId"=>$post_remaining['RoleId'],
-				"CompanyId"=>$post_remaining['CompanyId'],
-				"FirstName"=>$post_remaining['FirstName'],
-				"LastName"=>$post_remaining['LastName'],
-				"EmailAddress"=>$post_remaining['EmailAddress'],
-				"Password"=>$post_remaining['Password'],
-				"Address1"=>$post_remaining['Address1'],
-				"Address2"=>$post_remaining['Address2'],
-				"CountryId"=>$post_remaining['CountryId'],
-				"StateId"=>$post_remaining['StateId'],
-				"City"=>$post_remaining['City'],
-				"ZipCode"=>$post_remaining['ZipCode'],
-				"PhoneNumber"=>$post_remaining['PhoneNumber'],
+				"RoleId"=>trim($post_remaining['RoleId']),
+				"CompanyId"=>trim($post_remaining['CompanyId']),
+				"FirstName"=>trim($post_remaining['FirstName']),
+				"LastName"=>trim($post_remaining['LastName']),
+				"EmailAddress"=>trim($post_remaining['EmailAddress']),
+				"Password"=>trim($post_remaining['Password']),
+				"Address1"=>trim($post_remaining['Address1']),
+				"Address2"=>trim($post_remaining['Address2']),
+				"CountryId"=>trim($post_remaining['CountryId']),
+				"StateId"=>trim($post_remaining['StateId']),
+				"City"=>trim($post_remaining['City']),
+				"ZipCode"=>trim($post_remaining['ZipCode']),
+				"PhoneNumber"=>trim($post_remaining['PhoneNumber']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
@@ -106,7 +106,7 @@ class Remaining_model extends CI_Model
 	{
 		//$this->db->select('user.*,ca.*');
 		$this->db->select('user.UserId,user.FirstName,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime,ca.EndTime,ca.submitedDate');
-		$this->db->where('ca.StartTime',$datetime1);
+		$this->db->where('ca.StartTime',trim($datetime1));
 		//$this->db->where('ca.EndTime=','NULL');
 		$this->db->join('tbluser user','ca.UserId = user.UserId', 'left');
 		$result = $this->db->get('tblcandidateassessment ca');
@@ -155,25 +155,25 @@ class Remaining_model extends CI_Model
 		{
 				$remaining_data = array(
 				//"ProjectStatusId"=>$post_remaining['ProjectStatusId'],
-				"RoleId"=>$post_remaining['RoleId'],
-				"CompanyId"=>$post_remaining['CompanyId'],
-				"FirstName"=>$post_remaining['FirstName'],
-				"LastName"=>$post_remaining['LastName'],
-				"EmailAddress"=>$post_remaining['EmailAddress'],
-				"Password"=>$post_remaining['Password'],
-				"Address1"=>$post_remaining['Address1'],
-				"Address2"=>$post_remaining['Address2'],
-				"CountryId"=>$post_remaining['CountryId'],
-				"StateId"=>$post_remaining['StateId'],
-				"City"=>$post_remaining['City'],
-				"ZipCode"=>$post_remaining['ZipCode'],
-				"PhoneNumber"=>$post_remaining['PhoneNumber'],
+				"RoleId"=>trim($post_remaining['RoleId']),
+				"CompanyId"=>trim($post_remaining['CompanyId']),
+				"FirstName"=>trim($post_remaining['FirstName']),
+				"LastName"=>trim($post_remaining['LastName']),
+				"EmailAddress"=>trim($post_remaining['EmailAddress']),
+				"Password"=>trim($post_remaining['Password']),
+				"Address1"=>trim($post_remaining['Address1']),
+				"Address2"=>trim($post_remaining['Address2']),
+				"CountryId"=>trim($post_remaining['CountryId']),
+				"StateId"=>trim($post_remaining['StateId']),
+				"City"=>trim($post_remaining['City']),
+				"ZipCode"=>trim($post_remaining['ZipCode']),
+				"PhoneNumber"=>trim($post_remaining['PhoneNumber']),
 				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			
-			$this->db->where('ConfigurationId',$post_remaining['ConfigurationId']);
+			$this->db->where('ConfigurationId',trim($post_remaining['ConfigurationId']));
 			$res = $this->db->update('tblmstconfiguration',$remaining_data);
 			
 			if($res) 

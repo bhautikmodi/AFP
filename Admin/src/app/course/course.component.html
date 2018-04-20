@@ -25,7 +25,7 @@
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Name</label>
                                             <input type="text"  #Name="ngModel" [(ngModel)]="CourseEntity.Name" class="form-control"
-											name="Name" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/?/)/./ ]{0,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
+											name="Name" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/?/)/./’/ ]{0,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)">
 								  <span *ngIf="Name.errors && Name.errors.required">
 												Please enter Course Name

@@ -146,7 +146,7 @@ class Register_model extends CI_Model
 		  
 		  $this->db->select('us.UserId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Address1,
 			us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,
-			tc.CompanyId,tc.Name,tc.Website,tc.PhoneNo as PhoneNumber1 ,
+			tc.CompanyId,tc.Name,tc.Website,tc.PhoneNo,
 			in.IndustryId,in.IndustryName');
 			
 			$this->db->join('tblcompany tc', 'us.CompanyId = tc.CompanyId', 'left');

@@ -54,8 +54,8 @@ class Remaining_model extends CI_Model
 	public function getlist_days()
 	{
 		//$date1=date('Y-m-d H:i:s');
-		$this->db->select('RDaysId,Day,IsActive');
-		//$this->db->select('*');
+		//$this->db->select('RDaysId,Day,IsActive');
+		$this->db->select('*');
 		$result=$this->db->get('tblmstreminderdays');
 		$res=array();
 		if($result->result())
@@ -104,9 +104,10 @@ class Remaining_model extends CI_Model
 
 	function getlist_value($datetime1)
 	{
-		//$this->db->select('user.*,ca.*');
-		$this->db->select('user.UserId,user.FirstName,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime,ca.EndTime,ca.submitedDate');
-		$this->db->where('ca.StartTime',trim($datetime1));
+		$this->db->select('user.*,ca.*');
+		//$this->db->select('user.UserId,user.FirstName,user.EmailAddress,ca.CAssessmentId,ca.StartTime,ca.EndTime,ca.submitedDate');
+		$this->db->where('DATE(ca.StartTime)',$datetime1);
+		//DATE(tblcandidateassessment.StartTime)='2018-04-22';
 		//$this->db->where('ca.EndTime=','NULL');
 		$this->db->join('tbluser user','ca.UserId = user.UserId', 'left');
 		$result = $this->db->get('tblcandidateassessment ca');

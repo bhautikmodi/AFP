@@ -15,8 +15,8 @@ class Invitation extends CI_Controller {
 
 	public function check1(){
 
-		$userId = 22;
-		$EmailToken = 'Registration';
+		$userId = 21;
+		$EmailToken = 'Change Password';
 
 		$this->db->select('Value');
 		$this->db->where('Key','EmailFrom');

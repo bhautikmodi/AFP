@@ -47,7 +47,33 @@ class Salesuser_model extends CI_Model
     //         return $data;	
 	// 	}				
     // }
-    
+
+    public function getUserassessment($CAssessmentId = NULL) {
+		
+		if($CAssessmentId) {
+            $this->db->select('CAssessmentId');
+			$this->db->where('CAssessmentId',$CAssessmentId);
+			$this->db->where('EndTime!=',NULL);
+			$query = $this->db->get('tblcandidateassessment');	
+			if($query->num_rows()==1){
+	
+                $this->db->select('ca.CAssessmentId,ca.TeamSizeId,ca.AssessmentName,ca.Description,ts.TeamSize,ca.EndTime,ca.submitedDate,ca.StartTime,us.FirstName, (select count(CKSAId) from tblcandidateksa where CAssessmentId = '.$CAssessmentId.')as totalksa');
+                $this->db->where('ca.CAssessmentId',$CAssessmentId);
+                $this->db->join('tbluser us', 'us.UserId = ca.UserId', 'left');
+                $this->db->join('tblmstteamsize ts', 'ts.TeamSizeId = ca.TeamSizeId', 'left');
+                $query = $this->db->get('tblcandidateassessment ca');
+                $assessment_data= array();
+                foreach($query->result() as $row)
+                {
+                    $assessment_data=$row;
+                    
+                }
+		     return $assessment_data;
+            } else {
+                return 'fail';
+            }	
+		}				
+    }
     public function getUserAssessDetail($CAssessmentId = NULL) {
 		
 		if($CAssessmentId) {
@@ -183,4 +209,32 @@ class Salesuser_model extends CI_Model
             }	
 		}				
     }
+
+    public function getUserksa($CAssessmentId = NULL) {
+		
+		if($CAssessmentId) {
+
+				$this->db->select('ck.CKSAId,ck.CAssessmentId,ck.KSAId,ck.RatingScaleId,ksa.Name');
+				$this->db->join('tblmstksa ksa', 'ksa.KSAId = ck.KSAId', 'left');
+				$this->db->where('ck.CAssessmentId',$CAssessmentId);
+				$query = $this->db->get('tblcandidateksa as ck');	
+				$result = $query->result();
+	              $data = array();
+                if($query->result())
+                {
+                    $data=$query->result();				   
+                }
+               
+                //$data = '';
+                //$data['domain'] = $domain_data;
+            
+                return $data;
+					
+		}else {
+            return 'fail';
+        }		
+			
+	}
+
  }
+ 

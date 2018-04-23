@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <h1>Assessment by </h1>
+        <h1>Assessment by {{assessmentData.FirstName}} </h1>
         <div class="clearfix"></div>
         <a href="user_assessment_list.html" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a> </div>
     </div>
@@ -29,9 +29,9 @@
     <div class="row">
       <div class="col-md-10 col-sm-12 col-md-offset-1 text-center">
         <h3>For Development Team</h3>
-        <h4><span>Date Taken :</span> 02-03-2018</h4>
-        <h4><span>Team Size :</span> 10-15 <span>| Covered KSA :</span> 50 <span>| Time Taken :</span> 01:12:34</h4>
-        <p class="padding_15">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+        <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
+        <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+        <p class="padding_30">{{assessmentData.Description}}</p>
         <div class="text-center"><a href="#" class="red_btn" data-toggle="modal" data-target="#PreviewModal"><span>View All KSA Rating</span></a></div>
       </div>
       <div class="clearfix"></div>
@@ -313,9 +313,9 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let ksa1 of ksaList; let j = index;">
-            <tr *ngFor="let ksa of ksa1.row; let i = index">
-              <td class="text-center width_5">{{(8*j)+i+1}}</td>
+      
+            <tr *ngFor="let ksa of ksaList; let i = index">
+              <td class="text-center width_5">{{i+1}}</td>
               <td class="width_60">{{ksa.Name}}</td>
               <td class="width_30">{{ksa.RatingScaleId}} - 
                 <span *ngIf="ksa.RatingScaleId==1">General Awareness</span>
@@ -324,7 +324,7 @@
                 <span *ngIf="ksa.RatingScaleId==4">Advanced</span>
               </td>
             </tr>
-          </ng-container> 
+        
         </tbody>           
           </table>
         </div>

@@ -18,7 +18,8 @@ class DashboardUser extends CI_Controller {
 		if (!empty($UserId)) {
 			$data="";
 			$data['complete']=$this->DashboardUser_model->getAllAssement($UserId);	
-			$data['pending']=$this->DashboardUser_model->getPendingAssement($UserId);		
+			$data['pending']=$this->DashboardUser_model->getPendingAssement($UserId);	
+			$data['user']=$this->DashboardUser_model->getuser($UserId);	
 			echo json_encode($data);			
 		}				
 	}

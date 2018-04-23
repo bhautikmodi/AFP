@@ -12,15 +12,18 @@ declare var AmCharts: any;
 })
 export class UserAssessmentListComponent implements OnInit {
   assessmentList;
+  userList;
   constructor(private SalesDashboardService: SalesDashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
   ngOnInit() {  
+    this.userList='';
     let id = this.route.snapshot.paramMap.get('id');    
     this.SalesDashboardService.getAllAssement(id)
 		.then((data) => 
 		{
       this.assessmentList = data['complete'];
+      this.userList = data['user'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
       console.log(this.assessmentList);
       setTimeout(()=>{ 

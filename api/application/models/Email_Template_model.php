@@ -7,12 +7,12 @@ class Email_Template_model extends CI_Model
 	
 		if($post_email) {
 			
-			if($post_email['check']==0){
-				if($post_email['IsActive']==1){
+			if(trim($post_email['check'])==0){
+				if(trim($post_email['IsActive'])==1){
 
 					$this->db->select('EmailId');
-					$this->db->where('Token',$post_email['Token']);
-					$this->db->where('To',$post_email['To']);
+					$this->db->where('Token',trim($post_email['Token']));
+					$this->db->where('To',trim($post_email['To']));
 					$this->db->where('IsActive',true);
 					$query = $this->db->get('tblemailtemplate');
 					
@@ -22,37 +22,37 @@ class Email_Template_model extends CI_Model
 				}	
 			}	
 			
-			if($post_email['IsActive']==1){
+			if(trim($post_email['IsActive'])==1){
 				$email_updatedata = array(
 					'IsActive' => false,
 				);
-				$this->db->where('Token',$post_email['Token']);
-				$this->db->where('To',$post_email['To']);
+				$this->db->where('Token',trim($post_email['Token']));
+				$this->db->where('To',trim($post_email['To']));
 				$this->db->where('IsActive',true);
 				$update_res = $this->db->update('tblemailtemplate',$email_updatedata);
 			}
 
-			if($post_email['IsActive']==1){
+			if(trim($post_email['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
-			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
-				$BccEmail = $post_email['BccEmail'];
+			if(isset($post_email['BccEmail']) && !empty(trim($post_email['BccEmail']))){
+				$BccEmail = trim($post_email['BccEmail']);
 			} else {
 				$BccEmail = '';
 			}		
 			$email_data = array(
-				'Token' => $post_email['Token'],
-				'Subject' => $post_email['Subject'],
-				'EmailBody' => $post_email['EmailBody'],
-				'To' => $post_email['To'],
-				'Cc' => $post_email['Cc'],
-				'Bcc' => $post_email['Bcc'],
+				'Token' => trim($post_email['Token']),
+				'Subject' => trim($post_email['Subject']),
+				'EmailBody' => trim($post_email['EmailBody']),
+				'To' => trim($post_email['To']),
+				'Cc' => trim($post_email['Cc']),
+				'Bcc' => trim($post_email['Bcc']),
 				'BccEmail' => $BccEmail,
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_email['CreatedBy'],
-				'UpdatedBy' => $post_email['UpdatedBy'],
+				'CreatedBy' => trim($post_email['CreatedBy']),
+				'UpdatedBy' => trim($post_email['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 
@@ -110,12 +110,12 @@ class Email_Template_model extends CI_Model
 	
 		if($post_email) {
 			
-			if($post_email['check']==0){
-				if($post_email['IsActive']==1){
+			if(trim($post_email['check'])==0){
+				if(trim($post_email['IsActive'])==1){
 
 					$this->db->select('EmailId');
-					$this->db->where('Token',$post_email['Token']);
-					$this->db->where('To',$post_email['To']);
+					$this->db->where('Token',trim($post_email['Token']));
+					$this->db->where('To',trim($post_email['To']));
 					$this->db->where('IsActive',true);
 					$query = $this->db->get('tblemailtemplate');
 					
@@ -125,36 +125,36 @@ class Email_Template_model extends CI_Model
 				}	
 			}	
 			
-			if($post_email['IsActive']==1){
+			if(trim($post_email['IsActive']==1)){
 				$email_updatedata = array(
 					'IsActive' => false,
 				);
-				$this->db->where('Token',$post_email['Token']);
-				$this->db->where('To',$post_email['To']);
+				$this->db->where('Token',trim($post_email['Token']));
+				$this->db->where('To',trim($post_email['To']));
 				$this->db->where('IsActive',true);
 				$update_res = $this->db->update('tblemailtemplate',$email_updatedata);
 			}
 						
-			if($post_email['IsActive']==1){
+			if(trim($post_email['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
-			if(isset($post_email['BccEmail']) && !empty($post_email['BccEmail'])){
-				$BccEmail = $post_email['BccEmail'];
+			if(isset($post_email['BccEmail']) && !empty(trim($post_email['BccEmail']))){
+				$BccEmail = trim($post_email['BccEmail']);
 			} else {
 				$BccEmail = '';
 			}		
 			$email_data = array(
-				'Token' => $post_email['Token'],
-				'Subject' => $post_email['Subject'],
-				'EmailBody' => $post_email['EmailBody'],
-				'To' => $post_email['To'],
-				'Cc' => $post_email['Cc'],
-				'Bcc' => $post_email['Bcc'],
+				'Token' => trim($post_email['Token']),
+				'Subject' => trim($post_email['Subject']),
+				'EmailBody' => trim($post_email['EmailBody']),
+				'To' => trim($post_email['To']),
+				'Cc' => trim($post_email['Cc']),
+				'Bcc' => trim($post_email['Bcc']),
 				'BccEmail' => $BccEmail,
 				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_email['UpdatedBy'],
+				'UpdatedBy' => trim($post_email['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 

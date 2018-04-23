@@ -7,20 +7,20 @@ class Competency_Area_model extends CI_Model
 	
 		if($post_area) {
 			
-			if($post_area['IsActive']==1){
+			if(trim($post_area['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$area_data = array(
-				'Name' => $post_area['Name'],
-				'DomainId' => $post_area['DomainId'],
-				'Description' => $post_area['Description'],
-				'KeyConcepts' => $post_area['KeyConcepts'],
+				'Name' => trim($post_area['Name']),
+				'DomainId' => trim($post_area['DomainId']),
+				'Description' => trim($post_area['Description']),
+				'KeyConcepts' => trim($post_area['KeyConcepts']),
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_area['CreatedBy'],
-				'UpdatedBy' => $post_area['UpdatedBy'],
+				'CreatedBy' => trim($post_area['CreatedBy']),
+				'UpdatedBy' => trim($post_area['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
@@ -76,23 +76,23 @@ class Competency_Area_model extends CI_Model
 	
 		if($post_area) {
 			
-			if($post_area['IsActive']==1){
+			if(trim($post_area['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$area_data = array(
-				'Name' => $post_area['Name'],
-				'DomainId' => $post_area['DomainId'],
-				'Description' => $post_area['Description'],
-				'KeyConcepts' => $post_area['KeyConcepts'],
+				'Name' => trim($post_area['Name']),
+				'DomainId' => trim($post_area['DomainId']),
+				'Description' => trim($post_area['Description']),
+				'KeyConcepts' => trim($post_area['KeyConcepts']),
 				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_area['UpdatedBy'],
+				'UpdatedBy' => trim($post_area['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
-			$this->db->where('CAreaId',$post_area['CAreaId']);
+			$this->db->where('CAreaId',trim($post_area['CAreaId']));
 			$res = $this->db->update('tblmstcompetencyarea',$area_data);
 			
 			if($res) {
@@ -122,28 +122,6 @@ class Competency_Area_model extends CI_Model
 		} else {
 			return false;
 		}
-
-		// if($area_id) {			
-			
-		// 	$this->db->select('KSAId');
-		// 	$this->db->where('CAreaId',$area_id);
-		// 	$result = $this->db->get('tblmstksa');
-		// 	if($result->num_rows()==0){
-		// 		$this->db->where('CAreaId',$area_id);
-		// 		$res = $this->db->delete('tblmstcompetencyarea');
-				
-		// 		if($res) {
-		// 			return true;
-		// 		} else {
-		// 			return false;
-		// 		}
-		// 	} else {
-		// 		return false;
-		// 	}			
-		// } else {
-		// 	return false;
-		// }
-		
 	}
 	
 	public function getDomainList() {

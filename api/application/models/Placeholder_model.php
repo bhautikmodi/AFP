@@ -7,18 +7,18 @@ class Placeholder_model extends CI_Model
 	
 		if($post_placeholder) {
 			
-			if($post_placeholder['IsActive']==1){
+			if(trim($post_placeholder['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$placeholder_data = array(
-				'PlaceholderName' => $post_placeholder['PlaceholderName'],
-				'ColumnId' => $post_placeholder['ColumnId'],
+				'PlaceholderName' => trim($post_placeholder['PlaceholderName']),
+				'ColumnId' => trim($post_placeholder['ColumnId']),
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_placeholder['CreatedBy'],
-				'UpdatedBy' => $post_placeholder['UpdatedBy'],
+				'CreatedBy' => trim($post_placeholder['CreatedBy']),
+				'UpdatedBy' => trim($post_placeholder['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
@@ -76,21 +76,21 @@ class Placeholder_model extends CI_Model
 	
 		if($post_placeholder) {
 			
-			if($post_placeholder['IsActive']==1){
+			if(trim($post_placeholder['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$placeholder_data = array(
-				'PlaceholderName' => $post_placeholder['PlaceholderName'],
-				'ColumnId' => $post_placeholder['ColumnId'],
+				'PlaceholderName' => trim($post_placeholder['PlaceholderName']),
+				'ColumnId' => trim($post_placeholder['ColumnId']),
 				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_placeholder['UpdatedBy'],
+				'UpdatedBy' => trim($post_placeholder['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
-			$this->db->where('PlaceholderId',$post_placeholder['PlaceholderId']);
+			$this->db->where('PlaceholderId',trim($post_placeholder['PlaceholderId']));
 			$res = $this->db->update('tblmstemailplaceholder',$placeholder_data);
 			
 			if($res) {

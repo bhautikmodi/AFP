@@ -7,17 +7,17 @@ class Domain_model extends CI_Model
 	
 		if($post_domain) {
 			
-			if($post_domain['IsActive']==1){
+			if(trim($post_domain['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$domain_data = array(
-				'Name' => $post_domain['Name'],
+				'Name' => trim($post_domain['Name']),
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_domain['CreatedBy'],
-				'UpdatedBy' => $post_domain['UpdatedBy'],
+				'CreatedBy' => trim($post_domain['CreatedBy']),
+				'UpdatedBy' => trim($post_domain['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
@@ -71,20 +71,20 @@ class Domain_model extends CI_Model
 	
 		if($post_domain) {
 
-			if($post_domain['IsActive']==1){
+			if(trim($post_domain['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$domain_data = array(
-				'Name' => $post_domain['Name'],
+				'Name' => trim($post_domain['Name']),
 				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_domain['UpdatedBy'],
+				'UpdatedBy' => trim($post_domain['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
-			$this->db->where('DomainId',$post_domain['DomainId']);
+			$this->db->where('DomainId',trim($post_domain['DomainId']));
 			$res = $this->db->update('tblmstdomain',$domain_data);
 			
 			if($res) {

@@ -76,18 +76,7 @@ class Register_model extends CI_Model
 	{	
 		if($post_user)
 		{	
-					$Invitation_data = array(
-					'Status' =>1,
-					'code' =>'',
-					'CreatedOn' => date('y-m-d H:i:s'),
-					'UpdatedOn' => date('y-m-d H:i:s')
-				);
-
-				$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
-				$res = $this->db->update('tbluserinvitation',$Invitation_data);
 				
-
-
 				$user_data=array(
 						"RoleId"=>3,
 						"CompanyId"=>$post_user['CompanyId'],
@@ -113,10 +102,23 @@ class Register_model extends CI_Model
 					$this->db->order_by('UserId','desc');
 					$this->db->limit(1);
 					$query=$this->db->get('tbluser');
-					if ($query->num_rows() == 1) {
+					if ($query->num_rows() == 1)
+					 {	
+						 $d=$query->result();
+						 $Invitation_data = array(
+						'UserId' =>$d[0]->UserId,
+						'Status' =>1,
+						'code' =>'',
+						'CreatedOn' => date('y-m-d H:i:s'),
+						'UpdatedOn' => date('y-m-d H:i:s')
+					);
+	
+					$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
+					$res = $this->db->update('tbluserinvitation',$Invitation_data); 
 						return $query->result();
-						} 
-					else {
+					} 
+					else 
+					{
 							return false;
 					}
 					//return true;

@@ -98,6 +98,8 @@ class User_model extends CI_Model
 			$res = $this->db->delete('tbluser');
 			
 			if($res) {
+				$this->db->where('UserId',$user_id);
+				$qur = $this->db->delete('tbluserinvitation');
 				return true;
 			} else {
 				return false;

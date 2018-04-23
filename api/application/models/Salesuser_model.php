@@ -209,7 +209,6 @@ class Salesuser_model extends CI_Model
             }	
 		}				
     }
-<<<<<<< HEAD
     public function getReCommendcourse($CAssessmentId = NULL) {
 		
 		if($CAssessmentId) {
@@ -235,7 +234,6 @@ class Salesuser_model extends CI_Model
             return $obj;
         }				
     }
-=======
 
     public function getUserksa($CAssessmentId = NULL) {
 		
@@ -263,6 +261,5 @@ class Salesuser_model extends CI_Model
 			
 	}
 
->>>>>>> 0b74aad94c1a0d0fa496118aebd81eea6e8256fb
  }
  

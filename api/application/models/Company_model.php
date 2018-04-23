@@ -19,6 +19,7 @@ class Company_model extends CI_Model
 				'PhoneNo' => $post_company['PhoneNo'],
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
+				
 			);
 				
 				$res=$this->db->insert('tblcompany',$company_data);
@@ -78,6 +79,7 @@ class Company_model extends CI_Model
 				'PhoneNo' => $post_company['PhoneNo'],
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
+				//'UpdatedOn' => date("m/d/y", strtotime(now()))
 			);
 			
 			$this->db->where('CompanyId',trim($post_company['CompanyId']));

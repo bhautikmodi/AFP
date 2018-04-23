@@ -32,52 +32,68 @@ class Forgotpass extends CI_Controller
 						 $data['VCode']=$post_pass['VCode'];
 						//echo json_encode($post_pass); 
 						
+					
+						$userId=$result->UserId;
+						$EmailToken = 'Reset Password';
+
+						$this->db->select('Value');
+						$this->db->where('Key','EmailFrom');
+						$smtp1 = $this->db->get('tblmstconfiguration');	
+						foreach($smtp1->result() as $row) {
+							$smtpEmail = $row->Value;
+						}
+						$this->db->select('Value');
+						$this->db->where('Key','EmailPassword');
+						$smtp2 = $this->db->get('tblmstconfiguration');	
+						foreach($smtp2->result() as $row) {
+							$smtpPassword = $row->Value;
+						}
+
 						$config['protocol']='smtp';
 						$config['smtp_host']='ssl://smtp.googlemail.com';
 						$config['smtp_port']='465';
-						$config['smtp_user']='myopeneyes3937@gmail.com';
-						$config['smtp_pass']='W3lc0m3@2018';
+						$config['smtp_user']=$smtpEmail;
+						$config['smtp_pass']=$smtpPassword;
 						$config['charset']='utf-8';
 						$config['newline']="\r\n";
-						$config['mailtype'] = 'html';	
-											
+						$config['mailtype'] = 'html';							
 						$this->email->initialize($config);
 
-						$this->email->from('myopeneyes3937@gmail.com','Change password AFP account');
-						$this->email->to($post_pass['EmailAddress']);
-						
-						
-						$this->email->subject('AFP password change request');
-						// $this->email->message('<br>Hello '.$result->FirstName. '<br><br>We have received a password change request for your Association for Financial Professionals - AFP account '.$post_pass['EmailAddress'].'
-						// <br><br>Link : http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'<br><br>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.<br>
-						// Regards,<br>
-						// AFP TEAM');
-						
-						$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
-						<tr>
-						<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><a href="http://localhost:4300/dashboard"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></a></td>
-						</tr>
-						<tr>
-							<td style="padding:10px;">
-								<p style="color:#007699;"><strong>Welcome! </strong></p>
-								<p>Association for Financial Professionals.</p>
-								
-								<p>Change your password</p>
+						$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
+						foreach($query->result() as $row){ 			
+							$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
+							$rowTo = $queryTo->result();
+							$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
+							$body = $row->EmailBody;
+							foreach($query1->result() as $row1){			
+								$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn LEFT JOIN tblmstuserrole AS role ON tn.RoleId = role.RoleId LEFT JOIN tblmstcountry AS con ON tn.CountryId = con.CountryId LEFT JOIN tblmststate AS st ON tn.StateId = st.StateId LEFT JOIN tblcompany AS com ON tn.CompanyId = com.CompanyId LEFT JOIN tblmstindustry AS ind ON com.IndustryId = ind.IndustryId WHERE tn.UserId = '.$userId);
+								$result2 = $query2->result();
+								$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
+							} 
+							$body = str_replace("{ link }",'<strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span>',$body);
+							//$body=$body.'<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>';
+							//$this->email->($body).append('<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>');
+							$this->email->from($smtpEmail, 'AFP Admin');
+							$this->email->to($rowTo[0]->EmailAddress);		
+							$this->email->subject($row->Subject);
+							$this->email->cc($row->totalcc);
+							$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+							$this->email->message($body);
+							if($this->email->send())
+							{
+								echo json_encode($data);
+							}else
+							{
+								echo json_encode("fail");
+							}
+							//echo json_encode($data);
+						}
 
-								<p>We have received a password change request for your AFP account '.$post_pass['EmailAddress'].'</p>
 
-								<p>If you did not ask to change your password, then you can ignore this email and your password will not be changed.<br> You will be able to use the link below only once.</p>
-								<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>
-								<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
-							</td>
-						</tr>
-						<tr>
-							<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
-						</tr>
-					</table>');
+
+
+
 						
-						$this->email->send();
-						echo json_encode($data);
 				}	
 				else
 				{

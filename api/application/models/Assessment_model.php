@@ -42,10 +42,10 @@ class Assessment_model extends CI_Model
 		if($post_ksa)
 		{
 			$ksa_data = array(
-				'RatingScaleId' => $post_ksa['RatingScaleId'],
+				'RatingScaleId' => trim($post_ksa['RatingScaleId']),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
-				$this->db->where('CKSAId',$post_ksa['CKSAId']);
+				$this->db->where('CKSAId',trim($post_ksa['CKSAId']));
 				$res=$this->db->update('tblcandidateksa',$ksa_data);
 				if($res)
 				{

@@ -16,6 +16,7 @@ export class SalesUserDetailsComponent implements OnInit {
   domainDatapre;
   ratingscale;
   areaksa;
+  rcourse;
   constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
@@ -35,6 +36,7 @@ this.SalesUserService.getUserAssessDetail(id)
     this.domainDatapre = data['perdomain'];
     this.ratingscale=data['ratingscale'];
     this.areaksa=data['areaksa'];
+    this.rcourse=data['rcourse'];
 
     // this.rscaleData = data['rscale'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

@@ -13,31 +13,42 @@ class Common extends CI_Controller {
 		
 	}
 
-	public function hello() {
+	// public function hello() {
+	// 	$CAssessmentId = 18;
+	// 	$data = $this->db->query('SELECT dk.DomainId,dk.AvgRatingScale,ROUND(dk.AvgRatingScale) as avg, d.Name FROM tbldomainwiseksa AS dk LEFT JOIN tblmstdomain AS d ON dk.DomainId = d.DomainId WHERE CAssessmentId='.$CAssessmentId);
+	// 	//echo "<pre>"; print_r($data->result()); 
+	// 	$obj = '';		
+	// 	foreach($data->result() as $row)
+	// 	 {	
+	// 		 $domain = array();
+	// 		 $array = json_decode(json_encode($row), True);
+	// 		 $domain = $array;
 
-		$data = $this->db->query('SELECT DomainId FROM tbldomainwiseksa group by DomainId');
-		
-		//echo "<pre>"; print_r($data->result()); 
-
+	// 		$data1 = $this->db->query('SELECT ConfigurationId,`Key`,`Value` FROM tblmstconfiguration AS cl WHERE cl.Key = "CourseLevel" AND ((cl.Value = "Foundational" AND '.$row->avg.' in (0,1,2)) OR  (cl.Value = "Intermediate" AND '.$row->avg.' in (0,1,2,3)) OR (cl.Value = "Advanced" AND '.$row->avg.' in (0,1,2,3,4)))');
+	// 		//echo "<pre>"; print_r($data1->result());
+	// 		$domain['rs'] = array();
+			
+	// 		foreach($data1->result() as $row1)
+	// 		{	
 				
-				//echo "<pre>"; print_r($data1->result()); 
+	// 			$array1 = json_decode(json_encode($row1), True);
+				
+	// 			//$domain['rs'] = $row1;		
+	// 			$data3 = $this->db->query('SELECT c.CourseId,c.Name,c.CourseLevelId FROM tblmstcourse AS c WHERE c.DomainId = '.$row->DomainId.' && c.CourseLevelId = '.$row1->ConfigurationId);
+				
+	// 			//echo "<pre>"; print_r($data3->result()); 
+	// 			//$array1['course'] = array();
+	// 			$array2 = json_decode(json_encode($data3->result()), True);
+	// 			$array1['course'] = $array2;
 
-				foreach($data->result() as $row)
-		 {
-			$data1 = $this->db->query('SELECT ConfigurationId,`Key`,`Value` FROM tblmstconfiguration AS cl WHERE cl.Key = "CourseLevel"');
-			foreach($data1->result() as $row1)
-		 {
-			 
-			
-			$data3 = $this->db->query('SELECT c.CourseId,c.Name,c.CourseLevelId FROM tblmstcourse AS c WHERE c.DomainId = '.$row->DomainId.' && c.CourseLevelId = '.$row1->ConfigurationId);
-				echo "<pre>"; print_r($data3->result()); 
-		 }
-			
-			echo "<br/>"; 
-		 }
-
-
-	} 
+	// 			$domain['rs'][] = $array1;
+	// 		}			
+	// 		//echo "<br/>"; 
+	// 		$obj[] = $domain; 
+	// 	 }  
+	// 	 echo "<pre>"; print_r($obj);
+	// 	 die;
+	// } 
 	
 	public function get_permissiondata() {
 		

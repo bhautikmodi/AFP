@@ -96,193 +96,29 @@
             <h2 class="text-center">Recommended Course(s)</h2>
             <div class="clearfix"></div>
             <div class="panel-group" id="courseaccordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingOne">
-                  <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseOne" aria-expanded="true" aria-controls="coursecollapseOne"> Strategy <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="courseheadingOne">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
+
+                <div class="panel panel-default" *ngFor="let domain of rcourse; let i=index; let f=first">
+                    <div class="panel-heading" role="tab" id="courseheading{{i+1}}">
+                      <h4 class="panel-title"> <a role="button" data-toggle="collapse" [ngClass]="{collapsed: !f}" data-parent="#courseaccordion" href="#coursecollapse{{i+1}}" aria-expanded="true" attr.aria-controls="coursecollapse{{i+1}}">{{domain.Name}} <span class="icon_span"></span></a> </h4>
+                    </div>
+                    <div id="coursecollapse{{i+1}}" class="panel-collapse collapse" [ngClass]="{in: f}" role="tabpanel"  attr.aria-labelledby="courseheading{{i+1}}">
+                      <div class="panel-body">
+                        <table class="table table-bordered">
+                          <tr>
+                            <th class="text-left width_30">Rating</th>
+                            <th class="text-left width_80">Course(s)</th>
+                          </tr>
+                          <tr *ngFor="let rscale of domain.rs">
+                            <td>{{rscale.Value}}</td>
+                            <td class="text-left"><ul class="li_list">
+                                <li *ngFor="let c of rscale.course">{{c.Name}}</li>
+                              </ul></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingTwo">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseTwo" aria-expanded="false" aria-controls="coursecollapseTwo"> Gathering and Analyzing Information <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingTwo">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>1 - General Awareness</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingThree">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseThree" aria-expanded="false" aria-controls="coursecollapseThree"> Budgeting and Financal Principles <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingThree">
-                  <div class="panel-body">
-                    <h5>No Courses Found</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingFour">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseFour" aria-expanded="false" aria-controls="coursecollapseFour"> Forecasting with Systems and Tools <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingFour">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingFive">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseFive" aria-expanded="false" aria-controls="coursecollapseFive"> Communication and Presentation Techniques <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingFive">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingSix">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseSix" aria-expanded="false" aria-controls="coursecollapseSix"> Business Partnering <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingSix">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
+
             </div>
             <div class="clearfix"></div>
             <a href="#" data-toggle="modal" data-target="#CourseModal" class="next_btn pull-right"><span>View All Recommended Courses</span></a>

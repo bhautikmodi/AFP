@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: *');
 header('Content-Type: application/json');
 
-class Company extends CI_Controller 
+class Company extends My_Controller 
 {	
 	public function __construct()
 	{

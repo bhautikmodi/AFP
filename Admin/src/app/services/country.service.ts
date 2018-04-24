@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
+
 @Injectable()
 export class CountryService {
 
-   constructor( private http: Http,private globals: Globals) { }
+   constructor( private http: HttpClient,private globals: Globals) { }
 add(CountryEntity)
  {
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Country/add', CountryEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Country/add', CountryEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -26,11 +28,11 @@ add(CountryEntity)
 delete(CountryId)
   {debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Country/delete/' + CountryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Country/delete/' + CountryId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -43,11 +45,11 @@ delete(CountryId)
   getAll()
   {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Country/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Country/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -60,11 +62,11 @@ delete(CountryId)
   getById(CountryId)
   {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Country/getById/' + CountryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Country/getById/' + CountryId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

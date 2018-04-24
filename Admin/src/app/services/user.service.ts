@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class UserService {
 
-   constructor(private http: Http, private globals: Globals) { }
+   constructor(private http: HttpClient, private globals: Globals) { }
 
    add(userEntity){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'User/addUser', userEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'User/addUser', userEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -28,11 +29,11 @@ export class UserService {
   getAllUser(){
 	  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList',  this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -46,11 +47,11 @@ export class UserService {
   //delete User
   deleteUser(userId){  
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/deleteUser/' + userId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/deleteUser/' + userId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -63,11 +64,11 @@ export class UserService {
   
    getById(userId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getById/' + userId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getById/' + userId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -80,11 +81,11 @@ export class UserService {
    //list project all status
   getAllState(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllState',  this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllState')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -97,11 +98,11 @@ export class UserService {
    getAllCompany(){
 	 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllCompany',  this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllCompany')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -114,11 +115,11 @@ export class UserService {
   
   getAllRole(){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllRole', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllRole')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -131,11 +132,11 @@ export class UserService {
   getAllCountry()
   {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -147,11 +148,11 @@ export class UserService {
   
   getStateList(CountryId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getStateList/' + CountryId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'User/getStateList/' + CountryId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Userrole extends CI_Controller 
+class Userrole extends MY_Controller 
 {	
 	public function __construct()
 	{

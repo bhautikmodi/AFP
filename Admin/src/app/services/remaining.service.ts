@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class RemainingService {
 
-   constructor(private http: Http, private globals: Globals) { }
+   constructor(private http: HttpClient, private globals: Globals) { }
    
    getAll()
    {
 	  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Remaining/getDays',  this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Remaining/getDays')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

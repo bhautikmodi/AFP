@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class StateService {
 
- constructor(private http: Http, private globals: Globals) {  }
+ constructor(private http: HttpClient, private globals: Globals) {  }
  
  add(stateEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'State/addState', stateEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'State/addState', stateEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -26,11 +27,11 @@ export class StateService {
  
  getAll(){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'State/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -43,11 +44,11 @@ export class StateService {
   
   deleteState(StateId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'State/delete/' + StateId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/delete/' + StateId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -60,11 +61,11 @@ export class StateService {
   
   getById(stateId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'State/getById/' + stateId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/getById/' + stateId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -78,11 +79,11 @@ export class StateService {
    getAllCountry()
   {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'State/getAllCountry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'State/getAllCountry')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

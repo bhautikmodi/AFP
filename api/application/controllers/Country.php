@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Country extends CI_Controller {
+class Country extends MY_Controller {
 
 
 	public function __construct() {

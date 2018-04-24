@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class CompanyService {
 
-   constructor(private http: Http, private globals: Globals) { }
+   constructor(private http: HttpClient, private globals: Globals) { }
    
    add(companyEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Company/addCompany/', companyEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Company/addCompany/', companyEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -27,11 +28,11 @@ export class CompanyService {
   getAllCompany(){
 	  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/getAll',  this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Company/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -44,11 +45,11 @@ export class CompanyService {
    
   deleteCompany(companyId){  
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/delete/' + companyId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Company/delete/' + companyId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -62,11 +63,11 @@ export class CompanyService {
   //update project list
    getById(companyId){debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/getById/' + companyId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Company/getById/' + companyId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -80,11 +81,11 @@ export class CompanyService {
 getAllIndustry()
   {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/getAllIndustry', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Company/getAllIndustry')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

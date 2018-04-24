@@ -44,6 +44,7 @@ addAsmtDetails(AsmtDetailsForm)
 		
 		if(AsmtDetailsForm.valid){
 			this.btn_disable = true;
+			this.globals.isLoading = true;
 			this.AssessmentDetailsService.add(this.AsmtDetailsEntity)
 			.then((data) => 
 			{
@@ -52,6 +53,7 @@ addAsmtDetails(AsmtDetailsForm)
 				this.submitted = false;
 				this.AsmtDetailsEntity = {};
 				AsmtDetailsForm.form.markAsPristine();
+				this.globals.isLoading = false;
 					this.globals.message = 'Add successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
@@ -60,7 +62,8 @@ addAsmtDetails(AsmtDetailsForm)
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
 				this.btn_disable = false;
 				this.submitted = false;
 			});

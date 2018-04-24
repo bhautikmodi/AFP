@@ -8,23 +8,29 @@ import { Globals } from '../globals';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit
+ {
 
   constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
 
-  ngOnInit() {
-  }
-logout(){ debugger	 
-    this.authService.logout();
-    this.globals.isLoading = true;
-  window.location.href = '/login';
-  }
-register()
-{
-  window.location.href = '/invitation';
-}
-log()
-{
-  window.location.href = '/login';
-}
+  ngOnInit() { }
+    logout()
+    { debugger	 
+        this.authService.logout();
+        this.globals.isLoading = true;
+        window.location.href = '/login';
+    }
+    register()
+    {
+      window.location.href = '/invitation';
+    }
+    home()
+    {
+      this.globals.check_login=false;
+      this.router.navigate(['/']);
+    }
+    log()
+    {
+      window.location.href = '/login';
+    }
 }

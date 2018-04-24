@@ -87,51 +87,61 @@ class Register extends CI_Controller
 							$jwt = JWT::encode($token, "MyGeneratedKey","HS256");
 							$output['token'] = $jwt;
 						
-						//echo json_encode('success');
-					$config['protocol']='smtp';
-					$config['smtp_host']='ssl://smtp.googlemail.com';
-					$config['smtp_port']='465';
-					$config['smtp_user']='myopeneyes3937@gmail.com';
-					$config['smtp_pass']='W3lc0m3@2018';
-					$config['charset']='utf-8';
-					$config['newline']="\r\n";
-					$config['mailtype'] = 'html';	
-										
-					$this->email->initialize($config);
-
-					$this->email->from('myopeneyes3937@gmail.com','Email Test');
-					$this->email->to($post_user['EmailAddress']);
-					
-					
-					$this->email->subject('Welcome to Association for Financial Professionals. Registration Successful.');
-					//$this->email->message('sending mail recive.....');
-					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
-					<tr>
-						<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
-					</tr>
-					
-					<tr>
-						<td style="padding:10px;">
-							<p style="color:#007699;"><strong>Hello, '.$post_user['FirstName'].'</strong></p>
+							$userId=$result[0]->UserId;
+					 
 							
-							<p>Welcome to <strong>Association for Financial Professionals</strong>.</p>
-							<br>
-							<p>Thank you for registrartion.</p>
-							<p>Your registration is successful.</p>	
-						</td>
-					</tr>
-					<tr>
-						<td style="padding:10px;">
-							<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
-					</tr>
-				</table>');
-
-				$this->email->send();
-				echo json_encode($output);
+							$EmailToken = 'Registration';
+					
+							$this->db->select('Value');
+							$this->db->where('Key','EmailFrom');
+							$smtp1 = $this->db->get('tblmstconfiguration');	
+							foreach($smtp1->result() as $row) {
+								$smtpEmail = $row->Value;
+							}
+							$this->db->select('Value');
+							$this->db->where('Key','EmailPassword');
+							$smtp2 = $this->db->get('tblmstconfiguration');	
+							foreach($smtp2->result() as $row) {
+								$smtpPassword = $row->Value;
+							}
+					
+							$config['protocol']='smtp';
+							$config['smtp_host']='ssl://smtp.googlemail.com';
+							$config['smtp_port']='465';
+							$config['smtp_user']=$smtpEmail;
+							$config['smtp_pass']=$smtpPassword;
+							$config['charset']='utf-8';
+							$config['newline']="\r\n";
+							$config['mailtype'] = 'html';							
+							$this->email->initialize($config);
+					
+							$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
+							foreach($query->result() as $row){ 			
+								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
+								$rowTo = $queryTo->result();
+								$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
+								$body = $row->EmailBody;
+								foreach($query1->result() as $row1){			
+									$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn LEFT JOIN tblmstuserrole AS role ON tn.RoleId = role.RoleId LEFT JOIN tblmstcountry AS con ON tn.CountryId = con.CountryId LEFT JOIN tblmststate AS st ON tn.StateId = st.StateId LEFT JOIN tblcompany AS com ON tn.CompanyId = com.CompanyId LEFT JOIN tblmstindustry AS ind ON com.IndustryId = ind.IndustryId WHERE tn.UserId = '.$userId);
+									$result2 = $query2->result();
+									$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
+								} 
+								$this->email->from($smtpEmail, 'AFP Admin');
+								$this->email->to($rowTo[0]->EmailAddress);		
+								$this->email->subject($row->Subject);
+								$this->email->cc($row->totalcc);
+								$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+								$this->email->message($body);
+								if($this->email->send())
+								{
+									//echo json_encode("Success");
+									echo json_encode($output);
+								}else
+								{
+									echo json_encode("Fail");
+								}
+							}
+				
 					}
 					else
 					{

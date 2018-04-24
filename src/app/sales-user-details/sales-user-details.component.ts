@@ -16,12 +16,15 @@ export class SalesUserDetailsComponent implements OnInit {
   domainDatapre;
   ratingscale;
   areaksa;
+  rcourse;
+  ksaList;
+  assessmentData;
   constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
 
   ngOnInit() {  debugger
-   
+   this.assessmentData='';
 
 
 let id = this.route.snapshot.paramMap.get('id');    
@@ -35,6 +38,9 @@ this.SalesUserService.getUserAssessDetail(id)
     this.domainDatapre = data['perdomain'];
     this.ratingscale=data['ratingscale'];
     this.areaksa=data['areaksa'];
+    this.rcourse=data['rcourse'];
+    this.ksaList = data['ksa'];
+    this.assessmentData = data['assessment'];
 
     // this.rscaleData = data['rscale'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

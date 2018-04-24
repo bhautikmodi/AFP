@@ -7,18 +7,18 @@ class KSA_model extends CI_Model
 	
 		if($post_ksa) {
 			
-			if($post_ksa['IsActive']==1){
+			if(trim($post_ksa['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$ksa_data = array(
-				'Name' => $post_ksa['Name'],
-				'CAreaId' => $post_ksa['CAreaId'],
+				'Name' => trim($post_ksa['Name']),
+				'CAreaId' => trim($post_ksa['CAreaId']),
 				'IsActive' => $IsActive,
-				'CreatedBy' => $post_ksa['CreatedBy'],
-				'UpdatedBy' => $post_ksa['UpdatedBy'],
+				'CreatedBy' => trim($post_ksa['CreatedBy']),
+				'UpdatedBy' => trim($post_ksa['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
@@ -74,21 +74,21 @@ class KSA_model extends CI_Model
 	
 		if($post_ksa) {
 			
-			if($post_ksa['IsActive']==1){
+			if(trim($post_ksa['IsActive'])==1){
 				$IsActive = true;
 			} else {
 				$IsActive = false;
 			}
 
 			$ksa_data = array(
-				'Name' => $post_ksa['Name'],
-				'CAreaId' => $post_ksa['CAreaId'],
+				'Name' => trim($post_ksa['Name']),
+				'CAreaId' => trim($post_ksa['CAreaId']),
 				'IsActive' => $IsActive,
-				'UpdatedBy' => $post_ksa['UpdatedBy'],
+				'UpdatedBy' => trim($post_ksa['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
 			);
 			
-			$this->db->where('KSAId',$post_ksa['KSAId']);
+			$this->db->where('KSAId',trim($post_ksa['KSAId']));
 			$res = $this->db->update('tblmstksa',$ksa_data);
 			
 			if($res) {

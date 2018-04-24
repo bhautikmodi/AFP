@@ -7,9 +7,9 @@ class Changepass_model extends CI_Model
 	{
 		if($post_pass)
 		{
-				$this->db->select('UserId,Password');				
+				$this->db->select('UserId,Password,EmailAddress,FirstName');				
 				$this->db->where('UserId',trim($post_pass['UserId']));
-				$this->db->where('Password',md5($post_pass['Password']));
+				$this->db->where('Password',md5(trim($post_pass['Password'])));
 				//$this->db->where('Status',0);
 				$this->db->limit(1);
 				$this->db->from('tbluser');

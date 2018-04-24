@@ -16,9 +16,10 @@ class Company_model extends CI_Model
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
-				'PhoneNumber' => $post_company['PhoneNumber'],
+				'PhoneNo' => $post_company['PhoneNo'],
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
+				
 			);
 				
 				$res=$this->db->insert('tblcompany',$company_data);
@@ -41,8 +42,10 @@ class Company_model extends CI_Model
 	{
 	  if($company_id)
 	  {
-		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNumber,IsActive');
+
+		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNo,IsActive');
 		 $this->db->where('CompanyId',$company_id);
+
 		 $result=$this->db->get('tblcompany');
 		 $company_data= array();
 		 foreach($result->result() as $row)
@@ -73,12 +76,13 @@ class Company_model extends CI_Model
 				'Name' => $post_company['Name'],
 				'IndustryId' => $post_company['IndustryId'],
 				'Website' => $post_company['Website'],
-				'PhoneNumber' => $post_company['PhoneNumber'],
+				'PhoneNo' => $post_company['PhoneNo'],
 				'IsActive' => $IsActive,
 				'UpdatedOn' => date('y-m-d H:i:s')
+				//'UpdatedOn' => date("m/d/y", strtotime(now()))
 			);
 			
-			$this->db->where('CompanyId',$post_company['CompanyId']);
+			$this->db->where('CompanyId',trim($post_company['CompanyId']));
 			$res = $this->db->update('tblcompany',$company_data);
 			
 			if($res) 
@@ -98,7 +102,7 @@ class Company_model extends CI_Model
 	
 	function getlist_company()
 	{
-		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNumber,cp.IsActive,in.IndustryName');
+		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,in.IndustryName');
 		$this->db->join('tblmstindustry in', 'cp.IndustryId = in.IndustryId', 'left');
 		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany cp');

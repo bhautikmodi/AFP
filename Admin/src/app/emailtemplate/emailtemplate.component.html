@@ -40,7 +40,7 @@
                       <option value="Reminder of Assessment" ngSelected="emailEntity.Token=='Reminder of Assessment'">Reminder of Assessment</option>                                      
                   </select>
                   <span class="error_span" *ngIf="(Token.dirty && Token.invalid) || (Token.pristine && submitted)"> 
-                      <span *ngIf="Token.errors.required || (Token.pristine && submitted)">Please select role</span>
+                      <span *ngIf="Token.errors.required || (Token.pristine && submitted)">Please select email token</span>
                     </span>
                 </div>
 
@@ -51,7 +51,7 @@
                     <input type="text" class="form-control" #Subject="ngModel" [(ngModel)]="emailEntity.Subject" name="Subject" pattern="[a-zA-Z0-9/\-_@!#$() ]{1,500}" [ngClass]="{red_border: (Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)}" required/>  
                     <span class="error_span" *ngIf="(Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)"> 
                       <span *ngIf="Subject.errors.required || (Subject.pristine && submitted)">Please enter subject</span>
-                      <span *ngIf="Subject.errors && Subject.errors.pattern">Please enter a valid subject</span>
+                      <span *ngIf="Subject.errors && Subject.errors.pattern">Please enter valid subject</span>
                     </span> 
                 </div>
 
@@ -75,7 +75,7 @@
                       <!-- <option *ngFor="let role of roleList" value="{{role.RoleId}}" ngSelected="emailEntity.To==role.RoleId">{{role.RoleName}}</option>                                       -->
                   </select>
                   <span class="error_span" *ngIf="(To.dirty && To.invalid) || (To.pristine && submitted)"> 
-                      <span *ngIf="To.errors.required || (To.pristine && submitted)">Please select To</span>
+                      <span *ngIf="To.errors.required || (To.pristine && submitted)">Please select to</span>
                     </span>
                 </div>
                 <div class="form-group col-md-4">
@@ -105,7 +105,7 @@
                   <label>Email Address</label>
                   <input type="text" class="form-control" #BccEmail="ngModel" [(ngModel)]="emailEntity.BccEmail" name="BccEmail" pattern="[a-zA-Z0-9/\-_@!#$(),.]{1,1000}" [ngClass]="{red_border: (BccEmail.dirty && BccEmail.invalid)}"/>    
                  <span class="error_span" *ngIf="(BccEmail.dirty && BccEmail.invalid)"> 
-                    <span *ngIf="BccEmail.errors && BccEmail.errors.pattern">Please enter a valid email address</span>
+                    <span *ngIf="BccEmail.errors && BccEmail.errors.pattern">Please enter valid email address</span>
                   </span> 
                 </div>
                 <div class="clearfix"></div>
@@ -172,8 +172,8 @@
               <p>Are You Sure this template is active and another is deactive?</p>
             </div>
             <div class="modal-footer text-center">
-              <button type="button" class="next_btn" (click)="addConfirm(abcform)" id="yes_btn">Yes</button>
-              <button type="button" class="back_btn" data-dismiss="modal">No</button>
+              <button type="button" class="next_btn" (click)="addConfirm(abcform)" id="yes_btn"><span>Yes</span></button>
+              <button type="button" class="back_btn" data-dismiss="modal"><span>No</span></button>
           </div>
       </div>
   </div>

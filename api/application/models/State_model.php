@@ -13,9 +13,9 @@ class State_model extends CI_Model
 		if($post_state)
 		{
 			$state_data=array(
-				"CountryId"=>$post_state['CountryId'],
-				"StateName"=>$post_state['StateName'],
-				"StateAbbreviation"=>$post_state['StateAbbreviation'],
+				"CountryId"=>trim($post_state['CountryId']),
+				"StateName"=>trim($post_state['StateName']),
+				"StateAbbreviation"=>trim($post_state['StateAbbreviation']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" => 1,
 				"UpdatedBy" => 1,
@@ -70,14 +70,14 @@ class State_model extends CI_Model
 		if($post_state) {
 			
 			$state_data = array(
-				"CountryId"=>$post_state['CountryId'],
-				"StateName"=>$post_state['StateName'],
-				"StateAbbreviation"=>$post_state['StateAbbreviation'],
+				"CountryId"=>trim($post_state['CountryId']),
+				"StateName"=>trim($post_state['StateName']),
+				"StateAbbreviation"=>trim($post_state['StateAbbreviation']),
 				"IsActive"=>$IsActive
 				
 			);
 			
-			$this->db->where('StateId',$post_state['StateId']);
+			$this->db->where('StateId',trim($post_state['StateId']));
 			$res = $this->db->update('tblmststate',$state_data);
 			
 			if($res) 

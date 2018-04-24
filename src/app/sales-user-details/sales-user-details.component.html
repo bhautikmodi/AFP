@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12">
-        <h1>Assessment by </h1>
+        <h1>Assessment by {{assessmentData.FirstName}} </h1>
         <div class="clearfix"></div>
         <a href="user_assessment_list.html" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a> </div>
     </div>
@@ -29,9 +29,9 @@
     <div class="row">
       <div class="col-md-10 col-sm-12 col-md-offset-1 text-center">
         <h3>For Development Team</h3>
-        <h4><span>Date Taken :</span> 02-03-2018</h4>
-        <h4><span>Team Size :</span> 10-15 <span>| Covered KSA :</span> 50 <span>| Time Taken :</span> 01:12:34</h4>
-        <p class="padding_15">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+        <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
+        <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+        <p class="padding_30">{{assessmentData.Description}}</p>
         <div class="text-center"><a href="#" class="red_btn" data-toggle="modal" data-target="#PreviewModal"><span>View All KSA Rating</span></a></div>
       </div>
       <div class="clearfix"></div>
@@ -96,193 +96,32 @@
             <h2 class="text-center">Recommended Course(s)</h2>
             <div class="clearfix"></div>
             <div class="panel-group" id="courseaccordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingOne">
-                  <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseOne" aria-expanded="true" aria-controls="coursecollapseOne"> Strategy <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="courseheadingOne">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
+
+                <div class="panel panel-default" *ngFor="let domain of rcourse; let i=index; let f=first">
+                    <div class="panel-heading" role="tab" id="courseheading{{i+1}}">
+                      <h4 class="panel-title"> <a role="button" data-toggle="collapse" [ngClass]="{collapsed: !f}" data-parent="#courseaccordion" href="#coursecollapse{{i+1}}" aria-expanded="true" attr.aria-controls="coursecollapse{{i+1}}">{{domain.Name}} <span class="icon_span"></span></a> </h4>
+                    </div>
+                    <div id="coursecollapse{{i+1}}" class="panel-collapse collapse" [ngClass]="{in: f}" role="tabpanel"  attr.aria-labelledby="courseheading{{i+1}}">
+                      <div class="panel-body">
+                        <table class="table table-bordered">
+                          <tr>
+                            <th class="text-left width_30">Rating</th>
+                            <th class="text-left width_80">Course(s)</th>
+                          </tr>
+                          <tr *ngFor="let rscale of domain.rs">
+                            <td><span *ngIf="rscale.Value=='General Awareness'">1</span>
+                              <span *ngIf="rscale.Value=='Developing'">2</span>
+                              <span *ngIf="rscale.Value=='Intermediate'">3</span>
+                              <span *ngIf="rscale.Value=='Advanced'">4</span> - {{rscale.Value}}</td>
+                            <td class="text-left"><ul class="li_list">
+                                <li *ngFor="let c of rscale.course">{{c.Name}}</li>
+                              </ul></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingTwo">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseTwo" aria-expanded="false" aria-controls="coursecollapseTwo"> Gathering and Analyzing Information <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingTwo">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>1 - General Awareness</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingThree">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseThree" aria-expanded="false" aria-controls="coursecollapseThree"> Budgeting and Financal Principles <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingThree">
-                  <div class="panel-body">
-                    <h5>No Courses Found</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingFour">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseFour" aria-expanded="false" aria-controls="coursecollapseFour"> Forecasting with Systems and Tools <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingFour">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingFive">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseFive" aria-expanded="false" aria-controls="coursecollapseFive"> Communication and Presentation Techniques <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingFive">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="courseheadingSix">
-                  <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseSix" aria-expanded="false" aria-controls="coursecollapseSix"> Business Partnering <span class="icon_span"></span></a> </h4>
-                </div>
-                <div id="coursecollapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingSix">
-                  <div class="panel-body">
-                    <table class="table table-bordered">
-                      <tr>
-                        <th class="text-left width_30">Rating</th>
-                        <th class="text-left width_80">Course(s)</th>
-                      </tr>
-                      <tr>
-                        <td>2 - Developing</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                            <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>3 - Intermediate</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Leading Transformation by Mastering Financial Data </li>
-                          </ul></td>
-                      </tr>
-                      <tr>
-                        <td>4 - Advanced</td>
-                        <td class="text-left"><ul class="li_list">
-                            <li>Developing an Effective Predictive Analytics Capability </li>
-                          </ul></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
+
             </div>
             <div class="clearfix"></div>
             <a href="#" data-toggle="modal" data-target="#CourseModal" class="next_btn pull-right"><span>View All Recommended Courses</span></a>
@@ -296,7 +135,7 @@
 <div class="clearfix"></div>
 
 <!-- Preview Popup -->
-<div class="modal fade" id="PreviewModal" tabindex="-1" role="dialog" aria-labelledby="PreviewModal">
+<div class="modal fade" id="PreviewModal" tabindex="-1" role="dialog" aria-labelledby="PreviewModal" data-backdrop="static" data-keyboard="false" >
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -306,264 +145,26 @@
         <div class="preview_ksa">
           <table class="table table-bordered table-hover">
             <thead>
-              <tr>
-                <th class="text-center width_5">Sr. No.</th>
-                <th class="width_70">KSA</th>
-                <th class="text-left width_30">Selected Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center width_5">1</td>
-                <td class="width_70">Crafting and implementing a strategic planning framework. </td>
-                <td class="text-left width_30">1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">2</td>
-                <td>Understanding and utilizing the best technological options when organizing accounting/financial data. </td>
-                <td>3 - Intermediate</td>
-              </tr>
-              <tr>
-                <td class="text-center">3</td>
-                <td>Having a clear understanding of data families. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">4</td>
-                <td>Building support for the design and development of a predictive business analytics capability. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">5</td>
-                <td> Recognizing trends in financial data to determine potential actions and conclusions. </td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">6</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">7</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">8</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">9</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">10</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">11</td>
-                <td>Crafting and implementing a strategic planning framework. </td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">12</td>
-                <td>Understanding and utilizing the best technological options when organizing accounting/financial data. </td>
-                <td>3 - Intermediate</td>
-              </tr>
-              <tr>
-                <td class="text-center">13</td>
-                <td>Having a clear understanding of data families. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">14</td>
-                <td>Building support for the design and development of a predictive business analytics capability. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">15</td>
-                <td> Recognizing trends in financial data to determine potential actions and conclusions. </td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">16</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">17</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">18</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">19</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">20</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">21</td>
-                <td>Crafting and implementing a strategic planning framework. </td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">22</td>
-                <td>Understanding and utilizing the best technological options when organizing accounting/financial data. </td>
-                <td>3 - Intermediate</td>
-              </tr>
-              <tr>
-                <td class="text-center">23</td>
-                <td>Having a clear understanding of data families. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">24</td>
-                <td>Building support for the design and development of a predictive business analytics capability. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">25</td>
-                <td> Recognizing trends in financial data to determine potential actions and conclusions. </td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">26</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">27</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">28</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">29</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">30</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">31</td>
-                <td>Crafting and implementing a strategic planning framework. </td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">32</td>
-                <td>Understanding and utilizing the best technological options when organizing accounting/financial data. </td>
-                <td>3 - Intermediate</td>
-              </tr>
-              <tr>
-                <td class="text-center">33</td>
-                <td>Having a clear understanding of data families. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">34</td>
-                <td>Building support for the design and development of a predictive business analytics capability. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">35</td>
-                <td> Recognizing trends in financial data to determine potential actions and conclusions. </td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">36</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">37</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">38</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">39</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">40</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">41</td>
-                <td>Crafting and implementing a strategic planning framework. </td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">42</td>
-                <td>Understanding and utilizing the best technological options when organizing accounting/financial data. </td>
-                <td>3 - Intermediate</td>
-              </tr>
-              <tr>
-                <td class="text-center">43</td>
-                <td>Having a clear understanding of data families. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">44</td>
-                <td>Building support for the design and development of a predictive business analytics capability. </td>
-                <td>4 - Advanced</td>
-              </tr>
-              <tr>
-                <td class="text-center">45</td>
-                <td> Recognizing trends in financial data to determine potential actions and conclusions. </td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">46</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">47</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-              <tr>
-                <td class="text-center">48</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">49</td>
-                <td> Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>1 - General Awareness</td>
-              </tr>
-              <tr>
-                <td class="text-center">50</td>
-                <td>Understanding the concepts of balanced scorecards and financial KPIs.</td>
-                <td>2 - Developing</td>
-              </tr>
-            </tbody>
+            <tr>
+              <th class="text-center width_5">Sr. No.</th>
+              <th class="width_60">KSA</th>
+              <th class="text-left width_30">Selected Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+      
+            <tr *ngFor="let ksa of ksaList; let i = index">
+              <td class="text-center width_5">{{i+1}}</td>
+              <td class="width_60">{{ksa.Name}}</td>
+              <td class="width_30">{{ksa.RatingScaleId}} - 
+                <span *ngIf="ksa.RatingScaleId==1">General Awareness</span>
+                <span *ngIf="ksa.RatingScaleId==2">Developing</span>
+                <span *ngIf="ksa.RatingScaleId==3">Intermediate</span>
+                <span *ngIf="ksa.RatingScaleId==4">Advanced</span>
+              </td>
+            </tr>
+        
+        </tbody>           
           </table>
         </div>
       </div>
@@ -573,6 +174,8 @@
     </div>
   </div>
 </div>
+     
+ 
 <!-- End Preview Popup --> 
 
 <!-- Courses Popup -->
@@ -599,159 +202,6 @@
                 <td class="width_30">1 - General Awareness</td>
                 <td class="text-left width_80"><ul class="li_list">
                     <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
-                  </ul></td>
-              </tr>
-               <tr>
-                <th colspan="2" class="domain_name">Gathering and Analyzing Information</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <th colspan="2" class="domain_name">Budgeting and Financal Principles</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <th colspan="2" class="domain_name">Forecasting with Systems and Tools</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <th colspan="2" class="domain_name">Communication and Presentation Techniques</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <th colspan="2" class="domain_name">Business Partnering</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>2 - Developing</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading with Data: Design Efficient and Sustainable Data-Driven Processes for Treasury and Finance</li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>3 - Intermediate</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Leading Transformation by Mastering Financial Data </li>
-                  </ul></td>
-              </tr>
-              <tr>
-                <td>4 - Advanced</td>
-                <td class="text-left"><ul class="li_list">
-                    <li>Developing an Effective Predictive Analytics Capability </li>
                   </ul></td>
               </tr>
             </tbody>

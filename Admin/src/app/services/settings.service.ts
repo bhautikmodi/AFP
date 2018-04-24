@@ -54,6 +54,22 @@ export class SettingsService {
     });		
     return promise;
     }
+
+    update_email(configEntity){ 
+      let promise = new Promise((resolve, reject) => {
+        this.http.post(this.globals.baseAPIUrl + 'Settings/updateEmail', configEntity, this.globals.headerpath)
+          .toPromise()
+          .then(
+            res => { // Success
+              resolve(res.json());
+            },
+            msg => { // Error
+          reject(msg);
+            }
+          );
+      });		
+      return promise;
+      }
   
   delete(TeamSizeId){
 	let promise = new Promise((resolve, reject) => {		

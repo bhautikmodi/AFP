@@ -34,20 +34,20 @@ class User_model extends CI_Model
 		{
 			 
 			$user_data=array(
-				"RoleId"=>$post_user['RoleId'],
-				"CompanyId"=>$post_user['CompanyId'],
-				"FirstName"=>$post_user['FirstName'],
-				"LastName"=>$post_user['LastName'],
-				"Title"=>$post_user['Title'],
-				"EmailAddress"=>$post_user['EmailAddress'],
-				"Password"=>$post_user['Password'],
-				"Address1"=>$post_user['Address1'],
-				"Address2"=>$post_user['Address2'],
-				"CountryId"=>$post_user['CountryId'],
-				"StateId"=>$post_user['StateId'],
-				"City"=>$post_user['City'],
-				"ZipCode"=>$post_user['ZipCode'],
-				"PhoneNumber"=>$post_user['PhoneNumber'],
+				"RoleId"=>trim($post_user['RoleId']),
+				"CompanyId"=>trim($post_user['CompanyId']),
+				"FirstName"=>trim($post_user['FirstName']),
+				"LastName"=>trim($post_user['LastName']),
+				"Title"=>trim($post_user['Title']),
+				"EmailAddress"=>trim($post_user['EmailAddress']),
+				"Password"=>trim($post_user['Password']),
+				"Address1"=>trim($post_user['Address1']),
+				"Address2"=>trim($post_user['Address2']),
+				"CountryId"=>trim($post_user['CountryId']),
+				"StateId"=>trim($post_user['StateId']),
+				"City"=>trim($post_user['City']),
+				"ZipCode"=>trim($post_user['ZipCode']),
+				"PhoneNumber"=>trim($post_user['PhoneNumber']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
@@ -98,6 +98,8 @@ class User_model extends CI_Model
 			$res = $this->db->delete('tbluser');
 			
 			if($res) {
+				$this->db->where('UserId',$user_id);
+				$qur = $this->db->delete('tbluserinvitation');
 				return true;
 			} else {
 				return false;
@@ -123,19 +125,19 @@ class User_model extends CI_Model
 				$user_data = array(
 				//"ProjectStatusId"=>$post_user['ProjectStatusId'],
 				"RoleId"=>$post_user['RoleId'],
-				"CompanyId"=>$post_user['CompanyId'],
-				"FirstName"=>$post_user['FirstName'],
-				"LastName"=>$post_user['LastName'],
-				"Title"=>$post_user['Title'],
-				"EmailAddress"=>$post_user['EmailAddress'],
-				"Password"=>$post_user['Password'],
-				"Address1"=>$post_user['Address1'],
-				"Address2"=>$post_user['Address2'],
-				"CountryId"=>$post_user['CountryId'],
-				"StateId"=>$post_user['StateId'],
-				"City"=>$post_user['City'],
-				"ZipCode"=>$post_user['ZipCode'],
-				"PhoneNumber"=>$post_user['PhoneNumber'],
+				"CompanyId"=>trim($post_user['CompanyId']),
+				"FirstName"=>trim($post_user['FirstName']),
+				"LastName"=>trim($post_user['LastName']),
+				"Title"=>trim($post_user['Title']),
+				"EmailAddress"=>trim($post_user['EmailAddress']),
+				"Password"=>trim($post_user['Password']),
+				"Address1"=>trim($post_user['Address1']),
+				"Address2"=>trim($post_user['Address2']),
+				"CountryId"=>trim($post_user['CountryId']),
+				"StateId"=>trim($post_user['StateId']),
+				"City"=>trim($post_user['City']),
+				"ZipCode"=>trim($post_user['ZipCode']),
+				"PhoneNumber"=>trim($post_user['PhoneNumber']),
 				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
@@ -144,7 +146,7 @@ class User_model extends CI_Model
 			
 			
 			
-			$this->db->where('UserId',$post_user['UserId']);
+			$this->db->where('UserId',trim($post_user['UserId']));
 			$res = $this->db->update('tbluser',$user_data);
 			
 			if($res) 

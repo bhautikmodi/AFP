@@ -98,7 +98,7 @@ export class PlaceholderListComponent implements OnInit {
 			if (index != -1) {
 				this.placeholderList.splice(index, 1);			
 			}	
-			this.globals.message = 'Delete successfully';
+			this.globals.message = 'Data Deleted Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

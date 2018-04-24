@@ -9,8 +9,8 @@ class Common_model extends CI_Model
 			
 			$this->db->select('rp.PermissionId,rp.RoleId,rp.ScreenId,rp.View,rp.AddEdit,rp.Delete');
 			$this->db->join('tblrolespermission rp', 'rp.ScreenId = s.ScreenId', 'left');
-			$this->db->where('s.Name',$data['screen']);
-			$this->db->where('rp.RoleId',$data['RoleId']);
+			$this->db->where('s.Name',trim($data['screen']));
+			$this->db->where('rp.RoleId',trim($data['RoleId']));
 			$this->db->where('rp.IsActive',1);
 			$result = $this->db->get('tblmstscreen s');
 			

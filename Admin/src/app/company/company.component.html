@@ -70,13 +70,13 @@
 									
 											<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Phone Number</label>
-                                            <input type="phonenum" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber"
+                                            <input type="phonenum" class="form-control" #PhoneNo="ngModel" name="PhoneNo"
 											pattern="[0-9\-.()\s]+" maxlength="13"
-												[(ngModel)]="companyEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
-											<span class="error_span"  *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
-												<span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter phone number</span>
+												[(ngModel)]="companyEntity.PhoneNo" [ngClass]="{red_border: (PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)}"  required/>
+											<span class="error_span"  *ngIf="(PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)"> 
+												<span *ngIf="PhoneNo.errors.required || (PhoneNo.pristine && submitted)">Please enter phone number</span>
 											</span>
-											<span class="error_span" *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">
+											<span class="error_span" *ngIf="PhoneNo.errors && PhoneNo.errors.pattern">
 												Please enter valid phone number
 										  </span>
                                         </div>

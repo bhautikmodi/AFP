@@ -41,7 +41,7 @@ class Assessment extends CI_Controller {
 			if($result)
 			 {
 
-				$EmailAddress=$result->EmailAddress;
+				//$EmailAddress=$result->EmailAddress;
 				
 				
 				$userId=$result->UserId;

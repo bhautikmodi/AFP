@@ -44,7 +44,12 @@ export class LoginComponent implements OnInit {
 				this.invalid = false;
 				this.loginEntity = {};
 				loginForm.form.markAsPristine();
-				window.location.href = '/';				
+				if(data=='access denite'){
+					this.globals.isLoading = false;
+					this.router.navigate(['/login']);
+				} else {
+					window.location.href = '/';
+				}								
 			}, 
 			(error) => 
 			{ 

@@ -40,6 +40,10 @@ import { SalesDashboardComponent } from './sales-dashboard/sales-dashboard.compo
 import { SalesDashboardService } from './services/sales-dashboard.service';
 import { UserAssessmentListComponent } from './user-assessment-list/user-assessment-list.component';
 import { SalesUserDetailsComponent } from './sales-user-details/sales-user-details.component';
+import { ReportComponent } from './report/report.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorClassService } from './http-interceptor-class.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -72,7 +76,8 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
     UserAssessmentDetailsComponent,
     SalesDashboardComponent,
     UserAssessmentListComponent,
-    SalesUserDetailsComponent
+    SalesUserDetailsComponent,
+    ReportComponent
 
 
   ],
@@ -80,6 +85,7 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
     BrowserModule,
 	HttpModule,
 	FormsModule,
+	HttpClientModule,
 	RouterModule.forRoot([		
 		{
 			path : '',
@@ -176,6 +182,12 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 			canActivate : [AuthGuard]
 		},
 		{
+			path : 'report/:id',
+			component : ReportComponent,
+			canActivate : [AuthGuard]
+		},
+		
+		{
 			path : '**',
 			redirectTo : 'dashboard'
 			
@@ -184,7 +196,13 @@ import { SalesUserDetailsComponent } from './sales-user-details/sales-user-detai
 	])
   ], 
   
-  providers: [Globals,InvitationService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,ResetpassService,ChangepassService,AssessmentDetailsService,HomeService],
+  providers: [Globals,InvitationService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,
+	ResetpassService,ChangepassService,AssessmentDetailsService,HomeService,
+	{
+		provide: HTTP_INTERCEPTORS,
+		  useClass: HttpInterceptorClassService,
+		  multi: true
+		}],
 
   bootstrap: [AppComponent]
 })

@@ -219,7 +219,8 @@ class Salesuser_model extends CI_Model
                 $domain = array();
                 $array = json_decode(json_encode($row), True);
                 $domain = $array;
-                $data1 = $this->db->query('SELECT ConfigurationId,`Key`,`Value` FROM tblmstconfiguration AS cl WHERE cl.Key = "CourseLevel" AND ((cl.Value = "Foundational" AND '.$row->avg.' in (0,1,2)) OR  (cl.Value = "Intermediate" AND '.$row->avg.' in (0,1,2,3)) OR (cl.Value = "Advanced" AND '.$row->avg.' in (0,1,2,3,4)))');
+                //$data1 = $this->db->query('SELECT ConfigurationId,`Key`,`Value` FROM tblmstconfiguration AS cl WHERE cl.Key = "CourseLevel" AND ((cl.Value = "Foundational" AND '.$row->avg.' in (0,1,2)) OR  (cl.Value = "Intermediate" AND '.$row->avg.' in (0,1,2,3)) OR (cl.Value = "Advanced" AND '.$row->avg.' in (0,1,2,3,4)))');
+                $data1 = $this->db->query('SELECT rs.Name, (SELECT c.ConfigurationId FROM tblmstconfiguration AS c WHERE c.Key="CourseLevel" AND (CASE WHEN (rs.Name="Developing" OR rs.Name="General Awareness") THEN c.value="Foundational" WHEN rs.Name="Intermediate" THEN c.value="Intermediate" WHEN rs.Name="Advanced" THEN c.value="Advanced" END)) as ConfigurationId FROM tblmstratingscale AS rs WHERE (rs.Name = "General Awareness" AND '.$row->avg.' in (0,1)) OR (rs.Name = "Developing" AND '.$row->avg.' in (0,1,2)) OR  (rs.Name = "Intermediate" AND '.$row->avg.' in (0,1,2,3)) OR (rs.Name = "Advanced" AND '.$row->avg.' in (0,1,2,3,4))');
                 $domain['rs'] = array();                
                 foreach($data1->result() as $row1)
                 {	                    
@@ -255,11 +256,63 @@ class Salesuser_model extends CI_Model
             
                 return $data;
 					
-		}else {
+		} else {
             return 'fail';
-        }		
-			
-	}
+        }			
+    }
+    
+    public function getUserReport($UserId = NULL){
+        if($UserId) {
+            $data = $this->db->query('SELECT DomainId,Name as domain FROM tblmstdomain');
+            $obj = '';		
+            foreach($data->result() as $row)
+            {	
+                $i = 1;
+                $obj1 = json_decode(json_encode($row), True);
+                $data1 = $this->db->query('SELECT dk.DomainKSAId,dk.CAssessmentId,dk.DomainId,dk.AvgRatingScale FROM tbldomainwiseksa AS dk LEFT JOIN tblcandidateassessment AS ca ON dk.CAssessmentId = ca.CAssessmentId WHERE ca.UserId = '.$UserId.' AND dk.DomainId = '.$row->DomainId.' order by ca.CAssessmentId asc');			 
+                foreach($data1->result() as $row1){
+                    $obj1['ass'.$i] = $row1->AvgRatingScale;
+                    $i++;
+                }
+                $obj[] = $obj1;
+            }  
+            return $obj;
+        } else {
+            return false;
+        }
+    }
+
+    public function getAssessmentList($UserId = NULL){
+        if($UserId) {
+            $data = $this->db->query('SELECT ca.AssessmentName FROM tblcandidateassessment AS ca WHERE ca.UserId = '.$UserId.' AND ca.EndTime != "NULL" order by ca.CAssessmentId asc');
+            $obj = '';
+            $i = 1;
+            $colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
+            foreach($data->result() as $row)
+            {	
+                if($i<=15){
+                    $color = $colorarray[$i-1];
+                } else {
+                    $color = '#002B49';
+                }
+                $obj1 = '';
+                $obj1['balloonText'] = 'For '.$row->AssessmentName.' : [[ass'.$i.']]';
+                $obj1['bullet'] = 'round';
+                $obj1['title'] = 'For '.$row->AssessmentName;
+                $obj1['valueField'] = 'ass'.$i;
+                $obj1['fillAlphas'] = 0;
+                $obj1['precision'] = 0;
+                $obj1['lineColor'] = $colorarray[$i-1];
+                $obj1['lineThickness'] = 2;
+                $obj1['lineAlpha'] = 1;
+                $obj[] = $obj1;
+                $i++;
+            }  
+            return $obj;
+        } else {
+            return false;
+        }
+    }
 
  }
  

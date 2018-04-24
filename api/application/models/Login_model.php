@@ -8,7 +8,7 @@ class Login_model extends CI_Model {
 		$this->db->from('tbluser');
 		$this->db->where('EmailAddress',trim($data['EmailAddress']));
 		$this->db->where('Password',md5(trim($data['Password'])));
-		$this->db->where('RoleId!=',3);
+		//$this->db->where('RoleId!=',3);
 		$this->db->where('IsActive',1);
 		$this->db->limit(1);
 		$query = $this->db->get();

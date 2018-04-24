@@ -11,7 +11,7 @@ export class AuthService {
   
   login(loginEntity){  
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Login/check_login', loginEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Login_user/check_login', loginEntity, this.globals.headerpath)
       .toPromise()
       .then( 
         res => { // Success 

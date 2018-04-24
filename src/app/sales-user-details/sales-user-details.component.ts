@@ -41,7 +41,6 @@ this.SalesUserService.getUserAssessDetail(id)
     this.rcourse=data['rcourse'];
     this.ksaList = data['ksa'];
     this.assessmentData = data['assessment'];
-
     // this.rscaleData = data['rscale'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
       for(let obj of this.domainData)

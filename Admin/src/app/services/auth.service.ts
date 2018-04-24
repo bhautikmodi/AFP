@@ -16,7 +16,10 @@ export class AuthService {
       .then( 
         res => { // Success 
 			let result = res.json();
-			if(result && result.token){
+			if(result && result=='access denite'){
+				
+			}
+			else if(result && result.token){
 				localStorage.setItem('token',result.token);				
 				this.globals.authData = new JwtHelper().decodeToken(result.token);
 			}

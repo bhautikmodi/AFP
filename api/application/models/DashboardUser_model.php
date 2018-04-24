@@ -52,7 +52,7 @@ class DashboardUser_model extends CI_Model
 		if($UserId) {
           
 
-                $this->db->select('ca.submitedDate,ca.StartTime,us.FirstName');
+                $this->db->select('ca.submitedDate,ca.StartTime,us.FirstName,us.UserId');
                 $this->db->where('us.UserId',$UserId);
                 $this->db->join('tbluser us', 'us.UserId = ca.UserId', 'left');
                 $query = $this->db->get('tblcandidateassessment ca');

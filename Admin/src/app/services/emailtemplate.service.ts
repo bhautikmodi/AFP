@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class EmailtemplateService {
 
-constructor( private http: Http,private globals: Globals) { }
+constructor(private http: HttpClient,private globals: Globals) { }
 
 add(emailEntity)
  { debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Email_Template/add', emailEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Email_Template/add', emailEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -27,11 +28,11 @@ add(emailEntity)
 delete(Email_TemplateId)
   {
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Email_Template/delete/' + Email_TemplateId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/delete/' + Email_TemplateId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -44,11 +45,11 @@ delete(Email_TemplateId)
   getAll()
   {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -61,11 +62,11 @@ delete(Email_TemplateId)
   getById(Email_TemplateId)
   { 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getById/' + Email_TemplateId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Email_Template/getById/' + Email_TemplateId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -77,11 +78,11 @@ delete(Email_TemplateId)
   
   getDefaultList(){
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Email_Template/getDefaultList', this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'Email_Template/getDefaultList')
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
             reject(msg);

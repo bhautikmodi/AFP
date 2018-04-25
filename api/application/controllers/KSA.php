@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KSA extends CI_Controller {
+class KSA extends My_Controller {
 
 	public function __construct() {
 	

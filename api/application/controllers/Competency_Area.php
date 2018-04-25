@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Competency_Area extends CI_Controller {
+class Competency_Area extends My_Controller {
 
 	public function __construct() {
 	

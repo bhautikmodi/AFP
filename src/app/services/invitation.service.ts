@@ -10,7 +10,7 @@ export class InvitationService {
  add(InvitationEntity)
   {debugger
    let promise = new Promise((resolve, reject) => {
-     this.http.post(this.globals.baseAPIUrl + 'Invitation/code', InvitationEntity, this.globals.headerpath)
+     this.http.post(this.globals.baseAPIUrl + 'Invitation_code/code', InvitationEntity, this.globals.headerpath)
        .toPromise()
        .then(
          res => { // Success

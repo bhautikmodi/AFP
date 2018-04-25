@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class RatingScale extends CI_Controller {
+class RatingScale extends My_Controller {
 
 
     public function __construct() {

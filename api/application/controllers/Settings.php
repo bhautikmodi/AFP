@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Settings extends CI_Controller {
+class Settings extends My_Controller {
 
 
     public function __construct() {
@@ -42,8 +42,8 @@ class Settings extends CI_Controller {
 				
 	}	
 
-	public function updateConfiguration() {
-		
+	public function updateConfiguration()
+	 {
 		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
 
 		$result = $this->Settings_model->update_config($config_data);

@@ -41,7 +41,7 @@ class Assessment extends CI_Controller {
 			if($result)
 			 {
 
-				//$EmailAddress=$result->EmailAddress;
+				$EmailAddress=$result[0]->EmailAddress;
 				
 				
 				$userId=$result->UserId;
@@ -90,14 +90,14 @@ class Assessment extends CI_Controller {
 					$this->email->message($body);
 					if($this->email->send())
 					{
-						echo 'success';
+						echo json_encode('success');
 					}else
 					{
-						echo 'fail';
+						echo json_encode('fail');
 					}
 				}	
 
-				echo json_encode('success');	
+					
 			}			
 		}				
 	}

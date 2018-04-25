@@ -19,6 +19,7 @@ export class SalesUserDetailsComponent implements OnInit {
   areaksa;
   rcourse;
   ksaList;
+  allcourse;
   assessmentData;
   constructor( private http: HttpClient,private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
@@ -40,6 +41,7 @@ this.SalesUserService.getUserAssessDetail(id)
     this.ratingscale=data['ratingscale'];
     this.areaksa=data['areaksa'];
     this.rcourse=data['rcourse'];
+    this.allcourse=data['allcourse'];
     this.ksaList = data['ksa'];
     this.assessmentData = data['assessment'];
     // this.rscaleData = data['rscale'];

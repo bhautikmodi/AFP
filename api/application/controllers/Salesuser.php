@@ -33,6 +33,7 @@ class Salesuser extends CI_Controller {
 			$data['ratingscale']=$this->Salesuser_model->getUserAssessRating($CAssessmentId);
 			$data['areaksa']=$this->Salesuser_model->getUserAssessareaksa($CAssessmentId);
 			$data['rcourse']=$this->Salesuser_model->getReCommendcourse($CAssessmentId);
+			$data['allcourse']=$this->Salesuser_model->getallcourse($CAssessmentId);
 			$data['ksa']=$this->Salesuser_model->getUserksa($CAssessmentId);
 			$data['assessment']=$this->Salesuser_model->getUserassessment($CAssessmentId);
 			echo json_encode($data);			

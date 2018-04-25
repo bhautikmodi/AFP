@@ -36,7 +36,7 @@ p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
 .no_padding{padding:0px!important;}
 .clear {clear:both;}
-a {text-decoration:none; color:#191919;}
+a {text-decoration:none; color:#191919;cursor: pointer;}
 a:hover, a.selected {text-decoration:none; color:#0085AD;}
 a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
@@ -141,6 +141,11 @@ select option{ background:#f4f4f4!important; padding:7px!important; color:#555!i
 .findcompany_padding{padding:150px 0; transition:all 0.8s ease 0s;}
 .findcompany_padding.height_zero{padding:30px 0!important; transition:all 0.8s ease 0s;}
 .display_company{display:none;}
+
+button[disabled], html input[disabled] {
+    cursor: not-allowed;
+}
+
 
 #submit_Modal .modal-dialog{margin:20% auto; width: 430px;}
 #submit_Modal .modal-footer{text-align:center!important; margin:0;}

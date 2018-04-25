@@ -65,7 +65,7 @@ nav{ display:inline-block;}
 ul.dropdown-menu{ background:#fff; padding:0px 0 0 0px; border-radius:0 0; position:absolute; left:auto; right:0; width:200px; z-index: 99!important; margin: 0; box-shadow: none; border:1px solid #d0d0d6;}
 ul.dropdown-menu li {float:none; display:block; position:relative; margin:0;}
 ul.dropdown-menu li a{ padding:10px 10px!important; line-height: 14px!important; text-transform:capitalize; background:#fff!important; background-image:none!important; width:100%; text-align:left; white-space: normal!important; color: #313133!important; font-size: 14px!important; height: auto; border-radius:0px; border-bottom:1px dashed #ccc; font-family: 'Gotham-Book';}
-ul.dropdown-menu li:hover a,ul.dropdown-menu li.active a, ul.dropdown-menu li:focus a,.navigation ul li ul.dropdown-menu li:hover a,.navigation ul li ul.dropdown-menu li.active a, .navigation ul li ul.dropdown-menu li:focus a{color:#0085AD!important; background:none!important;background-image:none!important;}
+ul.dropdown-menu li:hover a,ul.dropdown-menu li.active a, ul.dropdown-menu li:focus a,.navigation ul li ul.dropdown-menu li:hover a,.navigation ul li ul.dropdown-menu li.active a, .navigation ul li ul.dropdown-menu li:focus a{color:#0085AD!important; background:none!important;background-image:none!important; cursor: pointer;}
 ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0 0; border:0px;}
 /*--------------end header and navigation--------------------*/
 

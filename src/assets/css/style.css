@@ -36,7 +36,7 @@ p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
 .no_padding{padding:0px!important;}
 .clear {clear:both;}
-a {text-decoration:none; color:#191919;cursor: pointer;}
+a {text-decoration:none; color:#191919;}
 a:hover, a.selected {text-decoration:none; color:#0085AD;}
 a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
@@ -141,11 +141,6 @@ select option{ background:#f4f4f4!important; padding:7px!important; color:#555!i
 .findcompany_padding{padding:150px 0; transition:all 0.8s ease 0s;}
 .findcompany_padding.height_zero{padding:30px 0!important; transition:all 0.8s ease 0s;}
 .display_company{display:none;}
-
-button[disabled], html input[disabled] {
-    cursor: not-allowed;
-}
-
 
 #submit_Modal .modal-dialog{margin:20% auto; width: 430px;}
 #submit_Modal .modal-footer{text-align:center!important; margin:0;}
@@ -262,7 +257,7 @@ table tr th{ color:#0085AD; font-family: "Gotham-Medium"; font-size:14px; line-h
 .assessment_bg{padding:30px 0; background:#f4f4f4; text-align:center;}
 .assessment_bg .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
 .assessment_bg .ksa_box{ display:block; position:relative; background:#fff; box-shadow:1px 1px 5px #ccc; border:1px solid #ccc; border-radius:10px; margin-bottom:30px; text-align:left;}
-.assessment_bg .ksa_box .ksa_text{ height:110px; font-size:15px; color:#605b54; font-family: "Gotham-Book"; line-height:20px; padding:15px 15px 15px 40px; border-bottom:1px solid #d2d2d2;} 
+.assessment_bg .ksa_box .ksa_text{ height:120px; font-size:14px; color:#605b54; font-family: "Gotham-Book"; line-height:20px; padding:15px 15px 15px 40px; border-bottom:1px solid #d2d2d2;} 
 .assessment_bg .ksa_box .ksa_text span{ text-align:center; color:#d8d8de; font-family: "Gotham-Book"; width:30px; height:30px; display:block; padding:5px; font-size: 20px; position:absolute; left:0; top:0;}
 
 input[type="radio"]{position:absolute; visibility:hidden;}
@@ -275,8 +270,8 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 #slider .flex-direction-nav .flex-next{ right:-4px; top:37%!important;}
 #slider .flex-direction-nav .flex-prev{ left:-10px; top:37%!important;}
 
-.rating_ul{ position:absolute; top:-40px; width:140px; left:-15px; border:1px solid #888; border-left:0; padding:7px;}
-.rating_ul p,.rating_ul li,.rating_ul li span{font-size:11px!important; line-height:15px;}
+.rating_ul{ width:100%; background:#fff; border:1px solid #ccc; padding:10px; text-align:left;}
+.rating_ul p,.rating_ul li,.rating_ul li span{font-size:13px!important; line-height:24px!important; color: #0085AD;}
 .rating_ul li{margin:3px 0!important;}
 
 .help_intro{position:absolute; right:0; top:0;}
@@ -293,7 +288,11 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .preview_ksa table tr{display:table-row;}
 .preview_ksa table td{ font-size:13px;}
 .course_rec thead{ display: table; width: 100%;}
-.course_rec tbody { display:block; position:relative; height:480px; overflow-y:auto; table-layout: fixed;}
+.course_rec .scroll_course { display:block; position:relative; height:480px; overflow-y:auto;}
+.course_rec .course_boxes{ display: block; border: 1px solid #ddd; border-top: 0;}
+.course_rec .course_boxes .domain_name{padding: 8px; font-family: "Gotham-Bold"; font-size: 14px; line-height: 22px; }
+.course_rec .course_boxes .border_right{border-right: 1px solid #ddd;}
+.course_rec table{margin: 0;}
 .course_rec table td{ font-size:13px;}
 
 .domain_name{color:#B70C4B;}

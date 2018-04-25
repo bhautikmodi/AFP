@@ -286,7 +286,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .intro_block li span{color:#0085AD; font-family: "Gotham-Bold"; margin-right:0px; font-size:16px;}
 #PreviewModal .modal-footer p{ display:inline-block; margin-right:10px;}
 .preview_ksa thead{ display: table; width: 100%;}
-.preview_ksa tbody { display:table; position:relative; max-height:480px; overflow-y:auto; width:100%; table-layout: fixed;}
+.preview_ksa tbody { display:block; position:relative; height:480px; overflow-y:auto; width: 100%; table-layout: fixed;}
 .preview_ksa table td{ font-size:13px;}
 .course_rec thead{ display: table; width: 100%;}
 .course_rec .scroll_course { display:block; position:relative; height:480px; overflow-y:auto;}

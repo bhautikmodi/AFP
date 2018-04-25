@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SalesUserService } from '../services/sales-user.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
+import {HttpClient} from "@angular/common/http";
 declare var AmCharts: any;
 
 @Component({
@@ -19,7 +20,7 @@ export class SalesUserDetailsComponent implements OnInit {
   rcourse;
   ksaList;
   assessmentData;
-  constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  constructor( private http: HttpClient,private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
 

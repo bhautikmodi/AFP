@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class KsaService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
   add(ksaEntity){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'KSA/add', ksaEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'KSA/add', ksaEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -25,11 +25,11 @@ export class KsaService {
     
   delete(KSAId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'KSA/delete/' + KSAId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/delete/' + KSAId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -41,11 +41,11 @@ export class KsaService {
   
   getAll(){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'KSA/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -57,11 +57,11 @@ export class KsaService {
   
   getById(KSAId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'KSA/getById/' + KSAId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getById/' + KSAId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -73,11 +73,11 @@ export class KsaService {
 
   getCAreaList(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'KSA/getCAreaList', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'KSA/getCAreaList')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Industry extends CI_Controller {
+class Industry extends My_Controller {
 
 
 	public function __construct() {

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
+import {HttpClient} from "@angular/common/http";
 import { Globals } from '.././globals';
 @Injectable()
 export class InvitationService {
 
-  constructor( private http: Http,private globals: Globals) { }
+  constructor(private http: HttpClient,private globals: Globals) { }
 
   add(InvitationEntity)
   {debugger
    let promise = new Promise((resolve, reject) => {
-     this.http.post(this.globals.baseAPIUrl + 'Invitation/add', InvitationEntity, this.globals.headerpath)
+     this.http.post(this.globals.baseAPIUrl + 'Invitation/add', InvitationEntity)
        .toPromise()
        .then(
          res => { // Success
-           resolve(res.json());
+           resolve(res);
          },
          msg => { // Error
        reject(msg);
@@ -28,11 +28,11 @@ export class InvitationService {
     getAll()
    {
    let promise = new Promise((resolve, reject) => {
-     this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll', this.globals.headerpath)
+     this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll')
        .toPromise()
        .then(
          res => { // Success
-           resolve(res.json());
+           resolve(res);
          },
          msg => { // Error
        reject(msg);
@@ -44,11 +44,11 @@ export class InvitationService {
    getIndustry(){
 	 
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAllIndustry',  this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAllIndustry')
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
         reject(msg);
@@ -60,11 +60,11 @@ export class InvitationService {
  delete(UserInvitationId)
    {
    let promise = new Promise((resolve, reject) => {		
-     this.http.get(this.globals.baseAPIUrl + 'Invitation/delete/' + UserInvitationId, this.globals.headerpath)
+     this.http.get(this.globals.baseAPIUrl + 'Invitation/delete/' + UserInvitationId)
        .toPromise()
        .then(
          res => { // Success
-           resolve(res.json());
+           resolve(res);
          },
          msg => { // Error
        reject(msg);
@@ -77,11 +77,11 @@ export class InvitationService {
     ReInvite(UserInvitationId)
    {debugger
    let promise = new Promise((resolve, reject) => {		
-     this.http.post(this.globals.baseAPIUrl + 'Invitation/ReInvite/' ,UserInvitationId, this.globals.headerpath)
+     this.http.post(this.globals.baseAPIUrl + 'Invitation/ReInvite/' ,UserInvitationId)
        .toPromise()
        .then(
          res => { // Success
-           resolve(res.json());
+           resolve(res);
          },
          msg => { // Error
        reject(msg);

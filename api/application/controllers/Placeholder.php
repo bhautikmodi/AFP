@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Placeholder extends CI_Controller {
+class Placeholder extends My_Controller {
 
 	public function __construct() {
 	

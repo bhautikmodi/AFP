@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Email_Template extends CI_Controller {
+class Email_Template extends My_Controller {
 
 	public function __construct() {
 	

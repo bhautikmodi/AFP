@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class RatingScaleService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
   add(ratingscaleEntity){
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'RatingScale/add', ratingscaleEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'RatingScale/add', ratingscaleEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -25,11 +25,11 @@ export class RatingScaleService {
   
   delete(RatingScaleId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'RatingScale/delete/' + RatingScaleId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'RatingScale/delete/' + RatingScaleId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -41,11 +41,11 @@ export class RatingScaleService {
   
   getAll(){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'RatingScale/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'RatingScale/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -57,11 +57,11 @@ export class RatingScaleService {
   
   getById(RatingScaleId){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'RatingScale/getById/' + RatingScaleId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'RatingScale/getById/' + RatingScaleId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

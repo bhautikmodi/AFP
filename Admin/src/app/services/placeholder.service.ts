@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class PlaceholderService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
   add(placeholderEntity){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Placeholder/add', placeholderEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Placeholder/add', placeholderEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -25,11 +25,11 @@ export class PlaceholderService {
     
   delete(PlaceholderId){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Placeholder/delete/' + PlaceholderId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Placeholder/delete/' + PlaceholderId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -41,11 +41,11 @@ export class PlaceholderService {
   
   getAll(){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -57,11 +57,11 @@ export class PlaceholderService {
   
   getById(PlaceholderId){ debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getById/' + PlaceholderId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getById/' + PlaceholderId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -73,11 +73,11 @@ export class PlaceholderService {
 
   getTableList(){ 
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getTableList', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Placeholder/getTableList')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		      reject(msg);
@@ -89,11 +89,11 @@ export class PlaceholderService {
 
   getColumnList(TableId){ debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Placeholder/getColumnList/' + TableId, this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'Placeholder/getColumnList/' + TableId)
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
         reject(msg);

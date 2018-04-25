@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class CourseService {
 
-  constructor( private http: Http,private globals: Globals) { }
+  constructor( private http: HttpClient,private globals: Globals) { }
 
 add(CourseEntity)
  {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Course/add', CourseEntity, this.globals.headerpath)
+    this.http.post(this.globals.baseAPIUrl + 'Course/add', CourseEntity)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -27,11 +28,11 @@ add(CourseEntity)
 delete(CourseId)
   {
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Course/delete/' + CourseId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Course/delete/' + CourseId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -44,11 +45,11 @@ delete(CourseId)
   getAll()
   {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getAll', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Course/getAll')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -61,11 +62,11 @@ delete(CourseId)
   getById(CourseId)
   {debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getById/' + CourseId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Course/getById/' + CourseId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -76,11 +77,11 @@ delete(CourseId)
   }  
     getCourseLevelList(){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Course/getCourseLevelList', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Course/getCourseLevelList')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -91,11 +92,11 @@ delete(CourseId)
   }
   getDomainList(){
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getDomainList', this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'Competency_Area/getDomainList')
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
             reject(msg);

@@ -187,25 +187,26 @@
       </div>
       <div class="modal-body">
         <div class="course_rec">
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th class="text-left width_30">Rating</th>
-                <th class="text-left width_80">Course(s)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th colspan="2" class="domain_name">Strategy</th>
-              </tr>
-              <tr>
-                <td class="width_30">1 - General Awareness</td>
-                <td class="text-left width_80"><ul class="li_list">
-                    <li>FP&A's Role in Business Strategy and Decision-Making</li>
-                  </ul></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="course_boxes" *ngFor="let domain of allcourse; let i=index; let f=first">
+              <div class="domain_name">{{domain.Name}} </div>
+              <table class="table table-bordered table-hover">
+                  <tr>
+                      <th class="text-left width_30">Rating</th>
+                      <th class="text-left width_80">Course(s)</th>
+                    </tr>
+                    <tr *ngFor="let rscale of domain.rs">
+                        <td><span *ngIf="rscale.rnm=='General Awareness'">1</span>
+                          <span *ngIf="rscale.rnm=='Developing'">2</span>
+                          <span *ngIf="rscale.rnm=='Intermediate'">3</span>
+                          <span *ngIf="rscale.rnm=='Advanced'">4</span> - {{rscale.rnm}}</td>
+                        <td class="text-left"><ul class="li_list">
+                            <li *ngFor="let c of rscale.course">{{c.cnm}}</li>
+                          </ul></td>
+                      </tr>
+               
+              </table>
+          </div>
+ 
         </div>
       </div>
       <div class="modal-footer">

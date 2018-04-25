@@ -118,7 +118,12 @@
 
                 
                 <label>Phone Number (Landline) </label>
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl" pattern="[0-9\-.()+\s]+" maxlength="13"
+        [(ngModel)]="RegisterEntity.PhoneNumberl" [ngClass]="{red_border: (PhoneNumberl.dirty && PhoneNumberl.invalid) || (PhoneNumberl.pristine && submitted)}"  required/>
+        <span class="error_span" *ngIf="(PhoneNumberl.dirty && PhoneNumberl.invalid) || (PhoneNumberl.pristine && submitted)"> 
+          <span *ngIf="PhoneNumberl.errors.required || (PhoneNumberl.pristine && submitted)">Please enter your phone number</span>
+          <span *ngIf="PhoneNumberl.errors && PhoneNumber.errors.pattern">Please enter a valid phone number</span>
+        </span>
               </div>
             </div>
             <div class="clearfix"></div>

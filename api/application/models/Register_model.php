@@ -92,6 +92,7 @@ class Register_model extends CI_Model
 						"City"=>$post_user['City'],
 						"ZipCode"=>$post_user['ZipCode'],
 						"PhoneNumber"=>$post_user['PhoneNumber'],
+						"PhoneNumberl"=>$post_user['PhoneNumberl'],
 						"CreatedBy" =>1,
 						"UpdatedBy" =>1,
 					);	
@@ -147,7 +148,7 @@ class Register_model extends CI_Model
 	  {
 		  
 		  $this->db->select('us.UserId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Address1,
-			us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,
+			us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.PhoneNumberl,us.IsActive,
 			tc.CompanyId,tc.Name,tc.Website,tc.PhoneNo,
 			in.IndustryId,in.IndustryName');
 			
@@ -204,6 +205,7 @@ class Register_model extends CI_Model
 				"City"=>$post_user['City'],
 				"ZipCode"=>$post_user['ZipCode'],
 				"PhoneNumber"=>$post_user['PhoneNumber'],
+				"PhoneNumberl"=>$post_user['PhoneNumberl'],
 				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')

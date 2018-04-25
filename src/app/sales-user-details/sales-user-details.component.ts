@@ -5,6 +5,7 @@ import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 declare var AmCharts: any;
+declare var $,PerfectScrollbar: any;
 
 @Component({
   selector: 'app-sales-user-details',
@@ -180,7 +181,8 @@ this.SalesUserService.getUserAssessDetail(id)
           "enabled": false
         }
       });
-   
+      new PerfectScrollbar('.preview_ksa tbody');
+   new PerfectScrollbar('.course_rec .scroll_course');
   }
 }, 
 (error) => 

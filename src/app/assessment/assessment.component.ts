@@ -21,6 +21,7 @@ export class AssessmentComponent implements OnInit {
   constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() { 
+    debugger
     var progress = document.getElementById("progress");
     $(progress).css("width", "0%");    
     let id = this.route.snapshot.paramMap.get('id');    
@@ -83,15 +84,18 @@ export class AssessmentComponent implements OnInit {
   }
 
   confirmsubmit(){
+    this.globals.isLoading = true;
     let CAssessmentId = this.route.snapshot.paramMap.get('id');
 		this.AssessmentService.finalSubmit(CAssessmentId)
 		.then((data) => 
 		{
       $('#PreviewModal').modal('hide');	
       this.router.navigate(['/thankyou/'+CAssessmentId]);
+      this.globals.isLoading = false;
     }, 
 		(error) => 
 		{
+      this.globals.isLoading = false;
 			alert('error');
 		});
   }

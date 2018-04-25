@@ -25,7 +25,7 @@ export class AssessmentService {
   }
 
   saveKsa(ksaEntity)
-  { 
+  { debugger
 	let promise = new Promise((resolve, reject) => { 
     this.http.post(this.globals.baseAPIUrl + 'Assessment/saveKsa',ksaEntity, this.globals.headerpath)
       .toPromise()
@@ -42,7 +42,7 @@ export class AssessmentService {
   }
 
   finalSubmit(CAssessmentId)
-  {
+  {debugger
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'Assessment/finalSubmit/'+CAssessmentId, this.globals.headerpath)
       .toPromise()

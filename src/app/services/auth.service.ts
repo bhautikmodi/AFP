@@ -30,7 +30,7 @@ export class AuthService {
 	return promise;
   }
   
-  logout(){ debugger
+  logout(){ 
 	  this.globals.authData = '';
 	  localStorage.removeItem('token');
   }  

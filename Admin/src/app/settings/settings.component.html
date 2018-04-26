@@ -24,10 +24,12 @@
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>No of KSA</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: (noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)}" required/>  
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: ((noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)) || (ksaError && !noofksa.errors)}" required/>  
                     <span class="error_span" *ngIf="(noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)"> 
-                      <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter no of ksa</span>
+                      <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter no of ksa</span>                      
+                      <span *ngIf="noofksa.errors && noofksa.errors.pattern">Please enter valid no of ksa</span>
                     </span>
+                    <span class="error_span" *ngIf="ksaError && !noofksa.errors">Minimum value is {{NoOfCArea}}</span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
                     <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable1" class="btn sub-btn btn-small"><span>Submit</span></button>
@@ -121,9 +123,12 @@
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>Email Address</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
+                    <input type="text" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
                     <span class="error_span" *ngIf="(emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)"> 
                       <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter email from</span>
+                      <span *ngIf="emailfrom.errors && emailfrom.errors.pattern">
+                        Please enter a valid email
+                    </span>
                     </span>
                   </div>
                 </div>

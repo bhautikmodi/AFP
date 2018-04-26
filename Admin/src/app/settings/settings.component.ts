@@ -38,6 +38,8 @@ export class SettingsComponent implements OnInit {
 	cmessage1;
 	reminderDaysList;
 	permissionEntity;
+	NoOfCArea;
+	ksaError;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
 	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
@@ -47,6 +49,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
 	this.permissionEntity = {}; 
+	this.ksaError = false;
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
 		this.permissionEntity.AddEdit=1;
@@ -89,6 +92,7 @@ export class SettingsComponent implements OnInit {
 		this.reminderDaysList = data['remainingdays'];
 		this.configEntity.emailpassword = data['emailpassword']['Value'];		
 		this.configEntity.emailfrom = data['emailfrom']['Value'];
+		this.NoOfCArea = data['cArea'];
 		
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -230,23 +234,28 @@ export class SettingsComponent implements OnInit {
 		this.updateEntity.UpdatedBy = this.globals.authData.UserId;
 		//this.submitted1 = true;
 		if(ksaForm.valid){
-			this.btn_disable1 = true;
-			this.SettingsService.update_config(this.updateEntity)
-			.then((data) => 
-			{		
-				this.btn_disable1 = false;
-				this.submitted1 = false;
-	 			this.updateEntity = {};
-				 ksaForm.form.markAsPristine();				 
-				 this.cmsgflag = true;
-				 this.cmessage = 'No of KSA Updated Successfully';
-			}, 
-			(error) => 
-			{
-				alert('error');
-				this.btn_disable1 = false;
-				this.submitted1 = false;
-			});
+			if(+this.configEntity.noofksa >= +this.NoOfCArea){
+				this.ksaError = false;			
+				this.btn_disable1 = true;
+				this.SettingsService.update_config(this.updateEntity)
+				.then((data) => 
+				{		
+					this.btn_disable1 = false;
+					this.submitted1 = false;
+					this.updateEntity = {};
+					ksaForm.form.markAsPristine();				 
+					this.cmsgflag = true;
+					this.cmessage = 'No of KSA Updated Successfully';
+				}, 
+				(error) => 
+				{
+					alert('error');
+					this.btn_disable1 = false;
+					this.submitted1 = false;
+				});
+			} else {
+				this.ksaError = true;
+			}
 		} 		
 	}
 

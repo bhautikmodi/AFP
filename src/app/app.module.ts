@@ -101,6 +101,7 @@ import { HttpClientModule } from '@angular/common/http';
 		{
 			path : 'contactus',
 			component : ContactusComponent,
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'invitation',
@@ -130,15 +131,14 @@ import { HttpClientModule } from '@angular/common/http';
 			canActivate : [AuthGuard]
 		},
 		{
-			//path : 'resetpass',
 			path : 'resetpass/:id',
 			component : ResetpassComponent,
 			canActivate : [AuthGuard]
 		},
 		{
 			path : 'forgotpassword',
-			component : ForgotpasswordComponent
-			//canActivate : [AuthGuard]
+			component : ForgotpasswordComponent,
+			canActivate : [AuthGuard]
 
 		},
 		{

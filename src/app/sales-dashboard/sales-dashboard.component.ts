@@ -23,7 +23,31 @@ export class SalesDashboardComponent implements OnInit {
 		private SalesDashboardService: SalesDashboardService) { }
 
 
-  ngOnInit() {debugger
+	ngOnInit() {debugger
+		var data = {'com': '','user':''};
+		this.SalesDashboardService.add(data)
+			.then((data) => {
+				//alert('success');
+				if(data=='error')
+				{
+					this.Usersearch=[];
+				}else{		this.Usersearch = data;
+				}
+		
+				this.btn_disable = false;
+				this.submitted = false;
+			
+				
+			},
+			(error) => {
+				alert('error');
+				this.btn_disable = false;
+				this.submitted = false;
+			});
+
+
+
+
     this.SalesDashboardEntity={};
 		this.SalesDashboardEntity.CompanyId='';
 		this.SalesDashboardEntity.UserId='';
@@ -47,6 +71,7 @@ export class SalesDashboardComponent implements OnInit {
 		(error) => {
 			alert('error');
 		});
+		
   }
   addSalesDashboard(SalesDashboardForm) {
 		debugger
@@ -106,6 +131,14 @@ export class SalesDashboardComponent implements OnInit {
 	  $('.user_box').removeClass('active');
 	  $('#cbox'+i).addClass('active');
 		//e.currentTarget.addClass('active');
-  }
+	}
+	clearForm(SalesDashboardForm) {
+		this.SalesDashboardEntity = {};
+		this.SalesDashboardEntity.UserId = '';
+		this.SalesDashboardEntity.CompanyId = '';
+	
+		this.submitted = false;
+		SalesDashboardForm.form.markAsPristine();
+	}
 
 }

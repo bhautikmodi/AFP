@@ -64,8 +64,8 @@
           <p><strong>Email : </strong>{{UserL.EmailAddress}}<br>
             <strong>Phone Number : </strong>{{UserL.PhoneNumber}}<br>
             <strong>Company Name : </strong>{{UserL.Name}}<br>
-            <strong>Last Assessment : </strong>02-03-2018<br>
-            <strong>Total Assessment : </strong>6</p>
+            <strong>Last Assessment : </strong><span *ngIf="UserL.lastdate!=NULL">{{UserL.lastdate | date :'MM/dd/yyyy'}}</span><span *ngIf="UserL.lastdate==NULL">NA</span><br>
+            <strong>Total Assessment : </strong>{{UserL.totalass}}</p>
         </div>
       </div>
      

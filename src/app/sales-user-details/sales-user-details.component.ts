@@ -181,7 +181,7 @@ this.SalesUserService.getUserAssessDetail(id)
           "enabled": false
         }
       });
-      new PerfectScrollbar('.preview_ksa tbody');
+      new PerfectScrollbar('.preview_ksa .scroll_table');
    new PerfectScrollbar('.course_rec .scroll_course');
   }
 }, 

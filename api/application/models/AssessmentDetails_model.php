@@ -29,11 +29,14 @@ class AssessmentDetails_model extends CI_Model
 		if($post_AssessmentDetails) {
 			
 			$AssessmentDetails_data = array(
-				'UserId'=>$post_AssessmentDetails['UserId'],
-				'AssessmentName' => $post_AssessmentDetails['AssessmentName'],
-				'TeamSizeId' => $post_AssessmentDetails['TeamSizeId'],
-				'Description' => $post_AssessmentDetails['Description'],
-				'StartTime' => date('y-m-d H:i:s'),			
+				'UserId'=>trim($post_AssessmentDetails['UserId']),
+				'AssessmentName' => trim($post_AssessmentDetails['AssessmentName']),
+				'TeamSizeId' => trim($post_AssessmentDetails['TeamSizeId']),
+				'Description' => trim($post_AssessmentDetails['Description']),
+				'CreatedBy' => trim($post_AssessmentDetails['CreatedBy']),
+				'UpdatedBy' => trim($post_AssessmentDetails['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
+				'StartTime' => trim(date('y-m-d H:i:s'),			
 			);
 			$res = $this->db->insert('tblcandidateassessment',$AssessmentDetails_data);
 			if($res) {				

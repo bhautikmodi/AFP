@@ -39,12 +39,13 @@ class Invitation_model extends CI_Model
 				} else {
 					$company_data=array(
 			
-						"Name"=>$post_Invitation['Name'],
-						"IndustryId"=>$post_Invitation['IndustryId'],
-						"Website"=>$post_Invitation['Website'],
-						"PhoneNo"=>$post_Invitation['PhoneNumber1'],
-						"CreatedBy" =>1,
-						"UpdatedBy" =>1
+						"Name"=> trim($post_Invitation['Name']),
+						"IndustryId"=> trim($post_Invitation['IndustryId']),
+						"Website"=> trim($post_Invitation['Website']),
+						"PhoneNo"=> trim($post_Invitation['PhoneNumber1']),
+						'CreatedBy' => trim($post_Invitation['CreatedBy']),
+						'UpdatedBy' => trim($post_Invitation['UpdatedBy']),
+						'UpdatedOn' => date('y-m-d H:i:s')
 					);	
 					
 					$query=$this->db->insert('tblcompany',$company_data);
@@ -61,9 +62,9 @@ class Invitation_model extends CI_Model
 						}
 				
 					$Invitation_data = array(
-							'CompanyId' =>$company_data->CompanyId,
-						'EmailAddress' => $post_Invitation['EmailAddress'],
-						'Code' => $post_Invitation['Code'],
+							'CompanyId' => trim($company_data->CompanyId),
+						'EmailAddress' =>  trim($post_Invitation['EmailAddress']),
+						'Code' =>  trim($post_Invitation['Code']),
 						'UpdatedOn' => date('y-m-d H:i:s')
 					);
 					$res = $this->db->insert('tbluserinvitation',$Invitation_data);
@@ -136,7 +137,8 @@ class Invitation_model extends CI_Model
 		
 			$Invitation_data = array(
 				'Status' => 0,
-				'code' =>$post_Invitation['Code'],
+				'code' =>trim($post_Invitation['Code']),
+				'UpdatedBy' => trim($post_Invitation['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s')
 				
 			

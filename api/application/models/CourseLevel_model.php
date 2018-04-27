@@ -13,9 +13,12 @@ class CourseLevel_model extends CI_Model
 			}
 			$CourseLevel_data = array(
 				'Key' => 'CourseLevel',
-				'Value' => $post_CourseLevel['CourseLevel'],
-				'DisplayText' => $post_CourseLevel['Keyword'],
-				'Description' => $post_CourseLevel['Description'],
+				'Value' =>  trim($post_CourseLevel['CourseLevel']),
+				'DisplayText' =>  trim($post_CourseLevel['Keyword']),
+				'Description' =>  trim($post_CourseLevel['Description']),
+				'CreatedBy' => trim($post_CourseLevel['CreatedBy']),
+				'UpdatedBy' => trim($post_CourseLevel['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' =>$IsActive
 			
 			);
@@ -80,10 +83,12 @@ class CourseLevel_model extends CI_Model
 				$IsActive = false;
 			}
 			$CourseLevel_data = array(
-	                
-				'Value' => $post_CourseLevel['CourseLevel'],
-				'DisplayText' => $post_CourseLevel['Keyword'],
-				'Description' => $post_CourseLevel['Description'],
+				
+				'Value' =>  trim($post_CourseLevel['CourseLevel']),
+				'DisplayText' =>  trim($post_CourseLevel['Keyword']),
+				'Description' =>  trim($post_CourseLevel['Description']),
+				'UpdatedBy' => trim($post_CourseLevel['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),  
 				'IsActive' => $IsActive
 			
 			);

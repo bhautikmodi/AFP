@@ -36,7 +36,7 @@ class AssessmentDetails_model extends CI_Model
 				'CreatedBy' => trim($post_AssessmentDetails['CreatedBy']),
 				'UpdatedBy' => trim($post_AssessmentDetails['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),
-				'StartTime' => trim(date('y-m-d H:i:s'),			
+				'StartTime' => date('y-m-d H:i:s'),			
 			);
 			$res = $this->db->insert('tblcandidateassessment',$AssessmentDetails_data);
 			if($res) {				

@@ -18,7 +18,6 @@ export class DashbordComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
   
    ngOnInit() {  
-     
     this.DashboardService.getAllAssement(this.globals.authData.UserId)
 		.then((data) => 
 		{

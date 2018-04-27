@@ -6,8 +6,8 @@
 </div>
 
 
-        <app-header></app-header> 
-        <app-headerhome></app-headerhome>
+        <app-header *ngIf="!globals.headerhome"></app-header> 
+        <app-headerhome *ngIf="globals.headerhome"></app-headerhome>
         <router-outlet></router-outlet>
         <app-footer ></app-footer>
    

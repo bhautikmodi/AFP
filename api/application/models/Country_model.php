@@ -81,7 +81,7 @@ class Country_model extends CI_Model
 					} else {
 						$IsActive = false;
 					}
-			$Co
+					$Country_data = array(
 			'CountryName' => trim($post_Country['CountryName']),
 			'CountryAbbreviation' => trim($post_Country['CountryAbbreviation']),
 			'PhonePrefix' => trim($post_Country['PhonePrefix']),

@@ -139,22 +139,26 @@
       </div>
       <div class="modal-body">
         <div class="preview_ksa">
-          <table class="table table-bordered table-hover">
-            <thead>
+          <table class="table table-bordered table-hover no_margin">
+        
               <tr>
                 <th class="text-center width_5">Sr. No.</th>
                 <th class="width_60">KSA</th>
                 <th class="text-left width_30">Selected Rating</th>
               </tr>
-            </thead>
-            <tbody>
+            
+			 </table>
+          <div class="scroll_table">
+            <table class="table table-bordered table-hover no_margin">
+          
               <tr *ngFor="let ksa of ksaList; let i = index">
                 <td class="text-center width_5">{{i+1}}</td>
                 <td class="width_60">{{ksa.Name}}</td>
                 <td class="width_30">{{ksa.RatingScaleId}} - <span *ngIf="ksa.RatingScaleId==1">General Awareness</span> <span *ngIf="ksa.RatingScaleId==2">Developing</span> <span *ngIf="ksa.RatingScaleId==3">Intermediate</span> <span *ngIf="ksa.RatingScaleId==4">Advanced</span></td>
               </tr>
-            </tbody>
+           
           </table>
+			</div>
         </div>
       </div>
       <div class="modal-footer">

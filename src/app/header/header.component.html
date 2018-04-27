@@ -36,7 +36,9 @@
         <ul class="account_menu">
           <li><a href="#" class="dropdown-toggle dashboard-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i> {{ globals.authData.FirstName}} <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
-              <li><a routerLink="/dashbord">Dashboard</a></li>
+              <li><a *ngIf="globals.authData.RoleId!=3" routerLink="/sales-admin-dashboard">Dashboard</a>
+                <a *ngIf="globals.authData.RoleId==3" routerLink="/dashboard">Dashboard</a>
+              </li>
               <li><a routerLink="/register/edit/{{globals.authData.UserId}}">Edit Profile</a></li>
               <li><a routerLink="/changepass/">Change Password</a></li>
               <li><a  (click)="logout()">Sign Out</a></li>

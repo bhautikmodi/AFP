@@ -44,6 +44,7 @@ import { ReportComponent } from './report/report.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderhomeComponent } from './headerhome/headerhome.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { HttpClientModule } from '@angular/common/http';
     SalesDashboardComponent,
     UserAssessmentListComponent,
     SalesUserDetailsComponent,
-    ReportComponent
+    ReportComponent,
+    HeaderhomeComponent
 
 
   ],

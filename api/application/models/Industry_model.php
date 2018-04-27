@@ -14,7 +14,10 @@ class Industry_model extends CI_Model
 			
 			$Industry_data = array(
 				
-				'IndustryName' => $post_Industry['IndustryName'],
+				'IndustryName' => trim($post_Industry['IndustryName']),
+				'CreatedBy' => trim($post_Industry['CreatedBy']),
+				'UpdatedBy' => trim($post_Industry['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);
@@ -76,7 +79,9 @@ class Industry_model extends CI_Model
 						$IsActive = false;
 					}
 			$Industry_data = array(
-				'IndustryName' => $post_Industry['IndustryName'],
+				'IndustryName' => trim($post_Industry['IndustryName']),
+				'UpdatedBy' => trim($post_Industry['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);

@@ -102,6 +102,48 @@ class AssessmentDetails extends CI_Controller {
 		echo json_encode($data);
 				
 	}
+
+	public function check() {
+		
+		$i = 0;
+		$ksaq = $this->db->query('SELECT Value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1');
+		$ksa = $ksaq->result();
+		$totalksa = $ksa[0]->Value; 
+		$result = $this->db->query('SELECT CAreaId,round(((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) * (SELECT value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1))/(SELECT COUNT(KSAId) FROM tblmstksa)) AS getksa, ((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) - round(((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) * (SELECT value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1))/(SELECT COUNT(KSAId) FROM tblmstksa))) AS leftksam from tblmstksa AS k GROUP BY CAreaId');
+		$obj = $result->result();
+		foreach($obj as $row) {
+			if($row->getksa==0){
+				$row->getksa=1;
+			}
+			$i = +$i + +$row->getksa;
+		}
+		echo $i; 
+		if($i<$totalksa){
+			echo "less";
+			echo $q = +$totalksa - +$i;
+			$j = 0;
+			while($j<$q){
+				if($obj[$j].leftksam>0){
+					$obj[$j]->getksa = $obj[$j]->getksa + 1;
+					$j++;
+				}				
+			}
+		} else if($i>$totalksa){
+			echo "more";
+			echo $q = +$i - +$totalksa;	
+			$j = 0;
+			while($j<$q){
+				$obj[$j]->getksa = $obj[$j]->getksa - 1;
+				$j++;				
+			}		
+		} else {
+			echo "equal";
+		}
+		foreach($obj as $row) {
+			//$insert = $this->db->query('INSERT INTO tblcandidateksa (CAssessmentId, KSAId) SELECT '.$insert_id.', ksa.KSAId FROM tblmstksa AS ksa  WHERE ksa.CAreaId = '.$row->CAreaId.' order by RAND() LIMIT '.$row->getksa);
+		}
+		print_r($obj); die;		
+	}
 	
 	
 }

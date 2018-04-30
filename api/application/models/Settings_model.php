@@ -335,5 +335,17 @@ class Settings_model extends CI_Model
 		}
 		
 	}
+
+	public function get_noOfCArea() {
+	
+		$this->db->select('count(CAreaId) as count');
+		$result = $this->db->get('tblmstcompetencyarea');		
+		if($result->result()) {
+			$res = $result->result()[0]->count;
+		}
+		return $res;
+		
+	}
+	
 	
 }

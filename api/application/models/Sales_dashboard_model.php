@@ -57,9 +57,9 @@ class Sales_dashboard_model extends CI_Model
 	 
 		$this->db->select('us.UserId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Address1,
 		us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,
-		tc.CompanyId,tc.Name,tc.Website,tc.PhoneNo');
-		
+		tc.CompanyId,tc.Name,tc.Website,tc.PhoneNo,(SELECT ca.EndTime FROM tblcandidateassessment AS ca WHERE ca.EndTime != "NULL" && ca.UserId = us.UserId ORDER by ca.CAssessmentId DESC limit 1) as lastdate, (SELECT COUNT(ca.CAssessmentId) FROM tblcandidateassessment as ca WHERE ca.UserId = us.UserId && ca.EndTime != "NULL") as totalass');
 		$this->db->join('tblcompany tc', 'us.CompanyId = tc.CompanyId', 'left');
+		//$this->db->join('tblcandidateassessment cass', 'us.UserId = cass.UserId', 'left');
 		if($post_user>0)
 		{
 			$this->db->where('us.UserId',$post_user);

@@ -44,6 +44,7 @@ import { ReportComponent } from './report/report.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderhomeComponent } from './headerhome/headerhome.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { HttpClientModule } from '@angular/common/http';
     SalesDashboardComponent,
     UserAssessmentListComponent,
     SalesUserDetailsComponent,
-    ReportComponent
+    ReportComponent,
+    HeaderhomeComponent
 
 
   ],
@@ -101,6 +103,7 @@ import { HttpClientModule } from '@angular/common/http';
 		{
 			path : 'contactus',
 			component : ContactusComponent,
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'invitation',
@@ -130,15 +133,14 @@ import { HttpClientModule } from '@angular/common/http';
 			canActivate : [AuthGuard]
 		},
 		{
-			//path : 'resetpass',
 			path : 'resetpass/:id',
 			component : ResetpassComponent,
 			canActivate : [AuthGuard]
 		},
 		{
 			path : 'forgotpassword',
-			component : ForgotpasswordComponent
-			//canActivate : [AuthGuard]
+			component : ForgotpasswordComponent,
+			canActivate : [AuthGuard]
 
 		},
 		{

@@ -1227,7 +1227,7 @@
         slideshow: false,
         itemWidth: 160,
 		minItems: 1,
-    	maxItems: 5,
+    	maxItems: 7,
         itemMargin: 5,
         asNavFor: '#slider'
       });

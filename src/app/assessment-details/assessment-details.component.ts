@@ -35,7 +35,11 @@ header;
   }
 addAsmtDetails(AsmtDetailsForm)
 	{	debugger	
-					
+			
+			this.AsmtDetailsEntity.CreatedBy = this.globals.authData.UserId;
+			this.AsmtDetailsEntity.UpdatedBy = this.globals.authData.UserId;
+			this.submitted = true;
+	
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
 			this.AsmtDetailsEntity.UserId = this.globals.authData.UserId;
 			this.submitted = true;

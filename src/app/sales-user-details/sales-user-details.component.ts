@@ -5,6 +5,7 @@ import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 declare var AmCharts: any;
+declare var $,PerfectScrollbar: any;
 
 @Component({
   selector: 'app-sales-user-details',
@@ -19,6 +20,7 @@ export class SalesUserDetailsComponent implements OnInit {
   areaksa;
   rcourse;
   ksaList;
+  allcourse;
   assessmentData;
   constructor( private http: HttpClient,private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
@@ -40,6 +42,7 @@ this.SalesUserService.getUserAssessDetail(id)
     this.ratingscale=data['ratingscale'];
     this.areaksa=data['areaksa'];
     this.rcourse=data['rcourse'];
+    this.allcourse=data['allcourse'];
     this.ksaList = data['ksa'];
     this.assessmentData = data['assessment'];
     // this.rscaleData = data['rscale'];
@@ -88,7 +91,7 @@ this.SalesUserService.getUserAssessDetail(id)
       "categoryField": "domain",
       "categoryAxis": {
         "gridPosition": "start",
-      "title": "Domains",
+      "title": "Domain",
       "axisAlpha": 1, 
       "titleFontSize" : 16,
       "dashLength": 5,
@@ -178,7 +181,8 @@ this.SalesUserService.getUserAssessDetail(id)
           "enabled": false
         }
       });
-   
+      new PerfectScrollbar('.preview_ksa .scroll_table');
+   new PerfectScrollbar('.course_rec .scroll_course');
   }
 }, 
 (error) => 

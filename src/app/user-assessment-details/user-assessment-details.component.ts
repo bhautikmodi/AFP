@@ -52,7 +52,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
           "categoryField": "domain",
           "categoryAxis": {
             "gridPosition": "start",
-          "title": "Domains",
+          "title": "Domain",
           "axisAlpha": 1, 
           "titleFontSize" : 16,
           "dashLength": 5,

@@ -36,7 +36,7 @@ p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
 .no_padding{padding:0px!important;}
 .clear {clear:both;}
-a {text-decoration:none; color:#191919;}
+a {text-decoration:none; color:#191919; cursor: pointer;}
 a:hover, a.selected {text-decoration:none; color:#0085AD;}
 a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
@@ -285,8 +285,8 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .intro_block li{ display:block; position:relative; font-size:13px; color:#605b54; font-family: "Gotham-Book"; line-height:13px; margin:7px 0;}
 .intro_block li span{color:#0085AD; font-family: "Gotham-Bold"; margin-right:0px; font-size:16px;}
 #PreviewModal .modal-footer p{ display:inline-block; margin-right:10px;}
-.preview_ksa thead{ display: table; width: 100%;}
-.preview_ksa tbody { display:block; position:relative; height:480px; overflow-y:auto; width: 100%; table-layout: fixed;}
+.preview_ksa .no_margin{ margin-bottom: 0;}
+.preview_ksa .scroll_table { position:relative; height:480px; overflow-y:auto; width: 100%; table-layout: fixed;}
 .preview_ksa table td{ font-size:13px;}
 .course_rec thead{ display: table; width: 100%;}
 .course_rec .scroll_course { display:block; position:relative; height:480px; overflow-y:auto;}
@@ -301,6 +301,10 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 
 .grey_bg{padding:30px 0; background:#f4f4f4; }
 .error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;}
+
+.filter_block{text-align: center; display: block;}
+.filter_block .col-md-3{float: none; display: inline-block; text-align: left;}
+.pending_assessment{ padding-top: 85px; color: #0085AD; font-family: "Gotham-Bold"; font-size: 18px;}
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Pages Contener Area End ------- */

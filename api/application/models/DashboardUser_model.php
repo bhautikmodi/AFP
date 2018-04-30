@@ -47,15 +47,16 @@ class DashboardUser_model extends CI_Model
             return $data;	
 		}				
     }
+
+
     public function getuser($UserId = NULL) {
 		
 		if($UserId) {
           
 
-                $this->db->select('ca.submitedDate,ca.StartTime,us.FirstName,us.UserId');
+                $this->db->select('us.FirstName,us.UserId');
                 $this->db->where('us.UserId',$UserId);
-                $this->db->join('tbluser us', 'us.UserId = ca.UserId', 'left');
-                $query = $this->db->get('tblcandidateassessment ca');
+                $query = $this->db->get('tbluser us');
                 $assessment_data= array();
                 foreach($query->result() as $row)
                 {
@@ -66,7 +67,6 @@ class DashboardUser_model extends CI_Model
             
         }
     }
-
     public function getUserAssessDetail($CAssessmentId = NULL) {
 		
 		if($CAssessmentId) {

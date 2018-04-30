@@ -47,9 +47,12 @@ loginEntity;
 				this.loginEntity = {};
 				loginForm.form.markAsPristine();
 					}
-			//this.router.navigate(['/welcome_register']);	
-			window.location.href = '/dashbord';
-		
+				//this.router.navigate(['/welcome_register']);	
+				if(this.globals.authData.RoleId==3){
+					window.location.href = '/dashbord';
+				} else {
+					window.location.href = '/sales-admin-dashboard';
+				}	
 			}, 
 			(error) => 
 			{ 

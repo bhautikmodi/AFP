@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
 	RegisterFormfinal;
 	CompanyEntity;
 	Disinv;
+	modelvar;
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
@@ -95,7 +96,8 @@ export class RegisterComponent implements OnInit {
 	
 	// let id = this.route.snapshot.paramMap.get('id');
 					if (id) {
-						this.header = 'Edit';
+						this.header = 'Edit Profile';
+						this.modelvar = 'change your profile';
 
 						this.RegisterService.getById(id)
 							.then((data) => {
@@ -124,7 +126,8 @@ export class RegisterComponent implements OnInit {
 							});
 					}
 					else {
-						this.header = '';
+						this.header = 'Registration';
+						this.modelvar = 'submit your Registration';
 						this.RegisterEntity = {};
 						this.RegisterEntity.CountryId='';
 						this.RegisterEntity.StateId='';

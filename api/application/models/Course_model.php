@@ -14,10 +14,13 @@ class Course_model extends CI_Model
 			
 			$Course_data = array(
 				
-				'Name' => $post_Course['Name'],
-				'DomainId' => $post_Course['DomainId'],
-				'CourseLevelId' => $post_Course['CourseLevelId'],
-				'KeyConcepts' => $post_Course['KeyConcepts'],
+				'Name' =>trim($post_Course['Name']),
+				'DomainId' =>trim($post_Course['DomainId']),
+				'CourseLevelId' => trim($post_Course['CourseLevelId']),
+				'KeyConcepts' => trim($post_Course['KeyConcepts']),
+				'CreatedBy' => trim($post_Course['CreatedBy']),
+				'UpdatedBy' => trim($post_Course['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);
@@ -82,10 +85,12 @@ class Course_model extends CI_Model
 						$IsActive = false;
 					}
 			$Course_data = array(
-				'Name' => $post_Course['Name'],
-				'DomainId' => $post_Course['DomainId'],
-				'CourseLevelId' => $post_Course['CourseLevelId'],
-				'KeyConcepts' => $post_Course['KeyConcepts'],
+				'Name' =>trim($post_Course['Name']),
+				'DomainId' =>trim($post_Course['DomainId']),
+				'CourseLevelId' => trim($post_Course['CourseLevelId']),
+				'KeyConcepts' => trim($post_Course['KeyConcepts']),
+				'UpdatedBy' => trim($post_Course['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);

@@ -14,9 +14,12 @@ class Country_model extends CI_Model
 			
 			$Country_data = array(
 				
-				'CountryName' => $post_Country['CountryName'],
-				'CountryAbbreviation' => $post_Country['CountryAbbreviation'],
-				'PhonePrefix' => $post_Country['PhonePrefix'],
+				'CountryName' => trim($post_Country['CountryName']),
+				'CountryAbbreviation' => trim($post_Country['CountryAbbreviation']),
+				'PhonePrefix' => trim($post_Country['PhonePrefix']),
+				'CreatedBy' => trim($post_Country['CreatedBy']),
+				'UpdatedBy' => trim($post_Country['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);
@@ -78,10 +81,12 @@ class Country_model extends CI_Model
 					} else {
 						$IsActive = false;
 					}
-			$Country_data = array(
-				'CountryName' => $post_Country['CountryName'],
-				'CountryAbbreviation' => $post_Country['CountryAbbreviation'],
-				'PhonePrefix' => $post_Country['PhonePrefix'],
+					$Country_data = array(
+			'CountryName' => trim($post_Country['CountryName']),
+			'CountryAbbreviation' => trim($post_Country['CountryAbbreviation']),
+			'PhonePrefix' => trim($post_Country['PhonePrefix']),
+			'UpdatedBy' => trim($post_Country['UpdatedBy']),
+			'UpdatedOn' => date('y-m-d H:i:s'),
 				'IsActive' => $IsActive
 			
 			);

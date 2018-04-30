@@ -57,7 +57,7 @@ class Salesuser_model extends CI_Model
 			$query = $this->db->get('tblcandidateassessment');	
 			if($query->num_rows()==1){
 	
-                $this->db->select('ca.CAssessmentId,ca.TeamSizeId,ca.AssessmentName,ca.Description,ts.TeamSize,ca.EndTime,ca.submitedDate,ca.StartTime,us.FirstName, (select count(CKSAId) from tblcandidateksa where CAssessmentId = '.$CAssessmentId.')as totalksa');
+                $this->db->select('ca.CAssessmentId,ca.TeamSizeId,ca.AssessmentName,ca.Description,ts.TeamSize,ca.EndTime,ca.submitedDate,ca.StartTime,us.FirstName,us.UserId, (select count(CKSAId) from tblcandidateksa where CAssessmentId = '.$CAssessmentId.')as totalksa');
                 $this->db->where('ca.CAssessmentId',$CAssessmentId);
                 $this->db->join('tbluser us', 'us.UserId = ca.UserId', 'left');
                 $this->db->join('tblmstteamsize ts', 'ts.TeamSizeId = ca.TeamSizeId', 'left');
@@ -296,9 +296,9 @@ class Salesuser_model extends CI_Model
                     $color = '#002B49';
                 }
                 $obj1 = '';
-                $obj1['balloonText'] = 'For '.$row->AssessmentName.' : [[ass'.$i.']]';
+                $obj1['balloonText'] = $row->AssessmentName.' : [[ass'.$i.']]';
                 $obj1['bullet'] = 'round';
-                $obj1['title'] = 'For '.$row->AssessmentName;
+                $obj1['title'] = $row->AssessmentName;
                 $obj1['valueField'] = 'ass'.$i;
                 $obj1['fillAlphas'] = 0;
                 $obj1['precision'] = 0;

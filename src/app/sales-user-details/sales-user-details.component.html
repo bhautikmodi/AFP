@@ -17,7 +17,7 @@
       <div class="col-md-12 col-sm-12">
         <h1>Assessment by {{assessmentData.FirstName}} </h1>
         <div class="clearfix"></div>
-        <a href="user_assessment_list.html" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a> </div>
+        <a routerLink="/user-assessment-list/{{assessmentData.UserId}}" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a> </div>
     </div>
   </div>
 </div>
@@ -131,7 +131,7 @@
 <div class="clearfix"></div>
 
 <!-- Preview Popup -->
-<div class="modal fade" id="PreviewModal" tabindex="-1" role="dialog" aria-labelledby="PreviewModal" data-backdrop="static" data-keyboard="false" >
+<div class="modal fade" id="PreviewModal" tabindex="-1" role="dialog" aria-labelledby="PreviewModal" >
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -139,22 +139,26 @@
       </div>
       <div class="modal-body">
         <div class="preview_ksa">
-          <table class="table table-bordered table-hover">
-            <thead>
+          <table class="table table-bordered table-hover no_margin">
+        
               <tr>
                 <th class="text-center width_5">Sr. No.</th>
                 <th class="width_60">KSA</th>
                 <th class="text-left width_30">Selected Rating</th>
               </tr>
-            </thead>
-            <tbody>
+            
+			 </table>
+          <div class="scroll_table">
+            <table class="table table-bordered table-hover no_margin">
+          
               <tr *ngFor="let ksa of ksaList; let i = index">
                 <td class="text-center width_5">{{i+1}}</td>
                 <td class="width_60">{{ksa.Name}}</td>
                 <td class="width_30">{{ksa.RatingScaleId}} - <span *ngIf="ksa.RatingScaleId==1">General Awareness</span> <span *ngIf="ksa.RatingScaleId==2">Developing</span> <span *ngIf="ksa.RatingScaleId==3">Intermediate</span> <span *ngIf="ksa.RatingScaleId==4">Advanced</span></td>
               </tr>
-            </tbody>
+           
           </table>
+			</div>
         </div>
       </div>
       <div class="modal-footer">
@@ -184,10 +188,10 @@
           <div class="scroll_course">
             <div class="course_boxes" *ngFor="let domain of allcourse; let i=index; let f=first">
               <div class="domain_name">{{domain.Name}} </div>
-              <table class="table table-bordered table-hover">
+              <table class="table table-hover">
                 <tr *ngFor="let rscale of domain.rs">
-                  <td class="border_right"><span *ngIf="rscale.rnm=='General Awareness'">1</span> <span *ngIf="rscale.rnm=='Developing'">2</span> <span *ngIf="rscale.rnm=='Intermediate'">3</span> <span *ngIf="rscale.rnm=='Advanced'">4</span> - {{rscale.rnm}}</td>
-                  <td class="text-left"><ul class="li_list">
+                  <td class="border_right width_30"><span *ngIf="rscale.rnm=='General Awareness'">1</span> <span *ngIf="rscale.rnm=='Developing'">2</span> <span *ngIf="rscale.rnm=='Intermediate'">3</span> <span *ngIf="rscale.rnm=='Advanced'">4</span> - {{rscale.rnm}}</td>
+                  <td class="text-left width_80"><ul class="li_list">
                       <li *ngFor="let c of rscale.course">{{c.cnm}}</li>
                     </ul></td>
                 </tr>

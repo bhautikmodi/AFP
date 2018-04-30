@@ -229,6 +229,7 @@ class User_model extends CI_Model
 	public function getlist_userrole()
 	{
 		$this->db->select('RoleId,RoleName');
+		$this->db->where('RoleName!=','IT');
 		$result=$this->db->get('tblmstuserrole');
 		
 		$res=array();

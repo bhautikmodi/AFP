@@ -11,6 +11,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route,state:RouterStateSnapshot) { 
 	  if(this.authService.isLoggedIn()==true){
+		// if(state.url=='/dashboard'){   // new header component show
+		// 	this.globals.headerhome = true;
+		// } else {
+		// 	this.globals.headerhome = false;
+		// }
 	
 			if(state.url.split('/')[2] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];

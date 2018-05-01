@@ -81,7 +81,7 @@
           <li class="paginate_button disabled" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
           <li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
         </ul>
-        <button class="next_btn pull-right" type="button"  (click)="clickid()"><span>Next</span></button>
+        <button class="next_btn pull-right" [disabled]="vardisabled" type="button"  (click)="clickid()"><span>Next</span></button>
       </div>
     </div>
   </div>

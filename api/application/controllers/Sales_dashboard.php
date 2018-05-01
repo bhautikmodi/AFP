@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Sales_dashboard extends CI_Controller 
+class Sales_dashboard extends MY_Controller 
 {	
 	public function __construct()
 	{

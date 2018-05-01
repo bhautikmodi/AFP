@@ -17,7 +17,7 @@ export class ThankyouComponent implements OnInit {
   domainData;
   constructor(private ThankyouService: ThankyouService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() {debugger
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    
     this.ThankyouService.getResult(id)

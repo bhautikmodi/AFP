@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class SalesDashboardService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
   add(data){ debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data, this.globals.headerpath)
+      this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data)
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
         reject(msg);
@@ -23,11 +24,11 @@ export class SalesDashboardService {
   getAllUser()
   {
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getAllUser', this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getAllUser')
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -38,11 +39,11 @@ export class SalesDashboardService {
   }  
   getUserList(CompanyId){
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getUserList/' + CompanyId, this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'Sales_dashboard/getUserList/' + CompanyId)
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
         reject(msg);
@@ -54,11 +55,11 @@ export class SalesDashboardService {
     getAllAssement(UserId) 
     { debugger
     let promise = new Promise((resolve, reject) => { 
-      this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getAllAssement/'+UserId, this.globals.headerpath)
+      this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getAllAssement/'+UserId)
         .toPromise()
         .then(
           res => { // Success
-            resolve(res.json());
+            resolve(res);
           },
           msg => { // Error
         reject(msg);

@@ -28,7 +28,7 @@ export class UserAssessmentListComponent implements OnInit {
       
       this.userList = data['user'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-      console.log(this.assessmentList);
+      // console.log(this.assessmentList);
       setTimeout(()=>{ 
         var j = 0; 
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

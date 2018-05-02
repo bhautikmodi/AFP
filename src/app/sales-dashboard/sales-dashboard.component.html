@@ -68,15 +68,10 @@
             <strong>Total Assessment : </strong>{{UserL.totalass}}</p>
         </div>
       </div>
-     
-   
-    
-      
-    
-      <div class="clearfix"></div>
+     <div class="clearfix"></div>
     
       <div class="col-md-12">
-           <pagination-controls (pageChange)="p=$event"></pagination-controls>
+         <pagination-controls (pageChange)="p=$event" ></pagination-controls>
        <button class="next_btn pull-right" [disabled]="vardisabled" type="button"  (click)="clickid()"><span>Next</span></button>
       </div> 
     </div>

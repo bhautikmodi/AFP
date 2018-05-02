@@ -45,7 +45,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderhomeComponent } from './headerhome/headerhome.component';
-
+import{NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -87,6 +87,7 @@ import { HeaderhomeComponent } from './headerhome/headerhome.component';
     BrowserModule,
 	HttpModule,
 	FormsModule,
+	NgxPaginationModule,
 	HttpClientModule,
 	RouterModule.forRoot([		
 		{

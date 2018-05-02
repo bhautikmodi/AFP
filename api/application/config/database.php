@@ -71,7 +71,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
+<<<<<<< HEAD
 $active_group = 'default';
+=======
+$active_group = 'Development';
+
+>>>>>>> ddce4c75223cf49d3cf5224b95e945826004f265
 
 $query_builder = TRUE;
 

@@ -16,5 +16,6 @@ export class Globals { debugger
   message = '';
   type = '';
   check_login = false;
+  headerhome = false;
   
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Changepass extends CI_Controller 
+class Changepass extends MY_Controller 
 {	
 	public function __construct()
 	{

@@ -88,7 +88,10 @@ export class SalesDashboardComponent implements OnInit {
 					if(data=='error')
 					{
 						this.Usersearch=[];
-					}else{		this.Usersearch = data;
+					}
+					else
+					{		
+						this.Usersearch = data;
 					}
 			
 					this.btn_disable = false;

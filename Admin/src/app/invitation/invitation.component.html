@@ -89,7 +89,7 @@
                             <div class="form-group col-md-6">
                                   <label><span class="required">*</span>Email Address</label>
                                   <input type="Email" placeholder="Email" class="form-control" #EmailAddress="ngModel" email 
-                                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress" name="EmailAddress" [ngClass]="{red: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>
+                                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="InvitationEntity.EmailAddress" name="EmailAddress" [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}" required/>
                                   <span style="color:red" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.required">

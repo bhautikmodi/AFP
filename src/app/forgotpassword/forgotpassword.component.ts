@@ -39,7 +39,7 @@ export class ForgotpasswordComponent implements OnInit {
 				
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'Invalid user Email-Id';
+						this.globals.message = 'Invalid Email-Id';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;

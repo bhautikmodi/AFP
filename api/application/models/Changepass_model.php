@@ -20,7 +20,7 @@ class Changepass_model extends CI_Model
 					$pass_data = array(
 						//'Status' =>1,
 						//'code' =>'',
-						'Password'=>md5($post_pass['cPassword']),
+						'Password'=>md5($post_pass['nPassword']),
 						'CreatedOn' => date('y-m-d H:i:s'),
 						'UpdatedOn' => date('y-m-d H:i:s')
 					);

@@ -56,7 +56,7 @@ loginEntity;
 			}, 
 			(error) => 
 			{ 
-				this.globals.message = 'Invalid user Email-Id';
+				        this.globals.message = 'Invalid Email-Id and Password';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;

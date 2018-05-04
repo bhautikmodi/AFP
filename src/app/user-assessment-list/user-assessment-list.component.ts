@@ -13,6 +13,7 @@ declare var AmCharts: any;
 export class UserAssessmentListComponent implements OnInit {
   assessmentList;
   userList;
+  padinglist;
   constructor(private SalesDashboardService: SalesDashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
@@ -23,9 +24,11 @@ export class UserAssessmentListComponent implements OnInit {
 		.then((data) => 
 		{
       this.assessmentList = data['complete'];
+      this.padinglist = data['pending'];
+      
       this.userList = data['user'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-      console.log(this.assessmentList);
+      // console.log(this.assessmentList);
       setTimeout(()=>{ 
         var j = 0; 
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

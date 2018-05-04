@@ -21,10 +21,10 @@
        <form class="form-validate" role="form" #AsmtDetailsForm="ngForm" (ngSubmit)="addAsmtDetails(AsmtDetailsForm)">
           <div class="form-group">
             <label><span>*</span>Assessment Name</label>
-            	<input type="text" class="form-control" #AssessmentName="ngModel" name="AssessmentName"
-						pattern="[a-zA-Z' ]{1,100}" 
+            	<input type="text" class="form-control" #AssessmentName="ngModel" maxlength="70"  name="AssessmentName"
+					
 							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}"  required/>
-						<span class="error_span"  *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
+						<span class="error_span" *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
 							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter Assessment Name</span>
 							<span class="error_span" *ngIf="AssessmentName.errors && AssessmentName.errors.pattern">
 							Please enter a valid Assessment Name.
@@ -33,8 +33,8 @@
           </div>
           <div class="form-group">
             <label><span>*</span>Description</label>
-            <textarea class="form-control" #Description="ngModel" name="Description"
-						pattern="[a-zA-Z' ]{1,100}" 
+            <textarea class="form-control" #Description="ngModel"maxlength="200"  name="Description"
+					
 							[(ngModel)]="AsmtDetailsEntity.Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}"  required></textarea>
 							<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
 							<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description</span>

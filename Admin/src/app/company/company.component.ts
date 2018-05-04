@@ -98,7 +98,7 @@ export class CompanyComponent implements OnInit {
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Add successfully';
+						this.globals.message = 'Data Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

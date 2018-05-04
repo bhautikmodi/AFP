@@ -239,6 +239,7 @@ export class RegisterComponent implements OnInit {
 			this.stateList = [];
 		}
 	}
+	
 	checkpassword(){ 
 		if(this.RegisterEntity.cPassword != this.RegisterEntity.Password){
 			this.same = true;

@@ -21,7 +21,7 @@ add(CourseEntity)
         }
       );
 	});		
-	return promise;
+	return promise; 
   }
   
 

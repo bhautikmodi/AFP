@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class SalesUserService {
 
-  constructor( private http: Http,private globals: Globals) { }
+  constructor(private http: HttpClient,private globals: Globals) { }
   getUserAssessDetail(CAssessmentId) 
   { 
 	let promise = new Promise((resolve, reject) => { 
-    this.http.get(this.globals.baseAPIUrl + 'Salesuser/getUserAssessDetail/'+CAssessmentId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Salesuser/getUserAssessDetail/'+CAssessmentId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);
@@ -25,11 +26,11 @@ export class SalesUserService {
   getUserReport(UserId) 
   { 
 	let promise = new Promise((resolve, reject) => { 
-    this.http.get(this.globals.baseAPIUrl + 'Salesuser/getUserReport/'+UserId, this.globals.headerpath)
+    this.http.get(this.globals.baseAPIUrl + 'Salesuser/getUserReport/'+UserId)
       .toPromise()
       .then(
         res => { // Success
-          resolve(res.json());
+          resolve(res);
         },
         msg => { // Error
 		  reject(msg);

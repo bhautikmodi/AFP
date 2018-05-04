@@ -72,11 +72,11 @@ export class UserroleComponent implements OnInit {
 				this.userroleEntity = {};
 				userroleForm.form.markAsPristine();
 				if(id){
-					this.globals.message = 'Update successfully';
+					this.globals.message = 'Data Updated successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
-					this.globals.message = 'Add successfully';
+					this.globals.message = 'Data Added successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}	

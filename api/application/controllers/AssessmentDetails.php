@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AssessmentDetails extends CI_Controller {
+class AssessmentDetails extends MY_Controller {
 
 
 	public function __construct() {

@@ -147,12 +147,12 @@
 										
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>State</label>
-                                          <select class="form-control" #StateId="ngModel" [(ngModel)]="userEntity.StateId" name="StateId" [ngClass]="{red: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
-									<option value="">Select</option>
+                                          <select class="form-control" #StateId="ngModel" [(ngModel)]="userEntity.StateId" name="StateId" [ngClass]="{red_border: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
+									<option value="" ngSelected='userEntity.StateId==""'>Select</option>
 									<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="userEntity.StateId==state.StateId">{{state.StateName}}</option>
 								</select>
 								<span class="error_span"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
-												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select Country </span>
+												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select State </span>
 											</span>
                                         </div>
 										<div class="clearfix"></div>

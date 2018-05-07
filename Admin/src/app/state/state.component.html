@@ -46,7 +46,7 @@
 											<span class="error_span" *ngIf="(StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)"> 
 											<span *ngIf="StateName.errors.required || (StateName.pristine && submitted)">Please enter state</span>
 											<span class="error_span" *ngIf="StateName.errors && StateName.errors.pattern">
-												Please input a valid state name.
+												Please input valid state name.
 										  </span>
 											</span>
                                         </div>
@@ -67,7 +67,7 @@
 											<span *ngIf="StateAbbreviation.errors.required || (StateAbbreviation.pristine && submitted)">Please enter state abbreviation</span>
 											</span>
 											<span class="error_span" *ngIf="StateAbbreviation.errors && StateAbbreviation.errors.pattern">
-												Please input a valid state abbreviation.
+												Please input valid state abbreviation.
 										  </span>
                                         </div>
 										

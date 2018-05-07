@@ -7,14 +7,14 @@
     <div class="row">
       <div class="col-md-12">
           <h2>AFP Corporate Training Skills Assessment</h2>
-        <h1>Development Team</h1>
+        <h1>{{ksaDetails.AssessmentName}}</h1>
         <!-- <h2> <p id="demo"></p></h2> -->
         <div class="clearfix"></div>
         <div id="carousel" class="flexslider ksa_list_block">
           <ul class="slides">
             <li *ngFor="let ksa1 of ksaList; let j = index;">
-              <div class="ksa_numbers">{{(8*j)+1}}-{{(8*j)+ksa1.row.length}} </div>
-              <div class="ksa_completes"><i id="ksa{{(8*j)+1}}_dots" *ngIf="((8*j)+1)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+2}}_dots" *ngIf="((8*j)+2)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+3}}_dots" *ngIf="((8*j)+3)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+4}}_dots" *ngIf="((8*j)+4)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+5}}_dots" *ngIf="((8*j)+5)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+6}}_dots" *ngIf="((8*j)+6)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+7}}_dots" *ngIf="((8*j)+7)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(8*j)+8}}_dots" *ngIf="((8*j)+8)<=totalksa" class="fa fa-circle-o"></i></div>
+              <div class="ksa_numbers">{{(6*j)+1}}-{{(6*j)+ksa1.row.length}} </div>
+              <div class="ksa_completes"><i id="ksa{{(6*j)+1}}_dots" *ngIf="((6*j)+1)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(6*j)+2}}_dots" *ngIf="((6*j)+2)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(6*j)+3}}_dots" *ngIf="((6*j)+3)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(6*j)+4}}_dots" *ngIf="((6*j)+4)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(6*j)+5}}_dots" *ngIf="((6*j)+5)<=totalksa" class="fa fa-circle-o"></i><i id="ksa{{(6*j)+6}}_dots" *ngIf="((6*j)+6)<=totalksa" class="fa fa-circle-o"></i></div>
             </li>
             <!-- <li>
                       <div class="ksa_numbers">1-6</div>
@@ -30,7 +30,7 @@
 </div>
 <div class="clearfix"></div>
 <div id='progress_bar'>
-    <div id='progress'></div>
+    <div id='progress'>{{percent}}%</div>
   </div>
 <div class="assessment_bg">
   <div class="container">
@@ -63,22 +63,22 @@
                 <li *ngFor="let ksa1 of ksaList; let j = index;">
                   <div class="col-md-4 col-sm-4" *ngFor="let ksa of ksa1.row; let i = index">
                     <div class="ksa_box" data-toggle="tooltip" data-placement="bottom" title="Choose your Rating">
-                      <div class="ksa_text"><span>{{(8*j)+i+1}}</span> {{ksa.Name}} </div>
+                      <div class="ksa_text"><span>{{(6*j)+i+1}}</span> {{ksa.Name}} </div>
                       <div class="radio_box">
                         <div class="radio_box_ksa">
-                          <input type="radio" (change)="selectRadio((8*j)+i+1,ksa,i,j)" value="1" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio1" required/>
+                          <input type="radio" (change)="selectRadio((6*j)+i+1,ksa,i,j)" value="1" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio1" required/>
                           <label for="ksa{{j+1}}{{i+1}}_radio1">1</label>
                         </div>
                         <div class="radio_box_ksa">
-                          <input type="radio" (change)="selectRadio((8*j)+i+1,ksa,i,j)" value="2" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio2" required/>
+                          <input type="radio" (change)="selectRadio((6*j)+i+1,ksa,i,j)" value="2" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio2" required/>
                           <label for="ksa{{j+1}}{{i+1}}_radio2">2</label>
                         </div>
                         <div class="radio_box_ksa">
-                          <input type="radio" (change)="selectRadio((8*j)+i+1,ksa,i,j)" value="3" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio3" required/>
+                          <input type="radio" (change)="selectRadio((6*j)+i+1,ksa,i,j)" value="3" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio3" required/>
                           <label for="ksa{{j+1}}{{i+1}}_radio3">3</label>
                         </div>
                         <div class="radio_box_ksa">
-                          <input type="radio" (change)="selectRadio((8*j)+i+1,ksa,i,j)" value="4" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio4" required/>
+                          <input type="radio" (change)="selectRadio((6*j)+i+1,ksa,i,j)" value="4" #ksa{{j+1}}{{i+1}}_radio="ngModel" [(ngModel)]="ksaList[j].row[i].RatingScaleId" name="ksa{{j+1}}{{i+1}}_radio" id="ksa{{j+1}}{{i+1}}_radio4" required/>
                           <label for="ksa{{j+1}}{{i+1}}_radio4">4</label>
                         </div>
                         <div class="clearfix"></div>
@@ -120,7 +120,7 @@
             <table class="table table-bordered table-hover no_margin">
               <ng-container *ngFor="let ksa1 of ksaList; let j = index;">
                 <tr *ngFor="let ksa of ksa1.row; let i = index">
-                  <td class="text-center width_5">{{(8*j)+i+1}}</td>
+                  <td class="text-center width_5">{{(6*j)+i+1}}</td>
                   <td class="width_60">{{ksa.Name}}</td>
                   <td class="width_30">{{ksa.RatingScaleId}} - <span *ngIf="ksa.RatingScaleId==1">General Awareness</span> <span *ngIf="ksa.RatingScaleId==2">Developing</span> <span *ngIf="ksa.RatingScaleId==3">Intermediate</span> <span *ngIf="ksa.RatingScaleId==4">Advanced</span></td>
                 </tr>

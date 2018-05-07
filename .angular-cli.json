@@ -29,7 +29,8 @@
     "assets/js/perfect-scrollbar.js",	   
     "assets/js/amcharts.js",
     "assets/js/serial.js",
-    "assets/js/pie.js",	    
+    "assets/js/pie.js",	  
+    "assets/js/select2.min.js",	
     "assets/js/custom.js"
 	  
 		

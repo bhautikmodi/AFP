@@ -36,7 +36,7 @@
 					<!--<th style="width:10%;">Zip code</th>-->
 					<th style="width:9%;">Role</th>
                     <th style="width:5%;">Active?</th>
-                    <th style="width:9%;">Actions</th>
+					<th style="width:9%;" *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,8 +54,9 @@
 												
 												
 												
-                    <td><button class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" title="Edit"><span class="fa fa-pencil"></span></button>
-                      <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteUser(user)"><span class="fa fa-times"></span></button></td>
+                    <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+					<button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" title="Edit"><span class="fa fa-pencil"></span></button>
+                      <button *ngIf="permissionEntity.Delete==1" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteUser(user)"><span class="fa fa-times"></span></button></td>
                     
                   </tr>
                  

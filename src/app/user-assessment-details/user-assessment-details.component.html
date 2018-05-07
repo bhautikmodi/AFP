@@ -27,7 +27,7 @@
                   <div class="accordion_scroll">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading1" *ngFor="let domain of domainData">
+                        <div class="panel-heading" role="tab" id="heading1" *ngFor="let domain of careaData">
                           <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">{{domain.domain}}<span class="icon_span"></span></a> </h4>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
@@ -37,13 +37,9 @@
                                 <th class="text-left width_30">Competency Area</th>
                                 <th class="text-left width_80">Description</th>
                               </tr>
-                              <tr>
+                              <tr *ngFor="let carea of domain">
                                 <td>Corporate Strategy/Strategic Planning</td>
                                 <td>Finance teams are frequently tasked with the development and implementation of strategies to meet sustainable growth objectives. Strategic planning helps guide the deployment of resources so that the firm can create and sustain competitive advantages relative to its peers. The success of a given strategy is influenced by factors that are both internal (e.g., strengths and weaknesses) and external (e.g., opportunities and threats) to the firm. Finance teams can evaluate the relative success of the firm’s strategies by identifying and measuring key performance indicators (KPIs). In addition, balanced scorecards can be used to measure the firm’s progress in meeting strategic objectives</td>
-                              </tr>
-                              <tr>
-                                <td>Data Strategy</td>
-                                <td>To become better business partners, finance teams must deliver more relevant and timely analyses and go beyond the siloed views of business. A key to this evolution resides in the mastering of data. Data is a key asset as finance teams continuously evaluate the firm’s strategies. To ensure reliable, transparent, and sustainable sources of data, finance teams must gain control of their data supply chain and ensure both an agile data acquisition process and that data is stored and organized properly. A well-designed data strategy will enable finance teams to lead with data by developing efficient and sustainable data-driven processes and in developing and implementing predictive business analytic capabilities</td>
                               </tr>
                             </table>
                           </div>

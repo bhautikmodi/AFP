@@ -103,13 +103,18 @@ class DashboardUser_model extends CI_Model
                 {
                     $rscale_data=$query->result();				   
                 }
-                $this->db->select('d.Name as domain,carea.Name,carea.Description');
-                $this->db->join('tblmstcompetencyarea carea', 'carea.DomainId = d.DomainId', 'left');     
-                $query = $this->db->get('tblmstdomain d');
-                $carea_data = array();
-                if($query->result())
+                $this->db->select('DomainId,Name');
+				$this->db->where('IsActive',1);
+                $query = $this->db->get('tblmstdomain');
+                $carea_data = '';
+                foreach($query->result() as $row)
                 {
-                    $carea_data=$query->result();				   
+                    $this->db->select('CAreaId,Description');
+					$this->db->where('DomainId',$row->DomainId);
+					$this->db->where('IsActive',1);
+					$query1 = $this->db->get('tblmstcompetencyarea'); 
+					$row->carea = 
+					$carea_data[] = $row;					
                 }
 
                 $data = '';

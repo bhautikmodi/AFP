@@ -63,7 +63,7 @@
 					[(ngModel)]="newpassEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
-									Please enter your password
+									Please enter your confirm password
 								</span>
 							  
 							  <span *ngIf="cPassword.errors && cPassword.errors.pattern && !same">
@@ -74,7 +74,7 @@
 							  </span>
 					</span>
               </div>
-          <button class="next_btn pull-right" type="submit"><span>Submit</span></button>
+          <button class="next_btn pull-right" type="submit" [disabled]="(!newpassForm.valid || same)"><span>Submit</span></button>
 				</form>
 				<div class="clearfix"></div>
       </div>

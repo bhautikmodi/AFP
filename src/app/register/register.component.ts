@@ -42,11 +42,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity.StateId ='';
 			
 		 
-    // $('select').select2();
-
-// $('#employee_btn').click(function () {
-	// $("#submit_Modal").modal('show');
-// });
+   
  	debugger
 	 let id = this.route.snapshot.paramMap.get('id');
 	 if(id)

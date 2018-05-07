@@ -10,13 +10,27 @@ export class AuthGuard implements CanActivate {
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
-	  if(this.authService.isLoggedIn()==true){
-		// if(state.url=='/dashboard'){   // new header component show
-		// 	this.globals.headerhome = true;
-		// } else {
-		// 	this.globals.headerhome = false;
-		// }
+	if(state.url=='/welcome_register'){   // new header component show
 	
+		this.globals.logohome = true;
+	
+	} else {
+		
+		this.globals.logohome = false;
+	
+	}
+	if(state.url=='/' ||state.url=='/welcome_register'){   // new header component show
+		this.globals.headerhome = true;
+		this.globals.logohome = true;
+		this.globals.footerhome = true;
+	} else {
+		this.globals.headerhome = false;
+		this.globals.logohome = false;
+		this.globals.footerhome = false;
+	}
+	  if(this.authService.isLoggedIn()==true){
+		
+		
 			if(state.url.split('/')[2] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];
 			} else {

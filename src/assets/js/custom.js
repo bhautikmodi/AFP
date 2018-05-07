@@ -6,6 +6,7 @@ $('.invitation_text .form-control').keyup(function(e){
 <!-- END INVITATION CODE -->
 
 <!-- REGISTER EMPLOYEE -->
+$('[data-toggle="tooltip"]').tooltip()
 $('#employee_btn').click(function () {
 	$("#submit_Modal").modal('show');
 });
@@ -28,11 +29,17 @@ $('.user_box').click(function(e){
 progress = document.getElementById("progress");
 $(progress).css("width", "30%");
 <!-- END PROGRESS BAR ASSESSMENT -->
+	
+<!-- SELECT SEARCH -->
+$(document).ready(function() {
+    $('.select2').select2();
+});
+<!-- END SELECT SEARCH -->
 
 <!-- ASSESSMENT -->
 $('input[type="radio"]').change(function(){
 	var i;
-	for (i = 0; i < 51; i++) { 
+	for (i = 0; i < 57; i++) { 
 		if($("input:radio[name='ksa" + i + "_radio']").is(":checked")) {
 		  $('#ksa' + i + '_dots').removeClass('fa-circle-o');
 		  $('#ksa' + i + '_dots').addClass('fa-dot-circle-o');
@@ -48,5 +55,6 @@ $(function () {
 <!-- END TOOLTIP -->
 
 <!-- SCROLLBAR -->
- new PerfectScrollbar('.preview_ksa');
+ new PerfectScrollbar('.preview_ksa .scroll_table');
+ new PerfectScrollbar('.course_rec .scroll_course');
 <!-- END SCROLLBAR -->

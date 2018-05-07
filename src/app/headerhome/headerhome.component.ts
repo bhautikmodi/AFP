@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Globals } from '.././globals';
 @Component({
   selector: 'app-headerhome',
   templateUrl: './headerhome.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderhomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globals: Globals) { }
 
   ngOnInit() {
   }

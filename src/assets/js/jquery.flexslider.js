@@ -1225,9 +1225,9 @@
         controlNav: false,
         animationLoop: false,
         slideshow: false,
-        itemWidth: 160,
+        itemWidth: 120,
 		minItems: 1,
-    	maxItems: 7,
+    	maxItems: 9,
         itemMargin: 5,
         asNavFor: '#slider'
       });

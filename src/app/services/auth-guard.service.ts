@@ -21,11 +21,11 @@ export class AuthGuard implements CanActivate {
 	}
 	if(state.url=='/' ||state.url=='/welcome_register'){   // new header component show
 		this.globals.headerhome = true;
-		this.globals.logohome = true;
+		
 		this.globals.footerhome = true;
 	} else {
 		this.globals.headerhome = false;
-		this.globals.logohome = false;
+	
 		this.globals.footerhome = false;
 	}
 	  if(this.authService.isLoggedIn()==true){

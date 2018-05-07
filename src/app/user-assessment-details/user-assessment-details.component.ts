@@ -32,6 +32,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
         this.domainData = data['domain'];
         this.rscaleData = data['rscale'];
         this.careaData = data['carea'];
+		console.log(this.careaData);
         var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);

@@ -117,7 +117,7 @@
             <div class="col-md-6 col-sm-12" *ngIf="RegisterEntity.UserId=='0'">
               <div class="form-group">
                 <label><span>*</span>Password </label>
-                 <input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}"#Password="ngModel" 
+                 <input type="password" class="form-control" (keyup)="checkpassword()" data-toggle="tooltip" data-placement="top" title="Minimum 8 and maximum 50 characters in length. Should allow AlphaNumeric characters. Only special characters allowed are at the rate (@), Underscore (_), Dash (-), Dollar ($), Star (*), Ampersand (&), Exclamation mark (!), and Hash (#)." pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}"#Password="ngModel" 
 				 [(ngModel)]="RegisterEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
 									<span *ngIf="Password.errors && Password.errors.required">

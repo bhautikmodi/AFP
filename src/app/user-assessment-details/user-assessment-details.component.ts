@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
-
+declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-user-assessment-details',
   providers: [ DashboardService ],
@@ -53,7 +53,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
           "categoryField": "domain",
           "categoryAxis": {
             "gridPosition": "start",
-          "title": "Domain",
+          "title": "Domains",
           "axisAlpha": 1, 
           "titleFontSize" : 16,
           "dashLength": 5,

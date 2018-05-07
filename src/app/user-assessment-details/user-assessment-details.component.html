@@ -27,8 +27,8 @@
                   <div class="accordion_scroll">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                       <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading1">
-                          <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1"> Strategy <span class="icon_span"></span></a> </h4>
+                        <div class="panel-heading" role="tab" id="heading1" *ngFor="let domain of domainData">
+                          <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">{{domain.domain}}<span class="icon_span"></span></a> </h4>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
                           <div class="panel-body">
@@ -49,114 +49,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading2">
-                          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">Gathering and Analyzing Information <span class="icon_span"></span></a> </h4>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-                          <div class="panel-body">
-                            <table class="table table-hover table-bordered">
-                              <tr>
-                                <th class="text-left width_30">Competency Area</th>
-                                <th class="text-left width_80">Description</th>
-                              </tr>
-                              <tr>
-                                <td>Reporting and Analyzing Financial KPIs</td>
-                                <td>To provide business intelligence and actionable insights, finance teams must be able to gather, interpret, and analyze financial information. Gathering financial information consists of determining the financial information that is needed as well as the best source for the data. Interpreting and analyzing financial information requires knowledge of a wide variety of financial concepts (e.g., financial statements, ratios, data analysis, and balanced scorecards, among others). A broad knowledge base in these areas will allow finance teams to adequately monitor key performance indicators (KPIs) and make appropriate recommendations to upper management and other key influencers</td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Budgeting and Financal Principles <span class="icon_span"></span></a> </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                            <table class="table table-hover table-bordered">
-                              <tr>
-                                <th class="text-left width_30">Competency Area</th>
-                                <th class="text-left width_80">Description</th>
-                              </tr>
-                              <tr>
-                                <td>Budgeting Processes</td>
-                                <td>Budgets provide a tool to align the firm’s capital base with its mission and the needs of shareholders. For a budget to be effective, the goals of the budget must be clearly communicated to all areas of the organization. Effective budgets often utilize rolling forecasts to account for the dynamic nature of corporate operating environments. With rolling forecasts, the assumptions that are used to develop the budget are revised to reflect up-to-date information. During times of lower economic growth, a zero-based budgeting approach can be used to allocate capital to the areas of the firm that management feels are most strategic.</td>
-                              </tr>
-                              <tr>
-                                <td>Understanding Financial concepts</td>
-                                <td>Finance teams are often tasked with analyzing and providing recommendations on capital investment opportunities. In addition to meeting strategic objectives, capital investments should be chosen to allocate capital to its highest and best use, which will ultimately maximize firm value. Subsequently, finance teams must be aware of the distinctions associated with different valuation approaches, such as discounted cash flow analysis, relative valuation models (i.e., multiples), and contingent claims analysis. In addition to evaluating capital investments, finance teams must often assess the overall risk of the enterprise and recommend strategies to hedge critical financial risks, including interest rate and foreign exchange rate risks. </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Forecasting with Systems and Tools <span class="icon_span"></span></a> </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
-                            <table class="table table-hover table-bordered">
-                              <tr>
-                                <th class="text-left width_30">Competency Area</th>
-                                <th class="text-left width_80">Description</th>
-                              </tr>
-                              <tr>
-                                <td>Using Excel and Technology/Software</td>
-                                <td>Finance teams rely on technology and software to perform many aspects of their job roles. The dynamic and ubiquitous nature of Microsoft Excel’s worksheet tool makes it an essential element of financial modeling. Various worksheet functions improve the efficiency and effectiveness of financial modelers. Intermediate and advanced data analysis features of Excel allow the user to automate tasks and to provide deeper insights .</td>
-                              </tr>
-                              <tr>
-                                <td>Financial Modeling</td>
-                                <td>Finance teams are frequently tasked with creating effective models that are accurate and dynamic. The latter refers to the user’s ability to change the value of model inputs to assess the impact on the model output. Two of the more common approaches used to assess the effect of model inputs on model outputs are sensitivity analysis (i.e., one model input is varied) and scenario analysis (i.e., where multiple model inputs are varied). Advanced approaches used to assess variability in financial model outputs include Monte Carlo Simulation and statistical analysis. </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading4">
-                          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">Communication and Presentation Techniques <span class="icon_span"></span></a> </h4>
-                        </div>
-                        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-                          <div class="panel-body">
-                            <table class="table table-hover table-bordered">
-                              <tr>
-                                <th class="text-left width_30">Competency Area</th>
-                                <th class="text-left width_80">Description</th>
-                              </tr>
-                              <tr>
-                                <td>Effective Communications</td>
-                                <td>Following the development of financial projections, finance teams must effectively communicate their results to the relevant stakeholders. One study estimates that 85 percent of success in business is determined by communication skills, and employers rank “verbal communication skills” as the most important skill necessary to do the job well. In addition to verbal communication, another key aspect of effective communication is to tailor the presentation materials and media to the audience, in an effort to ensure understanding, focus and fast actions. As a best practice, it is helpful for finance teams to develop a narrative that is portrayed by the financial projections. Essential elements of effective communications provide best practices in choosing the appropriate graphics for presentations and in writing reports. </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading5">
-                          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Business Partnering <span class="icon_span"></span></a> </h4>
-                        </div>
-                        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
-                          <div class="panel-body">
-                            <table class="table table-hover table-bordered">
-                              <tr>
-                                <th class="text-left width_30">Competency Area</th>
-                                <th class="text-left width_80">Description</th>
-                              </tr>
-                              <tr>
-                                <td>Influencing and Negotiating</td>
-                                <td>Over recent years, the roles of financial professionals have evolved significantly as the automation of basic tasks and the development of new analytical capabilities have provided additional time for focusing on high-level tasks. In its expanded role financial professionals help the business to align strategy with operations and in improve financial planning and budgeting. Consequently, financial professionals must think beyond their functional silos and partner and collaborate with other areas of the business. Further, since funding sources for budgets are finite, the ability to negotiate is a valuable skill for financial professionals. Negotiating skills will enable cost savings and lead to mutually-beneficial, long-term relationships with business partners.</td>
-                              </tr>
-                              <tr>
-                                <td>Project Management</td>
-                                <td>Due to increasingly constrained resources, financial professionals are asked to step out of their firms’ traditional roles to serve as project managers. Project management involves balancing a series of simultaneous and sometimes overlapping project steps. Understanding and implementing project management best practices can lead to a more efficient and effective development process. A challenging aspect of project management is that the individuals involved may have different backgrounds and may work in different departments.</td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -168,56 +61,19 @@
                       <th class="width_80">Rating Scale</th>
                       <th class="text-center width_20">%</th>
                     </tr>
-                    <tr>
-                      <td><strong>1 - General Awareness</strong><br>
-                        Detect, identify, bring to someone else's attention.</td>
-                      <td class="text-center">20%</td>
+                    <tr  *ngFor="let rscale of rscaleData; let i = index">
+                      <td><strong>{{i+1}} - {{rscale.Name}}</strong><br>
+                        {{rscale.Description}} </td>
+                      <td class="text-center">{{rscale.PercentOfKSA}}%</td>
                     </tr>
-                    <tr>
-                      <td><strong>2 - Developing</strong><br>
-                        Partially analyze, estimate, perform under supervision.</td>
-                      <td class="text-center">30%</td>
-                    </tr>
-                    <tr>
-                      <td><strong>3 - Intermediate</strong><br>
-                        Understand and discuss the application and implication of changes to processes, policies, and procedures.</td>
-                      <td class="text-center">10%</td>
-                    </tr>
-                    <tr>
-                      <td><strong>4 - Advanced</strong><br>
-                        Fully analyze, resolve, perform independently.</td>
-                      <td class="text-center">40%</td>
-                    </tr>
+                  
                   </table>
                 </div>
               </div>
 
       <div class="clearfix"></div>
    
-      <div class="col-md-4 col-sm-6 col-md-offset-1">
-      	<div class="grey_box"><h5>By Domain</h5>
-      	<table class="table table-bordered table-hover">
-        	<tr>
-            	<th class="width_80">Domain</th>
-                <th class="text-center width_20">%</th>
-            </tr>
-            <tr *ngFor="let domain of domainData">
-            	<td>{{domain.domain}}</td>
-                <td class="text-center">{{domain.PercentOfKSA}}%</td>
-            </tr>            
-        </table></div>
-        
-      	<div class="grey_box"><h5>By Rating Scale</h5><table class="table table-bordered table-hover">
-        	<tr>
-            	<th class="width_80">Rating Scale</th>
-                <th class="text-center width_20">%</th>
-            </tr>
-            <tr *ngFor="let rscale of rscaleData; let i = index">
-            	<td>{{i+1}} - {{rscale.Name}}</td>
-                <td class="text-center">{{rscale.PercentOfKSA}}%</td>
-            </tr>
-        </table></div>
-      </div>
+     
       
     </div>
   </div>

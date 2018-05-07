@@ -19,7 +19,7 @@
             <h2>AFP Corporate Training Skills Assessment</h2>
             <h1>Assessment by {{assessmentData.FirstName}} </h1>
             <a routerLink="/user-assessment-list/{{assessmentData.UserId}}" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a>
-            <h3>For Development Team</h3>
+            <h3>{{assessmentData.AssessmentName}}</h3>
             <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
             <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
             <p class="padding_15">{{assessmentData.Description}} </p>

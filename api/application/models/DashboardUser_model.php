@@ -94,7 +94,7 @@ class DashboardUser_model extends CI_Model
                 {
                     $domain_data=$query->result();				   
                 }
-                $this->db->select('rsksa.PercentOfKSA,rs.Name');
+                $this->db->select('rsksa.PercentOfKSA,rs.Name,rs.Description');
                 $this->db->join('tblmstratingscale rs', 'rs.RatingScaleId = rsksa.RatingScaleId', 'left');
                 $this->db->where('rsksa.CAssessmentId',$CAssessmentId);
                 $query = $this->db->get('tblratingscalewiseksa as rsksa');
@@ -103,10 +103,20 @@ class DashboardUser_model extends CI_Model
                 {
                     $rscale_data=$query->result();				   
                 }
+                $this->db->select('d.Name as domain,carea.Name,carea.Description');
+                $this->db->join('tblmstcompetencyarea carea', 'carea.DomainId = d.DomainId', 'left');     
+                $query = $this->db->get('tblmstdomain d');
+                $carea_data = array();
+                if($query->result())
+                {
+                    $carea_data=$query->result();				   
+                }
+
                 $data = '';
                 $data['assessment'] = $assessment_data;
                 $data['domain'] = $domain_data;
                 $data['rscale'] = $rscale_data;
+                $data['carea'] = $carea_data;
                 return $data;
             } else {
                 return 'fail';

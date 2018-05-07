@@ -4,7 +4,7 @@ import { ThankyouService } from '../services/thankyou.service';
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
-
+declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-thankyou',
   providers: [ ThankyouService ],
@@ -18,7 +18,7 @@ export class ThankyouComponent implements OnInit {
   constructor(private ThankyouService: ThankyouService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-   // new PerfectScrollbar('.domain_desc .accordion_scroll');
+    new PerfectScrollbar('.domain_desc .accordion_scroll');
     debugger
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    

@@ -17,7 +17,9 @@ export class ThankyouComponent implements OnInit {
   domainData;
   constructor(private ThankyouService: ThankyouService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
-  ngOnInit() {debugger
+  ngOnInit() {
+   // new PerfectScrollbar('.domain_desc .accordion_scroll');
+    debugger
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    
     this.ThankyouService.getResult(id)
@@ -51,7 +53,7 @@ export class ThankyouComponent implements OnInit {
           "categoryField": "domain",
           "categoryAxis": {
             "gridPosition": "start",
-          "title": "Domain",
+          "title": "Domains",
           "axisAlpha": 1, 
           "titleFontSize" : 16,
           "dashLength": 5,

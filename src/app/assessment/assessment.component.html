@@ -1,26 +1,14 @@
-<div class="clearfix"></div>
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>Assessment</h1>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<!-- End Header Section --> 
+
 
 <!-- Inner Section -->
-<div id='progress_bar'>
-  <div id='progress'></div>
-</div>
+
 <div class="inner_content height_zero">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="text-center">Development Team</h3><h2> <p id="demo"></p></h2>
+          <h2>AFP Corporate Training Skills Assessment</h2>
+        <h1>Development Team</h1>
+        <!-- <h2> <p id="demo"></p></h2> -->
         <div class="clearfix"></div>
         <div id="carousel" class="flexslider ksa_list_block">
           <ul class="slides">
@@ -41,28 +29,39 @@
   <div class="clearfix"></div>
 </div>
 <div class="clearfix"></div>
+<div id='progress_bar'>
+    <div id='progress'></div>
+  </div>
 <div class="assessment_bg">
   <div class="container">
     <div class="row">
-      <div class="col-md-2 col-sm-2">
-        <div class="rating_ul">
-          <p><strong>What does Rating Scale means ?</strong></p>
-          <ul class="intro_block">
-            <li><span>1</span> -<strong> General Awareness</strong> : Detect, identify, bring to someone else's attention.</li>
-            <li><span>2</span> - <strong>Developing</strong> :  Partially analyze, estimate, perform under supervision.</li>
-            <li><span>3</span> - <strong>Intermediate</strong> : Understand and discuss the application and implication of changes to processes, policies, and procedures.</li>
-            <li><span>4</span> - <strong>Advanced</strong> : Fully analyze, resolve, perform independently.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-10 col-sm-8">
-        <h2 class="text-center">rate your team</h2>
+      <div class="col-md-12 col-sm-12">
+          <div class="panel-group" id="ratingaccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="courseheadingOne">
+                  <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#courseaccordion" href="#coursecollapseOne" aria-expanded="true" aria-controls="coursecollapseOne"> Ratings Definition <span class="icon_span"></span></a> </h4>
+                </div>
+                <div id="coursecollapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="courseheadingOne">
+                  <div class="panel-body">
+                    <ul class="intro_block">
+                      <li><span>1</span> -<strong> General Awareness</strong> : Detect, identify, bring to someone else's attention.</li>
+                      <li><span>2</span> - <strong>Developing</strong> :  Partially analyze, estimate, perform under supervision.</li>
+                      <li><span>3</span> - <strong>Intermediate</strong> : Understand and discuss the application and implication of changes to processes, policies, and procedures.</li>
+                      <li><span>4</span> - <strong>Advanced</strong> : Fully analyze, resolve, perform independently.</li>
+                      <div class="clearfix"></div>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-center">Rate your Team</h3>
         <div class="row">
           <form class="form-validate" #assessmentForm="ngForm" (ngSubmit)="finalSubmit()">
             <div id="slider" class="flexslider">
               <ul class="slides">
                 <li *ngFor="let ksa1 of ksaList; let j = index;">
-                  <div class="col-md-3 col-sm-4" *ngFor="let ksa of ksa1.row; let i = index">
+                  <div class="col-md-4 col-sm-4" *ngFor="let ksa of ksa1.row; let i = index">
                     <div class="ksa_box" data-toggle="tooltip" data-placement="bottom" title="Choose your Rating">
                       <div class="ksa_text"><span>{{(8*j)+i+1}}</span> {{ksa.Name}} </div>
                       <div class="radio_box">
@@ -106,7 +105,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">Assessment Preview</h2>
+          <h3 class="modal-title" id="myModalLabel">Assessment Review</h3>
       </div>
       <div class="modal-body">
         <div class="preview_ksa">

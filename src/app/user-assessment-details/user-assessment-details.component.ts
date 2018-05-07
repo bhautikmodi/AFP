@@ -18,6 +18,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+    new PerfectScrollbar('.domain_desc .accordion_scroll');
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    
     this.DashboardService.getUserAssessDetail(id)

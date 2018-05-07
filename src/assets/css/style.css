@@ -140,6 +140,16 @@ button[disabled]:hover:after,button[disabled]:focus:after, html input[disabled]:
 .register_content .right_content{padding:30px; background:#f4f4f4;}
 
 .pagination{margin:0; float:left;}
+ul.ngx-pagination {display: inline-block; background: #fff; border: 1px solid #ddd; border-radius: 5px;}
+ul.ngx-pagination li { padding:0px!important; display: block; border-right:1px solid #ddd; height: 32px; float: left;}
+ul.ngx-pagination li:last-child{border-right:0px;}
+ul.ngx-pagination .show-for-sr{display: none!important;}
+ul.ngx-pagination li a{display: block; padding: 0; }
+ul.ngx-pagination li span{ display: block; color: #777; font-weight: normal; padding: 6px 12px;}
+ul.ngx-pagination li.pagination-next a,ul.ngx-pagination li.pagination-previous a{display: block; height: 32px; padding: 6px;}
+ul.ngx-pagination .current{background: none; padding: 0;}
+ul.ngx-pagination .current span{background:#337ab7; color: #fff;}
+.ngx-pagination .pagination-previous a::before, .ngx-pagination .pagination-previous.disabled::before,.ngx-pagination .pagination-next a::after, .ngx-pagination .pagination-next.disabled::after{display:none!important;}
 table tr td{color:#000; font-family: "GothamNarrow-Book"; font-size:15px; line-height:15px; vertical-align:middle!important;}
 table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; line-height:15px; vertical-align:middle!important;}
 

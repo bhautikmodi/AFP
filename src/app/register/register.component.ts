@@ -31,7 +31,12 @@ export class RegisterComponent implements OnInit {
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {debugger
+  ngOnInit() {
+	$('[data-toggle="tooltip"]').tooltip() ;
+	if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }
+	debugger
 	  
 	  
 			this.btn_disable = false;

@@ -80,6 +80,7 @@ import { PendingAssessmentService } from './services/pending-assessment.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 
 @NgModule({
@@ -125,7 +126,8 @@ import { HttpClientModule } from '@angular/common/http';
 	CourselevelComponent,
 	CourselevellistComponent,
 	RolepermissionComponent,
-	PendingAssessmentComponent
+	PendingAssessmentComponent,
+	AccessDeniedComponent
   ],
   imports: [
   BrowserModule,
@@ -146,6 +148,11 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path : 'login',
         component : LoginComponent,
+        canActivate : [AuthGuard]
+      },
+	  {
+        path : 'access-denied',
+        component : AccessDeniedComponent,
         canActivate : [AuthGuard]
       },
       {

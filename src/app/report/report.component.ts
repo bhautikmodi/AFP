@@ -63,7 +63,7 @@ export class ReportComponent implements OnInit {
 		"dashLength": 5,
 		"position": "left",
 		"titleFontSize" : 16,
-		"title": "Domain",
+		"title": "Domains",
 		"autoWrap": true,
 		"rollOverGraphAlpha" : 0
 	},

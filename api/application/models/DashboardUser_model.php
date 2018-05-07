@@ -113,7 +113,7 @@ class DashboardUser_model extends CI_Model
 					$this->db->where('DomainId',$row->DomainId);
 					$this->db->where('IsActive',1);
 					$query1 = $this->db->get('tblmstcompetencyarea'); 
-					$row->carea = 
+					$row->carea = $query1->result();
 					$carea_data[] = $row;					
                 }
 

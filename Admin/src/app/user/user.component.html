@@ -28,7 +28,7 @@
                                             <label><span class="required">*</span>First Name</label>
                                             <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="userEntity.FirstName" class="form-control" name="FirstName" pattern="[a-zA-Z]{0,}"  [ngClass]="{red_border: (FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)"> 
-											<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter First Name </span>
+											<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter first name </span>
 											<span class="error_span" *ngIf="FirstName.errors && FirstName.errors.pattern">
 												Please enter valid first name
 										  </span>		
@@ -141,7 +141,7 @@
 										<option value="">Select</option>
 									<option *ngFor="let country of CountryList" value="{{country.CountryId}}" ngSelected="userEntity.CountryId==country.CountryId">{{country.CountryName}}</option></select>
 											 <span class="error_span"  *ngIf="(CountryId.dirty && CountryId.invalid) || (CountryId.pristine && submitted)"> 
-												<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select Country </span>
+												<span *ngIf="CountryId.errors.required || (CountryId.pristine && submitted)">Please select country </span>
 											</span>
                                         </div>
 										
@@ -152,7 +152,7 @@
 									<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="userEntity.StateId==state.StateId">{{state.StateName}}</option>
 								</select>
 								<span class="error_span"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
-												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select State </span>
+												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select state </span>
 											</span>
                                         </div>
 										<div class="clearfix"></div>

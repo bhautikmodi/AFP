@@ -29,11 +29,11 @@
 											name="CountryName"  [ngClass]="{red_border: (CountryName.dirty && CountryName.invalid) || (CountryName.pristine && submitted)}" required/>		
 											<span class="error_span" *ngIf="(CountryName.dirty && CountryName.invalid) || (CountryName.pristine && submitted)">
 													<span *ngIf="CountryName.errors && CountryName.errors.required">
-														Please enter Country.
+														Please enter country.
 													</span>
 												  
 													<span *ngIf="CountryName.errors && CountryName.errors.pattern">
-														Please input a valid Country.
+														Please input a valid country.
 													</span>
 											</span>
                                         </div>
@@ -45,11 +45,11 @@
 											name="CountryAbbreviation" [ngClass]="{red_border: (CountryAbbreviation.dirty && CountryAbbreviation.invalid) || (CountryAbbreviation.pristine && submitted)}" required/>
 													<span class="error_span" *ngIf="(CountryAbbreviation.dirty && CountryAbbreviation.invalid) || (CountryAbbreviation.pristine && submitted)">
 								  <span *ngIf="CountryAbbreviation.errors && CountryAbbreviation.errors.required">
-												Please enter Country Abbreviation.
+												Please enter country abbreviation.
 											</span>
 										  
 										  <span *ngIf="CountryAbbreviation.errors && CountryAbbreviation.errors.pattern">
-												Please input a valid Country Abbreviation.
+												Please input a valid country abbreviation.
 										  </span>
 								</span>
                                         </div>
@@ -61,11 +61,11 @@
 											name="PhonePrefix" [ngClass]="{red_border: (PhonePrefix.dirty && PhonePrefix.invalid) || (PhonePrefix.pristine && submitted)}" required/>
 													<span class="error_span" *ngIf="(PhonePrefix.dirty && PhonePrefix.invalid) || (PhonePrefix.pristine && submitted)">
 								  <span *ngIf="PhonePrefix.errors && PhonePrefix.errors.required">
-												Please enter Phone Prefix.
+												Please enter phone prefix.
 											</span>
 										  
 										  <span *ngIf="PhonePrefix.errors && PhonePrefix.errors.pattern">
-												Please input a valid Phone Prefix.
+												Please input a valid phone prefix.
 										  </span>
 								</span>
                                         </div>

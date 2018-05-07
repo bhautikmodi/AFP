@@ -1,28 +1,21 @@
 @font-face {
-  font-family: 'Gotham-Book';
-  src: url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),  url('../fonts/Gotham-Book.otf')  format('opentype'),
-	     url('../fonts/Gotham-Book.woff') format('woff'), url('../fonts/Gotham-Book.ttf')  format('truetype'), url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+  font-family: 'GothamNarrow-Book';
+  src: url('../fonts/GothamNarrow-Book.eot?#iefix') format('embedded-opentype'),  url('../fonts/GothamNarrow-Book.otf')  format('opentype'),
+	     url('../fonts/GothamNarrow-Book.woff') format('woff'), url('../fonts/GothamNarrow-Book.ttf')  format('truetype'), url('../fonts/GothamNarrow-Book.svg#GothamNarrow-Book') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Gotham-Light';
-  src: url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),  url('../fonts/Gotham-Light.otf')  format('opentype'),
-	     url('../fonts/Gotham-Light.woff') format('woff'), url('../fonts/Gotham-Light.ttf')  format('truetype'), url('../fonts/Gotham-Light.svg#Gotham-Light') format('svg');
+  font-family: 'GothamNarrow-Medium';
+  src: url('../fonts/GothamNarrow-Medium.eot?#iefix') format('embedded-opentype'),  url('../fonts/GothamNarrow-Medium.otf')  format('opentype'),
+	     url('../fonts/GothamNarrow-Medium.woff') format('woff'), url('../fonts/GothamNarrow-Medium.ttf')  format('truetype'), url('../fonts/GothamNarrow-Medium.svg#GothamNarrow-Medium') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Gotham-Medium';
-  src: url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),  url('../fonts/Gotham-Medium.otf')  format('opentype'),
-	     url('../fonts/Gotham-Medium.woff') format('woff'), url('../fonts/Gotham-Medium.ttf')  format('truetype'), url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham-Bold';
-  src: url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/Gotham-Bold.otf')  format('opentype'),
-	     url('../fonts/Gotham-Bold.woff') format('woff'), url('../fonts/Gotham-Bold.ttf')  format('truetype'), url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+  font-family: 'GothamNarrow-Bold';
+  src: url('../fonts/GothamNarrow-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/GothamNarrow-Bold.otf')  format('opentype'),
+	     url('../fonts/GothamNarrow-Bold.woff') format('woff'), url('../fonts/GothamNarrow-Bold.ttf')  format('truetype'), url('../fonts/GothamNarrow-Bold.svg#GothamNarrow-Bold') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -30,20 +23,20 @@
 /* ------------------------------- */
 
  body {
-    background-color: #fff; font-family: 'Gotham-Medium'; font-size:13px;
+    background-color: #fff; font-family: 'GothamNarrow-Medium'; font-size:14px;
 }
 
 /* Wrappers */
 
 /* ------------------------------- */
 
-.account_menu{ margin-top:30px; display:block;}
+.account_menu{ margin-top:30px; display:block; margin-right: 0px;}
 
 .account_menu li{position:relative; display:inline-block; margin-left:10px;}
 
 /*.account_menu li a i{margin-right:5px;}*/
 
-.account_menu li a { font-family: "Gotham-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
+.account_menu li a { font-family: "GothamNarrow-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
 
 .account_menu li a:hover,.account_menu li a:focus {background-position: right bottom; color: #ffffff; }
 
@@ -51,7 +44,7 @@
 
 .account_menu li a i.fa-angle-double-down {margin-left: 5px;}
 
-.account_menu li a.dashboard-toggle{font-family: "Gotham-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #0085ad 50%, #007699 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
+.account_menu li a.dashboard-toggle{font-family: "GothamNarrow-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #0085ad 50%, #007699 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
 
 .account_menu li a.dashboard-toggle:hover, .account_menu li a.dashboard-toggle:focus {background-position: right bottom; color: #ffffff;}
 
@@ -59,9 +52,9 @@ ul.dropdown-menu{ background:#fff; padding:0px 0 0 0px; border-radius:0 0; posit
 
 ul.dropdown-menu li {float:none; display:block; position:relative; margin:0;}
 
-ul.dropdown-menu li a{ padding:10px 10px!important; line-height: 14px!important; text-transform:capitalize; background:#fff!important; background-image:none!important; width:100%; text-align:left; white-space: normal!important; color: #313133!important; font-size: 14px!important; height: auto; border-radius:0px; border-bottom:1px dashed #ccc; font-family: 'Gotham-Book';}
+ul.dropdown-menu li a{ padding:10px 10px!important; line-height: 14px!important; text-transform:capitalize; background:#fff!important; background-image:none!important; width:100%; text-align:left; white-space: normal!important; color: #313133!important; font-size: 14px!important; height: auto; border-radius:0px; border-bottom:1px dashed #ccc; font-family: 'GothamNarrow-Book';}
 
-ul.dropdown-menu li:hover a,ul.dropdown-menu li.active a, ul.dropdown-menu li:focus a,.navigation ul li ul.dropdown-menu li:hover a,.navigation ul li ul.dropdown-menu li.active a, .navigation ul li ul.dropdown-menu li:focus a{color:#0085AD!important; background:none!important;background-image:none!important;}
+ul.dropdown-menu li:hover a,ul.dropdown-menu li.active a, ul.dropdown-menu li:focus a,.navigation ul li ul.dropdown-menu li:hover a,.navigation ul li ul.dropdown-menu li.active a, .navigation ul li ul.dropdown-menu li:focus a{color:#fff!important; background:#0085AD!important;background-image:none!important; cursor: pointer;}
 
 ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0 0; border:0px;}
 
@@ -185,10 +178,10 @@ a {text-decoration:none; color:#191919; cursor: pointer;}
 .nav-third-level li a {
     padding-left: 52px;
 }
-.form-group label{line-height:15px; color: #2d5c8a; font-size: 13px; font-family:"Gotham-Medium"; font-weight:normal;}
+.form-group label{line-height:15px; color: #1685ad; font-size: 14px; font-family:"GothamNarrow-Medium"; font-weight:normal;}
 .form-group label span{color:red;}
-table td {line-height:22px; color: #000!important; font-size: 13px; font-family:"Gotham-Book"; font-weight:normal;}
-.form-group input,.form-group textarea {line-height:22px; color: #555!important; font-size: 14px; font-family:"Gotham-Book"; font-weight:normal;}
+table td {line-height:22px; color: #000!important; font-size: 14px; font-family:"GothamNarrow-Book"; font-weight:normal;}
+.form-group input,.form-group textarea {line-height:22px; color: #555!important; font-size: 14px; font-family:"GothamNarrow-Book"; font-weight:normal;}
 textarea{height:100px!important; resize:none; overflow-x:hidden;}
 table th {
     background: #0085AD !important;
@@ -315,7 +308,7 @@ table.dataTable thead .sorting::after {
     transition: all .8s ease;
 	border-color: #fff;*/
 	
-	font-family: "Gotham-Book";
+	font-family: "GothamNarrow-Book";
     font-size: 14px;
     padding: 10px 10px;
     text-align: left;
@@ -448,8 +441,8 @@ table.dataTable thead .sorting:after {
 
 .welcome-info {
 	color: #fff;
-    background-color: #11425a;
-    border-color: #11425a;
+    background-color: #072b49;
+    border-color: #072b49;
 }
 
 .show-grid {
@@ -485,13 +478,20 @@ table.dataTable thead .sorting:after {
 	transition: all 0.3s ease-in 0s;*/
 	background-position: right bottom;
 	border-color: transparent;
+	background-image: linear-gradient(to right, #0085ad 50%, #007699 50%);
+	color: #ffffff;
 }
 
 .btn.btn-danger:active {
 	background-position: right bottom;
-	background-color: #007699;
+	/*background-color: #007699;*/
 	/*background-image: linear-gradient(to right, #77c5d5 50%, #67b7c7 50%);*/
-	background-image: linear-gradient(to right, #0085ad 50%, #007699 50%);
+	/*background-image: linear-gradient(to right, #0085ad 50%, #007699 50%);*/
+}
+
+.btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled].focus, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {
+	background-color: #C92721;
+	border-color: #C92721
 }
 
 .add-right {
@@ -502,16 +502,16 @@ table.dataTable thead .sorting:after {
 	color: #fff;
 }
 
-.red_btn{ font-family: "Gotham-Book"; font-size:15px; line-height:16px; padding: 10px 15px 11px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 45px; border-width: 0 45px 0 0;}
+.red_btn{ font-family: "GothamNarrow-Book"; font-size:15px; line-height:16px; padding: 10px 15px 11px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%); background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 45px; border-width: 0 45px 0 0;}
 
 .red_btn:hover,.red_btn:focus {background-position: right bottom; color: #ffffff; text-decoration: none; }
 
 .red_btn:after {content: ""; background:url(../img/right-white.png) left top no-repeat; position: absolute; right: -37px; top: 6px; width: 25px; height: 24px; background-size:100%;}
 
 /*.sub-btn {
-	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
+	font-family: "GothamNarrow-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #007699 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }*/
-.sub-btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
+.sub-btn { font-family: "GothamNarrow-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
 
 .sub-btn span{ position:relative; z-index:999; color:#fff!important;}
 
@@ -529,10 +529,10 @@ table.dataTable thead .sorting:after {
 /*.btn.sub-btn:active {background-image: linear-gradient(to right, #0085ad 50%, #007699 50%); background-position: right bottom; background-color: #007699;}*/
 
 /*.res-btn {
-	font-family: "Gotham-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
+	font-family: "GothamNarrow-Book"; font-size:14px; padding: 10px 10px; text-align: left; background: #77c5d5; background: linear-gradient(to right, #279989 50%, #198b7b 50%) repeat scroll; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:inline-block; border-right: solid #198b7b 53px; border-width: 0 53px 0 0; border-radius: 0px;
 }*/
 
-.res-btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #279989; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px; }
+.res-btn { font-family: "GothamNarrow-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #a51c37; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px; }
 
 .res-btn span{ position:relative; z-index:999; color:#fff!important;}
 
@@ -540,7 +540,7 @@ table.dataTable thead .sorting:after {
 	width:100%; transition:all 0.8s ease 0s;
 }
 
-.res-btn:after {content: ""; background:url(../img/right-white.png) center right no-repeat #198b7b; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; }
+.res-btn:after {content: ""; background:url(../img/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; }
 
 /*.btn.res-btn:active {background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5;}*/
 
@@ -619,7 +619,7 @@ table.dataTable thead .sorting:after {
 	text-align: center;
 	margin-top: 0px;
 }
-.next_btn { font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
+.next_btn { font-family: "GothamNarrow-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #0085ad; color: #ffffff;  box-shadow: none; position: relative; display:inline-block; border:0; border-radius: 0px; }
 
 .next_btn span{ position:relative; z-index:999; color:#fff!important;}
 
@@ -636,7 +636,7 @@ table.dataTable thead .sorting:after {
 }*/
 
 .back_btn {
-    font-family: "Gotham-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #279989; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px;
+    font-family: "GothamNarrow-Book"; font-size:15px; line-height:15px; padding: 11px 50px 11px 15px; text-align: left; background: #a51c37; color: #ffffff;  box-shadow: none; position: relative;  display:inline-block; border:0; border-radius: 0px;
 }
 
 .back_btn span{ position:relative; z-index:999; color:#fff!important;}
@@ -645,7 +645,7 @@ table.dataTable thead .sorting:after {
     width:100%; transition:all 0.8s ease 0s;
 }
 .back_btn:after {
-	content: ""; background:url(../img/right-white.png) center right no-repeat #198b7b; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; 
+	content: ""; background:url(../img/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s; z-index:99; 
 }
 /*.btn.back_btn:active {
 	background-image: linear-gradient(to right, #279989 50%, #198b7b 50%); background-position: right bottom; background-color: #77c5d5; box-shadow: none;
@@ -664,18 +664,19 @@ table.dataTable thead .sorting:after {
 .page-header {
 	margin: 25px 0 20px;
 	padding-bottom: 15px;
-	color: #605b54;
+	color: #042a47;
+	/*color: #605b54;*/
 }
 
 .panel-title {
-	color: #605b54;
+	color: #042a47;
 	text-transform: uppercase;
 }
 .panel-default > .panel-heading {
-	color: #605b54;
+	color: #042a47;
 }
 .panel-heading {
-	padding: 11px 15px 13px 15px;
+	padding: 12px 15px 12px 15px;
 }
 .rember {
 	color: #000;
@@ -690,7 +691,7 @@ input[type="radio"] { visibility:hidden; position:absolute;}
 
 input[type="radio"]:checked + label.radiobtn_label{background:url(../img/radio_checked.png) 98% 5px no-repeat #FBB014; background-size:45px; box-shadow:none; color:#000;}
 
-.radio_box label{ background:url(../img/radio.png) left center no-repeat; font-weight:normal; font-size: 15px; font-family: 'Gotham-Book'; background-size:15px; padding:5px 5px 5px 20px; text-align:center; display:inline-block; vertical-align:top; margin:0; cursor:pointer; color:#000;}
+.radio_box label{ background:url(../img/radio.png) left center no-repeat; font-weight:normal; font-size: 15px; font-family: 'GothamNarrow-Book'; background-size:15px; padding:5px 5px 5px 20px; text-align:center; display:inline-block; vertical-align:top; margin:0; cursor:pointer; color:#000;}
 
 .radio_box input[type="radio"]:checked + label{background:url(../img/radio_checked.png) left center no-repeat; background-size:15px; color: #007699;}
 
@@ -698,27 +699,27 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 
 .check_box {display:inline-block; margin:5px 0 0 0; /*margin:5px 20px 0 0;*/}
 
-.check_box label{ background:url(../img/checkbox.png) left center no-repeat; font-weight:normal; font-size: 15px; font-family: 'Gotham-Book'; background-size:15px; padding:8px 5px 8px 20px; text-align:center; display:inline-block; vertical-align:top; margin:0; cursor:pointer; color:#000;}
+.check_box label{ background:url(../img/checkbox.png) left center no-repeat; font-weight:normal; font-size: 15px; font-family: 'GothamNarrow-Book'; background-size:15px; padding:8px 5px 8px 20px; text-align:center; display:inline-block; vertical-align:top; margin:0; cursor:pointer; color:#000;}
 
 .check_box input[type="checkbox"]:checked + label{background:url(../img/checkbox_checked.png) left center no-repeat; background-size:15px; color:#007699;}
 
 /*select {
-	-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; /*width: 100%!important;*/ /*font-family:"Gotham-book"; font-size:14px!important;
+	-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; /*width: 100%!important;*/ /*font-family:"GothamNarrow-Book"; font-size:14px!important;
 }*/
 
 /*select option{ 
-	background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";
+	background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-Book";
 }*/
 
-select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"Gotham-book"; font-size:14px!important;}
+select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"GothamNarrow-Book"; font-size:14px!important;}
 
-select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "Gotham-book";} 
+select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-Book";} 
 
 div.dataTables_length select {
 	width: auto !important;
 }
 
-.forgot_paswd { line-height: 30px; color: #000; font-size: 13px; font-family:"Gotham-medium"; font-weight: normal;}
+.forgot_paswd { line-height: 30px; color: #000; font-size: 13px; font-family:"GothamNarrow-Medium"; font-weight: normal;}
 
 .forgot_paswd:hover {text-decoration: none;}
 
@@ -734,7 +735,7 @@ div.dataTables_length select {
 /*
  *  STYLE 9
  */
-.navbar-default{background: #11425a;}
+.navbar-default{background: #072b49;}
 .navbar-static-side{position: fixed; height: 100%; }
 .navbar-static-side .sidebar-collapse{overflow-y: scroll; height: 87%; }
 .navbar-static-side .sidebar-collapse::-webkit-scrollbar-track
@@ -766,7 +767,7 @@ div.dataTables_length select {
 
 .btn-email button {display: block; margin: 10px;}
 
-.nicEdit-main {font-family: "Gotham-book"; color: #555;outline: 0;}
+.nicEdit-main {font-family: "GothamNarrow-Book"; color: #555;outline: 0;}
 
 .contact span{display:none;}
 

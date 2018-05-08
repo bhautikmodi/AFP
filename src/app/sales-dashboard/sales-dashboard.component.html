@@ -56,9 +56,9 @@
   <div class="container">
     <div class="row">
         <h3 class="text-center" *ngIf="Usersearch!=''">Users</h3>
-      <div class="col-md-3 col-sm-3" *ngFor="let UserL of (Usersearch | paginate: { itemsPerPage:3, currentPage: p} );let i = index ">
+      <div class="col-md-3 col-sm-3" *ngFor="let UserL of Usersearch | paginate: { itemsPerPage:3, currentPage: p};let i = index ">
         <div class="user_box"(click)="addclass(i)" id="cbox{{i}}">
-				  <input type="hidden" name="id" value="{{UserL.UserId}}"/>
+				  <input type="hidden"  name="id" value="{{UserL.UserId}}"/>
           <div class="user_name">{{UserL.FirstName}}</div>
           <p><strong>Email : </strong>{{UserL.EmailAddress}}<br>
             <strong>Phone Number : </strong>{{UserL.PhoneNumber}}<br>

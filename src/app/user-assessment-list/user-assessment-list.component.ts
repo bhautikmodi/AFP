@@ -4,6 +4,7 @@ import { SalesDashboardService } from '../services/sales-dashboard.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
+declare var $: any;
 @Component({
   selector: 'app-user-assessment-list',
   providers: [ SalesDashboardService ],
@@ -18,6 +19,9 @@ export class UserAssessmentListComponent implements OnInit {
 
 
   ngOnInit() {  
+    if ($("body").height() < $(window).height()) {
+      $('footer').addClass('footer_fixed');
+  }
     this.userList='';
     let id = this.route.snapshot.paramMap.get('id');    
     this.SalesDashboardService.getAllAssement(id)

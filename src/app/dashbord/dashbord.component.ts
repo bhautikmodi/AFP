@@ -4,6 +4,7 @@ import { DashboardService } from '../services/dashboard.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
+declare var $: any;
 
 @Component({
   selector: 'app-dashbord',
@@ -18,6 +19,10 @@ export class DashbordComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
   
    ngOnInit() {  
+
+    if ($("body").height() < $(window).height()) {
+      $('footer').addClass('footer_fixed');
+  }
     this.DashboardService.getAllAssement(this.globals.authData.UserId)
 		.then((data) => 
 		{

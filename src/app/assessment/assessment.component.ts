@@ -18,6 +18,8 @@ export class AssessmentComponent implements OnInit {
   addprogess;
   submit_true;
   arrayset;
+  ksaDetails;
+  percent;
   constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() { 
@@ -61,6 +63,7 @@ var x = setInterval(function() {
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {
+		this.ksaDetails = data['ksaDetails'];
         this.ksaList = data['ksa'];
         this.totalksa = data['totalksa'];
         this.addprogess = 100/this.totalksa;
@@ -93,8 +96,8 @@ var x = setInterval(function() {
             for(let child of obj.row){
               let i = this.ksaList[j].row.indexOf(child);
               if(child.RatingScaleId>0){
-                $('#ksa'+((8*j)+i+1)+'_dots').removeClass('fa-circle-o');
-                $('#ksa'+((8*j)+i+1)+'_dots').addClass('fa-dot-circle-o');
+                $('#ksa'+((6*j)+i+1)+'_dots').removeClass('fa-circle-o');
+                $('#ksa'+((6*j)+i+1)+'_dots').addClass('fa-dot-circle-o');
               }          
             }
           } 
@@ -153,6 +156,7 @@ var x = setInterval(function() {
         }
       }
       let addpro = (100*k)/this.totalksa;
+	  this.percent = addpro.toFixed(1);
       var progress = document.getElementById("progress");
       $(progress).css("width", addpro+"%");
       if(k==this.totalksa){

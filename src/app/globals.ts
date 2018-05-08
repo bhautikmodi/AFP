@@ -17,5 +17,7 @@ export class Globals { debugger
   type = '';
   check_login = false;
   headerhome = false;
+  footerhome = false;
+  logohome = false;
   
 }

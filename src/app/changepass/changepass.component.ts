@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ChangepassService } from '../services/changepass.service';
+declare var $: any;
 
 @Component({
   selector: 'app-changepass',
@@ -20,7 +21,11 @@ export class ChangepassComponent implements OnInit {
 
   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ChangepassService:ChangepassService) { }
 
-  ngOnInit() { this.newpassEntity={};
+  ngOnInit() { 
+	if ($("body").height() < $(window).height()) {
+		$('footer').addClass('footer_fixed');
+	}  
+	this.newpassEntity={};
   this.globals.msgflag = false;
  }
   

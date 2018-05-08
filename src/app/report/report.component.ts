@@ -4,6 +4,7 @@ import { SalesUserService } from '../services/sales-user.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
+declare var $: any;
 
 @Component({
   selector: 'app-report',
@@ -20,6 +21,9 @@ export class ReportComponent implements OnInit {
   constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+    if ($("body").height() < $(window).height()) {
+      $('footer').addClass('footer_fixed');
+  }
     this.userData = {};
     let id = this.route.snapshot.paramMap.get('id');    
   this.SalesUserService.getUserReport(id)

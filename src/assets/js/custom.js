@@ -6,6 +6,7 @@ $('.invitation_text .form-control').keyup(function(e){
 <!-- END INVITATION CODE -->
 
 <!-- REGISTER EMPLOYEE -->
+$('[data-toggle="tooltip"]').tooltip()
 $('#employee_btn').click(function () {
 	$("#submit_Modal").modal('show');
 });
@@ -32,7 +33,7 @@ $(progress).css("width", "30%");
 <!-- ASSESSMENT -->
 $('input[type="radio"]').change(function(){
 	var i;
-	for (i = 0; i < 51; i++) { 
+	for (i = 0; i < 57; i++) { 
 		if($("input:radio[name='ksa" + i + "_radio']").is(":checked")) {
 		  $('#ksa' + i + '_dots').removeClass('fa-circle-o');
 		  $('#ksa' + i + '_dots').addClass('fa-dot-circle-o');
@@ -46,7 +47,3 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 <!-- END TOOLTIP -->
-
-<!-- SCROLLBAR -->
- new PerfectScrollbar('.preview_ksa');
-<!-- END SCROLLBAR -->

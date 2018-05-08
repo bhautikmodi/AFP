@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
-
+declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-user-assessment-details',
   providers: [ DashboardService ],
@@ -15,9 +15,11 @@ export class UserAssessmentDetailsComponent implements OnInit {
   assessmentData;
   domainData;
   rscaleData;
+  careaData;
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+    new PerfectScrollbar('.domain_desc .accordion_scroll');
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    
     this.DashboardService.getUserAssessDetail(id)
@@ -29,6 +31,8 @@ export class UserAssessmentDetailsComponent implements OnInit {
         this.assessmentData = data['assessment'];
         this.domainData = data['domain'];
         this.rscaleData = data['rscale'];
+        this.careaData = data['carea'];
+		console.log(this.careaData);
         var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);
@@ -52,7 +56,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
           "categoryField": "domain",
           "categoryAxis": {
             "gridPosition": "start",
-          "title": "Domain",
+          "title": "Domains",
           "axisAlpha": 1, 
           "titleFontSize" : 16,
           "dashLength": 5,

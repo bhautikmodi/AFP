@@ -1,59 +1,76 @@
-<div class="clearfix"></div>
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>{{assessmentData.AssessmentName}}</h1>
-        <div class="clearfix"></div>
-         <a routerLink="/dashboard" class="back_btn"><i class="fa fa-reply"></i>Back to Dashboard</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<!-- End Header Section --> 
+
 
 <!-- Inner Section -->
 <div class="inner_content general_user_section">
   <div class="container">
     <div class="row">
-      <div class="col-md-10 col-sm-12 col-md-offset-1 text-center">
-        <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
-        <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
-        <p class="padding_30">{{assessmentData.Description}}</p>
-      </div>
-      <div class="clearfix"></div>
-      <div class="col-md-12">
-      	<h2 class="text-center">Result</h2> 
-      </div>
-      <div class="col-md-4 col-sm-6 col-md-offset-1">
-      	<div class="grey_box"><h5>By Domain</h5>
-      	<table class="table table-bordered table-hover">
-        	<tr>
-            	<th class="width_80">Domain</th>
-                <th class="text-center width_20">%</th>
-            </tr>
-            <tr *ngFor="let domain of domainData">
-            	<td>{{domain.domain}}</td>
-                <td class="text-center">{{domain.PercentOfKSA}}%</td>
-            </tr>            
-        </table></div>
-        
-      	<div class="grey_box"><h5>By Rating Scale</h5><table class="table table-bordered table-hover">
-        	<tr>
-            	<th class="width_80">Rating Scale</th>
-                <th class="text-center width_20">%</th>
-            </tr>
-            <tr *ngFor="let rscale of rscaleData; let i = index">
-            	<td>{{i+1}} - {{rscale.Name}}</td>
-                <td class="text-center">{{rscale.PercentOfKSA}}%</td>
-            </tr>
-        </table></div>
-      </div>
-      <div class="col-md-6 col-sm-6 grey_box">
-          <div id="gneraluser_result" class="generaluser_chart_block"></div>
+        <div class="col-md-12 col-sm-12">
+            <h2>AFP Corporate Training Skills Assessment</h2>
+            <h1>{{assessmentData.AssessmentName}}</h1>
+            <a routerLink="/dashboard" class="back_btn"><i class="fa fa-reply"></i>Back to Dashboard</a>
+            <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
+            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+            <p class="padding_30">{{assessmentData.Description}}</p>
+            <h3>Assessment Result</h3>
+          </div>
           <div class="clearfix"></div>
-      </div>
+          <div class="col-md-12 col-sm-12 ">
+              <div class="grey_box">
+                  <div id="gneraluser_result" class="generaluser_chart_block"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-8 col-sm-8">
+                <div class="domain_desc">
+                  <h3>Domains Definition</h3>
+                  <div class="accordion_scroll">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading1" *ngFor="let domain of careaData">
+                          <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">{{domain.domain}}<span class="icon_span"></span></a> </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                          <div class="panel-body">
+                            <table class="table table-hover table-bordered">
+                              <tr>
+                                <th class="text-left width_30">Competency Area</th>
+                                <th class="text-left width_80">Description</th>
+                              </tr>
+                              <tr *ngFor="let carea of domain">
+                                <td>Corporate Strategy/Strategic Planning</td>
+                                <td>Finance teams are frequently tasked with the development and implementation of strategies to meet sustainable growth objectives. Strategic planning helps guide the deployment of resources so that the firm can create and sustain competitive advantages relative to its peers. The success of a given strategy is influenced by factors that are both internal (e.g., strengths and weaknesses) and external (e.g., opportunities and threats) to the firm. Finance teams can evaluate the relative success of the firm’s strategies by identifying and measuring key performance indicators (KPIs). In addition, balanced scorecards can be used to measure the firm’s progress in meeting strategic objectives</td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="grey_box height_510px">
+                  <h3>By Rating Scale</h3>
+                  <table class="table table-bordered table-hover">
+                    <tr>
+                      <th class="width_80">Rating Scale</th>
+                      <th class="text-center width_20">%</th>
+                    </tr>
+                    <tr  *ngFor="let rscale of rscaleData; let i = index">
+                      <td><strong>{{i+1}} - {{rscale.Name}}</strong><br>
+                        {{rscale.Description}} </td>
+                      <td class="text-center">{{rscale.PercentOfKSA}}%</td>
+                    </tr>
+                  
+                  </table>
+                </div>
+              </div>
+
+      <div class="clearfix"></div>
+   
+     
+      
     </div>
   </div>
 </div>

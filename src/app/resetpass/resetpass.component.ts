@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ResetpassService } from '../services/resetpass.service';
 import { JwtHelper } from 'angular2-jwt';
+declare var $: any;
 
 @Component({
   selector: 'app-resetpass',
@@ -22,6 +23,10 @@ export class ResetpassComponent implements OnInit {
 
 
   ngOnInit() {
+    if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }
+
 	   debugger
 	  this.resetEntity={};
 	let id = this.route.snapshot.paramMap.get('id');

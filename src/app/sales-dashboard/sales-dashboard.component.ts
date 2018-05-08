@@ -24,7 +24,10 @@ export class SalesDashboardComponent implements OnInit {
 		private SalesDashboardService: SalesDashboardService) { }
 
 
-	ngOnInit() {debugger
+	ngOnInit() {
+		
+		$('.select2').select2();
+		debugger
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)
 			.then((data) => {

@@ -12,6 +12,15 @@ class Assessment_model extends CI_Model
 			$this->db->where('EndTime',NULL);
 			$query = $this->db->get('tblcandidateassessment');	
 			if($query->num_rows()==1){
+				
+				$this->db->select('CAssessmentId,AssessmentName');
+				$this->db->where('ca.CAssessmentId',$CAssessmentId);
+				$details = $this->db->get('tblcandidateassessment as ca');
+				foreach($details->result() as $row)
+				{
+				   $detail=$row;				   
+				}	
+				
 				$this->db->select('ck.CKSAId,ck.CAssessmentId,ck.KSAId,ck.RatingScaleId,ksa.Name');
 				$this->db->join('tblmstksa ksa', 'ksa.KSAId = ck.KSAId', 'left');
 				$this->db->where('ck.CAssessmentId',$CAssessmentId);
@@ -20,7 +29,7 @@ class Assessment_model extends CI_Model
 				$data = array();
 				$j = -1;
 				for($i=0; $i<$query->num_rows(); $i++) {
-					if($i==0 || $i%8==0){
+					if($i==0 || $i%6==0){
 						$res = array();
 						$j++;
 					}					
@@ -28,6 +37,7 @@ class Assessment_model extends CI_Model
 					$data[$j]['row'] = $res;
 				}
 				$data1="";
+				$data1['ksaDetails']=$detail;
 				$data1['ksa']=$data;
 				$data1['totalksa']=$query->num_rows();
 				return $data1;

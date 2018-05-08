@@ -72,10 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $active_group = 'default';
-<<<<<<< HEAD
-=======
-
->>>>>>> a7197aa3089f380f21f22f8bcba3fe0162eac16a
+ 
 
 $query_builder = TRUE;
 

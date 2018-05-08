@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-declare var AmCharts : any;
-import { ThankyouService } from '../services/thankyou.service';
+import { DashboardService } from '../services/dashboard.service';
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
+declare var AmCharts: any;
 declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-thankyou',
-  providers: [ ThankyouService ],
+  providers: [ DashboardService ],
   templateUrl: './thankyou.component.html',
   styleUrls: ['./thankyou.component.css']
 })
@@ -15,27 +15,31 @@ export class ThankyouComponent implements OnInit {
 
   assessmentData;
   domainData;
-  constructor(private ThankyouService: ThankyouService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  rscaleData;
+  careaData;
+  constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     new PerfectScrollbar('.domain_desc .accordion_scroll');
-    debugger
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    
-    this.ThankyouService.getResult(id)
+    this.DashboardService.getUserAssessDetail(id)
 		.then((data) => 
-		{ 
+		{ debugger
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {
         this.assessmentData = data['assessment'];
         this.domainData = data['domain'];
+        this.rscaleData = data['rscale'];
+        this.careaData = data['carea'];
+		console.log(this.careaData);
         var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);
           this.domainData[j].color = colorarray[j];
         }
-        var chart = AmCharts.makeChart("thankyou_result_bar", {
+        var chart = AmCharts.makeChart("gneraluser_result", {
           "type": "serial",
           "startDuration": 0,
           "dataProvider": this.domainData,
@@ -80,7 +84,8 @@ export class ThankyouComponent implements OnInit {
 		(error) => 
 		{
 			alert('error');
-		});	   
+		});	 
+    
   }
 
 }

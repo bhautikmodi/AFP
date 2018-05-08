@@ -76,7 +76,11 @@ class Register_model extends CI_Model
 	{	
 		if($post_user)
 		{	
-				
+			if(isset($post_user['PhoneNumberl']) && !empty($post_user['PhoneNumberl'])){
+				$phone1 = $post_user['PhoneNumberl'];
+			}	else {
+				$phone1 = '';
+			}
 				$user_data=array(
 						"RoleId"=>3,
 						"CompanyId"=>$post_user['CompanyId'],
@@ -92,7 +96,7 @@ class Register_model extends CI_Model
 						"City"=>$post_user['City'],
 						"ZipCode"=>$post_user['ZipCode'],
 						"PhoneNumber"=>$post_user['PhoneNumber'],
-						"PhoneNumberl"=>$post_user['PhoneNumberl'],
+						"PhoneNumberl"=>$phone1,
 						"CreatedBy" =>1,
 						"UpdatedBy" =>1,
 					);	

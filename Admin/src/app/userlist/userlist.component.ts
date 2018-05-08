@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
+import { CommonService } from '../services/common.service';
 
 import { UserService } from '../services/user.service';
 import { Globals } from '../globals';
@@ -22,11 +23,36 @@ deleteEntity;
 	msgflag;
 	message;
 	type;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals) { }
+	permissionEntity;
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {
-	 debugger
+	this.permissionEntity = {}; 
+	if(this.globals.authData.RoleId==4){
+		this.permissionEntity.View=1;
+		this.permissionEntity.AddEdit=1;
+		this.permissionEntity.Delete=1;
+		this.default();
+	} else {		
+		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'User'})
+		.then((data) => 
+		{
+			this.permissionEntity = data;
+			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
+				this.default();
+			} else {
+				this.router.navigate(['/dashboard']);
+			}		
+		},
+		(error) => 
+		{
+			alert('error');
+		});	
+	}			
+  }
+  
+  default(){		
 	this.UserService.getAllUser()
 	//.map(res => res.json())
 	.then((data) => 
@@ -46,8 +72,8 @@ deleteEntity;
 	{
 		alert('error');
 	});	
-    this.msgflag = false;	
-  }
+    this.msgflag = false;
+	}
   
   deleteUser(user)
 	{ 
@@ -76,7 +102,7 @@ deleteEntity;
 				// },3000); 
 			}			
 			//alert(data);
-			this.globals.message = 'Delete successfully';
+			this.globals.message = 'Data Deleted successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

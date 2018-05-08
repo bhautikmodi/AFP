@@ -110,7 +110,7 @@ export class InvitationComponent implements OnInit {
 						this.InvitationEntity = {};
 						InvitationForm.form.markAsPristine();
 						if (id) {
-							this.globals.message = 'Update successfully';
+							this.globals.message = 'Data Updated successfully';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						} else {

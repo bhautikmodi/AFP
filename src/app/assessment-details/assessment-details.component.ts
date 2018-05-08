@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AssessmentDetailsService } from '../services/assessment-details.service';
+declare var $: any;
 @Component({
   selector: 'app-assessment-details',
 	providers: [ AssessmentDetailsService ],
@@ -21,6 +22,9 @@ header;
 
   ngOnInit() 
   {
+	if ($("body").height() < $(window).height()) {
+		$('footer').addClass('footer_fixed');
+	}
 	  this.AsmtDetailsEntity={};
 	  this.AsmtDetailsEntity.TeamSizeId = '';
 	  this.AssessmentDetailsService.getTeamSize()

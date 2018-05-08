@@ -18,9 +18,41 @@ export class AssessmentComponent implements OnInit {
   addprogess;
   submit_true;
   arrayset;
+  ksaDetails;
+  percent;
   constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() { 
+    
+    // Set the date we're counting down to
+var countDownDate = new Date("Apr 30, 2018 00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate + now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+    
+
     debugger
     var progress = document.getElementById("progress");
     $(progress).css("width", "0%");    
@@ -31,6 +63,7 @@ export class AssessmentComponent implements OnInit {
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {
+		this.ksaDetails = data['ksaDetails'];
         this.ksaList = data['ksa'];
         this.totalksa = data['totalksa'];
         this.addprogess = 100/this.totalksa;
@@ -63,8 +96,8 @@ export class AssessmentComponent implements OnInit {
             for(let child of obj.row){
               let i = this.ksaList[j].row.indexOf(child);
               if(child.RatingScaleId>0){
-                $('#ksa'+((8*j)+i+1)+'_dots').removeClass('fa-circle-o');
-                $('#ksa'+((8*j)+i+1)+'_dots').addClass('fa-dot-circle-o');
+                $('#ksa'+((6*j)+i+1)+'_dots').removeClass('fa-circle-o');
+                $('#ksa'+((6*j)+i+1)+'_dots').addClass('fa-dot-circle-o');
               }          
             }
           } 
@@ -123,6 +156,7 @@ export class AssessmentComponent implements OnInit {
         }
       }
       let addpro = (100*k)/this.totalksa;
+	  this.percent = addpro.toFixed(1);
       var progress = document.getElementById("progress");
       $(progress).css("width", addpro+"%");
       if(k==this.totalksa){

@@ -27,6 +27,9 @@ constructor( private http: Http,private globals: Globals, private router: Router
 	if($(this).val().length==$(this).attr('maxlength'))
 	$(this).next('.form-control').focus()
 })
+ if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }
   this.globals.msgflag=false;
 	  this.InvitationEntity = {};
 	    this.InvitationEntity = {};

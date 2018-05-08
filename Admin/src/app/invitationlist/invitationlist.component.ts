@@ -108,7 +108,7 @@ permissionEntity;
 				// },3000); 
 			// }			
 			//alert(data);
-			this.globals.message = 'Revoke successfully';
+			this.globals.message = 'Revoked successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -155,7 +155,7 @@ permissionEntity;
 				// },3000); 
 			// }			
 			//alert(data);
-			this.globals.message = 'send successfully';
+			this.globals.message = 'Email send successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

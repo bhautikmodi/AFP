@@ -97,7 +97,7 @@ export class CourselistComponent implements OnInit {
 				// },3000); 
 			}			
 			//alert(data);
-			this.globals.message = 'Delete successfully';
+			this.globals.message = 'Data Deleted successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

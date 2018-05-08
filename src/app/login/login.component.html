@@ -1,21 +1,14 @@
-<div class="clearfix"></div>
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>Sign In</h1>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
+
 
 <!-- Inner Section -->
-<div class="inner_content login_padding">
+<div class="inner_content">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
+	<div class="col-md-12">
+        <h2>AFP Corporate Training Skills Assessment</h2>
+        <h1>Sign in</h1>
+		  <h5>Sign in to your AFP Account. Enter your details below.</h5>
+    <div class="col-md-5 col-sm-6 form_bg">
       
         <div class="clearfix"></div>
 
@@ -35,7 +28,7 @@
                                     <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)"> 
                                         <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter your email</span>
                                         <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
-                                          Please enter a valid email
+                                          Please enter  valid email
                                         </span>
                                         </span>
                                 </div>
@@ -54,6 +47,7 @@
         </form>
         <div class="clearfix"></div>
       </div>
+	  </div>
     </div>
   </div>
   <div class="clearfix"></div>

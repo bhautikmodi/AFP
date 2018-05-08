@@ -1,24 +1,15 @@
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>Invitation</h1>
-        <div class="clearfix"></div>
-       
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<!-- End Header Section --> 
+
 
 <!-- Inner Section -->
-<div class="inner_content login_padding">
+<div class="inner_content">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3 form_bg">
-        
+      <div class="col-md-12 col-sm-12 ">
+        <h2>AFP Corporate Training Skills Assessment</h2>
+        <h1>Registration</h1>
+		  <h5>By Invitation Code only</h5>
         <div class="clearfix"></div>
+        <div class="col-md-5 col-sm-6 form_bg">
 		<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
   {{globals.message}}
@@ -41,7 +32,7 @@
                                               </span>
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
-                                                Please input a valid Email Address.
+                                                Please enter valid email address.
                                               </span>
                                           
                                 </span> 
@@ -66,11 +57,13 @@
 								
             </div>
           </div>
-		     <!-- <button type="submit" class="btn sub-btn">Next</button> -->
+         <!-- <button type="submit" class="btn sub-btn">Next</button> -->
+         <p class="pull-left"> Need Invitation Code? <a href="mailto:info@afponline.com" class="forgot_paswd">Contact us </a></p>
        <button class="next_btn pull-right" type="submit"><span>Next</span></button>
         </form>
         <div class="clearfix"></div>
       </div>
+    </div>
     </div>
   </div>
   <div class="clearfix"></div>

@@ -4,6 +4,7 @@ import { SalesDashboardService } from '../services/sales-dashboard.service';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
+declare var $: any;
 @Component({
   selector: 'app-user-assessment-list',
   providers: [ SalesDashboardService ],
@@ -13,19 +14,25 @@ declare var AmCharts: any;
 export class UserAssessmentListComponent implements OnInit {
   assessmentList;
   userList;
+  padinglist;
   constructor(private SalesDashboardService: SalesDashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
   ngOnInit() {  
+    if ($("body").height() < $(window).height()) {
+      $('footer').addClass('footer_fixed');
+  }
     this.userList='';
     let id = this.route.snapshot.paramMap.get('id');    
     this.SalesDashboardService.getAllAssement(id)
 		.then((data) => 
 		{
       this.assessmentList = data['complete'];
+      this.padinglist = data['pending'];
+      
       this.userList = data['user'];
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
-      console.log(this.assessmentList);
+      // console.log(this.assessmentList);
       setTimeout(()=>{ 
         var j = 0; 
         var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];

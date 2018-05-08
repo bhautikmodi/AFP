@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Globals } from '../globals';
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,13 @@ loginEntity;
  
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,private globals: Globals) { }
 
-  ngOnInit() {this.loginEntity={};
+  ngOnInit() {
+	  if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }
+	  this.loginEntity={};
+  
+  
 	  
   }
    login(loginForm)
@@ -56,7 +63,7 @@ loginEntity;
 			}, 
 			(error) => 
 			{ 
-				this.globals.message = 'Invalid user Email-Id';
+				        this.globals.message = 'Invalid Email-Id and Password';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;

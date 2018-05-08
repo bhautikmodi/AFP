@@ -10,31 +10,22 @@
 </div> -->
 
 
-<div class="clearfix"></div>
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>Assessment by {{assessmentData.FirstName}} </h1>
-        <div class="clearfix"></div>
-        <a routerLink="/user-assessment-list/{{assessmentData.UserId}}" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a> </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<!-- End Header Section --> 
 
 <!-- Inner Section -->
 <div class="inner_content height_zero">
   <div class="container">
     <div class="row">
-      <div class="col-md-10 col-sm-12 col-md-offset-1 text-center">
-        <h3>For Development Team</h3>
-        <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
-        <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
-        <p class="padding_30">{{assessmentData.Description}}</p>
-        <div class="text-center"><a href="#" class="red_btn" data-toggle="modal" data-target="#PreviewModal"><span>View All KSA Rating</span></a></div>
-      </div>
+        <div class="col-md-12">
+            <h2>AFP Corporate Training Skills Assessment</h2>
+            <h1>Assessment by {{assessmentData.FirstName}} </h1>
+            <a routerLink="/user-assessment-list/{{assessmentData.UserId}}" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a>
+            <h3>{{assessmentData.AssessmentName}}</h3>
+            <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
+            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+            <p class="padding_15">{{assessmentData.Description}} </p>
+            <div class="text-center"><a href="#" class="red_btn" data-toggle="modal" data-target="#PreviewModal"><span>View All KSA Rating</span></a></div>
+          </div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
@@ -45,7 +36,7 @@
     <div class="row">
       <div class="col-md-6 col-sm-6">
         <div class="inner_grey">
-          <h2 class="text-center">Result</h2>
+            <h3 class="text-center">Result</h3>
           <div class="clearfix"></div>
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
@@ -94,7 +85,7 @@
       <div class="col-md-6 col-sm-6">
         <div class="inner_grey">
           <div class="course_block">
-            <h2 class="text-center">Recommended Course(s)</h2>
+              <h3 class="text-center">Recommended Course(s)</h3>
             <div class="clearfix"></div>
             <div class="panel-group" id="courseaccordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default" *ngFor="let domain of rcourse; let i=index; let f=first">
@@ -135,7 +126,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">Assessment Preview</h2>
+          <h3 class="modal-title" id="myModalLabel">KSA Rating</h3>
       </div>
       <div class="modal-body">
         <div class="preview_ksa">
@@ -175,7 +166,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">Recommended Course(s)</h2>
+          <h3 class="modal-title">Recommended Course(s)</h3>
       </div>
       <div class="modal-body">
         <div class="course_rec">

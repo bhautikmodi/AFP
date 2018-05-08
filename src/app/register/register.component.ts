@@ -31,7 +31,12 @@ export class RegisterComponent implements OnInit {
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {debugger
+  ngOnInit() {
+	$('[data-toggle="tooltip"]').tooltip() ;
+	if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }
+	debugger
 	  
 	  
 			this.btn_disable = false;
@@ -42,11 +47,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity.StateId ='';
 			
 		 
-    // $('select').select2();
-
-// $('#employee_btn').click(function () {
-	// $("#submit_Modal").modal('show');
-// });
+   
  	debugger
 	 let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
@@ -239,6 +240,7 @@ export class RegisterComponent implements OnInit {
 			this.stateList = [];
 		}
 	}
+	
 	checkpassword(){ 
 		if(this.RegisterEntity.cPassword != this.RegisterEntity.Password){
 			this.same = true;

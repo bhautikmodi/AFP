@@ -1,35 +1,34 @@
-<div class="clearfix"></div>
-<div class="inner_breadcrumb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <h1>Dashboard</h1>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<!-- End Header Section --> 
+
 
 <!-- Inner Section -->
 <div class="inner_content height_zero filter_block">
   <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <h2>AFP Corporate Training Skills Assessment</h2>
+            <h1>Sales Dashboard</h1>
+          </div>
     <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
       <div class="col-md-3 col-sm-3">
         <div class="form-group">
           <label><span>*</span>Company</label>
-          <select class="form-control" #CompanyId="ngModel" (change)="getUserList(SalesDashboardForm)"
+          <select class="form-control" #CompanyId="ngModel" 
           [(ngModel)]="SalesDashboardEntity.CompanyId"
                name="CompanyId"  >  
                  <option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
                  <option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
                  ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
                </select>
+<!--            
+           <select class="form-control select2" #CompanyId="ngModel (change)="getUserList(SalesDashboardForm)"
+          [(ngModel)]="SalesDashboardEntity.CompanyId" name="CompanyId "  >  
+                 <option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
+                 <option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
+                 ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
+               </select>{{SalesDashboardEntity.CompanyId}} -->
              </div>
            </div>
-     
+<!--      
      <div class="col-md-3 col-sm-3">
        <div class="form-group">
          <label><span>*</span>User Name</label>
@@ -41,7 +40,7 @@
                </select>
 								
         </div>
-      </div>
+      </div> -->
       
       <div class="col-md-3 col-sm-3">
         <button class="next_btn margin_btn_15" type="submit"><span>Filter</span></button>
@@ -56,8 +55,8 @@
 <div class="user_section">
   <div class="container">
     <div class="row">
-    <h2 class="text-center">List of Users</h2>
-      <div class="col-md-3 col-sm-3" *ngFor="let UserL of Usersearch;let i = index">
+        <h3 class="text-center" *ngIf="Usersearch!=''">Users</h3>
+      <div class="col-md-3 col-sm-3" *ngFor="let UserL of (Usersearch | paginate: { itemsPerPage:3, currentPage: p} );let i = index ">
         <div class="user_box"(click)="addclass(i)" id="cbox{{i}}">
 				  <input type="hidden" name="id" value="{{UserL.UserId}}"/>
           <div class="user_name">{{UserL.FirstName}}</div>
@@ -66,23 +65,23 @@
             <strong>Company Name : </strong>{{UserL.Name}}<br>
             <strong>Last Assessment : </strong><span *ngIf="UserL.lastdate!=NULL">{{UserL.lastdate | date :'MM/dd/yyyy'}}</span><span *ngIf="UserL.lastdate==NULL">NA</span><br>
             <strong>Total Assessment : </strong>{{UserL.totalass}}</p>
-        </div>
+            
+          </div>
       </div>
-     
-   
-    
       
-    
-      <div class="clearfix"></div>
+     <div class="clearfix"></div>
+     
+     <div class="clearfix"></div>
       <div class="col-md-12">
-        <ul class="pagination">
-          <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li>
-          <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
-          <li class="paginate_button disabled" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
-          <li class="paginate_button next disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li>
-        </ul>
-        <button class="next_btn pull-right" type="button"  (click)="clickid()"><span>Next</span></button>
-      </div>
+          <pagination-controls (pageChange)="p=$event" *ngIf="Usersearch!=''"></pagination-controls>
+          <div class="row"  *ngIf="Usersearch==''" >
+              <div class="col-md-12">
+                <h2> No Assessment Found </h2>
+              </div>
+              </div>
+        
+       <button class="next_btn pull-right" [disabled]="vardisabled" type="button"  (click)="clickid()"><span>Next</span></button>
+      </div> 
     </div>
   </div>
   <div class="clearfix"></div>

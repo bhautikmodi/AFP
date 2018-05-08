@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ForgotpasswordService } from '../services/forgotpassword.service';
+declare var $: any;
 
 @Component({
   selector: 'app-forgotpassword',
@@ -18,7 +19,11 @@ export class ForgotpasswordComponent implements OnInit {
 	btn_disable;
  constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
-  ngOnInit() {this.fgpassEntity={};
+  ngOnInit() {
+	if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+    }  
+	this.fgpassEntity={};
   }
   
   
@@ -39,7 +44,7 @@ export class ForgotpasswordComponent implements OnInit {
 				
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'Invalid user Email-Id';
+						this.globals.message = 'Invalid Email-Id';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;

@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ChangepassService } from '../services/changepass.service';
+declare var $: any;
 
 @Component({
   selector: 'app-changepass',
@@ -17,9 +18,16 @@ export class ChangepassComponent implements OnInit {
 	btn_disable;
 	header;
 	same;
+
   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ChangepassService:ChangepassService) { }
 
-  ngOnInit() { this.newpassEntity={}; }
+  ngOnInit() { 
+	if ($("body").height() < $(window).height()) {
+		$('footer').addClass('footer_fixed');
+	}  
+	this.newpassEntity={};
+  this.globals.msgflag = false;
+ }
   
    addNewPassword(newpassForm)
   {		debugger
@@ -61,7 +69,7 @@ export class ChangepassComponent implements OnInit {
 						this.newpassEntity = {};
 						newpassForm.form.markAsPristine();
 						this.globals.isLoading = false;
-						this.globals.message = 'Your password has been changed.Please check your AFP email-id!';
+						this.globals.message = 'Your password has been changed';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						

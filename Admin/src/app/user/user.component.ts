@@ -110,6 +110,8 @@ export class UserComponent implements OnInit {
 		else {
 			this.header = 'Add';
 			this.userEntity = {};
+			this.userEntity.CountryId='';
+			this.userEntity.StateId='';
 			// this.userEntity.IsActive = '1';
 		}
 	}
@@ -138,7 +140,7 @@ export class UserComponent implements OnInit {
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Add successfully';
+						this.globals.message = 'Data Added successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}
@@ -156,7 +158,9 @@ export class UserComponent implements OnInit {
 	}
 
 
-	getStateList() {
+	getStateList(userForm) {
+		userForm.form.controls.StateId.markAsDirty();
+		this.userEntity.StateId='';
 		if (this.userEntity.CountryId > 0) {
 			this.UserService.getStateList(this.userEntity.CountryId)
 				.then((data) => {

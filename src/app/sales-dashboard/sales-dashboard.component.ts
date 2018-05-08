@@ -19,11 +19,15 @@ export class SalesDashboardComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
+	vardisabled;
   constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private SalesDashboardService: SalesDashboardService) { }
 
 
-	ngOnInit() {debugger
+	ngOnInit() {
+		
+		$('.select2').select2();
+		debugger
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)
 			.then((data) => {
@@ -47,7 +51,7 @@ export class SalesDashboardComponent implements OnInit {
 
 
 
-
+			this.vardisabled=true;
     this.SalesDashboardEntity={};
 		this.SalesDashboardEntity.CompanyId='';
 		this.SalesDashboardEntity.UserId='';
@@ -77,8 +81,9 @@ export class SalesDashboardComponent implements OnInit {
 		debugger
 		if (SalesDashboardForm.valid) {
 			this.btn_disable = true;
-		  this.SalesDashboardEntity.CompanyId;
-			this.SalesDashboardEntity.UserId;
+		//   this.SalesDashboardEntity.CompanyId;
+		// 	this.SalesDashboardEntity.UserId;
+		this.vardisabled=true;
 			var data = {'com': this.SalesDashboardEntity.CompanyId,'user':this.SalesDashboardEntity.UserId};
 			this.SalesDashboardService.add(data)
 				.then((data) => {
@@ -86,7 +91,10 @@ export class SalesDashboardComponent implements OnInit {
 					if(data=='error')
 					{
 						this.Usersearch=[];
-					}else{		this.Usersearch = data;
+					}
+					else
+					{		
+						this.Usersearch = data;
 					}
 			
 					this.btn_disable = false;
@@ -122,14 +130,24 @@ export class SalesDashboardComponent implements OnInit {
 	clickid()
   {
 	var id = $('.user_box.active input').val();
+	this.router.navigate(['/user-assessment-list/'+id]);
+	
 	//alert(id);
- this.router.navigate(['/user-assessment-list/'+id]);  
+   
   
   }
   addclass(i){
 	  
 	  $('.user_box').removeClass('active');
 	  $('#cbox'+i).addClass('active');
+	  var id = $('.user_box.active input').val();
+	if(id>0)
+	{
+		this.vardisabled=false;
+	}
+	else{
+		this.vardisabled=true;
+	}
 		//e.currentTarget.addClass('active');
 	}
 	clearForm(SalesDashboardForm) {

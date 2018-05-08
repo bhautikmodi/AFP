@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit
     home()
     {
       this.globals.check_login=false;
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     }
     log()
     {

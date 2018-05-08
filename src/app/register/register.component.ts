@@ -31,12 +31,12 @@ export class RegisterComponent implements OnInit {
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {
+  ngOnInit() {debugger
 	$('[data-toggle="tooltip"]').tooltip() ;
 	if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }
-	debugger
+	
 	  
 	  
 			this.btn_disable = false;
@@ -162,7 +162,7 @@ export class RegisterComponent implements OnInit {
 		}
 		
 		
-		if(RegisterForm.valid){
+		if(RegisterForm.valid && !this.same){
 			
 			this.RegisterFormfinal = RegisterForm;
 			$("#submit_Modal").modal('show');
@@ -171,7 +171,7 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	finalsubmit(RegisterForm){
-		
+		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 

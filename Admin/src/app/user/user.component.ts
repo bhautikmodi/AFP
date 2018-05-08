@@ -111,7 +111,7 @@ export class UserComponent implements OnInit {
 			this.header = 'Add';
 			this.userEntity = {};
 			this.userEntity.CountryId='';
-			
+			this.userEntity.StateId='';
 			// this.userEntity.IsActive = '1';
 		}
 	}
@@ -158,8 +158,9 @@ export class UserComponent implements OnInit {
 	}
 
 
-	getStateList() {
-
+	getStateList(userForm) {
+		userForm.form.controls.StateId.markAsDirty();
+		this.userEntity.StateId='';
 		if (this.userEntity.CountryId > 0) {
 			this.UserService.getStateList(this.userEntity.CountryId)
 				.then((data) => {

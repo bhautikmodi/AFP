@@ -26,25 +26,27 @@
                   <h3>Domains Definition</h3>
                   <div class="accordion_scroll">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                      <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="heading1" *ngFor="let domain of careaData">
-                          <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">{{domain.domain}}<span class="icon_span"></span></a> </h4>
+
+                      <div class="panel panel-default" *ngFor="let domain of careaData; let i=index">
+                        <div class="panel-heading" role="tab" id="heading{{i}}">
+                          <h4 class="panel-title"> <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapse1">{{domain.Name}}<span class="icon_span"></span></a> </h4>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                        <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
                           <div class="panel-body">
                             <table class="table table-hover table-bordered">
                               <tr>
                                 <th class="text-left width_30">Competency Area</th>
                                 <th class="text-left width_80">Description</th>
                               </tr>
-                              <tr *ngFor="let carea of domain">
-                                <td>Corporate Strategy/Strategic Planning</td>
-                                <td>Finance teams are frequently tasked with the development and implementation of strategies to meet sustainable growth objectives. Strategic planning helps guide the deployment of resources so that the firm can create and sustain competitive advantages relative to its peers. The success of a given strategy is influenced by factors that are both internal (e.g., strengths and weaknesses) and external (e.g., opportunities and threats) to the firm. Finance teams can evaluate the relative success of the firm’s strategies by identifying and measuring key performance indicators (KPIs). In addition, balanced scorecards can be used to measure the firm’s progress in meeting strategic objectives</td>
+                              <tr *ngFor="let area of domain.carea">
+                                <td>{{area.Name}}</td>
+                                <td>{{area.Description}}</td>
                               </tr>
                             </table>
                           </div>
                         </div>
                       </div>
+
                      </div>
                   </div>
                 </div>

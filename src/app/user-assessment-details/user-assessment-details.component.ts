@@ -24,7 +24,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');    
     this.DashboardService.getUserAssessDetail(id)
 		.then((data) => 
-		{ 
+		{ debugger
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {

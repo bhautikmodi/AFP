@@ -117,14 +117,9 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Phone Number (Alternative)</label>
 											<input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl" 
-											pattern="[0-9 .()-]{0,}"  maxlength="13"
-												[(ngModel)]="userEntity.PhoneNumberl" [ngClass]="{red_border: (PhoneNumberl.dirty && PhoneNumberl.invalid) || (PhoneNumberl.pristine && submitted)}"  required/>
-												<span class="error_span"  *ngIf="(PhoneNumberl.dirty && PhoneNumberl.invalid) || (PhoneNumberl.pristine && submitted)"> 
-												<span *ngIf="PhoneNumberl.errors.required || (PhoneNumberl.pristine && submitted)">Please enter phone number</span>
-												<span class="error_span" *ngIf="PhoneNumberl.errors && PhoneNumberl.errors.pattern">
-													Please enter valid phone number
-										  </span>
-											</span>
+											 maxlength="13"
+												[(ngModel)]="userEntity.PhoneNumberl" />
+												
                                         </div>
 										
 										<div class="clearfix"></div>

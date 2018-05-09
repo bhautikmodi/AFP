@@ -69,4 +69,12 @@ a.disabled {
     }
 }
 
-.error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;}
+.error_span {
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book";
+    line-height: 11px;
+}
+
+/* .error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;} */

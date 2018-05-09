@@ -26,7 +26,8 @@
 										
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Company Name</label>
-                                            <input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z ]{1,}"  [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
+											<input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z ,-.]{0,}"  maxlength="100"
+											 [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
 											<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter company name </span>
 											 <span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
@@ -57,7 +58,8 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Website</label>
                                             <input type="email" class="form-control" #Website="ngModel" name="Website" 
-												[(ngModel)]="companyEntity.Website" pattern="[a-zA-Z0-9./:-]{0,}"  [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>
+												[(ngModel)]="companyEntity.Website" pattern="[a-zA-Z0-9./:-]{0,}" maxlength="250"
+												 [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>
 											<span class="error_span"  *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
 												<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter website </span>
 												 <span class="error_span" *ngIf="Website.errors && Website.errors.pattern">
@@ -71,7 +73,7 @@
 											<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Phone Number</label>
                                             <input type="phonenum" class="form-control" #PhoneNo="ngModel" name="PhoneNo"
-											pattern="[0-9\-.()\s]+" maxlength="13"
+											pattern="[0-9 .()-]{0,}"  maxlength="13"
 												[(ngModel)]="companyEntity.PhoneNo" [ngClass]="{red_border: (PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)}"  required/>
 											<span class="error_span"  *ngIf="(PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)"> 
 												<span *ngIf="PhoneNo.errors.required || (PhoneNo.pristine && submitted)">Please enter phone number</span>

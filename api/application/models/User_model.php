@@ -48,6 +48,7 @@ class User_model extends CI_Model
 				"City"=>trim($post_user['City']),
 				"ZipCode"=>trim($post_user['ZipCode']),
 				"PhoneNumber"=>trim($post_user['PhoneNumber']),
+				"PhoneNumberl"=>trim($post_user['PhoneNumberl']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"UpdatedBy" =>1,
@@ -139,6 +140,7 @@ class User_model extends CI_Model
 				"City"=>trim($post_user['City']),
 				"ZipCode"=>trim($post_user['ZipCode']),
 				"PhoneNumber"=>trim($post_user['PhoneNumber']),
+				"PhoneNumberl"=>trim($post_user['PhoneNumberl']),
 				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
 				'UpdatedOn' => date('y-m-d H:i:s')
@@ -172,7 +174,7 @@ class User_model extends CI_Model
 	  {
 		  
 		  $this->db->select('UserId,RoleId,CompanyId,FirstName,LastName,Title,EmailAddress,Password,Address1,
-		Address2,CountryId,StateId,City,ZipCode,PhoneNumber,IsActive');
+		Address2,CountryId,StateId,City,ZipCode,PhoneNumber,PhoneNumberl,IsActive');
 		$this->db->where('user.UserId=',$user_id);
 		
 		//$this->db->join('tblmststate sta', 'sta.StateId = user.UserId', 'left');

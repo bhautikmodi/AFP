@@ -24,7 +24,7 @@
                                  <form class="form-validate"  #IndustryForm="ngForm" (ngSubmit)="addIndustry(IndustryForm)">
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Industry</label>
-											<input type="text" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/)/./ ]{0,}"  #IndustryName="ngModel" [(ngModel)]="IndustryEntity.IndustryName" class="form-control"
+											<input type="text" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/)/./ ]{0,}" maxlength="250" #IndustryName="ngModel" [(ngModel)]="IndustryEntity.IndustryName" class="form-control"
 											name="IndustryName"  [ngClass]="{red_border: (IndustryName.dirty && IndustryName.invalid) || (IndustryName.pristine && submitted)}" required/>
 												<span class="error_span" *ngIf="(IndustryName.dirty && IndustryName.invalid) || (IndustryName.pristine && submitted)">
 								  <span *ngIf="IndustryName.errors && IndustryName.errors.required">
@@ -32,7 +32,7 @@
 											</span>
 										  
 										  <span *ngIf="IndustryName.errors && IndustryName.errors.pattern">
-												Please input a valid Industry.
+												Please input valid Industry.
 										  </span>
 								</span>
                                         </div>

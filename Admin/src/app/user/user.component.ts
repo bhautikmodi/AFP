@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
 	}
 
 	default(){
-		this.stateList = {};
+		this.stateList = [];
 		this.UserService.getAllCountry()
 			.then((data) => {
 				this.CountryList = data;

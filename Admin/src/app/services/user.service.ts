@@ -146,7 +146,7 @@ export class UserService {
 	return promise;
   }
   
-  getStateList(CountryId){
+  getStateList(CountryId){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'User/getStateList/' + CountryId)
       .toPromise()

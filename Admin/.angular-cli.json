@@ -27,11 +27,12 @@
         "assets/plugins/dataTables/jquery.dataTables.js",
         "assets/plugins/dataTables/dataTables.bootstrap.js",
         "assets/plugins/metisMenu/jquery.metisMenu.js",
+        "assets/scripts/perfect-scrollbar.js",
         "assets/scripts/siminta.js",
         "assets/plugins/morris/raphael-2.1.0.min.js",
         "assets/plugins/morris/morris.js",
         "assets/scripts/dashboard-demo.js",
-        "assets/scripts/perfect-scrollbar.js",
+      
         "assets/scripts/custom.js"       
       ],  
       "environmentSource": "environments/environment.ts",

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Globals } from '.././globals';
 import { Router } from '@angular/router';
-
+declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
@@ -12,7 +12,7 @@ export class LeftMenuComponent implements OnInit {
   constructor(private globals: Globals, private router: Router) { }
 
   ngOnInit() {  
-       
+    new PerfectScrollbar('.sidebar-collapse');
   }
 
   menuopen(path){ 

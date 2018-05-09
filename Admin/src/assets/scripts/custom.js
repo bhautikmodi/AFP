@@ -17,4 +17,4 @@ $( document ).ready( function( ) {
 //});
 
 
- new PerfectScrollbar('.sidebar-collapse');
+ // new PerfectScrollbar('.sidebar-collapse');

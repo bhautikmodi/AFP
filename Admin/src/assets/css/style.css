@@ -737,7 +737,7 @@ div.dataTables_length select {
  */
 .navbar-default{background: #072b49;}
 .navbar-static-side{position: fixed; height: 100%; }
-.navbar-static-side .sidebar-collapse{overflow-y: scroll; height: 87%; }
+.navbar-static-side .sidebar-collapse{overflow-y: scroll; height: 83%; }
 .navbar-static-side .sidebar-collapse::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

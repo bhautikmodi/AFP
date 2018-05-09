@@ -52,7 +52,7 @@ export class ChangepassComponent implements OnInit {
 			{
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'User entered wrong password';
+						this.globals.message = 'User entered wrong password!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.globals.isLoading = false;
@@ -69,7 +69,7 @@ export class ChangepassComponent implements OnInit {
 						this.newpassEntity = {};
 						newpassForm.form.markAsPristine();
 						this.globals.isLoading = false;
-						this.globals.message = 'Your password has been changed';
+						this.globals.message = 'Your password has been changed!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						

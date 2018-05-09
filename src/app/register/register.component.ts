@@ -197,12 +197,12 @@ export class RegisterComponent implements OnInit {
 				localStorage.removeItem('EmailAddress');
 				RegisterForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Update successfully';
+						this.globals.message = 'Update successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						this.router.navigate(['/dashboard']);
 					} else {
-						this.globals.message = 'Add successfully';
+						this.globals.message = 'Add successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						this.router.navigate(['/welcome_register']);

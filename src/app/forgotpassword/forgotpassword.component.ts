@@ -60,7 +60,7 @@ export class ForgotpasswordComponent implements OnInit {
 					this.fgpassEntity = {};
 					fgpassForm.form.markAsPristine();
 					this.globals.isLoading = false;
-					this.globals.message = 'Password reset link has been sent to your Email Id. Please check your Email.';
+					this.globals.message = 'Password reset link has been sent to your Email Id. Please check your Email!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 						

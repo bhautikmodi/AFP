@@ -22,7 +22,7 @@ export class CompanyComponent implements OnInit {
 	constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CompanyService: CompanyService, private CommonService: CommonService) { }
 
-	ngOnInit() {
+	ngOnInit() {	this.companyEntity = {};
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

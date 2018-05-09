@@ -168,6 +168,18 @@
 											</span>
                                         </div>
 										
+<<<<<<< HEAD
+										<div class="form-group col-md-6">
+                                            <label><span class="required">*</span>State</label>
+                                          <select class="form-control "  #StateId="ngModel" [(ngModel)]="userEntity.StateId" name="StateId"
+				 [ngClass]="{red_border: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
+						<option value="" ngSelected='userEntity.StateId==""'>Select State</option>
+						<option *ngFor="let state of stateList" value="{{state.StateId}}" ngSelected="userEntity.StateId==state.StateId">{{state.StateName}}</option>
+				</select>
+				 <span class="error_span"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
+							<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select your State</span>
+						</span>
+=======
 										<div class="form-group col-md-4">
                                             <label><span class="required">*</span>State / Province</label>
                                           <select class="form-control" #StateId="ngModel" [(ngModel)]="userEntity.StateId" name="StateId" [ngClass]="{red_border: (StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)}" required>  
@@ -177,6 +189,7 @@
 								<span class="error_span"  *ngIf="(StateId.dirty && StateId.invalid) || (StateId.pristine && submitted)"> 
 												<span *ngIf="StateId.errors.required || (StateId.pristine && submitted)">Please select state </span>
 											</span>
+>>>>>>> c2819935fe14a6d32009ab0294bd641e39f95290
                                         </div>
 										
 										<div class="form-group col-md-4">

@@ -86,11 +86,11 @@ export class IndustryComponent implements OnInit {
 					IndustryForm.form.markAsPristine();
 
 					if (id) {
-						this.globals.message = 'Data Updated successfully';
+						this.globals.message = 'Data Updated successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Data Added successfully';
+						this.globals.message = 'Data Added successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

@@ -79,7 +79,7 @@
                                      [(ngModel)]="InvitationEntity.Website" name="Website" 
 				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
-							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter Website</span>
+							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter website</span>
 							<span *ngIf="Website.errors && Website.errors.pattern">Please enter valid website</span>
 						</span>
                                 </div>

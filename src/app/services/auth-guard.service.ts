@@ -73,7 +73,7 @@ export class AuthGuard implements CanActivate {
 		  }		  
 	  } else {
 			
-		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]=='')||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'){
+		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'){
 			  if(state.url=='/login'){
 				this.globals.check_login = true;
 			  }			   

@@ -157,12 +157,12 @@ export class SettingsComponent implements OnInit {
 				this.submitted = false;
 				this.header = 'Add';
 				if(this.teamsizeEntity.TeamSizeId>0){
-					this.globals.message = 'Data Updated Successfully';
+					this.globals.message = 'Data Updated Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
 					//this.teamsizeList.push(data);
-					this.globals.message = 'Data Added Successfully';
+					this.globals.message = 'Data Added Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}
@@ -211,7 +211,7 @@ export class SettingsComponent implements OnInit {
 				this.teamsizeList.splice(index, 1);				
 			}			
 			//alert(data);
-			this.globals.message = 'Data Deleted Successfully';
+			this.globals.message = 'Data Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -219,7 +219,7 @@ export class SettingsComponent implements OnInit {
 		{
 			$('#Delete_Modal').modal('hide');
 			if(error.text){
-				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.message = "You can't delete this record because of their dependency!";
 				this.globals.type = 'danger';
 				this.globals.msgflag = true;
 			}	
@@ -245,7 +245,7 @@ export class SettingsComponent implements OnInit {
 					this.updateEntity = {};
 					ksaForm.form.markAsPristine();				 
 					this.cmsgflag = true;
-					this.cmessage = 'No of KSA Updated Successfully';
+					this.cmessage = 'No of KSA Updated Successfully!';
 				}, 
 				(error) => 
 				{
@@ -276,7 +276,7 @@ export class SettingsComponent implements OnInit {
 	 			this.updateEntity = {};
 				 invitationForm.form.markAsPristine();
 				 this.cmsgflag = true;
-				 this.cmessage = 'Invitation Features Updated Successfully';
+				 this.cmessage = 'Invitation Features Updated Successfully!';
 			}, 
 			(error) => 
 			{
@@ -298,7 +298,7 @@ export class SettingsComponent implements OnInit {
 				this.btn_disable3 = false;
 				this.submitted3 = false;
 				this.cmsgflag = true;
-				this.cmessage = 'Remaining Days Updated Successfully';
+				this.cmessage = 'Remaining Days Updated Successfully!';
 			},
 			(error) =>
 			{
@@ -346,7 +346,7 @@ export class SettingsComponent implements OnInit {
 	 			this.updateEntity = {};
 				 fromForm.form.markAsPristine();
 				 this.cmsgflag1 = true;
-				 this.cmessage1 = 'SMTP Details Updated Successfully';
+				 this.cmessage1 = 'SMTP Details Updated Successfully!';
 			}, 
 			(error) => 
 			{

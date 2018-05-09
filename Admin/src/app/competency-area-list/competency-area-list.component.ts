@@ -93,7 +93,7 @@ export class CompetencyAreaListComponent implements OnInit {
 			if (index != -1) {
 				this.areaList.splice(index, 1);			
 			}	
-			this.globals.message = 'Data Deleted Successfully';
+			this.globals.message = 'Data Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -101,7 +101,7 @@ export class CompetencyAreaListComponent implements OnInit {
 		{
 			$('#Delete_Modal').modal('hide');
 			if(error.text){
-				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.message = "You can't delete this record because of their dependency!";
 				this.globals.type = 'danger';
 				this.globals.msgflag = true;
 			}	

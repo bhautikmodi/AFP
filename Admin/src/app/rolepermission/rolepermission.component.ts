@@ -61,7 +61,7 @@ export class RolepermissionComponent implements OnInit {
     this.RolepermissionService.update_permission(this.permissionList)
     .then((data) => 
     {
-      this.globals.message = 'Data Updated Successfully';
+      this.globals.message = 'Data Updated Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
       this.btn_disable = false;

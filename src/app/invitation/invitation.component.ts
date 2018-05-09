@@ -78,7 +78,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 					
 		        if(data=='days')
 				{
-					this.globals.message = 'Your invitation code has expired.';
+					this.globals.message = 'Your invitation code has expired!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
@@ -86,7 +86,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 
 				}else if(data=='revoked')
 				{
-					this.globals.message = 'Your access has been revoked.';
+					this.globals.message = 'Your access has been revoked!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
@@ -95,7 +95,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 				}
 				else if(data=='email')
 				{
-					this.globals.message = 'Please enter valid email address.';
+					this.globals.message = 'Please enter valid email address!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;
@@ -104,7 +104,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 				}
 				else if(data=='code')
 				{
-					this.globals.message = 'Please enter valid invitation code.';
+					this.globals.message = 'Please enter valid invitation code!';
 					this.globals.type = 'danger';
 					this.globals.msgflag = true;
 					this.btn_disable = false;
@@ -121,7 +121,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
 						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
 					this.InvitationEntity = {};
 					InvitationForm.form.markAsPristine();
-						this.globals.message = 'Code successfully';
+						this.globals.message = 'Code successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						

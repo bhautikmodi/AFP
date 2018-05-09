@@ -110,7 +110,7 @@ deleteEntity;
 		{
 			$('#Delete_Modal').modal('hide');
 			if(error.text){
-				this.globals.message = "You can't delete this record because of their dependency.";
+				this.globals.message = "You can't delete this record because of their dependency!";
 				this.globals.type = 'danger';
 				this.globals.msgflag = true;
 			}	

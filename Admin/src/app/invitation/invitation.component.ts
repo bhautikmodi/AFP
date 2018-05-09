@@ -98,7 +98,7 @@ export class InvitationComponent implements OnInit {
 					debugger
 					this.globals.isLoading = false;
 					if (data == 'email duplicate') {
-						this.globals.message = 'Invalid Email Address';
+						this.globals.message = 'Invalid Email Address!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						//this.router.navigate(['/invitation/add']);
@@ -110,11 +110,11 @@ export class InvitationComponent implements OnInit {
 						this.InvitationEntity = {};
 						InvitationForm.form.markAsPristine();
 						if (id) {
-							this.globals.message = 'Data Updated successfully';
+							this.globals.message = 'Data Updated successfully!';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						} else {
-							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email';
+							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email!';
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 							this.globals.isLoading = false;

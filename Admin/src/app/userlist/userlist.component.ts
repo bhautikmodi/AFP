@@ -82,8 +82,9 @@ deleteEntity;
 	}
   
   deleteConfirm(user)
-	{ 
-		this.UserService.deleteUser(user.UserId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':user.UserId};
+		this.UserService.deleteUser(del)
 		.then((data) => 
 		{
 			let index = this.userList.indexOf(user);

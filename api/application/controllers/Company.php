@@ -60,20 +60,24 @@ class Company extends My_Controller
 		echo json_encode($data);
 	}
 	
-	public function delete($company_id = NULL) 
-	{
-		
-		if(!empty($company_id)) {
 
-			$result = $this->Company_model->delete_company($company_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+	public function delete() {
+		$post_company = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if ($post_company)
+		 {
+			if($post_company['id'] > 0){
+				$result = $this->Company_model->delete_company($post_company);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
 	}
-	
 	//list all industry
 	public function getAllIndustry() {
 		

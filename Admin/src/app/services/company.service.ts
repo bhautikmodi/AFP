@@ -43,9 +43,9 @@ export class CompanyService {
   }
    
    
-  deleteCompany(companyId){  
+  deleteCompany(del){  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/delete/' + companyId)
+    this.http.post(this.globals.baseAPIUrl + 'Company/delete', del)
       .toPromise()
       .then(
         res => { // Success

@@ -118,10 +118,14 @@ export class UserComponent implements OnInit {
 
 	addUser(userForm) {
 		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
+			this.userEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
 		} else {
+			this.userEntity.CreatedBy = this.globals.authData.UserId;
+			this.userEntity.UpdatedBy = this.globals.authData.UserId;
 			this.userEntity.UserId = 0;
 			this.submitted = true;
 		}

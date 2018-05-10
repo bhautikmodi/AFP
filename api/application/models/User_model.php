@@ -90,18 +90,25 @@ class User_model extends CI_Model
 		
 	
 	//Delete UserList
-	public function delete_user($user_id) 
+	public function delete_user($post_user) 
 	{
 	
-		if($user_id) 
+		if($post_user) 
 		{
 			
-			$this->db->where('UserId',$user_id);
+			$this->db->where('UserId',$post_user['id']);
 			$res = $this->db->delete('tbluser');
 			
 			if($res) {
-				$this->db->where('UserId',$user_id);
+				$this->db->where('UserId',$post_user['id']);
 				$qur = $this->db->delete('tbluserinvitation');
+				$log_data = array(
+					'UserId' => trim($post_user['Userid']),
+					'Module' => 'User',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -143,6 +150,7 @@ class User_model extends CI_Model
 				"PhoneNumberl"=>trim($post_user['PhoneNumberl']),
 				"IsActive"=>$IsActive,
 				'CreatedOn' => date('y-m-d H:i:s'),
+				'UpdatedBy' =>trim($post_user['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			
@@ -154,6 +162,13 @@ class User_model extends CI_Model
 			
 			if($res) 
 			{
+				$log_data = array(
+					'UserId' => trim($post_user['UpdatedBy']),
+					'Module' => 'User',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else
 				{

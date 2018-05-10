@@ -85,7 +85,8 @@ export class RatingScaleListComponent implements OnInit {
 
 	deleteConfirm(ratingscale)
 	{ 
-		this.RatingScaleService.delete(ratingscale.RatingScaleId)
+		var del={'Userid':this.globals.authData.UserId,'id':ratingscale.RatingScaleId};
+		this.RatingScaleService.delete(del)
 		.then((data) => 
 		{
 			let index = this.ratingList.indexOf(ratingscale);

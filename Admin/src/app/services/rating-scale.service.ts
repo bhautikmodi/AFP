@@ -23,9 +23,9 @@ export class RatingScaleService {
 	return promise;
   }
   
-  delete(RatingScaleId){
+  delete(del){debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'RatingScale/delete/' + RatingScaleId)
+    this.http.post(this.globals.baseAPIUrl + 'RatingScale/delete',del)
       .toPromise()
       .then(
         res => { // Success

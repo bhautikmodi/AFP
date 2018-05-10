@@ -51,8 +51,16 @@ export class EmailtemplateComponent implements OnInit {
 		this.globals.msgflag = false;
 		this.des_valid = false;
 		this.emailEntity = {};
-		CKEDITOR.replace('EmailBody');
-		
+		//CKEDITOR.replace('EmailBody');
+		CKEDITOR.replace( 'EmailBody', {
+			height: '300',
+			resize_enabled : 'false',
+			resize_maxHeight : '300',
+			resize_maxWidth : '948',
+			resize_minHeight: '300',
+			resize_minWidth: '948', 
+			 extraAllowedContent: 'style;*[id,rel](*){*}'
+	 });
 		let id = this.route.snapshot.paramMap.get('id');
 		this.EmailtemplateService.getDefaultList()
 			.then((data) => {

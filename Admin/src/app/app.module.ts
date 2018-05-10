@@ -81,6 +81,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { EmailLogComponent } from './email-log/email-log.component';
+import { AuditlogService } from './services/auditlog.service';
 
 
 @NgModule({
@@ -127,7 +129,8 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
 	CourselevellistComponent,
 	RolepermissionComponent,
 	PendingAssessmentComponent,
-	AccessDeniedComponent
+	AccessDeniedComponent,
+	EmailLogComponent
   ],
   imports: [
   BrowserModule,
@@ -402,6 +405,11 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
         canActivate : [AuthGuard]
       },
       {
+        path : 'email-log',
+        component : EmailLogComponent,
+        canActivate : [AuthGuard]
+      },
+      {
         path : '**',
         redirectTo : 'dashboard'
       }
@@ -412,7 +420,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
   providers: [Globals,AuthService,AuthGuard,DomainService,KsaService,RatingScaleService,CompetencyAreaService,
     CourselevelService,CourseService,IndustryService,CountryService,UserService,StateService,CompanyService,
     UserroleService,SettingsService,InvitationService,PlaceholderService,RemainingService,EmailtemplateService,
-    RolepermissionService,CommonService,PendingAssessmentService,
+    RolepermissionService,CommonService,PendingAssessmentService,AuditlogService,
     {
     provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorClassService,

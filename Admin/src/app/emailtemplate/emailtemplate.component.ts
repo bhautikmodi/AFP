@@ -59,7 +59,8 @@ export class EmailtemplateComponent implements OnInit {
 			resize_maxWidth : '948',
 			resize_minHeight: '300',
 			resize_minWidth: '948', 
-			 extraAllowedContent: 'style;*[id,rel](*){*}'
+			 //extraAllowedContent: 'style;*[id,rel](*){*}'
+			 extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}'
 	 });
 		let id = this.route.snapshot.paramMap.get('id');
 		this.EmailtemplateService.getDefaultList()

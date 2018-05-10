@@ -126,15 +126,30 @@ class Register extends CI_Controller
 									$result2 = $query2->result();
 									$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 								} 
+								if($row->BccEmail!=''){
+									$bcc = $row->BccEmail.','.$row->totalbcc;
+								} else {
+									$bcc = $row->totalbcc;
+								}
 								$this->email->from($smtpEmail, 'AFP Admin');
 								$this->email->to($rowTo[0]->EmailAddress);		
 								$this->email->subject($row->Subject);
 								$this->email->cc($row->totalcc);
-								$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+								$this->email->bcc($bcc);
 								$this->email->message($body);
 								if($this->email->send())
 								{
-									//echo json_encode("Success");
+									$email_log = array(
+										'From' => trim($smtpEmail),
+										'Cc' => trim($row->totalcc),
+										'Bcc' => trim($bcc),
+										'To' => trim($rowTo[0]->EmailAddress),
+										'Subject' => trim($row->Subject),
+										'MessageBody' => trim($body),
+									);
+									
+									$res = $this->db->insert('tblemaillog',$email_log);
+
 									echo json_encode($output);
 								}else
 								{

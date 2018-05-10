@@ -126,6 +126,7 @@ permissionEntity;
   ReInviteInvitation(Invitation)
 	{ 
 		this.ReInviteEntity =  Invitation;
+		this.ReInviteEntity['UpdatedBy'] =  this.globals.authData.UserId;
 		$('#ReInvite_Modal').modal('show');					
 	}
 	
@@ -161,6 +162,7 @@ permissionEntity;
 		}, 
 		(error) => 
 		{
+			this.globals.isLoading = false;
 			$('#ReInvite_Modal').modal('hide');
 			if(error.text){
 				this.globals.message = "You can't send this Email!";

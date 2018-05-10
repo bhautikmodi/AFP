@@ -162,22 +162,37 @@ class Invitation extends My_Controller {
 				$result = $this->Invitation_model->add_Invitation($post_Invitation);
 				if($result) {
 					//echo json_encode($post_Invitation);	
+
+					$this->db->select('Value');
+					$this->db->where('Key','EmailFrom');
+					$smtp1 = $this->db->get('tblmstconfiguration');	
+					foreach($smtp1->result() as $row) {
+						$smtpEmail = $row->Value;
+					}
+					$this->db->select('Value');
+					$this->db->where('Key','EmailPassword');
+					$smtp2 = $this->db->get('tblmstconfiguration');	
+					foreach($smtp2->result() as $row) {
+						$smtpPassword = $row->Value;
+					}
+
 					$config['protocol']='smtp';
 					$config['smtp_host']='ssl://smtp.googlemail.com';
 					$config['smtp_port']='465';
-					$config['smtp_user']='myopeneyes3937@gmail.com';
-					$config['smtp_pass']='W3lc0m3@2018';
+					$config['smtp_user']=$smtpEmail;
+					$config['smtp_pass']=$smtpPassword;
 					$config['charset']='utf-8';
 					$config['newline']="\r\n";
 					$config['mailtype'] = 'html';	
 										
 					$this->email->initialize($config);
 
-					$this->email->from('myopeneyes3937@gmail.com','Email Test');
-					$this->email->to($post_Invitation['EmailAddress']);		
-					$this->email->subject('AFP registration confirmation code '.$post_Invitation['Code']);
+					$this->email->from($smtpEmail,'Email Test');
+					$this->email->to($post_Invitation['EmailAddress']);	
+					$subject = 'AFP registration confirmation code '.$post_Invitation['Code'];
+					$this->email->subject($subject);
 					//$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
-					$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
+					$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 					<tr>
 					<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><a href="http://localhost:4200/dashboard"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></a></td>
 					</tr>
@@ -204,10 +219,21 @@ class Invitation extends My_Controller {
 					<tr>
 						<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
 					</tr>
-				</table>');
+				</table>';
+					$this->email->message($body);
 
 					if($this->email->send())
 					{
+						$email_log = array(
+							'From' => trim($smtpEmail),
+							'Cc' => '',
+							'Bcc' => '',
+							'To' => trim($post_Invitation['EmailAddress']),
+							'Subject' => trim($subject),
+							'MessageBody' => trim($body),
+						);
+						
+						$res = $this->db->insert('tblemaillog',$email_log);
 						echo json_encode("success");
 					}else
 					{
@@ -233,6 +259,7 @@ class Invitation extends My_Controller {
 		} 
 			
 	}
+
 	public function ReInvite() {
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($post_Invitation)) {
@@ -240,17 +267,38 @@ class Invitation extends My_Controller {
 			$post_Invitation['Code']=mt_rand(100000,999999);
 			$result = $this->Invitation_model->ReInvite_Invitation($post_Invitation);			
 			if($result) {
-				$config['protocol']='smtp';
+				$this->db->select('Value');
+					$this->db->where('Key','EmailFrom');
+					$smtp1 = $this->db->get('tblmstconfiguration');	
+					foreach($smtp1->result() as $row) {
+						$smtpEmail = $row->Value;
+					}
+					$this->db->select('Value');
+					$this->db->where('Key','EmailPassword');
+					$smtp2 = $this->db->get('tblmstconfiguration');	
+					foreach($smtp2->result() as $row) {
+						$smtpPassword = $row->Value;
+					}
+
+					$config['protocol']='smtp';
 					$config['smtp_host']='ssl://smtp.googlemail.com';
 					$config['smtp_port']='465';
-					$config['smtp_user']='myopeneyes3937@gmail.com';
-					$config['smtp_pass']='W3lc0m3@2018';
+					$config['smtp_user']=$smtpEmail;
+					$config['smtp_pass']=$smtpPassword;
 					$config['charset']='utf-8';
 					$config['newline']="\r\n";
 					$config['mailtype'] = 'html';	
 										
 					$this->email->initialize($config);
 
+<<<<<<< HEAD
+					$this->email->from($smtpEmail,'Email Test');
+					$this->email->to($post_Invitation['EmailAddress']);	
+					$subject = 'Invitation mail';
+					$this->email->subject($subject);
+					$body = 'change mail recive.....'.$post_Invitation['Code'];
+					$this->email->message($body);
+=======
 					$this->email->from('myopeneyes3937@gmail.com','Email Test');
 					$this->email->to($post_Invitation['EmailAddress']);		
 					//$this->email->subject('Reinvitation mail');
@@ -286,9 +334,19 @@ class Invitation extends My_Controller {
 				</table>');
 					
 
+>>>>>>> 2188627f3fd287f9e1c8be755ab6f5dc3a67c849
 					if($this->email->send())
 					{
+						$email_log = array(
+							'From' => trim($smtpEmail),
+							'Cc' => '',
+							'Bcc' => '',
+							'To' => trim($post_Invitation['EmailAddress']),
+							'Subject' => trim($subject),
+							'MessageBody' => trim($body),
+						);
 						
+						$res = $this->db->insert('tblemaillog',$email_log);
 						echo json_encode("success");
 					}else
 					{

@@ -107,9 +107,9 @@ class Invitation_model extends CI_Model
 		
 		
 	}
-	public function delete_Invitation($Invitation_Id) {
+	public function delete_Invitation($post_revoke) {
 	
-	if($Invitation_Id) {
+	if($post_revoke) {
 		
 			$Invitation_data = array(
 				'Status' => 2,
@@ -118,10 +118,17 @@ class Invitation_model extends CI_Model
 			
 			);
 			
-			$this->db->where('UserInvitationId',$Invitation_Id);
+			$this->db->where('UserInvitationId',$post_revoke['id']);
 			$res = $this->db->update('tbluserinvitation',$Invitation_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_revoke['Userid']),
+					'Module' => 'Invitation',
+					'Activity' =>'Revoke'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -147,7 +154,14 @@ class Invitation_model extends CI_Model
 			$this->db->where('UserInvitationId',$post_Invitation['UserInvitationId']);
 			$res = $this->db->update('tbluserinvitation',$Invitation_data);
 			
-			if($res) {
+			if($res) {		
+				$log_data = array(
+				'UserId' => trim($post_Invitation['UpdatedBy']),
+				'Module' => 'Invitation',
+				'Activity' =>'RatiInvitation'
+
+			);
+			$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

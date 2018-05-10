@@ -25,6 +25,13 @@ class Rating_Scale_model extends CI_Model
 			$res = $this->db->insert('tblmstratingscale',$ratingscale_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_ratingscale['UpdatedBy']),
+					'Module' => 'Ratingscale',
+					'Activity' =>'Add'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -91,6 +98,13 @@ class Rating_Scale_model extends CI_Model
 			$res = $this->db->update('tblmstratingscale',$ratingscale_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_ratingscale['UpdatedBy']),
+					'Module' => 'Ratingscale',
+					'Activity' =>'Update'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -102,14 +116,21 @@ class Rating_Scale_model extends CI_Model
 	}
 	
 	
-	public function delete_ratingscale($ratingscale_id) {
+	public function delete_ratingscale($post_ratingscale) {
 	
-		if($ratingscale_id) {
+		if($post_ratingscale) {
 			
-			$this->db->where('RatingScaleId',$ratingscale_id);
+			$this->db->where('RatingScaleId',$post_ratingscale['id']);
 			$res = $this->db->delete('tblmstratingscale');
 				
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_ratingscale['Userid']),
+					'Module' => 'Ratingscale',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

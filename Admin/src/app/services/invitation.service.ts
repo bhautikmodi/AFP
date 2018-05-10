@@ -57,10 +57,10 @@ export class InvitationService {
     });		
     return promise;
     }
- delete(UserInvitationId)
-   {
+ delete(del)
+   {debugger
    let promise = new Promise((resolve, reject) => {		
-     this.http.get(this.globals.baseAPIUrl + 'Invitation/delete/' + UserInvitationId)
+     this.http.post(this.globals.baseAPIUrl + 'Invitation/delete', del)
        .toPromise()
        .then(
          res => { // Success

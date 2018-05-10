@@ -78,6 +78,7 @@ class Company_model extends CI_Model
 				'Website' => $post_company['Website'],
 				'PhoneNo' => $post_company['PhoneNo'],
 				'IsActive' => $IsActive,
+				'UpdatedBy' =>trim($post_company['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s')
 				//'UpdatedOn' => date("m/d/y", strtotime(now()))
 			);
@@ -86,7 +87,13 @@ class Company_model extends CI_Model
 			$res = $this->db->update('tblcompany',$company_data);
 			
 			if($res) 
-			{
+			{	$log_data = array(
+				'UserId' => trim($post_company['UpdatedBy']),
+				'Module' => 'Company',
+				'Activity' =>'Update'
+
+			);
+			$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else
 				{
@@ -116,16 +123,23 @@ class Company_model extends CI_Model
 		return $res;
 	}
 	
-	public function delete_company($company_id) 
+	public function delete_company($post_company) 
 	{
 	
-		if($company_id) 
+		if($post_company) 
 		{
 			
-			$this->db->where('CompanyId',$company_id);
+			$this->db->where('CompanyId',$post_company['id']);
 			$res = $this->db->delete('tblcompany');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_company['Userid']),
+					'Module' => 'Company',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

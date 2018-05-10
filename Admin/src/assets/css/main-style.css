@@ -210,6 +210,12 @@ button[disabled], html input[disabled] {
 }
 
 
+ /* ckeditor custom style  */
+
+textarea.cke_source {
+	height: 100% !important;
+}
+
 /*media queries*/
 
 @media(min-width:768px) 

@@ -45,9 +45,9 @@ export class UserService {
   
   
   //delete User
-  deleteUser(userId){  
+  deleteUser(del){  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/deleteUser/' + userId)
+    this.http.post(this.globals.baseAPIUrl + 'User/deleteUser',del)
       .toPromise()
       .then(
         res => { // Success

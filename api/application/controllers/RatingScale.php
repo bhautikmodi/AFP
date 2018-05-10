@@ -53,21 +53,19 @@ class RatingScale extends My_Controller {
 		}
 	}	
 	
-	public function delete($ratingscale_id = NULL) {
-		
-		if(!empty($ratingscale_id)) {
+	public function delete() {
+		$post_ratingscale = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Rating_Scale_model->delete_ratingscale($ratingscale_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			} else {
-				return $this->output
-				->set_status_header(404)
-				->set_output(json_encode(array(
-						'text' => "You can't delete this record because of their dependency in another table.",
-						'type' => 'danger'
-				)));
-			}
+		if ($post_ratingscale)
+		 {
+			if($post_ratingscale['id'] > 0){
+				$result = $this->Rating_Scale_model->delete_ratingscale($post_ratingscale);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			

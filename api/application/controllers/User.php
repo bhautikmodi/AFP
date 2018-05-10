@@ -86,20 +86,24 @@ class User extends MY_Controller
 	
 	
 	//Delete UserList
-	public function deleteUser($user_id = NULL) 
-	{
-		
-		if(!empty($user_id)) {
+	
+	public function deleteUser() {
+		$post_user = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->User_model->delete_user($user_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+		if ($post_user)
+		 {
+			if($post_user['id'] > 0){
+				$result = $this->User_model->delete_user($post_user);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
 	}
-	
 	//get userId edit
 	public function getById($user_id=null)
 	{	

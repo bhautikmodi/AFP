@@ -85,7 +85,8 @@ permissionEntity;
 
 	deleteConfirm(Invitation)
 	{ 
-		this.InvitationService.delete(Invitation.UserInvitationId)
+		var del={'Userid':this.globals.authData.UserId,'id':Invitation.UserInvitationId};
+		this.InvitationService.delete(del)
 		.then((data) => 
 		{
 			let index = this.InvitationList.indexOf(Invitation);

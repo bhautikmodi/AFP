@@ -83,8 +83,9 @@ export class CompanylistComponent implements OnInit {
 	}
 
 	deleteConfirm(company)
-	{ 
-		this.CompanyService.deleteCompany(company.CompanyId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':company.CompanyId};
+		this.CompanyService.deleteCompany(del)
 		.then((data) => 
 		{
 			let index = this.companyList.indexOf(company);

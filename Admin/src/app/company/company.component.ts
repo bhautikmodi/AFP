@@ -78,8 +78,11 @@ export class CompanyComponent implements OnInit {
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
+			this.companyEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
 		} else {
+			this.companyEntity.CreatedBy = this.globals.authData.UserId;
+			this.companyEntity.UpdatedBy = this.globals.authData.UserId;
 			this.companyEntity.CompanyId = 0;
 			this.submitted = true;
 		}

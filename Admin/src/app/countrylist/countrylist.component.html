@@ -46,10 +46,10 @@
 										  <td *ngIf="Country.IsActive=='1'">Yes</td>
 											<td *ngIf="Country.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
+											<button *ngIf="permissionEntity.AddEdit==1" type="button" title="Edit" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
 											routerLink="/country/edit/{{Country.CountryId}}">
 											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+											<button *ngIf="permissionEntity.Delete==1" type="button" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
 											data-tooltip="Delete" 
 											(click)="deleteCountry(Country)">
 											<i class="fa fa-times" aria-hidden="true"></i></button>

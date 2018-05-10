@@ -52,6 +52,7 @@ export class EmailtemplateComponent implements OnInit {
 		this.des_valid = false;
 		this.emailEntity = {};
 		CKEDITOR.replace('EmailBody');
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		this.EmailtemplateService.getDefaultList()
 			.then((data) => {

@@ -83,8 +83,8 @@ export class DomainListComponent implements OnInit {
 	}
 
 	deleteConfirm(domain)
-	{ 
-		this.domainService.delete(domain.DomainId)
+	{ var del={'Userid':this.globals.authData.UserId,'id':domain.DomainId};
+		this.domainService.delete(del)
 		.then((data) => 
 		{
 			let index = this.domainList.indexOf(domain);

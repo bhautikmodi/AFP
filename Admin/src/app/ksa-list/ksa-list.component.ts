@@ -53,6 +53,7 @@ export class KsaListComponent implements OnInit {
 	}
 	
 	default(){
+		
 		this.KsaService.getAll()
 		.then((data) => 
 		{ 
@@ -83,8 +84,9 @@ export class KsaListComponent implements OnInit {
 	}
 
 	deleteConfirm(ksa)
-	{ 
-		this.KsaService.delete(ksa.KSAId)
+	{
+		 var del={'Userid':this.globals.authData.UserId,'id':ksa.KSAId};
+		this.KsaService.delete(del)
 		.then((data) => 
 		{
 			let index = this.ksaList.indexOf(ksa);

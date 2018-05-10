@@ -15,10 +15,21 @@ export class HeaderComponent implements OnInit
 
   ngOnInit() { }
     logout()
-    { debugger	 
-        this.authService.logout();
+    { 
+        var panel={'Userid':this.globals.authData.UserId,'paneltype':0};
+        this.authService.logout(panel)
+	//.map(res => res.json())
+      .then((data) => 
+      {
         this.globals.isLoading = true;
         window.location.href = '/login';
+            
+      }, 
+      (error) => 
+      {
+        alert('error');
+      });
+          
     }
     register()
     {

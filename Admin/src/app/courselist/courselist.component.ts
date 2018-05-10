@@ -78,7 +78,8 @@ export class CourselistComponent implements OnInit {
 
 	deleteConfirm(Course)
 	{ 
-		this.CourseService.delete(Course.CourseId)
+		var del={'Userid':this.globals.authData.UserId,'id':Course.CourseId};
+		this.CourseService.delete(del)
 		.then((data) => 
 		{
 			let index = this.CourseList.indexOf(Course);

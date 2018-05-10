@@ -52,26 +52,24 @@ class Competency_Area extends My_Controller {
 		}
 	}	
 	
-	public function delete($area_id = NULL) {
-		
-		if(!empty($area_id)) {
+	
+	public function delete() {
+		$post_area = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Competency_Area_model->delete_area($area_id);
-			if($result) {
-				echo json_encode("Delete successfully");	
-			} else {
-				return $this->output
-				->set_status_header(404)
-				->set_output(json_encode(array(
-						'text' => "You can't delete this record because of their dependency in another table.",
-						'type' => 'danger'
-				)));
-			}
+		if ($post_area)
+		 {
+			if($post_area['id'] > 0){
+				$result = $this->Competency_Area_model->delete_area($post_area);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
-	}	
-	
+	}
 	public function getDomainList() {
 		
 		$data="";

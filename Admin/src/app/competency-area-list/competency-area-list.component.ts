@@ -85,7 +85,8 @@ export class CompetencyAreaListComponent implements OnInit {
 
 	deleteConfirm(area)
 	{ 
-		this.CompetencyAreaService.delete(area.CAreaId)
+		var del={'Userid':this.globals.authData.UserId,'id':area.CAreaId};
+		this.CompetencyAreaService.delete(del)
 		.then((data) => 
 		{
 			let index = this.areaList.indexOf(area);

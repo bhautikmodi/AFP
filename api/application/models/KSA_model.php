@@ -25,6 +25,13 @@ class KSA_model extends CI_Model
 			$res = $this->db->insert('tblmstksa',$ksa_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_ksa['CreatedBy']),
+					'Module' => 'Ksa',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -92,6 +99,13 @@ class KSA_model extends CI_Model
 			$res = $this->db->update('tblmstksa',$ksa_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_ksa['UpdatedBy']),
+					'Module' => 'Ksa',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -103,14 +117,22 @@ class KSA_model extends CI_Model
 	}
 	
 	
-	public function delete_ksa($ksa_id) {
+	public function delete_ksa($post_ksa) {
 	
-		if($ksa_id) {
+		if($post_ksa) {
 			
-			$this->db->where('KSAId',$ksa_id);
+			$this->db->where('KSAId',$post_ksa['id']);
 			$res = $this->db->delete('tblmstksa');
 			
 			if($res) {
+				if($res) {
+					$log_data = array(
+					'UserId' => trim($post_ksa['Userid']),
+					'Module' => 'Ksa',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -119,8 +141,8 @@ class KSA_model extends CI_Model
 			return false;
 		}
 		
-	}
-	
+	  }
+    }
 	public function getCAreaList() {
 	
 		$this->db->select('CAreaId,Name');

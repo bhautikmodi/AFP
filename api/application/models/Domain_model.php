@@ -24,6 +24,13 @@ class Domain_model extends CI_Model
 			$res = $this->db->insert('tblmstdomain',$domain_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_domain['CreatedBy']),
+					'Module' => 'Domain',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -88,6 +95,13 @@ class Domain_model extends CI_Model
 			$res = $this->db->update('tblmstdomain',$domain_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_domain['UpdatedBy']),
+					'Module' => 'Domain',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -99,14 +113,20 @@ class Domain_model extends CI_Model
 	}
 	
 	
-	public function delete_domain($domain_id) {
+	public function delete_domain($post_domain) {
 	
-		if($domain_id) {
+		if($post_domain) {
 			
-			$this->db->where('DomainId',$domain_id);
+			$this->db->where('DomainId',$post_domain['id']);
 			$res = $this->db->delete('tblmstdomain');
 			
-			if($res) {
+			if($res) {$log_data = array(
+				'UserId' => trim($post_domain['Userid']),
+				'Module' => 'Domain',
+				'Activity' =>'Delete'
+
+			);
+			$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

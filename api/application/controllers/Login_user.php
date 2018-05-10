@@ -48,5 +48,21 @@ class Login_user extends CI_Controller {
 			}
 		}
 	}
+	public function logout() {
+		$post_logout = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if ($post_logout) {
+			$login_data = array(
+				'UserId ' => $post_logout['Userid'],
+				'LoginType' => 0,
+				'PanelType' =>$post_logout['paneltype']
+				//'NoOfLogin' =>''
+			);
+			$res = $this->db->insert('tblloginlog',$login_data);
+			echo json_encode('success');	
+		}
+		
+	
+	}
 	
 }

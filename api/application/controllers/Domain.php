@@ -51,21 +51,18 @@ class Domain extends MY_Controller {
 		}
 	}	
 	
-	public function delete($domain_id = NULL) {
-		
-		if(!empty($domain_id)) {
+	public function delete() {
+		$post_domain = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Domain_model->delete_domain($domain_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			} else {
-				return $this->output
-				->set_status_header(404)
-				->set_output(json_encode(array(
-						'text' => "You can't delete this record because of their dependency in another table.",
-						'type' => 'danger'
-				)));
-			}
+		if ($post_domain) {
+			if($post_domain['id'] > 0){
+				$result = $this->Domain_model->delete_domain($post_domain);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+				}
+				}
+		
 			
 		} 
 			

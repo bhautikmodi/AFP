@@ -27,6 +27,13 @@ class Competency_Area_model extends CI_Model
 			$res = $this->db->insert('tblmstcompetencyarea',$area_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_area['CreatedBy']),
+					'Module' => 'Competency_Area',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -96,6 +103,13 @@ class Competency_Area_model extends CI_Model
 			$res = $this->db->update('tblmstcompetencyarea',$area_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_area['UpdatedBy']),
+					'Module' => 'Competency_Area',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -107,14 +121,21 @@ class Competency_Area_model extends CI_Model
 	}
 	
 	
-	public function delete_area($area_id) {
+	public function delete_area($post_area) {
 	
-		if($area_id) {
+		if($post_area) {
 			
-			$this->db->where('CAreaId',$area_id);
+			$this->db->where('CAreaId',$post_area['id']);
 			$res = $this->db->delete('tblmstcompetencyarea');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_area['Userid']),
+					'Module' => 'Competency_Area',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

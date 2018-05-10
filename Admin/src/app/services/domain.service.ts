@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
+import { debug } from 'util';
 
 @Injectable()
 export class DomainService {
@@ -24,9 +25,9 @@ export class DomainService {
 	return promise;
   }
   
-  delete(DomainId){
+  delete(del){debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Domain/delete/' + DomainId)
+    this.http.post(this.globals.baseAPIUrl + 'Domain/delete',del)
       .toPromise()
       .then(
         res => { // Success

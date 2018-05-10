@@ -52,19 +52,24 @@ class KSA extends My_Controller {
 		}
 	}	
 	
-	public function delete($ksa_id = NULL) {
-		
-		if(!empty($ksa_id)) {
+	
+	public function delete() {
+		$post_ksa = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->KSA_model->delete_ksa($ksa_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+		if ($post_ksa)
+		 {
+			if($post_ksa['id'] > 0){
+				$result = $this->KSA_model->delete_ksa($post_ksa);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
-	}	
-	
+	}
 	public function getCAreaList() {
 		
 		$data="";

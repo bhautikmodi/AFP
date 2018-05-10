@@ -23,9 +23,9 @@ export class KsaService {
 	return promise;
   }
     
-  delete(KSAId){
+  delete(del){debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'KSA/delete/' + KSAId)
+    this.http.post(this.globals.baseAPIUrl + 'KSA/delete',del)
       .toPromise()
       .then(
         res => { // Success
@@ -38,7 +38,7 @@ export class KsaService {
 	});		
 	return promise;
   }
-  
+
   getAll(){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'KSA/getAll')

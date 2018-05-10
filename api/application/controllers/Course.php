@@ -53,19 +53,24 @@ class Course extends My_Controller {
 		}
 	}	
 	
-	public function delete($Course_Id = NULL) {
-		
-		if(!empty($Course_Id)) {
+	
+	public function delete() {
+		$post_course = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Course_model->delete_Course($Course_Id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+		if ($post_course)
+		 {
+			if($post_course['id'] > 0){
+				$result = $this->Course_model->delete_Course($post_course);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
-	}
-		
+	}	
 	public function getCourseLevelList() {
 		
 		$data="";

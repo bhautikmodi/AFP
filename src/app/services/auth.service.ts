@@ -30,9 +30,23 @@ export class AuthService {
 	return promise;
   }
   
-  logout(){ 
-	  this.globals.authData = '';
-	  localStorage.removeItem('token');
+  logout(panel){ debugger
+		let promise = new Promise((resolve, reject) => {
+		this.http.post(this.globals.baseAPIUrl + 'Login_user/logout',panel, this.globals.headerpath)
+			.toPromise()
+			.then(
+				res => { // Success
+					this.globals.authData = '';
+					localStorage.removeItem('token');
+					resolve(res.json());
+				},
+				msg => { // Error
+			reject(msg);
+				}
+			);
+	});		
+	return promise;
+	
   }  
    
   isLoggedIn() {  

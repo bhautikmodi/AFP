@@ -11,8 +11,17 @@ class Login_user_model extends CI_Model {
 		$this->db->where('IsActive',1);
 		$this->db->limit(1);
 		$query = $this->db->get();
-		
+		$res=$query->result();
 		if ($query->num_rows() == 1) {
+			$login_data = array(
+				'UserId ' => trim($res[0]->UserId),
+				'LoginType' => 1,
+				'PanelType' => 0
+				//'NoOfLogin' =>1
+			);
+			
+			$res = $this->db->insert('tblloginlog',$login_data);
+			
 			return $query->result();
 		} else {
 			return false;

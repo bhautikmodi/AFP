@@ -23,9 +23,9 @@ export class CompetencyAreaService {
 	return promise;
   }
     
-  delete(Competency_AreaId){
+  delete(del){debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Competency_Area/delete/' + Competency_AreaId)
+    this.http.post(this.globals.baseAPIUrl + 'Competency_Area/delete',del)
       .toPromise()
       .then(
         res => { // Success
@@ -38,6 +38,7 @@ export class CompetencyAreaService {
 	});		
 	return promise;
   }
+ 
   
   getAll(){
 	let promise = new Promise((resolve, reject) => {

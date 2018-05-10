@@ -14,11 +14,27 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  logout(){	 
-    this.authService.logout();
-    this.globals.isLoading = true;
-    window.location.href = '/login';		
-  }
+  logout()
+    { 
+        var admin={'Userid':this.globals.authData.UserId,'paneltype':1};
+        this.authService.logout(admin)
+	//.map(res => res.json())
+      .then((data) => 
+      {
+        this.globals.isLoading = true;
+        window.location.href = '/login';
+            
+      }, 
+      (error) => 
+      {
+        alert('error');
+      });
+          
+    }
+  // logout(){	 
+  //   this.authService.logout();
+  //   this.globals.isLoading = true;
+  //   window.location.href = '/login';		
+  // }
 
 }

@@ -32,11 +32,25 @@ export class AuthService {
 	});		
 	return promise;
   }
-  
-  logout(){
-	  this.globals.authData = '';
-	  localStorage.removeItem('token');
+  logout(admin){ debugger
+		let promise = new Promise((resolve, reject) => {
+		this.http.post(this.globals.baseAPIUrl + 'Login_user/logout',admin, this.globals.headerpath)
+			.toPromise()
+			.then(
+				res => { // Success
+					this.globals.authData = '';
+					localStorage.removeItem('token');
+					resolve(res.json());
+				},
+				msg => { // Error
+			reject(msg);
+				}
+			);
+	});		
+	return promise;
+	
   }  
+ 
    
   isLoggedIn() {  
 	  let jwtHelper = new JwtHelper();

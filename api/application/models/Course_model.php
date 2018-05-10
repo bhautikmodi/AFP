@@ -28,6 +28,13 @@ class Course_model extends CI_Model
 			$res = $this->db->insert('tblmstcourse',$Course_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Course['CreatedBy']),
+					'Module' => 'Course',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -99,6 +106,13 @@ class Course_model extends CI_Model
 			$res = $this->db->update('tblmstcourse',$Course_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($Course_data['UpdatedBy']),
+					'Module' => 'Course',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -110,14 +124,21 @@ class Course_model extends CI_Model
 	}
 	
 	
-	public function delete_Course($Course_Id) {
+	public function delete_Course($post_course) {
 	
-		if($Course_Id) {
+		if($post_course) {
 			
-			$this->db->where('CourseId',$Course_Id);
+			$this->db->where('CourseId',$post_course['id']);
 			$res = $this->db->delete('tblmstcourse');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_course['Userid']),
+					'Module' => 'Course',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

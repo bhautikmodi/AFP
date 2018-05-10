@@ -14,7 +14,7 @@
       <div class="col-lg-12"> 
         <!-- Advanced Tables -->
         <div class="panel panel-default">
-          <div class="panel-heading"> !
+          <div class="panel-heading"> 
             <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
               <a routerLink="/course/add" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a Course
@@ -46,11 +46,11 @@
 										  <td *ngIf="Course.IsActive=='1'">Yes</td>
 											<td *ngIf="Course.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
+											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" title="Edit"
 											routerLink="/course/edit/{{Course.CourseId}}">
 											<i class="fa fa-pencil" aria-hidden="true"></i></button>
 											<button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
-											data-tooltip="Delete" 
+											data-tooltip="Delete" title="Delete"
 											(click)="deleteCourse(Course)">
 											<i class="fa fa-times" aria-hidden="true"></i></button>
 										</td>

@@ -15,7 +15,7 @@
     <div class="col-lg-12"> 
       <!-- Advanced Tables -->
       <div class="panel panel-default">
-        <div class="panel-heading"> !
+        <div class="panel-heading"> 
           <div class="btn-group pull-right add-right" *ngIf="permissionEntity.AddEdit==1">
             <a routerLink="/domain/add" class="btn btn-danger btn-add">
             <i class="fa fa-plus fa-fw"></i>Add a Domain
@@ -42,7 +42,7 @@
                       <td *ngIf="domain.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
                         <button *ngIf="permissionEntity.AddEdit==1" [disabled]="domain.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/domain/edit/{{domain.DomainId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                        <button *ngIf="permissionEntity.Delete==1" [disabled]="domain.isdisabled>0"  (click)="deleteDomain(domain)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                        <button *ngIf="permissionEntity.Delete==1" [disabled]="domain.isdisabled>0"  (click)="deleteDomain(domain)" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
                     </tr>
               </tbody>
             </table>

@@ -26,6 +26,8 @@ export class SalesDashboardComponent implements OnInit {
 
 	ngOnInit() {
 		
+		this.globals.isLoading = true;
+		
 		$('.select2').select2();
 		debugger
 		var data = {'com': '','user':''};
@@ -35,7 +37,10 @@ export class SalesDashboardComponent implements OnInit {
 				if(data=='error')
 				{
 					this.Usersearch=[];
-				}else{		this.Usersearch = data;
+					
+				}else{		
+					this.Usersearch = data;
+					this.globals.isLoading = false;
 				}
 		
 				this.btn_disable = false;
@@ -45,7 +50,7 @@ export class SalesDashboardComponent implements OnInit {
 			},
 			(error) => {
 				alert('error');
-				this.btn_disable = false;
+				this.btn_disable = false;this.globals.isLoading = false;
 				this.submitted = false;
 			});
 

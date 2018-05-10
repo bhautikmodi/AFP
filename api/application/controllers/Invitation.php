@@ -234,6 +234,13 @@ class Invitation extends My_Controller {
 						);
 						
 						$res = $this->db->insert('tblemaillog',$email_log);
+						$log_data = array(
+							'UserId' => trim($post_Invitation['UpdatedBy']),
+							'Module' => 'Invitation',
+							'Activity' =>'Add'
+			
+						);
+						$log = $this->db->insert('tblactivitylog',$log_data);
 						echo json_encode("success");
 					}else
 					{
@@ -247,19 +254,24 @@ class Invitation extends My_Controller {
 		}
 		
 	}
-	public function delete($Invitation_Id = NULL) {
-		
-		if(!empty($Invitation_Id)) {
+	
+	public function delete() {
+		$post_revoke= json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Invitation_model->delete_Invitation($Invitation_Id);			
-			if($result) {
-				echo json_encode("Revoke successfully");	
-			}	
+		if ($post_revoke)
+		 {
+			if($post_revoke['id'] > 0){
+				$result = $this->Invitation_model->delete_Invitation($post_revoke);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			
 	}
-
 	public function ReInvite() {
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($post_Invitation)) {

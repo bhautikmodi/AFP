@@ -50,7 +50,7 @@
                 <label><span>*</span>Confirm Password</label>
 					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,50}" 
 					#cPassword="ngModel"
-					[(ngModel)]="newpassEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)}" required/>
+					[(ngModel)]="newpassEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted||(same && !(cPassword.errors && cPassword.errors.pattern && cPassword.errors.required)))}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
 									Please enter your confirm password

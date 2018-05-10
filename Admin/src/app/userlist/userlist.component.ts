@@ -58,6 +58,7 @@ deleteEntity;
 	//.map(res => res.json())
 	.then((data) => 
 	{
+		this.globals.isLoading = false;
 		this.userList = data;
 			setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -71,6 +72,7 @@ deleteEntity;
 	}, 
 	(error) => 
 	{
+		this.globals.isLoading = false;
 		alert('error');
 	});	
     this.msgflag = false;

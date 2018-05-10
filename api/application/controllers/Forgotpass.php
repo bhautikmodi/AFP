@@ -70,6 +70,11 @@ class Forgotpass extends CI_Controller
 								$result2 = $query2->result();
 								$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 							} 
+							if($row->BccEmail!=''){
+								$bcc = $row->BccEmail.','.$row->totalbcc;
+							} else {
+								$bcc = $row->totalbcc;
+							}
 							$body = str_replace("{ link }",'<strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span>',$body);
 							//$body=$body.'<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>';
 							//$this->email->($body).append('<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>');
@@ -77,10 +82,21 @@ class Forgotpass extends CI_Controller
 							$this->email->to($rowTo[0]->EmailAddress);		
 							$this->email->subject($row->Subject);
 							$this->email->cc($row->totalcc);
-							$this->email->bcc($row->BccEmail.','.$row->totalbcc);
+							$this->email->bcc($bcc);
 							$this->email->message($body);
 							if($this->email->send())
 							{
+								$email_log = array(
+									'From' => trim($smtpEmail),
+									'Cc' => trim($row->totalcc),
+									'Bcc' => trim($bcc),
+									'To' => trim($rowTo[0]->EmailAddress),
+									'Subject' => trim($row->Subject),
+									'MessageBody' => trim($body),
+								);
+								
+								$res = $this->db->insert('tblemaillog',$email_log);
+
 								echo json_encode($data);
 							}else
 							{

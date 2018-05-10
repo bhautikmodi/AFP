@@ -38,7 +38,8 @@
                       <option value="Start Assessment" ngSelected="emailEntity.Token=='Start Assessment'">Start Assessment</option>
                       <option value="Complete Assessment" ngSelected="emailEntity.Token=='Complete Assessment'">Complete Assessment</option>
                       <option value="Reminder of Assessment" ngSelected="emailEntity.Token=='Reminder of Assessment'">Reminder of Assessment</option>
-                      <option value="Reminder of Assessment" ngSelected="emailEntity.Token=='User Invitation Code'">User Invitation Code</option>                                                                            
+                      <option value="User Invitation Code" ngSelected="emailEntity.Token=='User Invitation Code'">User Invitation Code</option>                                                                            
+                      <option value="User Reinvitation Code" ngSelected="emailEntity.Token=='User Reinvitation Code'">User Reinvitation Code</option>                                                                            
                   </select>
                   <span class="error_span" *ngIf="(Token.dirty && Token.invalid) || (Token.pristine && submitted)"> 
                       <span *ngIf="Token.errors.required || (Token.pristine && submitted)">Please select email token</span>

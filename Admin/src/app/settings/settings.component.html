@@ -215,7 +215,7 @@
                         <td>{{teamsize.TeamSize}}</td> 
                         <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
                           <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" (click)="editteamsize(teamsize)" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                          <button *ngIf="permissionEntity.Delete==1" data-type="Record" (click)="deleteteamsize(teamsize)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                          <button *ngIf="permissionEntity.Delete==1" data-type="Record" (click)="deleteteamsize(teamsize)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"> <span class="fa fa-times"></span> </button></td>
                       </tr>                  
                 </tbody>
               </table>

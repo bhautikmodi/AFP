@@ -28,6 +28,7 @@ deleteEntity;
 
   ngOnInit()
   {
+		this.globals.isLoading = true;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;

@@ -253,8 +253,39 @@ class Invitation extends My_Controller {
 
 					$this->email->from('myopeneyes3937@gmail.com','Email Test');
 					$this->email->to($post_Invitation['EmailAddress']);		
-					$this->email->subject('Invitation mail');
-					$this->email->message('change mail recive.....'.$post_Invitation['Code']);
+					$this->email->subject('Reinvitation mail');
+				//	$this->email->subject('AFP registration confirmation code '.$post_Invitation['Code']);
+					 $this->email->message('change mail recive.....'.$post_Invitation['Code']);
+				// 	$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
+				// 	<tr>
+				// 	<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><a href="http://localhost:4200/dashboard"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></a></td>
+				// 	</tr>
+				// 	<tr>
+				// 		<td style="padding:10px;">
+				// 			<p style="color:#007699;"><strong>Confirm your email address</strong></p>
+				// 			<p>Thank you for signing up with us. We’re happy you’re here!.<br>
+				// 			  Enter the following code in the window where you began creating your new AFP Profile </p>
+				// 			<p>The invitation code below will remain active for 30 days.</p>
+				// 		</td>
+				// 	</tr>
+				// 	<tr>
+				// 		<td style="padding:10px;">
+				// 		<p>Renvitation code '.$post_Invitation['Code'].'</p>
+				// 			<p>url from where user can register http://localhost:4200/invitation</p>
+				// 			<p>This email contains private information for your AFP account — please don’t forward it. Questions about anything? </p>
+				// 			<p>Email us at info@afponline.com or<br>
+				// 			 sales@afponline.com</p>
+				// 			<br>
+							
+				// 			<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
+				// 		</td>
+				// 	</tr>
+				// 	<tr>
+				// 		<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
+				// 	</tr>
+				// </table>');
+					
+
 					if($this->email->send())
 					{
 						

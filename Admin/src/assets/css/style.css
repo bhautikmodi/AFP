@@ -673,7 +673,8 @@ table.dataTable thead .sorting:after {
 	text-transform: uppercase;
 }
 .panel-default > .panel-heading {
-	color: #042a47;
+    color: #042a47;
+    height:45px;
 }
 .panel-heading {
 	padding: 12px 15px 12px 15px;

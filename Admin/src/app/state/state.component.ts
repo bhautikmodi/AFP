@@ -81,11 +81,15 @@ export class StateComponent implements OnInit {
 	}
 
 	addState(stateForm) {
+	
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
+			this.stateEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
 		} else {
+			this.stateEntity.CreatedBy = this.globals.authData.UserId;
+			this.stateEntity.UpdatedBy = this.globals.authData.UserId;
 			this.stateEntity.StateId = 0;
 			this.submitted = true;
 		}

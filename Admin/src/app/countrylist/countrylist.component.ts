@@ -78,8 +78,9 @@ export class CountrylistComponent implements OnInit {
 	}
 
 	deleteConfirm(Country)
-	{ 
-		this.CountryService.delete(Country.CountryId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':Country.CountryId};
+		this.CountryService.delete(del)
 		.then((data) => 
 		{
 			let index = this.CountryList.indexOf(Country);

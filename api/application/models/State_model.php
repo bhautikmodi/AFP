@@ -17,14 +17,23 @@ class State_model extends CI_Model
 				"StateName"=>trim($post_state['StateName']),
 				"StateAbbreviation"=>trim($post_state['StateAbbreviation']),
 				"IsActive"=>$IsActive,
-				"CreatedBy" => 1,
-				"UpdatedBy" => 1,
+				'CreatedBy' => trim($post_state['CreatedBy']),
+				'UpdatedBy' => trim($post_state['UpdatedBy']),
+				'UpdatedOn' => date('y-m-d H:i:s')
+		
 				
 			);	
 				
 				$res=$this->db->insert('tblmststate',$state_data);
 				if($res)
 				{
+					$log_data = array(
+						'UserId' => trim($post_state['CreatedBy']),
+						'Module' => 'State',
+						'Activity' =>'Add'
+	
+					);
+					$log = $this->db->insert('tblactivitylog',$log_data);
 					return true;
 				}
 				else
@@ -73,6 +82,7 @@ class State_model extends CI_Model
 				"CountryId"=>trim($post_state['CountryId']),
 				"StateName"=>trim($post_state['StateName']),
 				"StateAbbreviation"=>trim($post_state['StateAbbreviation']),
+				'UpdatedBy' => trim($post_state['UpdatedBy']),
 				"IsActive"=>$IsActive
 				
 			);
@@ -82,6 +92,13 @@ class State_model extends CI_Model
 			
 			if($res) 
 			{
+				$log_data = array(
+					'UserId' => trim($post_state['UpdatedBy']),
+					'Module' => 'State',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else
 				{
@@ -112,16 +129,23 @@ class State_model extends CI_Model
 		return $res;
 	}
 	
-	public function delete_state($state_id) 
+	public function delete_state($post_state) 
 	{
 	
-		if($state_id) 
+		if($post_state) 
 		{
 			
-			$this->db->where('StateId',$state_id);
+			$this->db->where('StateId',$post_state['id']);
 			$res = $this->db->delete('tblmststate');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_state['Userid']),
+					'Module' => 'State',
+					'Activity' =>'Delete'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

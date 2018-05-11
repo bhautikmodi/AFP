@@ -78,8 +78,9 @@ export class CourselevellistComponent implements OnInit {
 	}
 
 	deleteConfirm(Courselevel)
-	{ 
-		this.CourselevelService.delete(Courselevel.ConfigurationId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':Courselevel.ConfigurationId};
+	  this.CourselevelService.delete(del)
 		.then((data) => 
 		{
 			let index = this.CourselevelList.indexOf(Courselevel);

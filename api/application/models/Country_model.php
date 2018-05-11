@@ -27,6 +27,13 @@ class Country_model extends CI_Model
 			$res = $this->db->insert('tblmstcountry',$Country_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Country['UpdatedBy']),
+					'Module' => 'Country',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -95,6 +102,13 @@ class Country_model extends CI_Model
 			$res = $this->db->update('tblmstcountry',$Country_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Country['UpdatedBy']),
+					'Module' => 'Country',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -106,14 +120,21 @@ class Country_model extends CI_Model
 	}
 	
 	
-	public function delete_Country($Country_Id) {
+	public function delete_Country($post_Country) {
 	
-		if($Country_Id) {
+		if($post_Country) {
 			
-			$this->db->where('CountryId',$Country_Id);
+			$this->db->where('CountryId',$post_Country['id']);
 			$res = $this->db->delete('tblmstcountry');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Country['Userid']),
+					'Module' => 'Country',
+					'Activity' =>'Delete'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

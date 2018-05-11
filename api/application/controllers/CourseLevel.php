@@ -53,14 +53,19 @@ class CourseLevel extends My_Controller {
 		}
 	}	
 	
-	public function delete($Configuration_id = NULL) {
-		
-		if(!empty($Configuration_id)) {
+	public function delete() {
+		$post_CourseLevel = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->CourseLevel_model->delete_CourseLevel($Configuration_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+		if ($post_CourseLevel)
+		 {
+			if($post_CourseLevel['id'] > 0){
+				$result = $this->CourseLevel_model->delete_CourseLevel($post_CourseLevel);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+					}
+		 	}
+		
 			
 		} 
 			

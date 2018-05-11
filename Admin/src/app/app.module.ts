@@ -83,6 +83,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { EmailLogComponent } from './email-log/email-log.component';
 import { AuditlogService } from './services/auditlog.service';
+import { LoginLogComponent } from './login-log/login-log.component';
+import { ActivityLogComponent } from './activity-log/activity-log.component';
 
 
 @NgModule({
@@ -130,7 +132,9 @@ import { AuditlogService } from './services/auditlog.service';
 	RolepermissionComponent,
 	PendingAssessmentComponent,
 	AccessDeniedComponent,
-	EmailLogComponent
+	EmailLogComponent,
+	LoginLogComponent,
+	ActivityLogComponent
   ],
   imports: [
   BrowserModule,
@@ -397,6 +401,16 @@ import { AuditlogService } from './services/auditlog.service';
       {
         path : 'email-log',
         component : EmailLogComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'login-log',
+        component : LoginLogComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'activity-log',
+        component : ActivityLogComponent,
         canActivate : [AuthGuard]
       },
       {

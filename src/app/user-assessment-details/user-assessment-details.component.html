@@ -9,7 +9,9 @@
             <h1>{{assessmentData.AssessmentName}}</h1>
             <a routerLink="/dashboard" class="back_btn"><i class="fa fa-reply"></i>Back to Dashboard</a>
             <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
-            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}}
+               <!-- <span>| Time Taken :</span> 01:12:34 -->
+              </h4>
             <p class="padding_30">{{assessmentData.Description}}</p>
             <h3>Assessment Result</h3>
           </div>

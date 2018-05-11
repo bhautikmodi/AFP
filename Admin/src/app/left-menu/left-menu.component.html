@@ -74,8 +74,21 @@
                 <!-- second-level-items -->
  </li> 
  <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
- <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/email-log')}"> <a (click)="menuopen('/email-log')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Email Log</a> </li>
- 
+ <li id="inner_dropdown">
+  <a href="#"><i class="fa fa-key fa-fw"></i> Log<span class="fa fa-angle-right"></span></a>
+      <ul class="nav nav-second-level display_block">
+        <li [ngClass]="{'selected':(globals.currentLink == '/login-log')}">
+          <a (click)="menuopen('/login-log')" style="cursor:pointer;"><i class="fa fa-key fa-fw"></i> Login/Logout Log</a>
+        </li>
+        <li [ngClass]="{'selected':(globals.currentLink == '/activity-log')}">
+          <a (click)="menuopen('/activity-log')" style="cursor:pointer;"><i class="fa fa-key fa-fw"></i> Activity Log</a>
+        </li>
+        <li [ngClass]="{'selected':(globals.currentLink == '/email-log')}">
+          <a (click)="menuopen('/email-log')" style="cursor:pointer;"><i class="fa fa-key fa-fw"></i> Email Log</a>
+        </li>
+       </ul>
+            <!-- second-level-items -->
+</li>  
       </ul>
       <!-- end side-menu --> 
     </div>

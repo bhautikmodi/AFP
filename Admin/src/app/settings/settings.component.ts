@@ -201,10 +201,11 @@ export class SettingsComponent implements OnInit {
 	}
 
 	deleteConfirm(teamsize)
-	{ 
-		this.SettingsService.delete(teamsize.TeamSizeId)
+	{	
+	    var del={'Userid':this.globals.authData.UserId,'id':teamsize.TeamSizeId};
+		this.SettingsService.delete(del)
 		.then((data) => 
-		{
+		{ debugger
 			let index = this.teamsizeList.indexOf(teamsize);
 			$('#Delete_Modal').modal('hide');
 			if (index != -1) {

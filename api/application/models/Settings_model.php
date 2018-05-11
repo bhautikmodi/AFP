@@ -17,6 +17,13 @@ class Settings_model extends CI_Model
 			$res = $this->db->insert('tblmstteamsize',$teamsize_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_teamsize['UpdatedBy']),
+					'Module' => 'Teamsize',
+					'Activity' =>'Add'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -44,6 +51,13 @@ class Settings_model extends CI_Model
 					$res = $this->db->insert('tblmstreminderdays',$rdays_data);
 				}
 				if($res) {
+					$log_data = array(
+						'UserId' => trim($days['UpdatedBy']),
+						'Module' => 'Reminderdays',
+						'Activity' =>'Add/Update'
+		
+					);
+					$log = $this->db->insert('tblactivitylog',$log_data);
 					return true;
 				} else {
 					return false;
@@ -87,7 +101,13 @@ class Settings_model extends CI_Model
 					'UpdatedOn' => date('y-m-d H:i:s'),
 				);			
 				$res = $this->db->insert('tblmstconfiguration',$data);
-
+				$log_data = array(
+					'UserId' => trim($userid),
+					'Module' => 'NoOfKSA',
+					'Activity' =>'Add'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				$this->db->select('ConfigurationId,Key,Value');
 				$this->db->where('Key','NoOfKSA');
 				$result = $this->db->get('tblmstconfiguration');
@@ -163,7 +183,13 @@ class Settings_model extends CI_Model
 					'UpdatedOn' => date('y-m-d H:i:s'),
 				);			
 				$res = $this->db->insert('tblmstconfiguration',$data);
-
+				$log_data = array(
+					'UserId' => trim($userid),
+					'Module' => 'SMTP Email',
+					'Activity' =>'Add'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				$this->db->select('ConfigurationId,Key,Value');
 				$this->db->where('Key','EmailFrom');
 				$result = $this->db->get('tblmstconfiguration');
@@ -196,7 +222,13 @@ class Settings_model extends CI_Model
 					'UpdatedOn' => date('y-m-d H:i:s'),
 				);			
 				$res = $this->db->insert('tblmstconfiguration',$data);
-
+				$log_data = array(
+					'UserId' => trim($userid),
+					'Module' => 'SMTP Password',
+					'Activity' =>'Add'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				$this->db->select('ConfigurationId,Key,Value');
 				$this->db->where('Key','EmailPassword');
 				$result = $this->db->get('tblmstconfiguration');
@@ -246,6 +278,13 @@ class Settings_model extends CI_Model
 			$res = $this->db->update('tblmstconfiguration',$data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($config_data['UpdatedBy']),
+					'Module' => $config_data['Key'],
+					'Activity' =>'Update'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -279,6 +318,13 @@ class Settings_model extends CI_Model
 				$res1 = $this->db->update('tblmstconfiguration',$data1);
 				
 				if($res1) {
+					$log_data = array(
+						'UserId' => trim($config_data['UpdatedBy']),
+						'Module' => 'SMTP Details',
+						'Activity' =>'Update'
+		
+					);
+					$log = $this->db->insert('tblactivitylog',$log_data);
 					return true;
 				} else {
 					return false;
@@ -307,6 +353,13 @@ class Settings_model extends CI_Model
 			$res = $this->db->update('tblmstteamsize',$teamsize_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_teamsize['UpdatedBy']),
+					'Module' => 'Teamsize',
+					'Activity' =>'Update'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -318,14 +371,21 @@ class Settings_model extends CI_Model
 	}
 	
 	
-	public function delete_teamsize($teamsize_id) {
+	public function delete_teamsize($post_teamsize) {
 	
-		if($teamsize_id) {
+		if($post_teamsize) {
 			
-			$this->db->where('TeamSizeId',$teamsize_id);
+			$this->db->where('TeamSizeId',$post_teamsize['id']);
 			$res = $this->db->delete('tblmstteamsize');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_teamsize['Userid']),
+					'Module' =>'Teamsize',
+					'Activity' =>'Delete'
+	
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

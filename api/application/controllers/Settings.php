@@ -104,25 +104,21 @@ class Settings extends My_Controller {
 	// 	}
 	// }	
 	
-	public function deleteTeamSize($teamsize_id = NULL) {
-		
-		if(!empty($teamsize_id)) {
+	public function deleteTeamSize() {
+		$post_teamsize = json_decode(trim(file_get_contents('php://input')), true);		
 
-			$result = $this->Settings_model->delete_teamsize($teamsize_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			} else {
-				return $this->output
-				->set_status_header(404)
-				->set_output(json_encode(array(
-						'text' => "You can't delete this record because of their dependency in another table.",
-						'type' => 'danger'
-				)));
-			}
+		if ($post_teamsize) {
+			if($post_teamsize['id'] > 0){
+				$result = $this->Settings_model->delete_teamsize($post_teamsize);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+				}
+				}
+		
 			
 		} 
 			
 	}
-	
 	
 }

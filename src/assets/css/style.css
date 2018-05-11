@@ -306,6 +306,12 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 
 /* ------- Pages Contener Area End ------- */
 
+@media (min-height: 1300px){
+	.home_banner,.home_banner img{ height:1300px;}
+}
+@media (min-height: 1000px) and (max-height:1299px){
+	.home_banner,.home_banner img{ height:1200px;}
+}
 @media (min-width:1900px){
 	.welcome_content{min-height: 1000px;}
 }
@@ -326,7 +332,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	header .four_strip{height: 210px !important;}
 }
 @media (max-width:1200px) {
-	header .four_strips div{width: 70px;}
+	header .four_strips div{width: 60px;}
 }
 @media (min-width: 992px) {
      ul li ul.dropdown-menu {display:block; opacity:0; visibility:hidden;-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
@@ -338,26 +344,37 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	header{background-size:300px;}
 	footer .address_footer span{display:block;}
 	.dashboard_section .col-md-3{width:45%;}
+	header .four_strips{right: 60px;}
+	header .four_strips div{width: 50px; height:60px;}
+	header .two_strip,header .four_strip{height:100px!important;}
+	.form_bg{width: 100%!important;}
+	header .logo { width: 215px;}
 }
 @media (max-width:767px){
+	.inner_content{padding: 30px 0;}
+	.register_content{padding: 30px 0 0 0;}
 	.home_banner .banner_text .title_banner{font-size:15px; line-height:25px;}
 	.home_banner .banner_text .title_banner span{font-size:30px; line-height:40px;}
 	footer{line-height:18px;}
 	.container{ padding:0 15px;}
 	header{background:#fafafa;}
-	.form_bg{ margin: 0 15px; clear: both; display: block;}
 	.invitation_text input{padding:0; margin: 0 1px;}
 	.dashboard_section .col-md-3{width:80%;}
+	header .four_strips{right: 150px;}
+	header .four_strips div{width: 20px; height:30px;}
+	header .two_strip,header .four_strip{height:50px!important;}
+	.register_content .right_content{padding: 15px;}
+	.form_bg{padding: 15px;}
 }
 @media (max-width:500px){
 	.home_banner .banner_text {position:relative; top:0; left:0; padding:30px 0;}	
 	.home_banner .banner_text .title_banner{font-size:15px; line-height:30px;}
 	.home_banner .banner_text .title_banner span{font-size:35px; line-height:45px;}
 	#submit_Modal .modal-dialog{ width: 90%;}
+	header .four_strips{display: none;}
+	header .logo { width: 180px;}
+	.account_menu li a{padding: 5px; height: auto; font-size: 14px;}
 }
 @media (max-width:400px){
-	header .col-xs-9, header .col-xs-3{width:100%; text-align:center;}
-	header .logo{margin:0 auto;}
-	.account_menu{margin:10px 0;}
 	.dashboard_section .col-md-3{width:100%;}
 }

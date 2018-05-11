@@ -74,7 +74,7 @@ var x = setInterval(function() {
             controlNav: false,
             animationLoop: false,
             slideshow: false,
-            itemWidth: 160,
+            itemWidth: 120,
             minItems: 1,
             maxItems: 5,
             itemMargin: 5,

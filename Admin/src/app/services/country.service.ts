@@ -25,10 +25,10 @@ add(CountryEntity)
   }
   
 
-delete(CountryId)
+delete(del)
   {debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Country/delete/' + CountryId)
+    this.http.post(this.globals.baseAPIUrl + 'Country/delete', del)
       .toPromise()
       .then(
         res => { // Success

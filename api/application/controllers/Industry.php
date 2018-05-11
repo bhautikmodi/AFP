@@ -53,20 +53,24 @@ class Industry extends My_Controller {
 		}
 	}	
 	
-	public function delete($Industry_Id = NULL) {
+	
 		
-		if(!empty($Industry_Id)) {
 
-			$result = $this->Industry_model->delete_Industry($Industry_Id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+	public function delete() {
+		$post_Industry = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if ($post_Industry) {
+			if($post_Industry['id'] > 0){
+				$result = $this->Industry_model->delete_Industry($post_Industry);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+				}
+				}
+		
 			
 		} 
 			
 	}
-		
-
-	
 	
 }

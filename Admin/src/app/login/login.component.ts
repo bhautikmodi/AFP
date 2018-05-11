@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 				this.submitted = false;
 				this.invalid = false;
 				this.loginEntity = {};
-				loginForm.form.markAsPristine(); debugger
+				loginForm.form.markAsPristine(); 
 				if(data=='access denite'){
 					this.globals.isLoading = false;
 					this.router.navigate(['/access-denied']);

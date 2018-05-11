@@ -26,6 +26,13 @@ class CourseLevel_model extends CI_Model
 			$res = $this->db->insert('tblmstconfiguration',$CourseLevel_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_CourseLevel['CreatedBy']),
+					'Module' => 'CourseLevel',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -97,6 +104,13 @@ class CourseLevel_model extends CI_Model
 			$res = $this->db->update('tblmstconfiguration',$CourseLevel_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_CourseLevel['UpdatedBy']),
+					'Module' => 'CourseLevel',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -108,14 +122,21 @@ class CourseLevel_model extends CI_Model
 	}
 	
 	
-	public function delete_CourseLevel($Configuration_id) {
+	public function delete_CourseLevel($post_CourseLevel) {
 	
-		if($Configuration_id) {
+		if($post_CourseLevel) {
 			
-			$this->db->where('ConfigurationId',$Configuration_id);
+			$this->db->where('ConfigurationId',$post_CourseLevel['id']);
 			$res = $this->db->delete('tblmstconfiguration');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_CourseLevel['Userid']),
+					'Module' => 'CourseLevel',
+					'Activity' =>'Delete'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

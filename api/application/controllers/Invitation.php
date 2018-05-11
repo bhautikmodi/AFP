@@ -340,8 +340,40 @@ class Invitation extends My_Controller {
 					$this->email->to($post_Invitation['EmailAddress']);	
 					$subject = 'Invitation mail';
 					$this->email->subject($subject);
-					$body = 'change mail recive.....'.$post_Invitation['Code'];
+					$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="padding:10px; border-bottom:1px solid #ccc; background-color:#fafafa"><a href="https://www.afponline.org" target="_blank"><img alt="" src="https://www.afponline.org/assets/images/afp-logo.png" style="width:250px" /></a></td>
+						</tr>
+						<tr>
+							<td style="padding:10px;">
+							<p style="color:#007699;"><strong>Confirm your email address</strong></p>
+				
+							<p>Thank you for signing up with us. We&rsquo;re happy you&rsquo;re here!.<br />
+							Enter the following code in the window where you began creating your new AFP Profile</p>
+				
+							<p>The Reinvitation code below will remain active for 30 days.</p>
+							
+							<p>Reinvitation code '.$post_Invitation['Code'].'</p>
+				
+							<p>url from where the user can register http://localhost:4300/invitation</p>
+				
+							<p>This email contains private information for your AFP account &mdash; please don&rsquo;t forward it. Questions about anything?</p>
+				
+							<p>Email us at <a href="mailto:info@afponline.com">info@afponline.com</a> or <a href="mailto:sales@afponline.com">sales@afponline.com</a></p>
+				
+							<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:10px; border-top:5px solid #a51c36; background:#072b49; text-align:center; color:#fff;">Copyright &copy; 2018 Association for Financial Professionals - All rights reserved. </td>
+						</tr>
+					</tbody>
+				</table>';
+					//$this->email->message($body);
+
 					$this->email->message($body);
+
 					if($this->email->send())
 					{
 						$email_log = array(

@@ -25,10 +25,10 @@ add(CourseLevelEntity)
   }
   
 
-delete(ConfigurationId)
+delete(del)
   {
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'CourseLevel/delete/' + ConfigurationId)
+    this.http.post(this.globals.baseAPIUrl + 'CourseLevel/delete', del)
       .toPromise()
       .then(
         res => { // Success

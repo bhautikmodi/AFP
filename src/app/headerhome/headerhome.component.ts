@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Globals } from '.././globals';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { Globals } from '../globals';
 @Component({
   selector: 'app-headerhome',
   templateUrl: './headerhome.component.html',
@@ -7,9 +9,14 @@ import { Globals } from '.././globals';
 })
 export class HeaderhomeComponent implements OnInit {
 
-  constructor(private globals: Globals) { }
+  constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
   }
-
+  home()
+  {
+    this.globals.check_login=false;
+    this.router.navigate(['/dashboard']);
+  }
 }

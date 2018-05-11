@@ -38,7 +38,7 @@ export class CountrylistComponent implements OnInit {
 				if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
 					this.default();
 				} else {
-					this.router.navigate(['/dashboard']);
+					this.router.navigate(['/access-denied']);
 				}		
 			},
 			(error) => 
@@ -78,8 +78,9 @@ export class CountrylistComponent implements OnInit {
 	}
 
 	deleteConfirm(Country)
-	{ 
-		this.CountryService.delete(Country.CountryId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':Country.CountryId};
+		this.CountryService.delete(del)
 		.then((data) => 
 		{
 			let index = this.CountryList.indexOf(Country);

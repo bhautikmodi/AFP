@@ -71,9 +71,9 @@ export class SettingsService {
       return promise;
       }
   
-  delete(TeamSizeId){
+  delete(del){debugger
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Settings/deleteTeamSize/' + TeamSizeId)
+    this.http.post(this.globals.baseAPIUrl + 'Settings/deleteTeamSize',del)
       .toPromise()
       .then(
         res => { // Success

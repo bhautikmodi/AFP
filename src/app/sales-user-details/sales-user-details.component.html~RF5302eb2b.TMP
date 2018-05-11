@@ -21,17 +21,10 @@
             <a routerLink="/user-assessment-list/{{assessmentData.UserId}}" class="back_btn"><i class="fa fa-reply"></i>Back to Assessment</a>
 			<div class="clearfix visible-xs"></div>
             <h3>{{assessmentData.AssessmentName}}</h3>
-<<<<<<< HEAD
-            <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
-            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} 
-              <!-- <span>| Time Taken :</span> 01:12:34 -->
-            </h4>
-=======
 			<div class="clearfix visible-xs"></div>
              <h4 class="h4_nomargin"><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
             <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span><i class="hidden-xs">|</i> <br class="visible-xs">Covered KSA :</span> {{assessmentData.totalksa}} <span><i class="hidden-xs">|</i> <br class="visible-xs">Time Taken :</span> 01:12:34</h4>
 			
->>>>>>> c218176c160c5e23408684b4df24742a33012622
             <p class="padding_15">{{assessmentData.Description}} </p>
             <div class="text-center"><a href="#" class="red_btn" data-toggle="modal" data-target="#PreviewModal"><span>View All KSA Rating</span></a></div>
           </div>
@@ -104,7 +97,7 @@
                 </div>
                 <div id="coursecollapse{{i+1}}" class="panel-collapse collapse" [ngClass]="{in: f}" role="tabpanel"  attr.aria-labelledby="courseheading{{i+1}}">
                   <div class="panel-body">
-                    <div class="table-responsive"><table class="table table-bordered">
+                    <table class="table table-bordered">
                       <tr>
                         <th class="text-left width_30">Rating</th>
                         <th class="text-left width_80">Course(s)</th>
@@ -115,7 +108,7 @@
                             <li *ngFor="let c of rscale.course">{{c.Name}}</li>
                           </ul></td>
                       </tr>
-                    </table></div>
+                    </table>
                   </div>
                 </div>
               </div>

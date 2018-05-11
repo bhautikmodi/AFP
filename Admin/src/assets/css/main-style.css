@@ -218,6 +218,12 @@ textarea.cke_source {
 
 /*media queries*/
 
+@media(max-width:320px) {
+	.navbar-brand {
+		padding: 7px 0;
+	}
+}
+
 @media(min-width:768px) 
 {
     #page-wrapper {

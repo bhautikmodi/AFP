@@ -80,7 +80,8 @@ export class StatelistComponent implements OnInit {
   
   deleteConfirm(state)
 	{
-		this.StateService.deleteState(state.StateId)
+		var del={'Userid':this.globals.authData.UserId,'id':state.StateId};
+		this.StateService.deleteState(del)
 		.then((data) => 
 		{
 			let index = this.stateList.indexOf(state);

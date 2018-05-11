@@ -79,7 +79,8 @@ export class IndustrylistComponent implements OnInit {
 
 	deleteConfirm(Industry)
 	{ 
-		this.IndustryService.delete(Industry.IndustryId)
+		var del={'Userid':this.globals.authData.UserId,'id':Industry.IndustryId};
+		this.IndustryService.delete(del)
 		.then((data) => 
 		{
 			let index = this.IndustryList.indexOf(Industry);

@@ -53,7 +53,7 @@ export class AssessmentComponent implements OnInit {
 // }, 1000);
     
 
-    debugger
+   
     var progress = document.getElementById("progress");
     $(progress).css("width", "0%");    
     let id = this.route.snapshot.paramMap.get('id');    

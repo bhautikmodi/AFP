@@ -247,16 +247,6 @@ import { AuditlogService } from './services/auditlog.service';
         component : RemaininglistComponent,
 		  canActivate : [AuthGuard] 
       },
-	   {
-        path : 'userrole/add',
-        component : UserroleComponent,
-		canActivate : [AuthGuard] 
-      },
-	   {
-        path : 'userrole/list',
-        component : UserrolelistComponent,
-		canActivate : [AuthGuard] 
-      },
 	  {
         path : 'userrole/edit/:id',
         component : UserroleComponent,

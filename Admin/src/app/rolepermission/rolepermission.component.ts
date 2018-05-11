@@ -26,7 +26,7 @@ export class RolepermissionComponent implements OnInit {
   ngOnInit() {
 
     if(this.globals.authData.RoleId!=4){
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/access-denied']);
     }
 
     this.roleEntity = {};

@@ -28,7 +28,6 @@ deleteEntity;
 
   ngOnInit()
   {
-		this.globals.isLoading = true;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -43,7 +42,7 @@ deleteEntity;
 			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
 				this.default();
 			} else {
-				this.router.navigate(['/dashboard']);
+				this.router.navigate(['/access-denied']);
 			}		
 		},
 		(error) => 
@@ -58,7 +57,6 @@ deleteEntity;
 	//.map(res => res.json())
 	.then((data) => 
 	{
-		this.globals.isLoading = false;
 		this.userList = data;
 			setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -72,7 +70,7 @@ deleteEntity;
 	}, 
 	(error) => 
 	{
-		this.globals.isLoading = false;
+		//this.globals.isLoading = false;
 		alert('error');
 	});	
     this.msgflag = false;

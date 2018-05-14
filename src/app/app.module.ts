@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Globals } from './globals';
 import { Component,NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/Forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 

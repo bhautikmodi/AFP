@@ -20,12 +20,11 @@
                  ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
                </select> -->
 
-               <ng-select
-    [options]="myOptions">
-</ng-select>
+               <ng-select [options]="CompanyList"   placeholder="No selected" #CompanyId="ngModel" (ngModel)="SalesDashboardEntity.CompanyId" (selected)="onSelected($event)">
+              </ng-select>
 <!--            
            <select class="form-control select2" #CompanyId="ngModel (change)="getUserList(SalesDashboardForm)"
-          [(ngModel)]="SalesDashboardEntity.CompanyId" name="CompanyId "  >  
+          [(ngModel)]="SalesDashboardEntity.CompanyId"  (selected)="onSelected($event)"name="CompanyId "  >  
                  <option value="" ngSelected='SalesDashboardEntity.CompanyId==""' >Select Company </option>
                  <option *ngFor="let Company of CompanyList" value="{{Company.CompanyId}}" 
                  ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>

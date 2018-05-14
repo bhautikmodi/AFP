@@ -16,7 +16,10 @@ export class HeaderhomeComponent implements OnInit {
   }
   home()
   {
-    this.globals.check_login=false;
-    this.router.navigate(['/dashboard']);
+    if(this.globals.currentLink!='/'){
+      this.globals.check_login=false;
+      this.router.navigate(['/dashboard']);
+    }
+
   }
 }

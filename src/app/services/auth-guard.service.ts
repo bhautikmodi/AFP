@@ -10,6 +10,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
+	  this.globals.currentLink=state.url;
 	if(state.url=='/welcome_register'){   // new header component show
 	
 		this.globals.logohome = true;

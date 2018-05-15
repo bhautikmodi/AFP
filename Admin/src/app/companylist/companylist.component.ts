@@ -29,6 +29,7 @@ export class CompanylistComponent implements OnInit {
 		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
 
 		ngOnInit() { 
+			
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
 				this.permissionEntity.View=1;
@@ -57,6 +58,8 @@ export class CompanylistComponent implements OnInit {
 		this.CompanyService.getAllCompany	()
 	.then((data) => 
 	{ 
+		this.globals.isLoading = false;
+
 		this.companyList = data;	
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {

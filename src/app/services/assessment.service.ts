@@ -58,4 +58,21 @@ export class AssessmentService {
   return promise;
   }
 
+  testKsa() 
+  { debugger
+	let promise = new Promise((resolve, reject) => { 
+    this.http.get(this.globals.baseAPIUrl + 'AssessmentDetails/test')
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res);
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+  return promise;
+  }
+
 }

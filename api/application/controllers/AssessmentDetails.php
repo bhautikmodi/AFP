@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AssessmentDetails extends CI_Controller {
+class AssessmentDetails extends MY_Controller {
 
 
 	public function __construct() {
@@ -23,53 +23,45 @@ class AssessmentDetails extends CI_Controller {
 	// }
 	
 	public function test(){
-		$i = 0;
 		$ksaq = $this->db->query('SELECT Value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1');
 		$ksa = $ksaq->result();
 		$totalksa = $ksa[0]->Value; 
-		//$result = $this->db->query('SELECT CAreaId,(SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) AS totalksa from tblmstksa AS k left join tblmstcompetencyarea as ca ON ca.CAreaId=k.CAreaId left join tblmstdomain as d ON ca.DomainId=d.DomainId where k.IsActive=1 and d.IsActive=1 and ca.IsActive=1 GROUP BY CAreaId');
-		$result = $this->db->query('SELECT CAreaId,(SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=ca.CAreaId and k1.IsActive=1) AS totalksa from tblmstcompetencyarea as ca left join tblmstdomain as d ON ca.DomainId=d.DomainId where d.IsActive=1 and ca.IsActive=1');
+		$result = $this->db->query('SELECT CAreaId,(SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=ca.CAreaId and k1.IsActive=1) AS totalksa,(SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=ca.CAreaId and k1.IsActive=1) AS tempksa, 0 AS destksa from tblmstcompetencyarea as ca left join tblmstdomain as d ON ca.DomainId=d.DomainId where d.IsActive=1 and ca.IsActive=1');
 		$obj = $result->result(); 
-		$i = 1;
+		$i = 0;
+		while($i<$totalksa){
+			foreach($obj as $row) {
+				if($row->tempksa > 0){
+					$row->tempksa = $row->tempksa - 1;
+					$row->destksa = $row->destksa + 1;
+					$i++;
+					if($i==$totalksa){
+						break;
+					}
+				}			
+			}
+		}	
+		$res = array();
+
+		// foreach($obj as $row) {
+		// 	$data = $this->db->query('SELECT 35 as CAssessmentId,ksa.KSAId as KSAId FROM tblmstksa AS ksa  WHERE ksa.CAreaId = '.$row->CAreaId.' order by RAND() LIMIT '.$row->destksa);	
+		// 	$array = json_decode(json_encode($data->result()), True);
+		//  	$res = array_merge($res,$array);
+		// }
+		// shuffle($res);
+		// foreach($res as $obj) {
+		// 	$data = $this->db->query('INSERT INTO tblcandidateksa (CAssessmentId, KSAId) VALUES ('.$obj["CAssessmentId"].','.$obj["KSAId"].')');	
+		// }
+		//echo json_encode($res);
+
+
 		foreach($obj as $row) {
-			echo "<pre>";
-			print_r($row);
+			$data = $this->db->query('SELECT ksa.KSAId,d.Name as DomainName,ca.Name as CAreaName,ksa.Name as KSAName FROM tblmstksa AS ksa LEFT JOIN tblmstcompetencyarea AS ca ON ksa.CAreaId=ca.CAreaId LEFT JOIN tblmstdomain AS d ON d.DomainId=ca.DomainId WHERE ksa.CAreaId = '.$row->CAreaId.' order by RAND() LIMIT '.$row->destksa);	
+			$array = json_decode(json_encode($data->result()), True);
+			$res = array_merge($res,$array);
 		}
-
-
-
-
-
-
-		// $result = $this->db->query('SELECT CAreaId,round(((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) * (SELECT value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1))/(SELECT COUNT(KSAId) FROM tblmstksa)) AS getksa, ((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) - round(((SELECT COUNT(k1.KSAId) FROM tblmstksa AS k1 WHERE k1.CAreaId=k.CAreaId) * (SELECT value FROM tblmstconfiguration as config WHERE config.Key = "NoOfKSA" LIMIT 1))/(SELECT COUNT(KSAId) FROM tblmstksa))) AS leftksam from tblmstksa AS k GROUP BY CAreaId');
-		// $obj = $result->result();
-		// foreach($obj as $row) {
-		// 	if($row->getksa==0){
-		// 		$row->getksa=1;
-		// 	}
-		// 	$i = +$i + +$row->getksa;
-		// }
-		// if($i<$totalksa){
-		// 	$q = +$totalksa - +$i;
-		// 	$j = 0;
-		// 	while($j<$q){
-		// 		if($obj[$j].leftksam>0){
-		// 			$obj[$j]->getksa = $obj[$j]->getksa + 1;
-		// 			$j++;
-		// 		}				
-		// 	}
-		// } else if($i>$totalksa){
-		// 	$q = +$i - +$totalksa;	
-		// 	$j = 0;
-		// 	while($j<$q){
-		// 		$obj[$j]->getksa = $obj[$j]->getksa - 1;
-		// 		$j++;				
-		// 	}		
-		// } 
-		
-		// foreach($obj as $row) {
-		// 	//$insert = $this->db->query('INSERT INTO tblcandidateksa (CAssessmentId, KSAId) SELECT '.$insert_id.', ksa.KSAId FROM tblmstksa AS ksa  WHERE ksa.CAreaId = '.$row->CAreaId.' order by RAND() LIMIT '.$row->getksa);
-		// }
+		shuffle($res);
+		echo json_encode($res);
 	}
 	
 	public function add() {

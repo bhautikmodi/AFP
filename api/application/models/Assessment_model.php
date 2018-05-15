@@ -23,6 +23,7 @@ class Assessment_model extends CI_Model
 				
 				$this->db->select('ck.CKSAId,ck.CAssessmentId,ck.KSAId,ck.RatingScaleId,ksa.Name');
 				$this->db->join('tblmstksa ksa', 'ksa.KSAId = ck.KSAId', 'left');
+				$this->db->order_by('ck.CKSAId','asc');
 				$this->db->where('ck.CAssessmentId',$CAssessmentId);
 				$query = $this->db->get('tblcandidateksa as ck');	
 				$result = $query->result();
@@ -38,6 +39,7 @@ class Assessment_model extends CI_Model
 				}
 				$data1="";
 				$data1['ksaDetails']=$detail;
+				//shuffle($data);
 				$data1['ksa']=$data;
 				$data1['totalksa']=$query->num_rows();
 				return $data1;

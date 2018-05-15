@@ -47,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderhomeComponent } from './headerhome/headerhome.component';
 import{NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'ng-select';
+import { TestAssessmentComponent } from './test-assessment/test-assessment.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {SelectModule} from 'ng-select';
     UserAssessmentListComponent,
     SalesUserDetailsComponent,
     ReportComponent,
-    HeaderhomeComponent
+    HeaderhomeComponent,
+    TestAssessmentComponent
 
 
   ],
@@ -101,6 +103,11 @@ import {SelectModule} from 'ng-select';
 		{
 			path : 'dashboard',
 			component : DashbordComponent,
+			canActivate : [AuthGuard]
+		},
+		{
+			path : 'test-assessment',
+			component : TestAssessmentComponent,
 			canActivate : [AuthGuard]
 		},
 		{

@@ -67,7 +67,7 @@ export class AssessmentComponent implements OnInit {
         this.ksaList = data['ksa'];
         this.totalksa = data['totalksa'];
         this.addprogess = 100/this.totalksa;
-        
+        console.log(this.ksaList);
         setTimeout(()=>{  
           $('#carousel').flexslider({
             animation: "slide",

@@ -29,7 +29,7 @@ export class PlaceholderComponent implements OnInit {
 	ngOnInit() {
 
 		if(this.globals.authData.RoleId!=4){
-			this.router.navigate(['/dashboard']);
+			this.router.navigate(['/access-denied']);
 		  }
 
 		if(this.globals.authData.RoleId==4){		
@@ -41,7 +41,7 @@ export class PlaceholderComponent implements OnInit {
 				if(data['AddEdit']==1){
 					this.default();
 				} else {
-					this.router.navigate(['/dashboard']);
+					this.router.navigate(['/access-denied']);
 				}
 			},
 			(error) => 

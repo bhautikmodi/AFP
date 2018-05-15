@@ -25,10 +25,10 @@ export class IndustryService {
   }
   
 
-delete(IndustryId)
+delete(del)
   {
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'Industry/delete/' + IndustryId)
+    this.http.post(this.globals.baseAPIUrl + 'Industry/delete',del)
       .toPromise()
       .then(
         res => { // Success

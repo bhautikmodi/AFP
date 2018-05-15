@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { SalesDashboardService } from '../services/sales-dashboard.service';
+import {IOption} from 'ng-select';
 declare var $: any;
 @Component({
   selector: 'app-sales-dashboard',
@@ -20,6 +21,7 @@ export class SalesDashboardComponent implements OnInit {
 	btn_disable;
 	header;
 	vardisabled;
+	
   constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private SalesDashboardService: SalesDashboardService) { }
 
@@ -163,5 +165,7 @@ export class SalesDashboardComponent implements OnInit {
 		this.submitted = false;
 		SalesDashboardForm.form.markAsPristine();
 	}
-
+	onSelected(option: IOption) {
+        this.SalesDashboardEntity.CompanyId = `${option.value}`;
+    }
 }

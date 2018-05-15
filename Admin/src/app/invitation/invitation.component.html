@@ -46,17 +46,17 @@
                                 
                                 
                                 <div class="form-group col-md-6">
-                                    <label><span class="required">*</span>Industry</label>
+                                    <label>Industry</label>
                                     <select class="form-control" #IndustryId="ngModel" [(ngModel)]="InvitationEntity.IndustryId"
-								name="IndustryId" [ngClass]="{red_border: (IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)}" required>  
+								name="IndustryId" >  
 									<option value="" ngSelected='InvitationEntity.IndustryId==""' >Select Industry </option>
 									<option *ngFor="let Industry of IndustryList" value="{{Industry.IndustryId}}" 
 									ngSelected="InvitationEntity.IndustryId==Industry.IndustryId">{{Industry.IndustryName}}</option>
 								</select>
-									<span class="error_span" *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)">  
+									<!-- <span class="error_span" *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)">  
 										<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">
 											Please select industry										</span> 
-									</span> 
+									</span>  -->
                                 </div>
                                 
                                 <div class="clearfix"></div>

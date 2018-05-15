@@ -53,20 +53,23 @@ class State extends MY_Controller
 		echo json_encode($data);
 	}
 	
-	public function delete($state_id = NULL) 
-	{
-		
-		if(!empty($state_id)) {
 
-			$result = $this->State_model->delete_state($state_id);			
-			if($result) {
-				echo json_encode("Delete successfully");	
-			}	
+	public function delete() {
+		$post_state = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if ($post_state) {
+			if($post_state['id'] > 0){
+				$result = $this->State_model->delete_state($post_state);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+				}
+				}
+		
 			
 		} 
 			
 	}
-	
 	public function addproject()
 	{
 		//$this->load->model('Country_model');

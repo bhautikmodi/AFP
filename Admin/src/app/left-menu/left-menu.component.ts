@@ -16,9 +16,9 @@ export class LeftMenuComponent implements OnInit {
   }
 
   menuopen(path){ 
-    this.globals.msgflag = false;
-	  this.router.navigate([path]);
+    this.globals.msgflag = false;	  
     this.globals.currentLink = this.router.url;
+    this.router.navigate([path]);
   }
 
 }

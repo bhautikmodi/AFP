@@ -25,6 +25,13 @@ class Industry_model extends CI_Model
 			$res = $this->db->insert('tblmstindustry',$Industry_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Industry['CreatedBy']),
+					'Module' => 'Industry',
+					'Activity' =>'Add'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -90,6 +97,13 @@ class Industry_model extends CI_Model
 			$res = $this->db->update('tblmstindustry',$Industry_data);
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Industry['UpdatedBy']),
+					'Module' => 'Industry',
+					'Activity' =>'Update'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;
@@ -101,14 +115,21 @@ class Industry_model extends CI_Model
 	}
 	
 	
-	public function delete_Industry($Industry_Id) {
+	public function delete_Industry($post_Industry) {
 	
-		if($Industry_Id) {
+		if($post_Industry) {
 			
-			$this->db->where('IndustryId',$Industry_Id);
+			$this->db->where('IndustryId',$post_Industry['id']);
 			$res = $this->db->delete('tblmstindustry');
 			
 			if($res) {
+				$log_data = array(
+					'UserId' => trim($post_Industry['Userid']),
+					'Module' => 'Industry',
+					'Activity' =>'Delete'
+
+				);
+				$log = $this->db->insert('tblactivitylog',$log_data);
 				return true;
 			} else {
 				return false;

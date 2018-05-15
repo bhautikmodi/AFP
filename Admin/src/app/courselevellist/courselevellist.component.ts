@@ -40,7 +40,7 @@ export class CourselevellistComponent implements OnInit {
 			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
 				this.default();
 			} else {
-				this.router.navigate(['/dashboard']);
+				this.router.navigate(['/access-denied']);
 			}		
 		},
 		(error) => 
@@ -78,8 +78,9 @@ export class CourselevellistComponent implements OnInit {
 	}
 
 	deleteConfirm(Courselevel)
-	{ 
-		this.CourselevelService.delete(Courselevel.ConfigurationId)
+	{ 	
+		var del={'Userid':this.globals.authData.UserId,'id':Courselevel.ConfigurationId};
+	  this.CourselevelService.delete(del)
 		.then((data) => 
 		{
 			let index = this.CourselevelList.indexOf(Courselevel);

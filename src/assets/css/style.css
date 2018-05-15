@@ -40,6 +40,7 @@ h2{color:#1685ad; display:block; font:normal 23px/23px 'GothamNarrow-Medium'; ma
 h3{ font-size:25px; color:#A41C36; margin:0 0 15px 0; font-family: 'GothamNarrow-Medium'; font-weight: normal; line-height:25px; text-transform:none;}
 h4{ font-size:16px; color:#0085AD; display:block; padding:0 0; margin:0 0 10px 0; font-family: 'GothamNarrow-Book'; font-weight: normal; line-height:16px;}
 h4 span{color:#2e2d31; font-family: 'GothamNarrow-Medium';}
+h4 i{font-style: normal;}
 h5{color:#A50034; display:block; font:normal 16px/18px 'GothamNarrow-Bold'; margin:0 0 15px 0; text-transform:capitalize;}
 /* ========== Do Not Touch In Css End ========== */
     
@@ -104,7 +105,7 @@ footer.home_page h3,footer.home_page .address_footer a{color: #062b49;}
 .inner_content{ padding:70px 0; position:relative; min-height:450px; background:#fff;}
 .height_zero{min-height:0!important; padding-bottom: 30px;}
 
-.invitation_text input{ width:15%; display:inline-block; margin:0 3px; text-align:center;}
+.invitation_text input{ width:15.6%; display:block; margin:0 0.5%; text-align:center; float: left;}
 
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"GothamNarrow-book"; font-size:14px!important;}
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-book";}
@@ -178,10 +179,9 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .rating_list{ text-align:center; margin:0; display:block; line-height:27px; float:none; font-family: "GothamNarrow-Book"; font-size:12px; color:#2e2d31;}
 .rating_list li{display:inline-block; margin:0 10px;}
 .margin_btn{ margin-top:30px;}
-.margin_btn_15{ margin-top:20px;}
+.margin_btn_15{ margin-top:25px;}
 
 .dashboard_box{position:relative; width:100%; background:#f4f4f4; border:1px solid #ccc; box-shadow:1px 1px 5px #ccc; margin-bottom:30px; border-radius:5px;}
-.dashboard_section .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
 .dashboard_box .assess_name{ font-family: "GothamNarrow-Book"; font-size:18px; line-height:16px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; height:38px; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54;}
 .dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff; height:52px;} 
 .dashboard_box .margin_con{margin-top:95px;}
@@ -190,7 +190,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .dashboard_box .dashboard_item a:after{ background: #007699; width:0;}
 .dashboard_box .dashboard_item a:hover:after{ width:100%; color: #fff; }
 .dashboard_box .dashboard_chart_block{ width: 100%; height: 200px; text-align: center;}
-.startassessment_box{position:relative; width:100%; background:url("../images/banner.jpg") top center no-repeat; background-size:cover; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:140px 10px 0 10px; box-shadow:1px 1px 5px #000; text-align: center;}
+.startassessment_box{position:relative; width:100%; background:url("../images/banner.jpg") top center no-repeat; background-size:cover; border:5px solid #fff; margin-bottom:30px; border-radius:5px; height:310px; padding:128px 10px 0 10px; box-shadow:1px 1px 5px #000; text-align: center;}
 
 .general_user_section table{margin-bottom:0; background:#fff;}
 .width_80{width:80%;}
@@ -198,10 +198,11 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .width_30{width:30%;}
 .width_5{width:8%;}
 .width_70{width:70%;}
+.width_60{width: 60%; }
 .general_user_section .generaluser_chart_block{ width: 100%; height: 478px;}
 
 .dashboard_btn{ position:absolute; right:-105px; top:0;}
-.margin_bottom{margin-bottom:30px;}
+.margin_bottom{margin:0 0 30px 0;}
 
 .user_section{ background:#f4f4f4; padding:30px 0;}
 .user_box{position:relative; width:100%; background:#fff; border:1px solid #ccc; margin-bottom:30px; border-radius:5px; cursor:pointer; padding:10px;}
@@ -261,7 +262,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box_ksa:nth-child(1) label{ border-radius:0 0 0 10px;}
 .radio_box_ksa:nth-child(4) label{ border:0!important; border-radius:0 0 10px 0;}
 .radio_box_ksa input[type="radio"]:checked + label{ background:#A41C36; box-shadow:none; color:#fff;}
-#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; font-size: 18px; background: #a51c37; color: #ffffff; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
+#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
 #slider .flex-direction-nav a.flex-next:before {content: ""; background:url(../images/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
 
 #slider .flex-direction-nav a.flex-prev{padding: 10px 10px 10px 47px;}
@@ -294,7 +295,6 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .error_span{color:red; font-size:12px; font-weight:normal; font-family: "GothamNarrow-Book"; line-height:11px;}
 
 .filter_block{ display: block;}
-.filter_block .col-md-3{float: none; display: inline-block; text-align: left;}
 .pending_assessment{ padding-top: 85px; color: #0085AD; font-family: "GothamNarrow-Bold"; font-size: 18px;}
 
 .domain_desc{padding: 15px; height: 510px; border: 1px solid #888; background: #f4f4f4;}
@@ -309,7 +309,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 @media (min-height: 1300px){
 	.home_banner,.home_banner img{ height:1300px;}
 }
-@media (min-height: 1000px) and (max-height:1299px){
+@media (min-height: 1100px) and (max-height:1299px){
 	.home_banner,.home_banner img{ height:1200px;}
 }
 @media (min-width:1900px){
@@ -318,18 +318,21 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 @media (min-width:1800px){
 	#PreviewModal .modal-dialog{ margin:7% auto;}
 }
-@media (min-width:1600px){}
+@media (min-width:1600px) and (max-width:1700px){
+}
 @media (max-width:1500px){
 	.register_company_button a{font-size: 11px;}
 	header .four_strips div{width: 100px;}
-	.invitation_text input{width: 14%;}
 }
 @media (max-width:1340px){
-	.invitation_text input{width: 13%;}
-	.dashboard_section .col-md-3{width:33%;}
 	header .four_strips div{width: 80px; height: 150px;}
 	header .two_strip{height: 200px !important;}
 	header .four_strip{height: 210px !important;}
+	.flex-direction-nav { position: absolute; width: 98%;}
+}
+@media (max-width:1340px) and (min-width:992px){
+	.dashboard_section .col-md-3{width:33%;}
+	.user_section .col-md-3{width:33%;}
 }
 @media (max-width:1200px) {
 	header .four_strips div{width: 60px;}
@@ -339,42 +342,61 @@ input[type="radio"]{position:absolute; visibility:hidden;}
      ul li:hover ul.dropdown-menu {opacity:1; top:15px; visibility:visible; transition-property: color, background-color; -webkit-transform: translateY(24px);-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
 }
 @media (max-width:991px){
-	.home_banner .banner_text{padding:5% 0 0 0;}
 	footer .address_footer{line-height:28px;}
 	header{background-size:300px;}
 	footer .address_footer span{display:block;}
-	.dashboard_section .col-md-3{width:45%;}
 	header .four_strips{right: 60px;}
 	header .four_strips div{width: 50px; height:60px;}
 	header .two_strip,header .four_strip{height:100px!important;}
 	.form_bg{width: 100%!important;}
 	header .logo { width: 215px;}
+	header.home_page .logo { width: 215px;}
+	.domain_desc{ height: auto; margin-bottom: 15px;}
+	.height_510px{height: auto;}
+	.sales_section .inner_grey{margin: 0 0 30px; height: auto; min-height: 0; padding: 15px;}
+	.home_banner .banner_text .title_banner span.title{ font: bold 35px/45px 'GothamNarrow-Bold';}
+	.home_banner .banner_text a { margin-top: 10px;}
+	footer.footer_fixed {position: relative;}
 }
 @media (max-width:767px){
 	.inner_content{padding: 30px 0;}
 	.register_content{padding: 30px 0 0 0;}
-	.home_banner .banner_text .title_banner{font-size:15px; line-height:25px;}
-	.home_banner .banner_text .title_banner span{font-size:30px; line-height:40px;}
 	footer{line-height:18px;}
 	.container{ padding:0 15px;}
 	header{background:#fafafa;}
-	.invitation_text input{padding:0; margin: 0 1px;}
-	.dashboard_section .col-md-3{width:80%;}
+	.invitation_text input{padding:0;}
 	header .four_strips{right: 150px;}
 	header .four_strips div{width: 20px; height:30px;}
 	header .two_strip,header .four_strip{height:50px!important;}
 	.register_content .right_content{padding: 15px;}
 	.form_bg{padding: 15px;}
+	.assessment_bg #ratingaccordion .panel-heading,.intro_block li{position: relative; width: 100%;}
+	.assessment_bg #ratingaccordion .panel-body{margin: 0!important;}
+	.flex-direction-nav .flex-prev{left: -10px; top:-70px;}
+	.flex-direction-nav .flex-next{right: -10px; top:-70px;}
+	.flex-direction-nav a:before{font-size: 25px!important;}
+	.assessment_top{ margin: 50px 0 0 0;}
+	h1{ font-size: 35px; line-height: 35px;}
+	.back_btn,.margin_bottom{position: relative; top:-15px}
+	br.visible-xs{margin-bottom: 10px;}
+	.general_user_section .h4_nomargin{margin-bottom: 0;}
+	.general_user_section h4{line-height: 25px;}
+	.sales_detail .h4_nomargin{margin-bottom: 0;}
+	.sales_detail h4{line-height: 25px;}
+	.domain_desc .accordion_scroll{height: auto; overflow: hidden; padding: 0;}
+	.margin_btn_15{ margin-top:10px;}
+	header.home_page{ position: relative;}
+	header.home_page .img_strips{top:96px;}
+	.home_banner .banner_text{ position: relative; padding: 15px;}
+	.home_banner .banner_text .title_banner span.title{color:#042a47; font: bold 40px/50px 'GothamNarrow-Bold';}
+	.home_banner .banner_text .title_banner{width: 100%;}
 }
 @media (max-width:500px){
-	.home_banner .banner_text {position:relative; top:0; left:0; padding:30px 0;}	
-	.home_banner .banner_text .title_banner{font-size:15px; line-height:30px;}
-	.home_banner .banner_text .title_banner span{font-size:35px; line-height:45px;}
 	#submit_Modal .modal-dialog{ width: 90%;}
 	header .four_strips{display: none;}
 	header .logo { width: 180px;}
 	.account_menu li a{padding: 5px; height: auto; font-size: 14px;}
 }
 @media (max-width:400px){
-	.dashboard_section .col-md-3{width:100%;}
+	.margin_bottom{font-size: 13px; padding: 11px 50px 11px 8px; margin:0 0 10px;}
 }

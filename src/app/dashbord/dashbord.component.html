@@ -8,10 +8,10 @@
             <h2>AFP Corporate Training Skills Assessment</h2>
             <h1>Dashboard</h1>
           </div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-md-3 col-sm-6">
         <div class="startassessment_box"> <a routerLink="/assessment_details/" class="red_btn"><span>Start New Assessment</span></a> </div>
       </div>
-      <div class="col-md-3 col-sm-3" *ngFor="let pa of passessmentList; let i = index">
+      <div class="col-md-3 col-sm-6" *ngFor="let pa of passessmentList; let i = index">
           <div class="dashboard_box">
             <div class="assess_name">{{pa.AssessmentName}}</div>
             <div class="dashboard_chart_block"><a routerLink="/assessment/{{pa.CAssessmentId}}" class="next_btn margin_con"><span>Continue Assessment</span></a></div>
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-      <div class="col-md-3 col-sm-3" *ngFor="let ass of assessmentList; let i = index">
+      <div class="col-md-3 col-sm-6" *ngFor="let ass of assessmentList; let i = index">
         <div class="dashboard_box">
           <div class="assess_name">{{ass.assessment.AssessmentName}}</div>
           <div id="dashboard_result_bar{{i}}" class="dashboard_chart_block"></div>

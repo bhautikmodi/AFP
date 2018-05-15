@@ -25,7 +25,7 @@ export class DomainService {
 	return promise;
   }
   
-  delete(del){debugger
+  delete(del){
 	let promise = new Promise((resolve, reject) => {		
     this.http.post(this.globals.baseAPIUrl + 'Domain/delete',del)
       .toPromise()
@@ -42,7 +42,7 @@ export class DomainService {
   }
 
   
-  getAll(){     
+  getAll(){    debugger 
 	let promise = new Promise((resolve, reject) => {     
     this.http.get(this.globals.baseAPIUrl + 'Domain/getAll')
       .toPromise()
@@ -51,6 +51,8 @@ export class DomainService {
           resolve(res);
         },
         msg => { // Error
+          console.log(msg.message);
+          console.log(msg.error);
 		  reject(msg);
         }
       );

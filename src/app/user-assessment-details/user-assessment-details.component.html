@@ -8,8 +8,16 @@
             <h2>AFP Corporate Training Skills Assessment</h2>
             <h1>{{assessmentData.AssessmentName}}</h1>
             <a routerLink="/dashboard" class="back_btn"><i class="fa fa-reply"></i>Back to Dashboard</a>
+<<<<<<< HEAD
             <h4><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
-            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}} <span>| Time Taken :</span> 01:12:34</h4>
+            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span>| Covered KSA :</span> {{assessmentData.totalksa}}
+               <!-- <span>| Time Taken :</span> 01:12:34 -->
+              </h4>
+=======
+			<div class="clearfix visible-xs"></div>
+            <h4 class="h4_nomargin"><span>Date Taken :</span> {{assessmentData.EndTime | date:'MM-dd-yyyy'}}</h4>
+            <h4><span>Team Size :</span> {{assessmentData.TeamSize}} <span><i class="hidden-xs">|</i> <br class="visible-xs">Covered KSA :</span> {{assessmentData.totalksa}} <span><i class="hidden-xs">|</i> <br class="visible-xs">Time Taken :</span> 01:12:34</h4>
+>>>>>>> c218176c160c5e23408684b4df24742a33012622
             <p class="padding_30">{{assessmentData.Description}}</p>
             <h3>Assessment Result</h3>
           </div>
@@ -33,7 +41,7 @@
                         </div>
                         <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
                           <div class="panel-body">
-                            <table class="table table-hover table-bordered">
+                            <div class="table-responsive"> <table class="table table-hover table-bordered">
                               <tr>
                                 <th class="text-left width_30">Competency Area</th>
                                 <th class="text-left width_80">Description</th>
@@ -42,7 +50,7 @@
                                 <td>{{area.Name}}</td>
                                 <td>{{area.Description}}</td>
                               </tr>
-                            </table>
+                            </table></div>
                           </div>
                         </div>
                       </div>

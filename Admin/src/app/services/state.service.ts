@@ -42,9 +42,9 @@ export class StateService {
   }
   
   
-  deleteState(StateId){
+  deleteState(del){
 	let promise = new Promise((resolve, reject) => {		
-    this.http.get(this.globals.baseAPIUrl + 'State/delete/' + StateId)
+    this.http.post(this.globals.baseAPIUrl + 'State/delete', del)
       .toPromise()
       .then(
         res => { // Success

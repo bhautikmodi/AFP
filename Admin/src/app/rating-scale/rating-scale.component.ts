@@ -33,7 +33,7 @@ export class RatingScaleComponent implements OnInit {
 				if(data['AddEdit']==1){
 					this.default();
 				} else {
-					this.router.navigate(['/dashboard']);
+					this.router.navigate(['/access-denied']);
 				}
 			},
 			(error) => 

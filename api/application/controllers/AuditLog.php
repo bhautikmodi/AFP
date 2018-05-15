@@ -20,5 +20,21 @@ class AuditLog extends MY_Controller {
 		echo json_encode($data);
 				
 	}
+
+	public function getLoginLog() {
+		
+		$data="";
+		$data=$this->AuditLog_model->getLoginLog();		
+		echo json_encode($data);
+				
+	}
+
+	public function getActivityLog() {
+		
+		$data="";
+		$data=$this->AuditLog_model->getActivityLog();		
+		echo json_encode($data);
+				
+	}
 	
 }

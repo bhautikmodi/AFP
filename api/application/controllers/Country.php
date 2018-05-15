@@ -53,19 +53,24 @@ class Country extends MY_Controller {
 		}
 	}	
 	
-	public function delete($Country_Id = NULL) {
-		
-		if(!empty($Country_Id)) {
 
-			$result = $this->Country_model->delete_Country($Country_Id);
-				echo json_encode("Delete successfully");	
-			
+		
+	public function delete() {
+		$post_Country = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if ($post_Country) {
+			if($post_Country['id'] > 0){
+				$result = $this->Country_model->delete_Country($post_Country);
+				if($result) {
+					
+					echo json_encode("Delete successfully");
+				}
+				}
+		
 			
 		} 
 			
 	}
-		
-
 	
 	
 }

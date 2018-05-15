@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Globals } from './globals';
 import { Component,NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/Forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
@@ -46,6 +46,7 @@ import { HttpInterceptorClassService } from './http-interceptor-class.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderhomeComponent } from './headerhome/headerhome.component';
 import{NgxPaginationModule} from 'ngx-pagination';
+import {SelectModule} from 'ng-select';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import{NgxPaginationModule} from 'ngx-pagination';
 	FormsModule,
 	NgxPaginationModule,
 	HttpClientModule,
+	SelectModule,
 	RouterModule.forRoot([		
 		{
 			path : '',

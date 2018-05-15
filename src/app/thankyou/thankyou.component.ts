@@ -63,6 +63,9 @@ export class ThankyouComponent implements OnInit {
           "dashLength": 5,
             "autoWrap": true
           },
+		   "responsive": {
+			"enabled": true
+			},
           "graphs": [{
             "balloonText": "<b>[[category]]: [[value]]</b>",
             "fillColorsField": "color",
@@ -70,7 +73,7 @@ export class ThankyouComponent implements OnInit {
             "lineAlpha": 0.2,
             "type": "column",
             "valueField": "ratingscale",
-          "fixedColumnWidth": 40,
+          "fixedColumnWidth": 35,
           "labelText" : "[[value]]"
           }],
           "chartCursor": {

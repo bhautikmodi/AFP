@@ -57,6 +57,9 @@ export class ReportComponent implements OnInit {
 		"valueLineBalloonEnabled": false,
 		"valueLineEnabled": false,
     },
+		   "responsive": {
+			"enabled": true
+			},
        "categoryField": "domain",
       "categoryAxis": {
 		"gridPosition": "start",

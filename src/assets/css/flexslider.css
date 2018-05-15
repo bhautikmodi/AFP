@@ -108,22 +108,22 @@ html[xmlns] .flexslider .slides {
   content: '\f101';
 }
 .flex-direction-nav .flex-prev {
-  left: -40px;
+  left: -10px;
 }
 .flex-direction-nav .flex-next {
-  right: -40px;
+  right: -10px;
   text-align: right;
 }
 .flexslider:hover .flex-direction-nav .flex-prev {
   opacity: 1;
-  left: -40px;
+  left: -10px;
 }
 .flexslider:hover .flex-direction-nav .flex-prev:hover {
   opacity: 1;
 }
 .flexslider:hover .flex-direction-nav .flex-next {
   opacity: 1;
-  right: -40px;
+  right: -10px;
 }
 .flexslider:hover .flex-direction-nav .flex-next:hover {
   opacity: 1;

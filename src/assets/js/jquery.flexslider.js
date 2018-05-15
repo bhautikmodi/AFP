@@ -1217,27 +1217,4 @@
   };
 })(jQuery);
 
-
-<!-- ASSESSMENT SLIDER -->
-    $(window).load(function(){
-      $('#carousel').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 120,
-		minItems: 1,
-    	maxItems: 9,
-        itemMargin: 5,
-        asNavFor: '#slider'
-      });
-
-      $('#slider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        sync: "#carousel"
-      });
-    });
-<!-- END ASSESSMENT SLIDER -->
+ 

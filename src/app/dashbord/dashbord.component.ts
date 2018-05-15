@@ -58,6 +58,9 @@ export class DashbordComponent implements OnInit {
           "dashLength": 5,
           "labelsEnabled": false
           },
+		   "responsive": {
+			"enabled": true
+			},
           "graphs": [{
             "balloonText": "<b>[[category]]: [[value]]</b>",
             "fillColorsField": "color",

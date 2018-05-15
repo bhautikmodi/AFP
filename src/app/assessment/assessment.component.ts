@@ -69,7 +69,10 @@ export class AssessmentComponent implements OnInit {
         this.addprogess = 100/this.totalksa;
         console.log(this.ksaList);
         setTimeout(()=>{  
-          $('#carousel').flexslider({
+		
+	 "use strict";
+if (screen.width>767) {
+      $('#carousel').flexslider({
             animation: "slide",
             controlNav: false,
             animationLoop: false,
@@ -88,6 +91,33 @@ export class AssessmentComponent implements OnInit {
             slideshow: false,
             sync: "#carousel"
           });
+}
+else {
+      $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 120,
+		minItems: 1,
+    	maxItems: 2,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
+
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel"
+      });
+}
+		
+		
+		
+		
+         
           $('[data-toggle="tooltip"]').tooltip();
           new PerfectScrollbar('.preview_ksa .scroll_table');
 

@@ -97,6 +97,9 @@ this.SalesUserService.getUserAssessDetail(id)
       "dashLength": 5,
         "autoWrap": true
       },
+		   "responsive": {
+			"enabled": true
+			},
       "graphs": [{
         "balloonText": "<b>[[category]]: [[value]]</b>",
         "fillColorsField": "color",
@@ -104,7 +107,7 @@ this.SalesUserService.getUserAssessDetail(id)
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "ratingscale",
-      "fixedColumnWidth": 40,
+      "fixedColumnWidth": 30,
       "labelText" : "[[value]]"
       }],
       "chartCursor": {
@@ -154,6 +157,9 @@ this.SalesUserService.getUserAssessDetail(id)
       "balloon":{
          "fixedPosition":true
       },
+		   "responsive": {
+			"enabled": true
+			},
       "balloonText": "[[domain]]<br><b>([[percents]]%)</b>",
       "export": {
         "enabled": false
@@ -176,6 +182,9 @@ this.SalesUserService.getUserAssessDetail(id)
         "balloon":{
          	"fixedPosition":true
         },
+		   "responsive": {
+			"enabled": true
+			},
         "balloonText": "[[domain]]<br><b>([[percents]]%)</b>",
         "export": {
           "enabled": false

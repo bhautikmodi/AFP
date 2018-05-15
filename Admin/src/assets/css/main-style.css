@@ -142,7 +142,7 @@ padding-left: 45px;
 }
 html.index_admin,.index_admin body{ height:100%;}
 .index_admin body {
-    background: url("../img/banner.jpg") center center no-repeat; 
+    background: url("../img/welcome.jpg") center center no-repeat; 
 	background-size:cover; height:100%;
 }
 .index_admin > div{height:100%;}
@@ -297,6 +297,15 @@ textarea.cke_source {
 @media (max-width: 1024px) {
 	.table-responsive {
 		overflow-x: auto;
+	}
+}
+
+@media only screen and (min-device-width : 300px) and (max-device-width : 999px) and (orientation:landscape) {
+	.index_admin body {
+		background-size: auto;
+	}
+	.index_admin .white_bg {
+		height: auto;
 	}
 }
 

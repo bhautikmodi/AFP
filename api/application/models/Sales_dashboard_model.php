@@ -8,7 +8,7 @@ class Sales_dashboard_model extends CI_Model
 	//list Industry
 	public function getlist_company() {
 	
-		$this->db->select('CompanyId,Name');
+		$this->db->select('CompanyId as value,Name as label');
 		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany');
 		

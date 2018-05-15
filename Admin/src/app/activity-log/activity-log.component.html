@@ -20,7 +20,6 @@
               <thead>
                 <tr>
                   <th>Sr No.</th>
-                  <th>UserId</th>
                   <th>User Name</th>
                   <th>Role Name</th>
                   <th>Module</th>
@@ -31,7 +30,6 @@
               <tbody>
                   <tr *ngFor="let log of activitylogList; let i = index" >
                       <td class="width_8">{{i+1}}</td>
-                      <td class="width_18">{{log.UserId}}</td> 
                       <td class="width_18">{{log.UserName}}</td> 
                       <td class="width_18">{{log.RoleName}}</td>
                       <td class="width_18">{{log.Module}}</td>

@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set("Asia/Kolkata");
 header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Headers: *');
+header("Access-Control-Allow-Headers: Authorization,Origin, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header('Content-Type: application/json');
-
 
 
 /*

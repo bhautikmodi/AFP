@@ -34,15 +34,22 @@ deleteEntity;
 		this.permissionEntity.AddEdit=1;
 		this.permissionEntity.Delete=1;
 		this.default();
+		
 	} else {		
 		this.CommonService.get_permissiondata({'RoleId':this.globals.authData.RoleId,'screen':'User'})
+	
 		.then((data) => 
 		{
 			this.permissionEntity = data;
 			if(this.permissionEntity.View==1 ||  this.permissionEntity.AddEdit==1 || this.permissionEntity.Delete==1){
 				this.default();
 			} else {
+<<<<<<< HEAD
+				
+				this.router.navigate(['/dashboard']);
+=======
 				this.router.navigate(['/access-denied']);
+>>>>>>> 7b3ad30c97488eaeb2ff2f49f4856e09fce6529e
 			}		
 		},
 		(error) => 
@@ -57,6 +64,10 @@ deleteEntity;
 	//.map(res => res.json())
 	.then((data) => 
 	{
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 7b3ad30c97488eaeb2ff2f49f4856e09fce6529e
 		this.userList = data;
 			setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -70,7 +81,11 @@ deleteEntity;
 	}, 
 	(error) => 
 	{
+<<<<<<< HEAD
+		
+=======
 		//this.globals.isLoading = false;
+>>>>>>> 7b3ad30c97488eaeb2ff2f49f4856e09fce6529e
 		alert('error');
 	});	
     this.msgflag = false;

@@ -24,7 +24,9 @@ export class UserComponent implements OnInit {
 	constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private UserService: UserService, private CommonService: CommonService) { }
 
-	ngOnInit() {this.userEntity = {};
+	ngOnInit() {
+		
+		this.userEntity = {};
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

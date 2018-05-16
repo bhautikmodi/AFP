@@ -23,7 +23,9 @@
       ],
       "scripts": [
 		"assets/js/jquery-1.11.3.min.js",
-		"assets/js/bootstrap.min.js",	
+    "assets/js/bootstrap.min.js",	
+    "assets/dataTables/jquery.dataTables.js",
+    "assets/dataTables/dataTables.bootstrap.js",
     "assets/js/jquery.bxslider.js",
     "assets/js/jquery.flexslider.js", 
     "assets/js/perfect-scrollbar.js",	   

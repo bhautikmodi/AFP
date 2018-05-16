@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssessmentService } from '../services/assessment.service';
+declare var $: any;
 
 @Component({
   selector: 'app-test-assessment',
@@ -13,12 +14,20 @@ export class TestAssessmentComponent implements OnInit {
   constructor(private AssessmentService: AssessmentService) { }
 
   ngOnInit() {
-    this.ksaDetails={};
+    this.ksaDetails=[];
     this.AssessmentService.testKsa()
 		.then((data) => 
 		{
       this.ksaDetails = data;
-      console.log(this.ksaDetails);
+      setTimeout(function(){
+        $('#dataTables-example').dataTable( {
+          "oLanguage": {
+            "sLengthMenu": "_MENU_ ksa per Page",
+            "sInfo": "Showing _START_ to _END_ of _TOTAL_ ksa",
+            "sInfoFiltered": "(filtered from _MAX_ total ksa)"
+          }
+        });
+      },1000);
     }, 
 		(error) => 
 		{

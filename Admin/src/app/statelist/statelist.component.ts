@@ -55,7 +55,7 @@ export class StatelistComponent implements OnInit {
 	.then((data) => 
 	{
 		this.stateList = data;
-				setTimeout(function(){
+	setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
           "sLengthMenu": "_MENU_ State per Page",

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AssessmentService } from '../services/assessment.service';
+import { Http } from '@angular/http';
+
+import { Globals } from '.././globals';
 declare var $: any;
 
 @Component({
@@ -11,8 +14,12 @@ declare var $: any;
 export class TestAssessmentComponent implements OnInit {
 
   ksaDetails;
-  constructor(private AssessmentService: AssessmentService) { }
 
+  constructor(private http: Http, 
+    private AssessmentService: AssessmentService, private globals: Globals) 
+    {
+    
+    }
   ngOnInit() {
     this.ksaDetails=[];
     this.AssessmentService.testKsa()
@@ -27,7 +34,7 @@ export class TestAssessmentComponent implements OnInit {
             "sInfoFiltered": "(filtered from _MAX_ total ksa)"
           }
         });
-      },1000);
+      },100);
     }, 
 		(error) => 
 		{

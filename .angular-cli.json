@@ -33,10 +33,8 @@
     "assets/js/serial.js",
     "assets/js/pie.js",	  
 	"assets/js/responsiveamcharts.js",
-    "assets/js/select2.min.js",	
-    "assets/js/custom.js"
-		
-		  
+    "assets/js/select2.min.js",
+    "assets/js/custom.js"  
 	  
 	  ],
       "environmentSource": "environments/environment.ts",

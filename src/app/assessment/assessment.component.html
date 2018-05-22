@@ -8,6 +8,7 @@
       <div class="col-md-12">
           <h2>AFP Corporate Training Skills Assessment</h2>
         <h1>{{ksaDetails.AssessmentName}}</h1>
+		  <p class="padding_30">Use the rating scale to evaluate your team on their knowledge, skills and abilities in FP&A. The definitions for the numbered rating options can be found in the drop down below. Make sure to answer all questions before submitting your assessment. You may save your work and come back later to complete the assessment if needed.</p>
         <!-- <h2> <p id="demo"></p></h2> -->
         <div class="clearfix"></div>
         <div id="carousel" class="flexslider ksa_list_block">
@@ -55,7 +56,7 @@
                 </div>
               </div>
             </div>
-            <h3 class="text-center">Rate your Team</h3>
+            <h3 class="text-center">Rate Your Team</h3>
         <div class="row">
           <form class="form-validate" #assessmentForm="ngForm" (ngSubmit)="finalSubmit()">
             <div id="slider" class="flexslider">
@@ -112,7 +113,7 @@
           <table class="table table-bordered table-hover no_margin">
             <tr>
               <th class="text-center width_5">Sr. No.</th>
-              <th class="width_60">KSA</th>
+              <th class="width_60">Knowledge, Skills and Abilities</th>
               <th class="text-left width_30">Selected Rating</th>
             </tr>
           </table>
@@ -131,7 +132,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <p><strong>Are you sure you want to submit your Assessment ?</strong></p>
+        <p><strong>Are you sure you want to submit your assessment ?</strong></p>
         <button type="button" class="next_btn"  (click)="confirmsubmit()"><span>Yes</span></button>
         <button type="button" class="red_btn" data-dismiss="modal"><span>No</span></button>
       </div>

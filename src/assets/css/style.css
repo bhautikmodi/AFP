@@ -410,6 +410,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.home_banner .banner_text{ position: relative; padding: 15px;}
 	.home_banner .banner_text .title_banner span.title{color:#042a47; font: bold 40px/50px 'GothamNarrow-Bold';}
 	.home_banner .banner_text .title_banner{width: 100%;}
+	.account_menu{top: 40px;}
 }
 @media (max-width:500px){
 	#submit_Modal .modal-dialog{ width: 90%;}

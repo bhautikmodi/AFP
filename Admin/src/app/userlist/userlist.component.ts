@@ -64,7 +64,7 @@ deleteEntity;
 			setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ User per Page",
+          "sLengthMenu": "_MENU_ Users per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ User",
 					"sInfoFiltered": "(filtered from _MAX_ total User)"
         }

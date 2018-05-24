@@ -38,7 +38,7 @@
 				 [ngClass]="{red_border: (nPassword.dirty && nPassword.invalid) || (nPassword.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(nPassword.dirty && nPassword.invalid) || (nPassword.pristine && submitted)">
 									<span *ngIf="nPassword.errors && nPassword.errors.required">
-										Please enter your password
+										Please enter your new password
 											</span>
 										  
 										  <span *ngIf="nPassword.errors && nPassword.errors.pattern">

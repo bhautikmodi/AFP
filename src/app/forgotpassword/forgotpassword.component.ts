@@ -29,7 +29,7 @@ export class ForgotpasswordComponent implements OnInit {
   
   addFgpass(fgpassForm)
 	{		
-	debugger
+	 var msg=this.fgpassEntity.EmailAddress;
 		
 			this.submitted = true;
 		
@@ -44,7 +44,7 @@ export class ForgotpasswordComponent implements OnInit {
 				
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'Invalid Email-Id';
+						this.globals.message = 'Couldn\'t find your Email Address';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;
@@ -60,7 +60,7 @@ export class ForgotpasswordComponent implements OnInit {
 					this.fgpassEntity = {};
 					fgpassForm.form.markAsPristine();
 					this.globals.isLoading = false;
-					this.globals.message = 'Password reset link has been sent to your Email Id. Please check your Email!';
+					this.globals.message = 'An email with a password reset link was just sent to : ' + msg;
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 						

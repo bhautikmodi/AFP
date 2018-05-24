@@ -84,11 +84,11 @@ export class RatingScaleComponent implements OnInit {
 					this.ratingscaleEntity = {};
 					ratingscaleForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Data Updated Successfully!';
+						this.globals.message = 'Rating Scale Updated Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Data Added Successfully!';
+						this.globals.message = 'Rating Scale Added Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

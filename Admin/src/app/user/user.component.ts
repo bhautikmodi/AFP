@@ -142,11 +142,11 @@ export class UserComponent implements OnInit {
 					this.userEntity = {};
 					userForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Data Updated successfully!';
+						this.globals.message = 'User Updated successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Data Added successfully!';
+						this.globals.message = 'User Added successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

@@ -83,7 +83,7 @@ class Salesuser_model extends CI_Model
 			$query = $this->db->get('tblcandidateassessment');	
 			if($query->num_rows()==1){
 	
-                $this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA');
+                $this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA, "General Awareness" as rscalename');
                 $this->db->where('dksa.CAssessmentId',$CAssessmentId);
                 $this->db->join('tblmstdomain d', 'd.DomainId = dksa.DomainId', 'left');
                 $query = $this->db->get('tbldomainwiseksa dksa');

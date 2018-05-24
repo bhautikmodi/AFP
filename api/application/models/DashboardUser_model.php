@@ -85,7 +85,8 @@ class DashboardUser_model extends CI_Model
                 {
                     $assessment_data=$row;				   
                 }				
-                $this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA');
+                //$this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA, IF(0<=dksa.AvgRatingScale<=1, "General Awareness") ELSEIF(1<dksa.AvgRatingScale<=2, "Developing") ELSEIF(2<dksa.AvgRatingScale<=3, "Intermediate") ELSEIF(3<dksa.AvgRatingScale<=4, "Advanced") END IF as rscalename');
+                $this->db->select('d.Name as domain, dksa.AvgRatingScale as ratingscale, "#001F49" as color, dksa.PercentOfKSA, "General Awareness" as rscalename');
                 $this->db->where('dksa.CAssessmentId',$CAssessmentId);
                 $this->db->join('tblmstdomain d', 'd.DomainId = dksa.DomainId', 'left');
                 $query = $this->db->get('tbldomainwiseksa dksa');
@@ -96,6 +97,7 @@ class DashboardUser_model extends CI_Model
                 }
                 $this->db->select('rsksa.PercentOfKSA,rs.Name,rs.Description');
                 $this->db->join('tblmstratingscale rs', 'rs.RatingScaleId = rsksa.RatingScaleId', 'left');
+                $this->db->order_by('rs.RatingScaleId','asc');
                 $this->db->where('rsksa.CAssessmentId',$CAssessmentId);
                 $query = $this->db->get('tblratingscalewiseksa as rsksa');
                 $rscale_data = array();

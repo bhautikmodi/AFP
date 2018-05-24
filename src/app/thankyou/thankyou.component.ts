@@ -25,7 +25,7 @@ export class ThankyouComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');    
     this.DashboardService.getUserAssessDetail(id)
 		.then((data) => 
-		{ debugger
+		{ 
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {
@@ -33,11 +33,19 @@ export class ThankyouComponent implements OnInit {
         this.domainData = data['domain'];
         this.rscaleData = data['rscale'];
         this.careaData = data['carea'];
-		console.log(this.careaData);
         var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);
-          this.domainData[j].color = colorarray[j];
+          this.domainData[j].color = colorarray[j]; debugger
+          if(this.domainData[j].ratingscale<=1){
+            this.domainData[j].rscalename = "General Awareness";
+          } else if(this.domainData[j].ratingscale<=2){
+            this.domainData[j].rscalename = "Developing";
+          } else if(this.domainData[j].ratingscale<=3){
+            this.domainData[j].rscalename = "Intermediate";
+          } else if(this.domainData[j].ratingscale<=4){
+            this.domainData[j].rscalename = "Advanced";
+          }          
         }
         var chart = AmCharts.makeChart("gneraluser_result", {
           "type": "serial",
@@ -67,7 +75,7 @@ export class ThankyouComponent implements OnInit {
 			"enabled": true
 			},
           "graphs": [{
-            "balloonText": "<b>[[category]]: [[value]]</b>",
+            "balloonText": "<b>[[rscalename]]</b>",
             "fillColorsField": "color",
             "fillAlphas": 1,
             "lineAlpha": 0.2,

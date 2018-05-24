@@ -37,6 +37,15 @@ export class UserAssessmentDetailsComponent implements OnInit {
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);
           this.domainData[j].color = colorarray[j];
+          if(this.domainData[j].ratingscale<=1){
+            this.domainData[j].rscalename = "General Awareness";
+          } else if(this.domainData[j].ratingscale<=2){
+            this.domainData[j].rscalename = "Developing";
+          } else if(this.domainData[j].ratingscale<=3){
+            this.domainData[j].rscalename = "Intermediate";
+          } else if(this.domainData[j].ratingscale<=4){
+            this.domainData[j].rscalename = "Advanced";
+          }  
         }
         var chart = AmCharts.makeChart("gneraluser_result", {
           "type": "serial",
@@ -66,7 +75,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
 			"enabled": true
 			},
           "graphs": [{
-            "balloonText": "<b>[[category]]: [[value]]</b>",
+            "balloonText": "<b>[[rscalename]]</b>",
             "fillColorsField": "color",
             "fillAlphas": 1,
             "lineAlpha": 0.2,

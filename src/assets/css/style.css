@@ -35,7 +35,7 @@ a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
 li {list-style:none;}
 b,strong {font-family: 'GothamNarrow-Medium';}
-h1{ font: normal 40px/40px 'GothamNarrow-Bold';  margin:0 0 40px 0; color:#042a47; text-transform:uppercase;}
+h1{ font: normal 40px/40px 'GothamNarrow-Bold';  margin:0 0 25px 0; color:#042a47; text-transform:uppercase;}
 h2{color:#1685ad; display:block; font:normal 23px/23px 'GothamNarrow-Medium'; margin:0 0 25px 0; text-transform:capitalize;}
 h3{ font-size:25px; color:#A41C36; margin:0 0 15px 0; font-family: 'GothamNarrow-Medium'; font-weight: normal; line-height:25px; text-transform:none;}
 h4{ font-size:16px; color:#0085AD; display:block; padding:0 0; margin:0 0 10px 0; font-family: 'GothamNarrow-Book'; font-weight: normal; line-height:16px;}
@@ -60,7 +60,7 @@ header .four_strip{ background: #a41c36; height: 260px!important;}
 header{ position: relative; z-index: 999; width: 100%; padding: 0;}
 header .logo{width: 80%;}
 nav{ display:inline-block;}
-.account_menu{ margin-top:40px; display:block; float: right;}
+.account_menu{ display:block; float: right; position: absolute; right: 30px; top: 145%;}
 .account_menu li{position:relative; display:inline-block; margin-left:10px;}
 .account_menu li a i.fa-angle-double-down{margin-left:5px;}
 .account_menu li a { font-family: "GothamNarrow-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
@@ -95,6 +95,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 footer{ background:#072b49; padding:30px 0; opacity:1; text-align:center; font: normal 15px/15px 'GothamNarrow-book'; width:100%; color:#fff; border-top: 10px solid #a51c36;}
 footer.footer_fixed{ position: fixed; bottom: 0; left: 0; width: 100%; display: block;}
 footer h3{ font-size:18px; color:#fff; font-family: 'GothamNarrow-Medium';}
+footer i{ font-style: normal;}
 footer .address_footer a{ display:inline-block; color:#fff;}
 footer .address_footer{ margin:0 0 20px 0; display:block;}
 footer.home_page{background:#fff; color: #062b49;}
@@ -211,7 +212,20 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .margin_bottom{margin:0 0 30px 0;}
 
 .user_section{ background:#f4f4f4; padding:30px 0;}
-.user_box{position:relative; width:100%; background:#fff; border:1px solid #ccc; margin-bottom:30px; border-radius:5px; cursor:pointer; padding:10px;}
+.coontainer_block{  display: -webkit-box;  
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;}
+.user_box{position:relative; width:100%; background:#fff; border:1px solid #ccc; margin-bottom:30px; border-radius:5px; cursor:pointer; padding:10px; height: 88%;}
 .user_box:before {background: #00254a; content: ""; height: 21px; position: absolute; right: 15px; -moz-transform: skew(-33deg); -ms-transform: skew(-33deg); -webkit-transform: skew(-33deg); transform: skew(-33deg); width: 13px; transition: all 0.3s ease; top:0; }
 .user_section .col-md-3:nth-of-type(7n+1) .user_box:before { background: #001F49; }
 .user_section .col-md-3:nth-of-type(7n+2) .user_box:before { background: #799628; }
@@ -249,8 +263,8 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 #progress_bar{ width:100%; box-shadow:1px 1px 10px rgba(0, 0, 0, 0.6) inset;}
 #progress {background:#799528; height:28px; width:0%; transition:all 0.5s ease 0s; color: #fff; font-size: 12px; text-align: right; padding:6px 5px 0 0;}
 
-.ksa_list_block .ksa_numbers{ box-shadow:1px 1px 2px rgba(0, 0, 0, 0.6); padding:10px; width:100px; height:40px; text-align:center; display:block; margin:15px auto 10px; border-radius:10px; cursor:pointer; background:#f4f4f4;}
-.ksa_list_block .flex-active-slide .ksa_numbers{ background:#21AA97; color:#fff;}
+.ksa_list_block .ksa_numbers{ padding:10px; width:100px; height:40px; text-align:center; display:block; margin:15px auto 10px; border-radius:0; cursor:pointer; background:#f4f4f4; border: 1px solid #888 ;}
+.ksa_list_block .flex-active-slide .ksa_numbers{ background:#799528; color:#fff;}
 .ksa_list_block .ksa_completes{text-align:center; display:block;}
 .ksa_list_block .ksa_completes i{margin:0 2px; opacity:0.4; font-size:13px;}
 .ksa_list_block .ksa_completes i.fa-dot-circle-o{ opacity:1; color: #799628;}
@@ -367,6 +381,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.welcome_text { font: normal 40px/45px 'GothamNarrow-Bold';}
 	.welcome_text span.small_text{line-height: 40px;}
 	.welcome_text{padding-top: 170px;}
+	footer i{display: none;}
 }
 @media (width:768px) and (height:1024px){
 	header.home_page{ position: relative;}
@@ -408,6 +423,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.home_banner .banner_text{ position: relative; padding: 15px;}
 	.home_banner .banner_text .title_banner span.title{color:#042a47; font: bold 40px/50px 'GothamNarrow-Bold';}
 	.home_banner .banner_text .title_banner{width: 100%;}
+	.account_menu{top: 40px;}
 }
 @media (max-width:500px){
 	#submit_Modal .modal-dialog{ width: 90%;}

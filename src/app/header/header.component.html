@@ -7,7 +7,7 @@
       </div>
       <!-- End Logo --> 
     
-     <div class="col-md-4 col-sm-3" *ngIf="globals.authData==undefined && globals.check_login">
+     <div *ngIf="globals.authData==undefined && globals.check_login">
         <ul class="account_menu">
           <li><a (click)="register()"> <i class="fa fa-user" aria-hidden="true"></i> Register</a></li>   
           <!--<li><a (click)="register()"> <i class="fa fa-sign-in" aria-hidden="true"></i> Register</a></li>   -->
@@ -15,7 +15,7 @@
       </div>
 
     
-      <div class="col-md-4 col-sm-3" *ngIf="globals.authData==undefined && !globals.check_login">
+      <div *ngIf="globals.authData==undefined && !globals.check_login">
         <ul class="account_menu">
           <li><a routerLink="/login/"> <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>   
          <!-- <li><a (click)="log()"> <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>   -->
@@ -32,7 +32,7 @@
       
 
 
-		<div class="col-md-4 col-sm-3" *ngIf="globals.authData!=undefined">
+		<div *ngIf="globals.authData!=undefined">
         <ul class="account_menu">
           <li><a href="#" class="dropdown-toggle dashboard-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i> {{ globals.authData.FirstName}} <i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
@@ -46,7 +46,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-5 col-sm-6">
+      <div class="col-md-5 col-sm-6 col-md-offset-4 col-sm-offset-3">
         <div class="four_strips">
           <div class="one_strip"></div>
           <div class="two_strip"></div>

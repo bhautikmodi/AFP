@@ -12,7 +12,7 @@
             <label><span>*</span>Assessment Name</label>
             	<input type="text" class="form-control" #AssessmentName="ngModel" maxlength="70"  name="AssessmentName"
 					
-							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}"  required/>
+							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}" data-toggle="tooltip" data-placement="top" title="Enter the name of the team you are evaluating for core FP&A competencies."  required/>
 						<span class="error_span" *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
 							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter Assessment Name</span>
 							<span class="error_span" *ngIf="AssessmentName.errors && AssessmentName.errors.pattern">
@@ -21,21 +21,21 @@
 						</span>	
           </div>
           <div class="form-group">
-            <label><span>*</span>Description</label>
+            <label>Description</label>
             <textarea class="form-control" #Description="ngModel" maxlength="2500"  name="Description"
-					
-							[(ngModel)]="AsmtDetailsEntity.Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}"  required></textarea>
-							<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
+					data-toggle="tooltip" data-placement="top" title="Add any details or notes about that team."
+							[(ngModel)]="AsmtDetailsEntity.Description" ></textarea>
+							<!--<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
 							<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description</span>
 							<span class="error_span" *ngIf="Description.errors && Description.errors.pattern">
 							Please enter a valid Description.
 					  </span>
-						</span>	
+						</span>	-->
           </div>
           <div class="form-group">
             <label><span>*</span>Team Size</label>
 							<select class="form-control" #TeamSizeId="ngModel" [(ngModel)]="AsmtDetailsEntity.TeamSizeId"
-								name="TeamSizeId" [ngClass]="{red_border: (TeamSizeId.dirty && TeamSizeId.invalid) || (TeamSizeId.pristine && submitted)}" required>  
+								name="TeamSizeId" [ngClass]="{red_border: (TeamSizeId.dirty && TeamSizeId.invalid) || (TeamSizeId.pristine && submitted)}" required data-toggle="tooltip" data-placement="top" title="Indicate the number of people on the team.">  
                   <option value="">Select</option>>
 									<option *ngFor="let Team of TeamSizeList" value="{{Team.TeamSizeId}}" 
 									ngSelected="AsmtDetailsEntity.TeamSizeId==Team.TeamSizeId">{{Team.TeamSize}}</option>

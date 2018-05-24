@@ -192,8 +192,8 @@ table.dataTable thead .sorting::after {
     color: rgba(50, 50, 50, 0.9)!important;
 }
 .btn-danger {
-    background-color: #C92721;
-    border-color: #C92721;
+    background-color: #d43f3a;
+    border-color: #d9534f;
 }
 
 @media(min-width:768px) {
@@ -490,8 +490,8 @@ table.dataTable thead .sorting:after {
 }
 
 .btn-danger.disabled.focus, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled].focus, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {
-	background-color: #C92721;
-	border-color: #C92721
+	background-color: #d43f3a;
+	border-color: #d9534f;
 }
 
 .add-right {

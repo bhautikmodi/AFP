@@ -64,7 +64,7 @@ export class CompanylistComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Company per Page",
+          "sLengthMenu": "_MENU_ Companies per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Company",
 					"sInfoFiltered": "(filtered from _MAX_ total Company)"
         }

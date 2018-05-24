@@ -51,6 +51,15 @@ this.SalesUserService.getUserAssessDetail(id)
         {
           let j = this.domainData.indexOf(obj);
           this.domainData[j].color = colorarray[j];
+          if(this.domainData[j].ratingscale<=1){
+            this.domainData[j].rscalename = "General Awareness";
+          } else if(this.domainData[j].ratingscale<=2){
+            this.domainData[j].rscalename = "Developing";
+          } else if(this.domainData[j].ratingscale<=3){
+            this.domainData[j].rscalename = "Intermediate";
+          } else if(this.domainData[j].ratingscale<=4){
+            this.domainData[j].rscalename = "Advanced";
+          }  
         }
      
       var colorarray = ['#001F49','#799628','#F79317','#1BAC98','#65287E','#B8044A'];
@@ -101,7 +110,7 @@ this.SalesUserService.getUserAssessDetail(id)
 			"enabled": true
 			},
       "graphs": [{
-        "balloonText": "<b>[[category]]: [[value]]</b>",
+        "balloonText": "<b>[[rscalename]]</b>",
         "fillColorsField": "color",
         "fillAlphas": 1,
         "lineAlpha": 0.2,

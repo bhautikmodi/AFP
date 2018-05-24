@@ -32,6 +32,7 @@ export class SalesDashboardComponent implements OnInit {
 		
 		$('.select2').select2();
 		
+		
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)
 			.then((data) => {

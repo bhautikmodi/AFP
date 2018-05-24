@@ -23,10 +23,19 @@ constructor( private http: Http,private globals: Globals, private router: Router
 
   ngOnInit() 
   {
-  $('.invitation_text .form-control').keyup(function(e){
-	if($(this).val().length==$(this).attr('maxlength'))
-	$(this).next('.form-control').focus()
-})
+
+
+$('body').on('keyup', 'input.form-control', function(e){
+      if($(this).val().length == $(this).attr('maxlength')){
+        var inputs = $('input.form-control');
+        inputs.eq(inputs.index(this) + 1).focus();
+      }
+      if(e.keyCode == 8 || e.keyCode == 46){
+        var inputs = $('input.form-control');
+        inputs.eq(inputs.index(this) - 1).focus();
+      }
+    }); 
+
  if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }

@@ -163,12 +163,12 @@ export class SettingsComponent implements OnInit {
 				this.submitted = false;
 				this.header = 'Add';
 				if(this.teamsizeEntity.TeamSizeId>0){
-					this.globals.message = 'Data Updated Successfully!';
+					this.globals.message = 'Team Size Updated Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
 					//this.teamsizeList.push(data);
-					this.globals.message = 'Data Added Successfully!';
+					this.globals.message = 'Team Size Added Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}
@@ -218,7 +218,7 @@ export class SettingsComponent implements OnInit {
 				this.teamsizeList.splice(index, 1);				
 			}			
 			//alert(data);
-			this.globals.message = 'Data Deleted Successfully!';
+			this.globals.message = 'Team Size Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

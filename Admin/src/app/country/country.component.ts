@@ -83,11 +83,11 @@ export class CountryComponent implements OnInit {
 					this.CountryEntity = {};
 					CountryForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Data Updated Successfully!';
+						this.globals.message = 'Country Updated Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Data Added Successfully!';
+						this.globals.message = 'Country Added Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

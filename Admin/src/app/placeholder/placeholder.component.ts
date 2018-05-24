@@ -116,11 +116,11 @@ export class PlaceholderComponent implements OnInit {
 					this.placeholderEntity = {};
 					placeholderForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Data Updated Successfully!';
+						this.globals.message = 'Placeholder Updated Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Data Added Successfully!';
+						this.globals.message = 'Placeholder Added Successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

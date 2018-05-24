@@ -98,7 +98,7 @@ export class InvitationComponent implements OnInit {
 					debugger
 					this.globals.isLoading = false;
 					if (data == 'email duplicate') {
-						this.globals.message = 'Invalid Email Address!';
+						this.globals.message = 'You already invited this person!';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						//this.router.navigate(['/invitation/add']);

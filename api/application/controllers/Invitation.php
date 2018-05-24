@@ -187,9 +187,9 @@ class Invitation extends My_Controller {
 										
 					$this->email->initialize($config);
 
-					$this->email->from($smtpEmail,'Email Test');
+					$this->email->from($smtpEmail,'AFP - Association for Financial Professionals');
 					$this->email->to($post_Invitation['EmailAddress']);	
-					$subject = 'AFP registration confirmation code '.$post_Invitation['Code'];
+					$subject = 'AFP Corporate Training Skills Assessment - Invitation Code';
 					$this->email->subject($subject);
 					//$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
 
@@ -199,23 +199,30 @@ class Invitation extends My_Controller {
 							<td style="padding:10px; border-bottom:1px solid #ccc; background-color:#fafafa"><a href="https://www.afponline.org" target="_blank"><img alt="" src="https://www.afponline.org/assets/images/afp-logo.png" style="width:250px" /></a></td>
 						</tr>
 						<tr>
+						  <td></td>
+						</tr>
+						<tr>
 							<td style="padding:10px;">
-							<p style="color:#007699;"><strong>Confirm your email address</strong></p>
+							<p>We would like to invite you to use the AFP Corporate Training Skills Assessment tool.</p>
 				
-							<p>Thank you for signing up with us. We&rsquo;re happy you&rsquo;re here!.<br />
-							Enter the following code in the window where you began creating your new AFP Profile</p>
-				
-							<p>The invitation code below will remain active for 30 days.</p>
+							<p>Please <a href="http://localhost:4200/invitation">click<a> here to complete your registration using the invitation code listed below.
+							 You will be required to set up a profile with a username and password allowing you to use the tool at your convenience.</p>
+							
 							
 							<p>Invitation code '.$post_Invitation['Code'].'</p>
 				
-							<p>url from where the user can register http://localhost:4300/invitation</p>
+							<p>Please do not share this code, and use it within thirty days.</p>
+
+							<p>If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
 				
-							<p>This email contains private information for your AFP account &mdash; please don&rsquo;t forward it. Questions about anything?</p>
-				
-							<p>Email us at <a href="mailto:info@afponline.com">info@afponline.com</a> or <a href="mailto:sales@afponline.com">sales@afponline.com</a></p>
-				
-							<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
+							
+							<p>
+							<p>Regards,<br>
+							Robert Pinover<br>
+							Client Success Specialist<br>
+							Association for Financial Professionals (AFP)<br><br>
+							</p>
+						
 							</td>
 						</tr>
 						<tr>
@@ -336,9 +343,9 @@ class Invitation extends My_Controller {
 										
 					$this->email->initialize($config);
 
-					$this->email->from($smtpEmail,'Email Test');
+					$this->email->from($smtpEmail,'AFP - Association for Financial Professionals');
 					$this->email->to($post_Invitation['EmailAddress']);	
-					$subject = 'Invitation mail';
+					$subject = 'AFP Corporate Training Skills Assessment - Invitation Code';
 					$this->email->subject($subject);
 					$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" border="0" cellpadding="0" cellspacing="0">
 					<tbody>
@@ -346,23 +353,30 @@ class Invitation extends My_Controller {
 							<td style="padding:10px; border-bottom:1px solid #ccc; background-color:#fafafa"><a href="https://www.afponline.org" target="_blank"><img alt="" src="https://www.afponline.org/assets/images/afp-logo.png" style="width:250px" /></a></td>
 						</tr>
 						<tr>
+						  <td></td>
+						</tr>
+						<tr>
 							<td style="padding:10px;">
-							<p style="color:#007699;"><strong>Confirm your email address</strong></p>
+							<p>We would like to invite you to use the AFP Corporate Training Skills Assessment tool.</p>
 				
-							<p>Thank you for signing up with us. We&rsquo;re happy you&rsquo;re here!.<br />
-							Enter the following code in the window where you began creating your new AFP Profile</p>
-				
-							<p>The Reinvitation code below will remain active for 30 days.</p>
+							<p>Please <a href="http://localhost:4200/invitation">click<a> here to complete your registration using the invitation code listed below.
+							 You will be required to set up a profile with a username and password allowing you to use the tool at your convenience.</p>
 							
-							<p>Reinvitation code '.$post_Invitation['Code'].'</p>
+							
+							<p>Invitation code '.$post_Invitation['Code'].'</p>
 				
-							<p>url from where the user can register http://localhost:4300/invitation</p>
+							<p>Please do not share this code, and use it within thirty days.</p>
+
+							<p>If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
 				
-							<p>This email contains private information for your AFP account &mdash; please don&rsquo;t forward it. Questions about anything?</p>
-				
-							<p>Email us at <a href="mailto:info@afponline.com">info@afponline.com</a> or <a href="mailto:sales@afponline.com">sales@afponline.com</a></p>
-				
-							<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
+							
+							<p>
+							<p>Regards,<br>
+							Robert Pinover<br>
+							Client Success Specialist<br>
+							Association for Financial Professionals (AFP)<br><br>
+							</p>
+						
 							</td>
 						</tr>
 						<tr>

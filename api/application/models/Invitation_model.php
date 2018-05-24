@@ -37,10 +37,17 @@ class Invitation_model extends CI_Model
 				if ($query->num_rows() == 1) {
 					return false;
 				} else {
+					   if($post_Invitation['IndustryId'])
+					   {
+						$post_Invi=$post_Invitation['IndustryId'];
+					   }else
+					   {
+						$post_Invi='0';
+					   }
 					$company_data=array(
 			
 						"Name"=> trim($post_Invitation['Name']),
-						"IndustryId"=> trim($post_Invitation['IndustryId']),
+						"IndustryId"=> trim($post_Invi),
 						"Website"=> trim($post_Invitation['Website']),
 						"PhoneNo"=> trim($post_Invitation['PhoneNumber1']),
 						'CreatedBy' => trim($post_Invitation['CreatedBy']),

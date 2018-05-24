@@ -26,6 +26,8 @@ class Settings extends My_Controller {
 			$data['emailfrom']=$this->Settings_model->get_emailfrom($userid);
 			$data['emailpassword']=$this->Settings_model->get_emailpassowrd($userid);
 			$data['cArea']=$this->Settings_model->get_noOfCArea();
+			$data['NoKsa']=$this->Settings_model->get_totnoOfKsa();
+			
 		}
 		
 		echo json_encode($data);

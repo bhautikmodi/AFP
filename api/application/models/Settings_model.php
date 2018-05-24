@@ -406,6 +406,16 @@ class Settings_model extends CI_Model
 		return $res;
 		
 	}
+
+	public function get_totnoOfKsa()
+	{	
+		$this->db->select('count(KSAId) as count');
+		$result = $this->db->get('tblmstksa');		
+		if($result->result()) {
+			$res = $result->result()[0]->count;
+		}
+		return $res;
+	}
 	
 	
 }

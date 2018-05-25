@@ -88,6 +88,7 @@ export class SettingsService {
   }
   
   getAll(UserId){ 
+    debugger
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Settings/getAll/' + UserId)
       .toPromise()

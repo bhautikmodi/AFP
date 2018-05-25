@@ -26,7 +26,7 @@
               <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>No.</th>
                     <th>Name</th>
                     <th style="width: 8%;">Active?</th>
                     <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
@@ -67,11 +67,11 @@
   <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
           <div class="modal-body">
-              <p>Are You Sure You Want To Remove This Row?</p>
+              <p>Are You Sure You Want To Remove This Industry?</p>
             </div>
             <div class="modal-footer text-center">
-              <button type="button" class="next_btn" (click)="deleteConfirm(deleteEntity)" id="yes_btn"><span>yes</span></button>
-              <button type="button" class="back_btn" data-dismiss="modal"><span>NO</span></button>
+              <button type="button" class="next_btn" (click)="deleteConfirm(deleteEntity)" id="yes_btn"><span>Yes</span></button>
+              <button type="button" class="back_btn" data-dismiss="modal"><span>No</span></button>
           </div>
       </div>
   </div>

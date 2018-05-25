@@ -64,9 +64,9 @@ deleteEntity;
 			setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ User per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ User",
-					"sInfoFiltered": "(filtered from _MAX_ total User)"
+          "sLengthMenu": "_MENU_ Users per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Users",
+					"sInfoFiltered": "(filtered from _MAX_ total Users)"
         }
       });
     },500); 
@@ -107,7 +107,7 @@ deleteEntity;
 				// },3000); 
 			}			
 			//alert(data);
-			this.globals.message = 'Data Deleted successfully!';
+			this.globals.message = 'User Deleted successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

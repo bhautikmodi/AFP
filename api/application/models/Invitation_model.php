@@ -2,6 +2,19 @@
 
 class Invitation_model extends CI_Model
  {
+	function getlist_company()
+	{
+		$this->db->select('CompanyId,Name');
+		$this->db->where('IsActive=',1);
+		$result=$this->db->get('tblcompany');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
 	
 	public	function getlist_Industry()
 	{
@@ -36,33 +49,60 @@ class Invitation_model extends CI_Model
 				
 				if ($query->num_rows() == 1) {
 					return false;
-				} else {
-					$company_data=array(
-			
-						"Name"=> trim($post_Invitation['Name']),
-						"IndustryId"=> trim($post_Invitation['IndustryId']),
-						"Website"=> trim($post_Invitation['Website']),
-						"PhoneNo"=> trim($post_Invitation['PhoneNumber1']),
-						'CreatedBy' => trim($post_Invitation['CreatedBy']),
-						'UpdatedBy' => trim($post_Invitation['UpdatedBy']),
-						'UpdatedOn' => date('y-m-d H:i:s')
-					);	
-					
-					$query=$this->db->insert('tblcompany',$company_data);
-
-					$this->db->select('CompanyId');
-					$this->db->order_by('CompanyId','desc');
-					$this->db->limit(1);
-					$result=$this->db->get('tblcompany');
-					
-						$company_data = array();
-						foreach($result->result() as $row) 
+				} 
+				else 
+				{
+					 if(!$post_Invitation['CompanyId'])
+					 {
+						if($post_Invitation['IndustryId'])
 						{
-							$company_data = $row;
+						 $post_Invi=$post_Invitation['IndustryId'];
+						}else
+						{
+						 $post_Invi='0';
 						}
-				
-					$Invitation_data = array(
-							'CompanyId' => trim($company_data->CompanyId),
+					 $company_data=array(
+			 
+						 "Name"=> trim($post_Invitation['Name']),
+						 "IndustryId"=> trim($post_Invi),
+						 "Website"=> trim($post_Invitation['Website']),
+						 "PhoneNo"=> trim($post_Invitation['PhoneNumber1']),
+						 'CreatedBy' => trim($post_Invitation['CreatedBy']),
+						 'UpdatedBy' => trim($post_Invitation['UpdatedBy']),
+						 'UpdatedOn' => date('y-m-d H:i:s')
+					 );	
+					 
+					 $query=$this->db->insert('tblcompany',$company_data);
+ 
+					 $this->db->select('CompanyId');
+					 $this->db->order_by('CompanyId','desc');
+					 $this->db->limit(1);
+					 $result=$this->db->get('tblcompany');
+					 
+						 $company_data = array();
+						 foreach($result->result() as $row) 
+						 {
+							 $company_data = $row;
+						 }
+				 
+					 $Invitation_data = array(
+							 'CompanyId' => trim($company_data->CompanyId),
+						 'EmailAddress' =>  trim($post_Invitation['EmailAddress']),
+						 'Code' =>  trim($post_Invitation['Code']),
+						 'UpdatedOn' => date('y-m-d H:i:s')
+					 );
+					 $res = $this->db->insert('tbluserinvitation',$Invitation_data);
+					 
+					 if($res) {
+						 return true;
+					 } else {
+						 return false;
+					 }
+
+					 }else
+					 {
+						$Invitation_data = array(
+							'CompanyId' => trim($post_Invitation['CompanyId']),
 						'EmailAddress' =>  trim($post_Invitation['EmailAddress']),
 						'Code' =>  trim($post_Invitation['Code']),
 						'UpdatedOn' => date('y-m-d H:i:s')
@@ -74,6 +114,8 @@ class Invitation_model extends CI_Model
 					} else {
 						return false;
 					}
+						
+					 }
 				}
 	
 		} else {

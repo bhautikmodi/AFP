@@ -19,11 +19,14 @@ export class InvitationComponent implements OnInit {
 	btn_disable;
 	header;
 	type;
+	companyList;
+	companyhide;
 	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 
 	ngOnInit() {debugger
+		this.companyhide=false;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -47,6 +50,16 @@ export class InvitationComponent implements OnInit {
 	default(){
 		this.globals.msgflag = false;
 		this.InvitationEntity = {};
+
+		this.InvitationService.getAllCompany()
+			//.map(res => res.json())
+			.then((data) => {
+				this.companyList = data;
+			},
+			(error) => {
+				alert('error');
+			});
+
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 			//this.header = 'Edit';
@@ -66,6 +79,7 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity.UserInvitationId = 0;
 			this.InvitationEntity.IsActive = '1';
 			this.InvitationEntity.IndustryId ='';
+			this.InvitationEntity.CompanyId ='';
 			this.InvitationService.getIndustry()
 			//.map(res => res.json())
 			.then((data) => 
@@ -89,7 +103,7 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity.CreatedBy = this.globals.authData.UserId;
 			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = true;
-		}
+		}var s=this.InvitationEntity.EmailAddress;
 		if (InvitationForm.valid) {
 			this.btn_disable = true;
 			this.globals.isLoading = true;
@@ -98,7 +112,7 @@ export class InvitationComponent implements OnInit {
 					debugger
 					this.globals.isLoading = false;
 					if (data == 'email duplicate') {
-						this.globals.message = 'Invalid Email Address!';
+						this.globals.message = 'You already invited this Email Address';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						//this.router.navigate(['/invitation/add']);
@@ -114,7 +128,8 @@ export class InvitationComponent implements OnInit {
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 						} else {
-							this.globals.message = 'Invitation code has been sent to your email successfully. Please check your email!';
+							
+							this.globals.message = 'Invitation Code Sent Successfully to :' + s;
 							this.globals.type = 'success';
 							this.globals.msgflag = true;
 							this.globals.isLoading = false;
@@ -139,5 +154,10 @@ export class InvitationComponent implements OnInit {
 		this.InvitationEntity.IsActive = '1';
 		this.submitted = false;
 		InvitationForm.form.markAsPristine();
+	}
+	com()
+	{
+		this.companyhide=!this.companyhide;
+
 	}
 }

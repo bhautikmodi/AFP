@@ -7,6 +7,23 @@ export class InvitationService {
 
   constructor(private http: HttpClient,private globals: Globals) { }
 
+  getAllCompany(){
+	 
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAllCompany')
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
+
   add(InvitationEntity)
   {debugger
    let promise = new Promise((resolve, reject) => {

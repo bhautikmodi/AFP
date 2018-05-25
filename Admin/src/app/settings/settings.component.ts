@@ -40,6 +40,8 @@ export class SettingsComponent implements OnInit {
 	permissionEntity;
 	NoOfCArea;
 	ksaError;
+	totksaError;
+	NoKSA;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
 	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
@@ -50,6 +52,8 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
 	this.permissionEntity = {}; 
 	this.ksaError = false;
+	this.totksaError = false;
+	
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
 		this.permissionEntity.AddEdit=1;
@@ -86,6 +90,7 @@ export class SettingsComponent implements OnInit {
    this.SettingsService.getAll(this.globals.authData.UserId)
 	.then((data) =>  
 	{ 
+		debugger
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
@@ -93,14 +98,15 @@ export class SettingsComponent implements OnInit {
 		this.configEntity.emailpassword = data['emailpassword']['Value'];		
 		this.configEntity.emailfrom = data['emailfrom']['Value'];
 		this.NoOfCArea = data['cArea'];
+		this.NoKSA=data['NoKsa'];
 		
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Teamsize per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Teamsize",
-					"sInfoFiltered": "(filtered from _MAX_ total Teamsize)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Teamsize"
+          "sLengthMenu": "_MENU_ Team Size per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Team Size",
+					"sInfoFiltered": "(filtered from _MAX_ total Team Size)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Team Size"
         }
       });
     },100); 
@@ -157,12 +163,12 @@ export class SettingsComponent implements OnInit {
 				this.submitted = false;
 				this.header = 'Add';
 				if(this.teamsizeEntity.TeamSizeId>0){
-					this.globals.message = 'Data Updated Successfully!';
+					this.globals.message = 'Team Size Updated Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				} else {
 					//this.teamsizeList.push(data);
-					this.globals.message = 'Data Added Successfully!';
+					this.globals.message = 'Team Size Added Successfully!';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}
@@ -212,7 +218,7 @@ export class SettingsComponent implements OnInit {
 				this.teamsizeList.splice(index, 1);				
 			}			
 			//alert(data);
-			this.globals.message = 'Data Deleted Successfully!';
+			this.globals.message = 'Team Size Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -236,24 +242,30 @@ export class SettingsComponent implements OnInit {
 		//this.submitted1 = true;
 		if(ksaForm.valid){
 			if(+this.configEntity.noofksa >= +this.NoOfCArea){
-				this.ksaError = false;			
-				this.btn_disable1 = true;
-				this.SettingsService.update_config(this.updateEntity)
-				.then((data) => 
-				{		
-					this.btn_disable1 = false;
-					this.submitted1 = false;
-					this.updateEntity = {};
-					ksaForm.form.markAsPristine();				 
-					this.cmsgflag = true;
-					this.cmessage = 'No of KSA Updated Successfully!';
-				}, 
-				(error) => 
-				{
-					alert('error');
-					this.btn_disable1 = false;
-					this.submitted1 = false;
-				});
+				if(+this.configEntity.noofksa <= +this.NoKSA){
+					this.ksaError = false;
+					this.totksaError = false;
+								
+					this.btn_disable1 = true;
+					this.SettingsService.update_config(this.updateEntity)
+					.then((data) => 
+					{		
+						this.btn_disable1 = false;
+						this.submitted1 = false;
+						this.updateEntity = {};
+						ksaForm.form.markAsPristine();				 
+						this.cmsgflag = true;
+						this.cmessage = 'No of KSA Updated Successfully!';
+					}, 
+					(error) => 
+					{
+						alert('error');
+						this.btn_disable1 = false;
+						this.submitted1 = false;
+					});
+				} else {
+					this.totksaError = true;
+				}
 			} else {
 				this.ksaError = true;
 			}

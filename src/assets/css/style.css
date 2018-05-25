@@ -212,19 +212,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .margin_bottom{margin:0 0 30px 0;}
 
 .user_section{ background:#f4f4f4; padding:30px 0;}
-.coontainer_block{  display: -webkit-box;  
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  
-  display: flex;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;}
+.coontainer_block{  display: -webkit-box;   display: -webkit-flex; display: -ms-flexbox;  display: flex; -webkit-box-align: stretch; -webkit-align-items: stretch; -ms-flex-align: stretch; align-items: stretch; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap;}
 .user_box{position:relative; width:100%; background:#fff; border:1px solid #ccc; margin-bottom:30px; border-radius:5px; cursor:pointer; padding:10px; height: 88%;}
 .user_box:before {background: #00254a; content: ""; height: 21px; position: absolute; right: 15px; -moz-transform: skew(-33deg); -ms-transform: skew(-33deg); -webkit-transform: skew(-33deg); transform: skew(-33deg); width: 13px; transition: all 0.3s ease; top:0; }
 .user_section .col-md-3:nth-of-type(7n+1) .user_box:before { background: #001F49; }
@@ -321,6 +309,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .domain_desc .accordion_scroll{ height:435px; overflow-y: auto; position: relative; display: block; padding-right: 15px;}
 .domain_desc table{margin: 0;}
 .domain_desc table td{ font-size:13px;}
+
 .height_510px{height: 510px;}
 /* ..... Inner Page Contener Area Strat ..... */
 

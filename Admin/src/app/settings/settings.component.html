@@ -24,12 +24,13 @@
                 <div class="form-group col-md-12">
                   <label class="col-md-2 small-padding"><span class="required">*</span>No of KSA</label>
                   <div class="col-md-6">
-                    <input type="text" class="form-control" pattern="[0-9]{1,10}" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: ((noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)) || (ksaError && !noofksa.errors)}" required/>  
+                    <input type="text" class="form-control" pattern="[0-9]{1,10}" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: ((noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)) || (ksaError && !noofksa.errors) || (totksaError && !noofksa.errors)}" required/>  
                     <span class="error_span" *ngIf="(noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)"> 
                       <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter no of ksa</span>                      
                       <span *ngIf="noofksa.errors && noofksa.errors.pattern">Please enter valid no of ksa</span>
                     </span>
                     <span class="error_span" *ngIf="ksaError && !noofksa.errors">Minimum value is {{NoOfCArea}}</span>
+                    <span class="error_span" *ngIf="totksaError && !noofksa.errors">Maximum value is {{NoKSA}}</span>
                   </div>
                   <div class="form-btn col-md-2 no-padding">
                     <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable1" class="btn sub-btn btn-small"><span>Submit</span></button>
@@ -204,7 +205,7 @@
               <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>No.</th>
 					          <th style="width: 80%;">Team Size</th>
                     <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
@@ -233,7 +234,7 @@
       <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content">
               <div class="modal-body">
-                  <p>Are You Sure You Want To Remove This Row?</p>
+                  <p>Are You Sure You Want To Remove This Team Size?</p>
                 </div>
                 <div class="modal-footer text-center">
                   <button type="button" class="next_btn" (click)="deleteConfirm(deleteEntity)" id="yes_btn"><span>Yes</span></button>

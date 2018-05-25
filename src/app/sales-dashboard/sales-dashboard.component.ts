@@ -32,6 +32,14 @@ export class SalesDashboardComponent implements OnInit {
 		
 		$('.select2').select2();
 		
+	setTimeout(function(){ 
+		$('[data-toggle="tooltip"]').tooltip() ;
+		if ($("body").height() < $(window).height()) {
+			$('footer').addClass('footer_fixed');
+		} else {
+			$('footer').removeClass('footer_fixed');
+		}
+	}, 1000);
 		
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)

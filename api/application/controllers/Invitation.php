@@ -228,7 +228,7 @@ class Invitation extends My_Controller {
 							<p>Regards,<br>
 							Robert Pinover<br>
 							Client Success Specialist<br>
-							<a href="https://www.afponline.org/">Association for Financial Professionals</a>(AFP)<br><br>
+							<a href="https://www.afponline.org/">Association for Financial Professionals</a> (AFP)<br><br>
 							</p>
 						
 							</td>

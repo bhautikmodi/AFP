@@ -31,11 +31,8 @@ export class RegisterComponent implements OnInit {
   constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {debugger
-	$('[data-toggle="tooltip"]').tooltip() ;
-	if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-    }
+  ngOnInit() {
+	
 	
 	  
 	  
@@ -48,7 +45,7 @@ export class RegisterComponent implements OnInit {
 			
 		 
    
- 	debugger
+ 	
 	 let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {
@@ -102,7 +99,7 @@ export class RegisterComponent implements OnInit {
 
 						this.RegisterService.getById(id)
 							.then((data) => {
-								debugger
+								
 									let token = localStorage.removeItem('CompanyId');
 								this.RegisterEntity = data;
 								this.companydata.Name=this.RegisterEntity.Name;
@@ -118,6 +115,7 @@ export class RegisterComponent implements OnInit {
 											alert('error');
 										});
 								}
+								
 
 							},
 							(error) => {
@@ -144,11 +142,18 @@ export class RegisterComponent implements OnInit {
 						 // }
 						 
 					}
-	
+					setTimeout(()=>{  debugger
+						$('[data-toggle="tooltip"]').tooltip() ;
+						if ($("body").height() < $(window).height()) {
+							$('footer').addClass('footer_fixed');
+						} else {
+							$('footer').removeClass('footer_fixed');
+						}
+					},1000);
 
   }
   addRegister(RegisterForm)
-	{		debugger
+	{		
 					
 			// this.RegisterEntity.CreatedBy = this.globals.authData.UserId;
 			// this.RegisterEntity.UpdatedBy = this.globals.authData.UserId;
@@ -171,7 +176,7 @@ export class RegisterComponent implements OnInit {
 	}
 	
 	finalsubmit(RegisterForm){
-		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 

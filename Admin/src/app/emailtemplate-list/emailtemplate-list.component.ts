@@ -94,7 +94,7 @@ ngOnInit() {
 			if (index != -1) {
 				this.EmailList.splice(index, 1);
 			}	
-		this.globals.message = 'Data Deleted Successfully!';
+		this.globals.message = 'Email Template Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

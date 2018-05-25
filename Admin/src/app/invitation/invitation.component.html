@@ -56,12 +56,17 @@
 
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Company Name</label>
+<<<<<<< HEAD
                                     <input type="text" class="form-control" #Name="ngModel" name="Name" pattern="[a-zA-Z' ]{1,100}" 
+=======
+                                    <input type="text" class="form-control" #Name="ngModel" name="Name"
+                                    pattern="[a-zA-Z' ]{2,100}" 
+>>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
                                         [(ngModel)]="InvitationEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
                                     <span class="error_span"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                         <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter company name</span>
                                         <span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
-                                        Please enter valid company name.
+                                        Please enter valid company name
                                   </span>
                                     </span>	
                                     
@@ -84,20 +89,31 @@
                                 <div class="clearfix"></div>
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Phone Number</label>
+<<<<<<< HEAD
                                     <input type="text" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1" pattern="[0-9\-.()+\s]+" maxlength="13"
+=======
+                                    <input type="text" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1"
+						pattern="[0-9\-.()+\s]+"  maxlength="13"
+>>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
 							[(ngModel)]="InvitationEntity.PhoneNumber1" [ngClass]="{red_border: (PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)}"  required/>
 						<span class="error_span"  *ngIf="(PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)"> 
 							<span *ngIf="PhoneNumber1.errors.required || (PhoneNumber1.pristine && submitted)">Please enter phone number</span>
 							<span class="error_span" *ngIf="PhoneNumber1.errors && PhoneNumber1.errors.pattern">
-							Please enter valid phone number.
+							Please enter valid phone number
 					  </span>
 						</span>
                                 </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Website</label>
+<<<<<<< HEAD
                                     <input type="text" class="form-control" #Website="ngModel" maxlength="250"
                                      [(ngModel)]="InvitationEntity.Website" name="Website" [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
+=======
+                                    <input type="text" class="form-control" #Website="ngModel" maxlength="250"pattern="[a-zA-Z0-9.-_]{1,}[.]{1}[a-zA-Z]{2,}"
+                                     [(ngModel)]="InvitationEntity.Website" name="Website" 
+				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
+>>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
 						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
 							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter website</span>
 							<span *ngIf="Website.errors && Website.errors.pattern">Please enter valid website</span>
@@ -123,7 +139,7 @@
                                               </span>
                                               
                                               <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
-                                                Please input valid email address.
+                                                Please input valid email address
                                               </span>
                                           
                                 </span> 

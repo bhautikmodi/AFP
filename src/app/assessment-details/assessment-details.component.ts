@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AssessmentDetailsService } from '../services/assessment-details.service';
+import { debug } from 'util';
 declare var $: any;
 @Component({
   selector: 'app-assessment-details',
@@ -21,7 +22,7 @@ header;
   constructor( private http: Http,private globals: Globals, private AssessmentDetailsService: AssessmentDetailsService, private router: Router,private route:ActivatedRoute) { }
 
   ngOnInit() 
-  {
+  {debugger
 	if ($("body").height() < $(window).height()) {
 		$('footer').addClass('footer_fixed');
 	}

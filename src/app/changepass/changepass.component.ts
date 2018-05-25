@@ -52,7 +52,7 @@ export class ChangepassComponent implements OnInit {
 			{
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'User entered wrong password!';
+						this.globals.message = 'You entered wrong current password';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.globals.isLoading = false;

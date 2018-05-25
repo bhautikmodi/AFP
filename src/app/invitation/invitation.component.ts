@@ -104,7 +104,7 @@ $('body').on('keyup', 'input.form-control', function(e){
 				}
 				else if(data=='email')
 				{
-					this.globals.message = 'Please enter valid email address!';
+					this.globals.message = 'You are not invited by AFP';
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;

@@ -5,12 +5,19 @@ class AssessmentDetails_model extends CI_Model
 	public function add_AssessmentDetails($post_AssessmentDetails) {
 			
 		if($post_AssessmentDetails) {
-			
+			if(isset($post_AssessmentDetails['Description']) && !empty($post_AssessmentDetails['Description'])) 
+			{
+				$des=$post_AssessmentDetails['Description'];
+			}
+			else
+			{
+				$des='';
+			}
 			$AssessmentDetails_data = array(
 				'UserId'=>trim($post_AssessmentDetails['UserId']),
 				'AssessmentName' => trim($post_AssessmentDetails['AssessmentName']),
 				'TeamSizeId' => trim($post_AssessmentDetails['TeamSizeId']),
-				'Description' => trim($post_AssessmentDetails['Description']),
+				'Description' => trim($des),
 				'CreatedBy' => trim($post_AssessmentDetails['CreatedBy']),
 				'UpdatedBy' => trim($post_AssessmentDetails['UpdatedBy']),
 				'UpdatedOn' => date('y-m-d H:i:s'),

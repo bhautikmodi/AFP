@@ -94,7 +94,7 @@ export class RatingScaleListComponent implements OnInit {
 			if (index != -1) {
 				this.ratingList.splice(index, 1);			
 			}	
-			this.globals.message = 'Data Deleted Successfully!';
+			this.globals.message = 'Rating Scale Deleted Successfully!';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

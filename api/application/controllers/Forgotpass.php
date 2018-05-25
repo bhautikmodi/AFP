@@ -77,7 +77,9 @@ class Forgotpass extends CI_Controller
 								} else {
 									$bcc = $row->totalbcc;
 								}
-								$body = str_replace("{ link }",'<strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span>',$body);
+								// $body = str_replace("{ link }",'<strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span>',$body);
+
+								$body = str_replace("{ link }",'http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'',$body);
 								//$body=$body.'<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>';
 								//$this->email->($body).append('<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>');
 								$this->email->from($smtpEmail, 'AFP Admin');

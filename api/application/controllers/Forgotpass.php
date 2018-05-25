@@ -63,7 +63,7 @@ class Forgotpass extends CI_Controller
 						$query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
 						foreach($query->result() as $row){ 
 							if($row->To==3){			
-								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
+								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId_backup); 
 								$rowTo = $queryTo->result();
 								$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
 								$body = $row->EmailBody;

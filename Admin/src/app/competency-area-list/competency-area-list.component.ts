@@ -67,7 +67,7 @@ export class CompetencyAreaListComponent implements OnInit {
 					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
         }
       });
-    },100); 
+    },500); 
 
 	}, 
 	(error) => 

@@ -69,7 +69,7 @@ export class CompanylistComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Company)"
         }
       });
-    },100); 
+    },500); 
 
 	}, 
 	(error) => 

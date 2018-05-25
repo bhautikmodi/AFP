@@ -68,7 +68,7 @@ ngOnInit() {
 						"sInfoFiltered": "(filtered from _MAX_ total Email)"
 					}
 				});
-			},100); 
+			},500); 
 	
 		}, 
 		(error) => 

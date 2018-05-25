@@ -61,7 +61,7 @@ export class CountrylistComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Country)"
         }
       });
-    },100); 
+    },500); 
 
 	}, 
 	(error) => 

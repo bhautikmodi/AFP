@@ -56,12 +56,8 @@
 
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Company Name</label>
-<<<<<<< HEAD
-                                    <input type="text" class="form-control" #Name="ngModel" name="Name" pattern="[a-zA-Z' ]{1,100}" 
-=======
                                     <input type="text" class="form-control" #Name="ngModel" name="Name"
                                     pattern="[a-zA-Z' ]{2,100}" 
->>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
                                         [(ngModel)]="InvitationEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
                                     <span class="error_span"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                         <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter company name</span>

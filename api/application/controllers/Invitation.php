@@ -13,6 +13,16 @@ class Invitation extends My_Controller {
 		
 	}
 
+	public function getAllCompany()
+	{
+		$data="";	
+		//$this->load->model('Company_model');
+		$data=$this->Invitation_model->getlist_company();
+		//print_r($data);
+		//.exit;
+		echo json_encode($data);
+	}
+
 	public function check1(){
 
 		$userId = 21;
@@ -205,22 +215,20 @@ class Invitation extends My_Controller {
 							<td style="padding:10px;">
 							<p>We would like to invite you to use the AFP Corporate Training Skills Assessment tool.</p>
 				
-							<p>Please <a href="http://localhost:4200/invitation">click<a> here to complete your registration using the invitation code listed below.
+							<p>Please <a href="http://localhost:4200/invitation">click here<a>  to complete your registration using the invitation code listed below.
 							 You will be required to set up a profile with a username and password allowing you to use the tool at your convenience.</p>
 							
 							
-							<p>Invitation code '.$post_Invitation['Code'].'</p>
+							<p>Invitation code : '.$post_Invitation['Code'].'</p>
 				
-							<p>Please do not share this code, and use it within thirty days.</p>
-
-							<p>If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
+							<p>Please do not share this code, and use it within thirty days.If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
 				
 							
 							<p>
 							<p>Regards,<br>
 							Robert Pinover<br>
 							Client Success Specialist<br>
-							Association for Financial Professionals (AFP)<br><br>
+							<a href="https://www.afponline.org/">Association for Financial Professionals</a>(AFP)<br><br>
 							</p>
 						
 							</td>
@@ -359,22 +367,20 @@ class Invitation extends My_Controller {
 							<td style="padding:10px;">
 							<p>We would like to invite you to use the AFP Corporate Training Skills Assessment tool.</p>
 				
-							<p>Please <a href="http://localhost:4200/invitation">click<a> here to complete your registration using the invitation code listed below.
+							<p>Please <a href="http://localhost:4200/invitation">click here<a>  to complete your registration using the invitation code listed below.
 							 You will be required to set up a profile with a username and password allowing you to use the tool at your convenience.</p>
 							
 							
-							<p>Invitation code '.$post_Invitation['Code'].'</p>
+							<p>Invitation code : '.$post_Invitation['Code'].'</p>
 				
-							<p>Please do not share this code, and use it within thirty days.</p>
-
-							<p>If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
+							<p>Please do not share this code, and use it within thirty days.If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
 				
 							
 							<p>
 							<p>Regards,<br>
 							Robert Pinover<br>
 							Client Success Specialist<br>
-							Association for Financial Professionals (AFP)<br><br>
+							<a href="https://www.afponline.org/">Association for Financial Professionals</a>(AFP)<br><br>
 							</p>
 						
 							</td>

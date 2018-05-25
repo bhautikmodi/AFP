@@ -2,6 +2,19 @@
 
 class Invitation_model extends CI_Model
  {
+	function getlist_company()
+	{
+		$this->db->select('CompanyId,Name');
+		$this->db->where('IsActive=',1);
+		$result=$this->db->get('tblcompany');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
 	
 	public	function getlist_Industry()
 	{

@@ -67,11 +67,11 @@ export class DomainListComponent implements OnInit {
 						"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
 			}
 		});
-		},100); 	
+		},500); 	
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});
 	this.msgflag = false;
   }

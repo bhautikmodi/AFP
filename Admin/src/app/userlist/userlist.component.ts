@@ -69,12 +69,12 @@ deleteEntity;
 					"sInfoFiltered": "(filtered from _MAX_ total Users)"
         }
       });
-    },100); 
+    },500); 
 	}, 
 	(error) => 
 	{
 		
-		alert('error');
+		//alert('error');
 	});	
     this.msgflag = false;
 	}

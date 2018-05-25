@@ -65,7 +65,7 @@ export class CourselistComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
 	this.msgflag = false;
 	}

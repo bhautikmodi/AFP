@@ -67,7 +67,7 @@ export class PendingAssessmentComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});
   }
 

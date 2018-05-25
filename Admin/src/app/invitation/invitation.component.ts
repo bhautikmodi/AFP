@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { InvitationService } from '../services/invitation.service';
 import { CommonService } from '../services/common.service';
+import {IOption} from 'ng-select';
 
 @Component({
 	selector: 'app-invitation',
@@ -19,13 +20,22 @@ export class InvitationComponent implements OnInit {
 	btn_disable;
 	header;
 	type;
-	companyList;
+	CompanyList;
 	companyhide;
+	ComL;
+	isDisabled;
+	// myOptions;
 	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 
 	ngOnInit() {debugger
+		// this.myOptions= [
+		// 	{label: 'Belgium', value: 'BE'},
+		// 	{label: 'Luxembourg', value: 'LU'},
+		// 	{label: 'Netherlands', value: 'NL'}
+		// ];
+		
 		this.companyhide=false;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
@@ -41,10 +51,12 @@ export class InvitationComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 			});	
 			
 		}
+		this.ComL=[];
+		
 	}
 
 	default(){
@@ -54,7 +66,7 @@ export class InvitationComponent implements OnInit {
 		this.InvitationService.getAllCompany()
 			//.map(res => res.json())
 			.then((data) => {
-				this.companyList = data;
+				this.CompanyList = data;
 			},
 			(error) => {
 				alert('error');
@@ -96,14 +108,17 @@ export class InvitationComponent implements OnInit {
 	addInvitation(InvitationForm) {
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
+		
 		if (id) {
 			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
 		} else {
 			this.InvitationEntity.CreatedBy = this.globals.authData.UserId;
 			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = true;
-		}var s=this.InvitationEntity.EmailAddress;
+			this.submitted = false;
+		}
+		var s=this.InvitationEntity.EmailAddress;
+		
 		if (InvitationForm.valid) {
 			this.btn_disable = true;
 			this.globals.isLoading = true;
@@ -157,7 +172,32 @@ export class InvitationComponent implements OnInit {
 	}
 	com()
 	{
-		this.companyhide=!this.companyhide;
+		this.companyhide=true;
+		this.btn_disable = false;
+		this.InvitationEntity={};
+		//this.isDisabled=true;
+		
 
+	}
+	
+	onSelected(option: IOption) {
+		this.InvitationEntity.CompanyId = `${option.value}`;
+		this.InvitationService.getCompany(this.InvitationEntity.CompanyId)
+		//.map(res => res.json())
+		.then((data) => 
+		{
+			this.ComL = data;
+			this.InvitationEntity = data;
+			this.companyhide = true;
+			this.btn_disable = true;
+		}, 
+		(error) => 
+		{
+			alert('error');
+		});	
+		
+	}
+	del(){
+		this.companyhide=false;
 	}
 }

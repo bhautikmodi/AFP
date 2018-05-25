@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Component,NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/Forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -85,7 +85,7 @@ import { EmailLogComponent } from './email-log/email-log.component';
 import { AuditlogService } from './services/auditlog.service';
 import { LoginLogComponent } from './login-log/login-log.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
-
+import {SelectModule} from 'ng-select';
 
 @NgModule({
   declarations: [
@@ -140,6 +140,7 @@ import { ActivityLogComponent } from './activity-log/activity-log.component';
   BrowserModule,
 	HttpModule,
   FormsModule,
+  SelectModule,
   HttpClientModule,
 	RouterModule.forRoot([		
       {

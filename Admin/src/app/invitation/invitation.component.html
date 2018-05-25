@@ -29,36 +29,43 @@
                             <div class="form-group col-md-12">
                                 <h3 class="top-head">Company Details</h3>
                                 </div>
-
+                                <div *ngIf="!companyhide">
                                 <div class="form-group col-md-6" >
-                                    <div *ngIf="!companyhide">
+                                   <!-- <div *ngIf="!companyhide">-->
                                     <label>Company</label>
-                                    <select class="form-control" #CompanyId="ngModel" [(ngModel)]="InvitationEntity.CompanyId" name="CompanyId" [ngClass]="{red_border: (CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)}" required>  
+                                    <ng-select [options]="CompanyList"   placeholder="No selected" #CompanyId="ngModel" 
+                                    (ngModel)="InvitationEntity.CompanyId" (selected)="onSelected($event)"  >
+                                 
+                                    </ng-select>
+                                    <!-- <select class="form-control" #CompanyId="ngModel" [(ngModel)]="InvitationEntity.CompanyId" name="CompanyId" [ngClass]="{red_border: (CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)}" required>  
 									<option value="" ngSelected='InvitationEntity.CompanyId==""' >Select Company </option>
                                     <option *ngFor="let Company of companyList" value="{{Company.CompanyId}}" >{{Company.Name}}</option>  
-                                </select>
-                                <span class="error_span"  *ngIf="(CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)"> 
+                                </select> -->
+                                <!-- <span class="error_span"  *ngIf="(CompanyId.dirty && CompanyId.invalid) || (CompanyId.pristine && submitted)"> 
                                     <span *ngIf="CompanyId.errors.required || (CompanyId.pristine && submitted)">Please select company name </span>
-                                </span>
-                            </div>
+                                </span> -->
+                           <!-- </div>-->
                                 </div>
-                                
+                                <div class="form-group col-md-1 or_block">
+                                    OR
+                                </div>
                                 <div class="form-group col-md-5">
-                                    <button type="button" class="btn sub-btn btn-small" (click)="com()" ><span *ngIf="!companyhide" style="margin-top:18px">Add Company</span><span *ngIf="companyhide" >Select Company</span> </button>
+                                    <button type="button" class="btn sub-btn btn-small margin_top" (click)="com()"><span>Add Company</span></button>
                                 </div>
 
-                                
+                            </div>
                                 <div class="clearfix"></div>
                                  
 
 
                                 <div *ngIf="companyhide">
-
+                                   <div   (click)="del()" class="close_btn btn btn-danger btn-rounded btn-sm">  <i class="fa fa-close"></i></div>
+                                    <div class="clearfix"></div>
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Company Name</label>
                                     <input type="text" class="form-control" #Name="ngModel" name="Name"
                                     pattern="[a-zA-Z' ]{2,100}" 
-                                        [(ngModel)]="InvitationEntity.Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
+                                        [(ngModel)]="InvitationEntity.Name" [disabled]="btn_disable" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
                                     <span class="error_span"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                         <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter company name</span>
                                         <span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
@@ -71,10 +78,10 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label>Industry</label>
-                                    <select class="form-control" #IndustryId="ngModel" [(ngModel)]="InvitationEntity.IndustryId" name="IndustryId" >  
+                                    <select class="form-control"  #IndustryId="ngModel" [(ngModel)]="InvitationEntity.IndustryId" name="IndustryId"  [disabled]="btn_disable" >  
 									<option value="" ngSelected='InvitationEntity.IndustryId==""' >Select Industry </option>
 									<option *ngFor="let Industry of IndustryList" value="{{Industry.IndustryId}}" 
-									ngSelected="InvitationEntity.IndustryId==Industry.IndustryId">{{Industry.IndustryName}}</option>
+									ngSelected="InvitationEntity.IndustryId==Industry.IndustryId" >{{Industry.IndustryName}}</option>
 								</select>
 									<!-- <span class="error_span" *ngIf="(IndustryId.dirty && IndustryId.invalid) || (IndustryId.pristine && submitted)">  
 										<span *ngIf="IndustryId.errors.required || (IndustryId.pristine && submitted)">
@@ -85,12 +92,12 @@
                                 <div class="clearfix"></div>
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Phone Number</label>
-                                    <input type="text" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1"
+                                    <input type="text" class="form-control" [disabled]="btn_disable"  #PhoneNo="ngModel" name="PhoneNo"
 						pattern="[0-9\-.()+\s]+"  maxlength="13"
-							[(ngModel)]="InvitationEntity.PhoneNumber1" [ngClass]="{red_border: (PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)}"  required/>
-						<span class="error_span"  *ngIf="(PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)"> 
-							<span *ngIf="PhoneNumber1.errors.required || (PhoneNumber1.pristine && submitted)">Please enter phone number</span>
-							<span class="error_span" *ngIf="PhoneNumber1.errors && PhoneNumber1.errors.pattern">
+							[(ngModel)]="InvitationEntity.PhoneNo" [ngClass]="{red_border: (PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)}"  required/>
+						<span class="error_span"  *ngIf="(PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)"> 
+							<span *ngIf="PhoneNo.errors.required || (PhoneNo.pristine && submitted)">Please enter phone number</span>
+							<span class="error_span" *ngIf="PhoneNo.errors && PhoneNo.errors.pattern">
 							Please enter valid phone number
 					  </span>
 						</span>
@@ -98,7 +105,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Website</label>
-                                    <input type="text" class="form-control" #Website="ngModel" maxlength="250"pattern="[a-zA-Z0-9.-_]{1,}[.]{1}[a-zA-Z]{2,}"
+                                    <input type="text" class="form-control"  [disabled]="btn_disable"  #Website="ngModel" maxlength="250"pattern="[a-zA-Z0-9.-_]{1,}[.]{1}[a-zA-Z]{2,}"
                                      [(ngModel)]="InvitationEntity.Website" name="Website" 
 				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 

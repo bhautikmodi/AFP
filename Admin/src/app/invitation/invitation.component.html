@@ -85,12 +85,8 @@
                                 <div class="clearfix"></div>
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Phone Number</label>
-<<<<<<< HEAD
-                                    <input type="text" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1" pattern="[0-9\-.()+\s]+" maxlength="13"
-=======
                                     <input type="text" class="form-control" #PhoneNumber1="ngModel" name="PhoneNumber1"
 						pattern="[0-9\-.()+\s]+"  maxlength="13"
->>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
 							[(ngModel)]="InvitationEntity.PhoneNumber1" [ngClass]="{red_border: (PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)}"  required/>
 						<span class="error_span"  *ngIf="(PhoneNumber1.dirty && PhoneNumber1.invalid) || (PhoneNumber1.pristine && submitted)"> 
 							<span *ngIf="PhoneNumber1.errors.required || (PhoneNumber1.pristine && submitted)">Please enter phone number</span>
@@ -102,14 +98,9 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Website</label>
-<<<<<<< HEAD
-                                    <input type="text" class="form-control" #Website="ngModel" maxlength="250"
-                                     [(ngModel)]="InvitationEntity.Website" name="Website" [ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
-=======
                                     <input type="text" class="form-control" #Website="ngModel" maxlength="250"pattern="[a-zA-Z0-9.-_]{1,}[.]{1}[a-zA-Z]{2,}"
                                      [(ngModel)]="InvitationEntity.Website" name="Website" 
 				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
->>>>>>> bd7b834295875ce16ab3422c077eb75aec28e959
 						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
 							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter website</span>
 							<span *ngIf="Website.errors && Website.errors.pattern">Please enter valid website</span>

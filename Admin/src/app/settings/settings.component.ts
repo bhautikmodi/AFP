@@ -103,10 +103,10 @@ export class SettingsComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Teamsize per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Teamsize",
-					"sInfoFiltered": "(filtered from _MAX_ total Teamsize)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Teamsize"
+          "sLengthMenu": "_MENU_ Team Size per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Team Size",
+					"sInfoFiltered": "(filtered from _MAX_ total Team Size)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Team Size"
         }
       });
     },100); 

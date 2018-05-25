@@ -66,7 +66,7 @@ export class CountrylistComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
 	this.msgflag = false;
 	}

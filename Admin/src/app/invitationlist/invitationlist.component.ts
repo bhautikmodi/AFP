@@ -46,7 +46,7 @@ permissionEntity;
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 	}		
 	}
@@ -72,7 +72,7 @@ permissionEntity;
 		}, 
 		(error) => 
 		{
-		  alert('error');
+		 // alert('error');
 		});	
 		//this.msgflag = false;
 	  }

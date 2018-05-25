@@ -41,7 +41,7 @@ export class EmailLogComponent implements OnInit {
       }, 
       (error) => 
       {
-        alert('error');
+        //alert('error');
       });    
     } else {		
       this.router.navigate(['/access-denied']);

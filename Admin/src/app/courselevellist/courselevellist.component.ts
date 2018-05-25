@@ -62,12 +62,12 @@ export class CourselevellistComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Course Level)"
         }
       });
-    },100); 
+    },500); 
 
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});		
   }
 	

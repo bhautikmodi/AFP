@@ -63,11 +63,11 @@ export class StatelistComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total State)"
         }
       });
-    },100); 
+    },500); 
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
 	  //this.msgflag = false;
 		}

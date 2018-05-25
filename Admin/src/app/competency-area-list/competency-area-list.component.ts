@@ -72,7 +72,7 @@ export class CompetencyAreaListComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
 	this.msgflag = false;
 	}

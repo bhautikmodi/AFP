@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
       }, 
       (error) => 
       {
-        alert('error');
+       // alert('error');
       });
           
     }

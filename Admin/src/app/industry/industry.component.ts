@@ -36,7 +36,7 @@ export class IndustryComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 			});	
 		}
 	}

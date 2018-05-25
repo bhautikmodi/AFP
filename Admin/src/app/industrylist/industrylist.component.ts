@@ -61,12 +61,12 @@ export class IndustrylistComponent implements OnInit {
 						"sInfoFiltered": "(filtered from _MAX_ total Industry)"
 					}
 				});
-			},100); 
+			},500); 
 	
 		}, 
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 		//this.msgflag = false;
 		}

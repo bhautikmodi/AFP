@@ -22,7 +22,18 @@ class Invitation extends My_Controller {
 		//.exit;
 		echo json_encode($data);
 	}
-
+	public function getCompany($CompanyId=null)
+	{
+		if(!empty($CompanyId))
+		{
+		$data="";	
+		//$this->load->model('Company_model');
+		$data=$this->Invitation_model->get_company($CompanyId);
+		//print_r($data);
+		//.exit;
+		echo json_encode($data);
+		}
+	}
 	public function check1(){
 
 		$userId = 21;
@@ -161,12 +172,7 @@ class Invitation extends My_Controller {
 								
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);		
 		if ($post_Invitation) {
-			if($post_Invitation['UserInvitationId'] > 0){
-				$result = $this->Invitation_model->edit_Invitation($post_Invitation);
-				if($result) {
-					//echo json_encode($post_Invitation);	
-				}	
-			} else {
+	
 				
 				$post_Invitation['Code']=mt_rand(100000, 999999);
 				$result = $this->Invitation_model->add_Invitation($post_Invitation);
@@ -298,7 +304,7 @@ class Invitation extends My_Controller {
 					
 					echo json_encode("email duplicate");
 				}
-			}							
+										
 		}
 		
 	}

@@ -125,6 +125,22 @@ export class InvitationService {
   //  });		
   //  return promise;
   //  }  
+  getCompany(CompanyId){debugger
+	 
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Invitation/getCompany/' + CompanyId )
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+          }
+        );
+    });		
+    return promise;
+    }
   }
  
  

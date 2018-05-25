@@ -13,6 +13,16 @@ class Invitation extends My_Controller {
 		
 	}
 
+	public function getAllCompany()
+	{
+		$data="";	
+		//$this->load->model('Company_model');
+		$data=$this->Invitation_model->getlist_company();
+		//print_r($data);
+		//.exit;
+		echo json_encode($data);
+	}
+
 	public function check1(){
 
 		$userId = 21;

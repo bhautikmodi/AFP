@@ -56,7 +56,7 @@ export class CountrylistComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Countries per Page",
+          "sLengthMenu": "_MENU_ Country per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Country",
 					"sInfoFiltered": "(filtered from _MAX_ total Country)"
         }
@@ -66,7 +66,7 @@ export class CountrylistComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
 	this.msgflag = false;
 	}

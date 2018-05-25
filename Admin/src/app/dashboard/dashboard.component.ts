@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	  
   }
 

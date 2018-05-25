@@ -46,7 +46,7 @@ ngOnInit() {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 	}		
 	}
@@ -73,7 +73,7 @@ ngOnInit() {
 		}, 
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 		//this.msgflag = false;
 		}

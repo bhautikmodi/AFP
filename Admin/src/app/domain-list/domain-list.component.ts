@@ -61,7 +61,7 @@ export class DomainListComponent implements OnInit {
 		setTimeout(function(){
 		$('#dataTables-example').dataTable( {
 			"oLanguage": {
-			"sLengthMenu": "_MENU_ Domains per Page",
+			"sLengthMenu": "_MENU_ Domain per Page",
 						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domain",
 						"sInfoFiltered": "(filtered from _MAX_ total Domain)",
 						"sInfoEmpty": "Showing 0 to 0 of 0 Domain"
@@ -71,7 +71,7 @@ export class DomainListComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});
 	this.msgflag = false;
   }

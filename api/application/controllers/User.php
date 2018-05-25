@@ -118,13 +118,13 @@ class User extends MY_Controller
 	
 	
 	
-	public function getAllCountry()
-	{
-		$data="";
+	// public function getAllCountry()
+	// {
+	// 	$data="";
 		
-		$data=$this->User_model->getlist_country();
-		echo json_encode($data);
-	}
+	// 	$data=$this->User_model->getlist_country();
+	// 	echo json_encode($data);
+	// }
 	
 	
 	
@@ -140,33 +140,43 @@ class User extends MY_Controller
 	}
 	
 	// List all state
-	public function getAllState()
-	{
-		$data="";
+	// public function getAllState()
+	// {
+	// 	$data="";
 		
-		$data=$this->User_model->getlist_state();
+	// 	$data=$this->User_model->getlist_state();
 		
-		echo json_encode($data);
-	}
+	// 	echo json_encode($data);
+	// }
 	
 	// List all company
-	public function getAllCompany()
-	{
-		$data="";	
-		//$this->load->model('Company_model');
-		$data=$this->User_model->getlist_company();
-		//print_r($data);
-		//.exit;
-		echo json_encode($data);
-	}
+	// public function getAllCompany()
+	// {
+	// 	$data="";	
+	// 	//$this->load->model('Company_model');
+	// 	$data=$this->User_model->getlist_company();
+	// 	//print_r($data);
+	// 	//.exit;
+	// 	echo json_encode($data);
+	// }
 	
 	//List role
-	public function getAllRole()
+	// public function getAllRole()
+	// {
+	// 	$data="";
+		
+	// 	$data=$this->User_model->getlist_userrole();
+		
+	// 	echo json_encode($data);
+	// }
+
+	public function getAllDefaultData()
 	{
 		$data="";
-		
-		$data=$this->User_model->getlist_userrole();
-		
+		$data['company']=$this->User_model->getlist_company();
+		$data['role']=$this->User_model->getlist_userrole();
+		$data['country']=$this->User_model->getlist_country();
+		$data['state']=$this->User_model->getlist_state();
 		echo json_encode($data);
 	}
 }

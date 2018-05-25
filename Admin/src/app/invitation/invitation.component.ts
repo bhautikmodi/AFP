@@ -51,7 +51,7 @@ export class InvitationComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 			});	
 			
 		}

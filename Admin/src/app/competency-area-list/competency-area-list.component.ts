@@ -61,7 +61,7 @@ export class CompetencyAreaListComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Competency Areas per Page",
+          "sLengthMenu": "_MENU_ Competency Area per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
 					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
 					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"

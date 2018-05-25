@@ -31,7 +31,7 @@ export class EmailLogComponent implements OnInit {
         setTimeout(function(){
         $('#dataTables-example').dataTable( {
           "oLanguage": {
-          "sLengthMenu": "_MENU_ Logs per Page",
+          "sLengthMenu": "_MENU_ Log per Page",
                 "sInfo": "Showing _START_ to _END_ of _TOTAL_ Log",
                 "sInfoFiltered": "(filtered from _MAX_ total Log)",
                 "sInfoEmpty": "Showing 0 to 0 of 0 Log"

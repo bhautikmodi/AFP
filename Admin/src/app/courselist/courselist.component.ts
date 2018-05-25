@@ -55,7 +55,7 @@ export class CourselistComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Courses per Page",
+          "sLengthMenu": "_MENU_ Course per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Course",
 					"sInfoFiltered": "(filtered from _MAX_ total Course)"
         }

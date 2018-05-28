@@ -335,3 +335,12 @@ textarea.cke_source {
 		height: 100%;
 		}
 }*/
+
+@media screen and (min-width:1800px){ 
+	/*#page-wrapper{
+		min-height: 1000px!important;
+		}*/
+	.navbar-static-side .sidebar-collapse {
+		height: 87%;
+		}
+}

@@ -72,8 +72,6 @@ class Remaining extends MY_Controller
 		$data="";
 		
 		$data=$this->Remaining_model->getlist_days();
-		// print_r($data);
-		// exit;
 		if($data)
 		{
 			foreach($data as $days)
@@ -83,13 +81,21 @@ class Remaining extends MY_Controller
 			
 				$data2=$this->Remaining_model->getlist_value($datetime1);
 	
-				//print_r($data2);
-				//exit;
 				if($data2)
 				{						
 					foreach ($data2 as $users)
 					{
-						 $users->EmailAddress;
+						$this->db->select('ca.AssessmentName,ca.StartTime,ts.TeamSize');
+						$this->db->join('tblmstteamsize ts', 'ts.TeamSizeId = ca.TeamSizeId', 'left');
+						$this->db->where('ca.CAssessmentId',$users->CAssessmentId);
+						$smtp2 = $this->db->get('tblcandidateassessment ca');	
+						foreach($smtp2->result() as $row) {
+							$ass_name = $row->AssessmentName;
+							$ass_start_date = $row->StartTime;
+							$team_size = $row->TeamSize;
+						} 
+						
+						$users->EmailAddress;
 						 $userId=$users->UserId;
 						 $userId_backup=$userId;
 						 $EmailToken = 'Reminder of Assessment';
@@ -119,6 +125,9 @@ class Remaining extends MY_Controller
 				 
 						 $query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
 						 foreach($query->result() as $row){ 
+							$row->EmailBody = str_replace("{ assessment_name }",$ass_name,$row->EmailBody);
+							$row->EmailBody = str_replace("{ assessment_start_date }",$ass_start_date,$row->EmailBody);
+							$row->EmailBody = str_replace("{ team_size }",$team_size,$row->EmailBody);
 							if($row->To==3){			
 								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
 								$rowTo = $queryTo->result();
@@ -152,7 +161,6 @@ class Remaining extends MY_Controller
 									);
 									
 									$res = $this->db->insert('tblemaillog',$email_log);
-									//echo json_encode("Success");
 								}else
 								{
 									echo json_encode("Fail");

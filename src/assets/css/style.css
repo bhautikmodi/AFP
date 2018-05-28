@@ -92,7 +92,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 /* ..... Home Page Contener Area End ..... */
 
 /* ------- Footer Area Strat ------- */
-footer{ background:#072b49; padding:30px 0; opacity:1; text-align:center; font: normal 15px/15px 'GothamNarrow-book'; width:100%; color:#fff; border-top: 10px solid #a51c36;}
+footer{ background:#072b49; padding:30px 0; opacity:1; text-align:center; font: normal 15px/15px 'GothamNarrow-book'; width:100%; color:#fff; border-top: 10px solid #a51c36; z-index: 9;}
 footer.footer_fixed{ position: fixed; bottom: 0; left: 0; width: 100%; display: block;}
 footer h3{ font-size:18px; color:#fff; font-family: 'GothamNarrow-Medium';}
 footer i{ font-style: normal;}
@@ -305,10 +305,16 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .filter_block{ display: block;}
 .pending_assessment{ padding-top: 85px; color: #0085AD; font-family: "GothamNarrow-Bold"; font-size: 18px;}
 
-.domain_desc{padding: 15px; height: 510px; border: 1px solid #888; background: #f4f4f4;}
+.domain_desc{padding: 15px; height: auto; border: 1px solid #888; background: #f4f4f4;}
 .domain_desc .accordion_scroll{ height:435px; overflow-y: auto; position: relative; display: block; padding-right: 15px;}
 .domain_desc table{margin: 0;}
 .domain_desc table td{ font-size:13px;}
+.domain_desc .nav-tabs{border: 0;}
+.domain_desc .nav-tabs li{ display: block; width: 16.66%; float: left; border: 0;}
+.domain_desc .nav-tabs li a{ display: table-cell; text-align: center; padding: 8px; font-family: "GothamNarrow-medium"; font-size: 15px; line-height: 22px; margin: 0; border-radius: 0; height: 60px; width: inherit; color: #000; background-color: #77C5D5; border:0; border-top: 1px solid #ddd; border-left: 1px solid #ddd; vertical-align:middle;}
+.domain_desc .nav-tabs li:last-child a{ border-right: 1px solid #ddd;}
+.domain_desc .nav-tabs li:hover a,.domain_desc .nav-tabs li.active a{ background: #fff; }
+.domain_desc .tab-pane{ padding: 25px; background: #fff; border:1px solid #ddd;}
 
 .height_510px{height: 510px;}
 /* ..... Inner Page Contener Area Strat ..... */

@@ -84,11 +84,11 @@ export class CourselevelComponent implements OnInit {
 					this.CourseLevelEntity = {};
 					CourseLevelForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Course Level Updated successfully!';
+						this.globals.message = 'Course Level Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Course Level Added successfully!';
+						this.globals.message = 'Course Level Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

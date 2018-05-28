@@ -15,7 +15,7 @@
       <div class="col-lg-12"> 
         <!-- Advanced Tables -->
         <div class="panel panel-default" *ngIf="globals.authData.RoleId==4">
-          <div class="panel-heading"> ! </div>
+          <div class="panel-heading"> General Configurations </div>
           <div class="panel-body">
             <div class="row"> 
               <!--<div class="col-lg-12">-->
@@ -26,8 +26,8 @@
                   <div class="col-md-6">
                     <input type="text" class="form-control" pattern="[0-9]{1,10}" #noofksa="ngModel" [(ngModel)]="configEntity.noofksa" name="noofksa" [ngClass]="{red_border: ((noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)) || (ksaError && !noofksa.errors) || (totksaError && !noofksa.errors)}" required/>  
                     <span class="error_span" *ngIf="(noofksa.dirty && noofksa.invalid) || (noofksa.pristine && submitted1)"> 
-                      <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter no of ksa</span>                      
-                      <span *ngIf="noofksa.errors && noofksa.errors.pattern">Please enter valid no of ksa</span>
+                      <span *ngIf="noofksa.errors.required || (noofksa.pristine && submitted1)">Please enter No of KSA</span>                      
+                      <span *ngIf="noofksa.errors && noofksa.errors.pattern">Please enter valid No of KSA</span>
                     </span>
                     <span class="error_span" *ngIf="ksaError && !noofksa.errors">Minimum value is {{NoOfCArea}}</span>
                     <span class="error_span" *ngIf="totksaError && !noofksa.errors">Maximum value is {{NoKSA}}</span>
@@ -126,9 +126,9 @@
                   <div class="col-md-6">
                     <input type="text" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #emailfrom="ngModel" [(ngModel)]="configEntity.emailfrom" name="emailfrom" [ngClass]="{red_border: (emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)}" required/>  
                     <span class="error_span" *ngIf="(emailfrom.dirty && emailfrom.invalid) || (emailfrom.pristine && submitted4)"> 
-                      <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter email from</span>
+                      <span *ngIf="emailfrom.errors.required || (emailfrom.pristine && submitted4)">Please enter Email from</span>
                       <span *ngIf="emailfrom.errors && emailfrom.errors.pattern">
-                        Please enter a valid email
+                        Please enter a valid Email Address
                     </span>
                     </span>
                   </div>
@@ -138,7 +138,7 @@
                   <div class="col-md-6">
                     <input type="password" class="form-control" #emailpassword="ngModel" [(ngModel)]="configEntity.emailpassword" name="emailpassword" [ngClass]="{red_border: (emailpassword.dirty && emailpassword.invalid) || (emailpassword.pristine && submitted4)}" required/>  
                     <span class="error_span" *ngIf="(emailpassword.dirty && emailpassword.invalid) || (emailpassword.pristine && submitted4)"> 
-                      <span *ngIf="emailpassword.errors.required || (emailpassword.pristine && submitted4)">Please enter email password</span>
+                      <span *ngIf="emailpassword.errors.required || (emailpassword.pristine && submitted4)">Please enter Email Password</span>
                     </span>
                   </div>
                 </div>
@@ -155,7 +155,7 @@
           </div>
         </div>
         <div class="panel panel-default" *ngIf="permissionEntity.AddEdit==1">
-          <div class="panel-heading"> ! </div>
+          <div class="panel-heading"> Team Size Configurations </div>
           <div class="panel-body">
             <div class="row"> 
               <!--<div class="col-lg-12">-->
@@ -166,9 +166,10 @@
                   		<div id="example1">	
 							<div class="r-group">
 								<div class="col-md-6">
-                  <input type="text" class="form-control" #TeamSize="ngModel" [(ngModel)]="teamsizeEntity.TeamSize" name="TeamSize" [ngClass]="{red_border: (TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)}" required/>  
+                  <input type="text" class="form-control" #TeamSize="ngModel" maxlength="100" [(ngModel)]="teamsizeEntity.TeamSize" name="TeamSize" [ngClass]="{red_border: (TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)}" required/>  
                   <span class="error_span" *ngIf="(TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)"> 
-                    <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter team size</span>
+                    <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter Team Size</span>
+                    <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter Team Size</span>
                   </span>
 								</div>								
 								<div class="clearfix"></div>
@@ -193,7 +194,7 @@
           {{globals.message}}
        </div>
 		<div class="panel panel-default">
-          <div class="panel-heading"> Team Size
+          <div class="panel-heading"> List of Team Size
             <!--<div class="btn-group pull-right add-right">
               <a href="addinvitelink.html" class="btn btn-danger btn-add">
               <i class="fa fa-plus fa-fw"></i>Add a Email Address

@@ -104,11 +104,11 @@ export class StateComponent implements OnInit {
 					this.stateEntity = {};
 					stateForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'State Updated successfully!';
+						this.globals.message = 'State Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'State Added successfully!';
+						this.globals.message = 'State Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

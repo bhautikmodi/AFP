@@ -24,15 +24,15 @@
                                     <form class="form-validate"  #CourseLevelForm="ngForm" (ngSubmit)="addCourseLevel(CourseLevelForm)">
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Course Level</label>
-											<input type="text"  pattern="[a-zA-Z.'/,-/& ]{0,}"  #CourseLevel="ngModel" [(ngModel)]="CourseLevelEntity.CourseLevel" class="form-control"
+											<input type="text"  pattern="[a-zA-Z.'/,-/& ]{2,}"  #CourseLevel="ngModel" [(ngModel)]="CourseLevelEntity.CourseLevel" class="form-control"
 											name="CourseLevel" [ngClass]="{red_border: (CourseLevel.dirty && CourseLevel.invalid) || (CourseLevel.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(CourseLevel.dirty && CourseLevel.invalid) || (CourseLevel.pristine && submitted)">
 								  <span *ngIf="CourseLevel.errors && CourseLevel.errors.required">
-												Please enter course level.
+												Please enter Course Level
 											</span>
 										  
 										  <span *ngIf="CourseLevel.errors && CourseLevel.errors.pattern">
-												Please input valid course level.
+												Please enter valid Course Level
 										  </span>
 								</span>
                                         </div>
@@ -40,15 +40,15 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Keyword</label>
                                          
-											<input type="text"  #Keyword="ngModel" pattern="[a-zA-Z]{0,}"   [(ngModel)]="CourseLevelEntity.Keyword" class="form-control txtupper"
+											<input type="text"  #Keyword="ngModel" pattern="[a-zA-Z]{0,}"  [(ngModel)]="CourseLevelEntity.Keyword" class="form-control txtupper"
 											name="Keyword" [ngClass]="{red_border: (Keyword.dirty && Keyword.invalid) || (Keyword.pristine && submitted)}" required/>
 													<span class="error_span" *ngIf="(Keyword.dirty && Keyword.invalid) || (Keyword.pristine && submitted)">
 								  <span *ngIf="Keyword.errors && Keyword.errors.required">
-												Please enter keyword.
+												Please enter Keyword
 											</span>
 										  
 										  <span *ngIf="Keyword.errors && Keyword.errors.pattern">
-												Please input valid keyword.
+												Please enter valid Keyword
 										  </span>
 								</span>
                                         </div>
@@ -58,7 +58,7 @@
                                             <textarea  #Description="ngModel" [(ngModel)]="CourseLevelEntity.Description" class="form-control"
 											name="Description" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required></textarea>
 													<span class="error_span"  *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
-												<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description </span>
+												<span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description</span>
 											</span>
                                         </div>
 										<div class="form-group col-md-6">
@@ -74,7 +74,7 @@
 									  <label for="role2">No </label>
 									</div><br>
 									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
 									  </span>
 
                               </div>

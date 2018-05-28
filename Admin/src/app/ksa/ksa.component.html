@@ -25,11 +25,11 @@
                             <form class="form-validate" #ksaForm="ngForm" (ngSubmit)="addKSA(ksaForm)">
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Name</label>
-                                    <textarea type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" pattern="[a-zA-Z0-9/',;.&()?\-’ ]{1,500}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required></textarea>
+                                    <textarea type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" pattern="[a-zA-Z0-9/',;.&()?\-’ ]{2,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required></textarea>
                                     <!-- <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>   -->
                                     <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter ksa</span>
-                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid ksa</span>
+                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter KSA</span>
+                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid KSA</span>
                                     </span>
                                 </div>
                                   
@@ -40,7 +40,7 @@
                                         <option *ngFor="let area of areaList" value="{{area.CAreaId}}" ngSelected="ksaEntity.CAreaId==area.CAreaId">{{area.Name}}</option>
                                     </select>
                                     <span class="error_span" *ngIf="(CAreaId.dirty && CAreaId.invalid) || (CAreaId.pristine && submitted)"> 
-                                        <span *ngIf="CAreaId.errors.required || (CAreaId.pristine && submitted)">Please select competency area</span>
+                                        <span *ngIf="CAreaId.errors.required || (CAreaId.pristine && submitted)">Please select Competency Area</span>
                                       </span>
                                   </div>
                     
@@ -58,7 +58,7 @@
                                         <label for="role2">No </label>
                                       </div><br>
                                       <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-                                          <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+                                          <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
                                         </span>                          
                                 </div>
                                             

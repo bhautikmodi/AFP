@@ -311,6 +311,8 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .domain_desc table td{ font-size:13px;}
 
 .height_510px{height: 510px;}
+.border_line{border-bottom: 1px solid #ccc; margin: 30px 0;}
+.dataTables_paginate{float: right;}
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Pages Contener Area End ------- */

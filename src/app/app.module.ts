@@ -48,6 +48,8 @@ import { HeaderhomeComponent } from './headerhome/headerhome.component';
 import{NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'ng-select';
 import { TestAssessmentComponent } from './test-assessment/test-assessment.component';
+import { ListUserAssessmentComponent } from './list-user-assessment/list-user-assessment.component';
+import { ListUserAssessmentService } from './services/list-user-assessment.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,8 @@ import { TestAssessmentComponent } from './test-assessment/test-assessment.compo
     SalesUserDetailsComponent,
     ReportComponent,
     HeaderhomeComponent,
-    TestAssessmentComponent
+    TestAssessmentComponent,
+    ListUserAssessmentComponent
 
 
   ],
@@ -173,6 +176,15 @@ import { TestAssessmentComponent } from './test-assessment/test-assessment.compo
 			component : UserAssessmentDetailsComponent,
 			canActivate : [AuthGuard]
 		},
+
+		{
+			path : 'list-user-assessment/list',
+			component : ListUserAssessmentComponent,
+			canActivate : [AuthGuard]
+		},
+
+		
+
 		{
 			path : 'sales-admin-dashboard',
 			component : SalesDashboardComponent,
@@ -209,7 +221,7 @@ import { TestAssessmentComponent } from './test-assessment/test-assessment.compo
   ], 
   
   providers: [Globals,InvitationService,RegisterService,AuthService,AuthGuard,ForgotpasswordService,
-	ResetpassService,ChangepassService,AssessmentDetailsService,HomeService,
+	ResetpassService,ListUserAssessmentService,ChangepassService,AssessmentDetailsService,HomeService,
 	{
 		provide: HTTP_INTERCEPTORS,
 		  useClass: HttpInterceptorClassService,

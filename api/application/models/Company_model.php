@@ -2,6 +2,30 @@
 
 class Company_model extends CI_Model
 {
+
+	public function getlist_user()
+	{
+		// $this->db->select('us.UserId,us.RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
+		// us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName');
+		// $this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
+		// $this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');
+		// $this->db->where('usms.RoleName!=','IT');
+		$this->db->select('ca.UserId,u.FirstName,u.LastName,cmp.Name,COUNT(ca.UserId) as total');
+		$this->db->group_by('ca.UserId');
+		//$this->db->join('tblmstteamsize ts','ts.TeamSizeId = ca.TeamSizeId', 'left');
+		$this->db->join('tbluser u','u.UserId = ca.UserId', 'left');
+		$this->db->join('tblcompany cmp','cmp.CompanyId = u.CompanyId', 'left');
+		$this->db->where('ca.EndTime!=','NULL');
+		$result = $this->db->get('tblcandidateassessment as ca');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
+		
 	
 	public function add_company($post_company)
 	{	if($post_company['IsActive']==1)

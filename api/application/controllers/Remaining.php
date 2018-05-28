@@ -128,6 +128,8 @@ class Remaining extends MY_Controller
 							$row->EmailBody = str_replace("{ assessment_name }",$ass_name,$row->EmailBody);
 							$row->EmailBody = str_replace("{ assessment_start_date }",$ass_start_date,$row->EmailBody);
 							$row->EmailBody = str_replace("{ team_size }",$team_size,$row->EmailBody);
+							$row->EmailBody = str_replace("{ remainder_day }",$remainder_day,$Day);
+							
 							if($row->To==3){			
 								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
 								$rowTo = $queryTo->result();

@@ -110,7 +110,8 @@
                       <tr *ngFor="let rscale of domain.rs">
                         <td><span *ngIf="rscale.Name=='General Awareness'">1</span> <span *ngIf="rscale.Name=='Developing'">2</span> <span *ngIf="rscale.Name=='Intermediate'">3</span> <span *ngIf="rscale.Name=='Advanced'">4</span> - {{rscale.Name}}</td>
                         <td class="text-left"><ul class="li_list">
-                            <li *ngFor="let c of rscale.course">{{c.Name}}</li>
+                           <span *ngIf="rscale.course"><li *ngFor="let c of rscale.course">{{c.Name}} </li></span> 
+                           <span *ngIf="rscale.course==''">No Course Available</span>
                           </ul></td>
                       </tr>
                     </table></div>

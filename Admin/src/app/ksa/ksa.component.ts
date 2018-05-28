@@ -97,11 +97,11 @@ export class KsaComponent implements OnInit {
 					this.ksaEntity = {};
 					ksaForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'KSA Updated Successfully!';
+						this.globals.message = 'KSA Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'KSA Added Successfully!';
+						this.globals.message = 'KSA Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

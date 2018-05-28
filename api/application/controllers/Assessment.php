@@ -40,12 +40,16 @@ class Assessment extends MY_Controller {
 			$result=$this->Assessment_model->finalSubmit($CAssessmentId);		
 			if($result)
 			 {
+				$this->db->select('ca.AssessmentName,ca.StartTime,ts.TeamSize');
+				$this->db->join('tblmstteamsize ts', 'ts.TeamSizeId = ca.TeamSizeId', 'left');
+				$this->db->where('ca.CAssessmentId',$CAssessmentId);
+				$smtp2 = $this->db->get('tblcandidateassessment ca');	
+				foreach($smtp2->result() as $row) {
+					$ass_name = $row->AssessmentName;
+					$ass_start_date = $row->StartTime;
+					$team_size = $row->TeamSize;
+				}
 
-				
-				//exit;
-				//$EmailAddress=$result[0]->EmailAddress;
-				
-				
 				$userId=$result[0]->UserId;
 				$userId_backup=$userId;
 
@@ -76,6 +80,9 @@ class Assessment extends MY_Controller {
 		
 				$query = $this->db->query("SELECT et.To,et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
 				foreach($query->result() as $row){ 	
+					$row->EmailBody = str_replace("{ assessment_name }",$ass_name,$row->EmailBody);
+					$row->EmailBody = str_replace("{ assessment_start_date }",$ass_start_date,$row->EmailBody);
+					$row->EmailBody = str_replace("{ team_size }",$team_size,$row->EmailBody);
 					if($row->To==3){		
 					$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
 					$rowTo = $queryTo->result();

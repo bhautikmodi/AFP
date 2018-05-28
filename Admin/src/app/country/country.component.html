@@ -25,15 +25,15 @@
                                  <form class="form-validate"  #CountryForm="ngForm" (ngSubmit)="addCountry(CountryForm)">
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Country</label>
-											<input type="text"  #CountryName="ngModel" pattern="[a-zA-Z ]{0,}" [(ngModel)]="CountryEntity.CountryName" class="form-control"
+											<input type="text"  #CountryName="ngModel" pattern="[a-zA-Z ]{2,}" maxlength="100" [(ngModel)]="CountryEntity.CountryName" class="form-control"
 											name="CountryName"  [ngClass]="{red_border: (CountryName.dirty && CountryName.invalid) || (CountryName.pristine && submitted)}" required/>		
 											<span class="error_span" *ngIf="(CountryName.dirty && CountryName.invalid) || (CountryName.pristine && submitted)">
 													<span *ngIf="CountryName.errors && CountryName.errors.required">
-														Please enter country.
+														Please enter Country
 													</span>
 												  
 													<span *ngIf="CountryName.errors && CountryName.errors.pattern">
-														Please input valid country.
+														Please enter valid Country
 													</span>
 											</span>
                                         </div>
@@ -41,15 +41,15 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Country Abbreviation</label>
                                          
-											<input type="text"  #CountryAbbreviation="ngModel" pattern="[a-zA-Z]{0,}"   [(ngModel)]="CountryEntity.CountryAbbreviation" class="form-control txtupper"
+											<input type="text"  #CountryAbbreviation="ngModel" pattern="[a-zA-Z]{0,}" maxlength="3"   [(ngModel)]="CountryEntity.CountryAbbreviation" class="form-control txtupper"
 											name="CountryAbbreviation" [ngClass]="{red_border: (CountryAbbreviation.dirty && CountryAbbreviation.invalid) || (CountryAbbreviation.pristine && submitted)}" required/>
 													<span class="error_span" *ngIf="(CountryAbbreviation.dirty && CountryAbbreviation.invalid) || (CountryAbbreviation.pristine && submitted)">
 								  <span *ngIf="CountryAbbreviation.errors && CountryAbbreviation.errors.required">
-												Please enter country abbreviation.
+												Please enter Country Abbreviation
 											</span>
 										  
 										  <span *ngIf="CountryAbbreviation.errors && CountryAbbreviation.errors.pattern">
-												Please input valid country abbreviation.
+												Please enter valid Country Abbreviation
 										  </span>
 								</span>
                                         </div>
@@ -57,15 +57,15 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Phone Prefix</label>
                                          
-											<input type="text"  #PhonePrefix="ngModel" pattern="[0-9+]{0,}"   [(ngModel)]="CountryEntity.PhonePrefix" class="form-control"
+											<input type="text"  #PhonePrefix="ngModel" pattern="[0-9+]{1,}" maxlength="11"   [(ngModel)]="CountryEntity.PhonePrefix" class="form-control"
 											name="PhonePrefix" [ngClass]="{red_border: (PhonePrefix.dirty && PhonePrefix.invalid) || (PhonePrefix.pristine && submitted)}" required/>
 													<span class="error_span" *ngIf="(PhonePrefix.dirty && PhonePrefix.invalid) || (PhonePrefix.pristine && submitted)">
 								  <span *ngIf="PhonePrefix.errors && PhonePrefix.errors.required">
-												Please enter phone prefix.
+												Please enter Phone Prefix
 											</span>
 										  
 										  <span *ngIf="PhonePrefix.errors && PhonePrefix.errors.pattern">
-												Please input valid phone prefix.
+												Please enter valid Phone Prefix
 										  </span>
 								</span>
                                         </div>
@@ -83,7 +83,7 @@
 									  <label for="role2">No </label>
 									</div><br>
 									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
 									  </span>
 
                               </div>

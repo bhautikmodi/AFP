@@ -107,7 +107,7 @@ export class CompanylistComponent implements OnInit {
 				// },3000); 
 			}			
 			//alert(data);
-			this.globals.message = 'Company Deleted Successfully!';
+			this.globals.message = 'Company Deleted Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

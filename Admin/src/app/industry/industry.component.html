@@ -24,15 +24,15 @@
                                  <form class="form-validate"  #IndustryForm="ngForm" (ngSubmit)="addIndustry(IndustryForm)">
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Industry</label>
-											<input type="text" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/)/./ ]{0,}" maxlength="250" #IndustryName="ngModel" [(ngModel)]="IndustryEntity.IndustryName" class="form-control"
+											<input type="text" pattern="[a-zA-Z0-9.'/,-./;/:/(/&/)/./ ]{2,}" maxlength="250" #IndustryName="ngModel" [(ngModel)]="IndustryEntity.IndustryName" class="form-control"
 											name="IndustryName"  [ngClass]="{red_border: (IndustryName.dirty && IndustryName.invalid) || (IndustryName.pristine && submitted)}" required/>
 												<span class="error_span" *ngIf="(IndustryName.dirty && IndustryName.invalid) || (IndustryName.pristine && submitted)">
 								  <span *ngIf="IndustryName.errors && IndustryName.errors.required">
-												Please enter Industry.
+												Please enter Industry
 											</span>
 										  
 										  <span *ngIf="IndustryName.errors && IndustryName.errors.pattern">
-												Please input valid Industry.
+												Please enter valid Industry
 										  </span>
 								</span>
                                         </div>
@@ -49,7 +49,7 @@
 									  <label for="role2">No </label>
 									</div><br>
 									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
 									  </span>
                                         </div>
 										<div class="clearfix"></div>

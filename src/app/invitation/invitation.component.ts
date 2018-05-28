@@ -80,7 +80,7 @@ $('body').on('keyup', 'input.code', function(e){
 			 this.globals.isLoading = true;
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
-			{debugger 
+			{ 
 				this.globals.isLoading = false;
 			
 					
@@ -117,12 +117,12 @@ $('body').on('keyup', 'input.code', function(e){
 					this.globals.type = 'danger';
 					this.globals.msgflag = true;
 					this.btn_disable = false;
-				this.submitted = false;
+					this.submitted = false;
 				//this.router.navigate(['/register']);
 				
 					
 				}else
-				{debugger
+				{
 					var CompanyId=data[0]['CompanyId'];
 					 localStorage.setItem('CompanyId',CompanyId);
 					this.btn_disable = false;
@@ -134,7 +134,8 @@ $('body').on('keyup', 'input.code', function(e){
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						
-						this.router.navigate(['/register']);
+						//this.router.navigate(['/register']);
+						window.location.href = '/register';
 				}
 				
 			}, 

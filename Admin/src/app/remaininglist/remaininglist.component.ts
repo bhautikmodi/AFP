@@ -29,7 +29,7 @@ export class RemaininglistComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
 	});	
     	
   }

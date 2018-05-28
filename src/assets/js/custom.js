@@ -47,3 +47,4 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 <!-- END TOOLTIP -->
+

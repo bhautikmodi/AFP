@@ -65,16 +65,16 @@ deleteEntity;
       $('#dataTables-example').dataTable( {
         "oLanguage": {
           "sLengthMenu": "_MENU_ Users per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ User",
-					"sInfoFiltered": "(filtered from _MAX_ total User)"
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Users",
+					"sInfoFiltered": "(filtered from _MAX_ total Users)"
         }
       });
-    },100); 
+    },500); 
 	}, 
 	(error) => 
 	{
 		
-		alert('error');
+		//alert('error');
 	});	
     this.msgflag = false;
 	}

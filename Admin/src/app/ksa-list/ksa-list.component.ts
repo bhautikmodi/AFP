@@ -72,7 +72,7 @@ export class KsaListComponent implements OnInit {
 		}, 
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 		this.msgflag = false;
 		}

@@ -48,32 +48,43 @@ export class UserComponent implements OnInit {
 
 	default(){
 		this.stateList = [];
-		this.UserService.getAllCountry()
-			.then((data) => {
-				this.CountryList = data;
+		this.UserService.getAllDefaultData()
+		.then((data) => {
+			this.CountryList = data['country'];
+			this.roleList = data['role'];
+			this.companyList = data['company'];
+			this.stateList = data['state'];
+		},
+		(error) => {
+			alert('error');
+		});
 
-			},
-			(error) => {
-				alert('error');
-			});
+		// this.UserService.getAllCountry()
+		// 	.then((data) => {
+		// 		this.CountryList = data;
 
-		this.UserService.getAllRole()
-			//.map(res => res.json())
-			.then((data) => {
-				this.roleList = data;
-			},
-			(error) => {
-				alert('error');
-			});
+		// 	},
+		// 	(error) => {
+		// 		alert('error');
+		// 	});
 
-		this.UserService.getAllCompany()
-			//.map(res => res.json())
-			.then((data) => {
-				this.companyList = data;
-			},
-			(error) => {
-				alert('error');
-			});
+		// this.UserService.getAllRole()
+		// 	//.map(res => res.json())
+		// 	.then((data) => {
+		// 		this.roleList = data;
+		// 	},
+		// 	(error) => {
+		// 		alert('error');
+		// 	});
+
+		// this.UserService.getAllCompany()
+		// 	//.map(res => res.json())
+		// 	.then((data) => {
+		// 		this.companyList = data;
+		// 	},
+		// 	(error) => {
+		// 		alert('error');
+		// 	});
 
 		// this.UserService.getAllState()
 		// .then((data) => 

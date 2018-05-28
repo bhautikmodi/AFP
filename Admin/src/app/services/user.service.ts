@@ -42,6 +42,23 @@ export class UserService {
 	});		
 	return promise;
   }
+  //list all users
+  getAllDefaultData(){
+	  debugger
+	let promise = new Promise((resolve, reject) => {
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllDefaultData')
+      .toPromise()
+      .then(
+        res => { // Success
+          resolve(res);
+        },
+        msg => { // Error
+		  reject(msg);
+        }
+      );
+	});		
+	return promise;
+  }
   
   
   //delete User
@@ -79,72 +96,72 @@ export class UserService {
   }  
 
    //list project all status
-  getAllState(){
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllState')
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }
+  // getAllState(){
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.get(this.globals.baseAPIUrl + 'User/getAllState')
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res);
+  //       },
+  //       msg => { // Error
+	// 	  reject(msg);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }
   
-   getAllCompany(){
+  //  getAllCompany(){
 	 
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllCompany')
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.get(this.globals.baseAPIUrl + 'User/getAllCompany')
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res);
+  //       },
+  //       msg => { // Error
+	// 	  reject(msg);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }
   
   
-  getAllRole(){ debugger
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllRole')
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }
+  // getAllRole(){ debugger
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.get(this.globals.baseAPIUrl + 'User/getAllRole')
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res);
+  //       },
+  //       msg => { // Error
+	// 	  reject(msg);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }
   
-  getAllCountry()
-  {debugger
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry')
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-		  reject(msg);
-        }
-      );
-	});		
-	return promise;
-  }
+  // getAllCountry()
+  // {debugger
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry')
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res);
+  //       },
+  //       msg => { // Error
+	// 	  reject(msg);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }
   
   getStateList(CountryId){ 
 	let promise = new Promise((resolve, reject) => {

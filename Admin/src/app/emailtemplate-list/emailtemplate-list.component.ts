@@ -46,7 +46,7 @@ ngOnInit() {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 	}		
 	}
@@ -68,12 +68,12 @@ ngOnInit() {
 						"sInfoFiltered": "(filtered from _MAX_ total Email)"
 					}
 				});
-			},100); 
+			},500); 
 	
 		}, 
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
 		});	
 		//this.msgflag = false;
 		}

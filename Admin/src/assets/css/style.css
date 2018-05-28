@@ -774,6 +774,10 @@ div.dataTables_length select {
 
 .cke_resizer_ltr {display: none;}
 
+#contactList .h-card {
+	cursor: pointer;
+}
+
 /*.h-card {
 	    padding: 5px 10px;
     font-size: 12px;

@@ -12,6 +12,17 @@ class Company extends My_Controller
 		$this->load->model('Company_model');
 	}
 	
+
+	public function getAllUserList()
+	{
+		$data="";
+		
+		$data=$this->Company_model->getlist_user();
+		//print_r($data);
+		//.exit;
+		echo json_encode($data);
+	}
+
 	public function addCompany()
 	{
 		

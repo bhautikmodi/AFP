@@ -94,7 +94,7 @@ export class KsaListComponent implements OnInit {
 			if (index != -1) {
 				this.ksaList.splice(index, 1);			
 			}	
-			this.globals.message = 'KSA Deleted Successfully!';
+			this.globals.message = 'KSA Deleted Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 

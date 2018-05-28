@@ -111,11 +111,11 @@ export class CompetencyAreaComponent implements OnInit {
 					this.areaEntity = {};
 					areaForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Competency Area Updated Successfully!';
+						this.globals.message = 'Competency Area Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Competency Area Added Successfully!';
+						this.globals.message = 'Competency Area Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

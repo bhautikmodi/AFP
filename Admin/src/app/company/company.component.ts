@@ -97,11 +97,11 @@ export class CompanyComponent implements OnInit {
 					this.companyEntity = {};
 					companyForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Company Updated successfully!';
+						this.globals.message = 'Company Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Company Added Successfully!';
+						this.globals.message = 'Company Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

@@ -106,11 +106,11 @@ export class CourseComponent implements OnInit {
 					this.CourseEntity = {};
 					CourseForm.form.markAsPristine();
 					if (id) {
-						this.globals.message = 'Course Updated Successfully!';
+						this.globals.message = 'Course Updated Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					} else {
-						this.globals.message = 'Course Added successfully!';
+						this.globals.message = 'Course Added Successfully';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 					}

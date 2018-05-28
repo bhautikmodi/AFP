@@ -109,7 +109,7 @@ permissionEntity;
 				// },3000); 
 			// }			
 			//alert(data);
-			this.globals.message = 'Revoked successfully';
+			this.globals.message = 'Revoked Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -117,7 +117,7 @@ permissionEntity;
 		{
 			$('#Delete_Modal').modal('hide');
 			if(error.text){
-				this.globals.message = "You can't delete this record because of their dependency!";
+				this.globals.message = "You can't delete this record because of their dependency";
 				this.globals.type = 'danger';
 				this.globals.msgflag = true;
 			}	
@@ -157,7 +157,7 @@ permissionEntity;
 				// },3000); 
 			// }			
 			//alert(data);
-			this.globals.message = 'Email send successfully!';
+			this.globals.message = 'Email Send Successfully';
 			this.globals.type = 'success';
 			this.globals.msgflag = true;
 		}, 
@@ -166,7 +166,7 @@ permissionEntity;
 			this.globals.isLoading = false;
 			$('#ReInvite_Modal').modal('hide');
 			if(error.text){
-				this.globals.message = "You can't send this Email!";
+				this.globals.message = "You can't send this Email";
 				this.globals.type = 'danger';
 				this.globals.msgflag = true;
 			}	

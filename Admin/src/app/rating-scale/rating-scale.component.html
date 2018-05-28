@@ -25,19 +25,19 @@
                             <form class="form-validate" #ratingscaleForm="ngForm" (ngSubmit)="addRatingScale(ratingscaleForm)">
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Rating Scale</label>
-                                    <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ratingscaleEntity.Name" name="Name" pattern="[a-zA-Z ]{1,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
+                                    <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ratingscaleEntity.Name" name="Name" pattern="[a-zA-Z ]{2,100}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>  
                                     <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
-                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter rating scale</span>
-                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid rating scale</span>
+                                      <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Rating Scale</span>
+                                      <span *ngIf="Name.errors && Name.errors.pattern">Please enter valid Rating Scale</span>
                                   </span>
                                   </div>
 
                                   <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Description</label>
-                                    <input type="text" class="form-control" #Description="ngModel" [(ngModel)]="ratingscaleEntity.Description" name="Description" pattern="[a-zA-Z,'./ ]{1,500}" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required>                              
+                                    <input type="text" class="form-control" #Description="ngModel" [(ngModel)]="ratingscaleEntity.Description" name="Description" pattern="[a-zA-Z,'./ ]{2,500}" [ngClass]="{red_border: (Description.dirty && Description.invalid) || (Description.pristine && submitted)}" required>                              
                                     <span class="error_span" *ngIf="(Description.dirty && Description.invalid) || (Description.pristine && submitted)"> 
-                                      <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter description</span>
-                                      <span *ngIf="Description.errors && Description.errors.pattern">Please enter valid description</span>
+                                      <span *ngIf="Description.errors.required || (Description.pristine && submitted)">Please enter Description</span>
+                                      <span *ngIf="Description.errors && Description.errors.pattern">Please enter valid Description</span>
                                     </span>
                                 </div>
                                   
@@ -55,7 +55,7 @@
                                 <label for="role2">No </label>
                               </div><br>
                               <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-                                  <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+                                  <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
                                 </span>
   
                                 </div>

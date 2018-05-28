@@ -25,13 +25,13 @@ constructor( private http: Http,private globals: Globals, private router: Router
   {
 
 
-$('body').on('keyup', 'input.form-control', function(e){
+$('body').on('keyup', 'input.code', function(e){
       if($(this).val().length == $(this).attr('maxlength')){
-        var inputs = $('input.form-control');
+        var inputs = $('input.code');
         inputs.eq(inputs.index(this) + 1).focus();
       }
       if(e.keyCode == 8 || e.keyCode == 46){
-        var inputs = $('input.form-control');
+        var inputs = $('input.code');
         inputs.eq(inputs.index(this) - 1).focus();
       }
     }); 

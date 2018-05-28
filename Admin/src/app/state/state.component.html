@@ -42,7 +42,7 @@
 										
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>State Name</label>
-											<input type="text" class="form-control" #StateName="ngModel" [(ngModel)]="stateEntity.StateName" class="form-control" name="StateName" pattern="[a-zA-Z ]{2,}"
+											<input type="text" class="form-control" #StateName="ngModel" [(ngModel)]="stateEntity.StateName" class="form-control" maxlength="100" name="StateName" pattern="[a-zA-Z ]{2,}"
 											[ngClass]="{red_border: (StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)}" required>
 											<span class="error_span" *ngIf="(StateName.dirty && StateName.invalid) || (StateName.pristine && submitted)"> 
 											<span *ngIf="StateName.errors.required || (StateName.pristine && submitted)">Please enter State</span>
@@ -63,7 +63,7 @@
 
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>State Abbreviation</label>
-											<input type="text" class="form-control "style="text-transform: uppercase;" #StateAbbreviation="ngModel" [(ngModel)]="stateEntity.StateAbbreviation" class="form-control" name="StateAbbreviation" pattern="[a-zA-Z]{0,}" 
+											<input type="text" class="form-control "style="text-transform: uppercase;" #StateAbbreviation="ngModel" [(ngModel)]="stateEntity.StateAbbreviation" class="form-control" maxlength="3" name="StateAbbreviation" pattern="[a-zA-Z]{2,}" 
 											[ngClass]="{red_border: (StateAbbreviation.dirty && StateAbbreviation.invalid) || (StateAbbreviation.pristine && submitted)}" required>
 											<span class="error_span" *ngIf="(StateAbbreviation.dirty && StateAbbreviation.invalid) || (StateAbbreviation.pristine && submitted)"> 
 											<span *ngIf="StateAbbreviation.errors.required || (StateAbbreviation.pristine && submitted)">Please enter State Abbreviation</span>

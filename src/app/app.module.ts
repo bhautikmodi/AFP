@@ -116,7 +116,7 @@ import { ListUserAssessmentService } from './services/list-user-assessment.servi
 		{
 			path : 'contactus',
 			component : ContactusComponent,
-			canActivate : [AuthGuard]
+			
 		},
 		{
 			path : 'invitation',

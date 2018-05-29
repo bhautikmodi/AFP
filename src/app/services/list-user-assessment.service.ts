@@ -32,7 +32,7 @@ export class ListUserAssessmentService {
   getAllUserAssess(){
 	  debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Company/getAllUserList')
+    this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList')
       .toPromise()
       .then(
         res => { // Success

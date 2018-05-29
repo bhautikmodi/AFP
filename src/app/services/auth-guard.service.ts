@@ -64,7 +64,7 @@ export class AuthGuard implements CanActivate {
 						return true;
 					}					
 				} else if(this.globals.authData.RoleId==3){
-					if(state.url=='/sales-admin-dashboard'||state.url.split('/')[1]=='user-assessment-list'||state.url.split('/')[1]=='sales-user-details'||state.url.split('/')[1]=='report'){
+					if(state.url=='/sales-admin-dashboard'||state.url.split('/')[1]=='user-assessment-list'||state.url.split('/')[1]=='sales-user-details'||state.url.split('/')[1]=='report'||state.url=='/viewreport'||state.url=='/usercompany'||state.url=='/list-user-assessment/list'){
 						this.router.navigate(['/dashboard']);
 			  			return false;
 					} else {

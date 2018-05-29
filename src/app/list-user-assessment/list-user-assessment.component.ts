@@ -32,29 +32,29 @@ export class ListUserAssessmentComponent implements OnInit {
 
   ngOnInit() 
   {
-    debugger
-    this.ListUserAssessmentService.getAllCompany	()
-    .then((data) => 
-    { 
+    // debugger
+    // this.ListUserAssessmentService.getAllCompany	()
+    // .then((data) => 
+    // { 
     
   
-      this.companyList = data;	
-      setTimeout(function(){
-        $('#dataTables-example').dataTable( {
-          "oLanguage": {
-            "sLengthMenu": "_MENU_ Registered Company per Page",
-            "sInfo": "Showing _START_ to _END_ of _TOTAL_ Registered Company",
-            "sInfoFiltered": "(filtered from _MAX_ total Registered Company)"
-          }
-        });
-      },500); 
+    //   this.companyList = data;	
+    //   setTimeout(function(){
+    //     $('#dataTables-example').dataTable( {
+    //       "oLanguage": {
+    //         "sLengthMenu": "_MENU_ Registered Company per Page",
+    //         "sInfo": "Showing _START_ to _END_ of _TOTAL_ Registered Company",
+    //         "sInfoFiltered": "(filtered from _MAX_ total Registered Company)"
+    //       }
+    //     });
+    //   },500); 
   
-    }, 
-    (error) => 
-    {
-      //alert('error');
-    });	
-    this.msgflag = false;
+    // }, 
+    // (error) => 
+    // {
+    //   //alert('error');
+    // });	
+    // this.msgflag = false;
   
     
     
@@ -68,9 +68,9 @@ export class ListUserAssessmentComponent implements OnInit {
       setTimeout(function(){
         $('#dataTables-example1').dataTable( {
           "oLanguage": {
-            "sLengthMenu": "_MENU_ User Assessment per Page",
-            "sInfo": "Showing _START_ to _END_ of _TOTAL_ User Assessment",
-            "sInfoFiltered": "(filtered from _MAX_ total User Assessment)"
+            "sLengthMenu": "_MENU_ Users per Page",
+            "sInfo": "Showing _START_ to _END_ of _TOTAL_ Users",
+            "sInfoFiltered": "(filtered from _MAX_ total Users)"
           }
         });
       },500); 

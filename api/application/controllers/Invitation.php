@@ -329,8 +329,13 @@ class Invitation extends My_Controller {
 	public function ReInvite() {
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($post_Invitation)) {
-	
-			$post_Invitation['Code']=mt_rand(100000,999999);
+			$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			$res = "";
+			for ($i = 0; $i < 6; $i++) {
+				$res .= $chars[mt_rand(0, strlen($chars)-1)];
+			}
+			
+			$post_Invitation['Code']= $res;
 			$result = $this->Invitation_model->ReInvite_Invitation($post_Invitation);			
 			if($result) {
 				$this->db->select('Value');

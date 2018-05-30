@@ -15,10 +15,10 @@ class InvitationCode_model extends CI_Model
 		$result = $this->db->get('tbluserinvitation');	
 		if ($result->num_rows() == 1) 
 		{
-	
+				$d=trim($post_Invitation['Code']);
 				$this->db->select('UserInvitationId,Status,Code,EmailAddress,CompanyId');				
-				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));
-				$this->db->where('Code',trim($post_Invitation['Code']));
+				$this->db->where('EmailAddress',trim($post_Invitation['EmailAddress']));	
+				$this->db->where('Code = BINARY ',$d);
 				$this->db->limit(1);
 				$this->db->from('tbluserinvitation');
 				$query = $this->db->get();

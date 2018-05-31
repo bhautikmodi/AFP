@@ -73,7 +73,7 @@ class Register extends CI_Controller
 				{
 					
 					$result = $this->Register_model->add_Register($post_user); 
-					//print_r($result);exit;
+					
 					if($result)
 					{
 							$token = array(
@@ -151,7 +151,7 @@ class Register extends CI_Controller
 										
 										$res = $this->db->insert('tblemaillog',$email_log);
 	
-										//echo json_encode($output);
+									
 									}else
 									{
 										echo json_encode("Fail");

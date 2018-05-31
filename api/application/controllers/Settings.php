@@ -97,14 +97,7 @@ class Settings extends My_Controller {
 		
 	}
 	
-	// public function getById($teamsize_id = NULL) {
-		
-	// 	if (!empty($teamsize_id)) {
-	// 		$data = [];		
-	// 		$data = $this->Settings_model->get_teamsizedata($teamsize_id);
-	// 		echo json_encode($data);			
-	// 	}
-	// }	
+
 	
 	public function deleteTeamSize() {
 		$post_teamsize = json_decode(trim(file_get_contents('php://input')), true);		

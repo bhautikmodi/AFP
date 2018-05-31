@@ -14,15 +14,6 @@ class Salesuser extends MY_Controller {
 		
 	}
 
-	// public function getAllAssement($UserId = NULL) {
-		
-	// 	if (!empty($UserId)) {
-	// 		$data="";
-	// 		$data['complete']=$this->Salesuser_model->getAllAssement($UserId);	
-	// 		$data['pending']=$this->Salesuser_model->getPendingAssement($UserId);		
-	// 		echo json_encode($data);			
-	// 	}				
-	// }
 
 	public function getUserAssessDetail($CAssessmentId = NULL) {
 		
@@ -52,25 +43,6 @@ class Salesuser extends MY_Controller {
 		}				
 	}
 
-	public function report(){
-		$data=$this->Salesuser_model->getAssessmentList(18);
-		print_r($data);
-		// $UserId = 18;
-		// $data = $this->db->query('SELECT DomainId,Name as domain FROM tblmstdomain');
-		// $obj = '';		
-		// foreach($data->result() as $row)
-		// {	
-		// 	$i = 1;
-		// 	$obj1 = json_decode(json_encode($row), True);
-		// 	$data1 = $this->db->query('SELECT dk.DomainKSAId,dk.CAssessmentId,dk.DomainId,dk.AvgRatingScale FROM tbldomainwiseksa AS dk LEFT JOIN tblcandidateassessment AS ca ON dk.CAssessmentId = ca.CAssessmentId WHERE ca.UserId = '.$UserId.' AND dk.DomainId = '.$row->DomainId.' order by ca.CAssessmentId asc');			 
-		// 	foreach($data1->result() as $row1){
-		// 		$obj1['ass'.$i] = $row1->AvgRatingScale;
-		// 		$i++;
-		// 	}
-		// 	$obj[] = $obj1;
-		// }  
-		// print_r($obj);
-		// die;
-	}
+	
 	
 }

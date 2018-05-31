@@ -22,7 +22,10 @@
               <th>Industry</th>
             </tr>
             <tr>
-              <td>{{companydata.IndustryName}}</td> 
+              <td>
+                <span *ngIf="companydata.IndustryName">{{companydata.IndustryName}}</span>
+                <span *ngIf="!companydata.IndustryName">No Industry</span>
+              </td> 
             </tr>
             <tr>
               <th>Phone number</th>
@@ -237,7 +240,7 @@
         
 		  <button class="next_btn pull-right" [disabled]="btn_disable" id="employee_btn"  type="submit"><span>Submit</span></button>
       <div class="clearfix"></div>
-          <!-- <button type="submit" class="next_btn pull-right"  >Submit</button> -->
+ 
 		  </div>
         </div>
     </form>

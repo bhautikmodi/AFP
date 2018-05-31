@@ -10,31 +10,6 @@ class Sales_dashboard extends MY_Controller
 		$this->load->model('Sales_dashboard_model');
 	}
 	
-	// public function addSales-dashboard()
-	// {
-		
-	// 	$post_company = json_decode(trim(file_get_contents('php://input')), true);
-	// 	if ($post_company) 
-	// 		{
-	// 			if($post_company['CompanyId']>0)
-	// 			{
-	// 				$result = $this->Company_model->edit_company($post_company);
-	// 				if($result)
-	// 				{
-	// 					echo json_encode($post_company);	
-	// 				}	
-	// 			}
-	// 			else
-	// 			{
-	// 				$result = $this->Company_model->add_company($post_company);
-	// 				if($result)
-	// 				{
-	// 					echo json_encode($post_company);	
-	// 				}	
-	// 			}
-					
-	// 		}
-	// }
 	
 	
 	

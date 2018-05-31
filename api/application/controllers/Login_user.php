@@ -56,7 +56,7 @@ class Login_user extends CI_Controller {
 				'UserId ' => $post_logout['Userid'],
 				'LoginType' => 0,
 				'PanelType' =>$post_logout['paneltype']
-				//'NoOfLogin' =>''
+				
 			);
 			$res = $this->db->insert('tblloginlog',$login_data);
 			echo json_encode('success');	

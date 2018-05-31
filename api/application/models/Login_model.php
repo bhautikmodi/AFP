@@ -18,7 +18,7 @@ class Login_model extends CI_Model {
 				'UserId ' => trim($res[0]->UserId),
 				'LoginType' => 1,
 				'PanelType' => 1
-				//'NoOfLogin' =>1
+		
 			);
 			
 			$res = $this->db->insert('tblloginlog',$login_data);

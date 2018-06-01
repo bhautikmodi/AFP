@@ -62,11 +62,11 @@ export class ContactusComponent implements OnInit {
 					this.ContactEntity = {};
 			 
 					ContactForm.form.markAsPristine();
-						this.globals.message = 'Added Successfully';
+						this.globals.message = 'Thank you! Your message has been successfully sent We will contact you very soon!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 			
-					this.router.navigate(['/dashboard']);
+					this.router.navigate(['/contactus']);
 				},
 				(error) => {
 					alert('error');

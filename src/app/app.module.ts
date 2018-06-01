@@ -123,6 +123,11 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
 			
 		},
 		{
+			path : 'contactus/edit/:id',
+			component : ContactusComponent,
+			canActivate : [AuthGuard]
+		},
+		{
 			path : 'invitation',
 			component : InvitationComponent,
 			canActivate : [AuthGuard]

@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-12">
                   <label>
                     <span class="required">*</span>Subject</label>
                     <input type="text" class="form-control" #Subject="ngModel" [(ngModel)]="emailEntity.Subject" name="Subject" pattern="[a-zA-Z0-9/\-_@!#$() ]{1,500}" [ngClass]="{red_border: (Subject.dirty && Subject.invalid) || (Subject.pristine && submitted)}" required/>  
@@ -55,15 +55,15 @@
                       <span *ngIf="Subject.errors && Subject.errors.pattern">Please enter valid subject</span>
                     </span> 
                 </div>
-                <div class="form-group extra-info col-md-1 text-center">
+                <!-- <div class="form-group extra-info col-md-1 text-center">
                                   <label><i class="fa fa-minus"></i></label>
-                              </div>
+                              </div> -->
 
-                <div class="form-group extra-info1 col-md-3">
+                <!-- <div class="form-group extra-info1 col-md-3">
                                   
                 <input type="text" class="form-control" placeholder="Company Name" disabled>
-                <!--<textarea class="form-control" id="TextArea1">Hello</textarea>-->
-                              </div>
+                <textarea class="form-control" id="TextArea1">Hello</textarea>-->
+                              <!-- </div> -->
                 <div class="clearfix"></div>
                 <div class="form-group col-md-12 ckeditor_block editor">
                   <label>
@@ -169,8 +169,8 @@
             </div>
             <div class="col-md-3">
               <div class="panel panel-default">
-                <div class="panel-heading">
-                  Placeholder List
+                <div class="panel-heading placelist" >
+                  Use below placeholders for Assessment Emails only
                 </div>
                 <div class="panel-body btn-email">                  
                   <div class="contacts">

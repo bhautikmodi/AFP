@@ -120,7 +120,7 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
 		{
 			path : 'contactus',
 			component : ContactusComponent,
-			
+			canActivate : [AuthGuard]
 		},
 		{
 			path : 'contactus/edit/:id',

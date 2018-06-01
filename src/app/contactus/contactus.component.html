@@ -95,9 +95,9 @@ Please enter valid company name
 					<div class="form-group">
 					  <label><span>*</span>Comments </label>
 						<textarea type="text" class="form-control"  #Comments="ngModel" name="Comments"	[(ngModel)]="ContactEntity.Comments"
-						[ngClass]="{red_border: (Comments.dirty && Comments.invalid) || (Comments.pristine && submitted)}"required ></textarea>
-						<span class="error_span" *ngIf="(Comments.dirty && Comments.invalid) || (Comments.pristine && submitted)"> 
-							<span *ngIf="Comments.errors.required || (Comments.pristine && submitted)">Please enter Comments</span>
+						[ngClass]="{red_border: (Comments.dirty && Comments.invalid) || (Comments.pristine && submitted1)}"required ></textarea>
+						<span class="error_span" *ngIf="(Comments.dirty && Comments.invalid) || (Comments.pristine && submitted1)"> 
+							<span *ngIf="Comments.errors.required || (Comments.pristine && submitted1)">Please enter Comments</span>
 						
 							</span>
 					</div>

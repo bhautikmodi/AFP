@@ -16,7 +16,8 @@ declare var $: any;
 })
 export class ContactusComponent implements OnInit {
   ContactEntity;
-	submitted;
+  submitted;
+  submitted1;
 	btn_disable;
 	header;
   constructor( private http: Http,private globals: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
@@ -39,7 +40,8 @@ export class ContactusComponent implements OnInit {
 			(error) => {
 				alert('error');
 				this.btn_disable = false;
-				this.submitted = false;
+        this.submitted = false;
+        this.submitted1 = false;
 			});
 	}
 	else {
@@ -49,16 +51,22 @@ export class ContactusComponent implements OnInit {
 	}
   }
   addContact(ContactForm) {debugger
-	
-			this.submitted = true;
-
+    let id = this.route.snapshot.paramMap.get('id');
+	if (id) {
+			this.submitted = false;
+  }else
+  {
+    this.submitted = true;
+  }
+  this.submitted1 = true;
 		if (ContactForm.valid) {
-			this.btn_disable = true;
+      this.btn_disable = true;
 			this.ContactusService.add(this.ContactEntity)
 				.then((data) => {
 					//alert('success');
 					this.btn_disable = false;
-					this.submitted = false;
+          this.submitted = false;
+          this.submitted1 = false;
 					this.ContactEntity = {};
 			 
 					ContactForm.form.markAsPristine();

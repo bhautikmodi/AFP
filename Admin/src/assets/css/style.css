@@ -678,7 +678,7 @@ table.dataTable thead .sorting:after {
 }
 .placelist
 {
-	height:0px !important;
+	height:65px !important;
 }
 .panel-heading {
 	padding: 12px 15px 12px 15px;

@@ -720,6 +720,8 @@ select {-moz-appearance: none!important;-webkit-appearance: none!important;backg
 
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-Book";} 
 
+select[disabled]{background:#eee url("../img/arrow-down-b.png") no-repeat scroll right top / 31px auto!important;}
+
 div.dataTables_length select {
 	width: auto !important;
 }

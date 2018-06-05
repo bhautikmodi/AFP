@@ -133,7 +133,7 @@ class Company_model extends CI_Model
 	
 	function getlist_company()
 	{
-		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,in.IndustryName');
+		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,in.IndustryName,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.CompanyId=cp.CompanyId) as isdisabled');
 		$this->db->join('tblmstindustry in', 'cp.IndustryId = in.IndustryId', 'left');
 		//$this->db->where('IsActive="1"');
 		$result = $this->db->get('tblcompany cp');

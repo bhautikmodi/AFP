@@ -47,14 +47,12 @@
 												<td>{{company.Website}}</td>
 												<td *ngIf="company.IsActive=='1'">Yes</td>
 											<td *ngIf="company.IsActive=='0'">No</td>
+										
 												
-												
-												
-												
-                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                      <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/company/edit/{{company.CompanyId}}" 
-					title="Edit"><span class="fa fa-pencil"></span></button>
-                      <button *ngIf="permissionEntity.Delete==1" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteCompany(company)"><span class="fa fa-times"></span></button></td>
+                    <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                      <button *ngIf="permissionEntity.AddEdit==1" [disabled]="company.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/company/edit/{{company.CompanyId}}" title="Edit"><span class="fa fa-pencil"></span></button>
+                      <button *ngIf="permissionEntity.Delete==1" [disabled]="company.isdisabled>0" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteCompany(company)"><span class="fa fa-times"></span></button>
+                    </td>
                     
                   </tr>
                  

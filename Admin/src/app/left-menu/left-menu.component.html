@@ -74,7 +74,7 @@
                 <!-- second-level-items -->
  </li> 
  <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
- <li id="inner_dropdown">
+ <li id="inner_dropdown" *ngIf="globals.authData.RoleId==4" >
   <a href="#"><i class="fa fa-key fa-fw"></i> Log<span class="fa fa-angle-right"></span></a>
       <ul class="nav nav-second-level display_block">
         <li [ngClass]="{'selected':(globals.currentLink == '/login-log')}">

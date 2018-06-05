@@ -57,8 +57,8 @@ export class IndustrylistComponent implements OnInit {
 				$('#dataTables-example').dataTable( {
 					"oLanguage": {
 						"sLengthMenu": "_MENU_ Industry per Page",
-						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industry",
-						"sInfoFiltered": "(filtered from _MAX_ total Industry)"
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industries",
+						"sInfoFiltered": "(filtered from _MAX_ total Industries)"
 					}
 				});
 			},500); 

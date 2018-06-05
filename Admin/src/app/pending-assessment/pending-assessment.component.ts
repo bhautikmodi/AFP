@@ -57,10 +57,10 @@ export class PendingAssessmentComponent implements OnInit {
 		setTimeout(function(){
 		$('#dataTables-example').dataTable( {
 			"oLanguage": {
-			"sLengthMenu": "_MENU_ Incomplete Assessment per Page",
-						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Incomplete Assessment",
-						"sInfoFiltered": "(filtered from _MAX_ total Incomplete Assessment)",
-						"sInfoEmpty": "Showing 0 to 0 of 0 Incomplete Assessment"
+			"sLengthMenu": "_MENU_ Incomplete Assessments per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Incomplete Assessments",
+						"sInfoFiltered": "(filtered from _MAX_ total Incomplete Assessments)",
+						"sInfoEmpty": "Showing 0 to 0 of 0 Incomplete Assessments"
 			}
 		});
 		},100); 	

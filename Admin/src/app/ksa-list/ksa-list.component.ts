@@ -61,10 +61,10 @@ export class KsaListComponent implements OnInit {
 			setTimeout(function(){
 				$('#dataTables-example').dataTable( {
 					"oLanguage": {
-						"sLengthMenu": "_MENU_ KSA per Page",
-						"sInfo": "Showing _START_ to _END_ of _TOTAL_ KSA",
-						"sInfoFiltered": "(filtered from _MAX_ total KSA)",
-						"sInfoEmpty": "Showing 0 to 0 of 0 KSA"
+						"sLengthMenu": "_MENU_ KSAs per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ KSAs",
+						"sInfoFiltered": "(filtered from _MAX_ total KSAs)",
+						"sInfoEmpty": "Showing 0 to 0 of 0 KSAs"
 					}
 				});
 			},100); 

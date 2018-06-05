@@ -61,10 +61,10 @@ export class CompetencyAreaListComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Competency Area per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
-					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
+          "sLengthMenu": "_MENU_ Competencies Area per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competencies",
+					"sInfoFiltered": "(filtered from _MAX_ total Competencies)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Competencies  "
         }
       });
     },500); 

@@ -23,7 +23,7 @@
 
 		<li [ngClass]="{'selected':(globals.currentLink == '/users/list')||(globals.currentLink == '/users/edit')}"> 
       <a (click)="menuopen('/users/list')" style="cursor:pointer;"><i class="fa fa-users fa-fw"></i> Users</a> </li>
-      <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i> companies</a> </li>
+      <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i>Companies</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domains</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/competency-area/list')||(globals.currentLink == '/competency-area/add')||(globals.currentLink == '/competency-area/edit')}"> <a (click)="menuopen('/competency-area/list')" style="cursor:pointer;"><i class="fa fa-tasks fa-fw"></i> Competencies</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/ksa/list')||(globals.currentLink == '/ksa/add')||(globals.currentLink == '/ksa/edit')}"> <a (click)="menuopen('/ksa/list')" style="cursor:pointer;"><i class="fa fa-question fa-fw"></i> KSAs</a></li>

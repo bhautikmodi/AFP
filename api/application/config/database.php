@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$active_group = 'Development';
+$active_group = 'QA';
 
 $query_builder = TRUE;
 

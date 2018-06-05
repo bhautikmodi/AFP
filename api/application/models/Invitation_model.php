@@ -37,8 +37,9 @@ class Invitation_model extends CI_Model
 	}
 	public	function getlist_Industry()
 	{
-		$this->db->select('*');
+		$this->db->select('IndustryId,IndustryName,IsActive');
 		$this->db->where('IsActive="1"');
+		$this->db->order_by('IndustryName','asc');
 		$result=$this->db->get('tblmstindustry');
 		
 		$res=array();

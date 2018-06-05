@@ -350,12 +350,12 @@ import {SelectModule} from 'ng-select';
         canActivate : [AuthGuard]
       },
 	   {
-        path : 'invitation/add',
+        path : 'invite-a-user/add',
         component : InvitationComponent,
         canActivate : [AuthGuard]
       },
       {
-        path : 'invitation/list',
+        path : 'invite-a-user/list',
         component : InvitationlistComponent,
         canActivate : [AuthGuard]
       },

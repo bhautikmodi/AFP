@@ -78,6 +78,7 @@ $('body').on('keyup', 'input.code', function(e){
 		
 			this.btn_disable = true;
 			 this.globals.isLoading = true;
+			 this.InvitationEntity.Code=this.InvitationEntity.Code.toUpperCase();
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{ 

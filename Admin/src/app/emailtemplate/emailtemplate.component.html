@@ -38,6 +38,7 @@
                       <option value="Start Assessment" ngSelected="emailEntity.Token=='Start Assessment'">Start Assessment</option>
                       <option value="Complete Assessment" ngSelected="emailEntity.Token=='Complete Assessment'">Complete Assessment</option>
                       <option value="Reminder of Assessment" ngSelected="emailEntity.Token=='Reminder of Assessment'">Reminder of Assessment</option>
+                      <option value="Contact" ngSelected="emailEntity.Token=='Contact'">Contact Us</option>
                      
                   </select>
                   <span class="error_span" *ngIf="(Token.dirty && Token.invalid) || (Token.pristine && submitted)"> 
@@ -65,13 +66,14 @@
                 <textarea class="form-control" id="TextArea1">Hello</textarea>-->
                               <!-- </div> -->
                 <div class="clearfix"></div>
-                <div class="form-group col-md-12 ckeditor_block editor">
+                <!-- <div *ngIf="emailEntity.Token!='Contact'"> -->
+                <div class="form-group col-md-12 ckeditor_block editor" >
                   <label>
                     <span class="required">*</span>Email Body</label>
                     <textarea class="form-control" #EmailBody="ngModel" [(ngModel)]="emailEntity.EmailBody" name="EmailBody" id="EmailBody"	rows="10" cols="60" contenteditable="true"></textarea>
                     <span class="error_span" *ngIf="des_valid">Please enter email body</span>                
                 </div>
-
+              <!-- </div> -->
                 <div class="clearfix"></div>
                 <div class="form-group col-md-4">
                   <label>

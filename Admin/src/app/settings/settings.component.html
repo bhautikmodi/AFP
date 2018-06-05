@@ -101,7 +101,27 @@
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
-              </form>              
+              </form>   
+              <form class="form-validate" #contForm="ngForm" (ngSubmit)="addcontact(contForm)" *ngIf="globals.authData.RoleId==4">
+                <!-- No of ksa code start -->
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding"><span class="required">*</span>Contact Us Email</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" #ContactFrom="ngModel" [(ngModel)]="ContactEntity.ContactFrom" name="ContactFrom" pattern="[a-zA-Z0-9.,-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}(,|$)" [ngClass]="{red_border: (ContactFrom.dirty && ContactFrom.invalid) || (ContactFrom.pristine && submitted5)}"  required/>    
+                    <span class="error_span" *ngIf="(ContactFrom.dirty && ContactFrom.invalid) || (ContactFrom.pristine && submitted5)"> 
+                      <span *ngIf="ContactFrom.errors.required || (ContactFrom.pristine && submitted5)">Please enter Email from</span>
+                      <span *ngIf="ContactFrom.errors && ContactFrom.errors.pattern">
+                        Please enter a valid Email Address
+                    </span>
+                    </span>
+                   
+                  </div>
+                  <div class="form-btn col-md-2 no-padding">
+                    <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable5" class="btn sub-btn btn-small"><span>Submit</span></button>
+                    <!--<button class="btn res-btn">Edit</button>--> 
+                  </div>
+                </div>
+              </form>           
               <!-- remaining day code start --> 
 
               

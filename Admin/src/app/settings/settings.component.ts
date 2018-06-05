@@ -27,6 +27,8 @@ export class SettingsComponent implements OnInit {
 	btn_disable3;
 	submitted4;
 	btn_disable4;
+	submitted5;
+	btn_disable5;
   	header;
   	teamsizeList;
 	deleteEntity;
@@ -38,10 +40,12 @@ export class SettingsComponent implements OnInit {
 	cmessage1;
 	reminderDaysList;
 	permissionEntity;
+	ContactEntity;
 	NoOfCArea;
 	ksaError;
 	totksaError;
 	NoKSA;
+
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
 	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
@@ -77,7 +81,7 @@ export class SettingsComponent implements OnInit {
 	}		
   }
 
-  default(){
+  default(){debugger
 	var item = { 'Day': '', 'CreatedBy': this.globals.authData.UserId, 'UpdatedBy':this.globals.authData.UserId};
     this.reminderDaysList = [];
     this.reminderDaysList.push(item);
@@ -86,11 +90,12 @@ export class SettingsComponent implements OnInit {
 	 this.teamsizeEntity = {};
 	 this.teamsizeEntity.TeamSizeId = 0;
 	 this.configEntity = {};
+	 this.ContactEntity={};
 	 this.cmsgflag = false;
    this.SettingsService.getAll(this.globals.authData.UserId)
 	.then((data) =>  
 	{ 
-		debugger
+		
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
@@ -99,6 +104,7 @@ export class SettingsComponent implements OnInit {
 		this.configEntity.emailfrom = data['emailfrom']['Value'];
 		this.NoOfCArea = data['cArea'];
 		this.NoKSA=data['NoKsa'];
+		this.ContactEntity.ContactFrom = data['Contact']['Value'];
 		
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -358,8 +364,8 @@ export class SettingsComponent implements OnInit {
 				this.submitted4 = false;
 	 			this.updateEntity = {};
 				 fromForm.form.markAsPristine();
-				 this.cmsgflag1 = true;
-				 this.cmessage1 = 'SMTP Details Updated Successfully';
+				 this.cmsgflag = true;
+				 this.cmessage = 'SMTP Details Updated Successfully';
 			}, 
 			(error) => 
 			{
@@ -369,6 +375,29 @@ export class SettingsComponent implements OnInit {
 			});
 		} 		
 	}
-
+	addcontact(contForm)
+	{	debugger
+	
+		this.submitted5 = true;
+		if(contForm.valid){
+			this.btn_disable5 = true;
+			this.SettingsService.addcontact(this.ContactEntity)
+			.then((data) => 
+			{		
+				this.btn_disable5 = false;
+				this.submitted5 = false;
+	 			this.updateEntity = {};
+				 contForm.form.markAsPristine();
+				 this.cmsgflag = true;
+				 this.cmessage= 'Contact Us Email Updated Successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable5 = false;
+				this.submitted5 = false;
+			});
+		} 		
+	}
 
 }

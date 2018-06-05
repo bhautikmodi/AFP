@@ -50,7 +50,7 @@ export class ContactusComponent implements OnInit {
 	
 	}
   }
-  addContact(ContactForm) {debugger
+  addContact(ContactForm) {
     let id = this.route.snapshot.paramMap.get('id');
 	if (id) {
 			this.submitted = false;

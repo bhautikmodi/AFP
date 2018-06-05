@@ -83,7 +83,19 @@ class Settings_model extends CI_Model
 		return $res;
 		
 	}
+	public function get_Contact() {
 	
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','ContactFrom');
+		$result = $this->db->get('tblmstconfiguration');		
+		$res = array();
+		foreach($result->result() as $row) {
+			$res = $row;
+		}
+		return $res;
+		
+		
+	}
 	public function get_noofksa($userid = NULL){
 
 		if($userid) {
@@ -337,7 +349,32 @@ class Settings_model extends CI_Model
 		}	
 	
 	}
+	public function addContact($config_data) {
+	
+		if($config_data) {
 
+			$data = array(
+				'Value' => $config_data['ContactFrom'],
+				//UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			
+			
+			$this->db->where('Key','ContactFrom');
+			$res = $this->db->update('tblmstconfiguration',$data);
+			
+			if($res) {
+					return true;
+				
+				}else {
+					return false;
+					}
+			} 
+			else {
+				return false;
+				}
+
+	}
 	
 	public function edit_teamsize($post_teamsize) {
 	

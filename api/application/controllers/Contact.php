@@ -27,11 +27,82 @@ class Contact extends CI_Controller {
 		// 		}	
 		// 	} else {
 				$result = $this->Contact_model->add_Contact($post_Contact);
-				if($result) {
-					echo json_encode('success');	
-				}	
-		// 	}							
-		// }
+				
+
+					if($result) {
+
+						$config['protocol']='smtp';
+						$config['smtp_host']='ssl://smtp.googlemail.com';
+						$config['smtp_port']='465';
+						$config['smtp_user']='myopeneyes3937@gmail.com';
+						$config['smtp_pass']='W3lc0m3@2018';
+						$config['charset']='utf-8';
+						$config['newline']="\r\n";
+						$config['mailtype'] = 'html';	
+					
+											
+						$this->email->initialize($config);
+	
+						$this->email->from('myopeneyes3937@gmail.com','Email Test');
+						$this->email->to('nirav.patel@theopeneyes.in');
+						
+						
+						
+						$subject = 'AFP Corporate Training Skills Assessment';
+						$this->email->subject($subject);
+					
+	
+						$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" border="0" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td style="padding:10px; border-bottom:1px solid #ccc; background-color:#fafafa"><a href="https://www.afponline.org" target="_blank"><img alt="" src="https://www.afponline.org/assets/images/afp-logo.png" style="width:250px" /></a></td>
+							</tr>
+							<tr>
+							  <td></td>
+							</tr>
+							<tr>
+								<td style="padding:10px;">
+								<p> AFP Corporate Training Skills Assessment tool.</p>
+				
+								
+								<p>First Name : '.$post_Contact['FirstName'].'</p>
+								<p>Last Name : '.$post_Contact['LastName'].'</p>
+								<p>Email Address : '.$post_Contact['EmailAddress'].'</p>
+								<p>Company Name : '.$post_Contact['CompanyName'].'</p>
+								<p>Comments : '.$post_Contact['Comments'].'</p>
+					
+								<p>Please do not share this code, and use it within thirty days.If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
+					
+								
+								<p>
+								<p>Regards,<br>
+								Robert Pinover<br>
+								Client Success Specialist<br>
+								<a href="https://www.afponline.org/">Association for Financial Professionals</a> (AFP)<br><br>
+								</p>
+							
+								</td>
+							</tr>
+							<tr>
+								<td style="padding:10px; border-top:5px solid #a51c36; background:#072b49; text-align:center; color:#fff;">Copyright &copy; 2018 Association for Financial Professionals - All rights reserved. </td>
+							</tr>
+						</tbody>
+					</table>';
+					
+						
+					$this->email->message($body);
+						
+						if($this->email->send()){
+							
+					echo json_encode('success');
+							//echo json_encode('success');
+						} else {
+							//echo json_encode('asdasd');
+						}
+					
+				   
+					
+					}	
 		
 	}
 	

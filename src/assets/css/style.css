@@ -107,7 +107,7 @@ footer.home_page h3,footer.home_page .address_footer a{color: #062b49;}
 .inner_content{ padding:70px 0; position:relative; min-height:450px; background:#fff;}
 .height_zero{min-height:0!important; padding-bottom: 30px;}
 
-.invitation_text input{ width:15.6%; display:block; margin:0 0.5%; text-align:center; float: left;}
+.invitation_text input{ width:15.6%; display:block; margin:0 0.5%; text-align:center; float: left; text-transform:uppercase;}
 
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"GothamNarrow-book"; font-size:14px!important;}
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-book"; }

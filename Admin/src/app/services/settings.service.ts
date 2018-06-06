@@ -134,6 +134,21 @@ export class SettingsService {
       });		
       return promise;
       }
+      addinvimsg(InviEntity){ debugger
+        let promise = new Promise((resolve, reject) => {
+          this.http.post(this.globals.baseAPIUrl + 'Settings/addinvimsg', InviEntity)
+            .toPromise()
+            .then(
+              res => { // Success
+                resolve(res);
+              },
+              msg => { // Error
+            reject(msg);
+              }
+            );
+        });		
+        return promise;
+        }
     
   // getById(TeamSizeId){
 	// let promise = new Promise((resolve, reject) => {

@@ -29,6 +29,8 @@ export class SettingsComponent implements OnInit {
 	btn_disable4;
 	submitted5;
 	btn_disable5;
+	submitted6;
+	btn_disable6;
   	header;
   	teamsizeList;
 	deleteEntity;
@@ -45,7 +47,7 @@ export class SettingsComponent implements OnInit {
 	ksaError;
 	totksaError;
 	NoKSA;
-
+	InviEntity;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
 	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
@@ -91,11 +93,12 @@ export class SettingsComponent implements OnInit {
 	 this.teamsizeEntity.TeamSizeId = 0;
 	 this.configEntity = {};
 	 this.ContactEntity={};
+	 this.InviEntity={};
 	 this.cmsgflag = false;
    this.SettingsService.getAll(this.globals.authData.UserId)
 	.then((data) =>  
 	{ 
-		
+		debugger
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
@@ -105,6 +108,9 @@ export class SettingsComponent implements OnInit {
 		this.NoOfCArea = data['cArea'];
 		this.NoKSA=data['NoKsa'];
 		this.ContactEntity.ContactFrom = data['Contact']['Value'];
+		this.InviEntity.Success = data['Invimsg']['Success'];
+		this.InviEntity.Revoke = data['Invimsg']['Revoke'];
+		this.InviEntity.Pending = data['Invimsg']['Pending'];
 		
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
@@ -396,6 +402,30 @@ export class SettingsComponent implements OnInit {
 				alert('error');
 				this.btn_disable5 = false;
 				this.submitted5 = false;
+			});
+		} 		
+	}
+	addInvitation(InvitationForm)
+	{	debugger
+	
+		this.submitted6 = true;
+		if(InvitationForm.valid){
+			this.btn_disable6 = true;
+			this.SettingsService.addinvimsg(this.InviEntity)
+			.then((data) => 
+			{		
+				this.btn_disable6 = false;
+				this.submitted6 = false;
+	 			this.updateEntity = {};
+				 InvitationForm.form.markAsPristine();
+				 this.cmsgflag = true;
+				 this.cmessage= 'Invitation Message Updated Successfully';
+			}, 
+			(error) => 
+			{
+				alert('error');
+				this.btn_disable6 = false;
+				this.submitted6 = false;
 			});
 		} 		
 	}

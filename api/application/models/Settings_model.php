@@ -88,12 +88,26 @@ class Settings_model extends CI_Model
 		$this->db->select('ConfigurationId,Key,Value');
 		$this->db->where('Key','ContactFrom');
 		$result = $this->db->get('tblmstconfiguration');		
+	
+		if($result->num_rows()==0){
+			$data = array(
+				'Key' => 'ContactFrom',
+				'Value' => ' ',
+				'IsActive' => 1,
+				'UpdatedOn' => date('y-m-d H:i:s')
+			);			
+			$res = $this->db->insert('tblmstconfiguration',$data);
+			
+			$this->db->select('ConfigurationId,Key,Value');
+			$this->db->where('Key','ContactFrom');
+			$result = $this->db->get('tblmstconfiguration');
+
+		} 
 		$res = array();
 		foreach($result->result() as $row) {
 			$res = $row;
 		}
 		return $res;
-		
 		
 	}
 	public function get_noofksa($userid = NULL){
@@ -375,7 +389,114 @@ class Settings_model extends CI_Model
 				}
 
 	}
+	public function addinvimsg($config_data) {
 	
+		if($config_data) {
+
+			$data = array(
+				'Value' => $config_data['Success'],
+				//UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			$data1 = array(
+				'Value' => $config_data['Revoke'],
+				//UpdatedBy' => $config_data['UpdatedBy'],
+				'UpdatedOn' => date('y-m-d H:i:s'),
+			);
+			
+			
+			$this->db->where('Key','InvitationMsgSuccess');
+			$res = $this->db->update('tblmstconfiguration',$data);
+			
+			if($res) {
+				$this->db->where('Key','InvitationMsgRevoke');
+				$res1 = $this->db->update('tblmstconfiguration',$data1);
+				   if($res1)
+				   {
+						$data2 = array(
+							'Value' => $config_data['Pending'],
+							//UpdatedBy' => $config_data['UpdatedBy'],
+							'UpdatedOn' => date('y-m-d H:i:s'),
+						);
+						$this->db->where('Key','InvitationMsgPending');
+						$res2 = $this->db->update('tblmstconfiguration',$data2);
+						return true;
+				   }else
+				   {
+					return false; 
+				   }
+				}else {
+					return false;
+					}
+			} 
+			else {
+				return false;
+				}
+
+	}
+	public function get_Invimsg() {
+	
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgSuccess');
+		$result1 = $this->db->get('tblmstconfiguration');		
+	
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgRevoke');
+		$result2 = $this->db->get('tblmstconfiguration');
+
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgPending');
+		$result3 = $this->db->get('tblmstconfiguration');
+
+		if($result1->num_rows()==0){
+			$data1 = array(
+				'Key' => 'InvitationMsgSuccess',
+				'Value' => ' ',
+				'IsActive' => 1,
+				'UpdatedOn' => date('y-m-d H:i:s')
+			);			
+			$res1 = $this->db->insert('tblmstconfiguration',$data1);
+			$data2 = array(
+				'Key' => 'InvitationMsgRevoke',
+				'Value' => ' ',
+				'IsActive' => 1,
+				'UpdatedOn' => date('y-m-d H:i:s')
+			);			
+			$res2 = $this->db->insert('tblmstconfiguration',$data2);
+			$data3 = array(
+				'Key' => 'InvitationMsgPending',
+				'Value' => ' ',
+				'IsActive' => 1,
+				'UpdatedOn' => date('y-m-d H:i:s')
+			);			
+			$res3 = $this->db->insert('tblmstconfiguration',$data3);
+			$res = array();
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgSuccess');
+		$result1 = $this->db->get('tblmstconfiguration');		
+	
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgRevoke');
+		$result2 = $this->db->get('tblmstconfiguration');
+
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgPending');
+		$result3 = $this->db->get('tblmstconfiguration');
+
+		} 
+		
+		foreach($result1->result() as $row) {
+			$res['Success'] = $row->Value;
+		}
+		foreach($result2->result() as $row) {
+			$res['Revoke'] = $row->Value;
+		}
+		foreach($result3->result() as $row) {
+			$res['Pending'] = $row->Value;
+		}
+		return $res;
+		
+	}
 	public function edit_teamsize($post_teamsize) {
 	
 		if($post_teamsize) {

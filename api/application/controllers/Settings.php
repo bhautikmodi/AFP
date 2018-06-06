@@ -28,6 +28,7 @@ class Settings extends My_Controller {
 			$data['cArea']=$this->Settings_model->get_noOfCArea();
 			$data['NoKsa']=$this->Settings_model->get_totnoOfKsa();
 			$data['Contact']=$this->Settings_model->get_Contact();
+			$data['Invimsg']=$this->Settings_model->get_Invimsg();
 			
 		}
 		
@@ -71,6 +72,16 @@ class Settings extends My_Controller {
 		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
 
 		$result = $this->Settings_model->addContact($config_data);
+		if($result) {
+			echo json_encode($config_data);	
+		}	
+		
+	}
+	public function addinvimsg() {
+		
+		$config_data = json_decode(trim(file_get_contents('php://input')), true);		
+
+		$result = $this->Settings_model->addinvimsg($config_data);
 		if($result) {
 			echo json_encode($config_data);	
 		}	

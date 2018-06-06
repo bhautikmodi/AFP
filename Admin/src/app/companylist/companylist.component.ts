@@ -66,10 +66,12 @@ export class CompanylistComponent implements OnInit {
         "oLanguage": {
           "sLengthMenu": "_MENU_ Companies per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Companies",
-					"sInfoFiltered": "(filtered from _MAX_ total Companies)"
+					"sInfoFiltered": "(filtered from _MAX_ total Companies)",
+					retrieve: false
+					
         }
       });
-    },100); 
+    },1000); 
 
 	}, 
 	(error) => 

@@ -110,7 +110,7 @@
                     <input type="text" class="form-control" #ContactFrom="ngModel" [(ngModel)]="ContactEntity.ContactFrom" name="ContactFrom" pattern="[a-zA-Z0-9.,-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}(,|$)" [ngClass]="{red_border: (ContactFrom.dirty && ContactFrom.invalid) || (ContactFrom.pristine && submitted5)}"  required/>    
                     <span class="error_span" *ngIf="(ContactFrom.dirty && ContactFrom.invalid) || (ContactFrom.pristine && submitted5)"> 
                       <span *ngIf="ContactFrom.errors.required || (ContactFrom.pristine && submitted5)">Please enter Email from</span>
-                      <span *ngIf="ContactFrom.errors && ContactFrom.errors.pattern">
+                      <span *ngIf="!(ContactFrom.errors.required || (ContactFrom.pristine && submitted5)) && ContactFrom.errors.pattern">
                         Please enter a valid Email Address
                     </span>
                     </span>
@@ -121,7 +121,56 @@
                     <!--<button class="btn res-btn">Edit</button>--> 
                   </div>
                 </div>
-              </form>           
+              </form>    
+              <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding">Invitation Message</label>
+                  </div>
+              <form class="form-validate" #InvitationForm="ngForm" (ngSubmit)="addInvitation(InvitationForm)">
+                
+                <!-- No of ksa code start -->
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding"><span class="required">*</span>Success</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{2,}" #Success="ngModel" [(ngModel)]="InviEntity.Success" name="Success"  [ngClass]="{red_border: ((Success.dirty && Success.invalid) || (Success.pristine && submitted6))}" required/>  
+                    <span class="error_span" *ngIf="(Success.dirty && Success.invalid) || (Success.pristine && submitted6)"> 
+                        <span *ngIf="Success.errors.required || (Success.pristine && submitted6)">Please enter Success</span>                      
+                        <span *ngIf="!(Success.errors.required || (Success.pristine && submitted6)) && Success.errors.pattern">Please enter valid Success</span>
+                      </span>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding"><span class="required">*</span>Revoke</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{2,}" #Revoke="ngModel" [(ngModel)]="InviEntity.Revoke" name="Revoke" [ngClass]="{red_border: (Revoke.dirty && Revoke.invalid) || (Revoke.pristine && submitted6)}" required/>  
+                    <span class="error_span" *ngIf="(Revoke.dirty && Revoke.invalid) || (Revoke.pristine && submitted6)"> 
+                      <span *ngIf="Revoke.errors.required || (Revoke.pristine && submitted6)">Please enter Revoke message</span>
+                      <span  *ngIf="!(Revoke.errors.required || (Revoke.pristine && submitted6)) && Revoke.errors.pattern">
+                        Please enter a valid Revoke message
+                    </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 small-padding"><span class="required">*</span>Pending</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" pattern="[a-zA-Z]{2,}" #Pending="ngModel" [(ngModel)]="InviEntity.Pending" name="Pending" [ngClass]="{red_border: (Pending.dirty && Pending.invalid) || (Pending.pristine && submitted6)}" required/>  
+                    <span class="error_span" *ngIf="(Pending.dirty && Pending.invalid) || (Pending.pristine && submitted6)"> 
+                      <span *ngIf="Pending.errors.required || (Pending.pristine && submitted6)">Please enter Pending message</span>
+                      <span *ngIf="!(Pending.errors.required || (Pending.pristine && submitted6)) && Pending.errors.pattern">
+                        Please enter a valid Pending message
+                    </span>
+                    </span>
+                  </div>
+                  <div class="form-btn col-md-2 no-padding">
+                    <button type="submit" *ngIf="permissionEntity.AddEdit==1" [disabled]="btn_disable6" class="btn sub-btn btn-small"><span>Submit</span></button>
+                    <!--<button class="btn res-btn">Edit</button>--> 
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-2"></label>
+                  
+                </div>
+              </form>
               <!-- remaining day code start --> 
 
               
@@ -189,7 +238,7 @@
                   <input type="text" class="form-control" #TeamSize="ngModel" maxlength="100" [(ngModel)]="teamsizeEntity.TeamSize" name="TeamSize" [ngClass]="{red_border: (TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)}" required/>  
                   <span class="error_span" *ngIf="(TeamSize.dirty && TeamSize.invalid) || (TeamSize.pristine && submitted)"> 
                     <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter Team Size</span>
-                    <span *ngIf="TeamSize.errors.required || (TeamSize.pristine && submitted)">Please enter Team Size</span>
+                    
                   </span>
 								</div>								
 								<div class="clearfix"></div>

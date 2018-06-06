@@ -22,6 +22,9 @@ export class InvitationlistComponent implements OnInit {
 type;
 Disinv;
 permissionEntity;
+invimsgsuccess;
+invimsgrevoke;
+invimsgpending;
   constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
@@ -48,7 +51,20 @@ permissionEntity;
 		{
 			//alert('error');
 		});	
-	}		
+	}
+	this.InvitationService.invimsg()
+	 .then((data) => 
+			{
+				
+				this.invimsgsuccess=data['Success'];
+				this.invimsgrevoke=data['Revoke'];
+				this.invimsgpending=data['Pending'];
+
+			},
+			(error) => 
+			{
+				alert('error');
+			});			
 	}
 	
 	default(){

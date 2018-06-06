@@ -402,7 +402,14 @@ class Invitation extends My_Controller {
 	}
 	
 
-
+	public function invimsg() {
+		
+		$data="";
+		
+		$data=$this->Invitation_model->get_invimsg();
+		echo json_encode($data);
+				
+	}
 	
 	
 }

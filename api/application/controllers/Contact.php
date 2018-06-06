@@ -27,10 +27,18 @@ class Contact extends CI_Controller {
 		// 		}	
 		// 	} else {
 				$result = $this->Contact_model->add_Contact($post_Contact);
-				
-
+			
+			
 					if($result) {
-
+						$this->db->select('ConfigurationId,Key,Value');
+						$this->db->where('Key','ContactFrom');
+						$ress = $this->db->get('tblmstconfiguration');
+                        $res = array();
+						foreach($ress->result() as $row) {
+							$res = $row;
+						}
+						
+                        $to= $res->Value;  
 						$config['protocol']='smtp';
 						$config['smtp_host']='ssl://smtp.googlemail.com';
 						$config['smtp_port']='465';
@@ -44,7 +52,7 @@ class Contact extends CI_Controller {
 						$this->email->initialize($config);
 	
 						$this->email->from('myopeneyes3937@gmail.com','Email Test');
-						$this->email->to('nirav.patel@theopeneyes.in');
+						$this->email->to($to);
 						
 						
 						
@@ -65,11 +73,11 @@ class Contact extends CI_Controller {
 								<p> AFP Corporate Training Skills Assessment tool.</p>
 				
 								
-								<p>First Name : '.$post_Contact['FirstName'].'</p>
-								<p>Last Name : '.$post_Contact['LastName'].'</p>
-								<p>Email Address : '.$post_Contact['EmailAddress'].'</p>
-								<p>Company Name : '.$post_Contact['CompanyName'].'</p>
-								<p>Comments : '.$post_Contact['Comments'].'</p>
+								First Name : '.$post_Contact['FirstName'].'<br>
+								Last Name : '.$post_Contact['LastName'].'<br>
+							    Email Address : '.$post_Contact['EmailAddress'].'<br>
+								Company Name : '.$post_Contact['CompanyName'].'<br>
+								Comments : '.$post_Contact['Comments'].'</p>
 					
 								<p>Please do not share this code, and use it within thirty days.If you have any questions, please contact me at rpinover@AFPonline.org or<br> +1 301.961.8884.</p>
 					

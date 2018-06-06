@@ -42,10 +42,10 @@
                   <td>{{Invitation.EmailAddress}}</td>
                   <td>{{Invitation.Name}}</td>
                   <td>{{Invitation.UpdatedOn | date : 'MM/dd/yyyy'}}</td>
-                  <td *ngIf="Invitation.Status=='1'">Successfully</td>
-                  <td *ngIf="Invitation.Status=='0'">Pending</td>
-				  <td *ngIf="Invitation.Status=='2'">Revoke Success</td>
-          <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                  <td *ngIf="Invitation.Status=='1'">{{invimsgsuccess}}</td>
+                  <td *ngIf="Invitation.Status=='0'">{{invimsgpending}}</td>
+				          <td *ngIf="Invitation.Status=='2'">{{invimsgrevoke}}</td>
+                   <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
                     <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 ||Disinv.Value==0" 
 					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>

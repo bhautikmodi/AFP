@@ -67,7 +67,7 @@ export class DomainListComponent implements OnInit {
 						"sInfoEmpty": "Showing 0 to 0 of 0 Domains"
 			}
 		});
-		},500); 	
+		},0); 	
 	}, 
 	(error) => 
 	{

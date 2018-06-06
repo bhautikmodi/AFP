@@ -66,7 +66,17 @@ class Register extends CI_Controller
 					$result = $this->Register_model->edit_user($post_user);
 					if($result)
 					{
-						echo json_encode($post_user);	
+						$token = array(
+							"UserId" => $post_user['UserId'],
+							"RoleId" => $post_user['RoleId'],
+							"EmailAddress" => $post_user['EmailAddress'],
+							"FirstName" => $post_user['FirstName'],
+							"LastName" => $post_user['LastName']
+							);
+
+							$jwt = JWT::encode($token, "MyGeneratedKey","HS256");
+							$output['token'] = $jwt;
+						echo json_encode($output);	
 					}	
 				}
 				else

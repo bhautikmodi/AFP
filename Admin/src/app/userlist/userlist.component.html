@@ -40,8 +40,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                 <tr *ngFor="let user of userList">
-												<td>{{user.UserId}}</td>
+                 <tr *ngFor="let user of userList;let i = index">
+                        <td>{{i+1}}</td>
 												<td>{{user.FirstName}}</td>
 												<td>{{user.Name}}</td>
 												<td>{{user.EmailAddress}}</td>

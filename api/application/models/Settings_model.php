@@ -92,7 +92,7 @@ class Settings_model extends CI_Model
 		if($result->num_rows()==0){
 			$data = array(
 				'Key' => 'ContactFrom',
-				'Value' => ' ',
+				'Value' => '',
 				'IsActive' => 1,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);			
@@ -451,21 +451,21 @@ class Settings_model extends CI_Model
 		if($result1->num_rows()==0){
 			$data1 = array(
 				'Key' => 'InvitationMsgSuccess',
-				'Value' => ' ',
+				'Value' => '',
 				'IsActive' => 1,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);			
 			$res1 = $this->db->insert('tblmstconfiguration',$data1);
 			$data2 = array(
 				'Key' => 'InvitationMsgRevoke',
-				'Value' => ' ',
+				'Value' => '',
 				'IsActive' => 1,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);			
 			$res2 = $this->db->insert('tblmstconfiguration',$data2);
 			$data3 = array(
 				'Key' => 'InvitationMsgPending',
-				'Value' => ' ',
+				'Value' => '',
 				'IsActive' => 1,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);			

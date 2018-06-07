@@ -47,8 +47,10 @@
                         <td *ngIf="area.IsActive=='1'">Yes</td>
                         <td *ngIf="area.IsActive=='0'">No</td>
                         <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                          <button *ngIf="permissionEntity.AddEdit==1" [disabled]="area.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/competency-area/edit/{{area.CAreaId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                          <button *ngIf="permissionEntity.Delete==1" [disabled]="area.isdisabled>0" data-type="Record" (click)="deletearea(area)" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                          <button *ngIf="permissionEntity.AddEdit==1"  class="btn btn-default btn-rounded btn-sm" routerLink="/competency-area/edit/{{area.CAreaId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                          <button *ngIf="(permissionEntity.Delete==1) && (area.isdisabled>0)" data-toggle="tooltip"  title="You can’t delete Competencies as it is assigned to one of the KSA and used in Assessment already" [disabled]="area.isdisabled>0" data-type="Record" (click)="deletearea(area)"  class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                          <button *ngIf="(permissionEntity.Delete==1) && (area.isdisabled==0)"  Title="Delete" [disabled]="area.isdisabled>0" data-type="Record" (click)="deletearea(area)"  class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                        </td>
                       </tr>
                 </tbody>
               </table>

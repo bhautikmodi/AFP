@@ -65,9 +65,9 @@ class CourseLevel_model extends CI_Model
 		if($Configuration_id) {
 			
 	
-			$this->db->select('ConfigurationId,Value,DisplayText,Description,IsActive');
+			$this->db->select('con.ConfigurationId,con.Key,con.Value,con.DisplayText,con.Description,con.IsActive,(SELECT COUNT(CourseId) FROM tblmstcourse as mc WHERE mc.CourseLevelId=con.ConfigurationId) as isdisabled');
 			$this->db->where('ConfigurationId',$Configuration_id);
-			$result = $this->db->get('tblmstconfiguration');
+			$result = $this->db->get('tblmstconfiguration as con');
 			
 			$company_data = array();
 			foreach($result->result() as $row) {

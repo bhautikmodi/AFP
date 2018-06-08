@@ -86,7 +86,9 @@ import { AuditlogService } from './services/auditlog.service';
 import { LoginLogComponent } from './login-log/login-log.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import {SelectModule} from 'ng-select';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -140,8 +142,11 @@ import {SelectModule} from 'ng-select';
   BrowserModule,
 	HttpModule,
   FormsModule,
+  MatTooltipModule,
   SelectModule,
   HttpClientModule,
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
 	RouterModule.forRoot([		
       {
         path : '',

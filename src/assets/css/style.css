@@ -82,7 +82,7 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 .home_banner{ position:relative; display:block; height:100%; width:100%; z-index: 99;}
 .home_banner img{width:100%; height:100%;}
 .home_banner .banner_text{position:absolute; left:0%; top:0%; width:100%; height:100%; padding:20% 0 0 30px; text-align:left; display:block; z-index:999;}
-.home_banner .banner_text a{ margin-top:30px; background: #a51c37; float: right; text-transform: uppercase;}
+.home_banner .banner_text a{ margin-top:30px; background: #a51c37; float: right; text-transform: uppercase; }
 .home_banner .banner_text a.next_btn::after{background-color: #b32653;}
 .home_banner .banner_text .title_banner{ font: bold 25px/45px 'GothamNarrow-Medium';  margin:0px 0 15px 0; color:#72c4d6; width: auto; display: inline-block;} 
 .home_banner .banner_text .title_banner span.title{ color:#fff; font: bold 50px/60px 'GothamNarrow-Bold'; text-transform: uppercase; position:relative; display:block;}
@@ -107,7 +107,7 @@ footer.home_page h3,footer.home_page .address_footer a{color: #062b49;}
 .inner_content{ padding:70px 0; position:relative; min-height:450px; background:#fff;}
 .height_zero{min-height:0!important; padding-bottom: 30px;}
 
-.invitation_text input{ width:15.6%; display:block; margin:0 0.5%; text-align:center; float: left;}
+.invitation_text input{ width:15.6%; display:block; margin:0 0.5%; text-align:center; float: left; text-transform:uppercase;}
 
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family:"GothamNarrow-book"; font-size:14px!important;}
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: "GothamNarrow-book"; }

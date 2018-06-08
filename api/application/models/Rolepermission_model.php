@@ -7,6 +7,7 @@ class RolePermission_model extends CI_Model
 	{
 		$this->db->select('RoleId,RoleName');
 		$this->db->where('RoleName!=','IT');
+		$this->db->where('RoleName!=','General User');
 		$result=$this->db->get('tblmstuserrole');
 		
 		$res=array();

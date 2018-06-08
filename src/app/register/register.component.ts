@@ -179,7 +179,7 @@ export class RegisterComponent implements OnInit {
 		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
-
+			this.RegisterEntity.RoleId=this.globals.authData.RoleId;
 			this.submitted = false;
 		} else {
 			
@@ -192,7 +192,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
-			{
+			{ debugger
 				//alert('success');
 				this.globals.isLoading = false;
 				this.btn_disable = false;

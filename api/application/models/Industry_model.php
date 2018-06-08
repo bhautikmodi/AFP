@@ -45,6 +45,7 @@ class Industry_model extends CI_Model
 	public function getlist_Industry() {
 	
 		$this->db->select('IndustryId,IndustryName,IsActive');
+		$this->db->order_by('IndustryName','asc');
 		$result = $this->db->get('tblmstindustry');
 		$res = array();
 		if($result->result()) {

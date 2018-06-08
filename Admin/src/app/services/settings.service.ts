@@ -119,7 +119,37 @@ export class SettingsService {
     });		
     return promise;
     }
-  
+    addcontact(ContactEntity){ debugger
+      let promise = new Promise((resolve, reject) => {
+        this.http.post(this.globals.baseAPIUrl + 'Settings/addContact', ContactEntity)
+          .toPromise()
+          .then(
+            res => { // Success
+              resolve(res);
+            },
+            msg => { // Error
+          reject(msg);
+            }
+          );
+      });		
+      return promise;
+      }
+      addinvimsg(InviEntity){ debugger
+        let promise = new Promise((resolve, reject) => {
+          this.http.post(this.globals.baseAPIUrl + 'Settings/addinvimsg', InviEntity)
+            .toPromise()
+            .then(
+              res => { // Success
+                resolve(res);
+              },
+              msg => { // Error
+            reject(msg);
+              }
+            );
+        });		
+        return promise;
+        }
+    
   // getById(TeamSizeId){
 	// let promise = new Promise((resolve, reject) => {
   //   this.http.get(this.globals.baseAPIUrl + 'Settings/getById/' + TeamSizeId)

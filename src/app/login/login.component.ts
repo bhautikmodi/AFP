@@ -42,7 +42,7 @@ loginEntity;
 				if(data='Code duplicate')
 				{
 					//alert('success');
-					this.globals.message = 'User login successfully!';
+					this.globals.message = 'User Login Successfully';
 					this.globals.type = 'success';
 					this.globals.msgflag = true;
 				}else
@@ -63,7 +63,7 @@ loginEntity;
 			}, 
 			(error) => 
 			{ 
-				        this.globals.message = 'Invalid Email-Id and Password!';
+				        this.globals.message = 'Invalid Email Address or Password';
 						this.globals.type = 'danger';
 						this.globals.isLoading = false;
 						this.globals.msgflag = true;

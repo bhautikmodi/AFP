@@ -22,7 +22,10 @@
               <th>Industry</th>
             </tr>
             <tr>
-              <td>{{companydata.IndustryName}}</td> 
+              <td>
+                <span *ngIf="companydata.IndustryName">{{companydata.IndustryName}}</span>
+                <span *ngIf="!companydata.IndustryName">No Industry</span>
+              </td> 
             </tr>
             <tr>
               <th>Phone number</th>
@@ -93,7 +96,7 @@
       <div class="col-md-6 col-sm-12">
         <div class="form-group">
           <label><span>*</span>Phone Number </label>
-              <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]+" maxlength="13"
+              <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
         [(ngModel)]="RegisterEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
         <span class="error_span" *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
           <span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter your phone number</span>
@@ -107,7 +110,7 @@
 
                 
                 <label>Phone Number (Alternative) </label>
-                <input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl"  pattern="[0-9\-.()+\s]+" maxlength="13"
+                <input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl"  pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
         [(ngModel)]="RegisterEntity.PhoneNumberl" [ngClass]="{red_border: (PhoneNumberl.dirty && PhoneNumberl.invalid)}"   />
         <span class="error_span" *ngIf="(PhoneNumberl.dirty && PhoneNumberl.invalid)"> 
     
@@ -212,7 +215,7 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label><span>*</span>City </label>
-                            <input type="text" class="form-control " #City="ngModel" [(ngModel)]="RegisterEntity.City" name="City" pattern="[a-zA-Z ]{1,100}"
+                            <input type="text" class="form-control " #City="ngModel" [(ngModel)]="RegisterEntity.City" name="City" pattern="[a-zA-Z ]{2,100}"
 							[ngClass]="{red_border: (City.dirty && City.invalid) || (City.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(City.dirty && City.invalid) || (City.pristine && submitted)"> 
 							<span *ngIf="City.errors.required || (City.pristine && submitted)">Please enter your City</span>
@@ -237,7 +240,7 @@
         
 		  <button class="next_btn pull-right" [disabled]="btn_disable" id="employee_btn"  type="submit"><span>Submit</span></button>
       <div class="clearfix"></div>
-          <!-- <button type="submit" class="next_btn pull-right"  >Submit</button> -->
+ 
 		  </div>
         </div>
     </form>
@@ -260,3 +263,4 @@
     </div>
   </div>
 </div>
+

@@ -6,7 +6,8 @@ import { CompetencyAreaService } from '../services/competency-area.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
-
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 @Component({
   selector: 'app-competency-area-list',
 	providers: [ CompetencyAreaService,CommonService ],
@@ -14,7 +15,8 @@ declare var $: any;
   styleUrls: ['./competency-area-list.component.css']
 })
 export class CompetencyAreaListComponent implements OnInit {
-
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	areaList;
 	deleteEntity;
 	msgflag;
@@ -61,10 +63,10 @@ export class CompetencyAreaListComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Competency Area per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
-					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
+          "sLengthMenu": "_MENU_ Competencies per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competencies",
+					"sInfoFiltered": "(filtered from _MAX_ total Competencies)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Competencies  "
         }
       });
     },500); 

@@ -3,7 +3,7 @@
   <div class="row"> 
     <!--  page header -->
     <div class="col-lg-12">
-      <h1 class="page-header">Domain</h1>
+      <h1 class="page-header">Domains</h1>
     </div>   
     <!-- end  page header --> 
   </div>
@@ -39,10 +39,12 @@
                       <td>{{i+1}}</td> 
                       <td>{{domain.Name}}</td>                      
                       <td *ngIf="domain.IsActive=='1'">Yes</td>
-                      <td *ngIf="domain.IsActive=='0'">No</td>
+                      <td *ngIf="domain.IsActive=='0'"  >No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                        <button *ngIf="permissionEntity.AddEdit==1" [disabled]="domain.isdisabled>0" class="btn btn-default btn-rounded btn-sm" routerLink="/domain/edit/{{domain.DomainId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                        <button *ngIf="permissionEntity.Delete==1" [disabled]="domain.isdisabled>0"  (click)="deleteDomain(domain)" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                        <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/domain/edit/{{domain.DomainId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
+                        <button *ngIf="(permissionEntity.Delete==1) && (domain.isdisabled>0)" [disabled]="domain.isdisabled>0" data-toggle="tooltip"  title="You can’t delete Domain as it is assigned to one of the Competencies and used in Assessment already"  (click)="deleteDomain(domain)"  class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                        <button *ngIf="(permissionEntity.Delete==1) && (domain.isdisabled==0)" Title="Delete"  (click)="deleteDomain(domain)"  class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+
                     </tr>
               </tbody>
             </table>

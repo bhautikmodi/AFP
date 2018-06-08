@@ -78,6 +78,7 @@ $('body').on('keyup', 'input.code', function(e){
 		
 			this.btn_disable = true;
 			 this.globals.isLoading = true;
+			 this.InvitationEntity.Code=this.InvitationEntity.Code.toUpperCase();
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{ 
@@ -104,7 +105,7 @@ $('body').on('keyup', 'input.code', function(e){
 				}
 				else if(data=='email')
 				{
-					this.globals.message = 'You are not invited by AFP';
+					this.globals.message = "It seem either you have entered wrong invitation code or you have not invited yet. Please use other invitation code if you have or <a href='/contactus'> contact us</a> to be invited";
 						this.globals.type = 'danger';
 						this.globals.msgflag = true;
 						this.btn_disable = false;

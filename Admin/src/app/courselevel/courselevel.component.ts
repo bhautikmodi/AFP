@@ -40,7 +40,7 @@ export class CourselevelComponent implements OnInit {
 		}
 	}
 
-	default(){
+	default(){debugger
 		this.globals.msgflag = false;
 		this.CourseLevelEntity = {};
 		let id = this.route.snapshot.paramMap.get('id');

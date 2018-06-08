@@ -64,7 +64,7 @@ export class AuthGuard implements CanActivate {
 						return true;
 					}					
 				} else if(this.globals.authData.RoleId==3){
-					if(state.url=='/sales-admin-dashboard'||state.url.split('/')[1]=='user-assessment-list'||state.url.split('/')[1]=='sales-user-details'||state.url.split('/')[1]=='report'){
+					if(state.url=='/sales-admin-dashboard'||state.url.split('/')[1]=='user-assessment-list'||state.url.split('/')[1]=='sales-user-details'||state.url.split('/')[1]=='report'||state.url=='/viewreport'||state.url=='/usercompany'||state.url=='/list-user-assessment/list'){
 						this.router.navigate(['/dashboard']);
 			  			return false;
 					} else {
@@ -74,7 +74,7 @@ export class AuthGuard implements CanActivate {
 		  }		  
 	  } else {
 			
-		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'){
+		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='contactus' && state.url.split('/')[2]==undefined)){
 			  if(state.url=='/login'){
 				this.globals.check_login = true;
 			  }			   

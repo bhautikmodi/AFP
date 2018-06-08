@@ -56,7 +56,7 @@ class User extends MY_Controller
 						
 						
 						$this->email->subject('Sending mail');
-						//$this->email->message('sending mail recive.....');
+					
 						$this->email->message('<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
 						<tr>
 							<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></td>
@@ -118,16 +118,6 @@ class User extends MY_Controller
 	
 	
 	
-	// public function getAllCountry()
-	// {
-	// 	$data="";
-		
-	// 	$data=$this->User_model->getlist_country();
-	// 	echo json_encode($data);
-	// }
-	
-	
-	
 	// Add Status
 	public function getAllUserList()
 	{
@@ -139,36 +129,7 @@ class User extends MY_Controller
 		echo json_encode($data);
 	}
 	
-	// List all state
-	// public function getAllState()
-	// {
-	// 	$data="";
-		
-	// 	$data=$this->User_model->getlist_state();
-		
-	// 	echo json_encode($data);
-	// }
 	
-	// List all company
-	// public function getAllCompany()
-	// {
-	// 	$data="";	
-	// 	//$this->load->model('Company_model');
-	// 	$data=$this->User_model->getlist_company();
-	// 	//print_r($data);
-	// 	//.exit;
-	// 	echo json_encode($data);
-	// }
-	
-	//List role
-	// public function getAllRole()
-	// {
-	// 	$data="";
-		
-	// 	$data=$this->User_model->getlist_userrole();
-		
-	// 	echo json_encode($data);
-	// }
 
 	public function getAllDefaultData()
 	{

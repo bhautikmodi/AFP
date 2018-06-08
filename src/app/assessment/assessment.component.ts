@@ -5,6 +5,7 @@ declare var $,PerfectScrollbar: any;
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-assessment',
   providers: [ AssessmentService ],

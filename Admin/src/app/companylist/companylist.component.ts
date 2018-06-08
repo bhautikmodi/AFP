@@ -29,7 +29,7 @@ export class CompanylistComponent implements OnInit {
 		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
 
 		ngOnInit() { 
-			
+			$('[data-toggle="tooltip"]').tooltip();
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
 				this.permissionEntity.View=1;
@@ -64,12 +64,14 @@ export class CompanylistComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Company per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Company",
-					"sInfoFiltered": "(filtered from _MAX_ total Company)"
+          "sLengthMenu": "_MENU_ Companies per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Companies",
+					"sInfoFiltered": "(filtered from _MAX_ total Companies)",
+					retrieve: false
+					
         }
       });
-    },500); 
+    },1000); 
 
 	}, 
 	(error) => 

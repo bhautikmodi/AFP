@@ -40,40 +40,56 @@
         <div class="domain_desc">
           <h3>Domains Definition</h3>
           <div> 
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="Definition" class="active" ><a href="#Strategy" aria-controls="Strategy" role="tab" data-toggle="tab">Strategy</a></li>
-              <li role="Definition"><a href="#Analyzing" aria-controls="Analyzing" role="tab" data-toggle="tab">Gathering and Analyzing Information</a></li>
-              <li role="Definition"><a href="#Forecasting" aria-controls="Forecasting" role="tab" data-toggle="tab">Forecasting with Systems and Tools</a></li>
-              <li role="Definition"><a href="#Communication" aria-controls="Communication" role="tab" data-toggle="tab">Communication and Presentation Techniques</a></li>
-				<li role="Definition"><a href="#Business" aria-controls="Business" role="tab" data-toggle="tab">Business Partnering</a></li>
-				<li role="Definition"><a href="#Budgeting" aria-controls="Budgeting" role="tab" data-toggle="tab">Budgeting and Financal Principles</a></li>
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="Definition" [ngClass]="{active:i==0}" *ngFor="let domain of careaData; let i=index" ><a href="#{{domain.DomainId}}" role="tab" data-toggle="tab">{{domain.Name}}</a></li>
+              </ul>
+              <div class="tab-content">
+                <div role="tabpanel" [ngClass]="{active:i==0}" class="tab-pane" id="{{domain.DomainId}}"  *ngFor="let domain of careaData; let i=index">
+                    <table class="table table-hover table-bordered" >
+                        <tbody> 
+                          <tr>
+                            <th class="text-left width_20">Competency Area</th>
+                            <th class="text-left width_80">Description</th>
+                          </tr>
+                         
+                          <tr *ngFor="let area of domain.carea"    >
+                              <td >{{area.Name}} heading{{i}}</td>
+                              <td>{{area.Description}}</td>
+                            </tr >
+                         
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+            </div>
+          <!-- <div> 
+            <ul class="nav nav-tabs" role="tablist" >
+              <li role="Definition" *ngFor="let domain of careaData; let i=index"  ><a href="#heading{{i}}" role="tab" data-toggle="tab" aria-controls="heading1">{{domain.Name}}</a></li>
+             
             </ul>
-            <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="Strategy">
-                <table class="table table-hover table-bordered">
-                  <tbody>
+           
+            <div class="tab-content" >
+                
+              <div role="tabpanel" class="tab-pane" id="heading{{i}}" *ngFor="let domain of careaData"  >
+                <table class="table table-hover table-bordered" >
+                  <tbody> 
                     <tr>
                       <th class="text-left width_20">Competency Area</th>
                       <th class="text-left width_80">Description</th>
                     </tr>
-                    <tr>
-                      <td>Corporate Strategy/Strategic Planning</td>
-                      <td>sd fsdf</td>
-                    </tr>
-                    <tr>
-                      <td>Data Strategy</td>
-                      <td>sd fsdf</td>
-                    </tr>
+                   
+                    <tr *ngFor="let area of domain.carea"    >
+                        <td >{{area.Name}} heading{{i}}</td>
+                        <td>{{area.Description}}</td>
+                      </tr >
+                   
                   </tbody>
                 </table>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="Analyzing">...</div>
-              <div role="tabpanel" class="tab-pane" id="Forecasting">...</div>
-              <div role="tabpanel" class="tab-pane" id="Communication">...</div>
-				<div role="tabpanel" class="tab-pane" id="Business">...</div>
-				<div role="tabpanel" class="tab-pane" id="Budgeting">...</div>
+             
+      
             </div>
           </div>
+          </div> -->
          <!-- <div class="accordion_scroll">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default" *ngFor="let domain of careaData; let i=index">

@@ -72,26 +72,17 @@ class State extends MY_Controller
 	}
 	public function addproject()
 	{
-		//$this->load->model('Country_model');
+
 		$post_project = json_decode(trim(file_get_contents('php://input')), true);
 		if ($post_project) 
 			{
-				// if($post_project['CountryId']>0)
-				// {
-					// $result = $this->Country_model->edit_country($post_project);
-					// if($result)
-					// {
-						// echo json_encode($post_project);	
-					// }	
-				// }
-				// else
-				// {
+				
 					$result = $this->Country_model->add_project($post_project);
 					if($result)
 					{
 						echo json_encode($post_project);	
 					}	
-				// }
+		
 					
 			}
 	}

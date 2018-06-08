@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DomainService } from '../services/domain.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-
+declare var $: any;
 @Component({
   selector: 'app-domain',
   providers: [ DomainService,CommonService ],
@@ -26,7 +26,7 @@ export class DomainComponent implements OnInit
 		
 	}
   ngOnInit() 
-  {
+  {$('[data-toggle="tooltip"]').tooltip();
 	if(this.globals.authData.RoleId==4){		
 		this.default();
 	} else {

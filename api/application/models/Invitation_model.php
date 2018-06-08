@@ -37,14 +37,39 @@ class Invitation_model extends CI_Model
 	}
 	public	function getlist_Industry()
 	{
-		$this->db->select('*');
+		$this->db->select('IndustryId,IndustryName,IsActive');
 		$this->db->where('IsActive="1"');
+		$this->db->order_by('IndustryName','asc');
 		$result=$this->db->get('tblmstindustry');
 		
 		$res=array();
 		if($result->result())
 		{
 			$res=$result->result();
+		}
+		return $res;
+	}
+	public	function get_invimsg()
+	{
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgSuccess');
+		$result1=$this->db->get('tblmstconfiguration');
+		
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgRevoke');
+		$result2 = $this->db->get('tblmstconfiguration');
+
+		$this->db->select('ConfigurationId,Key,Value');
+		$this->db->where('Key','InvitationMsgPending');
+		$result3 = $this->db->get('tblmstconfiguration');
+		foreach($result1->result() as $row) {
+			$res['Success'] = $row->Value;
+		}
+		foreach($result2->result() as $row) {
+			$res['Revoke'] = $row->Value;
+		}
+		foreach($result3->result() as $row) {
+			$res['Pending'] = $row->Value;
 		}
 		return $res;
 	}

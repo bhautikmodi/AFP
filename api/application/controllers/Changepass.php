@@ -26,9 +26,7 @@ class Changepass extends MY_Controller
 					 $userId=$result->UserId;
 					 $userId_backup=$userId;
 					 
-						//exit;
-						
-					//	$userId = 21;
+					
 						$EmailToken = 'Change Password';
 				
 						$this->db->select('Value');

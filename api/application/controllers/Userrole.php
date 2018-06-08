@@ -41,7 +41,7 @@ class Userrole extends MY_Controller
 	//Delete UserList
 	public function delete($role_id = NULL) 
 	{
-		//$this->load->model('Country_model');
+
 		if(!empty($role_id)) {
 
 			$result = $this->Userrole_model->delete_userrole($role_id);			
@@ -56,7 +56,7 @@ class Userrole extends MY_Controller
 	//get userId edit
 	public function getById($role_id=null)
 	{	
-		//$this->load->model('Country_model');
+		
 		if(!empty($role_id))
 		{
 			$data=[];

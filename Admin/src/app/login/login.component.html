@@ -29,12 +29,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label><span>*</span>Password</label>
-                                    <input type="password" class="form-control" pattern="[a-zA-Z0-9.-_@$*&!#]{8,}" #Password="ngModel" [(ngModel)]="loginEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>  
+                                    <input type="password" class="form-control" #Password="ngModel" [(ngModel)]="loginEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>  
                                     <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)"> 
                                         <span *ngIf="Password.errors.required || (Password.pristine && submitted)">Please enter password</span>
-                                        <span *ngIf="Password.errors && Password.errors.pattern">
-                                            Minimum lenght is 8 character
-                                        </span>
+                                        <!-- <span *ngIf="Password.errors && Password.errors.pattern">
+                                            Minimum length is 8 character
+                                        </span> -->
                                     </span>
                                 </div>                               
                                 <div class="text-center">

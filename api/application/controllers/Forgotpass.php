@@ -14,12 +14,12 @@ class Forgotpass extends CI_Controller
 	
 	public function userpass()
 		{
-				//$data = {};
+				
 						 		
 		$post_pass = json_decode(trim(file_get_contents('php://input')), true);		
 		if ($post_pass)
 			{
-				//	http://localhost:4300/resetpass
+				
 
 				$post_pass['VCode']=mt_rand(100000, 999999);
 				
@@ -27,12 +27,9 @@ class Forgotpass extends CI_Controller
 				if($result)
 				{
 						 $post_pass['UserId']=$result->UserId;
-						//$data = {};
+					
 						 $data['UserId']=$post_pass['UserId'];
 						 $data['VCode']=$post_pass['VCode'];
-						//echo json_encode($post_pass); 
-						
-					
 						$userId=$result->UserId;
 						$userId_backup=$userId;
 						$EmailToken = 'Reset Password';
@@ -77,11 +74,10 @@ class Forgotpass extends CI_Controller
 								} else {
 									$bcc = $row->totalbcc;
 								}
-								// $body = str_replace("{ link }",'<strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span>',$body);
+								
 
-								$body = str_replace("{ link }",'http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'',$body);
-								//$body=$body.'<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>';
-								//$this->email->($body).append('<p><strong>Link : </strong> <span style="color:#007699;font-size:13px; text-decoration:none;"> http://localhost:4300/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'</span></p>');
+								$body = str_replace("{ link }",'http://localhost:4200/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'',$body);
+								
 								$this->email->from($smtpEmail, 'AFP Admin');
 								$this->email->to($rowTo[0]->EmailAddress);		
 								$this->email->subject($row->Subject);
@@ -101,7 +97,7 @@ class Forgotpass extends CI_Controller
 									
 									$res = $this->db->insert('tblemaillog',$email_log);
 
-									//echo json_encode($data);
+								
 								}else
 								{
 									echo json_encode("fail");

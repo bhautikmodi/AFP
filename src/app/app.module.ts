@@ -50,6 +50,8 @@ import {SelectModule} from 'ng-select';
 import { TestAssessmentComponent } from './test-assessment/test-assessment.component';
 import { ListUserAssessmentComponent } from './list-user-assessment/list-user-assessment.component';
 import { ListUserAssessmentService } from './services/list-user-assessment.service';
+import { UserreportComponent } from './userreport/userreport.component';
+import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyregister.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { ListUserAssessmentService } from './services/list-user-assessment.servi
     ReportComponent,
     HeaderhomeComponent,
     TestAssessmentComponent,
-    ListUserAssessmentComponent
+    ListUserAssessmentComponent,
+    UserreportComponent,
+    UsercopmanyregisterComponent
 
 
   ],
@@ -115,6 +119,11 @@ import { ListUserAssessmentService } from './services/list-user-assessment.servi
 		},
 		{
 			path : 'contactus',
+			component : ContactusComponent,
+			canActivate : [AuthGuard]
+		},
+		{
+			path : 'contactus/edit/:id',
 			component : ContactusComponent,
 			canActivate : [AuthGuard]
 		},
@@ -183,7 +192,17 @@ import { ListUserAssessmentService } from './services/list-user-assessment.servi
 			canActivate : [AuthGuard]
 		},
 
-		
+		{
+			path : 'viewreport',
+			component : UserreportComponent,
+			canActivate : [AuthGuard]
+		},
+
+		{
+			path : 'usercompany',
+			component : UsercopmanyregisterComponent,
+			canActivate : [AuthGuard]
+		},
 
 		{
 			path : 'sales-admin-dashboard',

@@ -16,10 +16,7 @@ class Invitation extends My_Controller {
 	public function getAllCompany()
 	{
 		$data="";	
-		//$this->load->model('Company_model');
 		$data=$this->Invitation_model->getlist_company();
-		//print_r($data);
-		//.exit;
 		echo json_encode($data);
 	}
 	public function getCompany($CompanyId=null)
@@ -172,9 +169,13 @@ class Invitation extends My_Controller {
 								
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);		
 		if ($post_Invitation) {
-	
-				
-				$post_Invitation['Code']=mt_rand(100000, 999999);
+					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+					$res = "";
+					for ($i = 0; $i < 6; $i++) {
+						$res .= $chars[mt_rand(0, strlen($chars)-1)];
+					}
+					
+					$post_Invitation['Code']= $res;
 				$result = $this->Invitation_model->add_Invitation($post_Invitation);
 				if($result) {
 					//echo json_encode($post_Invitation);	
@@ -207,7 +208,7 @@ class Invitation extends My_Controller {
 					$this->email->to($post_Invitation['EmailAddress']);	
 					$subject = 'AFP Corporate Training Skills Assessment - Invitation Code';
 					$this->email->subject($subject);
-					//$this->email->message('sending mail recive.....'.$post_Invitation['Code']);
+				
 
 					$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" border="0" cellpadding="0" cellspacing="0">
 					<tbody>
@@ -245,35 +246,6 @@ class Invitation extends My_Controller {
 					</tbody>
 				</table>';
 
-
-				// 	$body = '<table style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:22px; color:#000; border:1px solid #0333; width:600px; margin:0 auto;" cellpadding="0" cellspacing="0" border="0">
-				// 	<tr>
-				// 	<td style="padding:10px; border-bottom:1px solid #ccc; background:url(https://www.afponline.org/assets/images/afp-pattern.png) right -50px no-repeat #fafafa; background-size:300px;"><a href="http://localhost:4200/dashboard"><img src="https://www.afponline.org/assets/images/afp-logo.png" alt="" style="width:250px;" /></a></td>
-				// 	</tr>
-				// 	<tr>
-				// 		<td style="padding:10px;">
-				// 			<p style="color:#007699;"><strong>Confirm your email address</strong></p>
-				// 			<p>Thank you for signing up with us. We’re happy you’re here!.<br>
-				// 			  Enter the following code in the window where you began creating your new AFP Profile </p>
-				// 			<p>The invitation code below will remain active for 30 days.</p>
-				// 		</td>
-				// 	</tr>
-				// 	<tr>
-				// 		<td style="padding:10px;">
-				// 		<p>Invitation code '.$post_Invitation['Code'].'</p>
-				// 			<p>url from where user can register http://localhost:4200/invitation</p>
-				// 			<p>This email contains private information for your AFP account — please don’t forward it. Questions about anything? </p>
-				// 			<p>Email us at info@afponline.com or<br>
-				// 			 sales@afponline.com</p>
-				// 			<br>
-							
-				// 			<p><strong>Regards,<br><span style="color:#007699;">AFP TEAM</span></strong></p>
-				// 		</td>
-				// 	</tr>
-				// 	<tr>
-				// 		<td style="padding:10px; border-top:1px solid #ccc; background:#0085AD; text-align:center; color:#fff;">Copyright © 2018 Association for Financial Professionals - All rights reserved. </td>
-				// 	</tr>
-				// </table>';
 					$this->email->message($body);
 
 					if($this->email->send())
@@ -329,8 +301,13 @@ class Invitation extends My_Controller {
 	public function ReInvite() {
 		$post_Invitation = json_decode(trim(file_get_contents('php://input')), true);
 		if(!empty($post_Invitation)) {
-	
-			$post_Invitation['Code']=mt_rand(100000,999999);
+			$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			$res = "";
+			for ($i = 0; $i < 6; $i++) {
+				$res .= $chars[mt_rand(0, strlen($chars)-1)];
+			}
+			
+			$post_Invitation['Code']= $res;
 			$result = $this->Invitation_model->ReInvite_Invitation($post_Invitation);			
 			if($result) {
 				$this->db->select('Value');
@@ -396,7 +373,7 @@ class Invitation extends My_Controller {
 						</tr>
 					</tbody>
 				</table>';
-					//$this->email->message($body);
+				
 
 					$this->email->message($body);
 
@@ -425,7 +402,14 @@ class Invitation extends My_Controller {
 	}
 	
 
-
+	public function invimsg() {
+		
+		$data="";
+		
+		$data=$this->Invitation_model->get_invimsg();
+		echo json_encode($data);
+				
+	}
 	
 	
 }

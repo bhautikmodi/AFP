@@ -1,5 +1,5 @@
 <div class="inner_content height_zero">
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
         <div class="col-md-12">
           <h2>List of Registered Company</h2>
@@ -32,8 +32,9 @@
         </div>
       </div>
     </div>
-  </div>
-<div class="clearfix border_line"></div>
+  </div> -->
+
+
 <div class="container">
   <div class="row">
       <div class="col-md-12">
@@ -50,6 +51,7 @@
     <th class="width_6">User Name</th>
     <th class="width_6">Company Name</th>
     <th class="width_6">Total Assessment Given</th>
+    <th class="width_6">Total Assessment Pending</th>
 
 
   </tr>
@@ -61,7 +63,7 @@
   <td>{{userasses.FirstName +" "+ userasses.LastName}}</td>
   <td>{{userasses.Name}}</td>
   <td>{{userasses.total}}</td>
- 
+  <td>{{userasses.notgiven}}</td>
   
 </tr>
 </tbody>

@@ -41,7 +41,7 @@ class Remaining extends MY_Controller
 	//Delete UserList
 	public function delete($confi_id = NULL) 
 	{
-		//$this->load->model('Country_model');
+		
 		if(!empty($confi_id)) {
 
 			$result = $this->Remaining_model->delete_remaining($confi_id);			
@@ -211,8 +211,7 @@ class Remaining extends MY_Controller
 		$data="";
 		
 		$data=$this->Remaining_model->getlist_remaining();
-		//print_r($data);
-		//exit;
+	
 		if($data)
 			
 					$config['protocol']='smtp';

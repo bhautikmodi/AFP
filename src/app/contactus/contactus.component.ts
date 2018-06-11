@@ -24,6 +24,7 @@ export class ContactusComponent implements OnInit {
 
 
   ngOnInit() {
+		this.globals.msgflag=false;
     	this.ContactEntity = {};
     if ($("body").height() < $(window).height()) {
       $('footer').addClass('footer_fixed');

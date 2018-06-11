@@ -3,6 +3,7 @@ import { CanActivate,RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
+declare var $: any;
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -10,6 +11,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
+	$('footer').removeClass('footer_fixed');
 	  this.globals.currentLink=state.url;
 	if(state.url=='/welcome_register'){   // new header component show
 	

@@ -6,9 +6,9 @@
 
 $( document ).ready( function( ) {
 		
-		 $('#inner_dropdown').on('click', function(){
-			 $(".nav-second-level").toggleClass("display_block");	
-		 });
+		//  $('.inner_dropdown').on('click', function(){
+		// 	 $(".nav-second-level").toggleClass("display_block");	
+		//  });
 
 });
 	

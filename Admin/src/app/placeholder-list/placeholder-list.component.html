@@ -45,8 +45,13 @@
                       <td *ngIf="holder.IsActive=='1'">Yes</td>
                       <td *ngIf="holder.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                        <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/placeholder/edit/{{holder.PlaceholderId}}" title="Edit"> <span class="fa fa-pencil"></span> </button>
-                        <button *ngIf="permissionEntity.Delete==1" (click)="deleteplaceholder(holder)" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button></td>
+                      <div class="inline_btn"  matTooltip="Edit" [matTooltipPosition]="position.value">   
+                        <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/placeholder/edit/{{holder.PlaceholderId}}"> <span class="fa fa-pencil"></span> </button>
+                      </div>
+                        <div class="inline_btn"  matTooltip="Delete" [matTooltipPosition]="position.value">  
+                        <button *ngIf="permissionEntity.Delete==1" (click)="deleteplaceholder(holder)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                      </div>
+                      </td>
                     </tr>                
               </tbody>
             </table>

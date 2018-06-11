@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../services/state.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 declare var $: any;
 
 @Component({
@@ -14,6 +16,8 @@ declare var $: any;
   styleUrls: ['./statelist.component.css']
 })
 export class StatelistComponent implements OnInit {
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	stateList;
 	deleteEntity;
 	msgflag;

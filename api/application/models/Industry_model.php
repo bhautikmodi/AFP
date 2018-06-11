@@ -44,9 +44,9 @@ class Industry_model extends CI_Model
 	
 	public function getlist_Industry() {
 	
-		$this->db->select('IndustryId,IndustryName,IsActive');
+		$this->db->select('in.IndustryId,in.IndustryName,in.IsActive(SELECT COUNT(CompanyId) FROM tblcompany as mc WHERE mc.IndustryId=in.IndustryId) as isdisabled');
 		$this->db->order_by('IndustryName','asc');
-		$result = $this->db->get('tblmstindustry');
+		$result = $this->db->get('tblmstindustry in');
 		$res = array();
 		if($result->result()) {
 			$res = $result->result();

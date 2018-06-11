@@ -22,7 +22,15 @@ header;
   constructor( private http: Http,private globals: Globals, private AssessmentDetailsService: AssessmentDetailsService, private router: Router,private route:ActivatedRoute) { }
 
   ngOnInit() 
-  {debugger
+  {
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+			$('footer').addClass('footer_fixed');
+		} 
+	}, 100);
+
+	debugger
 	if ($("body").height() < $(window).height()) {
 		$('footer').addClass('footer_fixed');
 	}

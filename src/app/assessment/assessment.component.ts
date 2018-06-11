@@ -23,7 +23,17 @@ export class AssessmentComponent implements OnInit {
   percent;
   constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
-  ngOnInit() { this.ksaDetails={};
+  ngOnInit() {
+    
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 100);
+    
+    
+    
+    this.ksaDetails={};
     
 //     // Set the date we're counting down to
 // var countDownDate = new Date("Apr 30, 2018 00:00:00").getTime();
@@ -141,6 +151,8 @@ else {
 			alert('error');
 		});	 
   }
+
+  
 
   finalSubmit()
 	{	 

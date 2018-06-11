@@ -22,6 +22,14 @@ loginEntity;
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,private globals: Globals) { }
 
   ngOnInit() {
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 100);
+
+
 	  if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }

@@ -56,10 +56,10 @@
 												
                     <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
                         <div class="inline_delbtn"  matTooltip="Edit" [matTooltipPosition]="position.value"> 
-                           <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" title="Edit"><span class="fa fa-pencil"></span></button>
+                           <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" ><span class="fa fa-pencil"></span></button>
                         </div>
                         <div class="inline_delbtn"  matTooltip="Delete" [matTooltipPosition]="position.value"> 
-                           <button *ngIf="permissionEntity.Delete==1" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" title="Delete"(click)="deleteUser(user)"><span class="fa fa-times"></span></button>
+                           <button *ngIf="permissionEntity.Delete==1" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
                         </div>
                       </td>
                       </tr>

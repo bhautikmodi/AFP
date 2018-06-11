@@ -27,7 +27,7 @@ export class ChangepassComponent implements OnInit {
 		if ($("body").height() < $(window).height()) {
 			$('footer').addClass('footer_fixed');
 		} 
-	}, 100);
+	}, 1000);
 
 
 	if ($("body").height() < $(window).height()) {

@@ -16,7 +16,7 @@ export class UserreportComponent implements OnInit {
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
       } 
-    }, 100);
+    }, 1000);
 
 
   }

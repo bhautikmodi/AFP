@@ -37,7 +37,7 @@ export class ListUserAssessmentComponent implements OnInit {
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
       } 
-    }, 100);
+    }, 1000);
 
     // debugger
     // this.ListUserAssessmentService.getAllCompany	()

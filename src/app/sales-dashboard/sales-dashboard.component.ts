@@ -32,7 +32,7 @@ export class SalesDashboardComponent implements OnInit {
 			if ($("body").height() < $(window).height()) {
 			  $('footer').addClass('footer_fixed');
 			} 
-		  }, 100);
+		  }, 1000);
 		
 		this.globals.isLoading = false;
 		

@@ -24,7 +24,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
       } 
-    }, 100);
+    }, 1000);
     
     //new PerfectScrollbar('.domain_desc .accordion_scroll');
     this.assessmentData = {};

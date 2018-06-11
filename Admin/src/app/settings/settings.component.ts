@@ -48,14 +48,16 @@ export class SettingsComponent implements OnInit {
 	totksaError;
 	NoKSA;
 	InviEntity;
+	globals;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
-	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
+	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private global: Globals)
     {
 		
 	 }
 
   ngOnInit() {
+	this.globals = this.global;
 	this.permissionEntity = {}; 
 	this.ksaError = false;
 	this.totksaError = false;
@@ -120,7 +122,10 @@ export class SettingsComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Team Size)",
 					"sInfoEmpty": "Showing 0 to 0 of 0 Team Size"
         }
-      });
+	  });
+	  		$(".setting").addClass("selected");
+			$(".email").addClass("active");
+        	$(".setting").parent().removeClass("display_block");
     },100); 
 
 	}, 

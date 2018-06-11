@@ -24,10 +24,12 @@ deleteEntity;
 	message;
 	type;
 	permissionEntity;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
+	globals;
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {
+		this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -68,7 +70,8 @@ deleteEntity;
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Users",
 					"sInfoFiltered": "(filtered from _MAX_ total Users)"
         }
-      });
+			});
+			$(".user").addClass("selected");
     },500); 
 	}, 
 	(error) => 

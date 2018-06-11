@@ -20,11 +20,17 @@ export class ContactusComponent implements OnInit {
   submitted1;
 	btn_disable;
 	header;
-  constructor( private http: Http,private globals: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
+	globals;
+  constructor( private http: Http,private global: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
 
 
   ngOnInit() {
-		this.globals.msgflag=false;
+		this.globals = this.global;
+		if(this.globals.msgflag){
+			this.globals.msgflag=true;
+		} else {
+			this.globals.msgflag=false;
+		}		
     	this.ContactEntity = {};
     if ($("body").height() < $(window).height()) {
       $('footer').addClass('footer_fixed');

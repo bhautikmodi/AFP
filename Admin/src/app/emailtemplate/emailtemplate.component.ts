@@ -110,6 +110,11 @@ export class EmailtemplateComponent implements OnInit {
 				dataTransfer.setData('text/html', '{' + target.getText() + '}');
 			});
 		});
+		setTimeout(function(){
+			$(".emailtemplate").addClass("selected");
+			$(".email").addClass("active");
+        	$(".emailtemplate").parent().removeClass("display_block");	
+		},500); 
 	}
 
 	addEmailTemplate(EmailForm) {

@@ -9,12 +9,14 @@ import { RemainingService } from './services/remaining.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  remainingList;
-	constructor(private route: ActivatedRoute, private RemainingService: RemainingService,private globals: Globals) { }
+	remainingList;
+	globals;
+	
+	constructor(private route: ActivatedRoute, private RemainingService: RemainingService,private global: Globals) { }
     
     ngOnInit()
   {
-	 
+		this.globals = this.global;
 	// this.RemainingService.getAll()
 	// //.map(res => res.json())
 	// .then((data) => 

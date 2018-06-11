@@ -86,6 +86,9 @@ export class CompetencyAreaComponent implements OnInit {
 			this.areaEntity.IsActive = '1';
 			this.areaEntity.DomainId = '';
 		}
+		setTimeout(function(){
+			$(".carea").addClass("selected");
+		},500); 
 	}
 
 	addArea(areaForm) {

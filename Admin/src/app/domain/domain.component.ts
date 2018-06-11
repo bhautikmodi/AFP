@@ -52,6 +52,7 @@ export class DomainComponent implements OnInit
   } 
 
   default(){
+	
 	this.domainEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	this.globals.msgflag = false;
@@ -75,7 +76,10 @@ export class DomainComponent implements OnInit
 		this.domainEntity = {};
 		this.domainEntity.DomainId = 0;
 		this.domainEntity.IsActive = '1';
-	}
+	}	
+	setTimeout(function(){
+		$(".domain").addClass("selected");
+	},500); 
   }
 	
 	addDomain(domainForm)

@@ -23,14 +23,16 @@ export class CompetencyAreaListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private globals: Globals) 
+		 private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
 	ngOnInit() { 
+		this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -68,7 +70,8 @@ export class CompetencyAreaListComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Competencies)",
 					"sInfoEmpty": "Showing 0 to 0 of 0 Competencies  "
         }
-      });
+	  });
+	  $(".carea").addClass("selected");
     },500); 
 
 	}, 

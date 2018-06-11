@@ -19,10 +19,12 @@ export class CourselistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
- constructor( private http: Http,private globals: Globals, private router: Router, 
+	globals;
+ constructor( private http: Http,private global: Globals, private router: Router, 
 	private CourseService: CourseService,private CommonService: CommonService, private route:ActivatedRoute) { }
 	
 	ngOnInit() { 
+		this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -59,7 +61,8 @@ export class CourselistComponent implements OnInit {
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Courses",
 					"sInfoFiltered": "(filtered from _MAX_ total Courses)"
         }
-      });
+	  });
+	  $(".course").addClass("selected");
     },100); 
 
 	}, 

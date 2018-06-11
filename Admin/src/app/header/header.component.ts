@@ -9,10 +9,11 @@ import { Globals } from '../globals';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private router: Router,private globals: Globals, private authService: AuthService) { }
+globals;
+  constructor(private router: Router,private global: Globals, private authService: AuthService) { }
 
   ngOnInit() {
+    this.globals = this.global;
   }
   logout()
     { 

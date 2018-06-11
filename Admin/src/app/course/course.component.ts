@@ -5,6 +5,7 @@ import { CourseService } from '../services/course.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 
 @Component({
 	selector: 'app-course',
@@ -68,8 +69,6 @@ export class CourseComponent implements OnInit {
 			this.CourseService.getById(id)
 				.then((data) => {
 					this.CourseEntity = data;
-
-
 				},
 				(error) => {
 					alert('error');
@@ -81,9 +80,10 @@ export class CourseComponent implements OnInit {
 			this.CourseEntity.IsActive = '1';
 			this.CourseEntity.CourseLevelId = '';
 			this.CourseEntity.DomainId = '';
-			
 		}
-
+		setTimeout(function(){
+			$(".course").addClass("selected");
+		},500); 
 	}
 
 	addCourse(CourseForm) {

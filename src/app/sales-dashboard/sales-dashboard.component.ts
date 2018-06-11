@@ -21,13 +21,15 @@ export class SalesDashboardComponent implements OnInit {
 	btn_disable;
 	header;
 	vardisabled;
+	globals;
+	p;
 	
-  constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
+  constructor(private http: Http, private global: Globals, private router: Router, private route: ActivatedRoute,
 		private SalesDashboardService: SalesDashboardService) { }
 
 
 	ngOnInit() {
-		
+		this.globals = this.global;
 		this.globals.isLoading = false;
 		
 		$('.select2').select2();

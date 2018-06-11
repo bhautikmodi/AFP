@@ -5,6 +5,7 @@ import { CountryService } from '../services/country.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 
 @Component({
 	selector: 'app-country',
@@ -61,6 +62,11 @@ export class CountryComponent implements OnInit {
 			this.CountryEntity.CountryId = 0;
 			this.CountryEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".country").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".country").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addCountry(CountryForm) {

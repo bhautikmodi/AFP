@@ -5,6 +5,7 @@ import { IndustryService } from '../services/industry.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 
 @Component({
 	selector: 'app-industry',
@@ -63,6 +64,11 @@ export class IndustryComponent implements OnInit {
 			this.IndustryEntity.IndustryId = 0;
 			this.IndustryEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".industry").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".industry").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addIndustry(IndustryForm) {

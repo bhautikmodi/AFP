@@ -37,6 +37,9 @@ export class EmailLogComponent implements OnInit {
                 "sInfoEmpty": "Showing 0 to 0 of 0 Log"
           }
         });
+        $(".emaillog").addClass("selected");
+        $(".log").addClass("active");
+        $(".emaillog").parent().removeClass("display_block");	
         },100); 	
       }, 
       (error) => 

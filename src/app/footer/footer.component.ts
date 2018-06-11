@@ -3,14 +3,16 @@ import { Globals } from '.././globals';
 
 @Component({
   selector: 'app-footer',
+  providers: [ Globals ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  constructor(private globals: Globals) { }
+  globals;
+  constructor(private global: Globals) { }
 
   ngOnInit() {
+    this.globals = this.global;
   }
 
 }

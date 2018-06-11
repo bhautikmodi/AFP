@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RatingScaleService } from '../services/rating-scale.service';
 import { Globals } from '.././globals';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 
 @Component({
 	selector: 'app-rating-scale',
@@ -62,6 +63,11 @@ export class RatingScaleComponent implements OnInit {
 			this.ratingscaleEntity.RatingScaleId = 0;
 			this.ratingscaleEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".rscale").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".rscale").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addRatingScale(ratingscaleForm) {

@@ -246,17 +246,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
-
-		{
-        path : 'remaining',
-        component : RemainingComponent,
-		canActivate : [AuthGuard] 
-      },
-	  {
-        path : 'remaining/list',
-        component : RemaininglistComponent,
-		  canActivate : [AuthGuard] 
-      },
 	  {
         path : 'userrole/edit/:id',
         component : UserroleComponent,
@@ -285,11 +274,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 	  {
         path : 'state/edit/:id',
         component : StateComponent,
-		canActivate : [AuthGuard] 
-      },
-	  {
-        path : 'company/add',
-        component : CompanyComponent,
 		canActivate : [AuthGuard] 
       },
 	  {

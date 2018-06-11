@@ -11,32 +11,27 @@ declare var $,PerfectScrollbar: any;
 export class LeftMenuComponent implements OnInit {
 
   menuList;
+  globals;
   
-  constructor(private globals: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
+  constructor(private global: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
 
   ngOnInit() {
-    alert(this.router.url);
-    $(".test company").addClass("selected");
+    this.globals = this.global;
     this.menuList = [];   
     new PerfectScrollbar('.sidebar-collapse');
     this.RolepermissionService.getLeftMenu(this.globals.authData.RoleId)
 			.then((data) => 
 			{
-        this.menuList = data;
-        console.log(this.menuList);
-      //   setTimeout(function(){        
-      //     $('.inner_dropdown').on('click', function(){
-      //       $(".nav-second-level").toggleClass("display_block");	
-      //     });
-      // },100);
-        
+        this.menuList = data; 
 			},
 			(error) => 
 			{
 				alert('error');
-			});	
+      });	
+      
+      
   }
-
+  
   addclass(i){
     if(!$("#sel"+i).hasClass("inner_dropdown")){
       $(".test").removeClass("selected");

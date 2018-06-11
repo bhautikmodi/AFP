@@ -10,10 +10,12 @@ import { Globals } from '../globals';
 })
 export class HeaderComponent implements OnInit
  {
+  globals;
+  constructor(  private authService: AuthService,private router: Router,private global: Globals) { }
 
-  constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
-
-  ngOnInit() { }
+  ngOnInit() {
+    this.globals = this.global;
+   }
     logout()
     { 
         var panel={'Userid':this.globals.authData.UserId,'paneltype':0};

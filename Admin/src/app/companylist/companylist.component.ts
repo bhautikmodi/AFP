@@ -25,10 +25,12 @@ export class CompanylistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
+		private CompanyService: CompanyService,private CommonService: CommonService, private global: Globals) { }
 
-		ngOnInit() { 
+		ngOnInit() {
+			this.globals = this.global; 
 			$('[data-toggle="tooltip"]').tooltip();
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
@@ -61,7 +63,7 @@ export class CompanylistComponent implements OnInit {
 		this.globals.isLoading = false;
 
 		this.companyList = data;	
-		setTimeout(function(){
+		setTimeout(function(){			
       $('#dataTables-example').dataTable( {
         "oLanguage": {
           "sLengthMenu": "_MENU_ Companies per Page",
@@ -70,8 +72,9 @@ export class CompanylistComponent implements OnInit {
 					retrieve: false
 					
         }
-      });
-    },1000); 
+	  });
+	  $(".company").addClass("selected");
+    },100); 
 
 	}, 
 	(error) => 

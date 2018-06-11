@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-
+declare var $: any;
 import { StateService } from '../services/state.service';
 import { Globals } from '../globals';
 import { CommonService } from '../services/common.service';
@@ -78,6 +78,11 @@ export class StateComponent implements OnInit {
 		this.stateEntity.IsActive = '1';
 		this.stateEntity.CountryId='';
 	}
+	setTimeout(function(){
+		$(".state").addClass("selected");
+		$(".gsetting").addClass("active");
+		$(".state").parent().removeClass("display_block");	
+	},500);
 	}
 
 	addState(stateForm) {

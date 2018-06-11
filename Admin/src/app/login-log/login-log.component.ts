@@ -37,6 +37,9 @@ export class LoginLogComponent implements OnInit {
                 "sInfoEmpty": "Showing 0 to 0 of 0 Log"
           }
         });
+        $(".loginlog").addClass("selected");
+        $(".log").addClass("active");
+        $(".loginlog").parent().removeClass("display_block");	
         },100); 	
       }, 
       (error) => 

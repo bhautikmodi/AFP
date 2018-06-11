@@ -72,6 +72,9 @@ export class CompanyComponent implements OnInit {
 		this.companyEntity.CompanyId = 0;
 		this.companyEntity.IsActive = '1';
 	}
+	setTimeout(function(){
+		$(".company").addClass("selected");
+	},500);
 	}
 
 	addCompany(companyForm) {

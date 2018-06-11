@@ -19,12 +19,13 @@ export class UserrolelistComponent implements OnInit {
  msgflag;
 	message;
 	type;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, private globals: Globals) { }
+	globals;
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, private global: Globals) { }
 
   
   ngOnInit()
   {
-	 
+		this.globals = this.global;
 	this.UserroleService.getAll()
 	//.map(res => res.json())
 	.then((data) => 

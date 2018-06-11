@@ -84,8 +84,7 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
     TestAssessmentComponent,
     ListUserAssessmentComponent,
     UserreportComponent,
-    UsercopmanyregisterComponent
-
+	UsercopmanyregisterComponent
 
   ],
   imports: [

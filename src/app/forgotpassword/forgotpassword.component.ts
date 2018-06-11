@@ -17,9 +17,11 @@ export class ForgotpasswordComponent implements OnInit {
 	submitted;
 	type;
 	btn_disable;
- constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
+	globals;
+ constructor( private http: Http,private global: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
   ngOnInit() {
+	this.globals = this.global;
 
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {

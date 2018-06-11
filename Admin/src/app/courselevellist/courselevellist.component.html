@@ -2,7 +2,7 @@
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">{{header}} Course Level</h1>
+        <h1 class="page-header">Course Level</h1>
       </div>
       <!-- end  page header --> 
     </div>
@@ -33,7 +33,7 @@
 					<th>Keyword</th>
 					<th class="width_20">Description</th>
 					<th class="width_10">Active?</th>
-          <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
+          <th class="width_10" *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
                   </tr>
                 </thead>
                 <tbody>

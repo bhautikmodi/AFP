@@ -63,6 +63,9 @@ export class PendingAssessmentComponent implements OnInit {
 						"sInfoEmpty": "Showing 0 to 0 of 0 Incomplete Assessments"
 			}
 		});
+			$(".pendingass").addClass("selected");
+			$(".email").addClass("active");
+        	$(".pendingass").parent().removeClass("display_block");
 		},100); 	
 	}, 
 	(error) => 

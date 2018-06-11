@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 
 @Component({
 	selector: 'app-user',
@@ -127,6 +128,9 @@ export class UserComponent implements OnInit {
 			this.userEntity.StateId='';
 			// this.userEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".user").addClass("selected");
+		},500);
 	}
 
 	addUser(userForm) {

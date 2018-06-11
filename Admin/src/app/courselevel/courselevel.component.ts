@@ -5,6 +5,8 @@ import { CourselevelService } from '../services/courselevel.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
+declare var $: any;
+
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material';
 @Component({
@@ -43,7 +45,7 @@ export class CourselevelComponent implements OnInit {
 		}
 	}
 
-	default(){debugger
+	default(){
 		this.globals.msgflag = false;
 		this.CourseLevelEntity = {};
 		let id = this.route.snapshot.paramMap.get('id');
@@ -65,6 +67,11 @@ export class CourselevelComponent implements OnInit {
 			this.CourseLevelEntity.ConfigurationId = 0;
 			this.CourseLevelEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".clevel").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".clevel").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addCourseLevel(CourseLevelForm) {

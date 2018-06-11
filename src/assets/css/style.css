@@ -291,11 +291,12 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box_ksa input[type="radio"]:checked + label{ background:#A41C36; box-shadow:none; color:#fff;}
 #slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
 #slider .flex-direction-nav a.flex-next:before {content: ""; background:url(../images/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
-
 #slider .flex-direction-nav a.flex-prev{padding: 10px 10px 10px 47px;}
 #slider .flex-direction-nav a.flex-prev:before {content: ""; background:url(../images/left-white.png) center left no-repeat #b32653; position: absolute; left: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
 #slider .flex-direction-nav .flex-next{ right:10px;}
 #slider .flex-direction-nav .flex-prev{ left:10px; }
+#slider .flex-direction-nav a span{ position:relative; z-index:9; color:#fff!important;}
+#slider .flex-direction-nav a:hover:before { width:100%; transition:all 0.8s ease 0s;}
 .assessment_bg #ratingaccordion .panel-heading{position: absolute; width: auto; z-index: 999;}
 .assessment_bg #ratingaccordion .panel{ background: transparent; border-color: transparent; box-shadow: none;}
 .assessment_bg #ratingaccordion .panel-body{margin: 45px 0 0 0; background: #fff; border: 1px solid #ccc; padding: 10px;}
@@ -339,7 +340,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .border_line{border-bottom: 1px solid #ccc; margin: 30px 0;}
 .dataTables_paginate{float: right;}
 .tooltip_inline{display: inline-block;}
-.tooltip_inline button[disabled]{cursor: default; opacity: 1;}
+.tooltip_inline button[disabled]{cursor: default; opacity: 1; pointer-events: none;}
 .tooltip_inline button[disabled]:hover:after,.tooltip_inline button[disabled]:focus:after,.tooltip_inline  html input[disabled]:hover:after, .tooltip_inline html input[disabled]:focus:after{ width:100%; transition:all 0.8s ease 0s;}
 /* ..... Inner Page Contener Area Strat ..... */
 

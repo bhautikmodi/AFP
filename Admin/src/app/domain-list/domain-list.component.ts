@@ -24,14 +24,16 @@ export class DomainListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private domainService: DomainService, private CommonService: CommonService, private globals: Globals) 
+		 private domainService: DomainService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
   ngOnInit() { 
+	this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -70,7 +72,8 @@ export class DomainListComponent implements OnInit {
 						"sInfoEmpty": "Showing 0 to 0 of 0 Domains"
 			}
 		});
-		},0); 	
+		$(".domain").addClass("selected");
+		},100); 	
 	}, 
 	(error) => 
 	{

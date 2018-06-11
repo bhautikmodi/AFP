@@ -24,14 +24,7 @@ export class AssessmentComponent implements OnInit {
 
   ngOnInit() {
     
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 100);
-    
-    
-    
+       
     this.ksaDetails={};
     
 //     // Set the date we're counting down to
@@ -142,6 +135,9 @@ else {
             }
           } 
           this.checkprogress();
+          if ($("body").height() < $(window).height()) {
+            $('footer').addClass('footer_fixed');
+          } 
         },100);
       }        
 		}, 

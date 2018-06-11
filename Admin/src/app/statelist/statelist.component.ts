@@ -24,12 +24,14 @@ export class StatelistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private StateService: StateService, private CommonService: CommonService, private globals: Globals) { }
+		private StateService: StateService, private CommonService: CommonService, private global: Globals) { }
 
  ngOnInit()
   {
-		this.permissionEntity = {}; 
+	this.globals = this.global;	
+	this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
 			this.permissionEntity.AddEdit=1;
@@ -66,7 +68,10 @@ export class StatelistComponent implements OnInit {
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ State",
 					"sInfoFiltered": "(filtered from _MAX_ total State)"
         }
-      });
+			});
+			$(".state").addClass("selected");
+        $(".gsetting").addClass("active");
+        $(".state").parent().removeClass("display_block");	
     },500); 
 	}, 
 	(error) => 

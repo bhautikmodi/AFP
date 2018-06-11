@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { KsaService } from '../services/ksa.service';
 import { Globals } from '.././globals';
 import { CommonService } from '../services/common.service';
+declare var $: any;
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material';
 
@@ -79,6 +80,9 @@ export class KsaComponent implements OnInit {
 			this.ksaEntity.IsActive = '1';
 			this.ksaEntity.CAreaId = '';
 		}	
+		setTimeout(function(){
+			$(".ksa").addClass("selected");
+		},500); 
 	}
 
 	addKSA(ksaForm) {

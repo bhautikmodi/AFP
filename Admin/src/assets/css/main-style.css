@@ -242,8 +242,9 @@ textarea.cke_source {
 @media(max-width:768px) {
 #wrapper {
     /*margin-top:140px!important;*/
-    
-}
+    }
+	
+.inline_btn{margin: 0 0 5px 5px;}
 }
 
 @media(max-width:767px) {
@@ -279,6 +280,7 @@ textarea.cke_source {
 	.navbar-fixed-top {
 		position: absolute;
 	}
+	.inline_btn{margin: 0 0 5px 5px;}
 }
 
 @media (min-width: 992px) {

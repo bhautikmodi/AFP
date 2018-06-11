@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AssessmentService } from '../services/assessment.service';
 import { Router } from '@angular/router';
-declare var $,PerfectScrollbar: any;
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
-declare var $: any;   
+declare var $,PerfectScrollbar: any;
+
 @Component({
   selector: 'app-assessment',
   providers: [ AssessmentService ],
@@ -14,8 +12,7 @@ declare var $: any;
   styleUrls: ['./assessment.component.css']
 })
 export class AssessmentComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
   ksaList;
   totalksa;
   addprogess;
@@ -31,7 +28,7 @@ export class AssessmentComponent implements OnInit {
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
       } 
-    }, 1000);
+    }, 100);
     
     
     

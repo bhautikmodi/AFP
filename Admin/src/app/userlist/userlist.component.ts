@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
-
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 import { UserService } from '../services/user.service';
 import { Globals } from '../globals';
 declare var $: any;
@@ -17,7 +18,8 @@ declare var $: any;
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
   userList;
 deleteEntity;
 	msgflag;

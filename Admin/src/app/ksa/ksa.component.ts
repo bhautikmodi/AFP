@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { KsaService } from '../services/ksa.service';
 import { Globals } from '.././globals';
 import { CommonService } from '../services/common.service';
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 
 @Component({
 	selector: 'app-ksa',
@@ -14,6 +16,8 @@ import { CommonService } from '../services/common.service';
 })
 
 export class KsaComponent implements OnInit {
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	ksaEntity;
 	areaList;
 	submitted;

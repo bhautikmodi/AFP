@@ -24,6 +24,13 @@ export class ContactusComponent implements OnInit {
 
 
   ngOnInit() {
+
+		setTimeout(function(){ 
+			if ($("body").height() < $(window).height()) {
+				$('footer').addClass('footer_fixed');
+			} 
+		}, 1000);
+
 		this.globals.msgflag=false;
     	this.ContactEntity = {};
     if ($("body").height() < $(window).height()) {

@@ -40,13 +40,20 @@
 										  <td *ngIf="Industry.IsActive=='1'">Yes</td>
 											<td *ngIf="Industry.IsActive=='0'">No</td>
                     <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-											<button *ngIf="permissionEntity.AddEdit==1" type="button" title="Edit" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
-											routerLink="/industry/edit/{{Industry.IndustryId}}">
-											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button *ngIf="permissionEntity.Delete==1" type="button" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
-											data-tooltip="Delete" 
-											(click)="deleteIndustry(Industry)">
-											<i class="fa fa-times" aria-hidden="true"></i></button>
+                      <div class="inline_delbtn"  matTooltip="Edit" [matTooltipPosition]="position.value">  
+                          <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" 
+                          routerLink="/industry/edit/{{Industry.IndustryId}}">
+                          <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                      </div>
+
+                      <div class="inline_delbtn"  matTooltip="You can’t delete Industry as it is assigned to one of the Companies and used in Assessment already" [matTooltipPosition]="position.value"> 
+                          <button *ngIf="(permissionEntity.Delete==1) && (Industry.isdisabled>0)" [disabled]="Industry.isdisabled>0" (click)="deleteIndustry(Industry)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                      </div>
+                      <div class="inline_delbtn"  matTooltip="Delete" [matTooltipPosition]="position.value"> 
+                          <button *ngIf="(permissionEntity.Delete==1)  && (Industry.isdisabled==0)" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+                          (click)="deleteIndustry(Industry)">
+                          <i class="fa fa-times" aria-hidden="true"></i></button>
+                      </div>
 										</td>
 									</tr>
 									

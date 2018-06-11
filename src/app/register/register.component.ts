@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 	
-	
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 1000);
 	  
 	  
 			this.btn_disable = false;

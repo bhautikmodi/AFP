@@ -20,6 +20,13 @@ export class ForgotpasswordComponent implements OnInit {
  constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
   ngOnInit() {
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 1000);
+
 	if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }  

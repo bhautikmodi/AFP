@@ -21,6 +21,13 @@ export class ReportComponent implements OnInit {
   constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 1000);
+
     if ($("body").height() < $(window).height()) {
       $('footer').addClass('footer_fixed');
   }

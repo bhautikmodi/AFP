@@ -5,7 +5,8 @@ import { IndustryService } from '../services/industry.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
-
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 @Component({
 	selector: 'app-industry',
 	providers: [IndustryService, CommonService],
@@ -13,6 +14,8 @@ import { CommonService } from '../services/common.service';
 	styleUrls: ['./industry.component.css']
 })
 export class IndustryComponent implements OnInit {
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	IndustryEntity;
 	submitted;
 	btn_disable;

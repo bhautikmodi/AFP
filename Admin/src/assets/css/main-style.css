@@ -212,7 +212,7 @@ button[disabled], html input[disabled] {
     cursor: default!important;
     opacity: 1!important;
 }
-.inline_btn{display:inline-block;}
+.inline_btn{/*display:inline-block;*/ float: left; margin: 0 0 0 5px;}
 
  /* ckeditor custom style  */
 

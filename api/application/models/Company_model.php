@@ -66,11 +66,12 @@ class Company_model extends CI_Model
 	{
 	  if($company_id)
 	  {
-
-		 $this->db->select('CompanyId,Name,IndustryId,Website,PhoneNo,IsActive');
+		// $this->db->select('area.CAreaId,area.DomainId,area.Name,area.Description,area.KeyConcepts,area.IsActive,(SELECT COUNT(mk.KSAId) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
+		// $this->db->where('CAreaId',$area_id);
+		// $result = $this->db->get('tblmstcompetencyarea area');
+		 $this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.CompanyId=cp.CompanyId) as isdisabled');
 		 $this->db->where('CompanyId',$company_id);
-
-		 $result=$this->db->get('tblcompany');
+		 $result=$this->db->get('tblcompany cp');
 		 $company_data= array();
 		 foreach($result->result() as $row)
 		 {

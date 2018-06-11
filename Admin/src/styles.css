@@ -68,7 +68,16 @@ a.disabled {
         transform: rotate(360deg);
     }
 }
-
+mat-tooltip-component{background:url("assets/img/tooltip.png") right center no-repeat!important; background-size:13px; display:block;}
+.mat-tooltip {
+    color: #fff;
+	background:#000;
+    border-radius: 2px;
+    margin: 14px 10px 14px 14px!important;
+    max-width: 250px;
+    padding-left: 8px;
+    padding-right: 8px; overflow:visible!important;
+}
 .error_span {
     color: red;
     font-size: 12px;

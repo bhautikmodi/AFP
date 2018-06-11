@@ -29,7 +29,7 @@ export class CompanylistComponent implements OnInit {
 		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
 
 		ngOnInit() { 
-			
+			$('[data-toggle="tooltip"]').tooltip();
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
 				this.permissionEntity.View=1;

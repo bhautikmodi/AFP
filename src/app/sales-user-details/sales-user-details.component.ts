@@ -26,7 +26,15 @@ export class SalesUserDetailsComponent implements OnInit {
 
 
 
-  ngOnInit() {  debugger
+  ngOnInit() { 
+    
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 100);
+    
+    debugger
    this.assessmentData='';
 
 

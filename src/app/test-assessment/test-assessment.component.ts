@@ -21,6 +21,13 @@ export class TestAssessmentComponent implements OnInit {
     
     }
   ngOnInit() {
+
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 100);
+
     this.ksaDetails=[];
     this.AssessmentService.testKsa()
 		.then((data) => 

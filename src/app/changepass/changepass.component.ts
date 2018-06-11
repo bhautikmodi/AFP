@@ -22,6 +22,14 @@ export class ChangepassComponent implements OnInit {
   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ChangepassService:ChangepassService) { }
 
   ngOnInit() { 
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+			$('footer').addClass('footer_fixed');
+		} 
+	}, 100);
+
+
 	if ($("body").height() < $(window).height()) {
 		$('footer').addClass('footer_fixed');
 	}  

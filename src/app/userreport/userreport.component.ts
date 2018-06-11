@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-userreport',
@@ -10,6 +11,14 @@ export class UserreportComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 100);
+
+
   }
 
 }

@@ -90,8 +90,7 @@
               </ul>
             </div>
             <div class="text-center" >
-              
-              <button type="submit"  title="To submit Assessment you need to attend all KSAs" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button>
+              <div class="tooltip_inline" title="To submit Assessment you need to attend all KSAs" data-toggle="tooltip" data-placement="bottom"><button type="submit" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button></div>
               <!-- <button class="next_btn" type="submit" onclick="window.location.href = 'thankyou.html'; return false;">Submit</button> --> 
             </div>
           </form>

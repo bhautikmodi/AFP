@@ -74,11 +74,11 @@ export class SalesDashboardComponent implements OnInit {
 		this.UserList=[];
 		this.CompanyList=[];
 
-    $('.user_box').click(function(){
+   // $('.user_box').click(function(){
 					
-			$('.user_box').removeClass('active');
-			$(this).addClass('active');
-		});
+			//$('.user_box').removeClass('active');
+			//$(this).addClass('active');
+		//});
 		
 		
 		this.SalesDashboardService.getAllUser()

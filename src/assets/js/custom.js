@@ -18,12 +18,6 @@ $('#company_btn').click(function () {
 });
 <!-- END REGISTER COMPANY -->
 
-<!-- SALES DASHBOARD -->
-$('.user_box').click(function(e){
-	$('.user_box').removeClass('active');
-    $(this).addClass('active');
-});
-<!-- END SALES DASHBOARD -->
 
 <!-- PROGRESS BAR ASSESSMENT -->
 progress = document.getElementById("progress");

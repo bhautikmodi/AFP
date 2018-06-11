@@ -46,13 +46,17 @@
 										  <td *ngIf="Course.IsActive=='1'">Yes</td>
 											<td *ngIf="Course.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-											<button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" title="Edit"
-											routerLink="/course/edit/{{Course.CourseId}}">
-											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
-											data-tooltip="Delete" title="Delete"
-											(click)="deleteCourse(Course)">
-											<i class="fa fa-times" aria-hidden="true"></i></button>
+                      <div class="inline_delbtn"  matTooltip="Edit" [matTooltipPosition]="position.value">   
+                          <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" 
+                          routerLink="/course/edit/{{Course.CourseId}}">
+                          <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="inline_delbtn"  matTooltip="Delete" [matTooltipPosition]="position.value"> 
+                              <button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+                          
+                          (click)="deleteCourse(Course)">
+                          <i class="fa fa-times" aria-hidden="true"></i></button>
+                      </div>
 										</td>
 									</tr>
 									

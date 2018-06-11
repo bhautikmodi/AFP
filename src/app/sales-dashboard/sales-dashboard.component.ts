@@ -29,7 +29,17 @@ export class SalesDashboardComponent implements OnInit {
 
 
 	ngOnInit() {
+<<<<<<< HEAD
 		this.globals = this.global;
+=======
+
+		setTimeout(function(){ 
+			if ($("body").height() < $(window).height()) {
+			  $('footer').addClass('footer_fixed');
+			} 
+		  }, 1000);
+		
+>>>>>>> 01d3473d8f3df5d64f0ea9dadb800f9cfaa601de
 		this.globals.isLoading = false;
 		
 		$('.select2').select2();
@@ -76,11 +86,11 @@ export class SalesDashboardComponent implements OnInit {
 		this.UserList=[];
 		this.CompanyList=[];
 
-    $('.user_box').click(function(){
+   // $('.user_box').click(function(){
 					
-			$('.user_box').removeClass('active');
-			$(this).addClass('active');
-		});
+			//$('.user_box').removeClass('active');
+			//$(this).addClass('active');
+		//});
 		
 		
 		this.SalesDashboardService.getAllUser()

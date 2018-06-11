@@ -41,7 +41,7 @@ $('body').on('keyup', 'input.code', function(e){
 		if ($("body").height() < $(window).height()) {
 			$('footer').addClass('footer_fixed');
 		} 
-	}, 100);
+	}, 1000);
   this.globals.msgflag=false;
 	  this.InvitationEntity = {};
 	    this.InvitationEntity = {};

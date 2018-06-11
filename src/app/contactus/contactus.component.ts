@@ -25,12 +25,23 @@ export class ContactusComponent implements OnInit {
 
 
   ngOnInit() {
+<<<<<<< HEAD
 		this.globals = this.global;
 		if(this.globals.msgflag){
 			this.globals.msgflag=true;
 		} else {
 			this.globals.msgflag=false;
 		}		
+=======
+
+		setTimeout(function(){ 
+			if ($("body").height() < $(window).height()) {
+				$('footer').addClass('footer_fixed');
+			} 
+		}, 1000);
+
+		this.globals.msgflag=false;
+>>>>>>> 01d3473d8f3df5d64f0ea9dadb800f9cfaa601de
     	this.ContactEntity = {};
     if ($("body").height() < $(window).height()) {
       $('footer').addClass('footer_fixed');

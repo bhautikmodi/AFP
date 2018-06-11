@@ -57,10 +57,13 @@
                                             <input type="radio" [disabled]="ksaEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ksaEntity.IsActive" required/>
                                             <label for="role2" >No </label>
                                           </div>
+                                          <div class="inline_btn"  matTooltip="You can’t deactivate KSA as it has been already used in Assessment" [matTooltipPosition]="position.value"> 
                                       <div class="radio_box" *ngIf="ksaEntity.KSAId>0">
                                         <input type="radio" [disabled]="ksaEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ksaEntity.IsActive" required/>
-                                        <label for="role2" data-toggle="tooltip"  title=" You can’t deactivate KSA as it has been already used in Assessment">No </label>
-                                      </div><br>
+                                        <label for="role2" data-toggle="tooltip"  title=" ">No </label>
+                                      </div>
+                                      </div>
+                                      <br>
                                       <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
                                           <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
                                         </span>                          

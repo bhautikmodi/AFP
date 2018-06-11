@@ -5,10 +5,8 @@
         <h2>AFP Corporate Training Skills Assessment</h2>
         <h1>Contact Us</h1>
         <div class="row">
-          <div class="col-md-4 col-sm-6">
-			<div class="map_contact">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.3431410917483!2d-77.09410588464702!3d38.98466427955729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c9654ba4e92b%3A0x587b5fbf4ca25c50!2sAssociation+For+Financial+Professionals!5e0!3m2!1sen!2sin!4v1522071992853" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
+          <div class="col-md-4 col-sm-12">
+			
             <div class="contact_pageblock">
               <div class="contact_address"> <i class="fa fa-map-marker"></i>
                 <p>4520 East-West Highway, Suite 800<br>
@@ -23,17 +21,18 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8 col-sm-6 form_bg">
+          <div class="col-md-8 col-sm-12">
             <!--<div class="map_contact">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.3431410917483!2d-77.09410588464702!3d38.98466427955729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c9654ba4e92b%3A0x587b5fbf4ca25c50!2sAssociation+For+Financial+Professionals!5e0!3m2!1sen!2sin!4v1522071992853" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 						</div>-->
+			  <div class="form_bg">
 						<div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
 							{{globals.message}}
 					 </div>
 			  <form class="form-validate" role="form" #ContactForm="ngForm" (ngSubmit)="addContact(ContactForm)">
 				<div class="row">
-				  <div class="col-md-6 col-sm-12">
+				  <div class="col-md-6 col-sm-6">
 						<div class="form-group">
 							<label><span>*</span>First Name </label>
 							<input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="ContactEntity.FirstName" name="FirstName" pattern="[a-zA-Z' ]{2,100}"
@@ -44,7 +43,7 @@
 					</span>
 						</div>
 				  </div>
-				  <div class="col-md-6 col-sm-12">
+				  <div class="col-md-6 col-sm-6">
 						<div class="form-group">
 							<label><span>*</span>Last Name </label>
 						 <input type="text" class="form-control" #LastName="ngModel" [(ngModel)]="ContactEntity.LastName" name="LastName" pattern="[a-zA-Z' ]{2,100}"
@@ -57,7 +56,7 @@
 				  </div>
 					<div class="clearfix"></div>
 					
-				  <div class="col-md-6 col-sm-12">
+				  <div class="col-md-6 col-sm-6">
 						<div class="form-group">
 							<label><span>*</span>Email </label>
 							 <input type="Email" class="form-control" #EmailAddress="ngModel" email [disabled]="ContactEntity.UserId>0"
@@ -77,7 +76,7 @@
 																	</span> 
 						</div>
 				  </div>
-				  <div class="col-md-6 col-sm-12">
+				  <div class="col-md-6 col-sm-6">
 						<div class="form-group ">
 							<label><span class="required">*</span>Company Name</label>
 <input type="text" class="form-control" #CompanyName="ngModel" [disabled]="ContactEntity.UserId>0"	[(ngModel)]="ContactEntity.CompanyName" class="form-control" name="CompanyName" pattern="[a-zA-Z' ]{2,100}"  maxlength="100"
@@ -108,9 +107,14 @@ Please enter valid company name
 				
 				<button class="next_btn nextBtn" type="submit"><span>Submit</span></button>
 			  </form>
-			  
+			  </div>
           </div>
-        </div>
+			<div class="clearfix"></div>
+			<div class="col-md-12 col-sm-12">
+			<div class="map_contact">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.3431410917483!2d-77.09410588464702!3d38.98466427955729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c9654ba4e92b%3A0x587b5fbf4ca25c50!2sAssociation+For+Financial+Professionals!5e0!3m2!1sen!2sin!4v1522071992853" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>  </div>
       </div>
     </div>
   </div>

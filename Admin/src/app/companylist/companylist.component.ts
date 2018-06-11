@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '../globals';
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 declare var $: any;
 
 
@@ -18,7 +20,8 @@ declare var $: any;
   styleUrls: ['./companylist.component.css']
 })
 export class CompanylistComponent implements OnInit {
-
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	companyList;
 	deleteEntity;
 	msgflag;

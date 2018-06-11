@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 declare var AmCharts: any;
+declare var $: any;
 //declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-thankyou',
@@ -21,6 +22,12 @@ export class ThankyouComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
+
+    setTimeout(function(){ 
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
+    }, 1000);
     //new PerfectScrollbar('.domain_desc .accordion_scroll');
     this.assessmentData = {};
     let id = this.route.snapshot.paramMap.get('id');    

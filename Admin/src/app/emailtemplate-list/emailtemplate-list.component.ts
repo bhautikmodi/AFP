@@ -6,6 +6,8 @@ import { EmailtemplateService } from '../services/emailtemplate.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 import { forEach } from '@angular/router/src/utils/collection';
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 declare var $: any;
 
 @Component({
@@ -15,7 +17,9 @@ declare var $: any;
   styleUrls: ['./emailtemplate-list.component.css']
 })
 export class EmailtemplateListComponent implements OnInit {
-  EmailList;
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
+  	EmailList;
 	deleteEntity;
 	msgflag;
 	message;

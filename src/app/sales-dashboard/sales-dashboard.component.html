@@ -50,7 +50,9 @@
         <button (click)="clearForm(SalesDashboardForm)" class="red_btn margin_btn_15"><span>Clear</span></button>
       
       </div>
-      <a routerLink="/viewreport" class="red_btn margin_bottom pull-right"><span>View Report</span></a>
+		<div class="col-md-6 col-sm-6">
+      <a routerLink="/viewreport" class="red_btn margin_btn_15 pull-right"><span>View Report</span></a>
+		</div>
       </form>
     </div>
   </div>
@@ -69,7 +71,7 @@
             <strong>Company Name : </strong>{{UserL.Name}}<br>
             <strong>Last Assessment : </strong><span *ngIf="UserL.lastdate!=NULL">{{UserL.lastdate | date :'MM/dd/yyyy'}}</span><span *ngIf="UserL.lastdate==NULL">NA</span><br>
             <strong>Total Assessment : </strong>{{UserL.totalass}}</p>
-            
+            <button class="arrow_btn pull-right" (click)="clickid()" type="button"><i class="fa fa-angle-right"></i></button>
           </div>
       </div></div>
       
@@ -84,7 +86,7 @@
               </div>
               </div>
         <div class="clearfix visible-xs"></div>
-       <button class="next_btn pull-right" [disabled]="vardisabled" type="button"  (click)="clickid()"><span>Next</span></button>
+    <button class="next_btn pull-right" [disabled]="vardisabled" type="button"  (click)="clickid()"><span>Next</span></button>
       </div> 
     </div>
   </div>

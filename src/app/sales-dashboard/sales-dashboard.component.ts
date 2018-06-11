@@ -157,20 +157,20 @@ export class SalesDashboardComponent implements OnInit {
    
   
   }
-  addclass(i){
+//   addclass(i){
 	  
-	  $('.user_box').removeClass('active');
-	  $('#cbox'+i).addClass('active');
-	  var id = $('.user_box.active input').val();
-	if(id>0)
-	{
-		this.vardisabled=false;
-	}
-	else{
-		this.vardisabled=true;
-	}
-		//e.currentTarget.addClass('active');
-	}
+// 	  $('.user_box').removeClass('active');
+// 	  $('#cbox'+i).addClass('active');
+// 	  var id = $('.user_box.active input').val();
+// 	if(id>0)
+// 	{
+// 		this.vardisabled=false;
+// 	}
+// 	else{
+// 		this.vardisabled=true;
+// 	}
+// 		//e.currentTarget.addClass('active');
+// 	}
 	clearForm(SalesDashboardForm) {
 		this.SalesDashboardEntity = {};
 		this.SalesDashboardEntity.UserId = '';

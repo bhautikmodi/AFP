@@ -5,13 +5,10 @@ import { IndustryService } from '../services/industry.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
-<<<<<<< HEAD
 declare var $: any;
 
-=======
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material';
->>>>>>> 01d3473d8f3df5d64f0ea9dadb800f9cfaa601de
 @Component({
 	selector: 'app-industry',
 	providers: [IndustryService, CommonService],

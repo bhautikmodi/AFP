@@ -24,9 +24,7 @@ export class ResetpassComponent implements OnInit {
 
 
   ngOnInit() {
-<<<<<<< HEAD
 	this.globals = this.global;
-=======
 
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {
@@ -34,7 +32,6 @@ export class ResetpassComponent implements OnInit {
 		} 
 	  }, 1000);
 
->>>>>>> 01d3473d8f3df5d64f0ea9dadb800f9cfaa601de
     if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }

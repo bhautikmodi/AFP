@@ -46,12 +46,12 @@
 										  <td *ngIf="Course.IsActive=='1'">Yes</td>
 											<td *ngIf="Course.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                      <div class="inline_btn"  matTooltip="Edit" [matTooltipPosition]="position.value">   
+                      <div class="inline_delbtn"  matTooltip="Edit" [matTooltipPosition]="position.value">   
                           <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" 
                           routerLink="/course/edit/{{Course.CourseId}}">
                           <i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
-                        <div class="inline_btn"  matTooltip="Delete" [matTooltipPosition]="position.value"> 
+                        <div class="inline_delbtn"  matTooltip="Delete" [matTooltipPosition]="position.value"> 
                               <button *ngIf="permissionEntity.Delete==1" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
                           
                           (click)="deleteCourse(Course)">

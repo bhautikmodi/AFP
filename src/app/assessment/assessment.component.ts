@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 declare var $,PerfectScrollbar: any;
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
-
-
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
+declare var $: any;   
 @Component({
   selector: 'app-assessment',
   providers: [ AssessmentService ],
@@ -13,7 +14,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./assessment.component.css']
 })
 export class AssessmentComponent implements OnInit {
-
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
   ksaList;
   totalksa;
   addprogess;

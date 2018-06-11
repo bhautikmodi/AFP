@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DomainService } from '../services/domain.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material';
 declare var $: any;
 @Component({
   selector: 'app-domain',
@@ -15,6 +17,8 @@ declare var $: any;
 
 export class DomainComponent implements OnInit 
 {	
+	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+	position = new FormControl(this.positionOptions[1]);
 	domainEntity;
 	submitted;
 	btn_disable;
@@ -26,7 +30,7 @@ export class DomainComponent implements OnInit
 		
 	}
   ngOnInit() 
-  {$('[data-toggle="tooltip"]').tooltip();
+  {
 	if(this.globals.authData.RoleId==4){		
 		this.default();
 	} else {

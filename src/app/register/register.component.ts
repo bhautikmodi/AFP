@@ -43,7 +43,12 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
-		 
+			setTimeout(function(){ 
+				if ($("body").height() < $(window).height()) {
+					$('footer').addClass('footer_fixed');
+				} 
+			}, 100);
+				
    
  	
 	 let id = this.route.snapshot.paramMap.get('id');

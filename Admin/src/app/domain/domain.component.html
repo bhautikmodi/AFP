@@ -44,12 +44,13 @@
                 <input type="radio"   [disabled]="domainEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="domainEntity.IsActive" required/>
                 <label for="role2">No </label>
               </div>
-             
+              <div class="inline_btn"  matTooltip="You can’t deactivate Domain as it has been already used in Assessment and assigned to Competencies" [matTooltipPosition]="position.value"> 
               <div class="radio_box" *ngIf="domainEntity.DomainId>0"    >
              
               <input type="radio"    [disabled]="domainEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="domainEntity.IsActive" required/>
-              <label for="role2" data-toggle="tooltip"  title="You can’t deactivate Domain as it has been already used in Assessment and assigned to Competencies">No </label>
+              <label for="role2">No </label>
                
+            </div>
             </div>
             <br>
             <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
@@ -60,12 +61,8 @@
           <div class="clearfix"></div>
           <div class="form-btn">
             <button type="submit" [disabled]="btn_disable || domainEntity.isdisabled==1" class="btn sub-btn"><span>Submit</span></button>
-            <button type="button"  matTooltip="Info about the action" *ngIf="domainEntity.DomainId==0" (click)="clearForm(domainForm)" class="btn res-btn"><span>Clear</span></button>
-            <button mat-raised-button
-            matTooltip="Info about the action"
-            aria-label="Button that displays a tooltip when focused or hovered over">
-      Action
-    </button>
+            <button type="button"   *ngIf="domainEntity.DomainId==0" (click)="clearForm(domainForm)" class="btn res-btn"><span>Clear</span></button>
+            
         </div>
                           </form>
                       </div>

@@ -15,13 +15,12 @@
               </div>
             </div>
           </div>
-          <!--end user image section--> 
         </li>
-        <li [ngClass]="{'selected':(globals.currentLink == '/')||(globals.currentLink == '/dashboard')}"> <a (click)="menuopen('/dashboard')" style="cursor:pointer;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
+        <li (click)="dash()" class="test" id="dash" [ngClass]="{'selected':(globals.currentLink == '/')||(globals.currentLink == '/dashboard')}"> <a (click)="menuopen('/dashboard')" style="cursor:pointer;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
         
 		
 
-		<li [ngClass]="{'selected':(globals.currentLink == '/users/list')||(globals.currentLink == '/users/edit')}"> 
+		<!--<li [ngClass]="{'selected':(globals.currentLink == '/users/list')||(globals.currentLink == '/users/edit')}"> 
       <a (click)="menuopen('/users/list')" style="cursor:pointer;"><i class="fa fa-users fa-fw"></i> Users</a> </li>
       <li [ngClass]="{'selected':(globals.currentLink == '/company/list')||(globals.currentLink == '/company/edit')}"> <a (click)="menuopen('/company/list')" style="cursor:pointer;"><i class="fa fa-building-o fa-fw"></i> Companies</a> </li>
         <li [ngClass]="{'selected':(globals.currentLink == '/domain/list')||(globals.currentLink == '/domain/add')||(globals.currentLink == '/domain/edit')}"> <a (click)="menuopen('/domain/list')" style="cursor:pointer;"><i class="fa fa-sitemap fa-fw"></i> Domains</a> </li>
@@ -58,7 +57,6 @@
                     <a (click)="menuopen('/courselevel/list')" style="cursor:pointer;"><i class="fa fa-level-up fa-fw"></i> Course Level</a>
                    </li>
                </ul>
-                    <!-- second-level-items -->
      </li>
      <li id="inner_dropdown">
       <a href="#"><i class="fa fa-envelope-o fa-fw"></i> Email<span class="fa fa-angle-right"></span></a>
@@ -71,12 +69,22 @@
             </li>
     
            </ul>
-                <!-- second-level-items -->
+ </li>  -->
+
+<li [ngClass]="{'inner_dropdown':menu.check}" id="sel{{i+1}}" class="test company" (click)="addclass(i+1)" *ngFor="let menu of menuList; let i=index"> 
+  <a *ngIf="!menu.check" (click)="menuopen(menu.Url)" style="cursor:pointer;"><i class="{{menu.Icon}}"></i> {{menu.DisplayName}}</a>
+  <a *ngIf="menu.check" ><i class="fa fa-key fa-fw"></i> {{menu.DisplayName}}<span class="fa fa-angle-right"></span></a>
+      <ul *ngIf="menu.check" id="nav{{i+1}}" class="nav nav-second-level display_block">
+        <li (click)="addsubclass(i+1,j)" class="test" id=slc{{i+1}}{{j}} *ngFor="let child of menu.child; let j=index">
+          <a (click)="menuopen(child.Url)" style="cursor:pointer;"><i class="{{child.Icon}}"></i> {{child.DisplayName}}</a>
+        </li>
+       </ul>
  </li> 
- <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
- <li id="inner_dropdown" *ngIf="globals.authData.RoleId==4" >
+
+ <!-- <li *ngIf="globals.authData.RoleId==4" [ngClass]="{'selected':(globals.currentLink == '/rolepermission')}"> <a (click)="menuopen('/rolepermission')" style="cursor:pointer;"><i class="fa fa-user-circle fa-fw"></i> Roles Permission</a> </li>
+ <li class="inner_dropdown" (click)="addclass(0)" *ngIf="globals.authData.RoleId==4" >
   <a href="#"><i class="fa fa-key fa-fw"></i> Log<span class="fa fa-angle-right"></span></a>
-      <ul class="nav nav-second-level display_block">
+      <ul id="nav0" class="nav nav-second-level display_block">
         <li [ngClass]="{'selected':(globals.currentLink == '/login-log')}">
           <a (click)="menuopen('/login-log')" style="cursor:pointer;"><i class="fa fa-key fa-fw"></i> Login/Logout Log</a>
         </li>
@@ -87,8 +95,8 @@
           <a (click)="menuopen('/email-log')" style="cursor:pointer;"><i class="fa fa-key fa-fw"></i> Email Log</a>
         </li>
        </ul>
-            <!-- second-level-items -->
-</li>  
+</li> -->
+ 
       </ul>
       <!-- end side-menu --> 
     </div>

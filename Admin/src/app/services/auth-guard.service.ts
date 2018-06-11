@@ -3,13 +3,14 @@ import { CanActivate,RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Globals } from '.././globals';
-
+declare var $: any;
 @Injectable()
 export class AuthGuard implements CanActivate {
 
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
+
 	  if(this.authService.isLoggedIn()==true){
 			if(state.url.split('/')[2] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];

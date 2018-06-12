@@ -47,10 +47,10 @@
                                                         <input type="radio" [disabled]="IndustryEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
                                                         <label for="role2" >No </label>
                                                       </div>
-                                                      <div class="inline_btn"  matTooltip="You can’t deactivate Industry as it has been already used in Companies" [matTooltipPosition]="position.value"> 
+                                                      <div class="inline_btn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can’t deactivate Industry as it has been already used in Companies" > 
                                                   <div class="radio_box" *ngIf="IndustryEntity.IndustryId>0">
                                                     <input type="radio" [disabled]="IndustryEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
-                                                    <label for="role2" data-toggle="tooltip"  title=" ">No </label>
+                                                    <label for="role2">No </label>
                                                   </div>
                                                   </div>
                                                   <br>

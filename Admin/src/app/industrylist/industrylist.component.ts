@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IndustryService } from '../services/industry.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
+
 declare var $: any;
 
 @Component({
@@ -16,8 +15,7 @@ declare var $: any;
   styleUrls: ['./industrylist.component.css']
 })
 export class IndustrylistComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
 	IndustryList;
 	deleteEntity;
 	msgflag;
@@ -28,6 +26,10 @@ export class IndustrylistComponent implements OnInit {
  constructor( private http: Http,private global: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
 	this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){

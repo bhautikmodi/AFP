@@ -6,8 +6,7 @@ import { CompetencyAreaService } from '../services/competency-area.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 declare var $: any;
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
+
 @Component({
   selector: 'app-competency-area-list',
 	providers: [ CompetencyAreaService,CommonService ],
@@ -15,8 +14,6 @@ import {TooltipPosition} from '@angular/material';
   styleUrls: ['./competency-area-list.component.css']
 })
 export class CompetencyAreaListComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
 	areaList;
 	deleteEntity;
 	msgflag;
@@ -32,6 +29,10 @@ export class CompetencyAreaListComponent implements OnInit {
   }
 
 	ngOnInit() { 
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){

@@ -6,9 +6,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
 declare var $: any;
-
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
 @Component({
 	selector: 'app-courselevel',
 	providers: [CourselevelService, CommonService],
@@ -16,8 +13,7 @@ import {TooltipPosition} from '@angular/material';
 	styleUrls: ['./courselevel.component.css']
 })
 export class CourselevelComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+	
 	CourseLevelEntity;
 	submitted;
 	btn_disable;
@@ -26,6 +22,10 @@ export class CourselevelComponent implements OnInit {
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

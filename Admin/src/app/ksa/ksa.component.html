@@ -57,10 +57,10 @@
                                             <input type="radio" [disabled]="ksaEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ksaEntity.IsActive" required/>
                                             <label for="role2" >No </label>
                                           </div>
-                                          <div class="inline_btn"  matTooltip="You can’t deactivate KSA as it has been already used in Assessment" [matTooltipPosition]="position.value"> 
+                                          <div class="inline_btn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can’t deactivate KSA as it has been already used in Assessment" > 
                                       <div class="radio_box" *ngIf="ksaEntity.KSAId>0">
                                         <input type="radio" [disabled]="ksaEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="ksaEntity.IsActive" required/>
-                                        <label for="role2" data-toggle="tooltip"  title=" ">No </label>
+                                        <label for="role2"  title=" ">No </label>
                                       </div>
                                       </div>
                                       <br>

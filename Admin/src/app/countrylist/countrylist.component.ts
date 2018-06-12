@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../services/country.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
+
 declare var $: any;
 @Component({
   selector: 'app-countrylist',
@@ -15,8 +14,7 @@ declare var $: any;
   styleUrls: ['./countrylist.component.css']
 })
 export class CountrylistComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
     CountryList;
 	deleteEntity;
 	msgflag;
@@ -29,6 +27,10 @@ export class CountrylistComponent implements OnInit {
 
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
 	this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){

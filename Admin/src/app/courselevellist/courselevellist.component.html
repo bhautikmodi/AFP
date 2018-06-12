@@ -48,18 +48,18 @@
 										  <td *ngIf="Courselevel.IsActive=='1'">Yes</td>
 											<td *ngIf="Courselevel.IsActive=='0'">No</td>
                       <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-                        <div class="inline_delbtn"  matTooltip="Edit" [matTooltipPosition]="position.value">     
+                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="Edit" >     
                             <button *ngIf="permissionEntity.AddEdit==1" type="button"  class="btn btn-default btn-rounded btn-sm"
                             routerLink="/courselevel/edit/{{Courselevel.ConfigurationId}}">
                             <i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
-                        <div class="inline_delbtn"  matTooltip="You can’t delete Courselevel as it is assigned to one of the Courses and used in Assessment already" [matTooltipPosition]="position.value">
+                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can’t delete Courselevel as it is assigned to one of the Courses and used in Assessment already" >
                             <button *ngIf="(permissionEntity.Delete==1) && (Courselevel.isdisabled>0)" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
                             [disabled]="Courselevel.isdisabled>0"
                             (click)="deleteCourselevel(Courselevel)">
                             <i class="fa fa-times" aria-hidden="true"></i></button>
                         </div>  
-                        <div class="inline_delbtn"  matTooltip="Delete" [matTooltipPosition]="position.value">   
+                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="Delete">   
                           <button *ngIf="(permissionEntity.Delete==1) && (Courselevel.isdisabled==0)" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
                           [disabled]="Courselevel.isdisabled>0"
                               (click)="deleteCourselevel(Courselevel)">

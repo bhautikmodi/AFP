@@ -5,8 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PlaceholderService } from '../services/placeholder.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
 declare var $: any;
 
 @Component({
@@ -16,8 +14,7 @@ declare var $: any;
   styleUrls: ['./placeholder-list.component.css']
 })
 export class PlaceholderListComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
 	placeholderList;
 	deleteEntity;
 	msgflag;
@@ -33,6 +30,10 @@ export class PlaceholderListComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
 	this.globals = this.global;
 	if(this.globals.authData.RoleId!=4){
 		this.router.navigate(['/access-denied']);

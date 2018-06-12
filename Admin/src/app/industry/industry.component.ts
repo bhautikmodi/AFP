@@ -6,9 +6,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
 declare var $: any;
-
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
 @Component({
 	selector: 'app-industry',
 	providers: [IndustryService, CommonService],
@@ -16,8 +13,7 @@ import {TooltipPosition} from '@angular/material';
 	styleUrls: ['./industry.component.css']
 })
 export class IndustryComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
 	IndustryEntity;
 	submitted;
 	btn_disable;
@@ -27,6 +23,10 @@ export class IndustryComponent implements OnInit {
 
 
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

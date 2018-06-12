@@ -5,8 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { RatingScaleService } from '../services/rating-scale.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
 declare var $: any;
 
 @Component({
@@ -16,8 +14,7 @@ declare var $: any;
   styleUrls: ['./rating-scale-list.component.css']
 })
 export class RatingScaleListComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
+
 	ratingList;
 	deleteEntity;
 	msgflag;
@@ -32,6 +29,10 @@ export class RatingScaleListComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
 	this.globals = this.global;
 		this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){

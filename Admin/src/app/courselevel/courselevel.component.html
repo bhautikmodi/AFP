@@ -74,7 +74,7 @@
 									</div>
 									<div class="radio_box" >
 									  <input type="radio" [disabled]="CourseLevelEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
-									  <label for="role2"data-toggle="tooltip"  title="CourseLevel can't be deactive as it is already assigned to an active Courses">No </label>
+									  <label for="role2" data-toggle="tooltip" data-placement="bottom"  title="CourseLevel can't be deactive as it is already assigned to an active Courses">No </label>
 									</div>
 									<!-- <div class="radio_box" ngIf="CourseLevelEntity.ConfigurationId==0">
 											<input type="radio" [disabled]="CourseLevelEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>

@@ -5,8 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CompetencyAreaService } from '../services/competency-area.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material';
 declare var $: any;
 declare var CKEDITOR: any;
 
@@ -18,8 +16,6 @@ declare var CKEDITOR: any;
 })
 
 export class CompetencyAreaComponent implements OnInit {
-	positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-	position = new FormControl(this.positionOptions[1]);
 	areaEntity;
 	domainList;
 	submitted;
@@ -32,6 +28,10 @@ export class CompetencyAreaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		
 		if(this.globals.authData.RoleId==4){		
 			this.default();

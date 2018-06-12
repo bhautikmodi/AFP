@@ -11,7 +11,7 @@
     <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
       <div class="col-md-3 col-sm-6">
         <div class="form-group">
-          <label><span>*</span>Company</label>
+          <label><span>*</span>Search User</label>
           <!-- <select class="form-control" #CompanyId="ngModel" 
           [(ngModel)]="SalesDashboardEntity.CompanyId"
                name="CompanyId"  >  
@@ -20,7 +20,7 @@
                  ngSelected="SalesDashboardEntity.CompanyId==Company.CompanyId">{{Company.Name}}</option>
                </select> -->
 
-               <ng-select [options]="CompanyList"   placeholder="No selected" #CompanyId="ngModel" (ngModel)="SalesDashboardEntity.CompanyId" (selected)="onSelected($event)">
+               <ng-select [options]="CompanyList"   placeholder="Please Select Company" #CompanyId="ngModel" (ngModel)="SalesDashboardEntity.CompanyId" (selected)="onSelected($event)">
               </ng-select>
 <!--            
            <select class="form-control select2" #CompanyId="ngModel (change)="getUserList(SalesDashboardForm)"

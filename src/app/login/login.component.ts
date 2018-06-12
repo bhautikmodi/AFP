@@ -17,12 +17,12 @@ loginEntity;
 	btn_disable;
 	type;
 	invalid;
-	globals;
+	//globals;
  
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,private global: Globals) { }
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,private globals: Globals) { }
 
   ngOnInit() {
-	this.globals = this.global;
+	//this.globals = this.global;
 
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {

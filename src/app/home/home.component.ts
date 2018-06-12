@@ -20,7 +20,6 @@ ngOnInit() {
 		} 
 	}, 1000);
 	
-	debugger
 	  
 	  $('.bxslider').bxSlider({
 		 mode: 'fade',

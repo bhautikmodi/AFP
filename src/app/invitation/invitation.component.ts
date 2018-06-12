@@ -13,18 +13,18 @@ declare var $: any;
 })
 export class InvitationComponent implements OnInit {
 
-constructor( private http: Http,private global: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
  InvitationEntity;
 	submitted;
 	btn_disable;
 	header;
 	type;
-	globals;
+	//globals;
 	
 
   ngOnInit() 
   {
-	this.globals = this.global;
+	//this.globals = this.global;
 
 $('body').on('keyup', 'input.code', function(e){
       if($(this).val().length == $(this).attr('maxlength')){

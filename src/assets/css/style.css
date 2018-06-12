@@ -116,6 +116,8 @@ ng-select > div > div.single {border-radius: 5px;}
 ng-select > div > div.single > div.placeholder{font-family:"GothamNarrow-book"; font-size:14px!important;  border-radius: 5px;  color: #555!important;} 
 ng-select > div > div.single > div.toggle{color:#333!important; border-radius: 5px;}
 select-dropdown > div.below,select-dropdown > div.above{top: 32px!important; z-index: 99!important;}
+.single .toggle{background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; content: ""; }
+ng-select > div > div.single > div.toggle{color: transparent!important;}
 
 .form-group label{line-height:15px; color: #1685ad; font-size: 15px; font-family:"GothamNarrow-medium"; font-weight:normal; margin-bottom: 10px;} 
 .form-group label span{color:red;}

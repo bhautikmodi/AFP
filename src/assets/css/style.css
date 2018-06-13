@@ -60,7 +60,7 @@ header .four_strip{ background: #a41c36; height: 260px!important;}
 header{ position: relative; z-index: 999; width: 100%; padding: 0;}
 header .logo{width: 80%;}
 nav{ display:inline-block;}
-.account_menu{ display:block; float: right; position: absolute; right: 30px; top: 145%;}
+.account_menu{ display:block; float: right; position: absolute; right: 30px; top: 145%; z-index:999;}
 .account_menu li{position:relative; display:inline-block; margin-left:10px;}
 .account_menu li a i.fa-angle-double-down{margin-left:5px;}
 .account_menu li a { font-family: "GothamNarrow-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
@@ -358,7 +358,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.home_banner,.home_banner img{ height:1200px;}
 }
 @media (min-width:1900px){
-	.welcome_content{min-height: 1000px;}
+	.welcome_content{min-height: 800px;}
 }
 @media (min-width:1800px){
 	#PreviewModal .modal-dialog{ margin:7% auto;}
@@ -374,6 +374,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	header .two_strip{height: 200px !important;}
 	header .four_strip{height: 210px !important;}
 	.flex-direction-nav { position: absolute; width: 98%;}
+	header.home_page .img_strips{ right:50px;}
 }
 @media (max-width:1340px) and (min-width:992px){
 	.dashboard_section .col-md-3{width:33%;}

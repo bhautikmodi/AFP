@@ -10,8 +10,8 @@
        <form class="form-validate" role="form" #AsmtDetailsForm="ngForm" (ngSubmit)="addAsmtDetails(AsmtDetailsForm)">
           <div class="form-group">
             <label><span>*</span>Assessment Name</label>
-            	<input type="text" class="form-control" #AssessmentName="ngModel" maxlength="100"  name="AssessmentName"
-							pattern="^([a-zA-Z0-9@*#$#!().-\s]{2,100})$"
+            	<input type="text" class="form-control" #AssessmentName="ngModel" maxlength="65"  name="AssessmentName"
+							pattern="^([a-zA-Z0-9@*#$#!().-\s]{2,65})$"
 							[(ngModel)]="AsmtDetailsEntity.AssessmentName" [ngClass]="{red_border: (AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)}" data-toggle="tooltip" data-placement="top" title="Enter the name of the team you are evaluating for core FP&A competencies."  required/>
 						<span class="error_span" *ngIf="(AssessmentName.dirty && AssessmentName.invalid) || (AssessmentName.pristine && submitted)"> 
 							<span *ngIf="AssessmentName.errors.required || (AssessmentName.pristine && submitted)">Please enter Assessment Name</span>

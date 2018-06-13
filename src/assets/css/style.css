@@ -116,6 +116,8 @@ ng-select > div > div.single {border-radius: 5px;}
 ng-select > div > div.single > div.placeholder{font-family:"GothamNarrow-book"; font-size:14px!important;  border-radius: 5px;  color: #555!important;} 
 ng-select > div > div.single > div.toggle{color:#333!important; border-radius: 5px;}
 select-dropdown > div.below,select-dropdown > div.above{top: 32px!important; z-index: 99!important;}
+.single .toggle{background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; content: ""; }
+ng-select > div > div.single > div.toggle{color: transparent!important;}
 
 .form-group label{line-height:15px; color: #1685ad; font-size: 15px; font-family:"GothamNarrow-medium"; font-weight:normal; margin-bottom: 10px;} 
 .form-group label span{color:red;}
@@ -135,8 +137,11 @@ button[disabled]:hover:after,button[disabled]:focus:after, html input[disabled]:
 .red_btn:hover:after,.red_btn:focus:after{width:100%; transition:all 0.8s ease 0s;}
 .red_btn:after {content: ""; background:url(../images/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
 
-.back_btn,.back_btn:hover{ position:relative; right:0px; top:0px; background:#77C5D5; padding:12px 10px 10px 10px; line-height:14px; font-size:14px; color:#072B49; float: right;}
+.back_btn{ position:relative; right:0px; top:0px; background:#77C5D5; padding:12px 10px 10px 10px; line-height:14px; font-size:14px; color:#072B49; float: right;}
 .back_btn i{margin-right:5px;}
+.back_btn span{ position:relative; z-index:9; color:#072B49!important;}
+.back_btn:hover:after,.back_btn:focus:after{width:100%; transition:all 0.8s ease 0s;}
+.back_btn:after {content: ""; background: #55a3b3; position: absolute; right: 0; top: 0; width: 0; height: 100%; transition:all 0.8s ease 0s;}
 
 #submit_Modal .modal-dialog{margin:20% auto; width: 430px;}
 #submit_Modal .modal-footer{text-align:center!important; margin:0;}
@@ -189,7 +194,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .margin_btn_15{ margin-top:25px;}
 
 .dashboard_box{position:relative; width:100%; background:#f4f4f4; border:1px solid #ccc; box-shadow:1px 1px 5px #ccc; margin-bottom:30px; border-radius:5px; height: 92%;}
-.dashboard_box .assess_name{ font-family: "GothamNarrow-Book"; font-size:18px; line-height:20px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54; height: 60px; overflow: hidden; width: 100%; display: table;}
+.dashboard_box .assess_name{ font-family: "GothamNarrow-Book"; font-size:18px; line-height:20px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54; height: 63px; overflow: hidden; width: 100%; display: table;}
 .dashboard_box .assess_name span{display: table-cell; vertical-align: middle;}
 .dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff; height:52px;} 
 .dashboard_box .margin_con{margin-top:95px;}
@@ -329,8 +334,8 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .domain_desc .accordion_scroll{ height:435px; overflow-y: auto; position: relative; display: block; padding-right: 15px;}
 .domain_desc table{margin: 0;}
 .domain_desc table td{ font-size:13px;}
-.domain_desc .nav-tabs{border: 0;}
-.domain_desc .nav-tabs li{ display: block; width: 16.66%; float: left; border: 0;}
+.domain_desc .nav-tabs{ border: 0;}
+.domain_desc .nav-tabs li{ display: block; width: 16.66%; float: left; border: 0; }
 .domain_desc .nav-tabs li a{ display: table-cell; text-align: center; padding: 8px; font-family: "GothamNarrow-medium"; font-size: 15px; line-height: 22px; margin: 0; border-radius: 0; height: 60px; width: inherit; color: #000; background-color: #77C5D5; border:0; border-top: 1px solid #ddd; border-left: 1px solid #ddd; vertical-align:middle;}
 .domain_desc .nav-tabs li:last-child a{ border-right: 1px solid #ddd;}
 .domain_desc .nav-tabs li:hover a,.domain_desc .nav-tabs li.active a{ background: #fff; }
@@ -376,6 +381,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 }
 @media (max-width:1200px) {
 	header .four_strips div{width: 60px;}
+	.domain_desc .nav-tabs li a{height: 85px;}
 }
 @media (min-width: 992px) {
      ul li ul.dropdown-menu {display:block; opacity:0; visibility:hidden;-moz-transform: translateY(24px);-ms-transform: translateY(24px);-o-transform: translateY(24px);transform: translateY(24px);-moz-transition: all .25s ease-out;-ms-transition: all .25s ease-out;-o-transition: all .25s ease-out;transition: all .25s ease-out; }
@@ -399,8 +405,9 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	footer.footer_fixed {position: relative;}
 	.welcome_text { font: normal 40px/45px 'GothamNarrow-Bold';}
 	.welcome_text span.small_text{line-height: 40px;}
-	.welcome_text{padding-top: 170px;}
+	.welcome_text{padding-top: 270px;}
 	footer i{display: none;}
+	.domain_desc .nav-tabs li a{ font-size: 13px; padding: 5px;}
 }
 @media (width:768px) and (height:1024px){
 	header.home_page{ position: relative;}
@@ -429,7 +436,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.flex-direction-nav a:before{font-size: 25px!important;}
 	.assessment_top{ margin: 50px 0 0 0;}
 	h1{ font-size: 35px; line-height: 35px;}
-	.back_btn,.margin_bottom{position: relative; top:-15px}
+	/*.back_btn,.margin_bottom{position: relative; top:-15px}*/
 	br.visible-xs{margin-bottom: 10px;}
 	.general_user_section .h4_nomargin{margin-bottom: 0;}
 	.general_user_section h4{line-height: 25px;}
@@ -443,12 +450,17 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.home_banner .banner_text .title_banner span.title{color:#042a47; font: bold 40px/50px 'GothamNarrow-Bold';}
 	.home_banner .banner_text .title_banner{width: 100%;}
 	.account_menu{top: 40px;}
+	.domain_desc .nav-tabs li{width: 100%;}
+	.domain_desc .nav-tabs li a{display: block; height: auto;}
+	.coontainer_block { display: block;}
 }
 @media (max-width:500px){
 	#submit_Modal .modal-dialog{ width: 90%;}
 	header .four_strips{display: none;}
 	header .logo { width: 180px;}
 	.account_menu li a{padding: 5px; height: auto; font-size: 14px;}
+	.button_6{width: 100%;}
+	.button_6 .pull-right{float:left!important;}
 }
 @media (max-width:400px){
 	.margin_bottom{font-size: 13px; padding: 11px 50px 11px 8px; margin:0 0 10px;}

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/Forms';
 import { HttpModule } from '@angular/http';
+import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
 import { UserService } from '../services/user.service';
@@ -24,7 +25,7 @@ export class UserlistComponent implements OnInit {
 	type;
 	permissionEntity;
 	globals;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
+   constructor(private http: Http,private authService: AuthService, private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {

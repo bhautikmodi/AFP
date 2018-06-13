@@ -9,7 +9,7 @@
             <h1>Sales Dashboard</h1>
           </div>
     <form class="form-validate" role="form" #SalesDashboardForm="ngForm" (ngSubmit)="addSalesDashboard(SalesDashboardForm)">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-5">
         <div class="form-group">
           <label><span>*</span>Search User</label>
           <!-- <select class="form-control" #CompanyId="ngModel" 
@@ -45,12 +45,12 @@
         </div>
       </div> -->
      
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-4 col-xs-6 button_6">
         <button class="next_btn margin_btn_15" type="submit"><span>Filter</span></button>
         <button (click)="clearForm(SalesDashboardForm)" class="red_btn margin_btn_15"><span>Clear</span></button>
       
       </div>
-		<div class="col-md-6 col-sm-6">
+		<div class="col-md-6 col-sm-3 col-xs-6 button_6">
       <a routerLink="/viewreport" class="red_btn margin_btn_15 pull-right"><span>View Report</span></a>
 		</div>
       </form>

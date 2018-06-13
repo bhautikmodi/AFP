@@ -73,7 +73,7 @@
 
 <li [ngClass]="{'inner_dropdown':menu.check}" id="sel{{i+1}}" class="test {{menu.SelectedClass}}" (click)="addclass(i+1)" *ngFor="let menu of menuList; let i=index"> 
   <a *ngIf="!menu.check" (click)="menuopen(menu.Url)" style="cursor:pointer;"><i class="{{menu.Icon}}"></i> {{menu.DisplayName}}</a>
-  <a *ngIf="menu.check" ><i class="{{menu.Icon}}"></i> {{menu.DisplayName}}<span class="fa fa-angle-right"></span></a>
+  <a *ngIf="menu.check" ><i class="fa fa-key fa-fw"></i> {{menu.DisplayName}}<span class="fa fa-angle-right"></span></a>
       <ul *ngIf="menu.check" id="nav{{i+1}}" class="nav nav-second-level display_block">
         <li (click)="addsubclass(i+1,j)" class="test {{child.SelectedClass}}" id=slc{{i+1}}{{j}} *ngFor="let child of menu.child; let j=index">
           <a (click)="menuopen(child.Url)" style="cursor:pointer;"><i class="{{child.Icon}}"></i> {{child.DisplayName}}</a>

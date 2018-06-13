@@ -68,13 +68,7 @@ a.disabled {
         transform: rotate(360deg);
     }
 }
-.error_span {
-    color: red;
-    font-size: 12px;
-    font-weight: normal;
-    font-family: "GothamNarrow-Book";
-    line-height: 11px;
-}
+
 .tooltip_inline{display: inline-block;}
 .tooltip_inline button[disabled]{cursor: default; opacity: 1; pointer-events: none;}
 /* .error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;} */

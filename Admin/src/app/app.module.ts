@@ -178,6 +178,22 @@ import {SelectModule} from 'ng-select';
         component : DomainListComponent,
         canActivate : [AuthGuard]
       },
+
+
+      {
+        path : 'remaining',
+        component : RemainingComponent,
+		canActivate : [AuthGuard] 
+      },
+      
+	  {
+        path : 'remaining/list',
+        component : RemaininglistComponent,
+		  canActivate : [AuthGuard] 
+      },
+
+
+
       {
         path : 'competency-area/add',
         component : CompetencyAreaComponent,

@@ -19,10 +19,19 @@ export class ResetpassComponent implements OnInit {
 	btn_disable;
 	header;
 	same;
+	//globals;
    constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ResetpassService:ResetpassService) { }
 
 
   ngOnInit() {
+	//this.globals = this.global;
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 1000);
+
     if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }

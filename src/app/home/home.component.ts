@@ -12,7 +12,14 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 Disinv;
  constructor( private http: Http,private globals: Globals,  private HomeService: HomeService) { }
-ngOnInit() {debugger
+ngOnInit() {
+	
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+			$('footer').addClass('footer_fixed');
+		} 
+	}, 1000);
+	
 	  
 	  $('.bxslider').bxSlider({
 		 mode: 'fade',

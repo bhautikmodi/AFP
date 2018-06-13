@@ -6,6 +6,7 @@ import { DomainService } from '../services/domain.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 
+declare var $: any;
 @Component({
   selector: 'app-domain',
   providers: [ DomainService,CommonService ],
@@ -14,7 +15,7 @@ import { Globals } from '.././globals';
 })
 
 export class DomainComponent implements OnInit 
-{	
+{
 	domainEntity;
 	submitted;
 	btn_disable;
@@ -26,7 +27,11 @@ export class DomainComponent implements OnInit
 		
 	}
   ngOnInit() 
-  {
+  { 
+	  $("body").tooltip({
+	selector: "[data-toggle='tooltip']",
+	container: "body"
+	});
 	if(this.globals.authData.RoleId==4){		
 		this.default();
 	} else {
@@ -48,6 +53,7 @@ export class DomainComponent implements OnInit
   } 
 
   default(){
+	
 	this.domainEntity = {};
 	let id = this.route.snapshot.paramMap.get('id');
 	this.globals.msgflag = false;
@@ -71,7 +77,10 @@ export class DomainComponent implements OnInit
 		this.domainEntity = {};
 		this.domainEntity.DomainId = 0;
 		this.domainEntity.IsActive = '1';
-	}
+	}	
+	setTimeout(function(){
+		$(".domain").addClass("selected");
+	},500); 
   }
 	
 	addDomain(domainForm)

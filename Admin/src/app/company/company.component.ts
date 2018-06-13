@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { CommonService } from '../services/common.service';
-
+declare var $: any;
 @Component({
 	selector: 'app-company',
 	providers: [CompanyService, CommonService],
@@ -22,7 +22,7 @@ export class CompanyComponent implements OnInit {
 	constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CompanyService: CompanyService, private CommonService: CommonService) { }
 
-	ngOnInit() {	this.companyEntity = {};
+	ngOnInit() {$('[data-toggle="tooltip"]').tooltip();	this.companyEntity = {};
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -72,6 +72,9 @@ export class CompanyComponent implements OnInit {
 		this.companyEntity.CompanyId = 0;
 		this.companyEntity.IsActive = '1';
 	}
+	setTimeout(function(){
+		$(".company").addClass("selected");
+	},500);
 	}
 
 	addCompany(companyForm) {

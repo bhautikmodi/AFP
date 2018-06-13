@@ -14,21 +14,26 @@ declare var $: any;
   styleUrls: ['./competency-area-list.component.css']
 })
 export class CompetencyAreaListComponent implements OnInit {
-
 	areaList;
 	deleteEntity;
 	msgflag;
 	message;
 	type;
 	permissionEntity;
+	globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private globals: Globals) 
+		 private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
 	ngOnInit() { 
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
+		this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -61,12 +66,13 @@ export class CompetencyAreaListComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Competency Area per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competency Area",
-					"sInfoFiltered": "(filtered from _MAX_ total Competency Area)",
-					"sInfoEmpty": "Showing 0 to 0 of 0 Competency  Area"
+          "sLengthMenu": "_MENU_ Competencies per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Competencies",
+					"sInfoFiltered": "(filtered from _MAX_ total Competencies)",
+					"sInfoEmpty": "Showing 0 to 0 of 0 Competencies  "
         }
-      });
+	  });
+	  $(".carea").addClass("selected");
     },500); 
 
 	}, 

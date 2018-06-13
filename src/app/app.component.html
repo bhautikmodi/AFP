@@ -9,6 +9,8 @@
         <app-header *ngIf="!globals.headerhome"></app-header> 
         <app-headerhome *ngIf="globals.headerhome"></app-headerhome>
         <router-outlet></router-outlet>
-        <app-footer ></app-footer>
+        <footer [ngClass]="{home_page: globals.footerhome}">
+            <app-footer ></app-footer>
+        </footer>
    
 

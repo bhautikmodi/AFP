@@ -141,6 +141,22 @@ export class InvitationService {
     });		
     return promise;
     }
+    invimsg()
+   {
+   let promise = new Promise((resolve, reject) => {
+     this.http.get(this.globals.baseAPIUrl + 'Invitation/invimsg')
+       .toPromise()
+       .then(
+         res => { // Success
+           resolve(res);
+         },
+         msg => { // Error
+       reject(msg);
+         }
+       );
+   });		
+   return promise;
+   }
   }
  
  

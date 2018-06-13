@@ -5,7 +5,7 @@ import { CourselevelService } from '../services/courselevel.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
-
+declare var $: any;
 @Component({
 	selector: 'app-courselevel',
 	providers: [CourselevelService, CommonService],
@@ -13,6 +13,7 @@ import { CommonService } from '../services/common.service';
 	styleUrls: ['./courselevel.component.css']
 })
 export class CourselevelComponent implements OnInit {
+	
 	CourseLevelEntity;
 	submitted;
 	btn_disable;
@@ -21,6 +22,10 @@ export class CourselevelComponent implements OnInit {
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -62,6 +67,11 @@ export class CourselevelComponent implements OnInit {
 			this.CourseLevelEntity.ConfigurationId = 0;
 			this.CourseLevelEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".clevel").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".clevel").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addCourseLevel(CourseLevelForm) {

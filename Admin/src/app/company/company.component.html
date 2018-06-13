@@ -96,10 +96,12 @@
 									  <input type="radio"  name="IsActive" id="role1" value="1" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
 									  <label for="role1">Yes</label>
 									</div>
-									<div class="radio_box">
-									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
-									  <label for="role2">No </label>
-									</div><br>
+									<div class="radio_box" >
+									  <input type="radio" name="IsActive" [disabled]="companyEntity.isdisabled>0" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="companyEntity.IsActive" required/>
+									  <label for="role2"  class="tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Company can't be deactive as it is already assigned to an active User's profile" >No </label>
+									</div>
+									
+									<br>
 									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
 									  </span>

@@ -21,15 +21,20 @@ export class PlaceholderListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private PlaceholderService: PlaceholderService, private CommonService: CommonService, private globals: Globals) 
+		 private PlaceholderService: PlaceholderService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
   ngOnInit() { 
-
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
+	this.globals = this.global;
 	if(this.globals.authData.RoleId!=4){
 		this.router.navigate(['/access-denied']);
 	  }
@@ -59,7 +64,7 @@ export class PlaceholderListComponent implements OnInit {
 	}
 	
 	default(){
-				//this.globals.msgflag = false;
+	//this.globals.msgflag = false;
 	this.PlaceholderService.getAll()
 	.then((data) => 
 	{ 
@@ -72,7 +77,10 @@ export class PlaceholderListComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Placeholder)",
 					"sInfoEmpty": "Showing 0 to 0 of 0 Placeholder"
         }
-      });
+	  });
+	  $(".placeholder").addClass("selected");
+	  $(".email").addClass("active");
+      $(".placeholder").parent().removeClass("display_block");	
     },500); 
 
 	}, 

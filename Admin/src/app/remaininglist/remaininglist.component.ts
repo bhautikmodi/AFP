@@ -15,11 +15,12 @@ import { RemainingService } from '../services/remaining.service';
 })
 export class RemaininglistComponent implements OnInit {
 	remainingList;
-	constructor(private http: Http, private router: Router, private route: ActivatedRoute, private RemainingService: RemainingService,private globals: Globals) { }
+	globals;
+	constructor(private http: Http, private router: Router, private route: ActivatedRoute, private RemainingService: RemainingService,private global: Globals) { }
 
   ngOnInit()
   {
-	 debugger
+		this.globals = this.global;
 	this.RemainingService.getAll()
 	//.map(res => res.json())
 	.then((data) => 

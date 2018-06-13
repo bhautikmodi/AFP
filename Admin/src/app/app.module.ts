@@ -241,17 +241,6 @@ import {SelectModule} from 'ng-select';
 			component : IndustryComponent,
 			canActivate : [AuthGuard]
 	  },
-
-		{
-        path : 'remaining',
-        component : RemainingComponent,
-		canActivate : [AuthGuard] 
-      },
-	  {
-        path : 'remaining/list',
-        component : RemaininglistComponent,
-		  canActivate : [AuthGuard] 
-      },
 	  {
         path : 'userrole/edit/:id',
         component : UserroleComponent,
@@ -280,11 +269,6 @@ import {SelectModule} from 'ng-select';
 	  {
         path : 'state/edit/:id',
         component : StateComponent,
-		canActivate : [AuthGuard] 
-      },
-	  {
-        path : 'company/add',
-        component : CompanyComponent,
 		canActivate : [AuthGuard] 
       },
 	  {
@@ -350,12 +334,12 @@ import {SelectModule} from 'ng-select';
         canActivate : [AuthGuard]
       },
 	   {
-        path : 'invitation/add',
+        path : 'invite-a-user/add',
         component : InvitationComponent,
         canActivate : [AuthGuard]
       },
       {
-        path : 'invitation/list',
+        path : 'invite-a-user/list',
         component : InvitationlistComponent,
         canActivate : [AuthGuard]
       },

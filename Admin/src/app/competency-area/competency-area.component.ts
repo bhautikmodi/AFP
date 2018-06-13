@@ -28,6 +28,10 @@ export class CompetencyAreaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		
 		if(this.globals.authData.RoleId==4){		
 			this.default();
@@ -82,6 +86,9 @@ export class CompetencyAreaComponent implements OnInit {
 			this.areaEntity.IsActive = '1';
 			this.areaEntity.DomainId = '';
 		}
+		setTimeout(function(){
+			$(".carea").addClass("selected");
+		},500); 
 	}
 
 	addArea(areaForm) {

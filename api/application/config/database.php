@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$active_group = 'Development';
+$active_group = 'default';
 
 $query_builder = TRUE;
 
@@ -141,10 +141,10 @@ $db['production'] = array(
 );
 $db['QA'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'afp',
+	'hostname' => 'QAAFPTool.db.11797364.688.hostedresource.net',
+	'username' => 'QAAFPTool',
+	'password' => 'AFPTool@2018',
+	'database' => 'QAAFPTool',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

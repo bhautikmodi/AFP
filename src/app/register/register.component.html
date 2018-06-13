@@ -110,7 +110,7 @@
 
                 
                 <label>Phone Number (Alternative) </label>
-                <input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl"  pattern="[0-9\-.()+\s]+{3,}" maxlength="13"
+                <input type="text" class="form-control" #PhoneNumberl="ngModel" name="PhoneNumberl"  pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
         [(ngModel)]="RegisterEntity.PhoneNumberl" [ngClass]="{red_border: (PhoneNumberl.dirty && PhoneNumberl.invalid)}"   />
         <span class="error_span" *ngIf="(PhoneNumberl.dirty && PhoneNumberl.invalid)"> 
     
@@ -263,3 +263,4 @@
     </div>
   </div>
 </div>
+

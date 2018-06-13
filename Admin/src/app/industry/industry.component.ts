@@ -5,7 +5,7 @@ import { IndustryService } from '../services/industry.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
-
+declare var $: any;
 @Component({
 	selector: 'app-industry',
 	providers: [IndustryService, CommonService],
@@ -13,6 +13,7 @@ import { CommonService } from '../services/common.service';
 	styleUrls: ['./industry.component.css']
 })
 export class IndustryComponent implements OnInit {
+
 	IndustryEntity;
 	submitted;
 	btn_disable;
@@ -22,6 +23,10 @@ export class IndustryComponent implements OnInit {
 
 
 	ngOnInit() {
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -63,6 +68,11 @@ export class IndustryComponent implements OnInit {
 			this.IndustryEntity.IndustryId = 0;
 			this.IndustryEntity.IsActive = '1';
 		}
+		setTimeout(function(){
+			$(".industry").addClass("selected");
+			$(".gsetting").addClass("active");
+        	$(".industry").parent().removeClass("display_block");	
+		},500);
 	}
 
 	addIndustry(IndustryForm) {

@@ -15,15 +15,22 @@ declare var $: any;
   styleUrls: ['./industrylist.component.css']
 })
 export class IndustrylistComponent implements OnInit {
+
 	IndustryList;
 	deleteEntity;
 	msgflag;
 	message;
 	type;
 	permissionEntity;
- constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
+	globals;
+ constructor( private http: Http,private global: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
+	this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -56,11 +63,14 @@ export class IndustrylistComponent implements OnInit {
 			setTimeout(function(){
 				$('#dataTables-example').dataTable( {
 					"oLanguage": {
-						"sLengthMenu": "_MENU_ Industry per Page",
-						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industry",
-						"sInfoFiltered": "(filtered from _MAX_ total Industry)"
+						"sLengthMenu": "_MENU_ Industries per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ Industries",
+						"sInfoFiltered": "(filtered from _MAX_ total Industries)"
 					}
 				});
+				$(".industry").addClass("selected");
+				$(".gsetting").addClass("active");
+				$(".industry").parent().removeClass("display_block");	
 			},500); 
 	
 		}, 

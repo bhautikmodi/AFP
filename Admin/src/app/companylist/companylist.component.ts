@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '../globals';
+
 declare var $: any;
 
 
@@ -25,10 +26,17 @@ export class CompanylistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
+	globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
+		private CompanyService: CompanyService,private CommonService: CommonService, private global: Globals) { }
 
-		ngOnInit() { 
+		ngOnInit() {
+                $("body").tooltip({
+                    selector: "[data-toggle='tooltip']",
+                    container: "body"
+                });
+
+			this.globals = this.global; 
 			
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
@@ -61,15 +69,18 @@ export class CompanylistComponent implements OnInit {
 		this.globals.isLoading = false;
 
 		this.companyList = data;	
-		setTimeout(function(){
+		setTimeout(function(){			
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Company per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Company",
-					"sInfoFiltered": "(filtered from _MAX_ total Company)"
+          "sLengthMenu": "_MENU_ Companies per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Companies",
+					"sInfoFiltered": "(filtered from _MAX_ total Companies)",
+					retrieve: false
+					
         }
-      });
-    },500); 
+	  });
+	  $(".company").addClass("selected");
+    },100); 
 
 	}, 
 	(error) => 

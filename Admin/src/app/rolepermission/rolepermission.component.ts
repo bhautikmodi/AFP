@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { RolepermissionService } from '../services/rolepermission.service';
 import { Globals } from '.././globals';
+declare var $: any;
 
 @Component({
   selector: 'app-rolepermission',
@@ -17,14 +18,14 @@ export class RolepermissionComponent implements OnInit {
   roleList;
   permissionList;
   btn_disable;
-  
+  globals;
 
-  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, private globals: Globals)
+  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, private global: Globals)
     {		
 
 	  }
   ngOnInit() {
-
+    this.globals = this.global;
     if(this.globals.authData.RoleId!=4){
       this.router.navigate(['/access-denied']);
     }
@@ -36,6 +37,9 @@ export class RolepermissionComponent implements OnInit {
     { 
       this.roleList = data['role'];
       this.permissionList = data['permission'];
+      setTimeout(function(){
+        $(".permission").addClass("selected");
+      },500); 
     }, 
     (error) => 
     {

@@ -72,10 +72,14 @@
 									  <input type="radio"  name="IsActive" id="role1" value="1" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
 									  <label for="role1">Yes</label>
 									</div>
-									<div class="radio_box">
-									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
-									  <label for="role2">No </label>
-									</div><br>
+									<div class="radio_box" >
+									  <input type="radio" [disabled]="CourseLevelEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
+									  <label for="role2" data-toggle="tooltip" data-placement="bottom"  title="CourseLevel can't be deactive as it is already assigned to an active Courses">No </label>
+									</div>
+									<!-- <div class="radio_box" ngIf="CourseLevelEntity.ConfigurationId==0">
+											<input type="radio" [disabled]="CourseLevelEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="CourseLevelEntity.IsActive" required/>
+											<label for="role2">No </label>
+										  </div><br> --><br>
 									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
 										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
 									  </span>

@@ -2,7 +2,7 @@
     <div class="row"> 
       <!--  page header -->
       <div class="col-lg-12">
-        <h1 class="page-header">Industry</h1>
+        <h1 class="page-header">Industries</h1>
       </div>
       <!-- end  page header --> 
     </div>
@@ -40,13 +40,20 @@
 										  <td *ngIf="Industry.IsActive=='1'">Yes</td>
 											<td *ngIf="Industry.IsActive=='0'">No</td>
                     <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
-											<button *ngIf="permissionEntity.AddEdit==1" type="button" title="Edit" class="btn btn-default btn-rounded btn-sm" data-tooltip="Edit" 
-											routerLink="/industry/edit/{{Industry.IndustryId}}">
-											<i class="fa fa-pencil" aria-hidden="true"></i></button>
-											<button *ngIf="permissionEntity.Delete==1" type="button" title="Delete" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
-											data-tooltip="Delete" 
-											(click)="deleteIndustry(Industry)">
-											<i class="fa fa-times" aria-hidden="true"></i></button>
+                      <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="Edit" >  
+                          <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" 
+                          routerLink="/industry/edit/{{Industry.IndustryId}}">
+                          <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                      </div>
+
+                      <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can’t delete Industry as it is assigned to one of the Companies and used in Assessment already" > 
+                          <button *ngIf="(permissionEntity.Delete==1) && (Industry.isdisabled>0)" [disabled]="Industry.isdisabled>0" (click)="deleteIndustry(Industry)" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"> <span class="fa fa-times"></span> </button>
+                      </div>
+                      <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="Delete" > 
+                          <button *ngIf="(permissionEntity.Delete==1)  && (Industry.isdisabled==0)" type="button" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" 
+                          (click)="deleteIndustry(Industry)">
+                          <i class="fa fa-times" aria-hidden="true"></i></button>
+                      </div>
 										</td>
 									</tr>
 									

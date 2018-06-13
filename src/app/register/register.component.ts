@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 	
-	
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 1000);
 	  
 	  
 			this.btn_disable = false;
@@ -43,7 +47,12 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
-		 
+			setTimeout(function(){ 
+				if ($("body").height() < $(window).height()) {
+					$('footer').addClass('footer_fixed');
+				} 
+			}, 100);
+				
    
  	
 	 let id = this.route.snapshot.paramMap.get('id');
@@ -179,7 +188,7 @@ export class RegisterComponent implements OnInit {
 		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
-
+			this.RegisterEntity.RoleId=this.globals.authData.RoleId;
 			this.submitted = false;
 		} else {
 			
@@ -192,7 +201,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
-			{
+			{ debugger
 				//alert('success');
 				this.globals.isLoading = false;
 				this.btn_disable = false;

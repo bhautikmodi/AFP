@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { KsaService } from '../services/ksa.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+
 declare var $: any;
 
 @Component({
@@ -20,14 +21,20 @@ export class KsaListComponent implements OnInit {
 	msgflag;
 	message;
 	permissionEntity;
+	globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private KsaService: KsaService, private CommonService: CommonService, private globals: Globals) 
+		 private KsaService: KsaService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
+	this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -61,12 +68,13 @@ export class KsaListComponent implements OnInit {
 			setTimeout(function(){
 				$('#dataTables-example').dataTable( {
 					"oLanguage": {
-						"sLengthMenu": "_MENU_ KSA per Page",
-						"sInfo": "Showing _START_ to _END_ of _TOTAL_ KSA",
-						"sInfoFiltered": "(filtered from _MAX_ total KSA)",
-						"sInfoEmpty": "Showing 0 to 0 of 0 KSA"
+						"sLengthMenu": "_MENU_ KSAs per Page",
+						"sInfo": "Showing _START_ to _END_ of _TOTAL_ KSAs",
+						"sInfoFiltered": "(filtered from _MAX_ total KSAs)",
+						"sInfoEmpty": "Showing 0 to 0 of 0 KSAs"
 					}
 				});
+				$(".ksa").addClass("selected");
 			},100); 
 	
 		}, 

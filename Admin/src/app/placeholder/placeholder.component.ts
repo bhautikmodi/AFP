@@ -93,6 +93,11 @@ export class PlaceholderComponent implements OnInit {
 			this.placeholderEntity.TableId = '';
 			this.placeholderEntity.ColumnId = '';
 		}
+		setTimeout(function(){
+			$(".placeholder").addClass("selected");
+			$(".email").addClass("active");
+        	$(".placeholder").parent().removeClass("display_block");	
+		},500); 
 	}
 
 	addPlaceholder(placeholderForm) {

@@ -36,22 +36,28 @@
 										  </span>
 								</span>
                                         </div>
-										
-										<div class="form-group col-md-6">
-                                            <label><span class="required">*</span>Active?</label>
-                                            <br>
-									<div class="radio_box">
-									  <input type="radio"  name="IsActive" id="role1" value="1" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
-									  <label for="role1">Yes</label>
-									</div>
-									<div class="radio_box">
-									  <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
-									  <label for="role2">No </label>
-									</div><br>
-									<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
-										<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
-									  </span>
-                                        </div>
+                                        <div class="form-group col-md-6">
+                                                <label><span class="required">*</span>Active?</label>                                    
+                                                  <br>
+                                                  <div class="radio_box">
+                                                    <input type="radio"  name="IsActive" id="role1" value="1" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
+                                                    <label for="role1">Yes</label>
+                                                  </div>
+                                                  <div class="radio_box" *ngIf="IndustryEntity.IndustryId==0">
+                                                        <input type="radio" [disabled]="IndustryEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
+                                                        <label for="role2" >No </label>
+                                                      </div>
+                                                      <div class="inline_btn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can’t deactivate Industry as it has been already used in Companies" > 
+                                                  <div class="radio_box" *ngIf="IndustryEntity.IndustryId>0">
+                                                    <input type="radio" [disabled]="IndustryEntity.isdisabled>0" name="IsActive" id="role2" value="0" #IsActive="ngModel" [(ngModel)]="IndustryEntity.IsActive" required/>
+                                                    <label for="role2">No </label>
+                                                  </div>
+                                                  </div>
+                                                  <br>
+                                                  <span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)"> 
+                                                      <span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select Active Status</span>
+                                                    </span>                          
+                                            </div>
 										<div class="clearfix"></div>
 										<div class="form-btn">
 											<button type="submit" class="btn sub-btn"><span>Submit</span></button>

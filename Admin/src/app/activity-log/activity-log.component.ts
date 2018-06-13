@@ -37,6 +37,9 @@ export class ActivityLogComponent implements OnInit {
                 "sInfoEmpty": "Showing 0 to 0 of 0 Log"
           }
         });
+        $(".activitylog").addClass("selected");
+        $(".log").addClass("active");
+        $(".activitylog").parent().removeClass("display_block");	
         },100); 	
       }, 
       (error) => 

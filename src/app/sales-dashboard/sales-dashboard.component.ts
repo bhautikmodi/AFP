@@ -21,12 +21,21 @@ export class SalesDashboardComponent implements OnInit {
 	btn_disable;
 	header;
 	vardisabled;
+	//globals;
+	p;
 	
   constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private SalesDashboardService: SalesDashboardService) { }
 
 
 	ngOnInit() {
+		//this.globals = this.global;
+
+		setTimeout(function(){ 
+			if ($("body").height() < $(window).height()) {
+			  $('footer').addClass('footer_fixed');
+			} 
+		  }, 1000);
 		
 		this.globals.isLoading = false;
 		
@@ -36,10 +45,8 @@ export class SalesDashboardComponent implements OnInit {
 		$('[data-toggle="tooltip"]').tooltip() ;
 		if ($("body").height() < $(window).height()) {
 			$('footer').addClass('footer_fixed');
-		} else {
-			$('footer').removeClass('footer_fixed');
-		}
-	}, 1000);
+		} 
+	}, 100);
 		
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)
@@ -76,11 +83,11 @@ export class SalesDashboardComponent implements OnInit {
 		this.UserList=[];
 		this.CompanyList=[];
 
-    $('.user_box').click(function(){
+   // $('.user_box').click(function(){
 					
-			$('.user_box').removeClass('active');
-			$(this).addClass('active');
-		});
+			//$('.user_box').removeClass('active');
+			//$(this).addClass('active');
+		//});
 		
 		
 		this.SalesDashboardService.getAllUser()
@@ -153,20 +160,20 @@ export class SalesDashboardComponent implements OnInit {
    
   
   }
-  addclass(i){
+//   addclass(i){
 	  
-	  $('.user_box').removeClass('active');
-	  $('#cbox'+i).addClass('active');
-	  var id = $('.user_box.active input').val();
-	if(id>0)
-	{
-		this.vardisabled=false;
-	}
-	else{
-		this.vardisabled=true;
-	}
-		//e.currentTarget.addClass('active');
-	}
+// 	  $('.user_box').removeClass('active');
+// 	  $('#cbox'+i).addClass('active');
+// 	  var id = $('.user_box.active input').val();
+// 	if(id>0)
+// 	{
+// 		this.vardisabled=false;
+// 	}
+// 	else{
+// 		this.vardisabled=true;
+// 	}
+// 		//e.currentTarget.addClass('active');
+// 	}
 	clearForm(SalesDashboardForm) {
 		this.SalesDashboardEntity = {};
 		this.SalesDashboardEntity.UserId = '';

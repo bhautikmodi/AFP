@@ -8,11 +8,12 @@ import { Globals } from '../globals';
   styleUrls: ['./headerhome.component.css']
 })
 export class HeaderhomeComponent implements OnInit {
-
+  //globals;
   constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
 
   ngOnInit() 
   {
+    //this.globals = this.global;
   }
   home()
   {

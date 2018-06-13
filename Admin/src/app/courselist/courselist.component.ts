@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+
 declare var $: any;
 @Component({
   selector: 'app-courselist',
@@ -13,16 +14,23 @@ declare var $: any;
   styleUrls: ['./courselist.component.css']
 })
 export class CourselistComponent implements OnInit {
+
 	CourseList;
 	deleteEntity;
 	msgflag;
 	message;
 	type;
 	permissionEntity;
- constructor( private http: Http,private globals: Globals, private router: Router, 
+	globals;
+ constructor( private http: Http,private global: Globals, private router: Router, 
 	private CourseService: CourseService,private CommonService: CommonService, private route:ActivatedRoute) { }
 	
 	ngOnInit() { 
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+		});
+		this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -55,11 +63,12 @@ export class CourselistComponent implements OnInit {
 		setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Course per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Course",
-					"sInfoFiltered": "(filtered from _MAX_ total Course)"
+          "sLengthMenu": "_MENU_ Courses per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Courses",
+					"sInfoFiltered": "(filtered from _MAX_ total Courses)"
         }
-      });
+	  });
+	  $(".course").addClass("selected");
     },100); 
 
 	}, 

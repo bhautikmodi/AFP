@@ -20,10 +20,25 @@ export class ContactusComponent implements OnInit {
   submitted1;
 	btn_disable;
 	header;
+	//globals;
   constructor( private http: Http,private globals: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
 
 
   ngOnInit() {
+		//this.globals = this.global;
+		if(this.globals.msgflag){
+			this.globals.msgflag=true;
+		} else {
+			this.globals.msgflag=false;
+		}		
+
+		setTimeout(function(){ 
+			if ($("body").height() < $(window).height()) {
+				$('footer').addClass('footer_fixed');
+			} 
+		}, 1000);
+
+		//this.globals.msgflag=false;
     	this.ContactEntity = {};
     if ($("body").height() < $(window).height()) {
       $('footer').addClass('footer_fixed');
@@ -50,7 +65,7 @@ export class ContactusComponent implements OnInit {
 	
 	}
   }
-  addContact(ContactForm) {debugger
+  addContact(ContactForm) {
     let id = this.route.snapshot.paramMap.get('id');
 	if (id) {
 			this.submitted = false;

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../services/country.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
+
 declare var $: any;
 @Component({
   selector: 'app-countrylist',
@@ -13,17 +14,24 @@ declare var $: any;
   styleUrls: ['./countrylist.component.css']
 })
 export class CountrylistComponent implements OnInit {
+
     CountryList;
 	deleteEntity;
 	msgflag;
 	message;
 	type;
 	permissionEntity;
- constructor( private http: Http,private globals: Globals, private router: Router, 
+	globals;
+ constructor( private http: Http,private global: Globals, private router: Router, 
 	private CountryService: CountryService,private CommonService: CommonService, private route:ActivatedRoute) { }
 
 
   ngOnInit() { 
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
+	this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -60,7 +68,10 @@ export class CountrylistComponent implements OnInit {
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Country",
 					"sInfoFiltered": "(filtered from _MAX_ total Country)"
         }
-      });
+	  });
+	  $(".country").addClass("selected");
+        $(".gsetting").addClass("active");
+        $(".country").parent().removeClass("display_block");	
     },500); 
 
 	}, 

@@ -19,7 +19,7 @@ class Contact_model extends CI_Model
 			
 			$res = $this->db->insert('tblcontactus',$Contact_data);
 			if($res) {
-						return true;
+						return $res;
 					}else{
 					return false;
 					

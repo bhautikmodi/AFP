@@ -67,15 +67,10 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
 	ForgotpasswordComponent,
     LoginComponent,
     ResetpassComponent,
-
     ChangepassComponent,
-
     ChangepassComponent,
-
     AssessmentDetailsComponent,
-
     AssessmentComponent,
-
     ThankyouComponent,
     HomeComponent,
     UserAssessmentDetailsComponent,
@@ -89,17 +84,16 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
     TestAssessmentComponent,
     ListUserAssessmentComponent,
     UserreportComponent,
-    UsercopmanyregisterComponent
-
+	UsercopmanyregisterComponent
 
   ],
   imports: [
     BrowserModule,
 	HttpModule,
 	FormsModule,
+	SelectModule,
 	NgxPaginationModule,
 	HttpClientModule,
-	SelectModule,
 	RouterModule.forRoot([		
 		{
 			path : '',

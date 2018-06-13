@@ -18,14 +18,20 @@ export class CourselevellistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	globals;
 	permissionEntity;
  constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-	private CourselevelService: CourselevelService, private CommonService: CommonService, private globals: Globals) 
+	private CourselevelService: CourselevelService, private CommonService: CommonService, private global: Globals) 
   {
 	
   }
 
   ngOnInit() { 
+		$("body").tooltip({
+			selector: "[data-toggle='tooltip']",
+			container: "body"
+	});
+		this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -61,7 +67,9 @@ export class CourselevellistComponent implements OnInit {
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Course Level",
 					"sInfoFiltered": "(filtered from _MAX_ total Course Level)"
         }
-      });
+      }); $(".clevel").addClass("selected");
+			$(".gsetting").addClass("active");
+			$(".clevel").parent().removeClass("display_block");	
     },500); 
 
 	}, 

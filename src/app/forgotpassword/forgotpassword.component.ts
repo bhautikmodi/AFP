@@ -17,9 +17,18 @@ export class ForgotpasswordComponent implements OnInit {
 	submitted;
 	type;
 	btn_disable;
+	//globals;
  constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
   ngOnInit() {
+	//this.globals = this.global;
+
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+		  $('footer').addClass('footer_fixed');
+		} 
+	  }, 1000);
+
 	if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
     }  
@@ -40,7 +49,7 @@ export class ForgotpasswordComponent implements OnInit {
 			this.globals.isLoading = true;
 			this.ForgotpasswordService.add(this.fgpassEntity)
 			.then((data) => 
-			{debugger
+			{
 				
 				if(data=='Code duplicate')
 				{

@@ -19,11 +19,12 @@ constructor( private http: Http,private globals: Globals, private router: Router
 	btn_disable;
 	header;
 	type;
+	//globals;
 	
 
   ngOnInit() 
   {
-
+	//this.globals = this.global;
 
 $('body').on('keyup', 'input.code', function(e){
       if($(this).val().length == $(this).attr('maxlength')){
@@ -36,9 +37,11 @@ $('body').on('keyup', 'input.code', function(e){
       }
     }); 
 
- if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-    }
+	setTimeout(function(){ 
+		if ($("body").height() < $(window).height()) {
+			$('footer').addClass('footer_fixed');
+		} 
+	}, 1000);
   this.globals.msgflag=false;
 	  this.InvitationEntity = {};
 	    this.InvitationEntity = {};
@@ -78,6 +81,7 @@ $('body').on('keyup', 'input.code', function(e){
 		
 			this.btn_disable = true;
 			 this.globals.isLoading = true;
+			 this.InvitationEntity.Code=this.InvitationEntity.Code.toUpperCase();
 			this.InvitationService.add(this.InvitationEntity)
 			.then((data) => 
 			{ 

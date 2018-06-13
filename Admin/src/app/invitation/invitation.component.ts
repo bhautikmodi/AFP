@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { InvitationService } from '../services/invitation.service';
 import { CommonService } from '../services/common.service';
 import {IOption} from 'ng-select';
+declare var $: any;
 
 @Component({
 	selector: 'app-invitation',
@@ -24,12 +25,14 @@ export class InvitationComponent implements OnInit {
 	companyhide;
 	ComL;
 	isDisabled;
+	globals;
 	// myOptions;
-	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
+	constructor(private http: Http, private global: Globals, private router: Router, private InvitationService: InvitationService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 
-	ngOnInit() {debugger
+	ngOnInit() {
+		this.globals = this.global;
 		// this.myOptions= [
 		// 	{label: 'Belgium', value: 'BE'},
 		// 	{label: 'Luxembourg', value: 'LU'},
@@ -103,6 +106,11 @@ export class InvitationComponent implements OnInit {
 				alert('error');
 			});	
 		}
+		setTimeout(function(){
+			$(".invitation").addClass("selected");
+			$(".email").addClass("active");
+        	$(".invitation").parent().removeClass("display_block");	
+		},500); 
 	}
 
 	addInvitation(InvitationForm) {

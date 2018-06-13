@@ -22,11 +22,16 @@ export class InvitationlistComponent implements OnInit {
 type;
 Disinv;
 permissionEntity;
-  constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+invimsgsuccess;
+invimsgrevoke;
+invimsgpending;
+globals;
+  constructor( private http: Http,private global: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
 
   ngOnInit() { 
+	this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -48,7 +53,20 @@ permissionEntity;
 		{
 			//alert('error');
 		});	
-	}		
+	}
+	this.InvitationService.invimsg()
+	 .then((data) => 
+			{
+				
+				this.invimsgsuccess=data['Success'];
+				this.invimsgrevoke=data['Revoke'];
+				this.invimsgpending=data['Pending'];
+
+			},
+			(error) => 
+			{
+				alert('error');
+			});			
 	}
 	
 	default(){
@@ -67,6 +85,9 @@ permissionEntity;
 				"sInfoFiltered": "(filtered from _MAX_ total Invitation)"
 			  }
 			});
+			$(".invitation").addClass("selected");
+			$(".email").addClass("active");
+        	$(".invitation").parent().removeClass("display_block");
 		  },100); 
 	  
 		}, 

@@ -49,6 +49,7 @@ class Course_model extends CI_Model
 		$this->db->select('pr.CourseId,pr.Name,pr.KeyConcepts,pr.IsActive,ps.DisplayText,ps.ConfigurationId,pr.CourseLevelId,md.Name as DomainName');
 		$this->db->join('tblmstdomain md', 'pr.DomainId = md.DomainId', 'left');
 		$this->db->join('tblmstconfiguration ps', 'pr.CourseLevelId = ps.ConfigurationId', 'left');
+		$this->db->order_by('CourseId','asc');
 		$result = $this->db->get('tblmstcourse pr');
 		
 		

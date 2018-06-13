@@ -40,6 +40,7 @@ class Placeholder_model extends CI_Model
 		$this->db->select('p.PlaceholderId,t.DisplayName as tablename,c.DisplayName as columnname,t.TableId,c.ColumnId,p.PlaceholderName,p.IsActive');
 		$this->db->join('tblmsttablecolumn c', 'p.ColumnId = c.ColumnId', 'left');
 		$this->db->join('tblmsttable t', 'c.TableId = t.TableId', 'left');		
+		$this->db->order_by('PlaceholderId','asc');
 		$result = $this->db->get('tblmstemailplaceholder p');
 		
 		$res = array();

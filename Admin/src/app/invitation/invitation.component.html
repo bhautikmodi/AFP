@@ -93,7 +93,7 @@
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Phone Number</label>
                                     <input type="text" class="form-control" [disabled]="btn_disable"  #PhoneNo="ngModel" name="PhoneNo"
-						pattern="[0-9\-.()+\s]+{3,}"  maxlength="13"
+                                    pattern="[0-9\-.()+\s]{3,13}"  maxlength="13"
 							[(ngModel)]="InvitationEntity.PhoneNo" [ngClass]="{red_border: (PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)}"  required/>
 						<span class="error_span"  *ngIf="(PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)"> 
 							<span *ngIf="PhoneNo.errors.required || (PhoneNo.pristine && submitted)">Please enter Phone Number</span>

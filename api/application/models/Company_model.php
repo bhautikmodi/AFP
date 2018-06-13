@@ -15,6 +15,7 @@ class Company_model extends CI_Model
 		//$this->db->join('tblmstteamsize ts','ts.TeamSizeId = ca.TeamSizeId', 'left');
 		$this->db->join('tbluser u','u.UserId = ca.UserId', 'left');
 		$this->db->join('tblcompany cmp','cmp.CompanyId = u.CompanyId', 'left');
+		$this->db->order_by('CompanyId','asc');
 		$this->db->where('ca.EndTime!=','NULL');
 		$result = $this->db->get('tblcandidateassessment as ca');
 		
@@ -70,6 +71,7 @@ class Company_model extends CI_Model
 		// $this->db->where('CAreaId',$area_id);
 		// $result = $this->db->get('tblmstcompetencyarea area');
 		 $this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.CompanyId=cp.CompanyId) as isdisabled');
+		 $this->db->order_by('CompanyId','asc');
 		 $this->db->where('CompanyId',$company_id);
 		 $result=$this->db->get('tblcompany cp');
 		 $company_data= array();
@@ -137,6 +139,7 @@ class Company_model extends CI_Model
 		$this->db->select('cp.CompanyId,cp.Name,cp.IndustryId,cp.Website,cp.PhoneNo,cp.IsActive,in.IndustryName,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.CompanyId=cp.CompanyId) as isdisabled');
 		$this->db->join('tblmstindustry in', 'cp.IndustryId = in.IndustryId', 'left');
 		//$this->db->where('IsActive="1"');
+		$this->db->order_by('CompanyId','asc');
 		$result = $this->db->get('tblcompany cp');
 		
 		

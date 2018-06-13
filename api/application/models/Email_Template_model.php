@@ -76,6 +76,7 @@ class Email_Template_model extends CI_Model
 		$this->db->join('tblmstuserrole role1', 'role1.RoleId = et.To', 'left');
 		$this->db->join('tblmstuserrole role2', 'role2.RoleId = et.Cc', 'left');
 		$this->db->join('tblmstuserrole role3', 'role3.RoleId = et.Bcc', 'left');
+		$this->db->order_by('EmailId','asc');
 		$result = $this->db->get('tblemailtemplate as et');
 		
 		$res = array();

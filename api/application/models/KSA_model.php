@@ -46,6 +46,7 @@ class KSA_model extends CI_Model
 	
 		$this->db->select('ksa.KSAId,ksa.Name as ksaName,ksa.IsActive,area.CAreaId,area.Name as CAreaName,(SELECT COUNT(ck.CKSAId) FROM tblcandidateksa as ck WHERE ksa.KSAId=ck.KSAId) as isdisabled');
 		$this->db->join('tblmstcompetencyarea area', 'ksa.CAreaId = area.CAreaId', 'left');
+		$this->db->order_by('KSAId','asc');
 		$result = $this->db->get('tblmstksa ksa');
 		
 		$res = array();

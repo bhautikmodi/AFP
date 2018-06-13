@@ -134,7 +134,7 @@ $('body').on('keyup', 'input.code', function(e){
 						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
 					this.InvitationEntity = {};
 					InvitationForm.form.markAsPristine();
-						this.globals.message = 'Code successfully!';
+						this.globals.message = 'Invitation code has been successfully. You will be redirect to registration process!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						

@@ -41,17 +41,17 @@
             <label><span>*</span>Invitation Code </label>
             <div class="clearfix"></div>
             <div class="minus_text">
-                <input type="text" #code1="ngModel" class="form-control code" name="code1" maxlength="1" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code1"
+                <input type="text" #code1="ngModel" class="form-control code" name="code1" maxlength="1" [(ngModel)]="InvitationEntity.code1"
 								[ngClass]="{red_border: (code1.dirty && code1.invalid) || (code1.pristine && submitted)}" required/>
-			    <input type="text" #code2="ngModel" class="form-control code" name="code2" maxlength="1" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code2"
+			    <input type="text" #code2="ngModel" class="form-control code" name="code2" maxlength="1"  [(ngModel)]="InvitationEntity.code2"
 								[ngClass]="{red_border: (code2.dirty && code2.invalid) || (code2.pristine && submitted)}" required/>
-			    <input type="text" #code3="ngModel" class="form-control code" name="code3" maxlength="1" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code3"
+			    <input type="text" #code3="ngModel" class="form-control code" name="code3" maxlength="1" [(ngModel)]="InvitationEntity.code3"
 								[ngClass]="{red_border: (code3.dirty && code3.invalid) || (code3.pristine && submitted)}" required/>
-				<input type="text" #code4="ngModel"class="form-control code" maxlength="1" name="code4" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code4"
+				<input type="text" #code4="ngModel"class="form-control code" maxlength="1" name="code4"  [(ngModel)]="InvitationEntity.code4"
 								[ngClass]="{red_border: (code4.dirty && code4.invalid) || (code4.pristine && submitted)}" required/>						 						 						
-                <input type="text" #code5="ngModel" class="form-control code" name="code5" maxlength="1" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code5"
+                <input type="text" #code5="ngModel" class="form-control code" name="code5" maxlength="1"  [(ngModel)]="InvitationEntity.code5"
 								[ngClass]="{red_border: (code5.dirty && code5.invalid) || (code5.pristine && submitted)}" required/>
-				<input type="text" #code6="ngModel" class="form-control code" name="code6" maxlength="1" pattern="[A-Za-z0-9]" [(ngModel)]="InvitationEntity.code6"
+				<input type="text" #code6="ngModel" class="form-control code" name="code6" maxlength="1" [(ngModel)]="InvitationEntity.code6"
 								[ngClass]="{red_border: (code6.dirty && code6.invalid) || (code6.pristine && submitted)}" required/>
 						<div class="clearfix"></div>				 
 								
@@ -61,6 +61,7 @@
                   <span *ngIf="(code1.errors && code1.errors.required) || (code2.errors && code2.errors.required) || (code3.errors && code3.errors.required) || (code4.errors && code4.errors.required) || (code5.errors && code5.errors.required) || (code6.errors && code6.errors.required)">
                     Please enter invitation code
                   </span>
+                 
             </span> 
           </div>
          <!-- <button type="submit" class="btn sub-btn">Next</button> -->

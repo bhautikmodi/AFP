@@ -172,6 +172,7 @@ class Invitation_model extends CI_Model
 
 		$this->db->select('ui.UserInvitationId,ui.EmailAddress,ui.Status,ui.CompanyId,ui.Code,ui.IsActive,ui.UpdatedOn,tc.CompanyId,tc.Name');
 		$this->db->join('tblcompany tc', 'ui.CompanyId = tc.CompanyId', 'left');
+		$this->db->order_by('UserInvitationId','asc');
 		$result = $this->db->get('tbluserinvitation ui');	
 		$res = array();
 		if($result->result()) {

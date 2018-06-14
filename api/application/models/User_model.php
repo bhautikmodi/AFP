@@ -77,7 +77,8 @@ class User_model extends CI_Model
 		us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName,(select count(CAssessmentId) from tblcandidateassessment where UserId=us.UserId and EndTime is not NULL) as total,(select count(CAssessmentId) from tblcandidateassessment where UserId=us.UserId and EndTime is NULL) as notgiven');
 		$this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
 		$this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');
-		$this->db->where('usms.RoleName!=','IT');
+		$this->db->order_by('UserId','asc');
+		//$this->db->where('usms.RoleName!=','IT');
 		$result = $this->db->get('tbluser us');
 		
 		$res=array();

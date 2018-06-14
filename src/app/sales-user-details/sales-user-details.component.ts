@@ -146,7 +146,7 @@ this.SalesUserService.getUserAssessDetail(id)
       },
 	  "legend":{
 		"position":"bottom",
-		"autoMargins":true,  "equalWidths":true, "switchable":false
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
 		"align":"center", 
 		"valueAlign": "center",
         "labelWidth": '100%',
@@ -179,7 +179,7 @@ this.SalesUserService.getUserAssessDetail(id)
       },
 	    "legend":{
 		"position":"bottom",
-		"autoMargins":true,  "equalWidths":true, "switchable":false
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
 		"align":"center", 
 		"valueAlign": "center",
         "labelWidth": '100%',
@@ -212,7 +212,7 @@ this.SalesUserService.getUserAssessDetail(id)
         },
 		 "legend":{
 		"position":"bottom",
-		"autoMargins":true,  "equalWidths":true, "switchable":false
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
 		"align":"center", 
 		"valueAlign": "center",
         "labelWidth": '100%',

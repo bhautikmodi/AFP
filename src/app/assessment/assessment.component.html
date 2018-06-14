@@ -8,7 +8,7 @@
       <div class="col-md-12">
           <h2>AFP Corporate Training Skills Assessment</h2>
         <h1>{{ksaDetails.AssessmentName}}</h1>
-		  <p class="padding_30">Use the rating scale to evaluate your team on their knowledge, skills and abilities in FP&A. The definitions for the numbered rating options can be found in the drop down below. Make sure to answer all questions before submitting your assessment. You may save your work and come back later to complete the assessment if needed.</p>
+		  <p class="padding_30">{{ksaDetails.Description}}</p>
         <!-- <h2> <p id="demo"></p></h2> -->
         <div class="clearfix"></div>
         <div id="carousel" class="flexslider ksa_list_block">
@@ -90,8 +90,8 @@
               </ul>
             </div>
             <div class="text-center" >
-              <div *ngIf="submit_true" class="tooltip_inline" title="To submit assessment you need to attend all KSAs" data-toggle="tooltip" data-placement="bottom"><button type="submit" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button></div>
-              <button *ngIf="!submit_true" type="submit" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button>
+              <div class="tooltip_inline" title="To submit assessment you need to attend all KSAs" data-toggle="tooltip" data-placement="bottom"><div *ngIf="submit_true"><button type="submit" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button></div></div>
+              <div class="tooltip_inline" title="Submit" data-toggle="tooltip" data-placement="bottom"><button *ngIf="!submit_true" type="submit" [disabled]="submit_true" class="next_btn assessment_top"><span >Submit</span></button></div>
               <!-- <button class="next_btn" type="submit" onclick="window.location.href = 'thankyou.html'; return false;">Submit</button> --> 
             </div>
           </form>

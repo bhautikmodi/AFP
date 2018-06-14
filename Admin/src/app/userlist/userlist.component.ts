@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/Forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';

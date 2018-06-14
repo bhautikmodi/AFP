@@ -27,7 +27,7 @@ export class PlaceholderComponent implements OnInit {
 
 	}
 	ngOnInit() {
-
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId!=4){
 			this.router.navigate(['/access-denied']);
 		  }
@@ -59,6 +59,7 @@ export class PlaceholderComponent implements OnInit {
 		this.PlaceholderService.getTableList()
 			.then((data) => {
 				this.tableList = data;
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -73,9 +74,11 @@ export class PlaceholderComponent implements OnInit {
 							this.PlaceholderService.getColumnList(this.placeholderEntity.TableId)
 								.then((data) => {
 									this.columnList = data;
+									this.globals.isLoading = false;
 								},
 								(error) => {
-									alert('error');
+									//alert('error');
+									this.globals.isLoading = false;
 								});
 						}
 					} else {
@@ -83,7 +86,8 @@ export class PlaceholderComponent implements OnInit {
 					}
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
+					this.globals.isLoading = false;
 				});
 		} else {
 			this.header = 'Add';

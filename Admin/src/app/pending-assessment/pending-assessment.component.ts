@@ -25,6 +25,7 @@ export class PendingAssessmentComponent implements OnInit {
   }
 
   ngOnInit() { 
+	this.globals.isLoading = true;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -66,11 +67,13 @@ export class PendingAssessmentComponent implements OnInit {
 			$(".pendingass").addClass("selected");
 			$(".email").addClass("active");
         	$(".pendingass").parent().removeClass("display_block");
-		},100); 	
+		},100); 
+		this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
 	});
   }
 

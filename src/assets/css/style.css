@@ -60,7 +60,7 @@ header .four_strip{ background: #a41c36; height: 260px!important;}
 header{ position: relative; z-index: 999; width: 100%; padding: 0;}
 header .logo{width: 80%;}
 nav{ display:inline-block;}
-.account_menu{ display:block; float: right; position: absolute; right: 30px; top: 145%;}
+.account_menu{ display:block; float: right; position: absolute; right: 30px; top: 145%; z-index:999;}
 .account_menu li{position:relative; display:inline-block; margin-left:10px;}
 .account_menu li a i.fa-angle-double-down{margin-left:5px;}
 .account_menu li a { font-family: "GothamNarrow-Book"; font-size:15px; padding: 10px 15px; text-align: left; background: #0085ad; background:linear-gradient(to right, #0085ad 50%, #007699 50%) repeat scroll left bottom / 200% 100%; background-size: 200% 100%; background-position: left bottom; color: #ffffff;  box-shadow: none; position: relative; transition:all 0.8s ease 0s; display:block; height:42px;}
@@ -233,7 +233,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .user_box:hover,.user_box:focus,.user_box.active { box-shadow: 1px 1px 5px #ccc;}
 .user_box:hover .user_name,.user_box:focus .user_name,.user_box.active .user_name{ color:#fff;}
 
-.user_section .user_box .arrow_btn { font-family: "GothamNarrow-Book"; font-size:25px; line-height:26px; padding: 0px 8px 0 10px; text-align: center; background: #fff; color: #001F49; box-shadow: none; position: relative; display:inline-block; border:1px solid #001F49; margin: 0px; top: -25px; border-radius: 5px; }
+.user_section .user_box .arrow_btn { font-family: "GothamNarrow-Book"; font-size:25px; line-height:26px; padding: 0px 8px 0 10px; text-align: center; background: #fff; color: #001F49; box-shadow: none; position: absolute; display:inline-block; border:1px solid #001F49; margin: 0px; bottom: 10px; right:10px; left:auto; top:auto; border-radius: 5px; }
 .user_section .col-md-3:nth-of-type(7n+1) .user_box .arrow_btn { color: #001F49; border-color: #001F49;}
 .user_section .col-md-3:nth-of-type(7n+2) .user_box .arrow_btn { color: #799628; border-color: #799628;}
 .user_section .col-md-3:nth-of-type(7n+3) .user_box .arrow_btn { color: #F79317; border-color: #F79317;}
@@ -294,7 +294,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box_ksa:nth-child(1) label{ border-radius:0 0 0 10px;}
 .radio_box_ksa:nth-child(4) label{ border:0!important; border-radius:0 0 10px 0;}
 .radio_box_ksa input[type="radio"]:checked + label{ background:#A41C36; box-shadow:none; color:#fff;}
-#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
+#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-shadow:none; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
 #slider .flex-direction-nav a.flex-next:before {content: ""; background:url(../images/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
 #slider .flex-direction-nav a.flex-prev{padding: 10px 10px 10px 47px;}
 #slider .flex-direction-nav a.flex-prev:before {content: ""; background:url(../images/left-white.png) center left no-repeat #b32653; position: absolute; left: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
@@ -358,7 +358,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	.home_banner,.home_banner img{ height:1200px;}
 }
 @media (min-width:1900px){
-	.welcome_content{min-height: 1000px;}
+	.welcome_content{min-height: 800px;}
 }
 @media (min-width:1800px){
 	#PreviewModal .modal-dialog{ margin:7% auto;}
@@ -374,6 +374,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 	header .two_strip{height: 200px !important;}
 	header .four_strip{height: 210px !important;}
 	.flex-direction-nav { position: absolute; width: 98%;}
+	header.home_page .img_strips{ right:50px;}
 }
 @media (max-width:1340px) and (min-width:992px){
 	.dashboard_section .col-md-3{width:33%;}

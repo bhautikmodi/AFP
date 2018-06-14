@@ -48,6 +48,7 @@ class Competency_Area_model extends CI_Model
 	
 		$this->db->select('area.CAreaId,area.Name as AreaName,area.Description,area.KeyConcepts,area.IsActive,domain.DomainId,domain.Name as DomainName,(SELECT COUNT(mk.KSAId) FROM tblmstksa as mk WHERE area.CAreaId=mk.CAreaId) as isdisabled');
 		$this->db->join('tblmstdomain domain', 'area.DomainId = domain.DomainId', 'left');
+		$this->db->order_by('CAreaId','asc');
 		$result = $this->db->get('tblmstcompetencyarea area');
 		
 		$res = array();

@@ -23,6 +23,7 @@ export class IndustryComponent implements OnInit {
 
 
 	ngOnInit() {
+		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
@@ -56,17 +57,19 @@ export class IndustryComponent implements OnInit {
 			this.IndustryService.getById(id)
 				.then((data) => {
 					this.IndustryEntity = data;
-
+					this.globals.isLoading = false;
 
 				},
 				(error) => {
 					alert('error');
+					this.globals.isLoading = false;
 				});
 		} else {
 			this.header = 'Add';
 			this.IndustryEntity = {};
 			this.IndustryEntity.IndustryId = 0;
 			this.IndustryEntity.IsActive = '1';
+			this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".industry").addClass("selected");

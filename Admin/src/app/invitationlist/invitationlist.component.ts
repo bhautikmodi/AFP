@@ -25,13 +25,14 @@ permissionEntity;
 invimsgsuccess;
 invimsgrevoke;
 invimsgpending;
-globals;
-  constructor( private http: Http,private global: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+//globals;
+  constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
 
   ngOnInit() { 
-	this.globals = this.global;
+	this.globals.isLoading = false;
+	//this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -89,11 +90,12 @@ globals;
 			$(".email").addClass("active");
         	$(".invitation").parent().removeClass("display_block");
 		  },100); 
-	  
+		  this.globals.isLoading = false;
 		}, 
 		(error) => 
 		{
 		 // alert('error');
+		 this.globals.isLoading = false;
 		});	
 		//this.msgflag = false;
 	  }

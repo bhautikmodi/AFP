@@ -45,6 +45,7 @@ class Rating_Scale_model extends CI_Model
 	public function getlist_ratingscale() {
 	
 		$this->db->select('RatingScaleId,Name,Description,IsActive');
+		$this->db->order_by('RatingScaleId','asc');
 		$result = $this->db->get('tblmstratingscale');
 		
 		$res = array();

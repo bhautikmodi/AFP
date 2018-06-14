@@ -14,11 +14,12 @@ declare var AmCharts: any;
 })
 export class DashboardComponent implements OnInit {
  Dashboard;
- globals;
-   constructor( private http: Http,private global: Globals, private router: Router, private DashboardService: DashboardService,private route:ActivatedRoute) { }
+ //globals;
+   constructor( private http: Http,private globals: Globals, private router: Router, private DashboardService: DashboardService,private route:ActivatedRoute) { }
 
   ngOnInit() {
-		this.globals = this.global;
+		//this.globals = this.global;
+		this.globals.isLoading = true;
   this.Dashboard={};
 	this.DashboardService.getAll()
 	//.map(res => res.json())
@@ -30,10 +31,12 @@ export class DashboardComponent implements OnInit {
 		this.Dashboard.Tksa = data['Tksa'];
 		this.Dashboard.Course = data['Course'];
 		this.Dashboard.Company = data['Company'];
+		this.globals.isLoading = false;
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
 	});	  
   }
 

@@ -18,14 +18,15 @@ export class RolepermissionComponent implements OnInit {
   roleList;
   permissionList;
   btn_disable;
-  globals;
+  //globals;
 
-  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, private global: Globals)
+  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, private globals: Globals)
     {		
 
 	  }
   ngOnInit() {
-    this.globals = this.global;
+    //this.globals = this.global;
+    this.globals.isLoading = true;
     if(this.globals.authData.RoleId!=4){
       this.router.navigate(['/access-denied']);
     }
@@ -40,10 +41,12 @@ export class RolepermissionComponent implements OnInit {
       setTimeout(function(){
         $(".permission").addClass("selected");
       },500); 
+      this.globals.isLoading = false;
     }, 
     (error) => 
     {
       alert('error');
+      this.globals.isLoading = false;
     });	 
   }
 

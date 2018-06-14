@@ -19,13 +19,14 @@ export class UserrolelistComponent implements OnInit {
  msgflag;
 	message;
 	type;
-	globals;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, private global: Globals) { }
+	//globals;
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, private globals: Globals) { }
 
   
   ngOnInit()
   {
-		this.globals = this.global;
+		this.globals.isLoading = true;	
+		//this.globals = this.global;
 	this.UserroleService.getAll()
 	//.map(res => res.json())
 	.then((data) => 
@@ -39,11 +40,13 @@ export class UserrolelistComponent implements OnInit {
 					"sInfoFiltered": "(filtered from _MAX_ total Userrole)"
         }
       });
-    },100); 
+		},100); 
+		this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;	
 	});	
 	  this.msgflag = false;
   }

@@ -11,18 +11,20 @@ declare var $,PerfectScrollbar: any;
 export class LeftMenuComponent implements OnInit {
 
   menuList;
-  globals;
+  //globals;
   
-  constructor(private global: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
+  constructor(private globals: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
 
   ngOnInit() {
-    this.globals = this.global;
+    this.globals.isLoading = true;
+    //this.globals = this.global;
     this.menuList = [];   
     new PerfectScrollbar('.sidebar-collapse');
     this.RolepermissionService.getLeftMenu(this.globals.authData.RoleId)
 			.then((data) => 
 			{
         this.menuList = data; 
+        this.globals.isLoading = false;
 			},
 			(error) => 
 			{

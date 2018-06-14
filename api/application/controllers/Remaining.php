@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Remaining extends MY_Controller 
+class Remaining extends CI_Controller 
 {	
 	public function __construct()
 	{
@@ -123,12 +123,12 @@ class Remaining extends MY_Controller
 						 $config['mailtype'] = 'html';							
 						 $this->email->initialize($config);
 				 
-						 $query = $this->db->query("SELECT et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
+						 $query = $this->db->query("SELECT et.To,et.Subject,et.EmailBody,et.BccEmail,(SELECT GROUP_CONCAT(UserId SEPARATOR ',') FROM tbluser WHERE RoleId = et.To && ISActive = 1) AS totalTo,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Cc && ISActive = 1) AS totalcc,(SELECT GROUP_CONCAT(EmailAddress SEPARATOR ',') FROM tbluser WHERE RoleId = et.Bcc && ISActive = 1) AS totalbcc FROM tblemailtemplate AS et WHERE et.Token = '".$EmailToken."' && et.IsActive = 1");
 						 foreach($query->result() as $row){ 
 							$row->EmailBody = str_replace("{ assessment_name }",$ass_name,$row->EmailBody);
 							$row->EmailBody = str_replace("{ assessment_start_date }",$ass_start_date,$row->EmailBody);
 							$row->EmailBody = str_replace("{ team_size }",$team_size,$row->EmailBody);
-							$row->EmailBody = str_replace("{ remainder_day }",$remainder_day,$Day);
+							$row->EmailBody = str_replace("{ remainder_day }",$Day,$row->EmailBody);
 							
 							if($row->To==3){			
 								$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
@@ -165,7 +165,7 @@ class Remaining extends MY_Controller
 									$res = $this->db->insert('tblemaillog',$email_log);
 								}else
 								{
-									echo json_encode("Fail");
+									//echo json_encode("Fail");
 								}
 							} else {
 								$userId_ar = explode(',', $row->totalTo);			 
@@ -190,7 +190,7 @@ class Remaining extends MY_Controller
 									   //echo 'success';
 								   }else
 								   {
-									   echo 'fail';
+									   //echo 'fail';
 								   }
 							   }
 							}

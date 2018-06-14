@@ -22,7 +22,10 @@ export class CompanyComponent implements OnInit {
 	constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CompanyService: CompanyService, private CommonService: CommonService) { }
 
-	ngOnInit() {$('[data-toggle="tooltip"]').tooltip();	this.companyEntity = {};
+	ngOnInit() {
+		this.globals.isLoading = true;
+		$('[data-toggle="tooltip"]').tooltip();	
+		this.companyEntity = {};
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -58,7 +61,7 @@ export class CompanyComponent implements OnInit {
 		this.CompanyService.getById(id)
 			.then((data) => {
 				this.companyEntity = data;
-
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -71,6 +74,7 @@ export class CompanyComponent implements OnInit {
 		this.companyEntity = {};
 		this.companyEntity.CompanyId = 0;
 		this.companyEntity.IsActive = '1';
+		this.globals.isLoading = false;
 	}
 	setTimeout(function(){
 		$(".company").addClass("selected");

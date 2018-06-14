@@ -21,19 +21,20 @@ export class RatingScaleListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
+	//globals;
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private RatingScaleService: RatingScaleService, private CommonService: CommonService, private global: Globals) 
+		 private RatingScaleService: RatingScaleService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
   ngOnInit() { 
+	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
 		container: "body"
 	});
-	this.globals = this.global;
+	//this.globals = this.global;
 		this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -76,11 +77,12 @@ export class RatingScaleListComponent implements OnInit {
         $(".gsetting").addClass("active");
         $(".rscale").parent().removeClass("display_block");	
     },500); 
-
+	this.globals.isLoading = false;
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
 	});	
 	this.msgflag = false;
 	}

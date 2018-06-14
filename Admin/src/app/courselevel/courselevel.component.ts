@@ -22,6 +22,7 @@ export class CourselevelComponent implements OnInit {
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
@@ -56,7 +57,7 @@ export class CourselevelComponent implements OnInit {
 					this.CourseLevelEntity = data;
 					this.CourseLevelEntity.CourseLevel = data['Value'];
 					this.CourseLevelEntity.Keyword = data['DisplayText'];
-
+					this.globals.isLoading = false;
 				},
 				(error) => {
 					alert('error');
@@ -66,6 +67,7 @@ export class CourselevelComponent implements OnInit {
 			this.CourseLevelEntity = {};
 			this.CourseLevelEntity.ConfigurationId = 0;
 			this.CourseLevelEntity.IsActive = '1';
+			this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".clevel").addClass("selected");

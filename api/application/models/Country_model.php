@@ -47,7 +47,7 @@ class Country_model extends CI_Model
 	public function getlist_Country() {
 	
 		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
-		
+		$this->db->order_by('CountryId','asc');
 		$result = $this->db->get('tblmstcountry');
 		$res = array();
 		if($result->result()) {

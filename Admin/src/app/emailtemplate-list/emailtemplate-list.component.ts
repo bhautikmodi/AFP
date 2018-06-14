@@ -22,18 +22,19 @@ export class EmailtemplateListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
+	//globals;
 
- constructor( private http: Http,private global: Globals, private router: Router, 
+ constructor( private http: Http,private globals: Globals, private router: Router, 
 	private EmailtemplateService: EmailtemplateService,private CommonService: CommonService, private route:ActivatedRoute) { }
 
 
 ngOnInit() {  
+	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
 		container: "body"
 	});
-	this.globals = this.global;
+	//this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -79,11 +80,12 @@ ngOnInit() {
 				$(".email").addClass("active");
         		$(".emailtemplate").parent().removeClass("display_block");	
 			},500); 
-	
+			this.globals.isLoading = false;
 		}, 
 		(error) => 
 		{
 			//alert('error');
+			this.globals.isLoading = false;
 		});	
 		//this.msgflag = false;
 		}

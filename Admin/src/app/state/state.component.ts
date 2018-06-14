@@ -28,6 +28,7 @@ export class StateComponent implements OnInit {
 		private StateService: StateService, private globals: Globals, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		this.globals.isLoading = true;	
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -51,7 +52,7 @@ export class StateComponent implements OnInit {
 		this.StateService.getAllCountry()
 		.then((data) => {
 			this.CountryList = data;
-
+			this.globals.isLoading = false;	
 		},
 		(error) => {
 			alert('error');
@@ -65,9 +66,11 @@ export class StateComponent implements OnInit {
 		this.StateService.getById(id)
 			.then((data) => {
 				this.stateEntity = data;
+				this.globals.isLoading = false;	
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;	
 				//this.btn_disable = false;
 				//this.submitted = false;
 			});

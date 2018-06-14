@@ -27,6 +27,7 @@ export class KsaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
@@ -57,6 +58,7 @@ export class KsaComponent implements OnInit {
 		this.KsaService.getCAreaList()
 			.then((data) => {
 				this.areaList = data;
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -67,6 +69,7 @@ export class KsaComponent implements OnInit {
 				.then((data) => {
 					if (data != "") {
 						this.ksaEntity = data;
+						this.globals.isLoading = false;
 					} else {
 						this.router.navigate(['/dashboard']);
 					}

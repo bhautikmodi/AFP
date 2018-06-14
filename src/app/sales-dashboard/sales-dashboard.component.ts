@@ -30,14 +30,12 @@ export class SalesDashboardComponent implements OnInit {
 
 	ngOnInit() {
 		//this.globals = this.global;
-
+		this.globals.isLoading = true;	
 		setTimeout(function(){ 
 			if ($("body").height() < $(window).height()) {
 			  $('footer').addClass('footer_fixed');
 			} 
 		  }, 1000);
-		
-		this.globals.isLoading = false;
 		
 		$('.select2').select2();
 		
@@ -95,6 +93,7 @@ export class SalesDashboardComponent implements OnInit {
 		.then((data) => {
 			this.UserList = data['user'];
 			this.CompanyList = data['com'];
+			this.globals.isLoading = false;	
 		},
 		(error) => {
 			alert('error');
@@ -102,8 +101,9 @@ export class SalesDashboardComponent implements OnInit {
 		
   }
   addSalesDashboard(SalesDashboardForm) {
-		debugger
+		
 		if (SalesDashboardForm.valid) {
+			this.globals.isLoading = true;	
 			this.btn_disable = true;
 		//   this.SalesDashboardEntity.CompanyId;
 		// 	this.SalesDashboardEntity.UserId;
@@ -123,29 +123,35 @@ export class SalesDashboardComponent implements OnInit {
 			
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;	
 				
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;	
 				});
 		}
 		
 	}
 	getUserList(SalesDashboardForm)
-	{ debugger
+	{ 
+			
 		SalesDashboardForm.form.controls.UserId.markAsDirty();
 		this.SalesDashboardEntity.UserId='';
 		if(this.SalesDashboardEntity.CompanyId > 0){
+			this.globals.isLoading = true;
 			this.SalesDashboardService.getUserList(this.SalesDashboardEntity.CompanyId)
 			.then((data) => 
 			{
 				this.UserList = data;
+				this.globals.isLoading = false;	
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = true;
 			});
 		} else {
 			this.UserList = [];

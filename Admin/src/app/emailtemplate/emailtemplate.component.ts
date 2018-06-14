@@ -28,6 +28,7 @@ export class EmailtemplateComponent implements OnInit {
 		private CommonService: CommonService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -67,6 +68,7 @@ export class EmailtemplateComponent implements OnInit {
 			.then((data) => {
 				this.roleList = data['role'];
 				this.placeholderList = data['placeholder'];
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -84,12 +86,15 @@ export class EmailtemplateComponent implements OnInit {
 							this.emailEntity.Bcc = "";
 						}
 						CKEDITOR.instances.EmailBody.setData(this.emailEntity.EmailBody);
+						this.globals.isLoading = false;
 					} else {
 						this.router.navigate(['/dashboard']);
 					}
+					
 				},
 				(error) => {
 					alert('error');
+					this.globals.isLoading = false;
 				});
 		} else {
 			this.header = 'Add';
@@ -100,6 +105,7 @@ export class EmailtemplateComponent implements OnInit {
 			this.emailEntity.Cc = '';
 			this.emailEntity.Bcc = '';
 			this.emailEntity.IsActive = '1';
+			//this.globals.isLoading = false;
 		}
 
 		CKEDITOR.on('instanceReady', function () {

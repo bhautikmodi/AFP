@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
 import { UserService } from '../services/user.service';
 import { Globals } from '../globals';
@@ -24,16 +24,17 @@ export class UserlistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
-   constructor(private http: Http,private authService: AuthService,private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
+	//globals;
+   constructor(private http: Http,private authService: AuthService, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {
+	this.globals.isLoading = true;	
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
 	});
-		this.globals = this.global;
+		//this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -76,11 +77,12 @@ export class UserlistComponent implements OnInit {
         }
 			});
 			$(".user").addClass("selected");
-    },500); 
+	},500); 
+	this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
-		
+		this.globals.isLoading = false;	
 		//alert('error');
 	});	
     this.msgflag = false;

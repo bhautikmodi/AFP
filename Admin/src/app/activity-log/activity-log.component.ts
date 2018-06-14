@@ -23,6 +23,7 @@ export class ActivityLogComponent implements OnInit {
   }
 
   ngOnInit() { 
+    this.globals.isLoading = true;
     if(this.globals.authData.RoleId==4){
       this.AuditlogService.getActivityLog()
       .then((data) => 
@@ -40,11 +41,13 @@ export class ActivityLogComponent implements OnInit {
         $(".activitylog").addClass("selected");
         $(".log").addClass("active");
         $(".activitylog").parent().removeClass("display_block");	
-        },100); 	
+        },100);
+        this.globals.isLoading = false; 	
       }, 
       (error) => 
       {
         alert('error');
+        this.globals.isLoading = false;
       });    
     } else {		
       this.router.navigate(['/access-denied']);

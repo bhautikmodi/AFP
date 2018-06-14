@@ -28,6 +28,7 @@ export class CompetencyAreaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
@@ -61,6 +62,7 @@ export class CompetencyAreaComponent implements OnInit {
 		this.CompetencyAreaService.getDomainList()
 			.then((data) => {
 				this.domainList = data;
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -75,6 +77,7 @@ export class CompetencyAreaComponent implements OnInit {
 					} else {
 						this.router.navigate(['/dashboard']);
 					}
+					this.globals.isLoading = false;
 				},
 				(error) => {
 					alert('error');
@@ -85,6 +88,7 @@ export class CompetencyAreaComponent implements OnInit {
 			this.areaEntity.CAreaId = 0;
 			this.areaEntity.IsActive = '1';
 			this.areaEntity.DomainId = '';
+			//this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".carea").addClass("selected");

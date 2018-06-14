@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route,state:RouterStateSnapshot) { 
 	$('footer').removeClass('footer_fixed');
 	  this.globals.currentLink=state.url;
+	  //this.globals.isLoading = true;	
 	if(state.url=='/welcome_register'){   // new header component show
 	
 		this.globals.logohome = true;
@@ -20,6 +21,15 @@ export class AuthGuard implements CanActivate {
 	} else {
 		
 		this.globals.logohome = false;
+	
+	}
+	if(state.url.split('/')[1]=='/assessment' || state.url=='/dashboard'){  
+	
+		this.globals.isLoading = true;
+	
+	} else {
+		
+		this.globals.isLoading = false;
 	
 	}
 	if(state.url=='/' ||state.url=='/welcome_register'){   // new header component show

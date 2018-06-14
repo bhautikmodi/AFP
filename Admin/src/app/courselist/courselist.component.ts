@@ -21,16 +21,17 @@ export class CourselistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
- constructor( private http: Http,private global: Globals, private router: Router, 
+	//globals;
+ constructor( private http: Http,private globals: Globals, private router: Router, 
 	private CourseService: CourseService,private CommonService: CommonService, private route:ActivatedRoute) { }
 	
 	ngOnInit() { 
+		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
 		});
-		this.globals = this.global;
+		//this.globals = this.global;
 		this.permissionEntity = {}; 
 		if(this.globals.authData.RoleId==4){
 			this.permissionEntity.View=1;
@@ -70,11 +71,12 @@ export class CourselistComponent implements OnInit {
 	  });
 	  $(".course").addClass("selected");
     },100); 
-
+	this.globals.isLoading = false;
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
 	});	
 	this.msgflag = false;
 	}

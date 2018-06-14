@@ -126,7 +126,7 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Address 1</label>
                                             <textarea  #Address1="ngModel" [(ngModel)]="userEntity.Address1" class="form-control"
-											name="Address1" pattern="[a-zA-Z0-9 ,]{0,}" [ngClass]="{red_border: (Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)}" required></textarea>
+											name="Address1" [ngClass]="{red_border: (Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)}" required></textarea>
 											<span class="error_span"  *ngIf="(Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)"> 
 												<span *ngIf="Address1.errors.required || (Address1.pristine && submitted)">Please enter address </span>
 												<span class="error_span" *ngIf="Address1.errors && Address1.errors.pattern">
@@ -140,7 +140,7 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Address 2</label>
                                             <textarea  #Address2="ngModel" [(ngModel)]="userEntity.Address2" class="form-control"
-											name="Address2" [ngClass]="{red_border: (Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)}" pattern="[a-zA-Z0-9 ,]{0,}" required></textarea>
+											name="Address2" [ngClass]="{red_border: (Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)}" required></textarea>
 											<span class="error_span"  *ngIf="(Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)"> 
 												<span *ngIf="Address2.errors.required || (Address2.pristine && submitted)">Please enter address </span>
 												<span class="error_span" *ngIf="Address2.errors && Address2.errors.pattern">

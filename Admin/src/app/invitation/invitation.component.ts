@@ -160,7 +160,7 @@ export class InvitationComponent implements OnInit {
 							this.globals.msgflag = true;
 							this.globals.isLoading = false;
 						}
-						this.router.navigate(['/invitation/list']);
+						this.router.navigate(['/invite-a-user/list']);
 					}
 
 				},

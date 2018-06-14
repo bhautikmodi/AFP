@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 	  }
 
   ngOnInit() {
+	  this.globals.isLoading = false;
 	  this.loginEntity = {};
 	  this.invalid = false;
 	  $("html").addClass("index_admin");

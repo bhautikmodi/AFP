@@ -294,7 +294,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .radio_box_ksa:nth-child(1) label{ border-radius:0 0 0 10px;}
 .radio_box_ksa:nth-child(4) label{ border:0!important; border-radius:0 0 10px 0;}
 .radio_box_ksa input[type="radio"]:checked + label{ background:#A41C36; box-shadow:none; color:#fff;}
-#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
+#slider .flex-direction-nav a{top:auto!important; bottom: -35px; width: 110px; background: #a51c37; color: #ffffff; text-shadow:none; text-align: center; padding: 10px 50px 10px 10px; font-family: "GothamNarrow-Book"!important; font-size:15px!important; line-height:15px; height: auto;}
 #slider .flex-direction-nav a.flex-next:before {content: ""; background:url(../images/right-white.png) center right no-repeat #b32653; position: absolute; right: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}
 #slider .flex-direction-nav a.flex-prev{padding: 10px 10px 10px 47px;}
 #slider .flex-direction-nav a.flex-prev:before {content: ""; background:url(../images/left-white.png) center left no-repeat #b32653; position: absolute; left: 0; top: 0; width: 40px; height: 100%; background-size:30px; transition:all 0.8s ease 0s;}

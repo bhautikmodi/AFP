@@ -5,7 +5,7 @@ class Dashboard_model extends CI_Model
 	public function getlist_User() {
 	
 		$this->db->select('UserId');
-		$this->db->where('RoleId!=',4);
+		//$this->db->where('RoleId!=',4);
 		$result = $this->db->get('tbluser');
 		return 	$result->num_rows();
 	}

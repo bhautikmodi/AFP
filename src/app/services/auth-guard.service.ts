@@ -23,6 +23,15 @@ export class AuthGuard implements CanActivate {
 		this.globals.logohome = false;
 	
 	}
+	if(state.url.split('/')[1]=='/assessment' || state.url=='/dashboard'){  
+	
+		this.globals.isLoading = true;
+	
+	} else {
+		
+		this.globals.isLoading = false;
+	
+	}
 	if(state.url=='/' ||state.url=='/welcome_register'){   // new header component show
 		this.globals.headerhome = true;
 		

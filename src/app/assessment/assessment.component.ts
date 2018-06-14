@@ -23,7 +23,7 @@ export class AssessmentComponent implements OnInit {
   constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-    
+    this.globals.isLoading = true;
        
     this.ksaDetails={};
     
@@ -64,6 +64,7 @@ export class AssessmentComponent implements OnInit {
 		.then((data) => 
 		{ 
       if(data=='fail'){
+        this.globals.isLoading = false;
         this.router.navigate(['/dashboard']);
       } else {
 		this.ksaDetails = data['ksaDetails'];
@@ -115,10 +116,6 @@ else {
         sync: "#carousel"
       });
 }
-		
-		
-		
-		
          
           $('[data-toggle="tooltip"]').tooltip();
           new PerfectScrollbar('.preview_ksa .scroll_table');
@@ -134,18 +131,20 @@ else {
             }
           } 
           this.checkprogress();
-          
+          this.globals.isLoading = false;
         },100);
         setTimeout(()=>{  
           if ($("body").height() < $(window).height()) {
             $('footer').addClass('footer_fixed');
+            this.globals.isLoading = false;
           } 
         },1000);
       }        
 		}, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
 		});	 
   }
 

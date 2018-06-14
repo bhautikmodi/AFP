@@ -28,14 +28,9 @@ export class UsercopmanyregisterComponent implements OnInit {
 
   ngOnInit()
    {
-
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 1000);
-
-    debugger
+    this.globals.isLoading = true;
+    
+    
     this.ListUserAssessmentService.getAllCompany	()
     .then((data) => 
     { 
@@ -50,12 +45,16 @@ export class UsercopmanyregisterComponent implements OnInit {
             "sInfoFiltered": "(filtered from _MAX_ total Registered Company)"
           }
         });
+        if ($("body").height() < $(window).height()) {
+          $('footer').addClass('footer_fixed');
+        } 
       },500); 
-  
+      this.globals.isLoading = false;
     }, 
     (error) => 
     {
       //alert('error');
+      this.globals.isLoading = false;
     });	
     this.msgflag = false;
   

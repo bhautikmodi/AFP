@@ -23,31 +23,30 @@ header;
 
   ngOnInit() 
   {
-
+	this.globals.isLoading = true;
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {
 			$('footer').addClass('footer_fixed');
 		} 
 	}, 1000);
 
-	debugger
-	if ($("body").height() < $(window).height()) {
-		$('footer').addClass('footer_fixed');
-	}
+	
 	  this.AsmtDetailsEntity={};
 	  this.AsmtDetailsEntity.TeamSizeId = '';
 	  this.AssessmentDetailsService.getTeamSize()
 	  .then((data) => 
 	  {
 		  this.TeamSizeList = data;
+		  this.globals.isLoading = false;
 	  }, 
 	  (error) => 
 	  {
-		  alert('error');
+		  //alert('error');
+		  this.globals.isLoading = false;
 	  });		
   }
 addAsmtDetails(AsmtDetailsForm)
-	{	debugger	
+	{		
 			
 			this.AsmtDetailsEntity.CreatedBy = this.globals.authData.UserId;
 			this.AsmtDetailsEntity.UpdatedBy = this.globals.authData.UserId;

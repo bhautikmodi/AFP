@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
+import { Globals } from '.././globals';
 
 @Component({
   selector: 'app-welcomeregister',
@@ -8,7 +9,7 @@ declare var $: any;
 })
 export class WelcomeregisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globals: Globals) { }
 
   ngOnInit() {
     setTimeout(function(){ 
@@ -16,7 +17,7 @@ export class WelcomeregisterComponent implements OnInit {
         $('footer').addClass('footer_fixed');
       } 
     }, 1000);
-	   
+    this.globals.isLoading = false;
   }
 
 }

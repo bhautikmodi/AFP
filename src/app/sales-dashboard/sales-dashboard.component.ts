@@ -31,21 +31,11 @@ export class SalesDashboardComponent implements OnInit {
 	ngOnInit() {
 		//this.globals = this.global;
 		this.globals.isLoading = true;	
-		setTimeout(function(){ 
-			if ($("body").height() < $(window).height()) {
-			  $('footer').addClass('footer_fixed');
-			} 
-		  }, 1000);
+		
 		
 		$('.select2').select2();
 		
-	setTimeout(function(){ 
-		$('[data-toggle="tooltip"]').tooltip() ;
-		if ($("body").height() < $(window).height()) {
-			$('footer').addClass('footer_fixed');
-		} 
-	}, 100);
-		
+	
 		var data = {'com': '','user':''};
 		this.SalesDashboardService.add(data)
 			.then((data) => {
@@ -58,11 +48,15 @@ export class SalesDashboardComponent implements OnInit {
 					this.Usersearch = data;
 					
 				}
-				this.globals.isLoading = false;
+				
 				this.btn_disable = false;
 				this.submitted = false;
-			
-				
+				setTimeout(function(){ 
+					if ($("body").height() < $(window).height()) {
+					  $('footer').addClass('footer_fixed');
+					} 
+				  }, 1000);	
+				  this.globals.isLoading = false;			
 			},
 			(error) => {
 				alert('error');

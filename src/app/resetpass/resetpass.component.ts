@@ -25,25 +25,22 @@ export class ResetpassComponent implements OnInit {
 
   ngOnInit() {
 	//this.globals = this.global;
-
+	this.globals.isLoading = true;
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {
 		  $('footer').addClass('footer_fixed');
 		} 
 	  }, 1000);
 
-    if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-    }
-
-	   debugger
+    
+	   
 	  this.resetEntity={};
 	let id = this.route.snapshot.paramMap.get('id');
 	id=new JwtHelper().decodeToken(id);
 	this.ResetpassService.getResetlink(id)
 	this.ResetpassService.getResetlink2(id)
 	.then((data) => 
-	{ debugger
+	{ 
 		if(data=='fail'){
 
 			this.globals.message = 'You are already used this link';
@@ -52,7 +49,7 @@ export class ResetpassComponent implements OnInit {
 			this.router.navigate(['/login']);
 		} 	
 		//alert('success');
-		
+		this.globals.isLoading = false;
 		
 		
 	}, 
@@ -61,6 +58,7 @@ export class ResetpassComponent implements OnInit {
 				alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
 			});	
 		
   }

@@ -19,16 +19,8 @@ export class UserAssessmentListComponent implements OnInit {
 
 
   ngOnInit() {  
-
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 1000);
-
-    if ($("body").height() < $(window).height()) {
-      $('footer').addClass('footer_fixed');
-  }
+    this.globals.isLoading = true;
+    
     this.userList='';
     let id = this.route.snapshot.paramMap.get('id');    
     this.SalesDashboardService.getAllAssement(id)
@@ -87,11 +79,16 @@ export class UserAssessmentListComponent implements OnInit {
         });
         j++;
       }
+      if ($("body").height() < $(window).height()) {
+        $('footer').addClass('footer_fixed');
+      } 
     },100);
+    this.globals.isLoading = false;
     }, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
 		});	
     
     

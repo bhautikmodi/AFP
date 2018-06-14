@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-userreport',
@@ -8,10 +9,10 @@ declare var $: any;
 })
 export class UserreportComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globals: Globals) { }
 
   ngOnInit() {
-
+    this.globals.isLoading = false;
     setTimeout(function(){ 
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');

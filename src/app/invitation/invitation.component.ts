@@ -25,7 +25,7 @@ constructor( private http: Http,private globals: Globals, private router: Router
   ngOnInit() 
   {
 	//this.globals = this.global;
-
+	this.globals.isLoading = true;
 $('body').on('keyup', 'input.code', function(e){
       if($(this).val().length == $(this).attr('maxlength')){
         var inputs = $('input.code');
@@ -62,7 +62,8 @@ $('body').on('keyup', 'input.code', function(e){
 		this.header = '';
     this.InvitationEntity = {};
 	this.InvitationEntity.UserInvitationId = 0;
-    this.InvitationEntity.IsActive = '1';
+	this.InvitationEntity.IsActive = '1';
+	this.globals.isLoading = false;
 	}
 
   }
@@ -134,7 +135,7 @@ $('body').on('keyup', 'input.code', function(e){
 						  localStorage.setItem('EmailAddress',this.InvitationEntity.EmailAddress);
 					this.InvitationEntity = {};
 					InvitationForm.form.markAsPristine();
-						this.globals.message = 'Invitation code has been successfully. You will be redirect to registration process!';
+						this.globals.message = 'Invitation code has been entered successfully. You will be redirected to registration process!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
 						

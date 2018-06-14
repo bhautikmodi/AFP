@@ -238,7 +238,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .user_box:hover,.user_box:focus,.user_box.active { box-shadow: 1px 1px 5px #ccc;}
 .user_box:hover .user_name,.user_box:focus .user_name,.user_box.active .user_name{ color:#fff;}
 
-.user_section .user_box .arrow_btn { font-family: "GothamNarrow-Book"; font-size:25px; line-height:26px; padding: 0px 8px 0 10px; text-align: center; background: #fff; color: #001F49; box-shadow: none; position: relative; display:inline-block; border:1px solid #001F49; margin: 0px; top: -25px; border-radius: 5px; }
+.user_section .user_box .arrow_btn { font-family: "GothamNarrow-Book"; font-size:25px; line-height:26px; padding: 0px 8px 0 10px; text-align: center; background: #fff; color: #001F49; box-shadow: none; position: absolute; display:inline-block; border:1px solid #001F49; margin: 0px; bottom: 10px; right:10px; left:auto; top:auto; border-radius: 5px; }
 .user_section .col-md-3:nth-of-type(7n+1) .user_box .arrow_btn { color: #001F49; border-color: #001F49;}
 .user_section .col-md-3:nth-of-type(7n+2) .user_box .arrow_btn { color: #799628; border-color: #799628;}
 .user_section .col-md-3:nth-of-type(7n+3) .user_box .arrow_btn { color: #F79317; border-color: #F79317;}

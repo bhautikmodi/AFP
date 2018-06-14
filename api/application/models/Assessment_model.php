@@ -13,7 +13,7 @@ class Assessment_model extends CI_Model
 			$query = $this->db->get('tblcandidateassessment');	
 			if($query->num_rows()==1){
 				
-				$this->db->select('CAssessmentId,AssessmentName');
+				$this->db->select('CAssessmentId,AssessmentName,Description');
 				$this->db->where('ca.CAssessmentId',$CAssessmentId);
 				$details = $this->db->get('tblcandidateassessment as ca');
 				foreach($details->result() as $row)

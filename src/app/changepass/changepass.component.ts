@@ -24,7 +24,7 @@ export class ChangepassComponent implements OnInit {
 
   ngOnInit() { 
 	//this.globals = this.global;
-
+	this.globals.isLoading = false;
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {
 			$('footer').addClass('footer_fixed');
@@ -32,9 +32,6 @@ export class ChangepassComponent implements OnInit {
 	}, 1000);
 
 
-	if ($("body").height() < $(window).height()) {
-		$('footer').addClass('footer_fixed');
-	}  
 	this.newpassEntity={};
   this.globals.msgflag = false;
  }

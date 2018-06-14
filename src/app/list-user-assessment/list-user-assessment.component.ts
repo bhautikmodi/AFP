@@ -33,11 +33,7 @@ export class ListUserAssessmentComponent implements OnInit {
   ngOnInit() 
   {
 
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 1000);
+    
 
     // debugger
     // this.ListUserAssessmentService.getAllCompany	()
@@ -65,7 +61,7 @@ export class ListUserAssessmentComponent implements OnInit {
   
     
     
-
+this.globals.isLoading = true;
     this.ListUserAssessmentService.getAllUserAssess()
     .then((data) => 
     { 
@@ -80,12 +76,17 @@ export class ListUserAssessmentComponent implements OnInit {
             "sInfoFiltered": "(filtered from _MAX_ total Users)"
           }
         });
+        if ($("body").height() < $(window).height()) {
+          $('footer').addClass('footer_fixed');
+        } 
+        
       },500); 
-  
+      this.globals.isLoading = false;
     }, 
     (error) => 
     {
       //alert('error');
+      this.globals.isLoading = false;
     });	
     this.msgflag = false;
 

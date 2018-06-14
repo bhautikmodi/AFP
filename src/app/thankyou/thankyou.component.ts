@@ -22,7 +22,7 @@ export class ThankyouComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-
+    this.globals.isLoading = true;
     setTimeout(function(){ 
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
@@ -36,11 +36,10 @@ export class ThankyouComponent implements OnInit {
 		{ 
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
-      } else { debugger
+      } else { 
         this.assessmentData = data['assessment'];
         this.domainData = data['domain'];
         this.domainData1 = data['carea'];
-        console.log(this.domainData1);
 
         this.rscaleData = data['rscale'];
         this.careaData = data['carea'];
@@ -102,10 +101,12 @@ export class ThankyouComponent implements OnInit {
           }
         });
       }
+      this.globals.isLoading = false;
     }, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
 		});	 
     
   }

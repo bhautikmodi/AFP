@@ -21,12 +21,8 @@ export class TestAssessmentComponent implements OnInit {
     
     }
   ngOnInit() {
-
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 1000);
+    this.globals.isLoading = true;
+   
 
     this.ksaDetails=[];
     this.AssessmentService.testKsa()
@@ -39,13 +35,18 @@ export class TestAssessmentComponent implements OnInit {
             "sLengthMenu": "_MENU_ ksa per Page",
             "sInfo": "Showing _START_ to _END_ of _TOTAL_ ksa",
             "sInfoFiltered": "(filtered from _MAX_ total ksa)"
-          }
+          }          
         });
+        if ($("body").height() < $(window).height()) {
+          $('footer').addClass('footer_fixed');
+        } 
       },100);
+      this.globals.isLoading = false;
     }, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
 		});
   }
 

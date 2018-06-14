@@ -21,21 +21,18 @@ export class ReportComponent implements OnInit {
   constructor( private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-
+    this.globals.isLoading = true;	
     setTimeout(function(){ 
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
       } 
     }, 1000);
 
-    if ($("body").height() < $(window).height()) {
-      $('footer').addClass('footer_fixed');
-  }
     this.userData = {};
     let id = this.route.snapshot.paramMap.get('id');    
   this.SalesUserService.getUserReport(id)
   .then((data) => 
-  { debugger    
+  {     
     this.userData = data['user'];
     this.reportdata = data['domainAss'];
     this.assList = data['assList'];
@@ -88,10 +85,12 @@ export class ReportComponent implements OnInit {
 	"textClickEnabled" : 1
      },
    });
+   this.globals.isLoading = false;	
   }, 
   (error) => 
   {
-    alert('error');
+    //alert('error');
+    this.globals.isLoading = false;	
   });	 
   }
 }

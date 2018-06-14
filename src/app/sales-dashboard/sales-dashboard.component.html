@@ -51,7 +51,7 @@
       
       </div>
 		<div class="col-md-6 col-sm-3 col-xs-6 button_6">
-      <a routerLink="/viewreport" class="red_btn margin_btn_15 pull-right"><span>View Report</span></a>
+      <a routerLink="/viewreport" class="red_btn margin_btn_15 pull-right"><span>View Reports</span></a>
 		</div>
       </form>
     </div>
@@ -62,7 +62,7 @@
   <div class="container">
     <div class="row">
         <h3 class="text-center" *ngIf="Usersearch!=''">Users</h3>
-      <div class="coontainer_block"><div class="col-md-3 col-sm-6" *ngFor="let UserL of Usersearch | paginate: { itemsPerPage:4, currentPage: p};let i = index ">
+      <div class="coontainer_block"><div class="col-md-3 col-sm-6" *ngFor="let UserL of Usersearch | paginate: { itemsPerPage:8, currentPage: p};let i = index ">
         <div class="user_box" >
 				  <input type="hidden"  name="id" value="{{UserL.UserId}}"/>
           <div class="user_name">{{UserL.FirstName}}</div>

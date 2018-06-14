@@ -24,7 +24,7 @@ export class CourseComponent implements OnInit {
 		private CourseService: CourseService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -69,6 +69,7 @@ export class CourseComponent implements OnInit {
 			this.CourseService.getById(id)
 				.then((data) => {
 					this.CourseEntity = data;
+					this.globals.isLoading = false;
 				},
 				(error) => {
 					alert('error');
@@ -80,6 +81,7 @@ export class CourseComponent implements OnInit {
 			this.CourseEntity.IsActive = '1';
 			this.CourseEntity.CourseLevelId = '';
 			this.CourseEntity.DomainId = '';
+			this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".course").addClass("selected");

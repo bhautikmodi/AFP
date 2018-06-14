@@ -26,17 +26,18 @@ export class CompanylistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
+	//globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private CompanyService: CompanyService,private CommonService: CommonService, private global: Globals) { }
+		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
 
 		ngOnInit() {
+			this.globals.isLoading = true;
                 $("body").tooltip({
                     selector: "[data-toggle='tooltip']",
                     container: "body"
                 });
 
-			this.globals = this.global; 
+			//this.globals = this.global; 
 			
 			this.permissionEntity = {}; 
 			if(this.globals.authData.RoleId==4){
@@ -66,8 +67,6 @@ export class CompanylistComponent implements OnInit {
 		this.CompanyService.getAllCompany	()
 	.then((data) => 
 	{ 
-		this.globals.isLoading = false;
-
 		this.companyList = data;	
 		setTimeout(function(){			
       $('#dataTables-example').dataTable( {
@@ -81,13 +80,14 @@ export class CompanylistComponent implements OnInit {
 	  });
 	  $(".company").addClass("selected");
     },100); 
-
+	this.globals.isLoading = false;
 	}, 
 	(error) => 
 	{
 		//alert('error');
 	});	
 	this.msgflag = false;
+	this.globals.isLoading = false;
 	}
 
 	deleteCompany(company)

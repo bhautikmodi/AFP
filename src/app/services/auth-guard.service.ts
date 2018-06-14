@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route,state:RouterStateSnapshot) { 
 	$('footer').removeClass('footer_fixed');
 	  this.globals.currentLink=state.url;
+	  //this.globals.isLoading = true;	
 	if(state.url=='/welcome_register'){   // new header component show
 	
 		this.globals.logohome = true;

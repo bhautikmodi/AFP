@@ -22,20 +22,21 @@ export class DomainListComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
+	//globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private domainService: DomainService, private CommonService: CommonService, private global: Globals) 
+		 private domainService: DomainService, private CommonService: CommonService, private globals: Globals) 
   {
 	
   }
 
   ngOnInit() { 
+	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
 		container: "body"
 	});
-	this.globals = this.global;
+	//this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -75,11 +76,13 @@ export class DomainListComponent implements OnInit {
 			}
 		});
 		$(".domain").addClass("selected");
-		},100); 	
+		},100); 
+		this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
 	});
 	this.msgflag = false;
   }

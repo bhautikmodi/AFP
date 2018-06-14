@@ -28,6 +28,7 @@ export class DomainComponent implements OnInit
 	}
   ngOnInit() 
   { 
+	this.globals.isLoading = true;	
 	  $("body").tooltip({
 	selector: "[data-toggle='tooltip']",
 	container: "body"
@@ -66,7 +67,8 @@ export class DomainComponent implements OnInit
 				this.domainEntity = data;
 			} else {
 				this.router.navigate(['/dashboard']);
-			}			
+			}	
+			this.globals.isLoading = false;		
 		}, 
 		(error) => 
 		{
@@ -77,6 +79,7 @@ export class DomainComponent implements OnInit
 		this.domainEntity = {};
 		this.domainEntity.DomainId = 0;
 		this.domainEntity.IsActive = '1';
+		this.globals.isLoading = false;	
 	}	
 	setTimeout(function(){
 		$(".domain").addClass("selected");

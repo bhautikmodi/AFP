@@ -48,16 +48,17 @@ export class SettingsComponent implements OnInit {
 	totksaError;
 	NoKSA;
 	InviEntity;
-	globals;
+	//globals;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
-	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private global: Globals)
+	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
     {
 		
 	 }
 
   ngOnInit() {
-	this.globals = this.global;
+	this.globals.isLoading = true;	
+	//this.globals = this.global;
 	this.permissionEntity = {}; 
 	this.ksaError = false;
 	this.totksaError = false;
@@ -85,7 +86,7 @@ export class SettingsComponent implements OnInit {
 	}		
   }
 
-  default(){debugger
+  default(){
 	var item = { 'Day': '', 'CreatedBy': this.globals.authData.UserId, 'UpdatedBy':this.globals.authData.UserId};
     this.reminderDaysList = [];
     this.reminderDaysList.push(item);
@@ -100,7 +101,7 @@ export class SettingsComponent implements OnInit {
    this.SettingsService.getAll(this.globals.authData.UserId)
 	.then((data) =>  
 	{ 
-		debugger
+		
 		this.teamsizeList = data['teamsize'];	
 		this.configEntity.noofksa = data['noofksa']['Value'];	
 		this.configEntity.invitation = data['invitation']['Value'];	
@@ -127,11 +128,12 @@ export class SettingsComponent implements OnInit {
 			$(".email").addClass("active");
         	$(".setting").parent().removeClass("display_block");
     },100); 
-
+	this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
 		alert('error');
+		this.globals.isLoading = false;	
 	});
   }
 

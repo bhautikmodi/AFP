@@ -22,6 +22,7 @@ export class CountryComponent implements OnInit {
 		private CountryService: CountryService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -50,17 +51,18 @@ export class CountryComponent implements OnInit {
 			this.CountryService.getById(id)
 				.then((data) => {
 					this.CountryEntity = data;
-
-
+					this.globals.isLoading = false;
 				},
 				(error) => {
 					alert('error');
+					this.globals.isLoading = false;
 				});
 		} else {
 			this.header = 'Add';
 			this.CountryEntity = {};
 			this.CountryEntity.CountryId = 0;
 			this.CountryEntity.IsActive = '1';
+			this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".country").addClass("selected");

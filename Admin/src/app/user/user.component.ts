@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
 		private UserService: UserService, private CommonService: CommonService) { }
 
 	ngOnInit() {
-		
+		this.globals.isLoading = true;	
 		this.userEntity = {};
 		if(this.globals.authData.RoleId==4){		
 			this.default();
@@ -55,6 +55,7 @@ export class UserComponent implements OnInit {
 			this.roleList = data['role'];
 			this.companyList = data['company'];
 			this.stateList = data['state'];
+			this.globals.isLoading = false;	
 		},
 		(error) => {
 			alert('error');
@@ -108,17 +109,20 @@ export class UserComponent implements OnInit {
 						this.UserService.getStateList(this.userEntity.CountryId)
 							.then((data) => {
 								this.stateList = data;
+								this.globals.isLoading = false;	
 							},
 							(error) => {
-								alert('error');
+								//alert('error');
+								this.globals.isLoading = false;	
 							});
 					}
 
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;	
 				});
 		}
 		else {
@@ -134,7 +138,7 @@ export class UserComponent implements OnInit {
 	}
 
 	addUser(userForm) {
-		debugger
+		
 		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {

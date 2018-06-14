@@ -23,16 +23,17 @@ export class UserlistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
+	//globals;
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {
+	this.globals.isLoading = true;	
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
 			container: "body"
 	});
-		this.globals = this.global;
+		//this.globals = this.global;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){
 		this.permissionEntity.View=1;
@@ -75,11 +76,12 @@ export class UserlistComponent implements OnInit {
         }
 			});
 			$(".user").addClass("selected");
-    },500); 
+	},500); 
+	this.globals.isLoading = false;	
 	}, 
 	(error) => 
 	{
-		
+		this.globals.isLoading = false;	
 		//alert('error');
 	});	
     this.msgflag = false;

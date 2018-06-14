@@ -23,7 +23,7 @@ export class UserroleComponent implements OnInit {
   
   ngOnInit() 
   {
-	
+	this.globals.isLoading = true;	
 	 
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
@@ -33,13 +33,15 @@ export class UserroleComponent implements OnInit {
 			.then((data) => 
 			{
 				this.userroleEntity=data;
+				this.globals.isLoading = false;	
 				
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;	
 			});
 	 }
 	 else
@@ -47,6 +49,7 @@ export class UserroleComponent implements OnInit {
 			 this.userroleEntity = {};
 			 this.userroleEntity.RoleId = 0;
 			  this.userroleEntity.IsActive = '1';
+			  this.globals.isLoading = false;	
 	 }
   } 
   

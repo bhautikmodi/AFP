@@ -19,7 +19,7 @@ export class DashbordComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
   
    ngOnInit() {  
-
+    this.globals.isLoading = true;	
     setTimeout(function(){ 
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
@@ -87,10 +87,12 @@ export class DashbordComponent implements OnInit {
         j++;
       }
     },100);
+    this.globals.isLoading = false;	
     }, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;	
 		});	
     
     

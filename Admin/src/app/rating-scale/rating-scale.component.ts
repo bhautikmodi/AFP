@@ -25,6 +25,7 @@ export class RatingScaleComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {
@@ -53,15 +54,18 @@ export class RatingScaleComponent implements OnInit {
 			this.RatingScaleService.getById(id)
 				.then((data) => {
 					this.ratingscaleEntity = data;
+					this.globals.isLoading = false;
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
+					this.globals.isLoading = false;
 				});
 		} else {
 			this.header = 'Add';
 			this.ratingscaleEntity = {};
 			this.ratingscaleEntity.RatingScaleId = 0;
 			this.ratingscaleEntity.IsActive = '1';
+			this.globals.isLoading = false;
 		}
 		setTimeout(function(){
 			$(".rscale").addClass("selected");

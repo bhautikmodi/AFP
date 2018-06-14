@@ -25,14 +25,15 @@ export class InvitationComponent implements OnInit {
 	companyhide;
 	ComL;
 	isDisabled;
-	globals;
+	//globals;
 	// myOptions;
-	constructor(private http: Http, private global: Globals, private router: Router, private InvitationService: InvitationService,
+	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 
 	ngOnInit() {
-		this.globals = this.global;
+		this.globals.isLoading = true;
+		//this.globals = this.global;
 		// this.myOptions= [
 		// 	{label: 'Belgium', value: 'BE'},
 		// 	{label: 'Luxembourg', value: 'LU'},
@@ -70,6 +71,7 @@ export class InvitationComponent implements OnInit {
 			//.map(res => res.json())
 			.then((data) => {
 				this.CompanyList = data;
+				this.globals.isLoading = false;
 			},
 			(error) => {
 				alert('error');
@@ -100,6 +102,7 @@ export class InvitationComponent implements OnInit {
 			.then((data) => 
 			{
 				this.IndustryList = data;
+				this.globals.isLoading = false;
 			}, 
 			(error) => 
 			{
@@ -114,7 +117,7 @@ export class InvitationComponent implements OnInit {
 	}
 
 	addInvitation(InvitationForm) {
-		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		
 		if (id) {

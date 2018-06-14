@@ -184,9 +184,14 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .welcome_text span.small_text{font-size:35px; color:#A41C36; margin:0 0 30px 0; font-family: 'GothamNarrow-Medium'; font-weight: normal; line-height:25px; text-transform:capitalize; position:relative; display:block;}
 
 .chart_block { width: 100%; height: 450px;}
-.pie_chart{width:100%; height:450px; position:relative; overflow:hidden; display:block;}
+.pie_chart{width:100%; height:600px; position:relative; overflow:hidden; display:block;}
 .pie_chart .amcharts-main-div{position:absolute; top:-60px;}
-.pie_body{height:330px; overflow:hidden; padding:0!important;}
+.pie_body{height:500px; overflow:hidden; padding:0!important;}
+.pie_body .amChartsLegend.amcharts-legend-div { margin-top: -80px;}
+.capie_body{height:600px; overflow:hidden; padding:0!important;}
+.ca_pie_chart{width:100%; height:700px; position:relative; overflow:hidden; display:block;}
+.ca_pie_chart .amcharts-main-div{position:absolute; top:-60px;}
+.ca_pie_chart .amChartsLegend.amcharts-legend-div { margin-top: -80px; width: 100%!important;}
 
 .rating_list{ text-align:center; margin:0; display:block; line-height:27px; float:none; font-family: "GothamNarrow-Book"; font-size:12px; color:#2e2d31;}
 .rating_list li{display:inline-block; margin:0 10px;}
@@ -270,7 +275,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .sales_section{ background:#fff; padding:0px 0 30px;}
 .sales_section .generaluser_chart_block{ width: 100%; height: 400px;}
 .sales_section .inner_grey{ background:#f4f4f4; border:1px solid #888; padding:30px; min-height:860px;}
-#ca_chart .amcharts-legend-div{overflow-y:auto!important; height:300px!important; padding-right:20px!important; width:350px!important; top:0!important;} 
+/*#ca_chart .amcharts-legend-div{overflow-y:auto!important; height:300px!important; padding-right:20px!important; width:350px!important; top:0!important;} */
 
 #progress_bar{ width:100%; box-shadow:1px 1px 10px rgba(0, 0, 0, 0.6) inset;}
 #progress {background:#799528; height:28px; width:0%; transition:all 0.5s ease 0s; color: #fff; font-size: 12px; text-align: right; padding:6px 5px 0 0;}

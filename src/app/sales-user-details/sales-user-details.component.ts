@@ -144,6 +144,17 @@ this.SalesUserService.getUserAssessDetail(id)
       "balloon":{
          "fixedPosition":true
       },
+	  "legend":{
+		"position":"bottom",
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
+		"align":"center", 
+		"valueAlign": "center",
+        "labelWidth": '100%',
+        "valueWidth": 0, "maxColumns": 2
+	 },
+	  "responsive": {
+			"enabled": true
+			},
      "balloonText": "[[domain]]<br><b>([[percents]]%)</b>",
       "export": {
         "enabled": false
@@ -166,6 +177,14 @@ this.SalesUserService.getUserAssessDetail(id)
       "balloon":{
          "fixedPosition":true
       },
+	    "legend":{
+		"position":"bottom",
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
+		"align":"center", 
+		"valueAlign": "center",
+        "labelWidth": '100%',
+        "valueWidth": 0,"maxColumns": 2
+	 },
 		   "responsive": {
 			"enabled": true
 			},
@@ -191,6 +210,15 @@ this.SalesUserService.getUserAssessDetail(id)
         "balloon":{
          	"fixedPosition":true
         },
+		 "legend":{
+		"position":"bottom",
+		"autoMargins":true,  "equalWidths":true, "switchable":false,
+		"align":"center", 
+		"valueAlign": "center",
+        "labelWidth": '100%',
+        "valueWidth": 0,
+		"maxColumns": 2
+	 },
 		   "responsive": {
 			"enabled": true
 			},

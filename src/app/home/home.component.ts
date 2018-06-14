@@ -20,7 +20,7 @@ ngOnInit() {
 		} 
 	}, 1000);
 	
-	  
+	  this.globals.isLoading = false;
 	  $('.bxslider').bxSlider({
 		 mode: 'fade',
 		 captions: true,
@@ -28,16 +28,16 @@ ngOnInit() {
 		 controls : false
 	});
 	this.Disinv = '';
-  this.HomeService.getAll()
-	//.map(res => res.json())
-	.then((data) => 
-	{
-			this.Disinv = data['Disinv'];
-	}, 
-	(error) => 
-	{
-		alert('error');
-	});	
+  // this.HomeService.getAll()
+	// //.map(res => res.json())
+	// .then((data) => 
+	// {
+	// 		this.Disinv = data['Disinv'];
+	// }, 
+	// (error) => 
+	// {
+	// 	alert('error');
+	// });	
   
   }
 

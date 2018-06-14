@@ -19,7 +19,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-
+    this.globals.isLoading = true;
     setTimeout(function(){ 
       if ($("body").height() < $(window).height()) {
         $('footer').addClass('footer_fixed');
@@ -31,7 +31,7 @@ export class UserAssessmentDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');    
     this.DashboardService.getUserAssessDetail(id)
 		.then((data) => 
-		{ debugger
+		{ 
       if(data=='fail'){
         this.router.navigate(['/dashboard']);
       } else {
@@ -98,10 +98,12 @@ export class UserAssessmentDetailsComponent implements OnInit {
           }
         });
       }
+      this.globals.isLoading = false;
     }, 
 		(error) => 
 		{
-			alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
 		});	 
     
   }

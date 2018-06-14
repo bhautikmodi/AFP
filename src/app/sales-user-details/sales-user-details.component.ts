@@ -27,16 +27,8 @@ export class SalesUserDetailsComponent implements OnInit {
 
 
   ngOnInit() { 
-    
-    setTimeout(function(){ 
-      if ($("body").height() < $(window).height()) {
-        $('footer').addClass('footer_fixed');
-      } 
-    }, 1000);
-    
-    debugger
+   this.globals.isLoading = true;
    this.assessmentData='';
-
 
 let id = this.route.snapshot.paramMap.get('id');    
 this.SalesUserService.getUserAssessDetail(id)
@@ -44,7 +36,7 @@ this.SalesUserService.getUserAssessDetail(id)
 { 
   if(data=='fail'){
     this.router.navigate(['/dashboard']);
-  } else {debugger
+  } else {
     this.domainData = data['domain'];
     this.domainDatapre = data['perdomain'];
     this.ratingscale=data['ratingscale'];
@@ -210,10 +202,17 @@ this.SalesUserService.getUserAssessDetail(id)
       new PerfectScrollbar('.preview_ksa .scroll_table');
    new PerfectScrollbar('.course_rec .scroll_course');
   }
+  setTimeout(function(){ 
+    if ($("body").height() < $(window).height()) {
+      $('footer').addClass('footer_fixed');
+    } 
+  }, 1000);
+  this.globals.isLoading = false;
 }, 
 (error) => 
 {
-  alert('error');
+  //alert('error');
+  this.globals.isLoading = false;
 });	 
 
 }

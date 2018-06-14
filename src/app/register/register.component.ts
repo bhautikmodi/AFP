@@ -32,13 +32,8 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
+	this.globals.isLoading = true;
 	
-	setTimeout(function(){ 
-		if ($("body").height() < $(window).height()) {
-		  $('footer').addClass('footer_fixed');
-		} 
-	  }, 1000);
-	  
 	  
 			this.btn_disable = false;
 			this.RegisterEntity={};
@@ -47,12 +42,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterEntity.CountryId ='';
 			this.RegisterEntity.StateId ='';
 			
-			setTimeout(function(){ 
-				if ($("body").height() < $(window).height()) {
-					$('footer').addClass('footer_fixed');
-				} 
-			}, 100);
-				
+			
    
  	
 	 let id = this.route.snapshot.paramMap.get('id');
@@ -69,12 +59,14 @@ export class RegisterComponent implements OnInit {
 	.then((data) => 
 	{ 
 		
-		this.companydata = data;	
+		this.companydata = data;
+		this.globals.isLoading = false;	
 		
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
+		this.globals.isLoading = false;	
 	});}
 
     this.Disinv = '';
@@ -89,7 +81,8 @@ export class RegisterComponent implements OnInit {
 	(error) => 
 	{
 		alert('error');
-	});		this.RegisterService.getAllCountry()
+	});		
+	this.RegisterService.getAllCountry()
 	.then((data) => 
 	{ 
 		this.CountryList = data;
@@ -123,6 +116,7 @@ export class RegisterComponent implements OnInit {
 										(error) => {
 											alert('error');
 										});
+										this.globals.isLoading = false;	
 								}
 								
 
@@ -131,6 +125,7 @@ export class RegisterComponent implements OnInit {
 								alert('error');
 								this.btn_disable = false;
 								this.submitted = false;
+								this.globals.isLoading = false;	
 							});
 					}
 					else {
@@ -141,7 +136,7 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.StateId='';
 						this.RegisterEntity.UserId =0;
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
-						
+						this.globals.isLoading = false;	
 						// if(this.Disinv.Value ==1)
 						 // {debugger
 								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
@@ -151,7 +146,7 @@ export class RegisterComponent implements OnInit {
 						 // }
 						 
 					}
-					setTimeout(()=>{  debugger
+					setTimeout(()=>{  
 						$('[data-toggle="tooltip"]').tooltip() ;
 						if ($("body").height() < $(window).height()) {
 							$('footer').addClass('footer_fixed');

@@ -26,10 +26,6 @@ export class DashbordComponent implements OnInit {
       } 
     }, 1000);
 
-
-    if ($("body").height() < $(window).height()) {
-      $('footer').addClass('footer_fixed');
-  }
     this.DashboardService.getAllAssement(this.globals.authData.UserId)
 		.then((data) => 
 		{

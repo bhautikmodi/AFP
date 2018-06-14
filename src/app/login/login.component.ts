@@ -23,7 +23,7 @@ loginEntity;
 
   ngOnInit() {
 	//this.globals = this.global;
-
+	this.globals.isLoading = false;
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {
 		  $('footer').addClass('footer_fixed');

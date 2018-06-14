@@ -139,6 +139,7 @@ else {
             this.globals.isLoading = false;
           } 
         },1000);
+        this.globals.isLoading = false;
       }        
 		}, 
 		(error) => 

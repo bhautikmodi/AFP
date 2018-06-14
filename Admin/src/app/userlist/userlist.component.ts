@@ -24,8 +24,8 @@ export class UserlistComponent implements OnInit {
 	message;
 	type;
 	permissionEntity;
-	globals;
-   constructor(private http: Http,private authService: AuthService, private router: Router, private route: ActivatedRoute, private UserService: UserService,private global: Globals,private CommonService: CommonService,) { }
+	//globals;
+   constructor(private http: Http,private authService: AuthService, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {

@@ -70,7 +70,6 @@ export class AssessmentComponent implements OnInit {
         this.ksaList = data['ksa'];
         this.totalksa = data['totalksa'];
         this.addprogess = 100/this.totalksa;
-        console.log(this.ksaList);
         setTimeout(()=>{  
 		
 	 "use strict";
@@ -135,10 +134,13 @@ else {
             }
           } 
           this.checkprogress();
+          
+        },100);
+        setTimeout(()=>{  
           if ($("body").height() < $(window).height()) {
             $('footer').addClass('footer_fixed');
           } 
-        },100);
+        },1000);
       }        
 		}, 
 		(error) => 

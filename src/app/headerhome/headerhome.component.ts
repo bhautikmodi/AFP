@@ -23,4 +23,29 @@ export class HeaderhomeComponent implements OnInit {
     }
 
   }
+  logout()
+  { 
+      var panel={'Userid':this.globals.authData.UserId,'paneltype':0};
+      this.authService.logout(panel)
+//.map(res => res.json())
+    .then((data) => 
+    {
+      this.globals.isLoading = true;
+      window.location.href = '/login';
+          
+    }, 
+    (error) => 
+    {
+      alert('error');
+    });
+        
+  }
+  register()
+    {
+      window.location.href = '/invitation';
+    }
+    log()
+    {
+      window.location.href = '/login';
+    }
 }

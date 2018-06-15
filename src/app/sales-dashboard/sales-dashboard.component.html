@@ -72,7 +72,6 @@
             <strong>Last Assessment : </strong><span *ngIf="UserL.lastdate!=NULL">{{UserL.lastdate | date :'MM/dd/yyyy'}}</span><span *ngIf="UserL.lastdate==NULL">NA</span><br>
             <strong>Total Assessment : </strong>{{UserL.totalass}}</p>
             <div *ngIf="UserL.totalass>0">
-              
               <button class="arrow_btn pull-right" routerLink="/user-assessment-list/{{UserL.UserId}}"  type="button"><i class="fa fa-angle-right"></i></button>
           </div>
           </div>

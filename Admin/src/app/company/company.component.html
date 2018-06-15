@@ -26,7 +26,7 @@
 										
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>Company Name</label>
-											<input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z' ]{2,100}"  maxlength="100"
+											<input type="text" class="form-control" #Name="ngModel"	[(ngModel)]="companyEntity.Name" class="form-control" name="Name" pattern="[a-zA-Z'.$\ ]{2,100}"  maxlength="100"
 											 [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
 											<span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter company name </span>

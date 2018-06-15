@@ -81,6 +81,11 @@ class Register_model extends CI_Model
 			}	else {
 				$phone1 = '';
 			}
+			if(isset($post_user['Address2']) && !empty($post_user['Address2'])){
+				$Address2 = $post_user['Address2'];
+			}	else {
+				$Address2 = '';
+			}
 				$user_data=array(
 						"RoleId"=>3,
 						"CompanyId"=>$post_user['CompanyId'],
@@ -90,7 +95,7 @@ class Register_model extends CI_Model
 						"EmailAddress"=>$post_user['EmailAddress'],
 						"Password"=>md5($post_user['Password']),
 						"Address1"=>$post_user['Address1'],
-						"Address2"=>$post_user['Address2'],
+						"Address2"=>$Address2,
 						"CountryId"=>$post_user['CountryId'],
 						"StateId"=>$post_user['StateId'],
 						"City"=>$post_user['City'],

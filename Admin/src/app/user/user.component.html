@@ -26,7 +26,7 @@
 										
                                         <div class="form-group col-md-6">
                                             <label><span class="required">*</span>First Name</label>
-                                            <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="userEntity.FirstName" class="form-control" name="FirstName" pattern="[a-zA-Z0-9 ,']{0,}"  [ngClass]="{red_border: (FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)}" required/>
+                                            <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="userEntity.FirstName" class="form-control" name="FirstName" pattern="[a-zA-Z'.$\ ]{2,100}"  [ngClass]="{red_border: (FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)}" required/>
 											<span class="error_span" *ngIf="(FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)"> 
 											<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter first name </span>
 											<span class="error_span" *ngIf="FirstName.errors && FirstName.errors.pattern">
@@ -39,7 +39,7 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Last Name</label>
                                             <input type="text" class="form-control" #LastName="ngModel" name="LastName" 
-											pattern="[a-zA-Z0-9 ,']{0,}"
+											pattern="[a-zA-Z'.$\ ]{2,100}"
 												[(ngModel)]="userEntity.LastName" [ngClass]="{red_border: (LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)}"  required/>
 												<span class="error_span"  *ngIf="(LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)"> 
 												<span *ngIf="LastName.errors.required || (LastName.pristine && submitted)">Please enter last name </span>
@@ -137,19 +137,14 @@
                                         </div>
 										
 										
-										<div class="form-group col-md-6">
-                                            <label><span class="required">*</span>Address 2</label>
-                                            <textarea  #Address2="ngModel" [(ngModel)]="userEntity.Address2" class="form-control"
-											name="Address2" [ngClass]="{red_border: (Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)}" required></textarea>
-											<span class="error_span"  *ngIf="(Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)"> 
-												<span *ngIf="Address2.errors.required || (Address2.pristine && submitted)">Please enter address </span>
-												<span class="error_span" *ngIf="Address2.errors && Address2.errors.pattern">
-												Please enter valid address.
-										  </span>
-											</span>
-											
-                                        </div>
 										
+										<div class="form-group col-md-6">
+												<label><span class="required"></span>Address 2</label>
+												<textarea type="text" class="form-control" #PhoneNumberl="ngModel" name="Address2" 
+												 maxlength="13"
+													[(ngModel)]="userEntity.Address2" ></textarea>
+													
+											</div>
 										<div class="clearfix"></div>
 										
 										<div class="form-group col-md-4">

@@ -178,6 +178,10 @@ class Register extends CI_Controller
 										   $result2 = $query2->result();
 										   $body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 									   } 
+									   $queryCompany = $this->db->query('SELECT c.Name FROM tbluser as u left join tblcompany as c ON u.CompanyId=c.CompanyId where UserId = '.$userId_backup); 
+										$rowCompany = $queryCompany->result();
+										$row->Subject = $row->Subject.' - '.$rowCompany[0]->Name;
+
 									   $this->email->from($smtpEmail, 'AFP Admin');
 									   $this->email->to($rowTo[0]->EmailAddress);		
 									   $this->email->subject($row->Subject);

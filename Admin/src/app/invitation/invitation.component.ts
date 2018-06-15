@@ -17,6 +17,7 @@ declare var $: any;
 export class InvitationComponent implements OnInit {
 	InvitationEntity;
 	submitted;
+	roleList;
 	IndustryList;
 	btn_disable;
 	header;
@@ -33,6 +34,7 @@ export class InvitationComponent implements OnInit {
 
 	ngOnInit() {
 		this.globals.isLoading = true;
+		
 		//this.globals = this.global;
 		// this.myOptions= [
 		// 	{label: 'Belgium', value: 'BE'},
@@ -66,11 +68,14 @@ export class InvitationComponent implements OnInit {
 	default(){
 		this.globals.msgflag = false;
 		this.InvitationEntity = {};
-
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId ='';
+		this.InvitationEntity.IndustryId ='';
 		this.InvitationService.getAllCompany()
 			//.map(res => res.json())
 			.then((data) => {
-				this.CompanyList = data;
+				this.CompanyList = data['company'];;
+				this.roleList = data['role'];
 				this.globals.isLoading = false;
 			},
 			(error) => {
@@ -97,6 +102,7 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity.IsActive = '1';
 			this.InvitationEntity.IndustryId ='';
 			this.InvitationEntity.CompanyId ='';
+	     	this.InvitationEntity.RoleId ='';
 			this.InvitationService.getIndustry()
 			//.map(res => res.json())
 			.then((data) => 
@@ -185,7 +191,13 @@ export class InvitationComponent implements OnInit {
 	{
 		this.companyhide=true;
 		this.btn_disable = false;
+		var email = this.InvitationEntity.EmailAddress;
+		var RoleId = this.InvitationEntity.RoleId;
 		this.InvitationEntity={};
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId =RoleId;
+		this.InvitationEntity.IndustryId ='';
+		this.InvitationEntity.EmailAddress = email;
 		//this.isDisabled=true;
 		
 
@@ -197,10 +209,15 @@ export class InvitationComponent implements OnInit {
 		//.map(res => res.json())
 		.then((data) => 
 		{
-			this.ComL = data;
-			this.InvitationEntity = data;
+			this.ComL = data;		
 			this.companyhide = true;
 			this.btn_disable = true;
+
+			var email = this.InvitationEntity.EmailAddress;
+			var RoleId = this.InvitationEntity.RoleId;
+			this.InvitationEntity = data;
+			this.InvitationEntity.RoleId =RoleId;
+			this.InvitationEntity.EmailAddress = email;
 		}, 
 		(error) => 
 		{

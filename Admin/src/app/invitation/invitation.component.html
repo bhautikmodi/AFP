@@ -78,7 +78,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label>Industry</label>
-                                    <select class="form-control"  #IndustryId="ngModel" [(ngModel)]="InvitationEntity.IndustryId" name="IndustryId"  [disabled]="btn_disable" >  
+                                    <select class="form-control"   #IndustryId="ngModel" [(ngModel)]="InvitationEntity.IndustryId" name="IndustryId"  [disabled]="btn_disable" >  
 									<option value="" ngSelected='InvitationEntity.IndustryId==""' >Select Industry </option>
 									<option *ngFor="let Industry of IndustryList" value="{{Industry.IndustryId}}" 
 									ngSelected="InvitationEntity.IndustryId==Industry.IndustryId" >{{Industry.IndustryName}}</option>
@@ -140,7 +140,15 @@
                                   
                                   
                               </div>
-          
+                              <div class="form-group col-md-6">
+                                <label><span class="required">*</span>Role</label>
+                               <select class='select-option' required class="form-control" #RoleId="ngModel" [(ngModel)]="InvitationEntity.RoleId" name="RoleId" [ngClass]="{red_border: (RoleId.dirty && RoleId.invalid) || (RoleId.pristine && submitted)}">
+                               <option value="" ngSelected='InvitationEntity.RoleId==""'>Select</option>
+                                <option class='option' *ngFor='let role of roleList' [value]="role.RoleId">{{role.RoleName}}</option></select>
+                                <span class="error_span"  *ngIf="(RoleId.dirty && RoleId.invalid) || (RoleId.pristine && submitted)"> 
+                                    <span *ngIf="RoleId.errors.required || (RoleId.pristine && submitted)">Please select role </span>
+                                </span>
+                            </div>
                
 
 

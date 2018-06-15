@@ -29,8 +29,8 @@ p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
 .no_padding{padding:0px!important;}
 .clear {clear:both;}
-a {text-decoration:none; color:#191919; cursor: pointer;}
-a:hover, a.selected {text-decoration:none; color:#0085AD;}
+a {text-decoration:none; color:#0085AD; cursor: pointer;}
+a:hover, a.selected {text-decoration:none; color:#191919;}
 a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
 li {list-style:none;}

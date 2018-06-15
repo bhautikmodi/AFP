@@ -132,7 +132,7 @@ export class InvitationComponent implements OnInit {
 		} else {
 			this.InvitationEntity.CreatedBy = this.globals.authData.UserId;
 			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = false;
+			this.submitted = true;
 		}
 		var s=this.InvitationEntity.EmailAddress;
 		
@@ -182,8 +182,12 @@ export class InvitationComponent implements OnInit {
 
 	clearForm(InvitationForm) {
 		this.InvitationEntity = {};
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId = '';
+		this.InvitationEntity.IndustryId ='';
 		this.InvitationEntity.UserInvitationId = 0;
 		this.InvitationEntity.IsActive = '1';
+		this.companyhide=false;
 		this.submitted = false;
 		InvitationForm.form.markAsPristine();
 	}

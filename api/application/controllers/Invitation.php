@@ -16,7 +16,8 @@ class Invitation extends My_Controller {
 	public function getAllCompany()
 	{
 		$data="";	
-		$data=$this->Invitation_model->getlist_company();
+		$data['company']=$this->Invitation_model->getlist_company();
+		$data['role']=$this->Invitation_model->getlist_userrole();
 		echo json_encode($data);
 	}
 	public function getCompany($CompanyId=null)

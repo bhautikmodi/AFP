@@ -35,12 +35,27 @@ class Invitation_model extends CI_Model
 			return false;
 		   }
 	}
+
+	
 	public	function getlist_Industry()
 	{
 		$this->db->select('IndustryId,IndustryName,IsActive');
 		$this->db->where('IsActive="1"');
 		$this->db->order_by('IndustryName','asc');
 		$result=$this->db->get('tblmstindustry');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
+	public function getlist_userrole()
+	{
+		$this->db->select('RoleId,RoleName');
+		$this->db->where('RoleName!=','IT');
+		$result=$this->db->get('tblmstuserrole');
 		
 		$res=array();
 		if($result->result())
@@ -102,6 +117,7 @@ class Invitation_model extends CI_Model
 							'CompanyId' => trim($post_Invitation['CompanyId']),
 						'EmailAddress' =>  trim($post_Invitation['EmailAddress']),
 						'Code' =>  trim($post_Invitation['Code']),
+						'RoleId' =>  trim($post_Invitation['RoleId']),
 						'UpdatedOn' => date('y-m-d H:i:s')
 					);
 					$res = $this->db->insert('tbluserinvitation',$Invitation_data);
@@ -151,6 +167,7 @@ class Invitation_model extends CI_Model
 							 'CompanyId' => trim($company_data->CompanyId),
 						 'EmailAddress' =>  trim($post_Invitation['EmailAddress']),
 						 'Code' =>  trim($post_Invitation['Code']),
+						 'RoleId' =>  trim($post_Invitation['RoleId']),
 						 'UpdatedOn' => date('y-m-d H:i:s')
 					 );
 					 $res = $this->db->insert('tbluserinvitation',$Invitation_data);
@@ -170,7 +187,8 @@ class Invitation_model extends CI_Model
 	
 	public function getlist_Invitation() {
 
-		$this->db->select('ui.UserInvitationId,ui.EmailAddress,ui.Status,ui.CompanyId,ui.Code,ui.IsActive,ui.UpdatedOn,tc.CompanyId,tc.Name');
+		$this->db->select('ui.UserInvitationId,ui.EmailAddress,r.RoleId,r.RoleName,ui.Status,ui.CompanyId,ui.Code,ui.IsActive,ui.UpdatedOn,tc.CompanyId,tc.Name');
+		$this->db->join('tblmstuserrole r', 'ui.RoleId = r.RoleId', 'left');
 		$this->db->join('tblcompany tc', 'ui.CompanyId = tc.CompanyId', 'left');
 		$this->db->order_by('UserInvitationId','asc');
 		$result = $this->db->get('tbluserinvitation ui');	

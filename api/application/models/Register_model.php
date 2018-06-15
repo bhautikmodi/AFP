@@ -89,7 +89,7 @@ class Register_model extends CI_Model
 			$this->db->select('RoleId');
 			$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
 			$query_r=$this->db->get('tbluserinvitation');
-			$r=$query->result();
+			$r=$query_r->result();
 			$RoleId = $r[0]->RoleId;
 
 				$user_data=array(

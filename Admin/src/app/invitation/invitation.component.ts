@@ -26,6 +26,7 @@ export class InvitationComponent implements OnInit {
 	companyhide;
 	ComL;
 	isDisabled;
+	submitted1;
 	//globals;
 	// myOptions;
 	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
@@ -194,6 +195,7 @@ export class InvitationComponent implements OnInit {
 	com()
 	{
 		this.companyhide=true;
+		this.submitted1 = false;
 		this.btn_disable = false;
 		var email = this.InvitationEntity.EmailAddress;
 		var RoleId = this.InvitationEntity.RoleId;
@@ -216,7 +218,7 @@ export class InvitationComponent implements OnInit {
 			this.ComL = data;		
 			this.companyhide = true;
 			this.btn_disable = true;
-
+			this.submitted1 = true;
 			var email = this.InvitationEntity.EmailAddress;
 			var RoleId = this.InvitationEntity.RoleId;
 			this.InvitationEntity = data;

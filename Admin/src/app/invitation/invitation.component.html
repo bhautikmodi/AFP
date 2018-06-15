@@ -65,7 +65,7 @@
                                     <label><span class="required">*</span>Company Name</label>
                                     <input type="text" class="form-control" #Name="ngModel" name="Name"
                                     pattern="[a-zA-Z'.$\ ]{2,100}" maxlength="100"
-                                        [(ngModel)]="InvitationEntity.Name" [disabled]="btn_disable" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}"  required/>
+                                        [(ngModel)]="InvitationEntity.Name" [disabled]="btn_disable" [ngClass]="{red_border: (((Name.dirty && Name.invalid) || (Name.pristine && submitted)) && !submitted1)}"  required/>
                                     <span class="error_span"  *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                         <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter Company name</span>
                                         <span class="error_span" *ngIf="Name.errors && Name.errors.pattern">
@@ -94,7 +94,7 @@
                                     <label><span class="required">*</span>Phone Number</label>
                                     <input type="text" class="form-control" [disabled]="btn_disable"  #PhoneNo="ngModel" name="PhoneNo"
                                     pattern="[0-9\-.()+\s]{3,13}"  maxlength="13"
-							[(ngModel)]="InvitationEntity.PhoneNo" [ngClass]="{red_border: (PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)}"  required/>
+							[(ngModel)]="InvitationEntity.PhoneNo" [ngClass]="{red_border: ((PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted))&& !submitted1}"  required/>
 						<span class="error_span"  *ngIf="(PhoneNo.dirty && PhoneNo.invalid) || (PhoneNo.pristine && submitted)"> 
 							<span *ngIf="PhoneNo.errors.required || (PhoneNo.pristine && submitted)">Please enter Phone Number</span>
 							<span class="error_span" *ngIf="PhoneNo.errors && PhoneNo.errors.pattern">
@@ -107,7 +107,7 @@
                                     <label><span class="required">*</span>Website</label>
                                     <input type="text" class="form-control"  [disabled]="btn_disable"  #Website="ngModel" maxlength="250" pattern="[a-zA-Z0-9.-_]{1,}[.]{1}[a-zA-Z]{2,}"
                                      [(ngModel)]="InvitationEntity.Website" name="Website" 
-				[ngClass]="{red_border: (Website.dirty && Website.invalid) || (Website.pristine && submitted)}" required/>  
+				[ngClass]="{red_border: ((Website.dirty && Website.invalid) || (Website.pristine && submitted))&& !submitted1}" required/>  
 						  <span class="error_span" *ngIf="(Website.dirty && Website.invalid) || (Website.pristine && submitted)"> 
 							<span *ngIf="Website.errors.required || (Website.pristine && submitted)">Please enter Website</span>
 							<span *ngIf="Website.errors && Website.errors.pattern">Please enter valid Website</span>

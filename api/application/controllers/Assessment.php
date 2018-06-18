@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Assessment extends MY_Controller {
+class Assessment extends CI_Controller {
 
 
     public function __construct() {
@@ -11,6 +11,10 @@ class Assessment extends MY_Controller {
 		
 		$this->load->model('Assessment_model');
 		
+	}
+
+	Public function index(){
+		echo ACTIVE_GROUP; die;
 	}
 	
 	public function getAllKSA($CAssessmentId = NULL) {

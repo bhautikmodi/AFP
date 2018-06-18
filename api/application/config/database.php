@@ -71,8 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-
-$active_group = 'Development';
+if (defined('ACTIVE_GROUP')) {
+    $active_group = ACTIVE_GROUP;
+} else {
+    $active_group = 'default';
+}
 
 $query_builder = TRUE;
 

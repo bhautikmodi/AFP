@@ -64,6 +64,24 @@ export class AuthService {
 	
 	public getToken(): string {
     return localStorage.getItem('token');
-  }
+	}
+	
+
+	db_mode(){  
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.globals.baseAPIUrl + 'Login_user/db_mode', this.globals.headerpath)
+				.toPromise()
+				.then( 
+					res => { // Success 
+						resolve(res.json());
+					},
+					msg => { // Error
+						reject(msg.json());
+					}
+				);
+		});		
+		return promise;
+		}
+
   
 }

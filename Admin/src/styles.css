@@ -78,3 +78,25 @@ a.disabled {
 .tooltip_inline{display: inline-block;}
 .tooltip_inline button[disabled]{cursor: default; opacity: 1; pointer-events: none;}
 /* .error_span{color:red; font-size:12px; font-weight:normal; font-family: "Gotham-Book"; line-height:11px;} */
+
+.default
+{
+  background-color: #05e42a;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}
+.Development
+{
+  background-color: #C00808;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}
+.QA
+{
+  background-color:#d8db11;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}

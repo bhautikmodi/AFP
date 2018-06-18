@@ -68,3 +68,25 @@ a.disabled {
         transform: rotate(360deg);
     }
 }
+
+.default
+{
+  background-color: #05e42a;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}
+.Development
+{
+  background-color: #C00808;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}
+.QA
+{
+  background-color:#d8db11;
+  height: 30px;
+  width: 30px;
+position: absolute; z-index: 9999;
+}

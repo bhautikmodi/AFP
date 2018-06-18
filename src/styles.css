@@ -69,24 +69,32 @@ a.disabled {
     }
 }
 
-.default
-{
-  background-color: #05e42a;
-  height: 30px;
-  width: 30px;
-position: absolute; z-index: 9999;
+.default {
+    background-color: #05e42a;
+    width: 5px;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    height: 100%;
 }
 .Development
 {
-  background-color: #C00808;
-  height: 30px;
-  width: 30px;
-position: absolute; z-index: 9999;
+    background-color:darkred;
+    width: 5px;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    height: 100%;
 }
 .QA
 {
-  background-color:#d8db11;
-  height: 30px;
-  width: 30px;
-position: absolute; z-index: 9999;
+    background-color:darkgoldenrod;
+    width: 5px;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    height: 100%;
 }

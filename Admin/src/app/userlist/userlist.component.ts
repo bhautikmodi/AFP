@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../services/common.service';
 import { UserService } from '../services/user.service';
 import { Globals } from '../globals';
-declare var $: any;
+declare var $,unescape,newWin: any;
 @Component({
   selector: 'app-userlist',
    providers: [ UserService ],
@@ -23,12 +23,14 @@ export class UserlistComponent implements OnInit {
 	msgflag;
 	message;
 	type;
+	
 	permissionEntity;
 	//globals;
    constructor(private http: Http,private authService: AuthService, private router: Router, private route: ActivatedRoute, private UserService: UserService,private globals: Globals,private CommonService: CommonService,) { }
 
   ngOnInit()
   {
+	
 	this.globals.isLoading = true;	
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
@@ -59,7 +61,31 @@ export class UserlistComponent implements OnInit {
 			alert('error');
 		});	
 	}			
-  }
+	}
+	
+	 printData()
+{
+   var divToPrint=document.getElementById("dataTables-example");
+   var newWin= window.open("");
+   newWin.document.write(divToPrint.outerHTML);
+   newWin.print();
+   newWin.close();
+}
+
+
+	 tableToExcel()
+	 {
+		var uri = 'data:application/vnd.ms-excel;base64,'
+			, template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+			, base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+			, format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+		return function(table, name) {
+			if (!table.nodeType) table = document.getElementById(table)
+			var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+			window.location.href = uri + base64(format(template, ctx))
+		}
+	 }
+
   
   default(){		
 	this.UserService.getAllUser()

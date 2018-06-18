@@ -845,3 +845,7 @@ div.dataTables_length select {
 .btn.btn-default.disabled {
 	pointer-events: none;
 }*/
+
+.export-data {
+	margin-top: 0;
+}

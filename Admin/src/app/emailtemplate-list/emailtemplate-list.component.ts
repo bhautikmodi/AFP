@@ -6,7 +6,7 @@ import { EmailtemplateService } from '../services/emailtemplate.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 import { forEach } from '@angular/router/src/utils/collection';
-declare var $: any;
+declare var $,unescape: any;
 
 @Component({
   selector: 'app-emailtemplate-list',

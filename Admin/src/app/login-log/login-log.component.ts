@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuditlogService } from '../services/auditlog.service';
 import { Globals } from '.././globals';
-declare var $: any;
+declare var $,unescape: any;
 
 @Component({
   selector: 'app-login-log',

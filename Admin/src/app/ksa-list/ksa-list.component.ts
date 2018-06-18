@@ -6,7 +6,7 @@ import { KsaService } from '../services/ksa.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 
-declare var $: any;
+declare var $,unescape: any;
 
 @Component({
   selector: 'app-ksa-list',

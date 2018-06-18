@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../services/state.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
-declare var $: any;
+declare var $,unescape: any;
 
 @Component({
   selector: 'app-statelist',

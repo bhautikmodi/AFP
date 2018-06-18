@@ -30,7 +30,7 @@ export class AuthService {
 	return promise;
   }
   
-  logout(panel){ debugger
+  logout(panel){ 
 		let promise = new Promise((resolve, reject) => {
 		this.http.post(this.globals.baseAPIUrl + 'Login_user/logout',panel, this.globals.headerpath)
 			.toPromise()
@@ -57,6 +57,22 @@ export class AuthService {
 	  }
 	  let isExpired = jwtHelper.isTokenExpired(token) ? true : false;	 
 	  return !isExpired;
-  }
+	}
+	
+	db_mode(){  
+		let promise = new Promise((resolve, reject) => {
+			this.http.get(this.globals.baseAPIUrl + 'Login_user/db_mode', this.globals.headerpath)
+				.toPromise()
+				.then( 
+					res => { // Success 
+						resolve(res.json());
+					},
+					msg => { // Error
+						reject(msg.json());
+					}
+				);
+		});		
+		return promise;
+		}
   
 }

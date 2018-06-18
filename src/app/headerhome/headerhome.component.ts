@@ -9,11 +9,21 @@ import { Globals } from '../globals';
 })
 export class HeaderhomeComponent implements OnInit {
   //globals;
+  db_mode;
   constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
 
   ngOnInit() 
   {
     //this.globals = this.global;
+    this.authService.db_mode()
+      .then((data) => 
+      {
+        this.db_mode = data;
+      }, 
+      (error) => 
+      {
+        //alert('error');
+      });
   }
   home()
   {

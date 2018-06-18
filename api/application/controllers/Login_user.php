@@ -14,6 +14,10 @@ class Login_user extends CI_Controller {
 		include APPPATH . 'vendor/firebase/php-jwt/src/JWT.php';
 		
 	}
+
+	public function db_mode(){
+		echo json_encode(ACTIVE_GROUP);
+	}
 	
 	
 	public function check_login() {

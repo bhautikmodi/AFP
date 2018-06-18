@@ -9,7 +9,7 @@ import { CompanyService } from '../services/company.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '../globals';
 
-declare var $: any;
+declare var $,unescape: any;
 
 
 @Component({

@@ -50,7 +50,7 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label><span>*</span>First Name </label>
-                <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="RegisterEntity.FirstName" name="FirstName" pattern="[a-zA-Z' ]{2,100}"
+                <input type="text" class="form-control" #FirstName="ngModel" [(ngModel)]="RegisterEntity.FirstName" name="FirstName" pattern="[a-zA-Z'.$\ ]{2,100}"
 				[ngClass]="{red_border: (FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)"> 
 							<span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please enter your first name</span>
@@ -61,7 +61,7 @@
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
                 <label><span>*</span>Last Name </label>
-               <input type="text" class="form-control" #LastName="ngModel" [(ngModel)]="RegisterEntity.LastName" name="LastName" pattern="[a-zA-Z' ]{2,100}"
+               <input type="text" class="form-control" #LastName="ngModel" [(ngModel)]="RegisterEntity.LastName" name="LastName" pattern="[a-zA-Z'.$\ ]{2,100}"
 				[ngClass]="{red_border: (LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)}" required/>  
 						  <span class="error_span" *ngIf="(LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)"> 
 							<span *ngIf="LastName.errors.required || (LastName.pristine && submitted)">Please enter your last name</span>
@@ -172,16 +172,14 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label><span>*</span>Address 2 </label>
+                <label><span></span>Address 2 </label>
                  <input type="text" class="form-control"  #Address2="ngModel" maxlength="250" 
 				 [(ngModel)]="RegisterEntity.Address2" name="Address2" 
-				 [ngClass]="{red_border: (Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)}" required/>
-                   <span class="error_span" *ngIf="(Address2.dirty && Address2.invalid) || (Address2.pristine && submitted)">
-									<span *ngIf="Address2.errors && Address2.errors.required">
-                    Please enter your address
-											</span>
-										
-								</span>
+				 [ngClass]="{red_border: (Address2.dirty && Address2.invalid)}"  />
+         <span class="error_span" *ngIf="(Address2.dirty && Address2.invalid)"> 
+    
+            <span *ngIf="Address2.errors && Address2.errors.pattern">Please enter Your address</span>
+          </span>
               </div>
             </div>
             <div class="clearfix"></div>

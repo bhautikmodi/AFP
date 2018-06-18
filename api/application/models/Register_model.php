@@ -15,7 +15,7 @@ class Register_model extends CI_Model
 		
 	}
 	//List state
-	function getlist_state()
+	public function getlist_state()
 	{
 		$this->db->select('*');
 		
@@ -81,8 +81,19 @@ class Register_model extends CI_Model
 			}	else {
 				$phone1 = '';
 			}
+			if(isset($post_user['Address2']) && !empty($post_user['Address2'])){
+				$Address2 = $post_user['Address2'];
+			}	else {
+				$Address2 = '';
+			}
+			$this->db->select('RoleId');
+			$this->db->where('EmailAddress',trim($post_user['EmailAddress']));
+			$query_r=$this->db->get('tbluserinvitation');
+			$r=$query_r->result();
+			$RoleId = $r[0]->RoleId;
+
 				$user_data=array(
-						"RoleId"=>3,
+						"RoleId"=>$RoleId,
 						"CompanyId"=>$post_user['CompanyId'],
 						"FirstName"=>$post_user['FirstName'],
 						"LastName"=>$post_user['LastName'],
@@ -90,7 +101,7 @@ class Register_model extends CI_Model
 						"EmailAddress"=>$post_user['EmailAddress'],
 						"Password"=>md5($post_user['Password']),
 						"Address1"=>$post_user['Address1'],
-						"Address2"=>$post_user['Address2'],
+						"Address2"=>$Address2,
 						"CountryId"=>$post_user['CountryId'],
 						"StateId"=>$post_user['StateId'],
 						"City"=>$post_user['City'],

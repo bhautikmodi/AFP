@@ -10,7 +10,7 @@ export class RegisterService {
 
 
  add(RegisterEntity){  
-   debugger
+   
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Register/addRegister', RegisterEntity, this.globals.headerpath)
       .toPromise()
@@ -115,7 +115,7 @@ export class RegisterService {
 	return promise;
   } 
     
-getById(userId){debugger
+getById(userId){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Register/getById/' + userId, this.globals.headerpath)
       .toPromise()

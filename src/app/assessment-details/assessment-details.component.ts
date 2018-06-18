@@ -23,6 +23,7 @@ header;
 
   ngOnInit() 
   {
+	$('[data-toggle="tooltip"]').tooltip();
 	this.globals.isLoading = true;
 	setTimeout(function(){ 
 		if ($("body").height() < $(window).height()) {

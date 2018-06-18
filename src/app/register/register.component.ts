@@ -196,7 +196,7 @@ export class RegisterComponent implements OnInit {
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 
-			{ debugger
+			{ 
 				//alert('success');
 				this.globals.isLoading = false;
 				this.btn_disable = false;
@@ -214,8 +214,11 @@ export class RegisterComponent implements OnInit {
 						this.globals.message = 'Add successfully!';
 						this.globals.type = 'success';
 						this.globals.msgflag = true;
-						this.router.navigate(['/welcome_register']);
- 
+						if(this.globals.authData.RoleId==3){
+							this.router.navigate(['/welcome_register']);
+						} else {
+							this.router.navigate(['/sales-admin-dashboard']);
+						}
 					}
 
 							$("#submit_Modal").modal('hide');

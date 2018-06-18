@@ -17,6 +17,7 @@ declare var $: any;
 export class InvitationComponent implements OnInit {
 	InvitationEntity;
 	submitted;
+	roleList;
 	IndustryList;
 	btn_disable;
 	header;
@@ -25,6 +26,7 @@ export class InvitationComponent implements OnInit {
 	companyhide;
 	ComL;
 	isDisabled;
+	submitted1;
 	//globals;
 	// myOptions;
 	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
@@ -33,6 +35,7 @@ export class InvitationComponent implements OnInit {
 
 	ngOnInit() {
 		this.globals.isLoading = true;
+		
 		//this.globals = this.global;
 		// this.myOptions= [
 		// 	{label: 'Belgium', value: 'BE'},
@@ -66,11 +69,14 @@ export class InvitationComponent implements OnInit {
 	default(){
 		this.globals.msgflag = false;
 		this.InvitationEntity = {};
-
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId ='';
+		this.InvitationEntity.IndustryId ='';
 		this.InvitationService.getAllCompany()
 			//.map(res => res.json())
 			.then((data) => {
-				this.CompanyList = data;
+				this.CompanyList = data['company'];;
+				this.roleList = data['role'];
 				this.globals.isLoading = false;
 			},
 			(error) => {
@@ -97,6 +103,7 @@ export class InvitationComponent implements OnInit {
 			this.InvitationEntity.IsActive = '1';
 			this.InvitationEntity.IndustryId ='';
 			this.InvitationEntity.CompanyId ='';
+	     	this.InvitationEntity.RoleId ='';
 			this.InvitationService.getIndustry()
 			//.map(res => res.json())
 			.then((data) => 
@@ -126,7 +133,7 @@ export class InvitationComponent implements OnInit {
 		} else {
 			this.InvitationEntity.CreatedBy = this.globals.authData.UserId;
 			this.InvitationEntity.UpdatedBy = this.globals.authData.UserId;
-			this.submitted = false;
+			this.submitted = true;
 		}
 		var s=this.InvitationEntity.EmailAddress;
 		
@@ -176,16 +183,27 @@ export class InvitationComponent implements OnInit {
 
 	clearForm(InvitationForm) {
 		this.InvitationEntity = {};
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId = '';
+		this.InvitationEntity.IndustryId ='';
 		this.InvitationEntity.UserInvitationId = 0;
 		this.InvitationEntity.IsActive = '1';
+		this.companyhide=false;
 		this.submitted = false;
 		InvitationForm.form.markAsPristine();
 	}
 	com()
 	{
 		this.companyhide=true;
+		this.submitted1 = false;
 		this.btn_disable = false;
+		var email = this.InvitationEntity.EmailAddress;
+		var RoleId = this.InvitationEntity.RoleId;
 		this.InvitationEntity={};
+		this.InvitationEntity.CompanyId ='';
+		this.InvitationEntity.RoleId =RoleId;
+		this.InvitationEntity.IndustryId ='';
+		this.InvitationEntity.EmailAddress = email;
 		//this.isDisabled=true;
 		
 
@@ -197,10 +215,15 @@ export class InvitationComponent implements OnInit {
 		//.map(res => res.json())
 		.then((data) => 
 		{
-			this.ComL = data;
-			this.InvitationEntity = data;
+			this.ComL = data;		
 			this.companyhide = true;
 			this.btn_disable = true;
+			this.submitted1 = true;
+			var email = this.InvitationEntity.EmailAddress;
+			var RoleId = this.InvitationEntity.RoleId;
+			this.InvitationEntity = data;
+			this.InvitationEntity.RoleId =RoleId;
+			this.InvitationEntity.EmailAddress = email;
 		}, 
 		(error) => 
 		{

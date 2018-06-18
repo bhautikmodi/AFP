@@ -29,6 +29,11 @@ export class EmailtemplateComponent implements OnInit {
 
 	ngOnInit() {
 		this.globals.isLoading = true;
+	$("body").tooltip({
+		selector: "[data-toggle='tooltip']",
+		container: "body"
+	});
+		this.globals.isLoading = true;
 		if(this.globals.authData.RoleId==4){		
 			this.default();
 		} else {

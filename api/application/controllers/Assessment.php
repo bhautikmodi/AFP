@@ -84,43 +84,43 @@ class Assessment extends MY_Controller {
 					$row->EmailBody = str_replace("{ assessment_start_date }",$ass_start_date,$row->EmailBody);
 					$row->EmailBody = str_replace("{ team_size }",$team_size,$row->EmailBody);
 					if($row->To==3){		
-					$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
-					$rowTo = $queryTo->result();
-					$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
-					$body = $row->EmailBody;
-					foreach($query1->result() as $row1){			
-						$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn LEFT JOIN tblmstuserrole AS role ON tn.RoleId = role.RoleId LEFT JOIN tblmstcountry AS con ON tn.CountryId = con.CountryId LEFT JOIN tblmststate AS st ON tn.StateId = st.StateId LEFT JOIN tblcompany AS com ON tn.CompanyId = com.CompanyId LEFT JOIN tblmstindustry AS ind ON com.IndustryId = ind.IndustryId WHERE tn.UserId = '.$userId);
-						$result2 = $query2->result();
-						$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
-					} 
-					if($row->BccEmail!=''){
-						$bcc = $row->BccEmail.','.$row->totalbcc;
-					} else {
-						$bcc = $row->totalbcc;
-					}
-					$this->email->from($smtpEmail, 'AFP Admin');
-					$this->email->to($rowTo[0]->EmailAddress);		
-					$this->email->subject($row->Subject);
-					$this->email->cc($row->totalcc);
-					$this->email->bcc($bcc);
-					$this->email->message($body);
-					if($this->email->send())
-					{
-						$email_log = array(
-							'From' => trim($smtpEmail),
-							'Cc' => trim($row->totalcc),
-							'Bcc' => trim($bcc),
-							'To' => trim($rowTo[0]->EmailAddress),
-							'Subject' => trim($row->Subject),
-							'MessageBody' => trim($body),
-						);
-						
-						$res = $this->db->insert('tblemaillog',$email_log);
-						//echo json_encode('success');
-					}else
-					{
-						//echo json_encode('fail');
-					}
+						$queryTo = $this->db->query('SELECT EmailAddress FROM tbluser where UserId = '.$userId); 
+						$rowTo = $queryTo->result();
+						$query1 = $this->db->query('SELECT p.PlaceholderId,p.PlaceholderName,t.TableName,c.ColumnName FROM tblmstemailplaceholder AS p LEFT JOIN tblmsttablecolumn AS c ON c.ColumnId = p.ColumnId LEFT JOIN tblmsttable AS t ON t.TableId = c.TableId WHERE p.IsActive = 1');
+						$body = $row->EmailBody;
+						foreach($query1->result() as $row1){			
+							$query2 = $this->db->query('SELECT '.$row1->ColumnName.' AS ColumnName FROM '.$row1->TableName.' AS tn LEFT JOIN tblmstuserrole AS role ON tn.RoleId = role.RoleId LEFT JOIN tblmstcountry AS con ON tn.CountryId = con.CountryId LEFT JOIN tblmststate AS st ON tn.StateId = st.StateId LEFT JOIN tblcompany AS com ON tn.CompanyId = com.CompanyId LEFT JOIN tblmstindustry AS ind ON com.IndustryId = ind.IndustryId WHERE tn.UserId = '.$userId);
+							$result2 = $query2->result();
+							$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
+						} 
+						if($row->BccEmail!=''){
+							$bcc = $row->BccEmail.','.$row->totalbcc;
+						} else {
+							$bcc = $row->totalbcc;
+						}
+						$this->email->from($smtpEmail, 'AFP Admin');
+						$this->email->to($rowTo[0]->EmailAddress);		
+						$this->email->subject($row->Subject);
+						$this->email->cc($row->totalcc);
+						$this->email->bcc($bcc);
+						$this->email->message($body);
+						if($this->email->send())
+						{
+							$email_log = array(
+								'From' => trim($smtpEmail),
+								'Cc' => trim($row->totalcc),
+								'Bcc' => trim($bcc),
+								'To' => trim($rowTo[0]->EmailAddress),
+								'Subject' => trim($row->Subject),
+								'MessageBody' => trim($body),
+							);
+							
+							$res = $this->db->insert('tblemaillog',$email_log);
+							//echo json_encode('success');
+						}else
+						{
+							//echo json_encode('fail');
+						}
 				} else {
 					$userId_ar = explode(',', $row->totalTo);			 
 					foreach($userId_ar as $userId){
@@ -133,6 +133,10 @@ class Assessment extends MY_Controller {
 						   $result2 = $query2->result();
 						   $body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 					   } 
+					   $queryCompany = $this->db->query('SELECT c.Name FROM tbluser as u left join tblcompany as c ON u.CompanyId=c.CompanyId where UserId = '.$userId_backup); 
+					   $rowCompany = $queryCompany->result();
+					   $row->Subject = $row->Subject.' - '.$rowCompany[0]->Name;
+					   
 					   $this->email->from($smtpEmail, 'AFP Admin');
 					   $this->email->to($rowTo[0]->EmailAddress);		
 					   $this->email->subject($row->Subject);

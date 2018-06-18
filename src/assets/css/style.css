@@ -29,8 +29,8 @@ p.padding_15{padding-bottom:15px;}
 p.padding_30{padding-bottom:35px;}
 .no_padding{padding:0px!important;}
 .clear {clear:both;}
-a {text-decoration:none; color:#191919; cursor: pointer;}
-a:hover, a.selected {text-decoration:none; color:#0085AD;}
+a {text-decoration:none; color:#0085AD; cursor: pointer;}
+a:hover, a.selected {text-decoration:none; color:#191919;}
 a:focus{outline:none;}
 ul {list-style:none; padding: 0; margin: 0;}
 li {list-style:none;}
@@ -202,7 +202,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .dashboard_box .assess_name{ font-family: "GothamNarrow-Book"; font-size:18px; line-height:20px; border-bottom:1px solid #ccc; margin-bottom:10px; transition:all 0.5s ease 0s; position:relative; font-weight:700; text-transform:uppercase; padding:10px; border-radius:5px 5px 0 0; background:#fff; color: #605b54; height: 63px; overflow: hidden; width: 100%; display: table;}
 .dashboard_box .assess_name span{display: table-cell; vertical-align: middle;}
 .dashboard_box .dashboard_item{ padding:10px; border-top:1px solid #ccc; margin-top:10px; transition:all 0.5s ease 0s; position:relative; border-radius:0 0 5px 5px; background:#fff; height:52px;} 
-.dashboard_box .margin_con{margin-top:95px;}
+.dashboard_box .margin_con{margin-top:72px;}
 .dashboard_box .dashboard_item .date_title{float:left; line-height:14px; font-size:13px; font-family:"GothamNarrow-Book"; color: #605b54; padding:10px 0 0 0;} 
 .dashboard_box .dashboard_item a{float:right; color:#fff; line-height:15px; font-size:13px; font-family:"GothamNarrow-Book"; border:0; padding:7px; margin: 0;} 
 .dashboard_box .dashboard_item a:after{ background: #007699; width:0;}
@@ -289,7 +289,7 @@ table tr th{ color:#0085AD; font-family: "GothamNarrow-Medium"; font-size:15px; 
 .assessment_bg{padding:30px 0; background:#f4f4f4; text-align:center;}
 .assessment_bg .col-md-3{float:none; display:inline-block; vertical-align:top; width:24%;}
 .assessment_bg .ksa_box{ display:block; position:relative; background:#fff; box-shadow:1px 1px 5px #ccc; border:1px solid #ccc; border-radius:10px; margin-bottom:30px; text-align:left;}
-.assessment_bg .ksa_box .ksa_text{ height:155px; font-size:15px; color:#605b54; font-family: "GothamNarrow-Book"; line-height:20px; padding:15px 15px 15px 40px; border-bottom:1px solid #d2d2d2; overflow-y: auto; position:relative;} 
+.assessment_bg .ksa_box .ksa_text{ height:155px; font-size:16px; color:#605b54; font-family: "GothamNarrow-Book"; line-height:22px; padding:15px 15px 15px 40px; border-bottom:1px solid #d2d2d2; overflow-y: auto; position:relative;} 
 .assessment_bg .ksa_box .ksa_text span{ text-align:center; color:#d8d8de; font-family: "GothamNarrow-Book"; width:30px; height:30px; display:block; padding:5px; font-size: 20px; position:absolute; left:0; top:0;}
 
 input[type="radio"]{position:absolute; visibility:hidden;}

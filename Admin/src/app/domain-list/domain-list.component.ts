@@ -6,7 +6,7 @@ import { DomainService } from '../services/domain.service';
 import { CommonService } from '../services/common.service';
 import { Globals } from '.././globals';
 
-declare var $,unescape: any;
+declare var $,unescape	: any;
 
 @Component({
   selector: 'app-domain-list',

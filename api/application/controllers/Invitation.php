@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Invitation extends My_Controller {
+class Invitation extends MY_Controller {
 
 
 	public function __construct() {
@@ -24,11 +24,8 @@ class Invitation extends My_Controller {
 	{
 		if(!empty($CompanyId))
 		{
-		$data="";	
-		//$this->load->model('Company_model');
+		$data="";
 		$data=$this->Invitation_model->get_company($CompanyId);
-		//print_r($data);
-		//.exit;
 		echo json_encode($data);
 		}
 	}

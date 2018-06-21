@@ -131,7 +131,7 @@
 											</span>
 										  
 										  <span *ngIf="Password.errors && Password.errors.pattern">
-												Password must be 8 characters or more
+												Password must be 8 to 15 characters 
 										  </span>
 								</span>
               </div>
@@ -139,7 +139,7 @@
             <div class="col-md-6 col-sm-12" *ngIf="RegisterEntity.UserId=='0'">
               <div class="form-group">
                 <label><span>*</span>Confirm Password</label>
-					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_-@$*&!#]{8,50}"#cPassword="ngModel"
+					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_-@$*&!#]{8,15}"#cPassword="ngModel"
 					[(ngModel)]="RegisterEntity.cPassword" name="cPassword" [ngClass]="{red_border: ((cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted)) || (same && !(cPassword.errors && cPassword.errors.pattern && cPassword.errors.required))}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">
 						<span *ngIf="cPassword.errors && cPassword.errors.required && !same">
@@ -147,7 +147,7 @@
 								</span>
 							  
 							  <span *ngIf="cPassword.errors && cPassword.errors.pattern && !same">
-									Password must be 8 characters or more
+									Password must be 8 to 15 characters
 							  </span>
 							  <span *ngIf="same && !(cPassword.errors && cPassword.errors.pattern && cPassword.errors.required)">
 									Those passwords didn't match

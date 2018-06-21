@@ -340,7 +340,7 @@ input[type="radio"]{position:absolute; visibility:hidden;}
 .domain_desc table{margin: 0;}
 .domain_desc table td{ font-size:13px;}
 .domain_desc .nav-tabs{ border: 0;}
-.domain_desc .nav-tabs li{ display: block; width: 16.66%; float: left; border: 0; }
+.domain_desc .nav-tabs li{ display: block; width: 16.66%; float: left; border: 0; margin-bottom: -2px !important;}
 .domain_desc .nav-tabs li a{ display: table-cell; text-align: center; padding: 8px; font-family: "GothamNarrow-medium"; font-size: 15px; line-height: 22px; margin: 0; border-radius: 0; height: 60px; width: inherit; color: #000; background-color: #77C5D5; border:0; border-top: 1px solid #ddd; border-left: 1px solid #ddd; vertical-align:middle;}
 .domain_desc .nav-tabs li:last-child a{ border-right: 1px solid #ddd;}
 .domain_desc .nav-tabs li:hover a,.domain_desc .nav-tabs li.active a{ background: #fff; }

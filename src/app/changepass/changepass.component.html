@@ -16,7 +16,7 @@
 				
 		   <div class="form-group">
                 <label><span>*</span>Current Password </label>
-                 <input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,}" 
+                 <input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_-@$*&!#]{8,}" 
 				 #Password="ngModel" maxlength="100"
 				 [(ngModel)]="newpassEntity.Password" name="Password" [ngClass]="{red_border: (Password.dirty && Password.invalid) || (Password.pristine && submitted)}" required/>
                    <span class="error_span" *ngIf="(Password.dirty && Password.invalid) || (Password.pristine && submitted)">
@@ -32,7 +32,7 @@
 			
 							<div class="form-group">
                 <label><span>*</span>Password </label>
-                 <input type="password" class="form-control" (keyup)="checkpassword()" pattern="^([a-zA-Z0-9@*#$#!]{8,})$" 
+                 <input type="password" class="form-control" (keyup)="checkpassword()" pattern="^([a-zA-Z0-9.-_-@$*&!#]{8,})$" 
 				 #nPassword="ngModel" data-toggle="tooltip" maxlength="100" data-placement="top" title="Use 8 or more characters with a mix of letters, numbers & symbols(! @ # $ & * _ - )" 
 				 [(ngModel)]="newpassEntity.nPassword" name="nPassword"
 				 [ngClass]="{red_border: (nPassword.dirty && nPassword.invalid) || (nPassword.pristine && submitted)}" required/>
@@ -49,7 +49,7 @@
           
 		  <div class="form-group">
                 <label><span>*</span>Confirm Password</label>
-					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_@$*&!#]{8,}" 
+					<input type="password" class="form-control" (keyup)="checkpassword()" pattern="[a-zA-Z0-9.-_-@$*&!#]{8,}" 
 					#cPassword="ngModel" maxlength="100"
 					[(ngModel)]="newpassEntity.cPassword" name="cPassword" [ngClass]="{red_border: (cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted||(same && !(cPassword.errors && cPassword.errors.pattern && cPassword.errors.required)))}" required/>
                    <span class="error_span" *ngIf="(cPassword.dirty && cPassword.invalid) || (cPassword.pristine && submitted) || same">

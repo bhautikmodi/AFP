@@ -20,9 +20,8 @@ class Salesuser extends MY_Controller {
 		if (!empty($CAssessmentId)) {
 			$data="";
 			$data['domain']=$this->Salesuser_model->getUserAssessDetail($CAssessmentId);
-			$data['perdomain']=$this->Salesuser_model->getUserAssessDomain($CAssessmentId);
-			$data['ratingscale']=$this->Salesuser_model->getUserAssessRating($CAssessmentId);
-			$data['areaksa']=$this->Salesuser_model->getUserAssessareaksa($CAssessmentId);
+			$data['domainrs']=$this->Salesuser_model->getUserAssessDomainrs($CAssessmentId);
+			$data['carears']=$this->Salesuser_model->getUserAssessCarears($CAssessmentId);
 			$data['rcourse']=$this->Salesuser_model->getReCommendcourse($CAssessmentId);
 			$data['allcourse']=$this->Salesuser_model->getallcourse($CAssessmentId);
 			$data['ksa']=$this->Salesuser_model->getUserksa($CAssessmentId);
@@ -30,6 +29,7 @@ class Salesuser extends MY_Controller {
 			echo json_encode($data);			
 		}				
 	}
+
 
 	public function getUserReport($UserId = NULL) {		
 		if (!empty($UserId)) {

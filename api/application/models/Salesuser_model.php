@@ -153,6 +153,38 @@ class Salesuser_model extends CI_Model
             }	
 		}				
     }
+    public function getUserAssessDomainrs($CAssessmentId = NULL) {
+		
+		if($CAssessmentId) {
+            $this->db->select('md.DomainId,md.Name as ratingscale,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId and ck.RatingScaleId = 1)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId)),2) as awareness,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId and ck.RatingScaleId = 2)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId)),2) as developing,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId and ck.RatingScaleId = 3)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId)),2) as intermediate,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId and ck.RatingScaleId = 4)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId left join tblmstdomain as d on d.DomainId=ca.DomainId WHERE ck.CAssessmentId = '.$CAssessmentId.' and d.DomainId=md.DomainId)),2) as advanced');
+			$this->db->where('CAssessmentId',$CAssessmentId);
+            $this->db->join('tblmstdomain md', 'md.DomainId = dksa.DomainId', 'left');
+			$query = $this->db->get('tbldomainwiseksa dksa');	
+			if($query->result())
+                {
+                    $rating_data=$query->result();				   
+                }
+                return $rating_data;
+        } else {
+            return false;
+        }		
+    }
+    public function getUserAssessCarears($CAssessmentId = NULL) {
+		
+		if($CAssessmentId) {
+            $this->db->select('mca.CAreaId,mca.Name as ratingscale,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId and ck.RatingScaleId = 1)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId)),2) as awareness,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId and ck.RatingScaleId = 2)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId)),2) as developing,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId and ck.RatingScaleId = 3)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId)),2) as intermediate,ROUND((((SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId and ck.RatingScaleId = 4)*100)/(SELECT count(ck.CKSAId) FROM `tblcandidateksa` as ck left join tblmstksa as k on k.KSAId=ck.KSAId left join tblmstcompetencyarea as ca on ca.CAreaId=k.CAreaId WHERE ck.CAssessmentId = '.$CAssessmentId.' and ca.CAreaId=mca.CAreaId)),2) as advanced');
+			$this->db->where('CAssessmentId',$CAssessmentId);
+            $this->db->join('tblmstcompetencyarea mca', 'mca.CAreaId = caksa.CAreaId', 'left');
+			$query = $this->db->get('tblcareawiseksa caksa');	
+			if($query->result())
+                {
+                    $rating_data=$query->result();				   
+                }
+                return $rating_data;
+        } else {
+            return false;
+        }				
+    }
     public function getUserAssessareaksa($CAssessmentId = NULL) {
 		
 		if($CAssessmentId) {

@@ -25,7 +25,7 @@
                             <form class="form-validate" #ksaForm="ngForm" (ngSubmit)="addKSA(ksaForm)">
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Name</label>
-                                    <textarea type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" pattern="[a-zA-Z0-9/',;.&()?\-’ ]{2,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required></textarea>
+                                    <textarea type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" pattern="[a-zA-Z0-9/',;.&()?\-’\n ]{2,}" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required></textarea>
                                     <!-- <input type="text" class="form-control" #Name="ngModel" [(ngModel)]="ksaEntity.Name" name="Name" [ngClass]="{red_border: (Name.dirty && Name.invalid) || (Name.pristine && submitted)}" required/>   -->
                                     <span class="error_span" *ngIf="(Name.dirty && Name.invalid) || (Name.pristine && submitted)"> 
                                       <span *ngIf="Name.errors.required || (Name.pristine && submitted)">Please enter KSA</span>

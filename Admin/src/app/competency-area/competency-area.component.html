@@ -69,7 +69,7 @@
             
                                 <div class="form-group col-md-6">
                                     <label><span class="required">*</span>Key Concepts</label>
-                                    <textarea class="form-control" #KeyConcepts="ngModel"   [(ngModel)]="areaEntity.KeyConcepts" name="KeyConcepts" pattern=".{2,}" [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
+                                    <textarea class="form-control" #KeyConcepts="ngModel"   [(ngModel)]="areaEntity.KeyConcepts" name="KeyConcepts"  [ngClass]="{red_border: (KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)}" required></textarea>
                                     <span class="error_span" *ngIf="(KeyConcepts.dirty && KeyConcepts.invalid) || (KeyConcepts.pristine && submitted)"> 
                                         <span *ngIf="KeyConcepts.errors.required || (KeyConcepts.pristine && submitted)">Please enter Key Concepts of Competency Area</span>
                                         <span *ngIf="KeyConcepts.errors && KeyConcepts.errors.pattern">Please enter valid Key Concepts of Competency Area</span>

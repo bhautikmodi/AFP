@@ -71,7 +71,7 @@ export class SettingsService {
       return promise;
       }
   
-  delete(del){debugger
+  delete(del){
 	let promise = new Promise((resolve, reject) => {		
     this.http.post(this.globals.baseAPIUrl + 'Settings/deleteTeamSize',del)
       .toPromise()
@@ -88,7 +88,7 @@ export class SettingsService {
   }
   
   getAll(UserId){ 
-    debugger
+    
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Settings/getAll/' + UserId)
       .toPromise()
@@ -119,7 +119,7 @@ export class SettingsService {
     });		
     return promise;
     }
-    addcontact(ContactEntity){ debugger
+    addcontact(ContactEntity){ 
       let promise = new Promise((resolve, reject) => {
         this.http.post(this.globals.baseAPIUrl + 'Settings/addContact', ContactEntity)
           .toPromise()
@@ -134,7 +134,7 @@ export class SettingsService {
       });		
       return promise;
       }
-      addinvimsg(InviEntity){ debugger
+      addinvimsg(InviEntity){ 
         let promise = new Promise((resolve, reject) => {
           this.http.post(this.globals.baseAPIUrl + 'Settings/addinvimsg', InviEntity)
             .toPromise()

@@ -7,7 +7,7 @@ export class ChangepassService {
 
   constructor( private http: HttpClient,private globals: Globals) { }
   
-  add(UserId){debugger
+  add(UserId){
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Changepass/changeuserpass', UserId)
       .toPromise()

@@ -142,7 +142,7 @@ export class InvitationComponent implements OnInit {
 			this.globals.isLoading = true;
 			this.InvitationService.add(this.InvitationEntity)
 				.then((data) => {
-					debugger
+					
 					this.globals.isLoading = false;
 					if (data == 'email duplicate') {
 						this.globals.message = 'You already invited this Email Address';

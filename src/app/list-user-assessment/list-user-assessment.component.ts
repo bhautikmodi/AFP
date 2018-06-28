@@ -35,7 +35,7 @@ export class ListUserAssessmentComponent implements OnInit {
 
     
 
-    // debugger
+    // 
     // this.ListUserAssessmentService.getAllCompany	()
     // .then((data) => 
     // { 

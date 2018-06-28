@@ -82,7 +82,7 @@ export class CompanyComponent implements OnInit {
 	}
 
 	addCompany(companyForm) {
-		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 			this.companyEntity.UpdatedBy = this.globals.authData.UserId;

@@ -16,7 +16,11 @@ export class HttpInterceptorClassService implements HttpInterceptor {
       }
       
     });
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 75962c88f9884a4421e15a3ecca4f4ac8029eb8b
     return next.handle(req).do((event: HttpEvent<any>) => { 
       if (event instanceof HttpResponse) {
         if(event.body.error_code==2008){

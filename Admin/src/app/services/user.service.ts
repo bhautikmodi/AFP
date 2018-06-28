@@ -8,7 +8,7 @@ export class UserService {
 
    constructor(private http: HttpClient, private globals: Globals) { }
 
-   add(userEntity){ debugger
+   add(userEntity){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'User/addUser', userEntity)
       .toPromise()
@@ -27,7 +27,7 @@ export class UserService {
   
   //list all users
   getAllUser(){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList')
       .toPromise()
@@ -44,7 +44,7 @@ export class UserService {
   }
   //list all users
   getAllDefaultData(){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'User/getAllDefaultData')
       .toPromise()
@@ -62,7 +62,7 @@ export class UserService {
   
   
   //delete User
-  deleteUser(del){  debugger
+  deleteUser(del){  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'User/deleteUser',del)
       .toPromise()
@@ -130,7 +130,7 @@ export class UserService {
   // }
   
   
-  // getAllRole(){ debugger
+  // getAllRole(){ 
 	// let promise = new Promise((resolve, reject) => {
   //   this.http.get(this.globals.baseAPIUrl + 'User/getAllRole')
   //     .toPromise()
@@ -147,7 +147,7 @@ export class UserService {
   // }
   
   // getAllCountry()
-  // {debugger
+  // {
 	// let promise = new Promise((resolve, reject) => {
   //   this.http.get(this.globals.baseAPIUrl + 'User/getAllCountry')
   //     .toPromise()

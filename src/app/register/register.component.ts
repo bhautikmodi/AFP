@@ -137,7 +137,7 @@ export class RegisterComponent implements OnInit {
 						this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
 						this.globals.isLoading = false;	
 						// if(this.Disinv.Value ==1)
-						 // {debugger
+						 // {
 								// this.RegisterEntity.EmailAddress= localStorage.getItem('EmailAddress');
 						 // }else 
 						 // {

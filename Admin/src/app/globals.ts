@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
-export class Globals { debugger
+export class Globals { 
 
   constructor() { }
 

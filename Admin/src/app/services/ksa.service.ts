@@ -7,7 +7,7 @@ export class KsaService {
 
   constructor(private http: HttpClient, private globals: Globals) { }
 
-  add(ksaEntity){ debugger
+  add(ksaEntity){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'KSA/add', ksaEntity)
       .toPromise()
@@ -23,7 +23,7 @@ export class KsaService {
 	return promise;
   }
     
-  delete(del){debugger
+  delete(del){
 	let promise = new Promise((resolve, reject) => {		
     this.http.post(this.globals.baseAPIUrl + 'KSA/delete',del)
       .toPromise()

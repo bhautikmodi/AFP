@@ -105,7 +105,7 @@ export class PlaceholderComponent implements OnInit {
 	}
 
 	addPlaceholder(placeholderForm) {
-		debugger
+		
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 			this.placeholderEntity.UpdatedBy = this.globals.authData.UserId;
@@ -154,7 +154,7 @@ export class PlaceholderComponent implements OnInit {
 	}
 
 	getColumnList(placeholderForm) {
-		debugger
+		
 		placeholderForm.form.controls.ColumnId.markAsDirty();
 		this.placeholderEntity.ColumnId = '';
 		if (this.placeholderEntity.TableId > 0) {

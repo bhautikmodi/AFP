@@ -42,7 +42,7 @@ export class DomainService {
   }
 
   
-  getAll(){    debugger 
+  getAll(){     
 	let promise = new Promise((resolve, reject) => {     
     this.http.get(this.globals.baseAPIUrl + 'Domain/getAll')
       .toPromise()

@@ -46,7 +46,7 @@ export class ThankyouComponent implements OnInit {
         var colorarray = ['#002B49','#FFC35C','#0085AD','#8F993E','#A50034','#642F6C','#E94628','#21848B','#050000','#77C5D5','#FB8F2E','#B7006A','#005F67','#898D8D','#FABCAD'];
         for(let obj of this.domainData){
           let j = this.domainData.indexOf(obj);
-          this.domainData[j].color = colorarray[j]; debugger
+          this.domainData[j].color = colorarray[j]; 
           if(this.domainData[j].ratingscale<=1){
             this.domainData[j].rscalename = "General Awareness";
           } else if(this.domainData[j].ratingscale<=2){

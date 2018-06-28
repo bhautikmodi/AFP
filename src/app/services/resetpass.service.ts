@@ -26,7 +26,7 @@ export class ResetpassService {
   }
    
    getResetlink(UserId){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Resetpass/resetpasslink',UserId,  this.globals.headerpath)
       .toPromise()
@@ -43,7 +43,7 @@ export class ResetpassService {
   }
   
    getResetlink2(UserId){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Resetpass/resetpasslink2',UserId,  this.globals.headerpath)
       .toPromise()

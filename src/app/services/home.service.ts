@@ -6,7 +6,7 @@ export class HomeService {
 
 constructor( private http: Http,private globals: Globals) { }
   getAll()
-   {debugger
+   {
    let promise = new Promise((resolve, reject) => {
      this.http.get(this.globals.baseAPIUrl + 'Invitation/getAll', this.globals.headerpath)
        .toPromise()

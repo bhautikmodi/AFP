@@ -82,8 +82,10 @@ ul.dropdown-menu li:last-child a,ul.dropdown-menu li:last-child{ border-radius:0
 .home_banner{ position:relative; display:block; height:100%; width:100%; z-index: 99;}
 .home_banner img{width:100%; height:100%;}
 .home_banner .banner_text{position:absolute; left:0%; top:0%; width:100%; height:100%; padding:20% 0 0 30px; text-align:left; display:block; z-index:999;}
-.home_banner .banner_text a{ margin:30px 0 0 20px; background: #a51c37; float: right; text-transform: uppercase; }
+.home_banner .banner_text a{ margin:30px 20px 0 0; background: #a51c37; float: right; text-transform: uppercase; }
 .home_banner .banner_text a.next_btn::after{background-color: #b32653;}
+.home_banner .banner_text a.icon_btn{ margin:20px 30px 0 0; background: none; color: #fff; font-size: 40px; float: left; text-transform: uppercase; text-align: center; height: 50px; width: 50px;}
+.home_banner .banner_text a.icon_btn:hover{color:#72c4d6; }
 .home_banner .banner_text .title_banner{ font: bold 25px/45px 'GothamNarrow-Medium';  margin:0px 0 15px 0; color:#72c4d6; width: auto; display: inline-block;} 
 .home_banner .banner_text .title_banner span.title{ color:#fff; font: bold 50px/60px 'GothamNarrow-Bold'; text-transform: uppercase; position:relative; display:block;}
 /*--------------End Home content--------------------*/

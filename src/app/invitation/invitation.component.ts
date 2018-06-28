@@ -71,7 +71,7 @@ $('body').on('keyup', 'input.code', function(e){
   
   
   addInvitation(InvitationForm)
-	{		debugger
+	{		
 	
 		
 			this.submitted = true;

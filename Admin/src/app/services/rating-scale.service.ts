@@ -23,7 +23,7 @@ export class RatingScaleService {
 	return promise;
   }
   
-  delete(del){debugger
+  delete(del){
 	let promise = new Promise((resolve, reject) => {		
     this.http.post(this.globals.baseAPIUrl + 'RatingScale/delete',del)
       .toPromise()

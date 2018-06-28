@@ -26,7 +26,7 @@ export class CompanyService {
    
    //list all company
   getAllCompany(){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Company/getAll')
       .toPromise()
@@ -43,7 +43,7 @@ export class CompanyService {
   }
    
    
-  deleteCompany(del){  debugger
+  deleteCompany(del){  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Company/delete', del)
       .toPromise()
@@ -61,7 +61,7 @@ export class CompanyService {
     
 
   //update project list
-   getById(companyId){debugger
+   getById(companyId){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Company/getById/' + companyId)
       .toPromise()

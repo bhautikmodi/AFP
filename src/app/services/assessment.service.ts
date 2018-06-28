@@ -8,7 +8,7 @@ export class AssessmentService {
   constructor(private http: HttpClient,private globals: Globals) { }
 
   getAllksa(UserId) 
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'Assessment/getAllKSA/'+UserId)
       .toPromise()
@@ -25,7 +25,7 @@ export class AssessmentService {
   }
 
   saveKsa(ksaEntity)
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.post(this.globals.baseAPIUrl + 'Assessment/saveKsa',ksaEntity)
       .toPromise()
@@ -42,7 +42,7 @@ export class AssessmentService {
   }
 
   finalSubmit(CAssessmentId)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'Assessment/finalSubmit/'+CAssessmentId)
       .toPromise()
@@ -59,7 +59,7 @@ export class AssessmentService {
   }
 
   testKsa() 
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'AssessmentDetails/test')
       .toPromise()

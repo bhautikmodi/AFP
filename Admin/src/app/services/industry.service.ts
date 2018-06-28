@@ -43,7 +43,7 @@ delete(del)
   }
   
   getAll()
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Industry/getAll')
       .toPromise()
@@ -60,7 +60,7 @@ delete(del)
   }
   
   getById(IndustryId)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Industry/getById/' + IndustryId)
       .toPromise()

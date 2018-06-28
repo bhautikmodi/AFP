@@ -26,7 +26,7 @@ add(CountryEntity)
   
 
 delete(del)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {		
     this.http.post(this.globals.baseAPIUrl + 'Country/delete', del)
       .toPromise()
@@ -43,7 +43,7 @@ delete(del)
   }
   
   getAll()
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Country/getAll')
       .toPromise()
@@ -60,7 +60,7 @@ delete(del)
   }
   
   getById(CountryId)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Country/getById/' + CountryId)
       .toPromise()

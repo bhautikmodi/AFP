@@ -37,7 +37,7 @@ export class ChangepassComponent implements OnInit {
  }
   
    addNewPassword(newpassForm)
-  {		debugger
+  {		
 		let id = this.route.snapshot.paramMap.get('id');
 		
 	//var id=new JwtHelper().decodeToken(id);

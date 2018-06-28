@@ -41,7 +41,7 @@ export class UserroleService {
   }
   
   
-  deleteUserrole(roleId){  debugger
+  deleteUserrole(roleId){  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Userrole/delete/' + roleId)
       .toPromise()

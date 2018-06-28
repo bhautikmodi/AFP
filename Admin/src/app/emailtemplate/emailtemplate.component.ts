@@ -194,7 +194,7 @@ export class EmailtemplateComponent implements OnInit {
 	}
 
 	addConfirm(abcform) {
-		debugger
+		
 		this.emailEntity.check = 1;
 		let id = this.route.snapshot.paramMap.get('id');
 		this.EmailtemplateService.add(this.emailEntity)

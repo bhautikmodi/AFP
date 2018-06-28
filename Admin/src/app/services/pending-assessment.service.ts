@@ -7,7 +7,7 @@ export class PendingAssessmentService {
 
   constructor(private http: HttpClient, private globals: Globals) { }
 
-  getPendingAssessment(){   debugger  
+  getPendingAssessment(){     
     let promise = new Promise((resolve, reject) => {     
       this.http.get(this.globals.baseAPIUrl + 'Dashboard/getPendingAssessment')
         .toPromise()

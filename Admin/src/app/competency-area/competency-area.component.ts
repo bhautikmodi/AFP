@@ -96,7 +96,7 @@ export class CompetencyAreaComponent implements OnInit {
 	}
 
 	addArea(areaForm) {
-		debugger
+		
 		this.areaEntity.Description = CKEDITOR.instances.Description.getData();
 		if (this.areaEntity.Description != "") {
 			this.des_valid = false;

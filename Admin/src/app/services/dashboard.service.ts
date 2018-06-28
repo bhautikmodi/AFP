@@ -9,7 +9,7 @@ export class DashboardService {
   constructor(private http: HttpClient,private globals: Globals) { }
   
   getAll()
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Dashboard/getAll')
       .toPromise()

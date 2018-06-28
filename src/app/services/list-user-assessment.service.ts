@@ -12,7 +12,7 @@ export class ListUserAssessmentService {
 
 
   getAllCompany(){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Company/getAll')
       .toPromise()
@@ -30,7 +30,7 @@ export class ListUserAssessmentService {
 
 
   getAllUserAssess(){
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'User/getAllUserList')
       .toPromise()

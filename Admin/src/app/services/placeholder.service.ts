@@ -87,7 +87,7 @@ export class PlaceholderService {
 	return promise;
   }
 
-  getColumnList(TableId){ debugger
+  getColumnList(TableId){ 
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'Placeholder/getColumnList/' + TableId)
         .toPromise()

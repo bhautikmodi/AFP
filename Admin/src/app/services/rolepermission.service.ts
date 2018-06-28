@@ -39,7 +39,7 @@ getRolePermission(roleId){
   return promise;
   }
 
-update_permission(permission){  debugger
+update_permission(permission){  
   let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'RolePermission/update_permission', permission)
       .toPromise()
@@ -55,7 +55,7 @@ update_permission(permission){  debugger
   return promise;
   }
 
-  getLeftMenu(roleId){   debugger
+  getLeftMenu(roleId){   
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'RolePermission/getLeftMenu/' + roleId)
         .toPromise()

@@ -62,7 +62,7 @@ ngOnInit() {
 	default(){
 		this.EmailtemplateService.getAll()
 		.then((data) => 
-		{ debugger
+		{ 
 			//alert(data);		
 			// for(var i=1; i<=data.length; i++){
 			// 	data[i].To=data[i].To.toString().replace("1","Admin");	

@@ -8,7 +8,7 @@ export class DashboardService {
   constructor( private http: HttpClient,private globals: Globals) { }
 
   getAllAssement(UserId) 
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getAllAssement/'+UserId)
 
@@ -26,7 +26,7 @@ export class DashboardService {
   }
 
   getUserAssessDetail(CAssessmentId) 
-  { debugger
+  { 
 	let promise = new Promise((resolve, reject) => { 
     this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getUserAssessDetail/'+CAssessmentId)
       .toPromise()

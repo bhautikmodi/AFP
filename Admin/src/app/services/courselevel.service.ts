@@ -8,7 +8,7 @@ export class CourselevelService {
  constructor(  private http: HttpClient,private globals: Globals) { }
  
 add(CourseLevelEntity)
- {debugger
+ {
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'CourseLevel/add', CourseLevelEntity)
       .toPromise()
@@ -60,7 +60,7 @@ delete(del)
   }
   
   getById(ConfigurationId)
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'CourseLevel/getById/' + ConfigurationId)
       .toPromise()

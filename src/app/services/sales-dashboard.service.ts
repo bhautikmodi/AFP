@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 export class SalesDashboardService {
 
   constructor(private http: HttpClient, private globals: Globals) { }
-  add(data){ debugger
+  add(data){ 
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data)
         .toPromise()
@@ -53,7 +53,7 @@ export class SalesDashboardService {
     return promise;
     } 
     getAllAssement(UserId) 
-    { debugger
+    { 
     let promise = new Promise((resolve, reject) => { 
       this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getAllAssement/'+UserId)
         .toPromise()
@@ -69,7 +69,7 @@ export class SalesDashboardService {
     return promise;
     }
     // getUserAssessDetail(CAssessmentId) 
-    // { debugger
+    // { 
     // let promise = new Promise((resolve, reject) => { 
     //   this.http.get(this.globals.baseAPIUrl + 'DashboardUser/getUserAssessDetail/'+CAssessmentId, this.globals.headerpath)
     //     .toPromise()

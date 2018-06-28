@@ -7,7 +7,7 @@ export class ContactusService {
 
   constructor( private http: Http,private globals: Globals) { }
   add(ContactEntity){  
-    debugger
+    
    let promise = new Promise((resolve, reject) => {
      this.http.post(this.globals.baseAPIUrl + 'Contact/add', ContactEntity, this.globals.headerpath)
        .toPromise()
@@ -22,7 +22,7 @@ export class ContactusService {
    });		
    return promise;
    }
-   getById(CId){debugger
+   getById(CId){
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'Contact/getById/' + CId, this.globals.headerpath)
         .toPromise()

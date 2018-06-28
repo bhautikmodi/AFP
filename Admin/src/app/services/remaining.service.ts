@@ -10,7 +10,7 @@ export class RemainingService {
    
    getAll()
    {
-	  debugger
+	  
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Remaining/getDays')
       .toPromise()

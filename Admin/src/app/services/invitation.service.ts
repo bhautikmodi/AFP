@@ -25,7 +25,7 @@ export class InvitationService {
     }
 
   add(InvitationEntity)
-  {debugger
+  {
    let promise = new Promise((resolve, reject) => {
      this.http.post(this.globals.baseAPIUrl + 'Invitation/add', InvitationEntity)
        .toPromise()
@@ -75,7 +75,7 @@ export class InvitationService {
     return promise;
     }
  delete(del)
-   {debugger
+   {
    let promise = new Promise((resolve, reject) => {		
      this.http.post(this.globals.baseAPIUrl + 'Invitation/delete', del)
        .toPromise()
@@ -92,7 +92,7 @@ export class InvitationService {
    }
    
     ReInvite(UserInvitationId)
-   {debugger
+   {
    let promise = new Promise((resolve, reject) => {		
      this.http.post(this.globals.baseAPIUrl + 'Invitation/ReInvite/' ,UserInvitationId)
        .toPromise()
@@ -110,7 +110,7 @@ export class InvitationService {
   
    
   //  getById(UserInvitationId)
-  //  {debugger
+  //  {
   //  let promise = new Promise((resolve, reject) => {
   //    this.http.get(this.globals.baseAPIUrl + 'Invitation/getById/' + UserInvitationId, this.globals.headerpath)
   //      .toPromise()
@@ -125,7 +125,7 @@ export class InvitationService {
   //  });		
   //  return promise;
   //  }  
-  getCompany(CompanyId){debugger
+  getCompany(CompanyId){
 	 
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.globals.baseAPIUrl + 'Invitation/getCompany/' + CompanyId )

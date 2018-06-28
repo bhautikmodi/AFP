@@ -24,7 +24,7 @@ export class UserroleService {
 	return promise;
   }
   
-  getAll(){ debugger
+  getAll(){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Userrole/getAll')
       .toPromise()
@@ -57,7 +57,7 @@ export class UserroleService {
 	return promise;
   }
   
-  getById(roleId){debugger
+  getById(roleId){
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Userrole/getById/' + roleId)
       .toPromise()

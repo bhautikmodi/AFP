@@ -32,7 +32,7 @@ export class AuthService {
 	});		
 	return promise;
   }
-  logout(admin){ debugger
+  logout(admin){ 
 		let promise = new Promise((resolve, reject) => {
 		this.http.post(this.globals.baseAPIUrl + 'Login_user/logout',admin, this.globals.headerpath)
 			.toPromise()

@@ -25,7 +25,7 @@ export class StateService {
   }
  
  
- getAll(){ debugger
+ getAll(){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'State/getAll')
       .toPromise()
@@ -77,7 +77,7 @@ export class StateService {
   
   
    getAllCountry()
-  {debugger
+  {
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'State/getAllCountry')
       .toPromise()

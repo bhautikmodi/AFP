@@ -8,7 +8,7 @@ export class EmailtemplateService {
 constructor(private http: HttpClient,private globals: Globals) { }
 
 add(emailEntity)
- { debugger
+ { 
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Email_Template/add', emailEntity)
       .toPromise()

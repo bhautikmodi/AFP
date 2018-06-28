@@ -103,7 +103,7 @@ export class UserComponent implements OnInit {
 			this.header = 'Edit';
 			this.UserService.getById(id)
 				.then((data) => {
-					debugger
+					
 					this.userEntity = data;
 					if (this.userEntity.CountryId > 0) {
 						this.UserService.getStateList(this.userEntity.CountryId)

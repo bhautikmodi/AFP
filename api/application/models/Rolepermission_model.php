@@ -1,6 +1,6 @@
 <?php
 
-class RolePermission_model extends CI_Model
+class Rolepermission_model extends CI_Model
  {
 
 	public function getuserrolelist()

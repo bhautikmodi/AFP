@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class RolePermission extends MY_Controller {
+class Rolepermission extends MY_Controller {
 
 
     public function __construct() {
@@ -66,8 +66,8 @@ class RolePermission extends MY_Controller {
 	public function getDefault()
 	{
 		$data="";		
-		$data['role']=$this->RolePermission_model->getuserrolelist();
-		$data['permission']=$this->RolePermission_model->getpermissionlist(1);		
+		$data['role']=$this->Rolepermission_model->getuserrolelist();
+		$data['permission']=$this->Rolepermission_model->getpermissionlist(1);		
 		echo json_encode($data);
 	}
 
@@ -75,7 +75,7 @@ class RolePermission extends MY_Controller {
 	{
 		if (!empty($role_id)) {
 			$data="";
-			$data=$this->RolePermission_model->getpermissionlist($role_id);		
+			$data=$this->Rolepermission_model->getpermissionlist($role_id);		
 			echo json_encode($data);			
 		}		
 	}
@@ -85,7 +85,7 @@ class RolePermission extends MY_Controller {
 		$post_permission = json_decode(trim(file_get_contents('php://input')), true);		
 
 		if ($post_permission) {
-			$result = $this->RolePermission_model->update_permission($post_permission);
+			$result = $this->Rolepermission_model->update_permission($post_permission);
 			if($result) {
 				echo json_encode($result);	
 			}							

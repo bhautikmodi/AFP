@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Invitation extends MY_Controller {
+class Invitation extends CI_Controller {
 
 
 	public function __construct() {
@@ -33,7 +33,7 @@ class Invitation extends MY_Controller {
 
 		$userId = 21;
 		$EmailToken = 'Change Password';
-
+		
 		$this->db->select('Value');
 		$this->db->where('Key','EmailFrom');
 		$smtp1 = $this->db->get('tblmstconfiguration');	
@@ -408,6 +408,5 @@ class Invitation extends MY_Controller {
 		echo json_encode($data);
 				
 	}
-	
-	
+
 }

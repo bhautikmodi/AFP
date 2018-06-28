@@ -12,7 +12,6 @@ export class AppComponent {
   constructor(private globals: Globals) { }
   ngOnInit() {
     //this.globals = this.global;
-    console.log(this.globals);
     
   }
 }

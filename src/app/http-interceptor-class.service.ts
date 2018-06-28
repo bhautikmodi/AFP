@@ -14,9 +14,10 @@ export class HttpInterceptorClassService implements HttpInterceptor {
       setHeaders: {
         Authorization: `${localStorage.getItem('token')}`
       }
+      
     });
-
-    return next.handle(req).do((event: HttpEvent<any>) => { debugger
+    
+    return next.handle(req).do((event: HttpEvent<any>) => { 
       if (event instanceof HttpResponse) {
         if(event.body.error_code==2008){
           return this.router.navigate(['/dashboard']);

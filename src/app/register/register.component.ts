@@ -16,7 +16,6 @@ declare var $: any;
 export class RegisterComponent implements OnInit {
 	RegisterEntity;
 	CountryList;
-	
 	stateList;
 	submitted;
 	btn_disable;

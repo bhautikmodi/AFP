@@ -55,7 +55,7 @@ export class PlaceholderService {
 	return promise;
   }
   
-  getById(PlaceholderId){ debugger
+  getById(PlaceholderId){ 
 	let promise = new Promise((resolve, reject) => {
     this.http.get(this.globals.baseAPIUrl + 'Placeholder/getById/' + PlaceholderId)
       .toPromise()

@@ -10,7 +10,12 @@ export class AuthGuard implements CanActivate {
   constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
-	this.globals.isLoading = true;
+	
+	if(state.url=='/access-denied'){
+		this.globals.isLoading = false;
+	} else {
+		this.globals.isLoading = true;
+	}
 	  if(this.authService.isLoggedIn()==true){
 			if(state.url.split('/')[2] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];

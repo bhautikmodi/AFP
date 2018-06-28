@@ -46,13 +46,13 @@
                 <tbody>
                  <tr *ngFor="let user of userList;let i = index">
                         <td>{{i+1}}</td>
-												<td>{{user.FirstName}}</td>
+												<td>{{user.FirstName}} </td>
 												<td>{{user.Name}}</td>
 												<td>{{user.EmailAddress}}</td>
 												<!--<td>{{user.City}}</td>-->
 												<td>{{user.PhoneNumber}}</td>
 											<!--	<td>{{user.ZipCode}}</td>-->
-												<td>{{user.RoleName}}</td>												
+												<td>{{user.RoleName}}     </td>												
 												<td *ngIf="user.IsActive=='1'">Yes</td>
 											<td *ngIf="user.IsActive=='0'">No</td>
 												
@@ -60,14 +60,25 @@
 												
                     <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
                         <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom"  title="Edit" > 
-                           <button *ngIf="permissionEntity.AddEdit==1" class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" ><span class="fa fa-pencil"></span></button>
+                           <button *ngIf="(permissionEntity.AddEdit==1) && (user.RoleId!=4)" class="btn btn-default btn-rounded btn-sm" routerLink="/users/edit/{{user.UserId}}" ><span class="fa fa-pencil"></span></button>
                         </div>
+                        <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom"  title="You can't Edit IT User" > 
+                          <button *ngIf="(permissionEntity.AddEdit==1)  && (user.RoleId==4 && user.UserId!=globals.authData.UserId)" class="btn btn-default btn-rounded btn-sm" [disabled]="(user.RoleId==4 && globals.authData.RoleId==1)||(user.RoleId==4 && globals.authData.RoleId==2)"routerLink="/users/edit/{{user.UserId}}" ><span class="fa fa-pencil"></span></button>
+                       </div>
+                       <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom"  title="Edit" > 
+                        <button *ngIf="(permissionEntity.AddEdit==1)  && (user.RoleId==4 && user.UserId==globals.authData.UserId)" class="btn btn-default btn-rounded btn-sm" [disabled]="(user.RoleId==4 && globals.authData.RoleId==1)||(user.RoleId==4 && globals.authData.RoleId==2)"routerLink="/users/edit/{{user.UserId}}" ><span class="fa fa-pencil"></span></button>
+                     </div>
                         <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom" title="Delete" > 
-                           <button *ngIf="(permissionEntity.Delete==1) && (user.UserId!=globals.authData.UserId)" [disabled]="user.UserId==globals.authData.UserId" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
+                           <button *ngIf="(permissionEntity.Delete==1) && (user.RoleId!=4 && user.UserId!=globals.authData.UserId)" [disabled]="user.UserId==globals.authData.UserId" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
                         </div>
+                        <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom" title="You can't delete IT User" > 
+                          <button *ngIf="(permissionEntity.Delete==1) && (user.RoleId==4)" [disabled]="(user.UserId==globals.authData.UserId)||(user.RoleId==4 && globals.authData.RoleId==1)||(user.RoleId==4 && globals.authData.RoleId==2) ||(user.RoleId==4 && globals.authData.RoleId==4)" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
+                       </div>
                         <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="You can't delete your own profile">   
-                            <button *ngIf="(permissionEntity.Delete==1) && (user.UserId==globals.authData.UserId)" [disabled]="user.UserId==globals.authData.UserId" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
+                            <button *ngIf="(permissionEntity.Delete==1) && (user.RoleId!=4 && user.UserId==globals.authData.UserId)" [disabled]="user.UserId==globals.authData.UserId " data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteUser(user)"><span class="fa fa-times"></span></button>
                         </div>
+                   
+                        
                       </td>
                       </tr>
                  

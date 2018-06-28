@@ -73,7 +73,7 @@ class User_model extends CI_Model
 	//list project status
 	public function getlist_user()
 	{
-		$this->db->select('us.UserId,us.RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
+		$this->db->select('us.UserId,us.RoleId as RoleId,us.CompanyId,us.FirstName,us.LastName,us.Title,us.EmailAddress,us.Password,us.Address1,
 		us.Address2,us.CountryId,us.StateId,us.City,us.ZipCode,us.PhoneNumber,us.IsActive,cp.Name,cp.Name,usms.RoleName,(select count(CAssessmentId) from tblcandidateassessment where UserId=us.UserId and EndTime is not NULL) as total,(select count(CAssessmentId) from tblcandidateassessment where UserId=us.UserId and EndTime is NULL) as notgiven');
 		$this->db->join('tblcompany cp','cp.CompanyId = us.CompanyId', 'left');
 		$this->db->join('tblmstuserrole usms','usms.RoleId = us.RoleId', 'left');

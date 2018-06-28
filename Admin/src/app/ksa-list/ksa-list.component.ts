@@ -30,6 +30,10 @@ export class KsaListComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
+
 	this.globals.isLoading = false;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",

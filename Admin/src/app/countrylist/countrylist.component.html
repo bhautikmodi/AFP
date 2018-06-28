@@ -5,7 +5,7 @@
         <h1 class="page-header"><span class="pull-left">Country</span>
           <div class="btn-group pull-right add-right export-data">
               <button (click)="tableToExcel('dataTables-example', 'W3C Example Table')" class="btn btn-danger btn-add" data-toggle="tooltip" title="Export All Countries"><i class="fa fa-download"></i></button>
-            <button (click)="printData()" class="btn btn-danger btn-add print" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
+            <button class="btn btn-danger btn-add print" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
           </div><div class="clearfix"></div> </h1>
       </div>
       <!-- end  page header --> 
@@ -35,7 +35,7 @@
 					<th >Country Abbreviation</th>
 					<th>Phone Prefix</th>
                     <th style="width: 8%;">Active?</th>
-                    <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
+                    <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1" class="print_none">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
 										<td>{{Country.PhonePrefix}}</td>
 										  <td *ngIf="Country.IsActive=='1'">Yes</td>
 											<td *ngIf="Country.IsActive=='0'">No</td>
-                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                      <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1" class="print_none">
                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"   title="Edit" >    
                           <button *ngIf="permissionEntity.AddEdit==1" type="button"  class="btn btn-default btn-rounded btn-sm"  
                           routerLink="/country/edit/{{Country.CountryId}}">

@@ -5,7 +5,7 @@
       <h1 class="page-header"><span class="pull-left">Invite A User</span>
         <div class="btn-group pull-right add-right export-data">
             <button (click)="tableToExcel('dataTables-example', 'W3C Example Table')" class="btn btn-danger btn-add" data-toggle="tooltip" title="Export All Invited Users"><i class="fa fa-download"></i></button>
-          <button (click)="printData()" class="btn btn-danger btn-add print" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
+          <button  class="btn btn-danger btn-add print" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
         </div><div class="clearfix"></div> </h1>
     </div>
     <!-- end  page header --> 
@@ -37,7 +37,7 @@
                   <th>Role</th>
                   <th>Date Of Invitation</th>
                   <th>Status</th>
-                  <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">Actions</th>
+                  <th *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1" class="print_none">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,7 +51,7 @@
                   <td *ngIf="Invitation.Status=='1'">{{invimsgsuccess}}</td>
                   <td *ngIf="Invitation.Status=='0'">{{invimsgpending}}</td>
 				          <td *ngIf="Invitation.Status=='2'">{{invimsgrevoke}}</td>
-                   <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1">
+                   <td *ngIf="permissionEntity.AddEdit==1 || permissionEntity.Delete==1" class="print_none">
                     <button *ngIf="permissionEntity.AddEdit==1" type="button" class="btn btn-default btn-rounded btn-sm" data-tooltip="Revoke" [disabled]="Invitation.Status>0 ||Disinv.Value==0" 
 					(click)="deleteInvitation(Invitation)" >
                     Revoke</button>

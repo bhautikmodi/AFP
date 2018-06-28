@@ -27,6 +27,9 @@ export class CourselevellistComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
 		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
@@ -79,15 +82,6 @@ export class CourselevellistComponent implements OnInit {
 		//alert('error');
 		this.globals.isLoading = false;
 	});		
-	}
-	
-	printData()
-	{
-		var divToPrint=document.getElementById("dataTables-example");
-		var newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
 	}
 
 	tableToExcel(table, name)

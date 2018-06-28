@@ -26,6 +26,10 @@ export class CourselistComponent implements OnInit {
 	private CourseService: CourseService,private CommonService: CommonService, private route:ActivatedRoute) { }
 	
 	ngOnInit() { 
+		$('.print').on('click',function(){
+			window.print();
+		})
+	
 		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",
@@ -79,15 +83,6 @@ export class CourselistComponent implements OnInit {
 		this.globals.isLoading = false;
 	});	
 	this.msgflag = false;
-	}
-
-	printData()
-	{
-		var divToPrint=document.getElementById("dataTables-example");
-		var newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
 	}
 
 	tableToExcel(table, name)

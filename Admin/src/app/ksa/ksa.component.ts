@@ -27,6 +27,7 @@ export class KsaComponent implements OnInit {
 
 	}
 	ngOnInit() {
+		
 		this.globals.isLoading = true;
 		$("body").tooltip({
 			selector: "[data-toggle='tooltip']",

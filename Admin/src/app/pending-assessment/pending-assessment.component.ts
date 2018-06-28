@@ -25,6 +25,10 @@ export class PendingAssessmentComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
+
 	this.globals.isLoading = true;
 	this.permissionEntity = {}; 
 	if(this.globals.authData.RoleId==4){

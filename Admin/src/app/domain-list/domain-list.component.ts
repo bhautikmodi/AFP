@@ -31,6 +31,10 @@ export class DomainListComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
+
 	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",

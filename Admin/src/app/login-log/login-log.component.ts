@@ -23,6 +23,9 @@ export class LoginLogComponent implements OnInit {
   }
 
   ngOnInit() { 
+    $('.print').on('click',function(){
+      window.print();
+    })
     this.globals.isLoading = true;
     if(this.globals.authData.RoleId==4){
       this.AuditlogService.getLoginLog()
@@ -53,16 +56,6 @@ export class LoginLogComponent implements OnInit {
       this.router.navigate(['/access-denied']);
     }			
   }
-
-  printData()
-	{
-		var divToPrint=document.getElementById("dataTables-example");
-		var newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
-	}
-
 	tableToExcel(table, name)
 	{
 		var uri = 'data:application/vnd.ms-excel;base64,'

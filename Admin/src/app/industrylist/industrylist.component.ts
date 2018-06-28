@@ -26,6 +26,9 @@ export class IndustrylistComponent implements OnInit {
  constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
 	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
@@ -54,15 +57,6 @@ export class IndustrylistComponent implements OnInit {
 				alert('error');
 			});	
 		}		
-	}
-
-	printData()
-	{
-		var divToPrint=document.getElementById("dataTables-example");
-		var newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
 	}
 
 	tableToExcel(table, name)

@@ -31,6 +31,10 @@ invimsgpending;
  
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
+
 	this.globals.isLoading = false;
 	//this.globals = this.global;
 	this.permissionEntity = {}; 
@@ -99,16 +103,6 @@ invimsgpending;
 		});	
 		//this.msgflag = false;
 	  }
-
-	  printData()
-	  {
-		  var divToPrint=document.getElementById("dataTables-example");
-		  var newWin= window.open("");
-		  newWin.document.write(divToPrint.outerHTML);
-		  newWin.print();
-		  newWin.close();
-	  }
-  
 	  tableToExcel(table, name)
 	  {
 		  var uri = 'data:application/vnd.ms-excel;base64,'

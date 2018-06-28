@@ -23,6 +23,9 @@ export class EmailLogComponent implements OnInit {
   }
 
   ngOnInit() { 
+    $('.print').on('click',function(){
+      window.print();
+    })
     this.globals.isLoading = true;
     if(this.globals.authData.RoleId==4){
       this.AuditlogService.getEmailLog()

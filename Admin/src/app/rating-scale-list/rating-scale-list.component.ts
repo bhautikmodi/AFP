@@ -29,6 +29,9 @@ export class RatingScaleListComponent implements OnInit {
   }
 
   ngOnInit() { 
+	$('.print').on('click',function(){
+		window.print();
+	})
 	this.globals.isLoading = true;
 	$("body").tooltip({
 		selector: "[data-toggle='tooltip']",
@@ -85,15 +88,6 @@ export class RatingScaleListComponent implements OnInit {
 		this.globals.isLoading = false;
 	});	
 	this.msgflag = false;
-	}
-
-	printData()
-	{
-		var divToPrint=document.getElementById("dataTables-example");
-		var newWin= window.open("");
-		newWin.document.write(divToPrint.outerHTML);
-		newWin.print();
-		newWin.close();
 	}
 
 	tableToExcel(table, name)

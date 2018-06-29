@@ -26,6 +26,11 @@ export class HeaderComponent implements OnInit
         //alert('error');
       });
    }
+
+   AdminLogin(){
+    window.open(this.globals.baseUrl);
+   }
+
     logout()
     { 
         var panel={'Userid':this.globals.authData.UserId,'paneltype':0};

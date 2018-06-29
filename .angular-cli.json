@@ -70,10 +70,7 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {},
-	 "serve": {
-      "port": 81
-    }
+    "component": {}
   }
 }
 

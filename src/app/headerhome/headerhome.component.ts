@@ -33,6 +33,11 @@ export class HeaderhomeComponent implements OnInit {
     }
 
   }
+
+  AdminLogin(){
+    window.open(this.globals.baseUrl);
+   }
+   
   logout()
   { 
       var panel={'Userid':this.globals.authData.UserId,'paneltype':0};

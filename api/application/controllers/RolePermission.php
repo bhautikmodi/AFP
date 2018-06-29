@@ -9,7 +9,7 @@ class Rolepermission extends MY_Controller {
 	
 		parent::__construct();
 		
-		$this->load->model('RolePermission_model');
+		$this->load->model('Rolepermission_model');
 		
 	}
 

@@ -16,6 +16,7 @@
                 <li><a *ngIf="globals.authData.RoleId!=3" routerLink="/sales-admin-dashboard">Dashboard</a>
                   <a *ngIf="globals.authData.RoleId==3" routerLink="/dashboard">Dashboard</a>
                 </li>
+                <li *ngIf="globals.authData.RoleId!=3"><a (click)="AdminLogin()">Administrator</a></li>
                 <li><a routerLink="/register/edit/{{globals.authData.UserId}}">Edit Profile</a></li>
                 <li><a routerLink="/changepass/">Change Password</a></li>
                 <li><a routerLink="/contactus/edit/{{globals.authData.UserId}}">Contact Us</a></li>

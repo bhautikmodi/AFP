@@ -6,6 +6,7 @@ export class Globals {
 
   constructor() { }
   baseAPIUrl: string = 'http://afp.uatbyopeneyes.com/api/';  
+  baseUrl: string = 'http://afp.uatbyopeneyes.com:4300';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;
   isLoading: boolean = false;

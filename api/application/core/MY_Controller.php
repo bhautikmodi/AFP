@@ -10,7 +10,7 @@
       parent::__construct();
       include APPPATH . 'vendor/firebase/php-jwt/src/JWT.php';
 
-      if($this->input->get_request_header('Origin')=='http://afp.uatbyopeneyes.com:4200' || $this->input->get_request_header('Origin')=='http://afp.uatbyopeneyes.com:4300') {
+      if($this->input->get_request_header('Origin')=='http://localhost:4200' || $this->input->get_request_header('Origin')=='http://localhost:4300') {
       
       } else {
         $success = "FALSE";

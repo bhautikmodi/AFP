@@ -86,8 +86,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 //define('ACTIVE_GROUP', 'default'); // database mode
 define('ACTIVE_GROUP', 'Development'); // database mode
-<<<<<<< HEAD
 //define('ACTIVE_GROUP', 'QA'); // database mode
-=======
-//define('ACTIVE_GROUP', 'QA'); // database mode
->>>>>>> bb0a55c59e9f790e595fe31216acca64466825b8

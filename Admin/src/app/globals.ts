@@ -6,7 +6,7 @@ export class Globals {
 
   constructor() { }
  
-  baseAPIUrl: string = 'http://localhost/api/';  
+  baseAPIUrl: string = 'http://localhost/AFP/api/';  
   baseUrl: string = 'http://localhost:4200';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;

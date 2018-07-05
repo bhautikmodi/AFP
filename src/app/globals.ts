@@ -5,8 +5,8 @@ import { JwtHelper } from 'angular2-jwt';
 export class Globals { 
 
   constructor() { }
-  baseAPIUrl: string = 'http://afp.uatbyopeneyes.com/api/';  
-  baseUrl: string = 'http://afp.uatbyopeneyes.com:4300';
+  baseAPIUrl: string = 'http://localhost/api/';  
+  baseUrl: string = 'http://localhost:4300';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;
   isLoading: boolean = false;

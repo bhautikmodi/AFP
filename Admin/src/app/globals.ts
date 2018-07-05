@@ -6,8 +6,8 @@ export class Globals {
 
   constructor() { }
  
-  baseAPIUrl: string = 'http://afp.uatbyopeneyes.com/api/';  
-  baseUrl: string = 'http://afp.uatbyopeneyes.com:4200';
+  baseAPIUrl: string = 'http://localhost/api/';  
+  baseUrl: string = 'http://localhost:4200';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;
   isLoading: boolean = false;
@@ -16,5 +16,5 @@ export class Globals {
   msgflag = false;
   message = '';
   type = '';
-  
+
 }

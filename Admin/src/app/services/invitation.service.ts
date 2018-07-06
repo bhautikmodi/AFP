@@ -5,7 +5,7 @@ import { Globals } from '.././globals';
 @Injectable()
 export class InvitationService {
 
-  constructor(private http: HttpClient,private globals: Globals) { }
+  constructor(private http: HttpClient,public globals: Globals) { }
 
   getAllCompany(){
 	 

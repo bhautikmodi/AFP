@@ -6,7 +6,7 @@ import { debug } from 'util';
 
 @Injectable()
 export class DomainService {
-  constructor(private http: HttpClient, private globals: Globals) { 
+  constructor(private http: HttpClient, public globals: Globals) { 
   }
 
   add(domainEntity){

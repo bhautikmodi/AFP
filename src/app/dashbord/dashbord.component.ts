@@ -16,7 +16,7 @@ export class DashbordComponent implements OnInit {
 
   assessmentList;
   passessmentList;
-  constructor(private DashboardService: DashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  constructor(private DashboardService: DashboardService, public globals: Globals, private route: ActivatedRoute,private router: Router) { }
   
    ngOnInit() {  
     this.globals.isLoading = true;	

@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class ListUserAssessmentService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, public globals: Globals) { }
 
 
 

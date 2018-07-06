@@ -20,7 +20,7 @@ export class AssessmentComponent implements OnInit {
   arrayset;
   ksaDetails;
   percent;
-  constructor(private AssessmentService: AssessmentService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  constructor(private AssessmentService: AssessmentService, public globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.globals.isLoading = true;

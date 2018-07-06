@@ -51,7 +51,7 @@ export class SettingsComponent implements OnInit {
 	//globals;
 
   constructor(private el: ElementRef, private http: Http, private router: Router, 
-	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, private globals: Globals)
+	private route: ActivatedRoute, private SettingsService: SettingsService,private CommonService: CommonService, public globals: Globals)
     {
 		
 	 }

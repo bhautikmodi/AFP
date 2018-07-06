@@ -24,7 +24,7 @@ export class EmailtemplateComponent implements OnInit {
 	placeholderList;
 	abcform;
 
-	constructor(private http: Http, private globals: Globals, private router: Router, private EmailtemplateService: EmailtemplateService,
+	constructor(private http: Http, public globals: Globals, private router: Router, private EmailtemplateService: EmailtemplateService,
 		private CommonService: CommonService, private route: ActivatedRoute) { }
 
 	ngOnInit() {

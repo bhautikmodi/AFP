@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 Disinv;
- constructor( private http: Http,private globals: Globals,  private HomeService: HomeService) { }
+ constructor( private http: Http,public globals: Globals,  private HomeService: HomeService) { }
 ngOnInit() {
 	
 	setTimeout(function(){ 

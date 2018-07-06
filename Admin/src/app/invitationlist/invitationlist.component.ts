@@ -26,7 +26,7 @@ invimsgsuccess;
 invimsgrevoke;
 invimsgpending;
 //globals;
-  constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+  constructor( private http: Http,public globals: Globals, private router: Router, private CommonService: CommonService, private InvitationService: InvitationService,private route:ActivatedRoute) { }
 
  
 

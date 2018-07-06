@@ -6,7 +6,7 @@ import { Globals } from '.././globals';
 @Injectable()
 export class ResetpassService {
 
-   constructor( private http: Http,private globals: Globals) { }
+   constructor( private http: Http,public globals: Globals) { }
    
    
   add(UserId){

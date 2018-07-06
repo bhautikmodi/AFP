@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   //globals;
-  constructor(private globals: Globals) { }
+  constructor(public globals: Globals) { }
 
   ngOnInit() {
     

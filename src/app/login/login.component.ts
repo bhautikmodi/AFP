@@ -19,7 +19,7 @@ loginEntity;
 	invalid;
 	//globals;
  
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,private globals: Globals) { }
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private AuthService : AuthService,public globals: Globals) { }
 
   ngOnInit() {
 	//this.globals = this.global;

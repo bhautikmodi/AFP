@@ -19,7 +19,7 @@ export class CompanyComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
-	constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
+	constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CompanyService: CompanyService, private CommonService: CommonService) { }
 
 	ngOnInit() {

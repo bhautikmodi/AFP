@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 export class DashboardService {
 
  
-  constructor(private http: HttpClient,private globals: Globals) { }
+  constructor(private http: HttpClient,public globals: Globals) { }
   
   getAll()
   {

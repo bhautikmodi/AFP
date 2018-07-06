@@ -18,7 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
 	type;
 	btn_disable;
 	//globals;
- constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
+ constructor( private http: Http,public globals: Globals, private router: Router,private route:ActivatedRoute,private ForgotpasswordService:ForgotpasswordService) { }
 
   ngOnInit() {
 	//this.globals = this.global;

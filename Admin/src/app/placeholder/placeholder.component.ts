@@ -23,7 +23,7 @@ export class PlaceholderComponent implements OnInit {
 	header;
 
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		private PlaceholderService: PlaceholderService, private globals: Globals, private CommonService: CommonService) {
+		private PlaceholderService: PlaceholderService, public globals: Globals, private CommonService: CommonService) {
 
 	}
 	ngOnInit() {

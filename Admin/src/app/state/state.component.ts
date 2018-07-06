@@ -25,7 +25,7 @@ export class StateComponent implements OnInit {
 	btn_disable;
 	submitted;
 	constructor(private http: Http, private router: Router, private route: ActivatedRoute,
-		private StateService: StateService, private globals: Globals, private CommonService: CommonService) { }
+		private StateService: StateService, public globals: Globals, private CommonService: CommonService) { }
 
 	ngOnInit() {
 		this.globals.isLoading = true;	

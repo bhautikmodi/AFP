@@ -23,7 +23,7 @@ export class KsaComponent implements OnInit {
 	header;
 
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private KsaService: KsaService,
-		private globals: Globals, private CommonService: CommonService) {
+		public globals: Globals, private CommonService: CommonService) {
 
 	}
 	ngOnInit() {

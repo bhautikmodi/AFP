@@ -5,7 +5,7 @@ import { Globals } from '.././globals';
 @Injectable()
 export class CommonService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: Http, public globals: Globals) { }
 
   get_permissiondata(permission){ 
 	let promise = new Promise((resolve, reject) => {

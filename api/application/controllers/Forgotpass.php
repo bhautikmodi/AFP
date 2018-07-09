@@ -98,7 +98,7 @@ class Forgotpass extends CI_Controller
 									);
 									
 									$res = $this->db->insert('tblemaillog',$email_log);
-
+									echo json_encode("success");
 								
 								}else
 								{
@@ -116,6 +116,15 @@ class Forgotpass extends CI_Controller
 									$result2 = $query2->result();
 									$body = str_replace("{ ".$row1->PlaceholderName." }",$result2[0]->ColumnName,$body);					
 								} 
+								if($row->BccEmail!=''){
+									$bcc = $row->BccEmail.','.$row->totalbcc;
+								} else {
+									$bcc = $row->totalbcc;
+								}
+								
+
+								$body = str_replace("{ link }",'http://localhost:4200/resetpass/'.JWT::encode($data,"MyGeneratedKey","HS256").'',$body);
+								
 									$this->email->from($smtpEmail, 'AFP Admin');
 									$this->email->to($rowTo[0]->EmailAddress);		
 									$this->email->subject($row->Subject);
@@ -124,15 +133,26 @@ class Forgotpass extends CI_Controller
 									$this->email->message($body);
 									if($this->email->send())
 									{
-										//echo 'success';
+										$email_log = array(
+											'From' => trim($smtpEmail),
+											'Cc' => trim($row->totalcc),
+											'Bcc' => trim($bcc),
+											'To' => trim($rowTo[0]->EmailAddress),
+											'Subject' => trim($row->Subject),
+											'MessageBody' => trim($body),
+										);
+										
+										$res = $this->db->insert('tblemaillog',$email_log);
+										echo json_encode("success");
+									
 									}else
 									{
-										echo 'fail';
+										echo json_encode("fail");
 									}
 								}
 							}
 						}
-						echo json_encode($data);
+						//echo json_encode($data);
 				}	
 				else
 				{

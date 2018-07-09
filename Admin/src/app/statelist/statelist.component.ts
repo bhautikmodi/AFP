@@ -56,7 +56,9 @@ export class StatelistComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}		
 	}
@@ -84,7 +86,8 @@ export class StatelistComponent implements OnInit {
 	(error) => 
 	{
 		//alert('error');
-		this.globals.isLoading = false;	
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);	
 	});	
 	  //this.msgflag = false;
 	}

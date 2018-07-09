@@ -57,6 +57,8 @@ invimsgpending;
 		(error) => 
 		{
 			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}
 	this.InvitationService.invimsg()
@@ -70,7 +72,9 @@ invimsgpending;
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});			
 	}
 	
@@ -100,6 +104,7 @@ invimsgpending;
 		{
 		 // alert('error');
 		 this.globals.isLoading = false;
+	     this.router.navigate(['/pagenotfound']);
 		});	
 		//this.msgflag = false;
 	  }

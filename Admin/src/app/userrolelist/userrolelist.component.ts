@@ -46,8 +46,8 @@ export class UserrolelistComponent implements OnInit {
 	(error) => 
 	{
 		//alert('error');
-		this.globals.isLoading = false;	
-	});	
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);	});	
 	  this.msgflag = false;
   }
   

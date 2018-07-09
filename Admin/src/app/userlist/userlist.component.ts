@@ -62,7 +62,9 @@ export class UserlistComponent implements OnInit {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}			
 	}
@@ -102,7 +104,8 @@ export class UserlistComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		this.globals.isLoading = false;	
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 		//alert('error');
 	});	
     this.msgflag = false;

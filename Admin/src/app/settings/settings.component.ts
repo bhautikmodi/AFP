@@ -81,7 +81,9 @@ export class SettingsComponent implements OnInit {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}		
   }
@@ -132,8 +134,9 @@ export class SettingsComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
-		this.globals.isLoading = false;	
+		//alert('error');
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);	
 	});
   }
 
@@ -157,7 +160,9 @@ export class SettingsComponent implements OnInit {
 		}, 
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}
 
@@ -198,9 +203,11 @@ export class SettingsComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}
@@ -278,9 +285,11 @@ export class SettingsComponent implements OnInit {
 					}, 
 					(error) => 
 					{
-						alert('error');
+						//alert('error');
 						this.btn_disable1 = false;
 						this.submitted1 = false;
+						this.globals.isLoading = false;
+						this.router.navigate(['/pagenotfound']);
 					});
 				} else {
 					this.totksaError = true;
@@ -312,9 +321,11 @@ export class SettingsComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable2 = false;
 				this.submitted2 = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}
@@ -334,9 +345,11 @@ export class SettingsComponent implements OnInit {
 			},
 			(error) =>
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable3 = false;
 				this.submitted3 = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		}
 		// this.updateEntity = {};
@@ -382,9 +395,11 @@ export class SettingsComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable4 = false;
 				this.submitted4 = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}
@@ -406,9 +421,11 @@ export class SettingsComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable5 = false;
 				this.submitted5 = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}
@@ -430,9 +447,11 @@ export class SettingsComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable6 = false;
 				this.submitted6 = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { JwtHelper } from 'angular2-jwt';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class RegisterService {
 
- constructor( private http: Http,private globals: Globals) { }
+ constructor( private http: Http,private globals: Globals,private router: Router) { }
 
 
  add(RegisterEntity){  
@@ -24,7 +24,9 @@ export class RegisterService {
 		  resolve(res.json());
         },
         msg => { // Error
-		  reject(msg.json());
+      reject(msg.json());
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -61,7 +63,9 @@ export class RegisterService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -78,7 +82,9 @@ export class RegisterService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -93,7 +99,9 @@ export class RegisterService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -108,7 +116,9 @@ export class RegisterService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -124,7 +134,9 @@ getById(userId){
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -141,6 +153,8 @@ getById(userId){
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		

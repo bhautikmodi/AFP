@@ -40,7 +40,9 @@ export class CompanyComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -52,7 +54,9 @@ export class CompanyComponent implements OnInit {
 			this.IndustryList = data;
 		},
 		(error) => {
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});
 
 	let id = this.route.snapshot.paramMap.get('id');
@@ -64,9 +68,11 @@ export class CompanyComponent implements OnInit {
 				this.globals.isLoading = false;
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 	}
 	else {

@@ -88,7 +88,9 @@ export class DashbordComponent implements OnInit {
 		(error) => 
 		{
       //alert('error');
+
       this.globals.isLoading = false;	
+    	this.router.navigate(['/pagenotfound']);
 		});	
     
     

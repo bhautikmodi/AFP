@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import { Router } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class AssessmentService {
 
-  constructor(private http: HttpClient,private globals: Globals) { }
+  constructor(private http: HttpClient,private globals: Globals,private router: Router) { }
 
   getAllksa(UserId) 
   { 
@@ -17,7 +18,9 @@ export class AssessmentService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -32,6 +35,8 @@ export class AssessmentService {
       .then(
         res => { // Success
           resolve(res);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         },
         msg => { // Error
 		  reject(msg);
@@ -51,7 +56,9 @@ export class AssessmentService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -68,7 +75,9 @@ export class AssessmentService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

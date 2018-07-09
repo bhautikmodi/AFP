@@ -58,6 +58,8 @@ ngOnInit() {
 		(error) => 
 		{
 			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}		
 	}
@@ -89,6 +91,7 @@ ngOnInit() {
 		{
 			//alert('error');
 			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 		//this.msgflag = false;
 	}

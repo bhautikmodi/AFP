@@ -34,6 +34,7 @@ export class RemaininglistComponent implements OnInit {
 	{
 		//alert('error');
 		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});	
     	
   }

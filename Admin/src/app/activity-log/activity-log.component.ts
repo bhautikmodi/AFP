@@ -49,8 +49,10 @@ export class ActivityLogComponent implements OnInit {
       }, 
       (error) => 
       {
-        alert('error');
+        //alert('error');
         this.globals.isLoading = false;
+	     this.router.navigate(['/pagenotfound']);
+
       });    
     } else {		
       this.router.navigate(['/access-denied']);

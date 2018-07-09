@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { JwtHelper } from 'angular2-jwt';
-
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: Http,private globals: Globals) { }
+  constructor(private http: Http,private globals: Globals, private router: Router) { }
   
   login(loginEntity){  
 	let promise = new Promise((resolve, reject) => {
@@ -26,7 +26,9 @@ export class AuthService {
 		  resolve(res.json());
         },
         msg => { // Error
-		  reject(msg.json());
+			reject(msg.json());
+			this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -44,6 +46,8 @@ export class AuthService {
 				},
 				msg => { // Error
 			reject(msg);
+			this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
 				}
 			);
 	});		
@@ -77,6 +81,8 @@ export class AuthService {
 					},
 					msg => { // Error
 						reject(msg.json());
+						this.globals.isLoading = false;
+						this.router.navigate(['/pagenotfound']);
 					}
 				);
 		});		

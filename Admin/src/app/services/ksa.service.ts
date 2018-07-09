@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
+import { Router } from '@angular/router';
 @Injectable()
 export class KsaService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
   add(ksaEntity){ 
 	let promise = new Promise((resolve, reject) => {
@@ -16,7 +17,9 @@ export class KsaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -32,7 +35,9 @@ export class KsaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -48,7 +53,9 @@ export class KsaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -64,7 +71,9 @@ export class KsaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -80,7 +89,9 @@ export class KsaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

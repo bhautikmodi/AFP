@@ -387,6 +387,7 @@ this.SalesUserService.getUserAssessDetail(id)
 {
   //alert('error');
   this.globals.isLoading = false;
+  this.router.navigate(['/pagenotfound']);
 });	 
 
 }

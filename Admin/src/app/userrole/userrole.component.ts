@@ -41,7 +41,8 @@ export class UserroleComponent implements OnInit {
 				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
-				this.globals.isLoading = false;	
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 	 }
 	 else
@@ -89,9 +90,11 @@ export class UserroleComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		
 		}

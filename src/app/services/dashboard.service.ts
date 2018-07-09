@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class DashboardService {
 
-  constructor( private http: HttpClient,private globals: Globals) { }
+  constructor( private http: HttpClient,private globals: Globals,private router: Router) { }
 
   getAllAssement(UserId) 
   { 
@@ -18,7 +19,10 @@ export class DashboardService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+
+      reject(msg);
+      this.globals.isLoading = false;	
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -35,7 +39,10 @@ export class DashboardService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+          
+      reject(msg);
+      this.globals.isLoading = false;	
+    	this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

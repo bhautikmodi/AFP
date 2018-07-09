@@ -52,6 +52,7 @@ import { ListUserAssessmentComponent } from './list-user-assessment/list-user-as
 import { ListUserAssessmentService } from './services/list-user-assessment.service';
 import { UserreportComponent } from './userreport/userreport.component';
 import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyregister.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
     TestAssessmentComponent,
     ListUserAssessmentComponent,
     UserreportComponent,
-	UsercopmanyregisterComponent
+	UsercopmanyregisterComponent,
+	ErrorComponent
 
   ],
   imports: [
@@ -216,6 +218,11 @@ import { UsercopmanyregisterComponent } from './usercopmanyregister/usercopmanyr
 		{
 			path : 'login',
 			component : LoginComponent,
+			canActivate : [AuthGuard]
+		},
+		{
+			path : 'pagenotfound',
+			component : ErrorComponent,
 			canActivate : [AuthGuard]
 		},
 		{

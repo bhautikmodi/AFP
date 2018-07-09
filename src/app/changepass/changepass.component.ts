@@ -86,6 +86,7 @@ export class ChangepassComponent implements OnInit {
 			(error) => 
 			{
 				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;

@@ -23,6 +23,8 @@ db_mode;
       (error) => 
       {
         //alert('error');
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
       });
   }
   logout()
@@ -39,6 +41,8 @@ db_mode;
       (error) => 
       {
        // alert('error');
+       this.globals.isLoading = false;
+	     this.router.navigate(['/pagenotfound']);
       });
           
     }

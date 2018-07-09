@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AssessmentService } from '../services/assessment.service';
 import { Http } from '@angular/http';
-
+import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 declare var $: any;
 
@@ -16,7 +16,7 @@ export class TestAssessmentComponent implements OnInit {
   ksaDetails;
 
   constructor(private http: Http, 
-    private AssessmentService: AssessmentService, private globals: Globals) 
+    private AssessmentService: AssessmentService, private globals: Globals, private router: Router) 
     {
     
     }
@@ -47,6 +47,7 @@ export class TestAssessmentComponent implements OnInit {
 		{
       //alert('error');
       this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
 		});
   }
 

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
+import { Router } from '@angular/router';
 @Injectable()
 export class SalesDashboardService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals,private router: Router) { }
   add(data){ 
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data)
@@ -16,6 +17,8 @@ export class SalesDashboardService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -31,7 +34,9 @@ export class SalesDashboardService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -47,6 +52,8 @@ export class SalesDashboardService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -63,6 +70,8 @@ export class SalesDashboardService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		

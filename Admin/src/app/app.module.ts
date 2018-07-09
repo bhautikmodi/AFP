@@ -86,6 +86,7 @@ import { AuditlogService } from './services/auditlog.service';
 import { LoginLogComponent } from './login-log/login-log.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import {SelectModule} from 'ng-select';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import {SelectModule} from 'ng-select';
 	AccessDeniedComponent,
 	EmailLogComponent,
 	LoginLogComponent,
-	ActivityLogComponent
+	ActivityLogComponent,
+	ErrorComponent
   ],
   imports: [
   BrowserModule,
@@ -407,6 +409,11 @@ import {SelectModule} from 'ng-select';
       {
         path : 'login-log',
         component : LoginLogComponent,
+        canActivate : [AuthGuard]
+      },
+      {
+        path : 'pagenotfound',
+        component : ErrorComponent,
         canActivate : [AuthGuard]
       },
       {

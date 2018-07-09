@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ResetpassService {
 
-   constructor( private http: Http,private globals: Globals) { }
+   constructor( private http: Http,private globals: Globals,private router: Router) { }
    
    
   add(UserId){
@@ -18,7 +18,9 @@ export class ResetpassService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -35,7 +37,9 @@ export class ResetpassService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -52,7 +56,9 @@ export class ResetpassService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

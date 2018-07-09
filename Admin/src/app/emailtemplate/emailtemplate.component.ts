@@ -49,6 +49,8 @@ export class EmailtemplateComponent implements OnInit {
 			(error) => 
 			{
 				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -76,7 +78,9 @@ export class EmailtemplateComponent implements OnInit {
 				this.globals.isLoading = false;
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		if (id) {
 			this.header = 'Edit';
@@ -98,8 +102,9 @@ export class EmailtemplateComponent implements OnInit {
 					
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.header = 'Add';
@@ -172,9 +177,11 @@ export class EmailtemplateComponent implements OnInit {
 					}
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 	}
@@ -217,9 +224,11 @@ export class EmailtemplateComponent implements OnInit {
 
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 	}
 

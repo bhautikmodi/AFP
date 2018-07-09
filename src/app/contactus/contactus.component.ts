@@ -57,6 +57,7 @@ export class ContactusComponent implements OnInit {
         this.submitted = false;
 				this.submitted1 = false;
 				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 	}
 	else {
@@ -92,9 +93,11 @@ export class ContactusComponent implements OnInit {
 					this.router.navigate(['/contactus']);
 				},
 				(error) => {
-					alert('error');
-					this.btn_disable = false;
-					this.submitted = false;
+				//	alert('error');
+				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
+				
 				});
 		}
 	}

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
+import { Router } from '@angular/router';
 @Injectable()
 export class RolepermissionService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
   getDefault(){  
     let promise = new Promise((resolve, reject) => {
@@ -17,6 +18,8 @@ export class RolepermissionService {
           },
           msg => { // Error
             reject(msg);
+            this.globals.isLoading = false;
+            this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -33,6 +36,8 @@ getRolePermission(roleId){
         },
         msg => { // Error
           reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
   });		
@@ -49,6 +54,8 @@ update_permission(permission){
         },
         msg => { // Error
           reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
   });		
@@ -65,6 +72,8 @@ update_permission(permission){
           },
           msg => { // Error
             reject(msg);
+            this.globals.isLoading = false;
+            this.router.navigate(['/pagenotfound']);
           }
         );
     });		

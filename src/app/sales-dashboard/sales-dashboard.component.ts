@@ -59,10 +59,11 @@ export class SalesDashboardComponent implements OnInit {
 				  this.globals.isLoading = false;			
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
-				this.globals.isLoading = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 
 
@@ -90,7 +91,9 @@ export class SalesDashboardComponent implements OnInit {
 			this.globals.isLoading = false;	
 		},
 		(error) => {
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});
 		
   }
@@ -124,7 +127,8 @@ export class SalesDashboardComponent implements OnInit {
 					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
-					this.globals.isLoading = false;	
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 		

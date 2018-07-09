@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
 			(error) => 
 			{ 
 				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 				if(error.text){
 					this.invalid = true;
 				}				

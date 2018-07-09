@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import { Router } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class CompetencyAreaService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
   add(areaEntity){ 
 	let promise = new Promise((resolve, reject) => {
@@ -16,7 +17,9 @@ export class CompetencyAreaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -32,7 +35,9 @@ export class CompetencyAreaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -49,7 +54,9 @@ export class CompetencyAreaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -65,7 +72,9 @@ export class CompetencyAreaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -81,7 +90,9 @@ export class CompetencyAreaService {
           resolve(res);
         },
         msg => { // Error
-		      reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

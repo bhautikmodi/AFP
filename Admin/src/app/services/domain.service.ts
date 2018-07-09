@@ -3,10 +3,10 @@ import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
 import { debug } from 'util';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class DomainService {
-  constructor(private http: HttpClient, private globals: Globals) { 
+  constructor(private http: HttpClient, private globals: Globals, private router: Router) { 
   }
 
   add(domainEntity){
@@ -18,7 +18,10 @@ export class DomainService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
+      
         }
       );
 	});		
@@ -34,7 +37,9 @@ export class DomainService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -53,7 +58,9 @@ export class DomainService {
         msg => { // Error
           console.log(msg.message);
           console.log(msg.error);
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
   });	
@@ -69,7 +76,9 @@ export class DomainService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

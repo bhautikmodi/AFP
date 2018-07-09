@@ -55,10 +55,11 @@ export class ResetpassComponent implements OnInit {
 	}, 
 	(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
 				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		
   }
@@ -116,9 +117,11 @@ export class ResetpassComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		
 		}

@@ -82,10 +82,12 @@ export class ForgotpasswordComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				this.globals.isLoading = false;
+			
 				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}

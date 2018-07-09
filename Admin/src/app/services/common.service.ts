@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class CommonService {
 
-  constructor(private http: Http, private globals: Globals) { }
+  constructor(private http: Http, private globals: Globals, private router: Router) { }
 
   get_permissiondata(permission){ 
 	let promise = new Promise((resolve, reject) => {
@@ -16,7 +16,9 @@ export class CommonService {
           resolve(res.json());
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

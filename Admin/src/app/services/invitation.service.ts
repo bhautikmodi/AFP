@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import {HttpClient} from "@angular/common/http";
 import { Globals } from '.././globals';
+import { Router } from '@angular/router';
 @Injectable()
 export class InvitationService {
 
-  constructor(private http: HttpClient,private globals: Globals) { }
+  constructor(private http: HttpClient,private globals: Globals, private router: Router) { }
 
   getAllCompany(){
 	 
@@ -18,6 +19,8 @@ export class InvitationService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -35,6 +38,8 @@ export class InvitationService {
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		
@@ -53,6 +58,8 @@ export class InvitationService {
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		
@@ -69,6 +76,8 @@ export class InvitationService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -85,6 +94,8 @@ export class InvitationService {
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		
@@ -102,6 +113,8 @@ export class InvitationService {
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		
@@ -136,6 +149,8 @@ export class InvitationService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		
@@ -152,6 +167,8 @@ export class InvitationService {
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		

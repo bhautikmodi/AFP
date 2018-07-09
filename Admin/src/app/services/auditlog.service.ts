@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
-
+import { Router } from '@angular/router';
 @Injectable()
 export class AuditlogService {
-  constructor(private http: HttpClient, private globals: Globals) { 
+  constructor(private http: HttpClient, private globals: Globals, private router: Router) { 
   }
 
   getEmailLog(){     
@@ -17,7 +17,9 @@ export class AuditlogService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
   });	
@@ -34,6 +36,8 @@ export class AuditlogService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
           }
         );
     });	
@@ -50,6 +54,8 @@ export class AuditlogService {
             },
             msg => { // Error
           reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
             }
           );
       });	

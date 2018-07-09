@@ -51,6 +51,7 @@ export class EmailLogComponent implements OnInit {
       {
         //alert('error');
         this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
       });    
     } else {		
       this.router.navigate(['/access-denied']);

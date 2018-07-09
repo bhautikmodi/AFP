@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import { Router } from '@angular/router';
 @Injectable()
 export class HomeService {
 
-constructor( private http: Http,private globals: Globals) { }
+constructor( private http: Http,private globals: Globals,private router: Router) { }
   getAll()
    {
    let promise = new Promise((resolve, reject) => {
@@ -16,6 +17,8 @@ constructor( private http: Http,private globals: Globals) { }
          },
          msg => { // Error
        reject(msg);
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
+import { Router } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class AssessmentDetailsService {
 
- constructor(  private http: HttpClient,private globals: Globals) { }
+ constructor(  private http: HttpClient,private globals: Globals,private router: Router) { }
   add(AsmtDetailsEntity)
   {
    let promise = new Promise((resolve, reject) => {
@@ -16,7 +17,10 @@ export class AssessmentDetailsService {
            resolve(res);
          },
          msg => { // Error
-       reject(msg);
+          reject(msg);
+          this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
+       
          }
        );
    });		
@@ -32,7 +36,9 @@ export class AssessmentDetailsService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -48,7 +54,9 @@ export class AssessmentDetailsService {
           resolve(res);
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

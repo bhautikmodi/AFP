@@ -89,6 +89,7 @@ export class UserAssessmentListComponent implements OnInit {
 		{
       //alert('error');
       this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
 		});	
     
     

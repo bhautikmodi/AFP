@@ -16,7 +16,7 @@ import { RemainingService } from '../services/remaining.service';
 export class RemaininglistComponent implements OnInit {
 	remainingList;
 	//globals;
-	constructor(private http: Http, private router: Router, private route: ActivatedRoute, private RemainingService: RemainingService,private globals: Globals) { }
+	constructor(private http: Http, private router: Router, private route: ActivatedRoute, private RemainingService: RemainingService,public globals: Globals) { }
 
   ngOnInit()
   {

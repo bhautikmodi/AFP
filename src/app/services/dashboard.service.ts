@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class DashboardService {
 
-  constructor( private http: HttpClient,private globals: Globals) { }
+  constructor( private http: HttpClient,public globals: Globals) { }
 
   getAllAssement(UserId) 
   { 

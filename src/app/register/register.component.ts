@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
 	CompanyEntity;
 	Disinv;
 	modelvar;
-  constructor( private http: Http,private globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
+  constructor( private http: Http,public globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
   ngOnInit() {

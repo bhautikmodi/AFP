@@ -20,7 +20,7 @@ export class UserrolelistComponent implements OnInit {
 	message;
 	type;
 	//globals;
-   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, private globals: Globals) { }
+   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private UserroleService: UserroleService, public globals: Globals) { }
 
   
   ngOnInit()

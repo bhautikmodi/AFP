@@ -16,7 +16,7 @@ export class TestAssessmentComponent implements OnInit {
   ksaDetails;
 
   constructor(private http: Http, 
-    private AssessmentService: AssessmentService, private globals: Globals) 
+    private AssessmentService: AssessmentService, public globals: Globals) 
     {
     
     }

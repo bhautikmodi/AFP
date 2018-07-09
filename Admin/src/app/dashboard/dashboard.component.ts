@@ -15,7 +15,7 @@ declare var AmCharts: any;
 export class DashboardComponent implements OnInit {
  Dashboard;
  //globals;
-   constructor( private http: Http,private globals: Globals, private router: Router, private DashboardService: DashboardService,private route:ActivatedRoute) { }
+   constructor( private http: Http,public globals: Globals, private router: Router, private DashboardService: DashboardService,private route:ActivatedRoute) { }
 
   ngOnInit() {
 		//this.globals = this.global;

@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class StateService {
 
- constructor(private http: HttpClient, private globals: Globals) {  }
+ constructor(private http: HttpClient, public globals: Globals) {  }
  
  add(stateEntity){ 
 	let promise = new Promise((resolve, reject) => {

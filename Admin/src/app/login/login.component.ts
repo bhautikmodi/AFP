@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 	invalid;
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private authService : AuthService,
-	private globals: Globals)
+	public globals: Globals)
     {
 		
 	  }

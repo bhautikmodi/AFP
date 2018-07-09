@@ -6,7 +6,7 @@ import { JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class RegisterService {
 
- constructor( private http: Http,private globals: Globals) { }
+ constructor( private http: Http,public globals: Globals) { }
 
 
  add(RegisterEntity){  

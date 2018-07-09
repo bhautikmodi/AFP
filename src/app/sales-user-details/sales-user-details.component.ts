@@ -22,7 +22,7 @@ export class SalesUserDetailsComponent implements OnInit {
   ksaList;
   allcourse;
   assessmentData;
-  constructor( private http: HttpClient,private SalesUserService: SalesUserService,private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  constructor( private http: HttpClient,private SalesUserService: SalesUserService,public globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
 

@@ -21,7 +21,7 @@ export class RatingScaleComponent implements OnInit {
 	header;
 
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		private RatingScaleService: RatingScaleService, private globals: Globals, private CommonService: CommonService) {
+		private RatingScaleService: RatingScaleService, public globals: Globals, private CommonService: CommonService) {
 
 	}
 	ngOnInit() {

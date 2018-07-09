@@ -24,7 +24,7 @@ export class PlaceholderListComponent implements OnInit {
 	//globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private PlaceholderService: PlaceholderService, private CommonService: CommonService, private globals: Globals) 
+		 private PlaceholderService: PlaceholderService, private CommonService: CommonService, public globals: Globals) 
   {
 	
   }

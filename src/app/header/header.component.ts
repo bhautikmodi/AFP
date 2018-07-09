@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit
  {
   //globals;
   db_mode;
-  constructor(  private authService: AuthService,private router: Router,private globals: Globals) { }
+  constructor(  private authService: AuthService,private router: Router,public globals: Globals) { }
 
   ngOnInit() {
     //this.globals = this.global;

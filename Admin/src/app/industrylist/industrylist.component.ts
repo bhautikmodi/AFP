@@ -23,7 +23,7 @@ export class IndustrylistComponent implements OnInit {
 	type;
 	permissionEntity;
 	//globals;
- constructor( private http: Http,private globals: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
+ constructor( private http: Http,public globals: Globals, private router: Router, private CommonService: CommonService, private IndustryService: IndustryService,private route:ActivatedRoute) { }
 
   ngOnInit() { 
 	$('.print').on('click',function(){

@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class CompetencyAreaService {
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, public globals: Globals) { }
 
   add(areaEntity){ 
 	let promise = new Promise((resolve, reject) => {

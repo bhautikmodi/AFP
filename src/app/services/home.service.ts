@@ -4,7 +4,7 @@ import { Globals } from '.././globals';
 @Injectable()
 export class HomeService {
 
-constructor( private http: Http,private globals: Globals) { }
+constructor( private http: Http,public globals: Globals) { }
   getAll()
    {
    let promise = new Promise((resolve, reject) => {

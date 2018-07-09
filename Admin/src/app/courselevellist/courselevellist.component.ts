@@ -21,7 +21,7 @@ export class CourselevellistComponent implements OnInit {
 	//globals;
 	permissionEntity;
  constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-	private CourselevelService: CourselevelService, private CommonService: CommonService, private globals: Globals) 
+	private CourselevelService: CourselevelService, private CommonService: CommonService, public globals: Globals) 
   {
 	
   }

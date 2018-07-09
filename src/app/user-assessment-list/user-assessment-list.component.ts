@@ -15,7 +15,7 @@ export class UserAssessmentListComponent implements OnInit {
   assessmentList;
   userList;
   padinglist;
-  constructor(private SalesDashboardService: SalesDashboardService, private globals: Globals, private route: ActivatedRoute,private router: Router) { }
+  constructor(private SalesDashboardService: SalesDashboardService, public globals: Globals, private route: ActivatedRoute,private router: Router) { }
 
 
   ngOnInit() {  

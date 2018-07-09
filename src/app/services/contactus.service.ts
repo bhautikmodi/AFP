@@ -5,7 +5,7 @@ import { Globals } from '.././globals';
 @Injectable()
 export class ContactusService {
 
-  constructor( private http: Http,private globals: Globals) { }
+  constructor( private http: Http,public globals: Globals) { }
   add(ContactEntity){  
     
    let promise = new Promise((resolve, reject) => {

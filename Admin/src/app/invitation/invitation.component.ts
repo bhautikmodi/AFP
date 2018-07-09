@@ -29,7 +29,7 @@ export class InvitationComponent implements OnInit {
 	submitted1;
 	//globals;
 	// myOptions;
-	constructor(private http: Http, private globals: Globals, private router: Router, private InvitationService: InvitationService,
+	constructor(private http: Http, public globals: Globals, private router: Router, private InvitationService: InvitationService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 

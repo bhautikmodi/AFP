@@ -9,7 +9,7 @@ import { Globals } from './globals';
 export class AppComponent {
   title = 'app';
   //globals;
-  constructor(private globals: Globals) { }
+  constructor(public globals: Globals) { }
   ngOnInit() {
     //this.globals = this.global;
     

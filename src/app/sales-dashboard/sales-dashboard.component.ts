@@ -24,7 +24,7 @@ export class SalesDashboardComponent implements OnInit {
 	//globals;
 	p;
 	
-  constructor(private http: Http, private globals: Globals, private router: Router, private route: ActivatedRoute,
+  constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private SalesDashboardService: SalesDashboardService) { }
 
 

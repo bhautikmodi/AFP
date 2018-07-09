@@ -16,5 +16,5 @@ export class Globals {
   msgflag = false;
   message = '';
   type = '';
-  
+
 }

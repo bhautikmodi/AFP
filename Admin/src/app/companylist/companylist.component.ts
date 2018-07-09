@@ -28,7 +28,7 @@ export class CompanylistComponent implements OnInit {
 	permissionEntity;
 	//globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private CompanyService: CompanyService,private CommonService: CommonService, private globals: Globals) { }
+		private CompanyService: CompanyService,private CommonService: CommonService, public globals: Globals) { }
 
 		ngOnInit() {
 			$('.print').on('click',function(){

@@ -24,7 +24,7 @@ export class KsaListComponent implements OnInit {
 	//globals;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private KsaService: KsaService, private CommonService: CommonService, private globals: Globals) 
+		 private KsaService: KsaService, private CommonService: CommonService, public globals: Globals) 
   {
 	
   }

@@ -20,7 +20,7 @@ export class RolepermissionComponent implements OnInit {
   btn_disable;
   //globals;
 
-  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, private globals: Globals)
+  constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, private RolepermissionService: RolepermissionService, public globals: Globals)
     {		
 
 	  }

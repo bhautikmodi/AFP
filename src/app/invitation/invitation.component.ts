@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class InvitationComponent implements OnInit {
 
-constructor( private http: Http,private globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
+constructor( private http: Http,public globals: Globals, private router: Router, private InvitationService: InvitationService,private route:ActivatedRoute) { }
  InvitationEntity;
 	submitted;
 	btn_disable;

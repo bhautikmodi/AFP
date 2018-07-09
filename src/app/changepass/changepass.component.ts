@@ -20,7 +20,7 @@ export class ChangepassComponent implements OnInit {
 	same;
 	//globals;
 
-  constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ChangepassService:ChangepassService) { }
+  constructor( private http: Http,public globals: Globals, private router: Router,private route:ActivatedRoute,private ChangepassService:ChangepassService) { }
 
   ngOnInit() { 
 	//this.globals = this.global;

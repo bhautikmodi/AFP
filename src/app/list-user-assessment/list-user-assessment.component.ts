@@ -28,7 +28,7 @@ export class ListUserAssessmentComponent implements OnInit {
   userAssessList;
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private ListUserAssessmentService: ListUserAssessmentService, private globals: Globals) { }
+		private ListUserAssessmentService: ListUserAssessmentService, public globals: Globals) { }
 
   ngOnInit() 
   {

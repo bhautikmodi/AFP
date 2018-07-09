@@ -41,8 +41,10 @@ class User extends MY_Controller
 					{
 						echo json_encode($post_user); 
 						$config['protocol']='smtp';
-						$config['smtp_host']='ssl://smtp.googlemail.com';
-						$config['smtp_port']='465';
+						// $config['smtp_host']='ssl://smtp.googlemail.com';
+						// $config['smtp_port']='465';
+						$config['smtp_host']='mail.uatbyopeneyes.com';
+						$config['smtp_port']='587';
 						$config['smtp_user']='myopeneyes3937@gmail.com';
 						$config['smtp_pass']='W3lc0m3@2018';
 						$config['charset']='utf-8';

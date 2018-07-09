@@ -22,7 +22,7 @@ export class DomainComponent implements OnInit
 	header;
 	
   constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute, 
-	private domainService: DomainService, private CommonService:CommonService, private globals: Globals)
+	private domainService: DomainService, private CommonService:CommonService, public globals: Globals)
     {
 		
 	}

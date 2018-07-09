@@ -23,7 +23,7 @@ export class StatelistComponent implements OnInit {
 	permissionEntity;
 	//globals;
 	 constructor(private http: Http, private router: Router, private route: ActivatedRoute, 
-		private StateService: StateService, private CommonService: CommonService, private globals: Globals) { }
+		private StateService: StateService, private CommonService: CommonService, public globals: Globals) { }
 
  ngOnInit()
   {

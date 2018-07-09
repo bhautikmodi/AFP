@@ -13,7 +13,7 @@ import { RemainingService } from '../services/remaining.service';
 })
 export class RemainingComponent implements OnInit {
 
-   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private RemainingService:RemainingService) { }
+   constructor( private http: Http,public globals: Globals, private router: Router,private route:ActivatedRoute,private RemainingService:RemainingService) { }
 
   ngOnInit()
   {

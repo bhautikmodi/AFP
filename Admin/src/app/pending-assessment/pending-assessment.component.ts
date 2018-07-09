@@ -19,7 +19,7 @@ export class PendingAssessmentComponent implements OnInit {
 	permissionEntity;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private PendingAssessmentService: PendingAssessmentService, private CommonService: CommonService, private globals: Globals) 
+		 private PendingAssessmentService: PendingAssessmentService, private CommonService: CommonService, public globals: Globals) 
   {
 	
   }

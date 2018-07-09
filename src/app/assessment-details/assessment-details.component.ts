@@ -19,7 +19,7 @@ btn_disable;
 TeamSizeList;
 header;
 	type;
-  constructor( private http: Http,private globals: Globals, private AssessmentDetailsService: AssessmentDetailsService, private router: Router,private route:ActivatedRoute) { }
+  constructor( private http: Http,public globals: Globals, private AssessmentDetailsService: AssessmentDetailsService, private router: Router,private route:ActivatedRoute) { }
 
   ngOnInit() 
   {

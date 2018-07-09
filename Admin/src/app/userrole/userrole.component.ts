@@ -18,7 +18,7 @@ export class UserroleComponent implements OnInit {
 	btn_disable;
 	header;
 	
-   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private UserroleService:UserroleService ) { }
+   constructor( private http: Http,public globals: Globals, private router: Router,private route:ActivatedRoute,private UserroleService:UserroleService ) { }
 
   
   ngOnInit() 

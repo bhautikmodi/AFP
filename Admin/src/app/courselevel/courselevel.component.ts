@@ -18,7 +18,7 @@ export class CourselevelComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
-	constructor(private http: Http, private globals: Globals, private router: Router, private CourselevelService: CourselevelService,
+	constructor(private http: Http, public globals: Globals, private router: Router, private CourselevelService: CourselevelService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {

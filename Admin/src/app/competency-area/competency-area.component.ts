@@ -24,7 +24,7 @@ export class CompetencyAreaComponent implements OnInit {
 	des_valid;
 
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, private globals: Globals) {
+		private CompetencyAreaService: CompetencyAreaService, private CommonService: CommonService, public globals: Globals) {
 
 	}
 	ngOnInit() {

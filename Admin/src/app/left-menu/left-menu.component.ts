@@ -13,7 +13,7 @@ export class LeftMenuComponent implements OnInit {
   menuList;
   //globals;
   
-  constructor(private globals: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
+  constructor(public globals: Globals, private router: Router, private RolepermissionService: RolepermissionService) { }
 
   ngOnInit() {
     this.globals.isLoading = true;

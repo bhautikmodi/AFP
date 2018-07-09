@@ -22,7 +22,7 @@ export class CourselistComponent implements OnInit {
 	type;
 	permissionEntity;
 	//globals;
- constructor( private http: Http,private globals: Globals, private router: Router, 
+ constructor( private http: Http,public globals: Globals, private router: Router, 
 	private CourseService: CourseService,private CommonService: CommonService, private route:ActivatedRoute) { }
 	
 	ngOnInit() { 

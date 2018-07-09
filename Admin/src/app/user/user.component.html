@@ -126,7 +126,7 @@
 										<div class="form-group col-md-6">
                                             <label><span class="required">*</span>Address 1</label>
                                             <textarea  #Address1="ngModel" [(ngModel)]="userEntity.Address1" class="form-control"
-											name="Address1" [ngClass]="{red_border: (Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)}" required></textarea>
+											name="Address1"  maxlength="250" [ngClass]="{red_border: (Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)}" required></textarea>
 											<span class="error_span"  *ngIf="(Address1.dirty && Address1.invalid) || (Address1.pristine && submitted)"> 
 												<span *ngIf="Address1.errors.required || (Address1.pristine && submitted)">Please enter address </span>
 												<span class="error_span" *ngIf="Address1.errors && Address1.errors.pattern">
@@ -141,7 +141,7 @@
 										<div class="form-group col-md-6">
 												<label><span class="required"></span>Address 2</label>
 												<textarea type="text" class="form-control" #PhoneNumberl="ngModel" name="Address2" 
-												 maxlength="13"
+												 maxlength="250"
 													[(ngModel)]="userEntity.Address2" ></textarea>
 													
 											</div>

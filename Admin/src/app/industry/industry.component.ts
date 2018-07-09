@@ -18,7 +18,7 @@ export class IndustryComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
-	constructor(private http: Http, private globals: Globals, private router: Router, private IndustryService: IndustryService,
+	constructor(private http: Http, public globals: Globals, private router: Router, private IndustryService: IndustryService,
 		private route: ActivatedRoute, private CommonService: CommonService) { }
 
 

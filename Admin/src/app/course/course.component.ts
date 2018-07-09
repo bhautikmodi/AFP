@@ -20,7 +20,7 @@ export class CourseComponent implements OnInit {
 	CourseLevelList;
 	header;
 	domainList;
-	constructor(private http: Http, private globals: Globals, private router: Router,
+	constructor(private http: Http, public globals: Globals, private router: Router,
 		private CourseService: CourseService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {

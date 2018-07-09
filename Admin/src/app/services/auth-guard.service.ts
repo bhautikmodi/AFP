@@ -7,7 +7,7 @@ declare var $: any;
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService : AuthService,private router: Router, private globals: Globals) { }
+  constructor(private authService : AuthService,private router: Router, public globals: Globals) { }
 
   canActivate(route,state:RouterStateSnapshot) { 
 	

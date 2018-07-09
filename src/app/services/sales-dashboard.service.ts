@@ -6,7 +6,11 @@ import { Router } from '@angular/router';
 @Injectable()
 export class SalesDashboardService {
 
+<<<<<<< HEAD
   constructor(private http: HttpClient, private globals: Globals,private router: Router) { }
+=======
+  constructor(private http: HttpClient, public globals: Globals) { }
+>>>>>>> 50d1b5b78a73220700e63768cc81a4a0e65a555a
   add(data){ 
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Sales_dashboard/getUser', data)

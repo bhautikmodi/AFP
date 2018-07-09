@@ -20,7 +20,7 @@ export class ResetpassComponent implements OnInit {
 	header;
 	same;
 	//globals;
-   constructor( private http: Http,private globals: Globals, private router: Router,private route:ActivatedRoute,private ResetpassService:ResetpassService) { }
+   constructor( private http: Http,public globals: Globals, private router: Router,private route:ActivatedRoute,private ResetpassService:ResetpassService) { }
 
 
   ngOnInit() {

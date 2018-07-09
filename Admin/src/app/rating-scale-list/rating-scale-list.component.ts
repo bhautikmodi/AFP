@@ -23,7 +23,7 @@ export class RatingScaleListComponent implements OnInit {
 	permissionEntity;
 	//globals;
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private RatingScaleService: RatingScaleService, private CommonService: CommonService, private globals: Globals) 
+		 private RatingScaleService: RatingScaleService, private CommonService: CommonService, public globals: Globals) 
   {
 	
   }

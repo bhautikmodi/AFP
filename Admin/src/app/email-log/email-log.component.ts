@@ -17,7 +17,7 @@ export class EmailLogComponent implements OnInit {
 	emaillogList;
 	
 	constructor(private el: ElementRef, private http: Http, private router: Router, private route: ActivatedRoute,
-		 private AuditlogService: AuditlogService, private globals: Globals) 
+		 private AuditlogService: AuditlogService, public globals: Globals) 
   {
 	
   }

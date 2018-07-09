@@ -21,7 +21,7 @@ export class ContactusComponent implements OnInit {
 	btn_disable;
 	header;
 	//globals;
-  constructor( private http: Http,private globals: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
+  constructor( private http: Http,public globals: Globals, private router: Router, private ContactusService: ContactusService,private route:ActivatedRoute) { }
 
 
   ngOnInit() {

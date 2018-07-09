@@ -24,7 +24,7 @@ export class EmailtemplateListComponent implements OnInit {
 	permissionEntity;
 	//globals;
 
- constructor( private http: Http,private globals: Globals, private router: Router, 
+ constructor( private http: Http,public globals: Globals, private router: Router, 
 	private EmailtemplateService: EmailtemplateService,private CommonService: CommonService, private route:ActivatedRoute) { }
 
 

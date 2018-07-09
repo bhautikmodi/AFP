@@ -18,7 +18,7 @@ export class CountryComponent implements OnInit {
 	submitted;
 	btn_disable;
 	header;
-	constructor(private http: Http, private globals: Globals, private router: Router,
+	constructor(private http: Http, public globals: Globals, private router: Router,
 		private CountryService: CountryService, private route: ActivatedRoute, private CommonService: CommonService) { }
 
 	ngOnInit() {

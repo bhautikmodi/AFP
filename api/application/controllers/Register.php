@@ -114,15 +114,10 @@ class Register extends CI_Controller
 							}
 					
 							$config['protocol']='smtp';
-<<<<<<< HEAD
 							$config['smtp_host']='mail.uatbyopeneyes.com';
 							$config['smtp_port']='587';
-=======
-							//$config['smtp_host']='mail.uatbyopeneyes.com';
-							//$config['smtp_port']='587';
-						 $config['smtp_host']='ssl://smtp.googlemail.com';
-							 $config['smtp_port']='465';
->>>>>>> 218a983d1ec03bbed18a8cbf5d16b5198f9342df
+							// $config['smtp_host']='ssl://smtp.googlemail.com';
+							 //$config['smtp_port']='465';
 							$config['smtp_user']=$smtpEmail;
 							$config['smtp_pass']=$smtpPassword;
 							$config['charset']='utf-8';

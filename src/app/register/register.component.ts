@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
   constructor( private http: Http,public globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
 
 
-  ngOnInit() {
-	this.globals.isLoading = true;
+  ngOnInit() {this.globals.isLoading = false;
+	//this.globals.isLoading = true;
 	
 	  
 			this.btn_disable = false;
@@ -197,7 +197,7 @@ export class RegisterComponent implements OnInit {
 		this.btn_disable = true;
 			let token = localStorage.getItem('CompanyId');
 			this.RegisterEntity.CompanyId=token;
-			this.globals.isLoading = true;
+			//this.globals.isLoading = true;
 			this.RegisterService.add(this.RegisterEntity)
 			
 			.then((data) => 

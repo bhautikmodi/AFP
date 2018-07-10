@@ -65,7 +65,8 @@ export class RegisterComponent implements OnInit {
 	(error) => 
 	{
 		//alert('error');
-		this.globals.isLoading = false;	
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});}
 
     this.Disinv = '';
@@ -79,7 +80,9 @@ export class RegisterComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});		
 	this.RegisterService.getAllCountry()
 	.then((data) => 
@@ -90,7 +93,9 @@ export class RegisterComponent implements OnInit {
 	}, 
 	(error) => 
 	{
-		alert('error');
+		//alert('error');
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});
 	
 	// let id = this.route.snapshot.paramMap.get('id');
@@ -121,10 +126,11 @@ export class RegisterComponent implements OnInit {
 
 							},
 							(error) => {
-								alert('error');
+								//alert('error');
 								this.btn_disable = false;
 								this.submitted = false;
-								this.globals.isLoading = false;	
+								this.globals.isLoading = false;
+								this.router.navigate(['/pagenotfound']);
 							});
 					}
 					else {
@@ -226,9 +232,11 @@ export class RegisterComponent implements OnInit {
 			(error) => 
 			{
 				//alert('error');
-				this.globals.isLoading = false;
+				
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		
 	}
@@ -245,7 +253,9 @@ export class RegisterComponent implements OnInit {
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} else {
 			this.stateList = [];

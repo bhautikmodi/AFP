@@ -43,6 +43,8 @@ export class IndustryComponent implements OnInit {
 			(error) => 
 			{
 				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -61,8 +63,9 @@ export class IndustryComponent implements OnInit {
 
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.header = 'Add';
@@ -110,9 +113,11 @@ export class IndustryComponent implements OnInit {
 					this.router.navigate(['/industry/list']);
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 	}

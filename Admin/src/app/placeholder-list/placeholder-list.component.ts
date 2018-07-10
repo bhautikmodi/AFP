@@ -62,7 +62,9 @@ export class PlaceholderListComponent implements OnInit {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}		
 	}
@@ -91,6 +93,8 @@ export class PlaceholderListComponent implements OnInit {
 	(error) => 
 	{
 		//alert('error');
+		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});		
 	}
 	

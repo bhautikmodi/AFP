@@ -40,7 +40,9 @@ export class RatingScaleComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -59,6 +61,7 @@ export class RatingScaleComponent implements OnInit {
 				(error) => {
 					//alert('error');
 					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.header = 'Add';
@@ -105,9 +108,11 @@ export class RatingScaleComponent implements OnInit {
 					this.router.navigate(['/rating-scale/list']);
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 	}

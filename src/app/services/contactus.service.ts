@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class ContactusService {
 
+<<<<<<< HEAD
+  constructor( private http: Http,private globals: Globals,private router: Router) { }
+=======
   constructor( private http: Http,public globals: Globals) { }
+>>>>>>> 50d1b5b78a73220700e63768cc81a4a0e65a555a
   add(ContactEntity){  
     
    let promise = new Promise((resolve, reject) => {
@@ -17,6 +21,8 @@ export class ContactusService {
          },
          msg => { // Error
        reject(msg.json());
+       this.globals.isLoading = false;
+       this.router.navigate(['/pagenotfound']);
          }
        );
    });		
@@ -32,6 +38,8 @@ export class ContactusService {
           },
           msg => { // Error
         reject(msg);
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
           }
         );
     });		

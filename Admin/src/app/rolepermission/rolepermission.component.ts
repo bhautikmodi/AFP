@@ -45,8 +45,9 @@ export class RolepermissionComponent implements OnInit {
     }, 
     (error) => 
     {
-      alert('error');
+      //alert('error');
       this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
     });	 
   }
 
@@ -58,7 +59,9 @@ export class RolepermissionComponent implements OnInit {
     }, 
     (error) => 
     {
-      alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
     });	 
   }
 
@@ -76,7 +79,9 @@ export class RolepermissionComponent implements OnInit {
     (error) => 
     {
       this.btn_disable = false;
-      alert('error');
+      //alert('error');
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
     });
 	}
 

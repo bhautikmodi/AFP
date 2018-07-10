@@ -23,6 +23,8 @@ export class HeaderhomeComponent implements OnInit {
       (error) => 
       {
         //alert('error');
+        this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
       });
   }
   home()
@@ -51,7 +53,9 @@ export class HeaderhomeComponent implements OnInit {
     }, 
     (error) => 
     {
-      alert('error');
+     // alert('error');
+     this.globals.isLoading = false;
+     this.router.navigate(['/pagenotfound']);
     });
         
   }

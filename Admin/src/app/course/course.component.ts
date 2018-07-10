@@ -39,7 +39,9 @@ export class CourseComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -51,14 +53,18 @@ export class CourseComponent implements OnInit {
 				this.CourseLevelList = data;
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 			this.CourseService.getDomainList()
 			.then((data) => {
 				this.domainList = data;
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 
 
@@ -72,7 +78,9 @@ export class CourseComponent implements OnInit {
 					this.globals.isLoading = false;
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.header = 'Add';
@@ -119,9 +127,11 @@ export class CourseComponent implements OnInit {
 					this.router.navigate(['/course/list']);
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 	}

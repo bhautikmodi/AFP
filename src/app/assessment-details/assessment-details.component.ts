@@ -44,6 +44,7 @@ header;
 	  {
 		  //alert('error');
 		  this.globals.isLoading = false;
+		  this.router.navigate(['/pagenotfound']);
 	  });		
   }
 addAsmtDetails(AsmtDetailsForm)
@@ -81,6 +82,7 @@ addAsmtDetails(AsmtDetailsForm)
 			{
 				//alert('error');
 				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 				this.btn_disable = false;
 				this.submitted = false;
 			});

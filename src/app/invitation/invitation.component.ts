@@ -146,9 +146,11 @@ $('body').on('keyup', 'input.code', function(e){
 			}, 
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		} 		
 	}

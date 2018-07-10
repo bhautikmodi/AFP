@@ -46,7 +46,9 @@ export class PlaceholderComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -62,7 +64,9 @@ export class PlaceholderComponent implements OnInit {
 				this.globals.isLoading = false;
 			},
 			(error) => {
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});
 		if (id) {
 			this.header = 'Edit';
@@ -88,6 +92,7 @@ export class PlaceholderComponent implements OnInit {
 				(error) => {
 					//alert('error');
 					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.header = 'Add';
@@ -136,9 +141,11 @@ export class PlaceholderComponent implements OnInit {
 					this.router.navigate(['/placeholder/list']);
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		}
 	}
@@ -163,7 +170,9 @@ export class PlaceholderComponent implements OnInit {
 					this.columnList = data;
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.columnList = [];

@@ -24,6 +24,8 @@ export class HeaderComponent implements OnInit
       (error) => 
       {
         //alert('error');
+        this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
       });
    }
 
@@ -44,7 +46,9 @@ export class HeaderComponent implements OnInit
       }, 
       (error) => 
       {
-        alert('error');
+        //alert('error');
+        this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
       });
           
     }

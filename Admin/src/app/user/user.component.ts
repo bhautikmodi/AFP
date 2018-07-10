@@ -42,7 +42,9 @@ export class UserComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+				//alert('error');
+				this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 			});	
 		}
 	}
@@ -58,7 +60,9 @@ export class UserComponent implements OnInit {
 			this.globals.isLoading = false;	
 		},
 		(error) => {
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});
 
 		// this.UserService.getAllCountry()
@@ -122,7 +126,8 @@ export class UserComponent implements OnInit {
 					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
-					this.globals.isLoading = false;	
+					this.globals.isLoading = false;
+				this.router.navigate(['/pagenotfound']);
 				});
 		}
 		else {
@@ -174,9 +179,11 @@ export class UserComponent implements OnInit {
 					this.router.navigate(['users/list']);
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
 					this.btn_disable = false;
 					this.submitted = false;
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 
 		}
@@ -192,7 +199,9 @@ export class UserComponent implements OnInit {
 					this.stateList = data;
 				},
 				(error) => {
-					alert('error');
+					//alert('error');
+					this.globals.isLoading = false;
+					this.router.navigate(['/pagenotfound']);
 				});
 		} else {
 			this.stateList = [];

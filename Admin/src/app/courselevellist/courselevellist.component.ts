@@ -55,7 +55,9 @@ export class CourselevellistComponent implements OnInit {
 		},
 		(error) => 
 		{
-			alert('error');
+			//alert('error');
+			this.globals.isLoading = false;
+			this.router.navigate(['/pagenotfound']);
 		});	
 	}			
   }
@@ -81,6 +83,7 @@ export class CourselevellistComponent implements OnInit {
 	{
 		//alert('error');
 		this.globals.isLoading = false;
+		this.router.navigate(['/pagenotfound']);
 	});		
 	}
 

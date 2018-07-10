@@ -28,7 +28,9 @@ export class LeftMenuComponent implements OnInit {
 			},
 			(error) => 
 			{
-				alert('error');
+        //alert('error');
+        this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
       });	
       
       

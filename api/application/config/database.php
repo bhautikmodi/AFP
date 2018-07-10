@@ -86,7 +86,17 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
+<<<<<<< HEAD
 	'database' => 'afp',
+=======
+<<<<<<< HEAD
+	'database' => 'afpdev',
+=======
+
+	'database' => 'afp',
+
+>>>>>>> e362abb98173bc9d774dbd7d3a9810368132ba4b
+>>>>>>> 72f5e09995bb606eaae610a6ab25613843578655
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

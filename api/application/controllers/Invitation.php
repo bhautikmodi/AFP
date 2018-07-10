@@ -324,8 +324,8 @@ class Invitation extends CI_Controller {
 					}
 
 					$config['protocol']='smtp';
-					$config['smtp_host']='ssl://smtp.googlemail.com';
-					$config['smtp_port']='465';
+					$config['smtp_host']='mail.uatbyopeneyes.com';
+					$config['smtp_port']='587';
 					$config['smtp_user']=$smtpEmail;
 					$config['smtp_pass']=$smtpPassword;
 					$config['charset']='utf-8';

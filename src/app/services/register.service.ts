@@ -9,8 +9,8 @@ export class RegisterService {
  constructor( private http: Http,private globals: Globals,private router: Router) { }
 
 
- add(RegisterEntity){  
-   
+ add(RegisterEntity)
+ {  debugger  
 	let promise = new Promise((resolve, reject) => {
     this.http.post(this.globals.baseAPIUrl + 'Register/addRegister', RegisterEntity, this.globals.headerpath)
       .toPromise()

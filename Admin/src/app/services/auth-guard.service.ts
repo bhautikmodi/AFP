@@ -11,10 +11,21 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route,state:RouterStateSnapshot) { 
 	
-	if(state.url=='/access-denied'){
+	if(state.url=='/access-denied'||state.url=='/pagenotfound'){
 		this.globals.isLoading = false;
 	} else {
 		this.globals.isLoading = true;
+	}
+	if(state.url=='/pagenotfound'||state.url=='/access-denied'){
+		this.globals.pageNotFound = false;
+		if(this.authService.isLoggedIn()==true){
+			this.globals.IsLoggedIn = true;
+		} else {
+			this.globals.IsLoggedIn = false;
+		}
+		return true;
+	} else {
+		this.globals.pageNotFound = true;
 	}
 	  if(this.authService.isLoggedIn()==true){
 			if(state.url.split('/')[2] != undefined){

@@ -6,8 +6,9 @@
 </div>
 
 <app-header *ngIf="globals.IsLoggedIn"></app-header> 
-    <div [ngClass]="{'wrapper':globals.IsLoggedIn}"> 
-        <app-left-menu *ngIf="globals.IsLoggedIn"></app-left-menu> 
+    <div [ngClass]="{'wrapper':(globals.IsLoggedIn && globals.pageNotFound)}"> 
+        <app-left-menu *ngIf="(globals.IsLoggedIn && globals.pageNotFound)"></app-left-menu> 
+        
         <router-outlet></router-outlet>
         <app-footer *ngIf="globals.IsLoggedIn"></app-footer>
     </div> 

@@ -62,7 +62,7 @@ class Company extends My_Controller
 	
 	
 	
-	public function getAlls()
+	public function getAll()
 	{
 		$data="";
 		

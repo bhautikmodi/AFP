@@ -23,7 +23,16 @@ export class AuthGuard implements CanActivate {
 		this.globals.logohome = false;
 	
 	}
-	this.globals.isLoading = true;
+	if(state.url=='/pagenotfound'){   // new header component show
+	
+		this.globals.isLoading = false;
+	
+	} else {
+		
+		this.globals.isLoading = true;
+	
+	}
+	
 	// if(state.url.split('/')[1]=='assessment' || state.url=='/dashboard' || 
 	// state.url=='/list-user-assessment/list' ||  state.url.split('/')[1]=='sales-user-details'||
 	// state.url=='/sales-admin-dashboard'){  
@@ -81,7 +90,7 @@ export class AuthGuard implements CanActivate {
 		  }		  
 	  } else {
 			
-		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='contactus' && state.url.split('/')[2]==undefined)){
+		   if(state.url=='/login' || state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='register' && state.url.split('/')[2]==undefined)||state.url=='/invitation'||state.url=='/'||state.url=='/forgotpassword'||state.url.split('/')[1]=='resetpass'||(state.url.split('/')[1]=='contactus' && state.url.split('/')[2]==undefined) || state.url=='/pagenotfound'){
 			  if(state.url=='/login'){
 				this.globals.check_login = true;
 			  }			   

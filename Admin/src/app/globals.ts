@@ -16,5 +16,6 @@ export class Globals {
   msgflag = false;
   message = '';
   type = '';
+  pageNotFound = false;
 
 }

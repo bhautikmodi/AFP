@@ -36,8 +36,7 @@ export class PlaceholderService {
         },
         msg => { // Error
           reject(msg);
-          this.globals.isLoading = false;
-          this.router.navigate(['/pagenotfound']);
+       
         }
       );
 	});		

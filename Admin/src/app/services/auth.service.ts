@@ -28,7 +28,7 @@ export class AuthService {
         msg => { // Error
 			reject(msg.json());
 			this.globals.isLoading = false;
-      this.router.navigate(['/pagenotfound']);
+     // this.router.navigate(['/pagenotfound']);
         }
       );
 	});		

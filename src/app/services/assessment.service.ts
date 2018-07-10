@@ -35,11 +35,12 @@ export class AssessmentService {
       .then(
         res => { // Success
           resolve(res);
-          this.globals.isLoading = false;
-          this.router.navigate(['/pagenotfound']);
+       
         },
         msg => { // Error
-		  reject(msg);
+      reject(msg);
+      this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
@@ -76,8 +77,7 @@ export class AssessmentService {
         },
         msg => { // Error
       reject(msg);
-      this.globals.isLoading = false;
-      this.router.navigate(['/pagenotfound']);
+      
         }
       );
 	});		

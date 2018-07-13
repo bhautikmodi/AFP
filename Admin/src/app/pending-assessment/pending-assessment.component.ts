@@ -27,7 +27,19 @@ export class PendingAssessmentComponent implements OnInit {
   ngOnInit() { 
 	$('.print').on('click',function(){
 		window.print();
-	})
+	});
+	$("#excel_btn").click(function() {
+            $("#dataTables-example").remove(".print_none").table2excel({
+                exclude: ".print_none",
+                name: "Excel Document Name",
+                filename: "PendingAssessmentList",
+				fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: false
+           
+        });
+    });
 
 	this.globals.isLoading = true;
 	this.permissionEntity = {}; 

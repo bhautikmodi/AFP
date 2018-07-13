@@ -33,7 +33,19 @@ invimsgpending;
   ngOnInit() { 
 	$('.print').on('click',function(){
 		window.print();
-	})
+	});
+	$("#excel_btn").click(function() {
+            $("#dataTables-example").remove(".print_none").table2excel({
+                exclude: ".print_none",
+                name: "Excel Document Name",
+                filename: "InvitationList",
+				fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: false
+           
+        });
+    });
 
 	this.globals.isLoading = false;
 	//this.globals = this.global;

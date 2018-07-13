@@ -241,18 +241,3 @@
 
 })( jQuery, window, document );
 
-$(document).ready(function() {
-    $(".page-header .btn-group .btn-add:first-child").click(function() {
-        $(function() {
-            $("#dataTables-example").remove(".print_none").table2excel({
-                exclude: ".print_none",
-                name: "Excel Document Name",
-                filename: "filename",
-				fileext: ".xls",
-                exclude_img: true,
-                exclude_links: true,
-                exclude_inputs: false
-            });
-        });
-    });
-});
